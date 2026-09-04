@@ -106,6 +106,44 @@ Coincide con `TERMINOLOGY_ORIGIN_v1.md`, que lo define como *«la obligación t�
 
 > Si los documentos históricos tampoco resuelven qué representa `i`, entonces **`011-A` tiene que decidirlo** — no descubrirlo. Y fabricar una definición retrospectiva para que la fórmula parezca más coherente de lo que era sería el peor desenlace posible.
 
+## ★★ POR QUÉ NO HAY DOCUMENTO · la evolución fue conversacional
+
+Javo lo aclaró y resuelve el hueco que 13 documentos no llenaron:
+
+> **«La fórmula del ICPI vino evolucionando desde ENERO, cuando comenzamos a trabajar con Claude. Antes era sólo yo trabajando, pero al trabajar con Claude desde el chat —antes de Code— me pudo ayudar a potenciar la fórmula; por eso ha venido cambiando, es decir, evolucionado.»**
+> — Javo, 2026-09-04
+
+**No falta un documento: nunca hubo uno.** La entrada de `C_i`, el paso de cinco a seis factores y la renormalización de `P_i` y `R_i` **no están documentados porque ocurrieron en diálogo**, iterando sobre la tesis. El barrido no fracasó — buscaba en el sitio equivocado.
+
+Y la primera iteración tiene nombre: el chat **«profundo»**, donde se sentaron las bases del ecosistema que hoy es QUIRA, partiendo de la tesis.
+
+### Lo que esto corrige de esta auditoría
+
+| Se venía diciendo | Lo que es |
+|---|---|
+| «el hueco es abril → mayo» | **el hueco empieza en ENERO** — abril es sólo donde aparece el primer artefacto conservado |
+| «falta el documento que explica `C_i`» | **no existe tal documento**; la justificación vive en una conversación |
+| «la divergencia nació con la implementación» (`007-B0`) | nació de una **evolución iterativa** que el canon no registró |
+
+### Y la deuda que sí queda, nombrada · `DOC-022`
+
+> **Una decisión que sostiene el motor y vive sólo en una conversación es una decisión fuera del canon.**
+
+No es un reproche al método: iterar con Claude fue lo que potenció la fórmula, y el motor resultante funciona y está validado empíricamente. **La deuda es otra**: lo que el sistema ejecuta debe poder explicarse **desde el sistema**, no desde la memoria de quien lo construyó. Sin eso, `011` tiene que volver a decidir lo que ya se decidió una vez.
+
+### Qué haría falta del chat «profundo», y para qué exactamente
+
+No hace falta todo: hay **cuatro decisiones** cuya justificación está sin recuperar, y cada una tiene un destino concreto en la auditoría.
+
+| Buscar | Para | Si no aparece |
+|---|---|---|
+| Por qué entró `C_i` | `011-C` | se decide de nuevo, y se declara decisión nueva |
+| Por qué 5 → 6 factores | `011-C` | ídem |
+| Por qué se renormalizaron `P_i` y `R_i` | `011-C` · `007-A` ya probó que la de `R` es inocua | ídem |
+| Qué es `i` | `011-A` | **`011-A` decide**, no descubre |
+
+⚠️ Y una salvedad de método: lo que aparezca en el chat será **evidencia de la decisión**, no canon por sí mismo. Para entrar al canon tendrá que declararse como lo que es —una decisión de diseño, con su fecha y su motivo— igual que cualquier otra.
+
 ## Tabla de genealogía
 
 ⚠️ **Las fechas salen del CONTENIDO, no del sistema de ficheros.** Donde no hay fecha fiable se escribe `NO DETERMINABLE`, nunca el `mtime`.

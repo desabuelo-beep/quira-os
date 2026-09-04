@@ -145,6 +145,25 @@ _DOCTRINA = (
          verificador="test_ninguna_regla_generadora_se_infiere_del_patron_de_sus_resultados",
          por_que_ahi="con 25 casos y tres valores posibles, cualquier hipótesis "
                      "encuentra algunos que la respaldan: encajar no es derivar"),
+    dict(id="DOC-022", custodia=GATE,
+         regla="Una decisión que SOSTIENE EL MOTOR y vive sólo en una "
+               "conversación es una decisión FUERA DEL CANON. El resultado "
+               "puede ser excelente y la deuda existe igual: lo que el sistema "
+               "ejecuta debe poder explicarse desde el sistema, no desde la "
+               "memoria de quien lo construyó",
+         fuente="Javo, 2026-09-04 —«la fórmula del ICPI vino evolucionando "
+                "desde enero cuando comenzamos a trabajar con Claude […] me "
+                "pudo ayudar a potenciar la fórmula, por eso ha venido "
+                "cambiando»—",
+         verificador="test_las_decisiones_conversacionales_se_declaran_deuda",
+         por_que_ahi="explica el hueco que 13 documentos no pudieron llenar: la "
+                     "entrada de `C_i`, el paso de cinco a seis factores y la "
+                     "renormalización de `P_i` y `R_i` no están documentados "
+                     "porque **nunca hubo documento** — ocurrieron en diálogo. "
+                     "No es un reproche al método, que produjo un motor que "
+                     "funciona: es que el canon no recogió el POR QUÉ, y sin "
+                     "eso `011` tiene que decidir de nuevo lo que ya se decidió "
+                     "una vez"),
     dict(id="DOC-021", custodia=GATE,
          regla="Antes de decidir cualquier punto del refactor: **¿esto lo "
                "resuelve la tesis?** Si SÍ, se RESTAURA y se cita — la "

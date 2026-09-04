@@ -297,6 +297,66 @@ def _escribir(docs) -> None:
       "de lo que era sería el peor desenlace posible.")
     A("")
 
+    A("## ★★ POR QUÉ NO HAY DOCUMENTO · la evolución fue conversacional")
+    A("")
+    A("Javo lo aclaró y resuelve el hueco que 13 documentos no llenaron:")
+    A("")
+    A("> **«La fórmula del ICPI vino evolucionando desde ENERO, cuando "
+      "comenzamos a trabajar con Claude. Antes era sólo yo trabajando, pero al "
+      "trabajar con Claude desde el chat —antes de Code— me pudo ayudar a "
+      "potenciar la fórmula; por eso ha venido cambiando, es decir, "
+      "evolucionado.»**")
+    A("> — Javo, 2026-09-04")
+    A("")
+    A("**No falta un documento: nunca hubo uno.** La entrada de `C_i`, el paso "
+      "de cinco a seis factores y la renormalización de `P_i` y `R_i` **no "
+      "están documentados porque ocurrieron en diálogo**, iterando sobre la "
+      "tesis. El barrido no fracasó — buscaba en el sitio equivocado.")
+    A("")
+    A("Y la primera iteración tiene nombre: el chat **«profundo»**, donde se "
+      "sentaron las bases del ecosistema que hoy es QUIRA, partiendo de la "
+      "tesis.")
+    A("")
+    A("### Lo que esto corrige de esta auditoría")
+    A("")
+    A("| Se venía diciendo | Lo que es |")
+    A("|---|---|")
+    A("| «el hueco es abril → mayo» | **el hueco empieza en ENERO** — abril es "
+      "sólo donde aparece el primer artefacto conservado |")
+    A("| «falta el documento que explica `C_i`» | **no existe tal documento**; "
+      "la justificación vive en una conversación |")
+    A("| «la divergencia nació con la implementación» (`007-B0`) | nació de una "
+      "**evolución iterativa** que el canon no registró |")
+    A("")
+    A("### Y la deuda que sí queda, nombrada · `DOC-022`")
+    A("")
+    A("> **Una decisión que sostiene el motor y vive sólo en una conversación es "
+      "una decisión fuera del canon.**")
+    A("")
+    A("No es un reproche al método: iterar con Claude fue lo que potenció la "
+      "fórmula, y el motor resultante funciona y está validado empíricamente. "
+      "**La deuda es otra**: lo que el sistema ejecuta debe poder explicarse "
+      "**desde el sistema**, no desde la memoria de quien lo construyó. Sin eso, "
+      "`011` tiene que volver a decidir lo que ya se decidió una vez.")
+    A("")
+    A("### Qué haría falta del chat «profundo», y para qué exactamente")
+    A("")
+    A("No hace falta todo: hay **cuatro decisiones** cuya justificación está sin "
+      "recuperar, y cada una tiene un destino concreto en la auditoría.")
+    A("")
+    A("| Buscar | Para | Si no aparece |")
+    A("|---|---|---|")
+    A("| Por qué entró `C_i` | `011-C` | se decide de nuevo, y se declara decisión nueva |")
+    A("| Por qué 5 → 6 factores | `011-C` | ídem |")
+    A("| Por qué se renormalizaron `P_i` y `R_i` | `011-C` · `007-A` ya probó que la de `R` es inocua | ídem |")
+    A("| Qué es `i` | `011-A` | **`011-A` decide**, no descubre |")
+    A("")
+    A("⚠️ Y una salvedad de método: lo que aparezca en el chat será **evidencia "
+      "de la decisión**, no canon por sí mismo. Para entrar al canon tendrá que "
+      "declararse como lo que es —una decisión de diseño, con su fecha y su "
+      "motivo— igual que cualquier otra.")
+    A("")
+
     A("## Tabla de genealogía")
     A("")
     A("⚠️ **Las fechas salen del CONTENIDO, no del sistema de ficheros.** Donde "

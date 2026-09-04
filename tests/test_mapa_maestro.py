@@ -17,6 +17,8 @@ Dylus Lab © 2026
 from __future__ import annotations
 
 import sys
+
+import pytest
 from pathlib import Path
 
 RAIZ = Path(__file__).resolve().parents[1]
@@ -111,6 +113,38 @@ def test_el_refactor_separa_lo_que_restaura_de_lo_que_crea():
         "desapareció la obligación de declarar lo que se crea. Una decisión "
         "nueva presentada como hallazgo falsea la genealogía — que es "
         "precisamente lo que GM-Ω reconstruyó")
+
+
+def test_las_decisiones_conversacionales_se_declaran_deuda():
+    """DOC-022 · lo que sostiene el motor y vive sólo en una conversación.
+
+    Javo lo aclaró y resolvió el hueco que 13 documentos no llenaron: la fórmula
+    del ICPI evolucionó **en diálogo desde enero**. La entrada de `C_i`, el paso
+    de cinco a seis factores y la renormalización de `P_i`/`R_i` no están
+    documentados porque **nunca hubo documento**.
+
+    ⚠️ NO ES UN REPROCHE AL MÉTODO. Iterar potenció la fórmula y el motor
+    resultante funciona. La deuda es otra: **lo que el sistema ejecuta debe
+    poder explicarse desde el sistema**, no desde la memoria de quien lo
+    construyó. Sin eso, `011` vuelve a decidir lo ya decidido.
+
+    Esta prueba vigila que la constancia no se pierda — porque el día que se
+    pierda, el hueco parecerá negligencia documental en vez de lo que fue."""
+    doc = (RAIZ / "docs" / "architecture" /
+           "GM-OMEGA_GENEALOGIA_DOCUMENTAL.md")
+    if not doc.exists():
+        pytest.skip("aún no se generó el expediente genealógico")
+    txt = doc.read_text(encoding="utf-8")
+    assert "la evolución fue conversacional" in txt, (
+        "desapareció la explicación del hueco. Sin ella, la ausencia de "
+        "documentos se lee como descuido y no como el modo real en que se "
+        "construyó el motor")
+    assert "nunca hubo uno" in txt, (
+        "se perdió la distinción entre «falta un documento» y «nunca existió». "
+        "Buscar indefinidamente algo que no se escribió es trabajo perdido")
+    assert "el hueco empieza en ENERO" in txt, (
+        "la auditoría situaba el hueco en abril→mayo y empieza antes: abril es "
+        "sólo donde aparece el primer artefacto conservado")
 
 
 def test_ninguna_etapa_se_declara_cerrada_sin_custodio():
