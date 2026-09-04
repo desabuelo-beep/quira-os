@@ -25,7 +25,7 @@
   ├── GM-Ω 009   gaming: ¿se optimiza el índice sin mejorar la realidad?
   ├── GM-Ω 010   transferibilidad LATAM
   ├── T3-R R0    diagnóstico de los 13 dominios
-  ├── T3-R R1    modelos A · B · C
+  ├── T3-R R1    modelos A · B · C de arquitectura de dominios
   ├── 2ING d07   curación de Transparencia
   └── DEUDA      D-008 · D-009 · D-011 · D-012
 
@@ -64,7 +64,9 @@ Y **`T6` espera a `011` por la misma razón**: deprecar `AVEP` o migrar el nombr
 | GM-Ω | `v2` | Universo completo del PDOT (66) — decisión de Javo | ⛔ | 011 · 008-R · exige ADR propio y recalibración (ADR-036 §4) |
 | GM-Ω | `009` | ¿Se puede optimizar el índice sin mejorar la realidad? | ⬜ |  |
 | GM-Ω | `010` | Transferibilidad LATAM · núcleo vs adaptador | ⬜ |  |
-| GM-Ω | `011` | **Dictamen de validez del constructo + UNIDAD DE ANÁLISIS** | ⛔ | 008 · 009 · 010 · ⚠️ 008-R le añadió: ¿qué es `i`? |
+| GM-Ω | `011-A` | **Unidad de análisis: ¿qué es `i`?** | ⛔ | ⚠️ 008-R la añadió · PREVIA al álgebra |
+| GM-Ω | `011-B` | Regla de correspondencia PDOT → ICPI (1:1·N:1·1:N·N:N) | ⛔ | 011-A |
+| GM-Ω | `011-C` | Consecuencia algebraica · ¿son `P·R` y la multiplicatividad coherentes con esa unidad? | ⛔ | 011-A · 011-B · 008 · 009 · 010 |
 | TF | `T1` | Inventario de nombres propios | ✅ |  |
 | TF | `T2` | Clasificación ontológica + capa de presentación | ✅ |  |
 | TF | `T3` | Contrato índice → dominio → rol → pregunta → capa | 🔄 | se llena con la curación de cada dominio |
@@ -82,7 +84,7 @@ Y **`T6` espera a `011` por la misma razón**: deprecar `AVEP` o migrar el nombr
 | 2ING | `d02·d03` | Presupuesto · Gobernanza del Mandato | ⬜ |  |
 | 2ING | `d04·d05·d10-d13` | Sellados · sin construir | ⬜ |  |
 
-**13 de 29 etapas cerradas.**
+**13 de 31 etapas cerradas.**
 
 ## Estado derivado de las fuentes vivas
 
@@ -124,4 +126,4 @@ Y **`T6` espera a `011` por la misma razón**: deprecar `AVEP` o migrar el nombr
 3. **Este mapa se deriva.** El día que alguien lo edite a mano, dejará de reflejar el estado real sin que nada avise, y volveremos exactamente al punto que motivó escribirlo.
 
 ---
-*QUIRA · Mapa Maestro · 13/29 etapas cerradas · 6 deudas abiertas · Dylus Lab © 2026*
+*QUIRA · Mapa Maestro · 13/31 etapas cerradas · 6 deudas abiertas · Dylus Lab © 2026*

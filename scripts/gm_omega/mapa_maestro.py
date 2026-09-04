@@ -75,8 +75,13 @@ _ETAPAS = [
     ("GM-Ω", "009", "¿Se puede optimizar el índice sin mejorar la realidad?",
      _ABIERTO, ""),
     ("GM-Ω", "010", "Transferibilidad LATAM · núcleo vs adaptador", _ABIERTO, ""),
-    ("GM-Ω", "011", "**Dictamen de validez del constructo + UNIDAD DE ANÁLISIS**",
-     _BLOQ, "008 · 009 · 010 · ⚠️ 008-R le añadió: ¿qué es `i`?"),
+    ("GM-Ω", "011-A", "**Unidad de análisis: ¿qué es `i`?**", _BLOQ,
+     "⚠️ 008-R la añadió · PREVIA al álgebra"),
+    ("GM-Ω", "011-B", "Regla de correspondencia PDOT → ICPI (1:1·N:1·1:N·N:N)",
+     _BLOQ, "011-A"),
+    ("GM-Ω", "011-C", "Consecuencia algebraica · ¿son `P·R` y la "
+     "multiplicatividad coherentes con esa unidad?", _BLOQ,
+     "011-A · 011-B · 008 · 009 · 010"),
 
     ("TF", "T1", "Inventario de nombres propios", _HECHO, ""),
     ("TF", "T2", "Clasificación ontológica + capa de presentación", _HECHO, ""),
@@ -185,7 +190,7 @@ def _escribir(deu, docs, n_doc, n_test, hechas) -> None:
     A("  ├── GM-Ω 009   gaming: ¿se optimiza el índice sin mejorar la realidad?")
     A("  ├── GM-Ω 010   transferibilidad LATAM")
     A("  ├── T3-R R0    diagnóstico de los 13 dominios")
-    A("  ├── T3-R R1    modelos A · B · C")
+    A("  ├── T3-R R1    modelos A · B · C de arquitectura de dominios")
     A("  ├── 2ING d07   curación de Transparencia")
     A("  └── DEUDA      D-008 · D-009 · D-011 · D-012")
     A("")

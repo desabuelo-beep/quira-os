@@ -52,7 +52,18 @@ Una unidad del motor recoge las cifras de **tres metas documentales**. La señal
 
 Una primera versión de este informe concluyó que **«el motor agregó las 66 en 25»**. **Era demasiado fuerte**, y los propios números de aquí lo desmienten: no se puede afirmar que las 25 agreguen las 66 y a la vez que **19 de las 25 no tienen componentes atribuidas**.
 
-Es `DOC-009` en su forma más difícil de ver: **convertir una señal fuerte en una regla general**. Un caso demostrado de `N:1` no demuestra que todas las relaciones lo sean.
+Y **no es `DOC-009`**, aunque se le parezca — son errores distintos y confundirlos diluye los dos:
+
+| Regla | Error que evita |
+|---|---|
+| `DOC-009` | «los resultados muestran este patrón → ésa fue la regla que los generó» |
+| `DOC-019` | «encontré un caso con esta propiedad → todos la tienen» |
+
+Uno va **del efecto a la causa**; el otro, **de lo particular a lo universal**. Aquí el error fue el segundo: **existencia de `N:1` ≠ universalidad de `N:1`**. Convertir una evidencia local en una ontología global.
+
+### La formulación canónica, congelada
+
+> La reconciliación evidencia que **la correspondencia entre las unidades documentales del PDOT y las unidades operacionales del Gold Master no es necesariamente 1:1**. Se ha identificado **al menos un caso inequívoco de correspondencia N:1**. La selección histórica de las 25 unidades fue realizada **individualmente por criterio de monto**, sin considerar la posibilidad de que una unidad documental contuviera múltiples líneas o metas desagregadas. **No se ha demostrado todavía la distribución exhaustiva** de las 66 unidades documentales respecto de las 25 unidades operacionales.
 
 | | |
 |---|---|
@@ -151,13 +162,38 @@ Toda la auditoría ha hablado de `i` como **una meta del PDOT**. Si `i` puede se
 | `ΣK_i` | el denominador pondera **unidades**, no metas |
 | **27,4582 %** | «congruencia» **de qué objeto** |
 
-**Esto no dice que la fórmula esté mal.** Dice que `011` no puede dictaminar sobre el constructo sin declarar antes **cuál es su unidad de análisis** — meta del PDOT, agregado programático, unidad de intervención, o construcción propia del modelo. Es una pregunta previa a la del álgebra, y no estaba en la lista.
+**Esto no dice que la fórmula esté mal.** Dice que `011` no puede dictaminar sobre el constructo sin declarar antes **cuál es su unidad de análisis**. Es una pregunta **previa** a la del álgebra, y no estaba en la lista. `SC-I-N-01` no es una curiosidad de reconciliación: es una **prueba de estrés ontológica** del indicador — si una fila contiene cobertura, calidad e infraestructura de agua, ¿el ICPI mide la congruencia de **tres metas**, o la de **una unidad programática «agua potable» que las contiene**? Son constructos distintos.
+
+Por eso `011` deja de ser sólo «validación del constructo» y pasa a **tres preguntas jerárquicas**:
+
+| | Pregunta |
+|---|---|
+| **011-A** · unidad de análisis | ¿qué es `i`? meta documental · meta operacional · unidad programática · intervención · agregado · otra |
+| **011-B** · regla de correspondencia | ¿cómo se relacionan `PDOT_documental → ICPI_operacional`? Y deben poder coexistir **1:1 · N:1 · 1:N · N:N · NO DETERMINABLE** — no se obliga al universo a encajar en una sola relación |
+| **011-C** · consecuencia algebraica | conocida la unidad, ¿son coherentes con ella la estructura multiplicativa y la ponderación `P·R`? **En ese orden, no al revés** (`DOC-016`) |
 
 ### La consecuencia para v2, que es lo que 008-R venía a preparar
 
 **El Gold Master no conserva el texto de las metas del PDOT, sólo un resumen agregado.** Por eso ninguna reconciliación posterior puede ser automática, y por eso ésta llegó hasta donde llegó.
 
 Para v2, cada meta operacional debe guardar **el texto íntegro de cada meta documental que agrega, con su localización** (sistema · fila · SHA del documento). No es un requisito de comodidad: sin él, el universo ampliado nacería con la misma deuda de trazabilidad que esta auditoría acaba de medir — y en un sistema cuyo objeto **es** la trazabilidad.
+
+> ### ⚖️ CONDICIÓN CONGELADA PARA v2
+> **Ninguna unidad operacional de v2 podrá existir sin declarar su correspondencia con una o más unidades documentales del universo PDOT, conservando el texto fuente, el identificador, la localización documental y la relación de correspondencia.**
+>
+> Y si una unidad representa varias metas, **debe poder demostrarse que representa esas metas y por qué la agregación es metodológicamente válida** — no basta con listarlas.
+
+Eso convierte el problema descubierto en una **capacidad estructural de QUIRA**, no en una reparación artesanal de Montecristi: el día que se cargue el GAD 002, la condición ya estará puesta.
+
+### Y «trabajar con las 66» no significa necesariamente 66 filas
+
+La instrucción de Javo —*«debimos trabajar con las 66 y establecer esa condición»*— fija el **universo trazable de entrada**, no el número de unidades del motor. `011` decidirá cuál de estos modelos corresponde:
+
+| Modelo | | Estado |
+|---|---|---|
+| **A** | `66 → 66` · cada meta documental es una unidad operacional | candidato |
+| **B** | `66 → n` · se permite agregación, y **cada agregado declara sus componentes** | candidato |
+| **C** | `66 → 25` · las unidades actuales | **ahora habría que demostrarlo**, no suponerlo — con tabla de correspondencia completa |
 
 - **No se amplía 25 → 66.** Sigue siendo `ADR-036 §4`: versión nueva, recalibración y ADR propio, después de `011`.
 

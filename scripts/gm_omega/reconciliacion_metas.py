@@ -406,9 +406,31 @@ def _escribir(m66, m25, filas, rec, amb, nor, huerfanas25, en_pub, origen_pub,
       "desmienten: no se puede afirmar que las 25 agreguen las 66 y a la vez "
       f"que **{len(huerfanas25)} de las 25 no tienen componentes atribuidas**.")
     A("")
-    A("Es `DOC-009` en su forma más difícil de ver: **convertir una señal fuerte "
-      "en una regla general**. Un caso demostrado de `N:1` no demuestra que "
-      "todas las relaciones lo sean.")
+    A("Y **no es `DOC-009`**, aunque se le parezca — son errores distintos y "
+      "confundirlos diluye los dos:")
+    A("")
+    A("| Regla | Error que evita |")
+    A("|---|---|")
+    A("| `DOC-009` | «los resultados muestran este patrón → ésa fue la regla que "
+      "los generó» |")
+    A("| `DOC-019` | «encontré un caso con esta propiedad → todos la tienen» |")
+    A("")
+    A("Uno va **del efecto a la causa**; el otro, **de lo particular a lo "
+      "universal**. Aquí el error fue el segundo: **existencia de `N:1` ≠ "
+      "universalidad de `N:1`**. Convertir una evidencia local en una ontología "
+      "global.")
+    A("")
+    A("### La formulación canónica, congelada")
+    A("")
+    A("> La reconciliación evidencia que **la correspondencia entre las unidades "
+      "documentales del PDOT y las unidades operacionales del Gold Master no es "
+      "necesariamente 1:1**. Se ha identificado **al menos un caso inequívoco "
+      "de correspondencia N:1**. La selección histórica de las 25 unidades fue "
+      "realizada **individualmente por criterio de monto**, sin considerar la "
+      "posibilidad de que una unidad documental contuviera múltiples líneas o "
+      "metas desagregadas. **No se ha demostrado todavía la distribución "
+      "exhaustiva** de las 66 unidades documentales respecto de las 25 unidades "
+      "operacionales.")
     A("")
     A("| | |")
     A("|---|---|")
@@ -564,9 +586,27 @@ def _escribir(m66, m25, filas, rec, amb, nor, huerfanas25, en_pub, origen_pub,
     A("")
     A("**Esto no dice que la fórmula esté mal.** Dice que `011` no puede "
       "dictaminar sobre el constructo sin declarar antes **cuál es su unidad de "
-      "análisis** — meta del PDOT, agregado programático, unidad de "
-      "intervención, o construcción propia del modelo. Es una pregunta previa a "
-      "la del álgebra, y no estaba en la lista.")
+      "análisis**. Es una pregunta **previa** a la del álgebra, y no estaba en "
+      "la lista. `SC-I-N-01` no es una curiosidad de reconciliación: es una "
+      "**prueba de estrés ontológica** del indicador — si una fila contiene "
+      "cobertura, calidad e infraestructura de agua, ¿el ICPI mide la "
+      "congruencia de **tres metas**, o la de **una unidad programática "
+      "«agua potable» que las contiene**? Son constructos distintos.")
+    A("")
+    A("Por eso `011` deja de ser sólo «validación del constructo» y pasa a "
+      "**tres preguntas jerárquicas**:")
+    A("")
+    A("| | Pregunta |")
+    A("|---|---|")
+    A("| **011-A** · unidad de análisis | ¿qué es `i`? meta documental · meta "
+      "operacional · unidad programática · intervención · agregado · otra |")
+    A("| **011-B** · regla de correspondencia | ¿cómo se relacionan "
+      "`PDOT_documental → ICPI_operacional`? Y deben poder coexistir **1:1 · "
+      "N:1 · 1:N · N:N · NO DETERMINABLE** — no se obliga al universo a encajar "
+      "en una sola relación |")
+    A("| **011-C** · consecuencia algebraica | conocida la unidad, ¿son "
+      "coherentes con ella la estructura multiplicativa y la ponderación `P·R`? "
+      "**En ese orden, no al revés** (`DOC-016`) |")
     A("")
 
     A("### La consecuencia para v2, que es lo que 008-R venía a preparar")
@@ -580,6 +620,34 @@ def _escribir(m66, m25, filas, rec, amb, nor, huerfanas25, en_pub, origen_pub,
       "del documento). No es un requisito de comodidad: sin él, el universo "
       "ampliado nacería con la misma deuda de trazabilidad que esta auditoría "
       "acaba de medir — y en un sistema cuyo objeto **es** la trazabilidad.")
+    A("")
+    A("> ### ⚖️ CONDICIÓN CONGELADA PARA v2")
+    A("> **Ninguna unidad operacional de v2 podrá existir sin declarar su "
+      "correspondencia con una o más unidades documentales del universo PDOT, "
+      "conservando el texto fuente, el identificador, la localización "
+      "documental y la relación de correspondencia.**")
+    A(">")
+    A("> Y si una unidad representa varias metas, **debe poder demostrarse que "
+      "representa esas metas y por qué la agregación es metodológicamente "
+      "válida** — no basta con listarlas.")
+    A("")
+    A("Eso convierte el problema descubierto en una **capacidad estructural de "
+      "QUIRA**, no en una reparación artesanal de Montecristi: el día que se "
+      "cargue el GAD 002, la condición ya estará puesta.")
+    A("")
+    A("### Y «trabajar con las 66» no significa necesariamente 66 filas")
+    A("")
+    A("La instrucción de Javo —*«debimos trabajar con las 66 y establecer esa "
+      "condición»*— fija el **universo trazable de entrada**, no el número de "
+      "unidades del motor. `011` decidirá cuál de estos modelos corresponde:")
+    A("")
+    A("| Modelo | | Estado |")
+    A("|---|---|---|")
+    A("| **A** | `66 → 66` · cada meta documental es una unidad operacional | candidato |")
+    A("| **B** | `66 → n` · se permite agregación, y **cada agregado declara sus "
+      "componentes** | candidato |")
+    A("| **C** | `66 → 25` · las unidades actuales | **ahora habría que "
+      "demostrarlo**, no suponerlo — con tabla de correspondencia completa |")
     A("")
     A("- **No se amplía 25 → 66.** Sigue siendo `ADR-036 §4`: versión nueva, "
       "recalibración y ADR propio, después de `011`.")

@@ -158,9 +158,16 @@ _DOCTRINA = (
                      "—una unidad del motor con las cifras de tres metas del "
                      "PDOT— y esta dirección concluyó que el motor agregaba las "
                      "66 en 25. Los propios números del informe lo desmentían: "
-                     "19 de las 25 no tienen componentes atribuidas. Es DOC-009 "
-                     "en su forma más difícil de ver, porque la señal era "
-                     "fuerte y la conclusión, elegante"),
+                     "19 de las 25 no tienen componentes atribuidas. ⚠️ Y NO ES "
+                     "DOC-009, aunque se le parezca: son errores DISTINTOS y "
+                     "confundirlos diluye los dos. DOC-009 evita «los "
+                     "resultados muestran este patrón → ésa fue la regla que "
+                     "los generó»; DOC-019 evita «encontré un caso con esta "
+                     "propiedad → todos la tienen». Uno va del efecto a la "
+                     "causa; el otro, de lo particular a lo universal. Aquí el "
+                     "error fue el segundo: **existencia de N:1 ≠ "
+                     "universalidad de N:1** — convertir una evidencia local en "
+                     "una ontología global"),
     dict(id="DOC-018", custodia=GATE,
          regla="La justificación del UNIVERSO OPERACIONAL no implica la "
                "justificación de su MECANISMO DE SELECCIÓN. Decidir con "
