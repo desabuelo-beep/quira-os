@@ -94,9 +94,13 @@ Y **`T6` espera a `011` por la misma razón**: deprecar `AVEP` o migrar el nombr
 | GM-Ω | `v2` | Universo completo del PDOT (66) — decisión de Javo | ⛔ | 011 · 008-R · exige ADR propio y recalibración (ADR-036 §4) |
 | GM-Ω | `009` | ¿Se puede optimizar el índice sin mejorar la realidad? | ⬜ |  |
 | GM-Ω | `010` | Transferibilidad LATAM · núcleo vs adaptador | ⬜ |  |
+| GM-Ω | `007-B0` | Genealogía del constructo · unidad `i` · factores | ✅ | ★ reescrito con toda la evidencia · CERRADO como reconstrucción, NO como validación |
 | GM-Ω | `011-A` | Unidad de análisis · ¿qué es `i`? | 🔄 | ★ genealogía RESUELTA: era PROMESA CNE → META PDOT «pues era mandato» (Javo) · falta DECLARARLA en el canon |
 | GM-Ω | `011-B` | Regla de correspondencia PDOT → ICPI (1:1·N:1·1:N·N:N) | ⛔ | 011-A |
-| GM-Ω | `011-C` | Operación matemática · ¿qué operación corresponde a esa unidad? ⚠️ N:1 NO implica agregación numérica | ⛔ | 011-A · 011-B · 008 · 009 · 010 |
+| GM-Ω | `011-C1` | Genealogía algebraica · P·R·V·T → +E → +C · escalas | ⬜ | ★ 007-B0 la dejó reconstruida |
+| GM-Ω | `011-C2` | Genealogía semántica · qué significó cada factor | ⬜ |  |
+| GM-Ω | `011-C3` | Justificación de cada transformación · qué·por qué·quién·cuándo | ⬜ | sin fuente documental → NO DETERMINABLE, no explicación inventada |
+| GM-Ω | `011-C4` | Coherencia del estado vigente · ¿la multiplicatividad es coherente con la unidad? | ⛔ | 011-A · 011-B · 011-C1-C3 · 008 · 009 · 010 |
 | TF | `T1` | Inventario de nombres propios | ✅ |  |
 | TF | `T2` | Clasificación ontológica + capa de presentación | ✅ |  |
 | TF | `T3` | Contrato índice → dominio → rol → pregunta → capa | 🔄 | se llena con la curación de cada dominio |
@@ -114,7 +118,7 @@ Y **`T6` espera a `011` por la misma razón**: deprecar `AVEP` o migrar el nombr
 | 2ING | `d02·d03` | Presupuesto · Gobernanza del Mandato | ⬜ |  |
 | 2ING | `d04·d05·d10-d13` | Sellados · sin construir | ⬜ |  |
 
-**13 de 31 etapas cerradas.**
+**14 de 35 etapas cerradas.**
 
 ## Estado derivado de las fuentes vivas
 
@@ -124,7 +128,7 @@ Y **`T6` espera a `011` por la misma razón**: deprecar `AVEP` o migrar el nombr
 | Deudas resueltas | 6 |
 | Deudas abiertas | **6** |
 | Reglas de doctrina con custodio | 23 |
-| Pruebas que las fijan | 383 |
+| Pruebas que las fijan | 388 |
 | Documentos GM-Ω | 9 |
 
 ### Deudas abiertas
@@ -157,4 +161,4 @@ Y **`T6` espera a `011` por la misma razón**: deprecar `AVEP` o migrar el nombr
 3. **Este mapa se deriva.** El día que alguien lo edite a mano, dejará de reflejar el estado real sin que nada avise, y volveremos exactamente al punto que motivó escribirlo.
 
 ---
-*QUIRA · Mapa Maestro · 13/31 etapas cerradas · 6 deudas abiertas · Dylus Lab © 2026*
+*QUIRA · Mapa Maestro · 14/35 etapas cerradas · 6 deudas abiertas · Dylus Lab © 2026*

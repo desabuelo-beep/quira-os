@@ -545,6 +545,132 @@ por qué vale 0,75 sin mirar el resultado esperado? Hoy la respuesta es no.
 Los cinco valores en 0,75 y los cuatro en 0,90 quedan **sin criterio identificado**, y
 eso es lo que hay que decir — no una explicación que los acomode.
 
+## 007-B0 · GENEALOGÍA DEL CONSTRUCTO, LA UNIDAD `i` Y LA ARQUITECTURA DE FACTORES
+
+> **Estado:** CERRADO COMO RECONSTRUCCIÓN GENEALÓGICA · 2026-09-04
+> **Naturaleza:** diagnóstico histórico-documental, **sin modificación del Gold Master**
+> **Baseline protegido:** `ICPI_2026 = 27,4582 %`
+> **Detalle completo:** [`GM-OMEGA_GENEALOGIA_DOCUMENTAL.md`](GM-OMEGA_GENEALOGIA_DOCUMENTAL.md)
+
+⚠️ **Esta sección REEMPLAZA a la versión anterior**, que se conserva más abajo por
+genealogía. La anterior sólo preguntaba por `E_i`; con la evidencia recuperada el objeto
+correcto es más amplio — **la biografía del constructo entero**, con `E_i` y `C_i` como
+subhistorias. Separarlas hacía invisible que ambas son parte de la misma transformación.
+
+### La regla de esta reconstrucción
+
+> Una **transición documentada** no autoriza a inventar su causa. Una **razón declarada
+> por el autor** se registra como razón declarada — no se eleva a hecho externo
+> independiente.
+
+Cada afirmación se clasifica: **DEMOSTRADO** (evidencia directa) · **DECLARADO** (por el
+autor) · **INFERIDO** (interpretación de varias evidencias) · **NO DETERMINABLE**.
+
+### La trayectoria
+
+```
+ENERO 2026      núcleo  P · R · V · T              chat «Profundo»
+      ↓
+FEBRERO         i = PROMESA CNE · 5 factores · ×100    ANEXO M
+      ↓
+3-ABR           5 factores · ×100 · Ei: int(1-5)       ANEXO L QUADRUM v5.0
+      ↓
+27-ABR          entra C_i → 6 factores                 Ci DETERMINISTA v1.0
+      ↓
+10-MAY          primer Gold Master conservado          ECIAP v1.1
+      ↓
+v5.7 VIGENTE    i = META PDOT · 6 factores · B33 sin ×100
+```
+
+> **La arquitectura vigente es el resultado de una evolución metodológica documentable,
+> no una fórmula originaria que permaneció inalterada.** Que exista esa evolución **no
+> invalida el ICPI**: obliga a evaluar en `011` si cada transformación preservó la
+> identidad del constructo o introdujo cambios sustantivos.
+
+### Lo que queda establecido, por grado de certeza
+
+**DEMOSTRADO**
+
+1. En febrero `i` indexaba **promesas del Plan CNE** — `Contribución_PROMESA_i` (ANEXO M)
+   y columna `PROMESA_CNE` con IDs `A-001…` (calculadora QUADRUM).
+2. La unidad vigente son **metas del PDOT** (IDs `SC-I-N-01…`).
+3. La fórmula histórica llevaba **`× 100`**; `B33 = B31/B32` no lo tiene.
+4. `E_i` atravesó **especificaciones semánticas distintas** — `int (1-5)` «entidad
+   custodio» (ANEXO L) · «Autonomía Orgánica» (Metodología SIAP) · «Fricción de
+   Autonomía» (tesis) · «exigibilidad» (`METODOLOGIA_GOLD_MASTER`).
+5. Los valores de `E_i` **ya estaban en la primera versión conservada** y no cambiaron en
+   siete versiones — **0 de 25 metas modificadas**.
+6. `C_i` se documentó el **27-abr-2026** como motor determinista, con autor, fórmula
+   `MÁX(0.50, 1.00 − Σ penalizaciones)`, marco legal (LOSNCP · COPFP · CGE · CPCCS) y
+   principio de inocencia.
+7. `C_i` **opera hoy con su fallback**: las 25 metas tienen `INF-01..04 = 0`, así que
+   `Ci_Calculado` devuelve `Ci_Manual_2025` (`1.00`×11 · `0.90`×9 · `0.75`×5).
+8. El baseline **27,4582 %** es matemáticamente reproducible (`ΣJ/ΣK`, desvío `1e-16`).
+
+**DECLARADO por Javo**
+
+1. El paso de promesa CNE a meta PDOT: *«replanteamos con PDOT pues era mandato»*.
+2. El criterio de las 25: *mayor monto económico, para fines de tesis*.
+3. La evolución fue **conversacional desde enero**, no documental.
+
+**INFERIDO**
+
+1. El desplazamiento hacia el PDOT es una evolución conceptual del objeto medido.
+2. La incorporación de `C_i` **amplió** el constructo respecto de los cinco factores.
+
+**NO DETERMINABLE**
+
+1. La fórmula exacta y completa de enero.
+2. El momento y la causa de cada transformación semántica de `E_i`.
+3. Si la desaparición del `×100` en `B33` fue **intencional o accidental**.
+4. La distribución exhaustiva de las 66 metas dentro de las 25 unidades (`008-R`).
+5. La justificación teórica de multiplicar todas las dimensiones (`007-D`: 51,26 pp).
+
+### ⚠️ Tres precisiones que la evidencia obliga
+
+**1 · `C_i` no es un renombre de `E_i`.** Son constructos distintos: `E_i` mide autonomía
+o modalidad institucional; `C_i`, calidad del proceso orgánico vía penalizaciones legales.
+La transición `5 → 6 factores` es **incorporación de una dimensión**, no sustitución.
+
+**2 · El fallback de `C_i` no es un defecto.** Usar el valor base ante ausencia de
+infracción es **coherente con la presunción de inocencia** que el propio motor declara —
+y `H01!A187` prohíbe expresamente lo contrario: *«NUNCA inventar infracciones»*. Lo que
+`011` debe juzgar es si un heurístico de 2025 es el fallback adecuado para 2026.
+
+**3 · Sobre el `×100`, un dato que refuerza pero no cierra.** `METODOLOGIA_GOLD_MASTER.md`
+—documento **vigente**, no histórico— declara la fórmula canónica **con `× 100`** y, dos
+líneas después, `B33 = B31/B32`. **El canon actual contiene ambas afirmaciones,
+contradictorias, en líneas consecutivas.** Eso inclina hacia la hipótesis de pérdida
+accidental, pero no la demuestra: nadie registró la decisión.
+
+### Dictamen
+
+> **007-B0 queda cerrado como reconstrucción genealógica, NO como validación
+> metodológica.** La existencia de las transformaciones está demostrada; su validez
+> permanece bajo examen en `011-A`, `011-B` y `011-C`.
+>
+> **Reconstruir la historia no significa aprobarla.**
+
+Y una lectura que cambia el marco de `011`: **no encontramos «una fórmula mal
+documentada». Encontramos la biografía de un constructo que evolucionó mientras se
+construía TERRA → QUADRUM → QUIRA.** El hallazgo de que los `E_i` son idénticos desde el
+primer Gold Master elimina además una hipótesis incómoda: **no fueron ajustados después
+para producir el resultado actual.**
+
+`011-C` se abre en cuatro niveles: **C1** genealogía algebraica · **C2** genealogía
+semántica · **C3** justificación de cada transformación · **C4** coherencia del estado
+vigente. Y la prioridad la fija `007-D`: el problema pendiente no es el peso `P×R`
+(3,54 pp) sino **la justificación de la arquitectura multiplicativa** (51,26 pp).
+
+---
+
+### 📜 VERSIÓN ANTERIOR — conservada por genealogía
+
+> ⚠️ Lo que sigue fue el `007-B0` original. Su conclusión —«la regla escrita y los valores
+> implementados nunca coincidieron»— **quedó superada**: la auditoría comparaba contra la
+> definición de la tesis mientras el motor implementa la de `Metodologia_SIAP_ICPI`. Se
+> conserva porque **un expediente que borra sus versiones anteriores no es auditable**.
+
 ### 007-B0 · Genealogía de `E_i`: cuándo nació cada valor
 
 El colega añadió la pregunta temporal —*«si los valores fueron asignados manualmente
@@ -638,7 +764,17 @@ El `MIN(1, …)` es correcto —no se ejecuta más del 100 %— pero **satura**:
 a `1,0000` exacto, y en ese punto «justo a ritmo» y «muy por delante» se vuelven
 indistinguibles. Tres de las 25 metas están en el tope.
 
-### 7-ter.3 · `E_i` es el único componente sin biografía
+### 7-ter.3 · `E_i` es el único componente sin biografía  ⚠️ SUPERADO
+
+> **⚠️ ESTE APARTADO QUEDÓ SUPERADO EL 2026-09-04.** `E_i` **sí tiene biografía**, y es
+> la más rica de las seis variables: `int (1-5)` entidad custodio (`ANEXO L`, 3-abr) →
+> «Autonomía Orgánica» (`Metodologia_SIAP_ICPI`, abril) → «Fricción de Autonomía»
+> (tesis) → «exigibilidad» (`METODOLOGIA_GOLD_MASTER`). El motor cita la segunda,
+> textualmente, en `H12!A4`. Lo que faltaba no era la biografía: **era haberla buscado
+> en los documentos de abril.** Ver el nuevo `007-B0`.
+>
+> Se conserva el texto original porque la corrección sólo es auditable si se ve contra
+> qué se corrigió.
 
 **Las 25 celdas de `E_i` son literales.** No hay fórmula, no hay referencia, no hay
 fuente citada en el libro. Y es la única de las seis variables en esa situación.
