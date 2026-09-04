@@ -365,7 +365,54 @@ def _escribir(motor, pdot, fuera, h, cuadra, sis_pdot, sis_fuera, sis_dentro,
       "la regla desde el patrón de sus resultados — `DOC-009`.")
     A("")
 
-    A("## 4 · El hueco real: el criterio de selección no está en ninguna parte")
+    A("## 4 · ★ EL CRITERIO, DECLARADO POR SU FUENTE LEGÍTIMA")
+    A("")
+    A("> **«Las 25 fueron tomadas por contener el monto económico más amplio en "
+      "relación al total de metas, las 66. Eso fue para fines sólo de tesis.»**")
+    A("> — Javo, 2026-09-03")
+    A("")
+    A("**El criterio deja de ser `NOT_DETERMINABLE`.** Y la forma en que se "
+      "resolvió importa tanto como el contenido: **no se dedujo mirando las 25** "
+      "—eso habría sido `DOC-009`— sino que **lo declaró quien lo aplicó**. Es "
+      "exactamente lo que a `E_i` le sigue faltando: una fuente con autoridad "
+      "sobre la regla, no una explicación que encaje con los datos.")
+    A("")
+    A("### Y el criterio tiene una consecuencia medible")
+    A("")
+    A("Si la selección fue **por monto**, entonces la muestra es representativa "
+      "del **gasto**, no del PDOT como instrumento de planificación. Contrastado "
+      "con la composición por sistema (§3), el efecto es sistemático:")
+    A("")
+    sis_ord = sorted(sis_pdot, key=lambda s: sis_dentro.get(s, 0) / sis_pdot[s])
+    for s in sis_ord[:2]:
+        A(f"- **{s}** queda al "
+          f"**{sis_dentro.get(s, 0) / sis_pdot[s] * 100:.0f} %** de cobertura")
+    A("")
+    A("El sistema **institucional** es el de menor cobertura — y es precisamente "
+      "donde viven la gobernanza, la transparencia y la participación: metas de "
+      "**bajo costo y alta relevancia** para un observatorio de integridad. Un "
+      "criterio de monto las excluye por construcción.")
+    A("")
+    A("⚠️ **Esto no es un defecto de la tesis.** Para validar un modelo con "
+      "recursos limitados, tomar las metas de mayor peso económico es una "
+      "decisión metodológica razonable y transparente: concentra la validación "
+      "donde está el dinero. **Lo que dice es qué puede afirmar el ICPI v1** — "
+      "desempeño sobre el gasto estratégico— **y qué no**: desempeño sobre el "
+      "PDOT como mandato completo.")
+    A("")
+    A("### La regla que queda")
+    A("")
+    A("> **La justificación del universo operacional no implica la "
+      "justificación de su mecanismo de selección.**")
+    A("")
+    A("`ADR-036` justificó **usar 25 como universo operacional v1**. Eso no era "
+      "lo mismo que justificar **por qué esas 25 son representativas** — y hasta "
+      "hoy sólo teníamos lo primero. Son dos afirmaciones distintas y confundirlas "
+      "es la misma trampa que `E_i`: conocer el valor no es conocer la regla que "
+      "lo produjo. → `DOC-018`")
+    A("")
+
+    A("### Nota histórica · lo que este apartado decía antes")
     A("")
     if criterio:
         A("Documentos que mencionan un criterio de selección:")
@@ -426,21 +473,71 @@ def _escribir(motor, pdot, fuera, h, cuadra, sis_pdot, sis_fuera, sis_dentro,
 
     A("## Veredicto de 008")
     A("")
-    A("> ### COBERTURA LIMITADA PERO METODOLÓGICAMENTE JUSTIFICADA · "
-      "**con dos reservas**")
+    A("> ### COBERTURA LIMITADA, METODOLÓGICAMENTE JUSTIFICADA EN SU ALCANCE v1,")
+    A("> ### con criterio de selección DECLARADO y correspondencia "
+      "exclusión/universo AÚN NO RECONCILIADA.")
     A("")
-    A("**Justificada** porque `ADR-036` la decidió, la ratificó, verificó que "
-      "las 25 pertenecen al PDOT, congeló el motor y planificó la evolución a "
-      "v2. No es un error ni una omisión: es una decisión arquitectónica "
-      "explícita y defendible.")
+    A("La formulación es deliberadamente estrecha. Decir «metodológicamente "
+      "justificada» a secas sonaría a que está demostrada la "
+      "**representatividad** de las 25, y lo que `ADR-036` justifica es algo más "
+      "específico: **la decisión de usar 25 como universo operacional v1**.")
     A("")
-    A("**Reserva 1 · el criterio de selección es `NOT_DETERMINABLE`.** Sin él "
-      "no se puede afirmar que la muestra sea representativa, y por tanto "
-      "tampoco que el 27,4582 % sea extrapolable al PDOT completo. Hoy el "
-      "índice sólo puede afirmarse **sobre su universo operacional**.")
+    A("| | Estado |")
+    A("|---|---|")
+    A("| `25/66` como cobertura documental | **37,88 %** — relación válida |")
+    A("| 25 = universo operacional v1 | **RATIFICADO** (`ADR-036`) |")
+    A("| Criterio de selección | **DECLARADO**: mayor monto económico (Javo) |")
+    A("| Representatividad respecto del PDOT | **del gasto sí · del mandato no** |")
+    A("| Identidad de las metas excluidas | ⚠️ **pendiente de reconciliación** |")
+    A("| Sesgo | no es sesgo: es el criterio operando como fue definido |")
+    A("| Ampliar 25→66 ahora | **NO** — es metodología nueva (`ADR-036 §4`) |")
+    A("| ICPI 27,4582 % | **CONGELADO** · no se recalcula |")
     A("")
-    A("**Reserva 2 · el alcance no llega al producto.** La obligación del "
-      "`ADR-036 §1` no se cumplió en ninguna superficie visible.")
+    A("**La afirmación que el ICPI v1 sostiene**, y ninguna más amplia:")
+    A("")
+    A("> El ICPI v1 opera sobre un subconjunto de 25 metas —las de mayor monto "
+      "económico— de un PDOT que contiene 66. Su resultado **no representa el "
+      "desempeño del PDOT completo**, sino el desempeño respecto de su universo "
+      "operacional v1.")
+    A("")
+    A("**Reserva única que queda abierta · la correspondencia meta a meta.** No "
+      "existe todavía un catálogo canónico que enlace las 66 con las 25. La "
+      "resta `66−25=41` es aritméticamente correcta, pero **la identidad de esas "
+      "41 no está demostrada documentalmente** — y los 50 del catálogo de "
+      "exclusiones no pueden asumirse equivalentes. Ése es el único pendiente "
+      "técnico real de 008.")
+    A("")
+    A("**Y la obligación del `ADR-036 §1` sigue incumplida**: el alcance no se "
+      "declara en ninguna superficie visible (`DOC-017`).")
+    A("")
+
+    A("## ★ DECISIÓN v2 · el universo completo")
+    A("")
+    A("> **«Ahora, como ecosistema de Ecuador para LATAM, debemos trabajar con "
+      "todo el universo del PDOT.»** — Javo, 2026-09-03")
+    A("")
+    A("Es exactamente la evolución que `ADR-036 §3/§4` anticipó, y la decisión "
+      "es correcta: un observatorio que aspira a 222 GAD no puede medir sobre "
+      "una muestra tomada para validar una tesis. **El criterio de monto sirvió "
+      "para demostrar que el modelo funciona; no sirve para observar un "
+      "mandato.**")
+    A("")
+    A("Pero el `ADR-036 §4` fija cómo: **versión nueva del motor · recalibración "
+      "· nueva validación empírica · ADR específico**. Y hay una razón de "
+      "secuencia que conviene respetar:")
+    A("")
+    A("> `011` todavía no ha dictaminado si la fórmula es válida. **Cargar 66 "
+      "metas en un álgebra que puede cambiar sería hacer el trabajo dos veces** "
+      "— justo lo que este proyecto decidió evitar al construir el mapa de "
+      "frentes.")
+    A("")
+    A("Por eso la decisión se **registra ahora** y su ejecución va **después de "
+      "`011`**. Con una excepción importante, y es la parte más cara:")
+    A("")
+    A("**La reconciliación meta a meta (`66 ↔ 25`) puede y debe empezar ya.** No "
+      "depende de `011` —hay que hacerla sea cual sea el dictamen—, es "
+      "prerequisito de v2, y además cierra la única reserva que 008 deja "
+      "abierta. Es el trabajo que desbloquea todo lo demás.")
     A("")
     A("### Lo que 008 NO hace")
     A("")

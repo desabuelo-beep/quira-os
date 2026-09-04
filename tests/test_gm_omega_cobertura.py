@@ -63,27 +63,32 @@ def test_el_alcance_del_ICPI_se_declara_donde_el_ADR_lo_exige():
         "se retiró, esta prueba y D-001 tienen que reflejarlo")
 
 
-def test_el_criterio_de_seleccion_de_las_25_sigue_sin_documentarse():
-    """El hueco que `ADR-036` no cierra y que 008 aísla.
+def test_el_criterio_de_seleccion_se_declara_con_su_autoridad():
+    """DOC-018 · la justificación del universo no justifica su selección.
 
-    El ADR verifica que las 25 **existen** en el PDOT —«ninguna inventada»— y
-    eso responde «son legítimas». **No responde «por qué éstas».** Y de eso
-    depende si la muestra es representativa: mayor presupuesto, competencia
-    crítica, o disponibilidad de evidencia producen el mismo conjunto y
-    significados completamente distintos del 27,4582 %.
+    Durante meses `ADR-036` pareció cerrar la cuestión: ratificaba usar 25 metas
+    como universo operacional v1. Pero justificar **usar un subconjunto** no es
+    justificar **que ese subconjunto sea representativo**, y el criterio sólo se
+    supo cuando Javo lo declaró: **mayor monto económico, para fines de tesis**.
 
-    ⚠️ Es la misma forma que `E_i`: valores conocidos, regla generadora no
-    reconstruible. Y por eso 008 NO declara sesgo — sin criterio, leer la
-    composición como sesgo sería `DOC-009`."""
-    from scripts.gm_omega.cobertura_icpi import criterio_declarado
-    hallados = criterio_declarado()
-    assert not hallados, (
-        f"aparecieron documentos que declaran el criterio de selección de las "
-        f"25 metas: {hallados}. Si es real, 008 puede pronunciarse sobre el "
-        f"sesgo y hay que rehacer su §4; verificar primero que hablan de las "
-        f"METAS y no de otra selección —GATE-007 ya produjo ese falso positivo")
+    ⚠️ Y LA FORMA IMPORTA TANTO COMO EL CONTENIDO: no se dedujo mirando las 25
+    —eso habría sido `DOC-009`— sino que lo declaró **quien lo aplicó**. Es lo
+    que a `E_i` le sigue faltando: una fuente con autoridad sobre la regla, no
+    una explicación que encaje con los datos.
+
+    Esta prueba vigila que el criterio siga declarado CON SU FUENTE. Un criterio
+    sin autoría vuelve a ser una explicación plausible, que es lo contrario."""
     txt = _DOC.read_text(encoding="utf-8")
-    assert "NO declara sesgo" in txt or "no se puede afirmar que la muestra sea" in txt
+    assert "monto económico más amplio" in txt, (
+        "desapareció el criterio de selección de las 25 metas. Sin él, 008 "
+        "vuelve a no poder decir qué representa el 27,4582 %")
+    assert "Javo, 2026-09-03" in txt, (
+        "el criterio perdió su autoría. Sin fuente con autoridad deja de ser "
+        "una regla declarada y vuelve a ser una explicación que encaja — que es "
+        "exactamente lo que DOC-009 prohíbe tratar como hallazgo")
+    assert "del gasto sí · del mandato no" in txt, (
+        "se perdió la consecuencia del criterio: la muestra representa el gasto, "
+        "no el PDOT como mandato. Es lo que acota qué puede afirmar el ICPI v1")
 
 
 def test_ocho_reconoce_que_el_ADR_ya_habia_decidido():

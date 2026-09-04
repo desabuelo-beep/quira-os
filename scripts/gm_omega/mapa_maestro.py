@@ -67,7 +67,11 @@ _ETAPAS = [
     ("GM-Ω", "006", "Semántica del cero", _HECHO, ""),
     ("GM-Ω", "007", "Sensibilidad A·B·C·D·X + X-bis", _HECHO, ""),
     ("GM-Ω", "008", "Cobertura real del universo medido", _HECHO,
-     "veredicto: LIMITADA PERO JUSTIFICADA · 2 reservas"),
+     "veredicto: JUSTIFICADA EN v1 · criterio = mayor monto (Javo)"),
+    ("GM-Ω", "008-R", "Reconciliación meta a meta 66 ↔ 25", _ABIERTO,
+     "⚠️ NO depende de 011 · prerequisito de v2 · desbloquea lo demás"),
+    ("GM-Ω", "v2", "Universo completo del PDOT (66) — decisión de Javo", _BLOQ,
+     "011 · 008-R · exige ADR propio y recalibración (ADR-036 §4)"),
     ("GM-Ω", "009", "¿Se puede optimizar el índice sin mejorar la realidad?",
      _ABIERTO, ""),
     ("GM-Ω", "010", "Transferibilidad LATAM · núcleo vs adaptador", _ABIERTO, ""),
@@ -177,7 +181,7 @@ def _escribir(deu, docs, n_doc, n_test, hechas) -> None:
     A("")
     A("```")
     A("  AHORA, en paralelo — nada de esto se bloquea entre sí")
-    A("  ├── GM-Ω 008   cobertura del universo medido")
+    A("  ├── GM-Ω 008-R reconciliación meta a meta 66 ↔ 25  ← desbloquea v2")
     A("  ├── GM-Ω 009   gaming: ¿se optimiza el índice sin mejorar la realidad?")
     A("  ├── GM-Ω 010   transferibilidad LATAM")
     A("  ├── T3-R R0    diagnóstico de los 13 dominios")

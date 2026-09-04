@@ -145,6 +145,23 @@ _DOCTRINA = (
          verificador="test_ninguna_regla_generadora_se_infiere_del_patron_de_sus_resultados",
          por_que_ahi="con 25 casos y tres valores posibles, cualquier hipótesis "
                      "encuentra algunos que la respaldan: encajar no es derivar"),
+    dict(id="DOC-018", custodia=GATE,
+         regla="La justificación del UNIVERSO OPERACIONAL no implica la "
+               "justificación de su MECANISMO DE SELECCIÓN. Decidir con "
+               "autoridad que se mide sobre un subconjunto no demuestra que ese "
+               "subconjunto sea representativo: son dos afirmaciones distintas "
+               "y sólo la primera la da un ADR",
+         fuente="el colega, 2026-09-03 · GM-Ω-ICPI-008, al precisar el veredicto "
+                "de cobertura",
+         verificador="test_el_criterio_de_seleccion_se_declara_con_su_autoridad",
+         por_que_ahi="`ADR-036` ratificó usar 25 metas como universo operacional "
+                     "v1 y eso quedó bien justificado; durante meses pareció "
+                     "que con ello estaba justificada también la muestra. No lo "
+                     "estaba: el criterio —mayor monto económico— sólo se supo "
+                     "cuando Javo lo declaró. Es la misma trampa de `E_i`: "
+                     "conocer el valor no es conocer la regla que lo produjo, y "
+                     "aquí la regla llegó de su fuente legítima —quien la "
+                     "aplicó— y no de mirar el resultado"),
     dict(id="DOC-017", custodia=GATE,
          regla="La CONSECUENCIA PRÁCTICA de un ADR ratificado necesita custodio. "
                "Un ADR que ordena algo —«toda publicación debe declarar su "

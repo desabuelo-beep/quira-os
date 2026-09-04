@@ -81,7 +81,31 @@ Es el **escalón 7** de la escalera prueba↔verificador: *lo leído ≠ la fuen
 
 **Para hablar de sesgo hace falta el criterio, y el criterio no está declarado** (§4). Sin él, cualquier lectura de esta tabla sería inferir la regla desde el patrón de sus resultados — `DOC-009`.
 
-## 4 · El hueco real: el criterio de selección no está en ninguna parte
+## 4 · ★ EL CRITERIO, DECLARADO POR SU FUENTE LEGÍTIMA
+
+> **«Las 25 fueron tomadas por contener el monto económico más amplio en relación al total de metas, las 66. Eso fue para fines sólo de tesis.»**
+> — Javo, 2026-09-03
+
+**El criterio deja de ser `NOT_DETERMINABLE`.** Y la forma en que se resolvió importa tanto como el contenido: **no se dedujo mirando las 25** —eso habría sido `DOC-009`— sino que **lo declaró quien lo aplicó**. Es exactamente lo que a `E_i` le sigue faltando: una fuente con autoridad sobre la regla, no una explicación que encaje con los datos.
+
+### Y el criterio tiene una consecuencia medible
+
+Si la selección fue **por monto**, entonces la muestra es representativa del **gasto**, no del PDOT como instrumento de planificación. Contrastado con la composición por sistema (§3), el efecto es sistemático:
+
+- **5. INST** queda al **15 %** de cobertura
+- **1. FIS AM** queda al **22 %** de cobertura
+
+El sistema **institucional** es el de menor cobertura — y es precisamente donde viven la gobernanza, la transparencia y la participación: metas de **bajo costo y alta relevancia** para un observatorio de integridad. Un criterio de monto las excluye por construcción.
+
+⚠️ **Esto no es un defecto de la tesis.** Para validar un modelo con recursos limitados, tomar las metas de mayor peso económico es una decisión metodológica razonable y transparente: concentra la validación donde está el dinero. **Lo que dice es qué puede afirmar el ICPI v1** — desempeño sobre el gasto estratégico— **y qué no**: desempeño sobre el PDOT como mandato completo.
+
+### La regla que queda
+
+> **La justificación del universo operacional no implica la justificación de su mecanismo de selección.**
+
+`ADR-036` justificó **usar 25 como universo operacional v1**. Eso no era lo mismo que justificar **por qué esas 25 son representativas** — y hasta hoy sólo teníamos lo primero. Son dos afirmaciones distintas y confundirlas es la misma trampa que `E_i`: conocer el valor no es conocer la regla que lo produjo. → `DOC-018`
+
+### Nota histórica · lo que este apartado decía antes
 
 **Búsqueda en `docs/`, `governance/` e `identity/`: ningún documento declara por qué esas 25 y no otras 25.**
 
@@ -111,13 +135,43 @@ Es el patrón del «48,33 %» invertido: allí una cifra retirada seguía public
 
 ## Veredicto de 008
 
-> ### COBERTURA LIMITADA PERO METODOLÓGICAMENTE JUSTIFICADA · **con dos reservas**
+> ### COBERTURA LIMITADA, METODOLÓGICAMENTE JUSTIFICADA EN SU ALCANCE v1,
+> ### con criterio de selección DECLARADO y correspondencia exclusión/universo AÚN NO RECONCILIADA.
 
-**Justificada** porque `ADR-036` la decidió, la ratificó, verificó que las 25 pertenecen al PDOT, congeló el motor y planificó la evolución a v2. No es un error ni una omisión: es una decisión arquitectónica explícita y defendible.
+La formulación es deliberadamente estrecha. Decir «metodológicamente justificada» a secas sonaría a que está demostrada la **representatividad** de las 25, y lo que `ADR-036` justifica es algo más específico: **la decisión de usar 25 como universo operacional v1**.
 
-**Reserva 1 · el criterio de selección es `NOT_DETERMINABLE`.** Sin él no se puede afirmar que la muestra sea representativa, y por tanto tampoco que el 27,4582 % sea extrapolable al PDOT completo. Hoy el índice sólo puede afirmarse **sobre su universo operacional**.
+| | Estado |
+|---|---|
+| `25/66` como cobertura documental | **37,88 %** — relación válida |
+| 25 = universo operacional v1 | **RATIFICADO** (`ADR-036`) |
+| Criterio de selección | **DECLARADO**: mayor monto económico (Javo) |
+| Representatividad respecto del PDOT | **del gasto sí · del mandato no** |
+| Identidad de las metas excluidas | ⚠️ **pendiente de reconciliación** |
+| Sesgo | no es sesgo: es el criterio operando como fue definido |
+| Ampliar 25→66 ahora | **NO** — es metodología nueva (`ADR-036 §4`) |
+| ICPI 27,4582 % | **CONGELADO** · no se recalcula |
 
-**Reserva 2 · el alcance no llega al producto.** La obligación del `ADR-036 §1` no se cumplió en ninguna superficie visible.
+**La afirmación que el ICPI v1 sostiene**, y ninguna más amplia:
+
+> El ICPI v1 opera sobre un subconjunto de 25 metas —las de mayor monto económico— de un PDOT que contiene 66. Su resultado **no representa el desempeño del PDOT completo**, sino el desempeño respecto de su universo operacional v1.
+
+**Reserva única que queda abierta · la correspondencia meta a meta.** No existe todavía un catálogo canónico que enlace las 66 con las 25. La resta `66−25=41` es aritméticamente correcta, pero **la identidad de esas 41 no está demostrada documentalmente** — y los 50 del catálogo de exclusiones no pueden asumirse equivalentes. Ése es el único pendiente técnico real de 008.
+
+**Y la obligación del `ADR-036 §1` sigue incumplida**: el alcance no se declara en ninguna superficie visible (`DOC-017`).
+
+## ★ DECISIÓN v2 · el universo completo
+
+> **«Ahora, como ecosistema de Ecuador para LATAM, debemos trabajar con todo el universo del PDOT.»** — Javo, 2026-09-03
+
+Es exactamente la evolución que `ADR-036 §3/§4` anticipó, y la decisión es correcta: un observatorio que aspira a 222 GAD no puede medir sobre una muestra tomada para validar una tesis. **El criterio de monto sirvió para demostrar que el modelo funciona; no sirve para observar un mandato.**
+
+Pero el `ADR-036 §4` fija cómo: **versión nueva del motor · recalibración · nueva validación empírica · ADR específico**. Y hay una razón de secuencia que conviene respetar:
+
+> `011` todavía no ha dictaminado si la fórmula es válida. **Cargar 66 metas en un álgebra que puede cambiar sería hacer el trabajo dos veces** — justo lo que este proyecto decidió evitar al construir el mapa de frentes.
+
+Por eso la decisión se **registra ahora** y su ejecución va **después de `011`**. Con una excepción importante, y es la parte más cara:
+
+**La reconciliación meta a meta (`66 ↔ 25`) puede y debe empezar ya.** No depende de `011` —hay que hacerla sea cual sea el dictamen—, es prerequisito de v2, y además cierra la única reserva que 008 deja abierta. Es el trabajo que desbloquea todo lo demás.
 
 ### Lo que 008 NO hace
 
