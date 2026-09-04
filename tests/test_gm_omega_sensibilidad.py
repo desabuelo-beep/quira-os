@@ -259,6 +259,61 @@ def test_la_robustez_de_categoria_declara_de_donde_salen_sus_umbrales():
         "como «los cortes están mal», y son cosas distintas")
 
 
+def test_las_escalas_AVEP_de_QUIRA_no_divergen_en_silencio():
+    """⚠️ ATAQUE DE D-012 · dos baremos incompatibles, y nadie declaraba cuál rige.
+
+        canon 07_AVEP_LENGUAJE.md   4 niveles · 75/60/50 · ICPI + SAT + Ti
+        config.AVEP + Gold Master   5 niveles · 90/70/40/20 · sólo ICPI
+
+    Para 27,4582 % el motor dice «Gestión por Ocurrencia» y el canon dice «Nivel
+    de Atención Alta». No divergió una cifra: divergió **el significado de la
+    cifra**, que es el patrón del «48,33 %» un piso más arriba.
+
+    ⚠️ SE MIDE LA DIVERGENCIA, NO SE JUZGA CUÁL ES CORRECTA — eso es de `011`.
+    Mientras la deuda siga abierta esta prueba verifica que el defecto está donde
+    decimos; el día que se unifiquen, saltará y se cierra D-012."""
+    from scripts.gm_omega.sensibilidad_icpi import escalas_avep
+    e = escalas_avep()
+    if len(e["fuentes"]) < 2:
+        pytest.skip("no se pudieron leer las dos fuentes de la escala")
+    assert e["coinciden"] is False, (
+        "las escalas AVEP del canon y del motor ya coinciden: si alguien las "
+        "unificó, hay que CERRAR D-012 declarando cuál rige y con qué "
+        "procedencia, e invertir esta prueba para que vigile que no vuelvan a "
+        "separarse")
+
+
+def test_ninguna_escala_ajena_se_adopta_por_compartir_la_unidad():
+    """DOC-012 · un porcentaje no tiene significado semántico por sí mismo.
+
+    Existe una escala obligatoria de desempeño público (LOSEP · Ministerio del
+    Trabajo: 95/90/80/70) y está a mano. Adoptarla para el ICPI sería confundir
+    dos constructos porque ambos producen porcentajes: mide **talento humano**,
+    no congruencia programática e intersistémica.
+
+    Y el diseño original YA tenía la distinción resuelta — el módulo `F-EDS`
+    traducía el índice a insumos LOSEP como **puente explícito hacia otro
+    constructo**. Perderla sería deshacer trabajo bien hecho.
+
+    ⚠️ SE VERIFICA QUE LA DISTINCIÓN SIGA ESCRITA y que los umbrales de la LOSEP
+    NO estén en la escala del motor. No prohíbe contrastar: contrastar no es
+    adoptar."""
+    from scripts.gm_omega.sensibilidad_icpi import escalas_avep
+    motor = dict(escalas_avep()["fuentes"]).get("config.AVEP", [])
+    umbrales = {round(u, 2) for u, _ in motor}
+    losep = {0.95, 0.90, 0.80, 0.70}
+    assert not losep.issubset(umbrales), (
+        "la escala del motor adoptó los cortes de la LOSEP (95/90/80/70). Esa "
+        "escala mide desempeño del talento humano, no congruencia programática: "
+        "compartir la unidad no hace equivalentes los constructos")
+
+    txt = _DOC.read_text(encoding="utf-8")
+    assert "F-EDS" in txt, (
+        "desapareció la constancia de que el diseño original ya separaba ambos "
+        "constructos con un módulo puente. Sin ella, adoptar la escala LOSEP "
+        "parecería una simplificación razonable en vez de una regresión")
+
+
 def test_V_y_E_no_comparten_la_naturaleza_de_su_vacio():
     """DOC-011 · el resultado que más lejos llega de todo 007, y no es un número.
 

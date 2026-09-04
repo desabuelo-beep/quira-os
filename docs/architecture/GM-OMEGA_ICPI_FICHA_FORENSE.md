@@ -883,40 +883,83 @@ categorías**: sus dos lecturas posibles dan 16,64 % y 28,41 %, de «Ruptura Sis
 «Gestión por Ocurrencia». `H13!B21` **parece** documentar la regla anterior y sólo documenta
 por qué se abandonó. `DOC-009` aplicado a `V`.
 
-### ★ 007-X-bis · La escala AVEP no tiene la procedencia que aparenta
+### ★ 007-X-bis · EL BAREMO INTERPRETATIVO AVEP
 
-Javo aportó el contexto que faltaba: **AVEP es invención de Dylus Lab**, ajustada después a
-lo que la normativa pública exigía. Eso obliga a explicitar el supuesto que `007-X`
-arrastraba —mide la robustez de la categoría contra umbrales sin auditar—. Auditados:
+> Detalle completo en [`GM-OMEGA_ICPI_SENSIBILIDAD_007.md`](GM-OMEGA_ICPI_SENSIBILIDAD_007.md)
+> §007-X-bis, derivado del libro y del repositorio.
 
-- **La norma sostiene el CONSTRUCTO, no los CORTES.** La tesis fundamenta *por qué* medir
-  congruencia (`COPFP Art. 41`: el PDOT es directriz **principal**), y las variables sí citan
-  norma (`P_i` → COPFP 54; `R_i` → COOTAD 54-55 + Constitución 3, 12, 66). **Dónde cortar en
-  70 o en 40, no.** En todo el Gold Master, **ninguna** de las 11 copias de la escala cita
-  una norma — mientras los umbrales de inversión del mismo libro sí citan COOTAD.
-- **Está copiada en 11 hojas por instrucción explícita** (`H01!A30`), y la instrucción nació
-  de un incidente que `H01!A28` conserva: *«AVEP NO es una función de Excel. NO existe
-  `=AVEP()`»*. El motor confundió la escala con una fórmula, y replicar el `IF` en todas las
-  hojas **resolvió el síntoma y consolidó la causa**: una capa de interpretación quedó
-  incrustada en el cálculo, y duplicada.
-- **La tesis nunca dijo que fuera una fórmula.** La llama «Baremo de **Interpretación**», y
-  dice que los resultados «se **contrastan** con» él. La doctrina correcta ya estaba escrita
-  antes que el motor: `dato → estado epistemológico → INTERPRETACIÓN → producto`.
-- **El acrónimo tiene dos biografías** —«Alineación, Vinculación, Ejecución, Publicación» y
-  «Alfaro Virtus Escala de Ponderación»— y el nivel superior pasó de «Excelencia en
-  Trazabilidad» (tesis) a «Excelencia en Gobernanza» (motor). Los **rangos coinciden
-  exactamente**: lo que se movió fue el vocabulario.
+Javo aportó tres datos que reordenaron el diagnóstico: **AVEP es invención de Dylus Lab**,
+**su sigla se perdió pero sobrevivió el baremo**, y **los índices se presentan en sus propias
+unidades sin aterrizar en ninguna escala**. Auditado, el problema **no** es que AVEP carezca
+de norma. Es otro, y más profundo.
 
-⚠️ **Nada de esto dice que la escala esté mal.** Los umbrales de un índice compuesto casi
-nunca salen de una norma: son una decisión metodológica legítima. Lo que se establece es que
-**hoy se presenta con la autoridad de un umbral legal y no la tiene**, que vive en la capa
-equivocada, y que de ella depende un Certificado (`H01!C59` fija la emisión en AVEP ≥ 70 %).
+**1 · Qué era AVEP en realidad.** `data/doctrinal/historical/TERMINOLOGY_ORIGIN_v1.md`
+conserva la partida de nacimiento: *«Gestión por Mandato / Gestión por Ocurrencia → **AVEP —
+4 niveles**»*. **AVEP no nació como escala de porcentajes**: nació como el nombre de un eje
+conceptual —«el corazón del sistema QUIRA»— y el canon lo define como **«orientación de
+atención, no calificación»**. La tesis lo llamó «Baremo de **Interpretación**».
 
-**Y para LATAM (`010`) la tensión tiene salida.** Anclar los cortes a normativa local los
-hace fuertes en Ecuador e intransferibles; mantenerlos propios los hace viajar y obliga a
-defenderlos teóricamente. No hay que elegir: **se separan las capas**. El constructo se ancla
-a norma —y esa parte es local por naturaleza—; los cortes son decisión propia, explícita y
-**calibrable por país**. Es la arquitectura núcleo/adaptador que `010` debe demostrar.
+**2 · La deriva semántica, en cinco pasos.**
+
+```
+eje conceptual (mandato ↔ ocurrencia)
+   ↓ se le pone nombre: AVEP, 4 niveles
+   ↓ se le ponen rangos para poder aplicarlo
+   ↓ los rangos se implementan como IF en el Excel
+   ↓ el IF se copia a 11 hojas por instrucción (H01!A30)
+   ↓ el sistema trata la fórmula COMO SI FUERA la definición
+```
+
+Por eso el incidente que `H01!A28` recuerda —*«no existe `=AVEP()`»*— no era un problema de
+sintaxis. **Era ontológico: se convirtió una capa semántica en una operación matemática.** Y
+la sigla perdida es la señal más limpia de la deriva: sobrevivió la tabla, no el significado.
+
+**3 · 🔴 DOS ESCALAS AVEP CONVIVEN Y NO COINCIDEN** → **`D-012`**
+
+| | Canon `07_AVEP_LENGUAJE.md` | Motor (`config.AVEP` + Excel) |
+|---|---|---|
+| Niveles | **4** | **5** |
+| «Gestión por Mandato» | **≥ 75 %** | **≥ 70 %** |
+| Nivel superior | *no existe* | 🔵 Excelencia en Gobernanza ≥ 90 % |
+| Entradas | **ICPI + SAT + Ti (D3)** | **sólo ICPI** |
+| Naturaleza declarada | «orientación de atención» | fórmula `IF` |
+
+Para el baseline de **27,4582 %**: el motor dice **🟠 Gestión por Ocurrencia**, el canon dice
+**🔴 Nivel de Atención Alta**. Y ya se filtró al propio Gold Master —`H29_TABLERO_ALCALDE!B14`
+implementa la etiqueta del canon mientras `H12!B34` implementa la del motor—. **Aquí no
+divergió una cifra: divergió el significado de la cifra.**
+
+**4 · Y 9 de 11 índices no aterrizan en ninguna escala.** Sólo `H15_ICPI_GLOBAL` y `H17_IED`
+clasifican. Los demás publican un porcentaje y ahí se quedan. No es que les falte AVEP —quizá
+no deban tenerla—: es que **cada índice decide por su cuenta si su número significa algo**, y
+esa decisión no está tomada en ninguna parte.
+
+**5 · La norma sostiene el CONSTRUCTO, no los CORTES.** La tesis fundamenta *por qué* medir
+congruencia (`COPFP Art. 41`) y las variables citan norma (`P_i` → COPFP 54; `R_i` → COOTAD
+54-55 + Constitución 3, 12, 66). **Dónde cortar en 70 o en 40, no.** Ninguna de las 11 copias
+de la escala cita norma, mientras los umbrales de inversión del mismo libro sí citan COOTAD.
+
+**6 · La escala LOSEP no es la fuente de AVEP, y el diseño original ya lo sabía.** Existe una
+escala obligatoria del Ministerio del Trabajo (`≥95 · 90-94 · 80-89 · 70-79 · <70`) y
+adoptarla sería confundir constructos: mide **talento humano**. La terminología fundacional
+ya resolvía el puente con un módulo aparte —**F-EDS**, que «transforma el índice municipal en
+insumos técnicos para la aplicación de la **LOSEP**»—. Confundirlas ahora **desharía una
+distinción bien hecha**. Contrastar sí; adoptar no. → **`DOC-012`**
+
+**7 · Núcleo portable + parámetros locales (`010`).** El mecanismo `valor → baremo →
+categoría` viaja; los cortes y denominaciones se parametrizan (`país · institución · versión ·
+constructo · umbrales · etiquetas · fundamento · vigencia`). Así conviven `AVEP_EC_v1` y
+`BAREMO_X_PA_v1` **sin tocar el motor**. Y resuelve el problema de hoy: dos escalas
+divergentes no podrían coexistir sin declarar cuál rige.
+
+> **La regla que sale de aquí (`DOC-012`):** un porcentaje **no tiene significado semántico
+> por sí mismo**. `95 %` en desempeño humano ≠ `95 %` en congruencia intersistémica ≠ `95 %`
+> en transparencia. El número puede ser el mismo. **La afirmación, no.**
+
+⚠️ **Nada de esto autoriza a cambiar un umbral.** Elegir cortes desde el resultado que
+producen es lo que `DOC-009` prohíbe. Lo que `011` recibe es un objeto acotado —**el baremo
+interpretativo AVEP**, con identidad, genealogía, naturaleza y transferibilidad medidas— y la
+decisión de conservarlo, reconstruirlo, parametrizarlo o reemplazarlo, abierta.
 
 ### Y el baseline está a 7,46 puntos de cambiar de categoría
 

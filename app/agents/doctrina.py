@@ -145,6 +145,24 @@ _DOCTRINA = (
          verificador="test_ninguna_regla_generadora_se_infiere_del_patron_de_sus_resultados",
          por_que_ahi="con 25 casos y tres valores posibles, cualquier hipótesis "
                      "encuentra algunos que la respaldan: encajar no es derivar"),
+    dict(id="DOC-012", custodia=GATE,
+         regla="Un PORCENTAJE no tiene significado semántico por sí mismo. El "
+               "significado de sus rangos depende del constructo que mide, de la "
+               "teoría de interpretación y de la procedencia de sus umbrales. "
+               "95 % en desempeño humano ≠ 95 % en congruencia intersistémica ≠ "
+               "95 % en transparencia: el número puede ser el mismo, la "
+               "afirmación no",
+         fuente="el colega, 2026-09-03 · GM-Ω-ICPI-007-X-bis, sobre el aporte de "
+                "Javo de que AVEP es baremo propio y existe además una escala "
+                "obligatoria LOSEP",
+         verificador="test_ninguna_escala_ajena_se_adopta_por_compartir_la_unidad",
+         por_que_ahi="la escala LOSEP del Ministerio del Trabajo (95/90/80/70) "
+                     "es obligatoria y está a mano, y adoptarla para el ICPI "
+                     "sería confundir dos constructos porque ambos producen "
+                     "porcentajes. El diseño original YA tenía la distinción "
+                     "resuelta —el módulo F-EDS traducía el índice a insumos "
+                     "LOSEP como puente explícito—, y perderla sería deshacer "
+                     "trabajo bien hecho. Contrastar no es adoptar"),
     dict(id="DOC-011", custodia=GATE,
          regla="Un vacío de trazabilidad se clasifica por su NATURALEZA, no por "
                "su tamaño. «No puedo reconstruirlo del todo» —hay genealogía y "

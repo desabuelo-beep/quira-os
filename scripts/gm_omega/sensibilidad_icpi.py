@@ -180,6 +180,8 @@ def leer_motor() -> dict:
                 api["clasificacion"] = h73v.cell(row=r, column=2).value
 
     avep = procedencia_avep(wf)
+    avep["escalas"] = escalas_avep()
+    avep["indices"] = indices_sin_baremo(wf)
 
     wf.close(); wv.close()
     return {"metas": metas, "factor": factor, "mes": mes, "ti_raw": ti_raw,
@@ -227,6 +229,80 @@ def procedencia_avep(wf) -> dict:
                         variantes.add(m.group(1))
     return {"copias": sorted(copias), "con_norma": con_norma,
             "variantes_nivel_alto": sorted(variantes)}
+
+
+_CANON_AVEP = ("docs", "corpus_obsidian", "00_CORE", "07_AVEP_LENGUAJE.md")
+
+
+def escalas_avep() -> dict:
+    """¿CUÁNTAS escalas AVEP hay en QUIRA, y dicen lo mismo?
+
+    Javo apuntó que AVEP «solo vive en el Excel». Vive en más sitios —y ese es
+    el problema—: el motor (`H12!B34` y 10 hojas más), `config.AVEP` en Python,
+    y el canon `07_AVEP_LENGUAJE.md`. Tres fuentes de la misma escala.
+
+    Se leen las dos que están en el repositorio y se comparan sus umbrales. No
+    se juzga cuál es correcta: se mide si coinciden."""
+    fuentes: dict[str, list[tuple[float, str]]] = {}
+
+    try:
+        import config as _cfg
+        bandas = getattr(_cfg, "AVEP", [])
+        fuentes["config.AVEP"] = sorted(
+            ((float(b["min"]), str(b["label"])) for b in bandas), reverse=True)
+    except Exception:
+        pass
+
+    canon = _RAIZ.joinpath(*_CANON_AVEP)
+    if canon.exists():
+        txt = canon.read_text(encoding="utf-8", errors="replace")
+        niveles = []
+        # La tabla de activadores: «| 🟢 Mandato | ≥ 75% |», «| 🟡 … | 60-74% |»
+        # y «| 🔴 Atención Alta | < 50% |» — el operador `<` marca el nivel más
+        # bajo, cuyo umbral inferior es 0. Sin capturarlo, el conteo derivado
+        # decía 3 niveles donde el canon define 4.
+        for m in re.finditer(r"\|\s*[^\w|]*\s*([A-Za-zÁÉÍÓÚáéíóúñ ]+?)\s*\|\s*"
+                             r"(≥|<)?\s*(\d+)\s*(?:-\s*\d+)?\s*%", txt):
+            etiqueta = m.group(1).strip()
+            umbral = 0.0 if m.group(2) == "<" else float(m.group(3)) / 100
+            # Sólo etiquetas de NIVEL. La tabla de activadores tiene columnas de
+            # SAT y Ti a su derecha, y la primera versión se tragó un «Ninguna»
+            # de la columna SAT como si fuera un nivel AVEP.
+            if re.search(r"(Mandato|Transici|Ocurrencia|Atenci|Excelencia|Ruptura)",
+                         etiqueta, re.I):
+                niveles.append((umbral, etiqueta))
+        if niveles:
+            fuentes["canon 07_AVEP_LENGUAJE.md"] = sorted(set(niveles), reverse=True)
+
+    # ¿Coinciden los umbrales de las fuentes que sí se pudieron leer?
+    conjuntos = {k: {u for u, _ in v} for k, v in fuentes.items()}
+    coinciden = len(set(map(frozenset, conjuntos.values()))) <= 1 if conjuntos else None
+    return {"fuentes": fuentes, "coinciden": coinciden}
+
+
+def indices_sin_baremo(wf) -> dict:
+    """La observación de Javo, medida: «cada índice se presenta en sus propias
+    unidades y aterriza en ninguna escala».
+
+    Se cuentan las hojas de índice del libro y cuáles declaran una clasificación.
+    No mide si el baremo es correcto — mide si existe."""
+    CON, SIN = [], []
+    for nombre in wf.sheetnames:
+        if not re.match(r"H(1[5-9]|20)[a-z]?_", nombre):
+            continue
+        h = wf[nombre]
+        tiene = False
+        for fila in h.iter_rows(min_row=1, max_row=min(h.max_row, 40),
+                                max_col=min(h.max_column, 10)):
+            for c in fila:
+                if isinstance(c.value, str) and re.search(
+                        r"(Clasificaci[oó]n|Nivel)_?\s*AVEP", c.value):
+                    tiene = True
+                    break
+            if tiene:
+                break
+        (CON if tiene else SIN).append(nombre)
+    return {"con": CON, "sin": SIN}
 
 
 def _consumidores_de_clasificacion() -> list[str]:
@@ -649,27 +725,165 @@ def _escribir(d, base, esc, cat_base, saltan, truncadas, t_sin_tope, sumaR) -> N
     A("                                      ↑ aquí vive AVEP")
     A("   ```")
     A("")
-    A("**5 · Qué significa esto para LATAM (`010`).** Aquí está la tensión que "
-      "Javo intuye, y tiene salida:")
+    esc_av = av.get("escalas", {})
+    if esc_av.get("coinciden") is False:
+        A("### ⚠️⚠️ 5 · DOS ESCALAS AVEP CONVIVEN EN QUIRA, Y NO COINCIDEN")
+        A("")
+        A("Y no es que AVEP «sólo viva en el Excel»: **vive en más sitios, y ese "
+          "es el problema**. Las dos que están en el repositorio —y por tanto "
+          "comparables— dicen cosas distintas:")
+        A("")
+        for fuente, niveles in esc_av["fuentes"].items():
+            A(f"**`{fuente}`** — {len(niveles)} niveles")
+            A("")
+            for u, lab in niveles:
+                A(f"- `≥ {u * 100:.0f} %` → {lab}")
+            A("")
+        A("| | Canon `07_AVEP_LENGUAJE.md` | Motor (`config.AVEP` + Excel) |")
+        A("|---|---|---|")
+        A("| Niveles | **4** | **5** |")
+        A("| Umbral «Gestión por Mandato» | **≥ 75 %** | **≥ 70 %** |")
+        A("| Nivel superior | *no existe* | 🔵 Excelencia en Gobernanza ≥ 90 % |")
+        A("| Entradas | **ICPI + SAT + Ti (D3)** | **sólo ICPI** |")
+        A("| Naturaleza declarada | «orientación de atención, **no calificación**» | fórmula `IF` |")
+        A("")
+        A("**Y para el mismo número dan categorías distintas.** Con el baseline "
+          f"en **{_BASELINE * 100:.2f} %**:")
+        A("")
+        A("```")
+        A(f"   motor  →  {clasificar(_BASELINE)}      (≥ 20 %)")
+        A("   canon  →  🔴 Nivel de Atención Alta      (< 50 %)")
+        A("```")
+        A("")
+        A("Esto **ya se filtró al propio Gold Master**: `H29_TABLERO_ALCALDE!B14` "
+          "implementa «🔴 Nivel de Atención Alta» —la etiqueta del **canon**— "
+          "mientras `H12!B34` implementa la del **motor**. Dos escalas en el "
+          "mismo libro. Es el patrón del «48,33 %» en la capa semántica, y con "
+          "un agravante: aquí no divergió una cifra, divergió **el significado "
+          "de la cifra**.")
+        A("")
+        A("⚠️ Nada de esto dice cuál es la correcta. Dice que **hay dos, que "
+          "nadie lo sabía, y que la elección entre ellas cambia lo que el "
+          "producto afirma sobre el municipio**.")
+        A("")
+
+    ind = av.get("indices", {})
+    if ind.get("sin"):
+        total = len(ind["con"]) + len(ind["sin"])
+        A(f"### 6 · Y **{len(ind['sin'])} de {total} índices no aterrizan en "
+          "ninguna escala")
+        A("")
+        A("La observación de Javo, medida. Sólo "
+          + ", ".join(f"`{h}`" for h in ind["con"])
+          + " declaran clasificación. Los demás publican un porcentaje en sus "
+            "propias unidades y ahí se quedan:")
+        A("")
+        A("   " + " · ".join(f"`{h}`" for h in ind["sin"]))
+        A("")
+        A("No es que les falte AVEP —quizá no deban tenerla—. Es que **cada "
+          "índice decide por su cuenta si su número significa algo**, y esa "
+          "decisión no está tomada en ninguna parte. Un porcentaje sin baremo no "
+          "es neutral: obliga a que el lector improvise el suyo.")
+        A("")
+
+    A("### 7 · Qué era AVEP en realidad, y qué le pasó")
     A("")
-    A("| | Anclar los cortes a normativa local | Mantenerlos propios |")
-    A("|---|---|---|")
-    A("| Defensa en Ecuador | fuerte (hay norma) | exige argumento teórico |")
-    A("| Viaje a LATAM | ❌ no viaja: se recalibra por país | ✅ viaja |")
+    A("`data/doctrinal/historical/TERMINOLOGY_ORIGIN_v1.md` conserva la partida "
+      "de nacimiento, y dice algo que reordena todo lo anterior:")
     A("")
-    A("   La salida no es elegir una: es **separar las capas**. El constructo se "
-      "ancla a norma —y esa parte es local por naturaleza—; los **cortes** son "
-      "una decisión metodológica propia, explícita y **calibrable por país**. "
-      "Que es justamente la arquitectura núcleo/adaptador que `010` tiene que "
-      "demostrar.")
+    A("> | Concepto Original | Término TGI Actual |")
+    A("> |---|---|")
+    A("> | Gestión por Mandato / Gestión por Ocurrencia | **AVEP — 4 niveles** |")
     A("")
-    A("⚠️ **Nada de esto dice que la escala esté mal.** Los umbrales de un índice "
-      "compuesto casi nunca salen de una norma: son una decisión metodológica, y "
-      "es legítima. Lo que `007-X-bis` establece es que **hoy se presenta con la "
-      "misma autoridad que un umbral legal y no la tiene**, que vive en la capa "
-      "equivocada, y que de ella depende un Certificado (`H01!C59` fija la "
-      "emisión en AVEP ≥ 70 %). Una escala con consecuencia contractual necesita "
-      "procedencia declarada. → `011`.")
+    A("**AVEP no nació como una escala de porcentajes.** Nació como el nombre de "
+      "un *eje conceptual* —el par mandato/ocurrencia, «el corazón del sistema "
+      "QUIRA»— y el canon lo define como **«orientación de atención», no "
+      "calificación**. La tesis lo llamó «Baremo de **Interpretación**». Los "
+      "rangos numéricos vinieron después.")
+    A("")
+    A("La deriva, en cinco pasos:")
+    A("")
+    A("```")
+    A("   eje conceptual (mandato ↔ ocurrencia)")
+    A("        ↓  se le pone nombre: AVEP, 4 niveles")
+    A("        ↓  se le ponen rangos para poder aplicarlo")
+    A("        ↓  los rangos se implementan como IF en el Excel")
+    A("        ↓  el IF se copia a 11 hojas por instrucción")
+    A("        ↓  el sistema trata la fórmula COMO SI FUERA la definición")
+    A("```")
+    A("")
+    A("Por eso el incidente que `H01!A28` recuerda —«no existe `=AVEP()`»— no "
+      "era un problema de sintaxis. **Era ontológico: se convirtió una capa "
+      "semántica en una operación matemática.** Y la sigla, que Javo recuerda "
+      "haberse perdido, es la señal más limpia de la deriva: sobrevivió la "
+      "tabla, no el significado.")
+    A("")
+    A("### 8 · La escala de la LOSEP **no** es la fuente de AVEP — y el diseño "
+      "original ya lo sabía")
+    A("")
+    A("Existe una escala obligatoria de desempeño en el sector público "
+      "(LOSEP · Reglamento · Normas Técnicas del Ministerio del Trabajo): "
+      "`≥95 Excelente · 90-94 Muy Bueno · 80-89 Satisfactorio · 70-79 Regular · "
+      "<70 Insuficiente`. **Es tentador adoptarla y sería un error.** Mide otro "
+      "constructo —desempeño del **talento humano**— y el ICPI mide congruencia "
+      "programática e intersistémica. Que ambos produzcan porcentajes no los "
+      "hace equivalentes.")
+    A("")
+    A("Y hay una prueba de que el diseño original **ya tenía esa distinción "
+      "bien hecha**: la terminología fundacional define un módulo aparte para "
+      "exactamente ese puente —")
+    A("")
+    A("> **Módulo F-EDS (Evaluación de Desempeño Basada en Congruencia):** "
+      "«transforma el índice municipal en un instrumento operativo de control "
+      "del talento humano, para generar insumos técnicos que permitan la "
+      "aplicación de la **LOSEP**».")
+    A("")
+    A("Es decir: la relación con la LOSEP existía **como traducción explícita "
+      "hacia otro constructo**, no como la escala del ICPI. Confundirlas ahora "
+      "**desharía una distinción que el diseño original tenía resuelta**.")
+    A("")
+    A("Lo que sí puede hacerse en `011` es una prueba de **compatibilidad "
+      "semántica**: contrastar AVEP contra escalas institucionales externas "
+      "para ver si sus lecturas convergen —sin confundirlas—. Contrastar no es "
+      "adoptar.")
+    A("")
+    A("### 9 · Qué pertenece al núcleo y qué se parametriza (`010`)")
+    A("")
+    A("La tensión —anclar los cortes a normativa local los hace fuertes aquí e "
+      "intransferibles; mantenerlos propios los hace viajar y obliga a "
+      "defenderlos— no se resuelve eligiendo. **Se separan las capas.**")
+    A("")
+    A("**Núcleo portable**: el mecanismo `valor cuantitativo → baremo → "
+      "categoría interpretativa`. **Parámetros locales**: los cortes y las "
+      "denominaciones.")
+    A("")
+    A("```")
+    A("   BAREMO")
+    A("   ├── país          ├── constructo      ├── etiquetas")
+    A("   ├── institución   ├── umbrales        ├── fundamento")
+    A("   └── versión       └── vigencia        └── procedencia")
+    A("```")
+    A("")
+    A("Así conviven `AVEP_EC_v1` y `BAREMO_X_PA_v1` **sin tocar el motor ICPI**. "
+      "Y lo primero que resuelve es el problema de hoy: dos escalas divergentes "
+      "no podrían coexistir sin declarar cuál rige.")
+    A("")
+    A("> ### La regla que sale de aquí")
+    A("> **Un porcentaje no tiene significado semántico por sí mismo.** El "
+      "significado de sus rangos depende del constructo que mide, de la teoría "
+      "de interpretación y de la procedencia de sus umbrales.")
+    A(">")
+    A("> `95 %` en desempeño humano ≠ `95 %` en congruencia intersistémica ≠ "
+      "`95 %` en transparencia ≠ `95 %` en ejecución presupuestaria. El número "
+      "puede ser el mismo. **La afirmación, no.** → `DOC-012`")
+    A("")
+    A("⚠️ **Y nada de esto dice que la escala esté mal ni autoriza a cambiar un "
+      "umbral.** Cambiarlos ahora sería inferir la regla correcta desde el "
+      "resultado que produce, que es lo que `DOC-009` prohíbe. Lo que `011` "
+      "recibe es un objeto acotado: **el baremo interpretativo AVEP**, con su "
+      "identidad, su genealogía, su naturaleza y su transferibilidad medidas — "
+      "y la decisión de conservarlo, reconstruirlo, parametrizarlo o "
+      "reemplazarlo, todavía abierta.")
     A("")
 
     # ── concentración ────────────────────────────────────────────────────────

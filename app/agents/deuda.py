@@ -220,6 +220,28 @@ _DEUDAS = (
                "verdes oficiales de Naciones Unidas, que son identidad ajena y "
                "no un juicio de «bien». Cada uno de los 25 exige decidir QUÉ "
                "dice ese verde, y eso es curación de dominio, no un barrido"),
+    dict(id="D-012", gravedad=FALSEA, capa="C1/C4", dueño="Javo",
+         que="**DOS escalas AVEP conviven en QUIRA y no coinciden.** El canon "
+             "`docs/corpus_obsidian/00_CORE/07_AVEP_LENGUAJE.md` define **4 "
+             "niveles** con umbrales 75/60/50 y los condiciona a `ICPI + SAT + "
+             "Ti`; `config.AVEP` y el Gold Master definen **5 niveles** con "
+             "umbrales 90/70/40/20 y sólo miran el ICPI. Para el mismo baseline "
+             "de 27,4582 % el motor dice «🟠 Gestión por Ocurrencia» y el canon "
+             "dice «🔴 Nivel de Atención Alta». Y la divergencia **ya se filtró "
+             "al propio Gold Master**: `H29_TABLERO_ALCALDE!B14` implementa la "
+             "etiqueta del canon mientras `H12!B34` implementa la del motor — "
+             "dos escalas en el mismo libro. Ninguna superficie declara cuál "
+             "rige. Lo encontró GM-Ω-ICPI-007-X-bis a partir del aporte de Javo "
+             "de que AVEP es un baremo propio cuya sigla se perdió.",
+         ataque="test_las_escalas_AVEP_de_QUIRA_no_divergen_en_silencio",
+         no_es="una errata de un umbral: son dos DISEÑOS distintos —4 niveles "
+               "frente a 5, una entrada frente a tres— y probablemente de dos "
+               "momentos distintos del proyecto. Tampoco es que una sea la "
+               "correcta: eso lo decide `011`. Y NO se arregla cambiando un "
+               "número, porque elegir umbral desde el resultado que produce es "
+               "exactamente lo que DOC-009 prohíbe. La cura es declarar cuál "
+               "rige, con su procedencia, en UNA sola fuente parametrizable "
+               "(DOC-012 · arquitectura BAREMO de 007-X-bis §9)"),
     dict(id="D-011", gravedad=FALSEA, capa="C4/C6", dueño="Javo",
          que="La capa de publicación describe el ICPI con un vocabulario que el "
              "motor NO sostiene, en dos formas. **(1) EL NOMBRE Y LA "
