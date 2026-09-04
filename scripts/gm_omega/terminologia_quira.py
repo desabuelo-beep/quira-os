@@ -65,73 +65,143 @@ _CATEGORIAS = {
     "SIN_CATEGORÍA": "⚠️ no responde a «¿qué tipo de objeto QUIRA soy?»",
 }
 
+# ── LA SEGUNDA DIMENSIÓN · VISIBILIDAD ───────────────────────────────────────
+# Un nombre no se define sólo por QUÉ ES, sino por EN QUÉ CAPA debe ser visible.
+# Sin esta dimensión el inventario obliga a una decisión binaria —publicar o
+# esconder— y la respuesta correcta casi nunca es binaria.
+#
+# ⚠️ Y NO ES UN FILTRO DE PUBLICACIÓN. Javo corrigió el supuesto: **los índices
+# están construidos para aparecer en el dominio que los representa**; esa
+# decisión ya la tomó la arquitectura de dominios y no se relitiga aquí. Lo que
+# esta dimensión decide es en qué CAPA DE LECTURA aparece cada nombre dentro de
+# su dominio — no si el índice se publica.
+_VISIBILIDAD = {
+    "PÚBLICO": "lenguaje de administración pública · primera capa de lectura",
+    "INSTITUCIONAL": "ficha metodológica · segunda capa, al abrir el indicador",
+    "TÉCNICO": "trazabilidad forense · tercera capa, usuario institucional",
+    "INTERNO": "no cruza al producto (Regla de Oro 2)",
+    "HISTÓRICO": "conservado por genealogía · fuera del runtime",
+}
+
 # ── T1/T2/T3 · INVENTARIO CLASIFICADO ────────────────────────────────────────
-# (nombre, categoría, autoridad que lo define, nota)
+# (nombre, categoría, autoridad que lo define, visibilidad, nota)
 _INVENTARIO = [
     # Identidad
     ("QUIRA", "ARTEFACTO", "identity/CONSTITUCION_INSTITUCIONAL.md",
+     "PÚBLICO",
      "plataforma de inteligencia pública · raíz de la cadena de autoridad"),
     ("Gold Master", "ARTEFACTO", "ADR-023 · METODOLOGIA_GOLD_MASTER.md",
+     "TÉCNICO",
      "fuente canónica de verdad analítica reproducible · NO es «base de datos»"),
-    ("Dylus Lab", "ARTEFACTO", "identity/", "el laboratorio que construye QUIRA"),
+    ("Dylus Lab", "ARTEFACTO", "identity/",
+     "PÚBLICO", "el laboratorio que construye QUIRA"),
 
     # Funciones de adquisición
     ("Observatorio", "FUNCIÓN", "ADR-041 §4",
+     "PÚBLICO",
      "adquisición y monitoreo progresivo de GAD · NO es un producto"),
     ("Ciudadana", "FUNCIÓN", "ADR-041 §4",
+     "PÚBLICO",
      "adquisición de evidencia por control social · NO es el motor"),
     ("Motor", "FUNCIÓN", "H12_MOTOR_ICPI_CANÓNICO · ADR-023",
+     "TÉCNICO",
      "integración, validación y cálculo del Gold Master"),
     ("Consola", "FUNCIÓN", "ADR-042",
+     "INTERNO",
      "operación interna: fuentes, conectores, capturas, cobertura · NO es producto"),
 
     # Productos (ADR-041 §4 sellado)
-    ("QUIRA Institucional", "PRODUCTO", "ADR-041 §4", "F2"),
-    ("QUIRA Impact", "PRODUCTO", "ADR-041 §4", "F2"),
-    ("QUIRA Cooperación", "PRODUCTO", "ADR-041 §4", "F2"),
-    ("QUIRA Economic", "PRODUCTO", "ADR-041 §4", "F3"),
+    ("QUIRA Institucional", "PRODUCTO", "ADR-041 §4",
+     "PÚBLICO", "F2"),
+    ("QUIRA Impact", "PRODUCTO", "ADR-041 §4",
+     "PÚBLICO", "F2"),
+    ("QUIRA Cooperación", "PRODUCTO", "ADR-041 §4",
+     "PÚBLICO", "F2"),
+    ("QUIRA Economic", "PRODUCTO", "ADR-041 §4",
+     "PÚBLICO", "F3"),
 
     # Capas transversales
-    ("QUIRA IA", "CAPA", "ADR-035/037", "IA propone · humano valida"),
-    ("GeoTwin", "CAPA", "QTMP", "gemelo territorial"),
+    ("QUIRA IA", "CAPA", "ADR-035/037",
+     "PÚBLICO", "IA propone · humano valida"),
+    ("GeoTwin", "CAPA", "QTMP",
+     "PÚBLICO", "gemelo territorial"),
     ("SAT", "CAPA", "H21-H24 · SAT_Catalogo",
+     "INTERNO",
      "sistema de alertas tempranas · transversal a los índices"),
 
     # Indicadores
     ("ICPI", "INDICADOR", "tesis (abril 2026) · H12!B33",
+     "INSTITUCIONAL",
      "Índice de Congruencia Programática e Intersistémica · indicador NUCLEAR "
      "del Gold Master, NO «el centro de QUIRA»"),
-    ("TGI", "INDICADOR", "01_TGI_FRAMEWORK.md", "índice de gobernanza integral 5D"),
-    ("IED", "INDICADOR", "06_IED_DIRECTIVO.md", "Índice de Evaluación Directiva"),
-    ("IGP", "INDICADOR", "H20b", "Índice de Gobernanza Participativa · ver D-010"),
-    ("MMP", "INDICADOR", "08_MMP_MENSUAL.md", "monitoreo mensual"),
+    ("TGI", "INDICADOR", "01_TGI_FRAMEWORK.md",
+     "INTERNO", "índice de gobernanza integral 5D"),
+    ("IED", "INDICADOR", "06_IED_DIRECTIVO.md",
+     "INSTITUCIONAL", "Índice de Evaluación Directiva"),
+    ("IGP", "INDICADOR", "H20b",
+     "INSTITUCIONAL", "Índice de Gobernanza Participativa · ver D-010"),
+    ("MMP", "INDICADOR", "08_MMP_MENSUAL.md",
+     "INTERNO", "monitoreo mensual"),
+    # Los nueve índices complementarios del Gold Master. Estaban fuera del
+    # primer corte del inventario y eso lo hacía parecer más pequeño de lo que
+    # es: un inventario incompleto subestima la deuda que pretende medir.
+    ("IPE", "INDICADOR", "H16b · PCD-D01",
+     "INSTITUCIONAL", "Índice de Planificación Ejecutada · d01 · fórmula nativa"),
+    ("IFE", "INDICADOR", "H16",
+     "INSTITUCIONAL", "Índice Financiero de Ejecución"),
+    ("ITAM", "INDICADOR", "H18",
+     "INSTITUCIONAL", "Índice de Transparencia Activa Municipal · d07"),
+    ("ICODS", "INDICADOR", "H20",
+     "INSTITUCIONAL", "Índice de Cumplimiento ODS"),
+    ("IEF", "INDICADOR", "H20c",
+     "INSTITUCIONAL", "Índice de Eficiencia Financiera"),
+    ("PSG", "INDICADOR", "H16c",
+     "INSTITUCIONAL", "Presupuesto Sensible al Género"),
+    ("IBSC", "INDICADOR", "H12b_MOTOR_IBSC",
+     "TÉCNICO", "motor complementario · categoría a confirmar en T3"),
 
     # Variables del ICPI
-    ("P_i", "VARIABLE", "tesis · H14!G", "coeficiente de peso presupuestario"),
-    ("R_i", "VARIABLE", "tesis · H14!F", "coeficiente de relevancia normativa"),
-    ("V_i", "VARIABLE", "tesis · H13!F", "verificación intersistémica"),
+    ("P_i", "VARIABLE", "tesis · H14!G",
+     "TÉCNICO", "coeficiente de peso presupuestario"),
+    ("R_i", "VARIABLE", "tesis · H14!F",
+     "TÉCNICO", "coeficiente de relevancia normativa"),
+    ("V_i", "VARIABLE", "tesis · H13!F",
+     "TÉCNICO", "verificación intersistémica"),
     ("E_i", "VARIABLE", "⚠️ NOT_DETERMINABLE (007-B0)",
+     "TÉCNICO",
      "regla generadora no reconstruible desde el material conservado"),
-    ("T_i", "VARIABLE", "H07b!fila 20", "materialización temporal"),
-    ("C_i", "VARIABLE", "H01 TBL_CALIBRACION_Ci", "trazabilidad orgánica"),
+    ("T_i", "VARIABLE", "H07b!fila 20",
+     "TÉCNICO", "materialización temporal"),
+    ("C_i", "VARIABLE", "H01 TBL_CALIBRACION_Ci",
+     "TÉCNICO", "trazabilidad orgánica"),
 
     # Estados
-    ("NOT_DETERMINABLE", "ESTADO", "Constitución CAPA 0", "no se pudo reconstruir"),
-    ("UNTRACEABLE", "ESTADO", "GM-Ω taxonomía", "sin fuente tras agotar la búsqueda"),
+    ("NOT_DETERMINABLE", "ESTADO", "Constitución CAPA 0",
+     "INSTITUCIONAL", "no se pudo reconstruir"),
+    ("UNTRACEABLE", "ESTADO", "GM-Ω taxonomía",
+     "TÉCNICO", "sin fuente tras agotar la búsqueda"),
     ("TEMPORAL_SEMANTIC_GAP", "ESTADO", "GM-Ω taxonomía",
+     "TÉCNICO",
      "la fuente existe pero su período o función no está bien declarado"),
 
     # Fuentes institucionales (ADR-029)
-    ("SERCOP", "FUENTE", "LOSNCP", "contratación pública"),
-    ("eSIGEF", "FUENTE", "COPFP · MEF", "ejecución presupuestaria"),
-    ("LOTAIP", "FUENTE", "LOTAIP Art. 7", "transparencia"),
-    ("CPCCS", "FUENTE", "LOPC Art. 88", "rendición de cuentas"),
-    ("SIGAD", "FUENTE", "SENPLADES", "autorreporte del GAD"),
+    ("SERCOP", "FUENTE", "LOSNCP",
+     "PÚBLICO", "contratación pública"),
+    ("eSIGEF", "FUENTE", "COPFP · MEF",
+     "PÚBLICO", "ejecución presupuestaria"),
+    ("LOTAIP", "FUENTE", "LOTAIP Art. 7",
+     "PÚBLICO", "transparencia"),
+    ("CPCCS", "FUENTE", "LOPC Art. 88",
+     "PÚBLICO", "rendición de cuentas"),
+    ("SIGAD", "FUENTE", "SENPLADES",
+     "PÚBLICO", "autorreporte del GAD"),
     ("PDOT", "EVIDENCIA", "COOTAD · COPFP Art. 41",
+     "PÚBLICO",
      "documento oficial y vinculante del mandato"),
 
     # ⚠️ El caso que abrió todo esto
     ("AVEP", "SIN_CATEGORÍA", "⚠️ ninguna autoridad vigente lo define",
+     "HISTÓRICO",
      "no es indicador, ni fuente, ni variable, ni estado, ni producto, ni capa. "
      "Nació como nombre de un eje conceptual, derivó a fórmula copiada en 11 "
      "hojas, y hoy existen DOS versiones incompatibles (D-012)"),
@@ -217,6 +287,34 @@ def huerfanos(archivos: list[Path], clasificados: set[str]) -> list[tuple[str, i
     return sorted(cuenta.items(), key=lambda kv: -kv[1])[:25]
 
 
+# Las superficies de DOMINIO. Javo: «todos los índices están construidos para
+# aparecer en los dom que los representan». Aquí se comprueba, no se supone.
+_PAGS_DOMINIO = ("m_mandato", "m_planificacion", "m_presupuesto",
+                 "m_participacion", "m_rdc", "p07_transparencia",
+                 "p16_gobernanza", "p17_rdc")
+
+
+def dominios_de(nombre: str, archivos: list[Path]) -> list[str]:
+    """DERIVADO · en qué superficies de dominio aparece el nombre.
+
+    ⚠️ Verifica la afirmación de Javo en vez de aceptarla o descartarla. Si un
+    indicador no aparece en ninguna, hay dos lecturas posibles y NO se elige
+    aquí: o su dominio todavía no está construido —d04, d05, d10-d13 siguen
+    pendientes—, o el índice no tiene dominio que lo represente. Distinguirlas
+    exige leer, no contar."""
+    patron = re.compile(rf"(?<![\w_]){re.escape(nombre)}(?![\w_])")
+    out = []
+    for p in archivos:
+        if p.parent.name != "quira_pages" or p.stem not in _PAGS_DOMINIO:
+            continue
+        try:
+            if patron.search(p.read_text(encoding="utf-8", errors="replace")):
+                out.append(p.stem)
+        except OSError:
+            continue
+    return sorted(out)
+
+
 _NORMAS = ("COOTAD", "COPFP", "LOSEP", "LOSNCP", "LOPC", "LOTAIP", "CRE")
 
 
@@ -248,9 +346,10 @@ def main() -> int:
     print(f"inventario sobre {len(archivos)} archivos vivos")
 
     filas = []
-    for nombre, cat, autoridad, nota in _INVENTARIO:
+    for nombre, cat, autoridad, vis, nota in _INVENTARIO:
         filas.append({"nombre": nombre, "cat": cat, "autoridad": autoridad,
-                      "nota": nota, **medir_uso(nombre, archivos)})
+                      "vis": vis, "nota": nota, **medir_uso(nombre, archivos),
+                      "dominios": dominios_de(nombre, archivos)})
 
     clasificados = {f["nombre"] for f in filas} | {
         n.split()[-1] for n in (f["nombre"] for f in filas) if " " in n}
@@ -319,14 +418,92 @@ def _escribir(filas, sueltos, sin_cat, sin_uso) -> None:
 
     A("## T1-T4 · Inventario clasificado")
     A("")
-    A("| Nombre | Categoría | Autoridad que lo define | Archivos | En producto |")
-    A("|---|---|---|---:|---:|")
+    A("| Nombre | Categoría | Visibilidad | Autoridad que lo define | Archivos | En producto |")
+    A("|---|---|---|---|---:|---:|")
     orden = {c: i for i, c in enumerate(_CATEGORIAS)}
     for f in sorted(filas, key=lambda x: (orden.get(x["cat"], 99), -x["archivos"])):
         marca = " ⚠️" if f["cat"] == "SIN_CATEGORÍA" else ""
         sup = f"{f['superficies']}" if f["superficies"] else "—"
-        A(f"| `{f['nombre']}`{marca} | {f['cat']} | {f['autoridad']} | "
+        A(f"| `{f['nombre']}`{marca} | {f['cat']} | {f['vis']} | {f['autoridad']} | "
           f"{f['archivos']} | {sup} |")
+    A("")
+    A("## La segunda dimensión · visibilidad")
+    A("")
+    A("| Capa | Qué significa |")
+    A("|---|---|")
+    for v, desc in _VISIBILIDAD.items():
+        A(f"| **{v}** | {desc} |")
+    A("")
+    A("⚠️ **No es un filtro de publicación**, y el matiz decide todo lo demás. "
+      "Los índices **están construidos para aparecer en el dominio que los "
+      "representa**: esa decisión ya la tomó la arquitectura de dominios y no se "
+      "relitiga aquí. Lo que la visibilidad decide es **en qué capa de lectura** "
+      "aparece cada nombre dentro de su dominio.")
+    A("")
+    A("La consecuencia práctica es la separación **nombre técnico ≠ nombre de "
+      "presentación** (`DOC-014`):")
+    A("")
+    A("```")
+    A("   PÚBLICO         ¿El mandato ofrecido puede seguirse hasta")
+    A("                   su materialización?          27,46 %")
+    A("        ↓ abrir")
+    A("   INSTITUCIONAL   ICPI · corte abril 2026 · qué mide, período,")
+    A("                   universo, fuentes, metodología")
+    A("        ↓ abrir")
+    A("   TÉCNICO         Índice de Congruencia Programática e Intersistémica")
+    A("                   → Gold Master → P·R·V·E·T·C → fuentes → evidencia")
+    A("```")
+    A("")
+    A("Así **no se oculta el indicador: se hace inteligible**. Y evita el riesgo "
+      "opuesto —una portada de siglas y porcentajes flotantes— que induciría a "
+      "leerlos como notas comparables entre sí. `DOC-012` ya dice por qué eso "
+      "sería falso: **un porcentaje no significa nada por sí mismo**.")
+    A("")
+
+    # ── verificación de la afirmación de Javo ────────────────────────────────
+    indicadores = [f for f in filas if f["cat"] == "INDICADOR"]
+    con_dom = [f for f in indicadores if f["dominios"]]
+    sin_dom = [f for f in indicadores if not f["dominios"]]
+    A("### Verificación · ¿cada índice aparece en su dominio?")
+    A("")
+    A(f"De **{len(indicadores)} indicadores** inventariados, **{len(con_dom)}** "
+      f"aparecen en alguna superficie de dominio:")
+    A("")
+    A("| Indicador | Superficies de dominio donde se le encontró |")
+    A("|---|---|")
+    for f in indicadores:
+        d = ", ".join(f"`{x}`" for x in f["dominios"]) if f["dominios"] else "—"
+        A(f"| `{f['nombre']}` | {d} |")
+    A("")
+    A("### ⚠️ Y aquí el resultado que importa NO es esa tabla")
+    A("")
+    A("**Esa tabla no demuestra nada, y hay que decirlo antes de que alguien la "
+      "cite.** Se apoya en una lista de superficies de dominio **escrita a "
+      "mano** en este mismo script "
+      f"(`_PAGS_DOMINIO`, {len(_PAGS_DOMINIO)} de las 55 páginas del producto). "
+      "Un índice que no aparece puede vivir perfectamente en una superficie que "
+      "la lista no incluye. Medir contra una lista propia y presentar el "
+      "resultado como hallazgo sería exactamente lo que `DOC-009` prohíbe.")
+    A("")
+    A("**Lo que sí quedó demostrado, al intentar la verificación:**")
+    A("")
+    A("> **No existe un artefacto que declare qué índice pertenece a qué "
+      "dominio.**")
+    A("")
+    A("El mapeo existe —Javo lo tiene claro y la arquitectura lo aplica: *«todos "
+      "los índices están construidos para aparecer en los dominios que los "
+      "representan»*— pero **vive en el diseño, no en un artefacto verificable**. "
+      "`PROTOCOLO_CURACION_DOMINIO` registra el estado de curación de cada "
+      "dominio, no qué índice le corresponde.")
+    A("")
+    A("Y sin esa tabla, **ninguna verificación automática es posible**: ni ésta, "
+      "ni una que compruebe que un índice no se publica fuera de su dominio, ni "
+      "una que detecte un dominio que perdió su indicador. Es la misma forma del "
+      "problema de `E_i` —una regla que opera sin estar escrita— y del de `AVEP` "
+      "—un vocabulario que se propaga sin autoridad que lo defina—.")
+    A("")
+    A("**Producir ese mapeo es el primer entregable de `T3`.** No se improvisa "
+      "aquí: exige leer dominio por dominio, y eso es curación, no inventario.")
     A("")
     A("**«En producto»** cuenta archivos de `quira_pages/`, `components/` y "
       "`views/`. Un nombre interno con presencia ahí es candidato a revisión por "

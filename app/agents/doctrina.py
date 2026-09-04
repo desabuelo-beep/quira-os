@@ -145,6 +145,23 @@ _DOCTRINA = (
          verificador="test_ninguna_regla_generadora_se_infiere_del_patron_de_sus_resultados",
          por_que_ahi="con 25 casos y tres valores posibles, cualquier hipótesis "
                      "encuentra algunos que la respaldan: encajar no es derivar"),
+    dict(id="DOC-014", custodia=GATE,
+         regla="NOMBRE TÉCNICO ≠ NOMBRE DE PRESENTACIÓN. Un indicador se publica "
+               "en TRES capas —pregunta pública · ficha metodológica · "
+               "trazabilidad forense— y ninguna sustituye a las otras. El "
+               "Bloomberg Firewall no significa «prohibir siglas»: significa "
+               "que el lenguaje interno no se filtre ACCIDENTALMENTE como "
+               "lenguaje de producto. Y la primera capa nunca publica un "
+               "porcentaje sin decir qué pregunta responde",
+         fuente="el colega, 2026-09-03, corregido por Javo: los índices SÍ "
+                "aparecen en el dominio que los representa — la decisión no es "
+                "cuáles publicar, sino en qué capa de lectura",
+         verificador="test_todo_indicador_publicable_declara_su_capa_de_lectura",
+         por_que_ahi="una portada de siglas y porcentajes flotantes induce a "
+                     "leerlos como notas comparables, y DOC-012 ya dice por qué "
+                     "eso es falso. Pero esconder el nombre técnico rompería la "
+                     "otra mitad de QUIRA: que toda afirmación pueda regresar a "
+                     "su evidencia y su metodología. Tres capas resuelven ambas"),
     dict(id="DOC-013", custodia=GATE,
          regla="QUIRA no conserva conceptos por HERENCIA; conserva únicamente "
                "conceptos que cumplen una FUNCIÓN VERIFICABLE en su "

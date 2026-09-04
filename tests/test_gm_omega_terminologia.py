@@ -40,7 +40,7 @@ def test_todo_nombre_propio_declara_su_categoria_ontologica():
     from scripts.gm_omega.terminologia_quira import _CATEGORIAS, _INVENTARIO
 
     assert _INVENTARIO, "el inventario terminológico quedó vacío"
-    for nombre, cat, autoridad, _ in _INVENTARIO:
+    for nombre, cat, autoridad, _vis, _ in _INVENTARIO:
         assert cat in _CATEGORIAS, (
             f"`{nombre}` tiene la categoría «{cat}», que no está en la "
             f"taxonomía. Inventar una categoría para acomodar un nombre es "
@@ -49,7 +49,7 @@ def test_todo_nombre_propio_declara_su_categoria_ontologica():
             f"`{nombre}` no declara qué autoridad lo define. Un nombre sin "
             f"autoridad es un nombre que nadie puede cambiar ni retirar")
 
-    sin_cat = [n for n, c, *_ in _INVENTARIO if c == "SIN_CATEGORÍA"]
+    sin_cat = [n for n, c, *_r in _INVENTARIO if c == "SIN_CATEGORÍA"]
     assert "AVEP" in sin_cat, (
         "`AVEP` dejó de estar SIN_CATEGORÍA. Si se le encontró una función "
         "verificable, hay que declarar cuál y con qué autoridad; si se retiró, "
@@ -88,6 +88,64 @@ def test_el_documento_declara_lo_que_NO_decide():
         assert pendiente in txt, f"desapareció la reserva «{pendiente}»"
 
 
+def test_todo_indicador_publicable_declara_su_capa_de_lectura():
+    """DOC-014 · nombre técnico ≠ nombre de presentación.
+
+    Javo corrigió el supuesto del que partía la discusión: **los índices están
+    construidos para aparecer en el dominio que los representa**. La decisión no
+    es cuáles publicar —eso ya lo resolvió la arquitectura de dominios— sino en
+    qué **capa de lectura** aparece cada nombre:
+
+        PÚBLICO         la pregunta que responde, y el valor
+        INSTITUCIONAL   la sigla, el período, las fuentes, la metodología
+        TÉCNICO         el nombre completo y la cadena hasta la evidencia
+
+    ⚠️ SE VERIFICA QUE CADA NOMBRE DECLARE SU CAPA, no que la capa sea la
+    acertada — eso se afina en `T3-T5` y se ejecuta en `T6`."""
+    from scripts.gm_omega.terminologia_quira import _INVENTARIO, _VISIBILIDAD
+
+    for nombre, _cat, _aut, vis, _nota in _INVENTARIO:
+        assert vis in _VISIBILIDAD, (
+            f"`{nombre}` declara la visibilidad «{vis}», que no está entre las "
+            f"capas de lectura. Inventar una capa para acomodar un nombre es la "
+            f"misma inflación que DOC-013 prohíbe, un piso más arriba")
+
+    # Ningún indicador puede vivir sólo en la capa pública: si se publica, tiene
+    # que poder abrirse hasta su metodología. Es la mitad de QUIRA que no se
+    # negocia — toda afirmación regresa a su evidencia.
+    solo_publico = [n for n, c, _a, v, _ in _INVENTARIO
+                    if c == "INDICADOR" and v == "PÚBLICO"]
+    assert not solo_publico, (
+        f"{solo_publico} son indicadores marcados sólo como PÚBLICO. Un "
+        f"indicador publicado sin capa metodológica es un número sin "
+        f"trazabilidad, que es exactamente lo que QUIRA existe para no hacer")
+
+
+def test_el_mapeo_indice_dominio_se_declara_ausente_no_se_inventa():
+    """El hallazgo real del intento de verificación, y el más incómodo.
+
+    Javo afirma —y la arquitectura lo aplica— que cada índice aparece en el
+    dominio que lo representa. Al intentar comprobarlo apareció que **no existe
+    un artefacto que declare ese mapeo**: vive en el diseño, no en algo
+    verificable. `PROTOCOLO_CURACION_DOMINIO` registra el estado de curación de
+    cada dominio, no qué índice le corresponde.
+
+    Es la misma forma que `E_i` —una regla que opera sin estar escrita— y que
+    `AVEP` —un vocabulario que se propaga sin autoridad—.
+
+    ⚠️ Y la tabla que el documento imprime NO demuestra lo contrario: se apoya en
+    una lista de superficies escrita a mano en el propio script. Medir contra una
+    lista propia y presentar el resultado como hallazgo sería `DOC-009` otra vez.
+    Esta prueba vigila que esa salvedad no desaparezca."""
+    txt = _DOC.read_text(encoding="utf-8")
+    assert "No existe un artefacto que declare qué índice pertenece a qué" in txt, (
+        "desapareció el hallazgo: sin él, la tabla de índices por dominio se "
+        "leería como una verificación, y no lo es")
+    assert "escrita a mano" in txt, (
+        "desapareció la salvedad sobre la lista de superficies. Sin ella, un "
+        "índice ausente de la tabla parecería ausente del producto")
+
+
 def test_ICPI_conserva_el_nombre_de_la_tesis():
     """El nombre del constructo no se toca, y la razón es de trazabilidad, no de
     gusto: «Índice de Congruencia Programática e Intersistémica» es el nombre de
@@ -99,7 +157,11 @@ def test_ICPI_conserva_el_nombre_de_la_tesis():
     from scripts.gm_omega.terminologia_quira import _INVENTARIO
     icpi = [f for f in _INVENTARIO if f[0] == "ICPI"]
     assert icpi, "`ICPI` desapareció del inventario"
-    _, cat, autoridad, nota = icpi[0]
+    _, cat, autoridad, vis, nota = icpi[0]
+    assert vis == "INSTITUCIONAL", (
+        f"`ICPI` pasó a visibilidad «{vis}». La sigla pertenece a la ficha "
+        f"metodológica: en la capa pública va la pregunta que responde, no el "
+        f"acrónimo (DOC-014)")
     assert cat == "INDICADOR", (
         f"`ICPI` pasó a categoría «{cat}». No es el centro de QUIRA: es un "
         f"indicador nuclear del Gold Master, y confundirlo con el eje "
