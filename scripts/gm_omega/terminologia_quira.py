@@ -494,25 +494,29 @@ def _escribir(filas, sueltos, sin_cat, sin_uso) -> None:
       "la lista no incluye. Medir contra una lista propia y presentar el "
       "resultado como hallazgo sería exactamente lo que `DOC-009` prohíbe.")
     A("")
-    A("**Lo que sí quedó demostrado, al intentar la verificación:**")
+    A("### ⚠️⚠️ CORRECCIÓN · esta auditoría afirmó una ausencia que era falsa")
     A("")
-    A("> **No existe un artefacto que declare qué índice pertenece a qué "
-      "dominio.**")
+    A("Una versión anterior de este documento decía:")
     A("")
-    A("El mapeo existe —Javo lo tiene claro y la arquitectura lo aplica: *«todos "
-      "los índices están construidos para aparecer en los dominios que los "
-      "representan»*— pero **vive en el diseño, no en un artefacto verificable**. "
-      "`PROTOCOLO_CURACION_DOMINIO` registra el estado de curación de cada "
-      "dominio, no qué índice le corresponde.")
+    A("> ~~«No existe un artefacto que declare qué índice pertenece a qué "
+      "dominio.»~~")
     A("")
-    A("Y sin esa tabla, **ninguna verificación automática es posible**: ni ésta, "
-      "ni una que compruebe que un índice no se publica fuera de su dominio, ni "
-      "una que detecte un dominio que perdió su indicador. Es la misma forma del "
-      "problema de `E_i` —una regla que opera sin estar escrita— y del de `AVEP` "
-      "—un vocabulario que se propaga sin autoridad que lo defina—.")
+    A("**Es falso.** La `CONSTITUCION_ONTOLOGICA_QUIRA.md` §CAPA 0.5 lo declara "
+      "para los **13 dominios**, cada uno con su capacidad estatal y su "
+      "indicador real. No lo busqué ahí: busqué en el protocolo de curación y en "
+      "el código, y al no encontrarlo **declaré la ausencia**.")
     A("")
-    A("**Producir ese mapeo es el primer entregable de `T3`.** No se improvisa "
-      "aquí: exige leer dominio por dominio, y eso es curación, no inventario.")
+    A("Es exactamente el error que esta misma auditoría le hizo a `E_i` "
+      "—clasificarlo `UNTRACEABLE` antes de agotar la búsqueda— y la lección se "
+      "repite intacta:")
+    A("")
+    A("> **Una ausencia sólo se declara después de mirar donde debía estar.**")
+    A("")
+    A("Lo que sí falta, y es más preciso, es una forma **consumible por "
+      "máquina** y tres campos que la Constitución no tiene: el **rol** del "
+      "indicador, la **pregunta rectora** de cada dominio y la **capa de "
+      "presentación**. Eso es lo que el contrato `T3` construye — sobre el "
+      "mapeo que ya existía, no en su lugar.")
     A("")
     A("**«En producto»** cuenta archivos de `quira_pages/`, `components/` y "
       "`views/`. Un nombre interno con presencia ahí es candidato a revisión por "

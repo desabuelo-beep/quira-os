@@ -138,12 +138,19 @@ def test_el_mapeo_indice_dominio_se_declara_ausente_no_se_inventa():
     lista propia y presentar el resultado como hallazgo sería `DOC-009` otra vez.
     Esta prueba vigila que esa salvedad no desaparezca."""
     txt = _DOC.read_text(encoding="utf-8")
-    assert "No existe un artefacto que declare qué índice pertenece a qué" in txt, (
-        "desapareció el hallazgo: sin él, la tabla de índices por dominio se "
-        "leería como una verificación, y no lo es")
     assert "escrita a mano" in txt, (
         "desapareció la salvedad sobre la lista de superficies. Sin ella, un "
         "índice ausente de la tabla parecería ausente del producto")
+    # ⚠️ Y la constancia del error, que vale más que el hallazgo que corrigió.
+    assert "CAPA 0.5" in txt and "Es falso" in txt, (
+        "desapareció la corrección: esta auditoría llegó a afirmar que no "
+        "existía un artefacto declarando índice→dominio, y la Constitución "
+        "§CAPA 0.5 lo declara para los 13. Borrar la constancia dejaría el "
+        "hallazgo falso circulando y perdería la lección que lo acompaña")
+    assert "sólo se declara después de mirar donde debía estar" in txt, (
+        "se perdió la regla que sale del error: una ausencia sólo se declara "
+        "tras agotar la búsqueda. Es la misma que E_i enseñó y que aquí se "
+        "volvió a aprender")
 
 
 def test_el_contrato_no_rellena_celdas_por_inferencia():
@@ -176,7 +183,8 @@ def test_el_contrato_no_rellena_celdas_por_inferencia():
         "completó, cada asignación nueva debe citar el PCD, ADR o decisión que "
         "la sostiene — y esta prueba debe pasar a verificar ESO, no la ausencia")
 
-    sin_pregunta = [c for c, (_n, _e, q) in _DOMINIOS.items() if q == _PENDIENTE]
+    sin_pregunta = [c for c, (_n, _cap, _i, _e, q) in _DOMINIOS.items()
+                    if q == _PENDIENTE]
     assert sin_pregunta, (
         "todos los dominios declaran ya su pregunta. Excelente — pero entonces "
         "hay que comprobar que cada una sale de su PCD, no del script")

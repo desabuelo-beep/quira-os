@@ -38,16 +38,16 @@
 
 | Nombre | Categoría | Capa | Autoridad que lo define | Archivos | En producto |
 |---|---|---|---|---:|---:|
-| `LOTAIP` | FUENTE | PÚBLICO | LOTAIP Art. 7 | 249 | 19 |
+| `LOTAIP` | FUENTE | PÚBLICO | LOTAIP Art. 7 | 251 | 19 |
 | `CPCCS` | FUENTE | PÚBLICO | LOPC Art. 88 | 217 | 18 |
 | `SERCOP` | FUENTE | PÚBLICO | LOSNCP | 206 | 10 |
 | `eSIGEF` | FUENTE | PÚBLICO | COPFP · MEF | 199 | 17 |
 | `SIGAD` | FUENTE | PÚBLICO | SENPLADES | 94 | 1 |
 | `PDOT` | EVIDENCIA | PÚBLICO | COOTAD · COPFP Art. 41 | 417 | 26 |
 | `R_i` | VARIABLE | TÉCNICO | tesis · H14!F | 15 | — |
+| `E_i` | VARIABLE | TÉCNICO | ⚠️ NOT_DETERMINABLE (007-B0) | 14 | — |
 | `P_i` | VARIABLE | TÉCNICO | tesis · H14!G | 13 | — |
 | `V_i` | VARIABLE | TÉCNICO | tesis · H13!F | 13 | — |
-| `E_i` | VARIABLE | TÉCNICO | ⚠️ NOT_DETERMINABLE (007-B0) | 13 | — |
 | `T_i` | VARIABLE | TÉCNICO | H07b!fila 20 | 10 | — |
 | `C_i` | VARIABLE | TÉCNICO | H01 TBL_CALIBRACION_Ci | 10 | — |
 | `ICPI` | INDICADOR | INSTITUCIONAL | tesis (abril 2026) · H12!B33 | 357 | 12 |
@@ -64,12 +64,12 @@
 | `IBSC` | INDICADOR | TÉCNICO | H12b_MOTOR_IBSC | 14 | 1 |
 | `NOT_DETERMINABLE` | ESTADO | INSTITUCIONAL | Constitución CAPA 0 | 8 | — |
 | `TEMPORAL_SEMANTIC_GAP` | ESTADO | TÉCNICO | GM-Ω taxonomía | 7 | — |
-| `UNTRACEABLE` | ESTADO | TÉCNICO | GM-Ω taxonomía | 5 | — |
+| `UNTRACEABLE` | ESTADO | TÉCNICO | GM-Ω taxonomía | 6 | — |
 | `QUIRA Institucional` | PRODUCTO | PÚBLICO | ADR-041 §4 | 31 | 2 |
 | `QUIRA Cooperación` | PRODUCTO | PÚBLICO | ADR-041 §4 | 25 | 2 |
 | `QUIRA Impact` | PRODUCTO | PÚBLICO | ADR-041 §4 | 19 | 1 |
 | `QUIRA Economic` | PRODUCTO | PÚBLICO | ADR-041 §4 | 11 | 1 |
-| `SAT` | CAPA | INTERNO | H21-H24 · SAT_Catalogo | 265 | 13 |
+| `SAT` | CAPA | INTERNO | H21-H24 · SAT_Catalogo | 267 | 13 |
 | `GeoTwin` | CAPA | PÚBLICO | QTMP | 80 | 7 |
 | `QUIRA IA` | CAPA | PÚBLICO | ADR-035/037 | 55 | 2 |
 | `Motor` | FUNCIÓN | TÉCNICO | H12_MOTOR_ICPI_CANÓNICO · ADR-023 | 226 | 12 |
@@ -79,7 +79,7 @@
 | `QUIRA` | ARTEFACTO | PÚBLICO | identity/CONSTITUCION_INSTITUCIONAL.md | 825 | 59 |
 | `Dylus Lab` | ARTEFACTO | PÚBLICO | identity/ | 794 | 60 |
 | `Gold Master` | ARTEFACTO | TÉCNICO | ADR-023 · METODOLOGIA_GOLD_MASTER.md | 392 | 18 |
-| `SIAP` | ARTEFACTO | HISTÓRICO | tesis · da nombre al Gold Master | 358 | 7 |
+| `SIAP` | ARTEFACTO | HISTÓRICO | tesis · da nombre al Gold Master | 359 | 7 |
 | `AVEP` ⚠️ | SIN_CATEGORÍA | HISTÓRICO | ⚠️ ninguna autoridad vigente lo define | 71 | 3 |
 
 ## La segunda dimensión · capa de presentación
@@ -132,15 +132,19 @@ De **12 indicadores** inventariados, **4** aparecen en alguna superficie de domi
 
 **Esa tabla no demuestra nada, y hay que decirlo antes de que alguien la cite.** Se apoya en una lista de superficies de dominio **escrita a mano** en este mismo script (`_PAGS_DOMINIO`, 8 de las 55 páginas del producto). Un índice que no aparece puede vivir perfectamente en una superficie que la lista no incluye. Medir contra una lista propia y presentar el resultado como hallazgo sería exactamente lo que `DOC-009` prohíbe.
 
-**Lo que sí quedó demostrado, al intentar la verificación:**
+### ⚠️⚠️ CORRECCIÓN · esta auditoría afirmó una ausencia que era falsa
 
-> **No existe un artefacto que declare qué índice pertenece a qué dominio.**
+Una versión anterior de este documento decía:
 
-El mapeo existe —Javo lo tiene claro y la arquitectura lo aplica: *«todos los índices están construidos para aparecer en los dominios que los representan»*— pero **vive en el diseño, no en un artefacto verificable**. `PROTOCOLO_CURACION_DOMINIO` registra el estado de curación de cada dominio, no qué índice le corresponde.
+> ~~«No existe un artefacto que declare qué índice pertenece a qué dominio.»~~
 
-Y sin esa tabla, **ninguna verificación automática es posible**: ni ésta, ni una que compruebe que un índice no se publica fuera de su dominio, ni una que detecte un dominio que perdió su indicador. Es la misma forma del problema de `E_i` —una regla que opera sin estar escrita— y del de `AVEP` —un vocabulario que se propaga sin autoridad que lo defina—.
+**Es falso.** La `CONSTITUCION_ONTOLOGICA_QUIRA.md` §CAPA 0.5 lo declara para los **13 dominios**, cada uno con su capacidad estatal y su indicador real. No lo busqué ahí: busqué en el protocolo de curación y en el código, y al no encontrarlo **declaré la ausencia**.
 
-**Producir ese mapeo es el primer entregable de `T3`.** No se improvisa aquí: exige leer dominio por dominio, y eso es curación, no inventario.
+Es exactamente el error que esta misma auditoría le hizo a `E_i` —clasificarlo `UNTRACEABLE` antes de agotar la búsqueda— y la lección se repite intacta:
+
+> **Una ausencia sólo se declara después de mirar donde debía estar.**
+
+Lo que sí falta, y es más preciso, es una forma **consumible por máquina** y tres campos que la Constitución no tiene: el **rol** del indicador, la **pregunta rectora** de cada dominio y la **capa de presentación**. Eso es lo que el contrato `T3` construye — sobre el mapeo que ya existía, no en su lugar.
 
 **«En producto»** cuenta archivos de `quira_pages/`, `components/` y `views/`. Un nombre interno con presencia ahí es candidato a revisión por Bloomberg Firewall — pero **no automáticamente una infracción**: puede aparecer en un comentario o en una clave de datos que nunca se pinta.
 
@@ -166,26 +170,26 @@ Detectadas en canon, `config.py` y `BOOT.md`, excluidas las normas e institucion
 | `IRS` | 17 |
 | `ICM` | 6 |
 | `PMV` | 4 |
-| `PROGAPSA` | 3 |
 | `BDE` | 3 |
+| `PROGAPSA` | 3 |
 | `EJECUTA` | 3 |
 | `ACTIVA` | 3 |
 | `CORREL` | 3 |
 | `ALTO` | 3 |
 | `NORTH` | 3 |
 | `CPFP` | 3 |
-| `BOOT` | 2 |
 | `DPE` | 2 |
+| `BOOT` | 2 |
 | `PRIVADO` | 2 |
-| `UNESCO` | 2 |
 | `RIPS` | 2 |
+| `UNESCO` | 2 |
 | `VER` | 2 |
 | `CRE` | 2 |
 | `RIESGO` | 2 |
 | `PLAZO` | 2 |
 | `OUTPUTS` | 2 |
-| `DATOS` | 2 |
 | `SOBRE` | 2 |
+| `DATOS` | 2 |
 | `EMAI` | 2 |
 
 ## ⚠️ Hallazgo de propina · siglas normativas mal formadas

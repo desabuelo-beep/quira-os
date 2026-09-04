@@ -6,16 +6,20 @@ El contrato arquitectónico que le falta a QUIRA:
 
     ÍNDICE → DOMINIO → ROL → PREGUNTA QUE RESPONDE → CAPA DE PRESENTACIÓN
 
-    POR QUÉ EXISTE. Al intentar verificar la afirmación de Javo —«todos los
-    índices están construidos para aparecer en los dominios que los
-    representan»— apareció que el mapeo **vive en el diseño, no en un artefacto
-    verificable**. Y lo mismo con la pregunta de cada dominio: `m_rdc.py` la
-    menciona («su dueño por la pregunta que responde») pero ningún campo la
-    declara.
+    POR QUÉ EXISTE. Javo afirmó que cada índice pertenece al dominio que lo
+    representa, y tenía razón: la `CONSTITUCION_ONTOLOGICA_QUIRA.md` §CAPA 0.5
+    lo declara para los 13 dominios, con su capacidad estatal y su indicador.
 
-    Sin este contrato NINGUNA verificación automática es posible: ni comprobar
-    que un índice no se publica fuera de su dominio, ni detectar que un dominio
-    perdió su indicador, ni saber en qué capa se presenta cada nombre.
+    ⚠️ ESTA AUDITORÍA LLEGÓ A AFIRMAR QUE ESE ARTEFACTO NO EXISTÍA. Era falso:
+    no lo busqué en la Constitución. El mismo error que le hizo a `E_i`
+    —declararlo `UNTRACEABLE` antes de agotar la búsqueda—, y la misma lección:
+    **una ausencia sólo se declara después de mirar donde debía estar.**
+
+    Lo que SÍ falta, y es más preciso, es una forma **consumible por máquina** y
+    unos campos que la Constitución no tiene: el ROL del indicador, la PREGUNTA
+    RECTORA de cada dominio y la CAPA DE PRESENTACIÓN. Sin ellos no se puede
+    verificar que un índice no se publique fuera de su dominio, ni detectar que
+    un dominio perdió su indicador.
 
     ⚠️ LAS CELDAS NO SE RELLENAN POR INFERENCIA. Sólo se declara lo que tiene
     AUTORIDAD DOCUMENTAL —un PCD cerrado, un ADR, una decisión registrada—. Todo
@@ -56,24 +60,51 @@ _ROLES = {
 # La pregunta de cada dominio SÓLO se declara donde hay PCD cerrado que la
 # sostenga. Los demás quedan pendientes: inventarles una pregunta sería
 # escribir el canon desde un script, que es lo contrario de lo que QUIRA hace.
+#
+# ⚠️ CORRECCIÓN DE UN ERROR DE ESTA AUDITORÍA. La versión anterior de este
+# script declaró que «no existe un artefacto que declare qué índice pertenece a
+# qué dominio». **Es falso**: la `CONSTITUCION_ONTOLOGICA_QUIRA.md` §CAPA 0.5
+# lo declara para los 13, con su capacidad estatal y su indicador real. No lo
+# busqué ahí. Es exactamente el error que esta misma auditoría le hizo a `E_i`
+# —clasificarlo `UNTRACEABLE` antes de agotar la búsqueda— y la lección se
+# repite: **una ausencia sólo se declara después de mirar donde debía estar**.
+#
+# (dominio, capacidad estatal · macroeje, indicador según la Constitución,
+#  estado de construcción, pregunta rectora)
 _DOMINIOS = {
-    "d01": ("Planificación", "PCD-D01 ✅",
+    "d01": ("Planificación Estratégica", "trayectoria · 1 Dirección",
+            "Avance físico metas PDOT", "CONSTRUIDO · PCD-D01",
             "¿Lo planificado se formula en concordancia con el mandato, y el "
             "gasto aterriza donde el plan manda?"),
-    "d02": ("Presupuesto y Financiamiento", "PCD-D02", _PENDIENTE),
-    "d03": ("Gobernanza y Mandato", "PCD-D03", _PENDIENTE),
-    "d04": ("—", "sin construir", _PENDIENTE),
-    "d05": ("—", "sin construir", _PENDIENTE),
-    "d06": ("Salud Institucional", "PCD-D06 ✅", _PENDIENTE),
-    "d07": ("Transparencia", "PCD-D07", _PENDIENTE),
-    "d08": ("Participación Ciudadana", "d08 entrable", _PENDIENTE),
-    "d09": ("Rendición de Cuentas", "PCD-D09 ✅",
+    "d02": ("Presupuesto y Financiamiento", "movilización · 1 Dirección",
+            "Elegibilidad / fondos en riesgo", "PCD-D02", _PENDIENTE),
+    "d03": ("Gobernanza del Mandato", "fidelidad democrática · 1 Dirección",
+            "Consistencia IFE-A", "PCD-D03", _PENDIENTE),
+    "d04": ("Alertas Institucionales", "anticipación · 2 Capacidad",
+            "Cola del SAT", "SELLADO · sin construir", _PENDIENTE),
+    "d05": ("Holding e Integración Municipal", "articulación · 2 Capacidad",
+            "Promedio de entidades", "SELLADO · sin construir", _PENDIENTE),
+    "d06": ("Salud Institucional", "sostenibilidad interna · 2 Capacidad",
+            "⚠️ «Cumplimiento Institucional (ICPI)»", "PCD-D06 · sintetizador",
+            _PENDIENTE),
+    "d07": ("Transparencia", "verificabilidad · 3 Democracia",
+            "LOTAIP 21/21", "EN CURACIÓN", _PENDIENTE),
+    "d08": ("Participación Ciudadana", "inteligencia colectiva · 3 Democracia",
+            "Gobernanza participativa (IGP)", "ENTRABLE", _PENDIENTE),
+    "d09": ("Rendición de Cuentas", "responsabilidad pública · 3 Democracia",
+            "Estado del circuito de rendición", "CONSTRUIDO · PCD-D09",
             "¿Lo que el GAD rindió ante el CPCCS se corresponde con lo que "
             "hizo, y la ciudadanía pudo incidir?"),
-    "d10": ("—", "sin construir", _PENDIENTE),
-    "d11": ("—", "sin construir", _PENDIENTE),
-    "d12": ("—", "sin construir", _PENDIENTE),
-    "d13": ("Mutabilidad", "Constitución §Mutabilidad", _PENDIENTE),
+    "d10": ("Cobertura de Servicios e Infraestructura", "acceso colectivo · 4 Territorio",
+            "Cobertura agua/saneamiento · NBI", "SELLADO · sin construir", _PENDIENTE),
+    "d11": ("Desarrollo Económico Territorial", "dinamización · 4 Territorio",
+            "PEA / cadenas de valor", "SELLADO · sin construir", _PENDIENTE),
+    "d12": ("Inclusión, Equidad y Género", "inclusión y equidad · 4 Territorio",
+            "Presupuesto con enfoque de género (PSG)", "SELLADO · sin construir",
+            _PENDIENTE),
+    "d13": ("Sostenibilidad y Resiliencia Ambiental", "resiliencia · 4 Territorio",
+            "ICODS · biofísico/riesgo", "SELLADO · primer ejercicio de mutabilidad",
+            _PENDIENTE),
 }
 
 # ── EL CONTRATO ──────────────────────────────────────────────────────────────
@@ -85,20 +116,22 @@ _DOMINIOS = {
 # el nombre: que un índice se mencione en una página no prueba que ese sea su
 # dominio canónico.
 _CONTRATO = [
-    ("ICPI", "d06", _PENDIENTE, _PENDIENTE,
-     "PCD-D06 §Diccionario campo 6 · «Ancla en ICPI» — ⚠️ y d06 está cerrado "
-     "como SINTETIZADOR, lo que hace compatible la hipótesis transversal"),
+    ("ICPI", "d06", "PRIMARIO", _PENDIENTE,
+     "Constitución §CAPA 0.5 (d06 → «Cumplimiento Institucional (ICPI)») + "
+     "PCD-D06 «Ancla en ICPI» — ⚠️ residencia canónica EN REVISIÓN, ver §T3-R"),
     ("IPE", "d01", "PRIMARIO",
      "¿Qué proporción del gasto ejecutado está vinculada a metas del PDOT?",
      "PCD-D01 · cerrado · fórmula nativa en H16b"),
-    ("IGP", "d08", _PENDIENTE, _PENDIENTE,
-     "D-010 · curación de d08 · ⚠️ alcance en disputa: mide 2 de 7 mecanismos"),
+    ("IGP", "d08", "PRIMARIO", _PENDIENTE,
+     "Constitución §CAPA 0.5 (d08 → «Gobernanza participativa (IGP)») · ⚠️ alcance en disputa: mide 2 de 7 mecanismos (D-010)"),
     ("ITAM", "d07", _PENDIENTE, _PENDIENTE, "PCD-D07 · asignación por confirmar"),
     ("IED", _PENDIENTE, _PENDIENTE, _PENDIENTE, "06_IED_DIRECTIVO.md"),
     ("IFE", _PENDIENTE, _PENDIENTE, _PENDIENTE, "H16"),
-    ("ICODS", _PENDIENTE, _PENDIENTE, _PENDIENTE, "H20"),
+    ("ICODS", "d13", "PRIMARIO", _PENDIENTE,
+     "Constitución §CAPA 0.5 (d13 → «ICODS · biofísico/riesgo»)"),
     ("IEF", _PENDIENTE, _PENDIENTE, _PENDIENTE, "H20c"),
-    ("PSG", _PENDIENTE, _PENDIENTE, _PENDIENTE, "H16c"),
+    ("PSG", "d12", "PRIMARIO", _PENDIENTE,
+     "Constitución §CAPA 0.5 (d12 → «Presupuesto con enfoque de género (PSG)»)"),
     ("IBSC", _PENDIENTE, _PENDIENTE, _PENDIENTE, "H12b"),
     ("TGI", _PENDIENTE, "COMPUESTO", _PENDIENTE,
      "01_TGI_FRAMEWORK.md · 5 dimensiones · probablemente transversal"),
@@ -125,7 +158,7 @@ def main() -> int:
     total = len(filas) * 4          # dominio · rol · pregunta · capa
     faltan = sum(1 for f in filas for k in ("dom", "rol", "preg", "capa")
                  if f[k] == _PENDIENTE)
-    dom_sin_preg = sum(1 for _, (_n, _p, q) in _DOMINIOS.items() if q == _PENDIENTE)
+    dom_sin_preg = sum(1 for _, (_n, _c, _i, _e, q) in _DOMINIOS.items() if q == _PENDIENTE)
 
     print(f"contrato: {len(filas)} índices × 4 campos = {total} celdas · "
           f"{faltan} POR_DECLARAR ({faltan / total * 100:.0f} %)")
@@ -184,11 +217,11 @@ def _escribir(filas, total, faltan, dom_sin_preg) -> None:
       "responde»— pero **ningún campo la declara**. Es la misma forma que el "
       "mapeo índice→dominio: existe en el diseño, no como artefacto.")
     A("")
-    A("| Dominio | Nombre | Curación | Pregunta que responde |")
-    A("|---|---|---|---|")
-    for cid, (nombre, estado, preg) in _DOMINIOS.items():
+    A("| Dom | Nombre | Capacidad del Estado · macroeje | Indicador (Constitución) | Construcción | Pregunta rectora |")
+    A("|---|---|---|---|---|---|")
+    for cid, (nombre, cap, ind, estado, preg) in _DOMINIOS.items():
         p = f"**{_PENDIENTE}**" if preg == _PENDIENTE else preg
-        A(f"| `{cid}` | {nombre} | {estado} | {p} |")
+        A(f"| `{cid}` | {nombre} | {cap} | {ind} | {estado} | {p} |")
     A("")
     A(f"**{dom_sin_preg} de {len(_DOMINIOS)} dominios** no tienen pregunta "
       "declarada. Sólo se escribieron las de `d01` y `d09`, que tienen PCD "
@@ -271,14 +304,122 @@ def _escribir(filas, total, faltan, dom_sin_preg) -> None:
       "nombre al propio Gold Master.")
     A("")
 
+    A("## ★ T3-R · La transversalidad del ICPI es una DECISIÓN NUEVA")
+    A("")
+    A("Javo lo precisó y corrige cómo se venía contando: **nunca se concibió el "
+      "ICPI como transversal.** Tenía su dominio —`d06`— igual que los demás "
+      "índices. Lo que ahora se plantea es **incorporar** esa transversalidad.")
+    A("")
+    A("La diferencia no es de matiz. Presentarlo como si «siempre hubiera sido "
+      "transversal y no nos habíamos dado cuenta» sería reescribir la historia "
+      "para que encaje con una idea nueva — el mismo pecado que `DOC-016` "
+      "prohíbe, aplicado a la arquitectura en vez de al nombre. **Es una "
+      "evolución del canon, y como tal se registra.**")
+    A("")
+    A("### El canon YA autoriza este refactor")
+    A("")
+    A("No hace falta forzar nada: la Constitución lo previó.")
+    A("")
+    A("> **DECLARACIÓN DE MUTABILIDAD** — «Los 12 cajones constituyen la "
+      "organización operativa VIGENTE […] La estructura de dominios es modular "
+      "[…] **Lo permanente es la Capa 0; los dominios son variables.**»")
+    A("")
+    A("Y `CAPA 0.5` da el criterio que decide: cada dominio es la manifestación "
+      "de **una capacidad del Estado**. Ahí está el argumento, y no es una "
+      "opinión:")
+    A("")
+    A("| | |")
+    A("|---|---|")
+    A("| `d06` es la capacidad de | **sostenibilidad interna** — «cumplir "
+      "funciones consistentemente» |")
+    A("| El ICPI mide | **congruencia entre el mandato y su materialización a "
+      "través de los silos** |")
+    A("")
+    A("**No son lo mismo.** Y el propio canon lo delata: la Constitución nombra "
+      "el indicador de `d06` como «**Cumplimiento** Institucional (ICPI)», "
+      "cuando `GM-Ω-ICPI-001` reconstruyó que el ICPI **no mide cumplimiento** "
+      "—mide congruencia— y la Regla de Oro lo prohíbe expresamente.")
+    A("")
+    A("> La residencia del ICPI en `d06` se apoya en una denominación que el "
+      "propio canon ya retiró.")
+    A("")
+    A("Eso **no invalida `d06`**: cuando se selló, «Cumplimiento Institucional» "
+      "era la lectura vigente. Es una divergencia **entre dos documentos del "
+      "canon**, y resolverla es justamente lo que GM-Ω existe para hacer.")
+    A("")
+    A("### Pero la transversalidad todavía no está probada")
+    A("")
+    A("⚠️ **Que el ICPI consuma datos de varios silos NO prueba que sea "
+      "transversal.** Un indicador puede leer de todas partes y responder una "
+      "pregunta local; inferir la arquitectura del patrón de consumo sería "
+      "`DOC-009` otra vez. La prueba tiene que venir del **constructo**:")
+    A("")
+    A("> Si para responder su pregunta es **necesario relacionar "
+      "sistemáticamente dimensiones que pertenecen a distintos dominios**, "
+      "entonces la transversalidad es una propiedad del constructo y no una "
+      "conveniencia de diseño.")
+    A("")
+    A("Y el canon ya tiene el instrumento para juzgarlo: **la prueba de "
+      "exportabilidad** (Constitución §CAPA 0.5) —*«¿sobreviven las capacidades "
+      "si desaparecen los dominios?»*—. Aplicada al ICPI: ¿sobrevive el ICPI si "
+      "desaparece `d06`? Si la respuesta es sí, no era su dominio.")
+    A("")
+    A("### Residencia ≠ ámbito, y ahí está la salida")
+    A("")
+    A("El contrato actual sólo sabe decir `índice → dominio`, y esa relación es "
+      "demasiado pobre. Hacen falta dos campos donde hay uno:")
+    A("")
+    A("```")
+    A("   RESIDENCIA CANÓNICA   dónde se gestiona y quién responde por él")
+    A("   ÁMBITO DE COBERTURA   qué dominios atraviesa")
+    A("```")
+    A("")
+    A("Con esa distinción, **sacar el ICPI de `d06` deja de ser un dilema**. No "
+      "es «o pertenece a `d06` o desaparece de `d06`»: `d06` puede conservarlo "
+      "como **indicador relacionado** —lo necesita para explicar la salud "
+      "institucional— sin ser su propietario exclusivo. Nada se esconde; cambia "
+      "quién responde por él.")
+    A("")
+    A("### Secuencia propuesta — y no empieza moviendo nada")
+    A("")
+    A("| | | |")
+    A("|---|---|---|")
+    A("| **R0** | Diagnóstico | qué dominios hay, cuáles construidos, qué "
+      "pregunta rectora, qué índices residen, cuáles se solapan |")
+    A("| **R1** | Modelos | `A` todo índice dentro de un dominio · `B` dominios "
+      "+ transversales · `C` dominios + capa transversal + Centro |")
+    A("| **R2** | Decisión | ¿sale el ICPI de `d06`? ¿qué otros son "
+      "transversales? ¿`d06` conserva referencia? |")
+    A("")
+    A("⚠️ **`T3-R` es diagnóstico, no ejecución.** No mueve el ICPI, no toca el "
+      "Gold Master, no desmonta dominios. Primero se demuestra **qué "
+      "arquitectura hace falta**; sólo entonces se cambia. Y `011` sigue por "
+      "delante: mover un indicador cuyo constructo aún está en dictamen sería "
+      "reorganizar la casa antes de saber qué se guarda.")
+    A("")
+
     A("## ⚠️ Ningún dominio está cerrado hasta pasar este refactor")
     A("")
-    A("Regla de Javo, y tiene consecuencia inmediata sobre este contrato: "
-      "`d01`, `d06` y `d09` figuran como **cerrados**, pero se cerraron bajo un "
-      "canon **anterior** al Terminology Freeze — antes de que existieran "
-      "`DOC-013` (higiene ontológica), `DOC-014` (capas de presentación) y este "
-      "contrato. Su cierre es válido **para lo que entonces se auditó**, y no "
-      "acredita lo que entonces no se preguntaba.")
+    A("**Primero, una distinción que esta auditoría tenía al revés.** Javo la "
+      "precisó: **sellado ≠ terminado, y sellado ≠ construido.**")
+    A("")
+    A("| Estado | Qué significa |")
+    A("|---|---|")
+    A("| **SELLADO** | su concepción quedó fijada bajo el canon de entonces · "
+      "**no está construido** |")
+    A("| **ABIERTO / CONSTRUIDO** | es sobre el que se ha trabajado y tiene "
+      "producto |")
+    A("| **CERRADO (PCD)** | su expediente de curación se completó — cosa "
+      "distinta de las dos anteriores |")
+    A("")
+    A("Se venía leyendo «cerrado» como «terminado e intocable», y eso llevó a "
+      "recomendar no tocar `d01`, `d06` y `d09`. **Era demasiado fuerte.**")
+    A("")
+    A("Regla de Javo, entonces, con su consecuencia: esos tres tienen PCD "
+      "cerrado bajo un canon **anterior** al Terminology Freeze — antes de que "
+      "existieran `DOC-013`, `DOC-014` y este contrato. Su cierre es válido "
+      "**para lo que entonces se auditó**, y no acredita lo que entonces no se "
+      "preguntaba.")
     A("")
     A("Es el mismo principio que gobierna todo GM-Ω: **un mecanismo de "
       "cobertura no es autoridad sobre su propia cobertura**. Un PCD cerrado "
