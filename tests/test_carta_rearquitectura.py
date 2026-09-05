@@ -269,6 +269,48 @@ def test_auditoria_es_la_prueba_patron_de_migracion_semantica():
         "se perdió la medición. Sin el tamaño, el riesgo parece teórico")
 
 
+def test_el_corpus_historico_en_disco_entra_al_inventario():
+    """★ El segundo vacío que Javo detectó, y lo planteó como paréntesis:
+
+        «no sé si sea necesario […] hay una carpeta en local con gran parte
+         de la historia, son 898 archivos, 147 carpetas»
+
+    **Era necesario**, y por la misma razón que el corpus normativo: la carta
+    inventariaba el repositorio y Supabase, y la historia del proyecto vive
+    además en carpetas hermanas del disco.
+
+    ⚠️ Y NO ES TEÓRICO — hay precedente en esta misma investigación:
+    `metodologia.docx` estaba en una de esas carpetas y **reordenó `011-C3`
+    entero**, obligando a corregir la fecha de `C_i` y explicando la
+    superposición `E_i`↔`C_i` que `011-C2` había declarado inexplicada.
+
+    Lo que apareció al medir: **83 versiones fechadas del Gold Master**, en
+    una carpeta que se llama literalmente `historial_gold_master`. `011-C3`
+    no las usó, y declaró `NO DETERMINABLE` la razón de cambios que esa serie
+    puede al menos **fechar y describir**.
+
+    La lección que esto fija: **un `NO DETERMINABLE` vale mientras no aparezca
+    la fuente. Declararlo no clausura la búsqueda.**"""
+    txt = _CARTA.read_text(encoding="utf-8")
+    assert "Inventario HISTÓRICO" in txt, (
+        "desapareció el corpus histórico en disco. Sin él, el inventario "
+        "vuelve a confundir «el repositorio» con «el ecosistema»")
+    assert "historial_gold_master" in txt, (
+        "se perdió la serie de versiones del motor. Es la fuente que puede "
+        "reabrir preguntas que 011-C3 cerró por falta de evidencia")
+    assert "puede reabrir `011-C3`" in txt, (
+        "la carta dejó de advertir que hay conclusiones cerradas en riesgo. "
+        "Ocultarlo haría que el dictamen se apoye en un NO DETERMINABLE que "
+        "quizá ya no lo sea")
+    assert "no explican el **por qué**" in txt, (
+        "se perdió el límite de lo que la serie puede aportar: muestra QUÉ "
+        "cambió y cuándo, no POR QUÉ. Sin ese matiz volvería la tentación de "
+        "inferir la causa desde el resultado, que es DOC-009")
+    assert "Tres sistemas de versionado" in txt, (
+        "desapareció el hallazgo de los tres esquemas de versión sin "
+        "reconciliar: el motor se llama v2.2, su archivo v5.5 y el canon v5.7")
+
+
 def test_la_regla_maestra_ordena_las_cinco_fases():
     """`DOC-029` · lo que separa una limpieza de una rearquitectura gobernada.
 

@@ -115,6 +115,11 @@ _ETAPAS = [
                        "norma↔instrumento", _ABIERTO,
      "🔴 13.147 chunks SIN columna de vigencia · document_class vacía en 81 % "
      "· norma e instrumentos de gestión en la misma tabla"),
+    ("QNEXT", "BM-05", "Corpus histórico en disco · 898 archivos + 83 "
+                       "versiones del motor", _ABIERTO,
+     "★ existe `historial_gold_master` · puede REABRIR 011-C3: la serie "
+     "muestra QUÉ cambió aunque no POR QUÉ · 3 sistemas de versionado sin "
+     "reconciliar"),
     ("QNEXT", "Q1", "Matriz de clasificación · candidato → ratificado",
      _ABIERTO, "no espera al dictamen: clasificar no es cambiar · primer test "
                "= migración semántica de «auditoría»"),

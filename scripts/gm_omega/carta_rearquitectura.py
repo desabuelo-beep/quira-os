@@ -148,6 +148,65 @@ def inventario_fisico() -> list[tuple[str, str, int, bool]]:
     ]
 
 
+def inventario_historico() -> dict:
+    """★ El corpus histórico EN DISCO, fuera del repositorio.
+
+    Javo lo señaló como paréntesis —«no sé si sea necesario»— y era el mismo
+    vacío que el corpus normativo: la carta inventariaba el repositorio y
+    Supabase, y en el disco hay carpetas hermanas con la historia del
+    proyecto.
+
+    ⚠️ Y NO ES TEÓRICO: `metodologia.docx` estaba en una de esas carpetas y
+    **reordenó `011-C3` entero** — obligó a corregir la fecha de `C_i` y
+    explicó la superposición `E_i`↔`C_i` que `011-C2` había declarado
+    inexplicada."""
+    base = _RAIZ.parent
+    if not base.exists():
+        return {}
+
+    def contar(carpeta: Path, patrones: tuple[str, ...]) -> int:
+        if not carpeta.exists():
+            return 0
+        return sum(len([p for p in carpeta.rglob(x)
+                        if not any(e in p.parts for e in _EXCLUIDOS)])
+                   for x in patrones)
+
+    hist = base / "_historico"
+    ext: dict[str, int] = {}
+    if hist.exists():
+        for p in hist.rglob("*"):
+            if p.is_file():
+                s = p.suffix.lower().lstrip(".") or "sin_ext"
+                ext[s] = ext.get(s, 0) + 1
+
+    # Versiones del motor conservadas en disco: la serie temporal del
+    # instrumento que `011-C3` no usó.
+    # Agrupadas POR CARPETA, no listadas una a una: son decenas, y lo que
+    # importa es dónde vive la serie y qué rango cubre.
+    motores: dict[str, list[str]] = {}
+    for p in base.rglob("*.xlsx"):
+        if any(e in p.parts for e in _EXCLUIDOS):
+            continue
+        n = p.name.upper()
+        if "SIAP-ICPI" in n or "GOLD_MASTER" in n or "ECIAP" in n:
+            carpeta = str(p.parent.relative_to(base)).replace("\\", "/")
+            fecha = datetime.fromtimestamp(p.stat().st_mtime).strftime("%Y-%m-%d")
+            motores.setdefault(carpeta, []).append(fecha)
+    motores_res = sorted(
+        ((c, len(f), min(f), max(f)) for c, f in motores.items()),
+        key=lambda x: -x[1])
+    n_motores = sum(len(f) for f in motores.values())
+
+    hermanas = [(d.name, contar(d, ("*.*",)))
+                for d in sorted(base.iterdir())
+                if d.is_dir() and d.name not in ("quira-os",)
+                and not d.name.startswith(".")]
+
+    return {"historico_total": sum(ext.values()), "ext": ext,
+            "motores": motores_res, "n_motores": n_motores,
+            "hermanas": hermanas}
+
+
 def inventario_normativo() -> dict:
     """★ BM-01 · el corpus jurídico vectorizado. Lo que la v1 no vio.
 
@@ -223,10 +282,15 @@ def main() -> int:
     fis = inventario_fisico()
     total_fis = sum(c for _d, _r, c, s in fis if s)
     nor = inventario_normativo()
+    his = inventario_historico()
 
     inv_id = f"QNEXT-INV-{datetime.now().strftime('%Y-%m-%d')}"
     print(f"{inv_id} · commit {_commit()}")
     print(f"FÍSICO      {total_fis} archivos")
+    if his:
+        print(f"HISTÓRICO   {his['historico_total']} archivos en `_historico` "
+              f"· {his['n_motores']} versiones del motor en "
+              f"{len(his['motores'])} carpetas")
     if nor:
         print(f"NORMATIVO   {nor['total']} chunks · {nor['siglas']} normas · "
               f"{nor['norma']} norma / {nor['gestion']} instrumentos de gestión")
@@ -235,12 +299,12 @@ def main() -> int:
     else:
         print("NORMATIVO   [no determinable] sin conexión a Supabase")
 
-    _escribir(fis, total_fis, nor, inv_id)
+    _escribir(fis, total_fis, nor, his, inv_id)
     print(f"→ {_SALIDA.relative_to(_RAIZ).as_posix()}")
     return 0
 
 
-def _escribir(fis, total_fis, nor, inv_id) -> None:
+def _escribir(fis, total_fis, nor, his, inv_id) -> None:
     o: list[str] = []
     A = o.append
     ND = "⬜ **NO DETERMINABLE** · sin conexión a Supabase al generar"
@@ -491,7 +555,90 @@ def _escribir(fis, total_fis, nor, inv_id) -> None:
     A("| hojas del Gold Master | 123 |")
     A("| metas del universo operacional | 25 de 66 |")
     A("")
-    A("### ⑤ Inventario NORMATIVO · `BM-01`")
+    A("### ⑤ Inventario HISTÓRICO · el corpus en disco, fuera del repositorio")
+    A("")
+    if not his:
+        A(ND)
+        A("")
+    else:
+        A("Javo lo señaló como paréntesis —*«no sé si sea necesario»*—. **Lo "
+          "era**, y por la misma razón que el corpus normativo: la carta "
+          "inventariaba el repositorio y Supabase, y la historia del proyecto "
+          "vive además en carpetas hermanas del disco.")
+        A("")
+        A(f"`Dylus Lab/_historico` · **{his['historico_total']} archivos**:")
+        A("")
+        A("| Extensión | Archivos | Qué es |")
+        A("|---|---:|---|")
+        _QUE = {"js": "código legacy", "ts": "código legacy",
+                "py": "código legacy", "md": "**documentación**",
+                "txt": "**volcados de fórmulas**", "xlsx": "**versiones del motor**",
+                "json": "datos", "docx": "**documentación**",
+                "pdf": "**documentación**", "xsd": "esquemas",
+                "html": "prototipos", "png": "capturas"}
+        for e, n in sorted(his["ext"].items(), key=lambda x: -x[1])[:12]:
+            A(f"| `.{e}` | {n} | {_QUE.get(e, '—')} |")
+        A("")
+        A("Carpetas hermanas de `quira-os`:")
+        A("")
+        A("| Carpeta | Archivos |")
+        A("|---|---:|")
+        for nombre, cuenta in his["hermanas"]:
+            A(f"| `{nombre}` | {cuenta} |")
+        A("")
+        A("⚠️ **Y esto NO es teórico.** `metodologia.docx` estaba en una de "
+          "esas carpetas y **reordenó `011-C3` entero**: obligó a corregir la "
+          "fecha de `C_i` y explicó la superposición `E_i`↔`C_i` que `011-C2` "
+          "había declarado inexplicada.")
+        A("")
+        if his["motores"]:
+            A("### ★ Las versiones del motor conservadas en disco")
+            A("")
+            A(f"**{his['n_motores']} archivos** son versiones fechadas del "
+              "Gold Master, repartidas en "
+              f"{len(his['motores'])} carpetas — una **serie temporal del "
+              "instrumento** que `011-C3` no usó:")
+            A("")
+            A("| Carpeta | Versiones | Desde | Hasta |")
+            A("|---|---:|---|---|")
+            for carpeta, n, ini, fin in his["motores"][:12]:
+                A(f"| `{carpeta[:56]}` | {n} | {ini} | {fin} |")
+            A("")
+            A("> Y hay una carpeta que se llama literalmente "
+              "**`historial_gold_master`**: la serie no es un accidente de "
+              "backups sueltos, **está deliberadamente conservada**.")
+            A("")
+            A("> ### Esto puede reabrir `011-C3`")
+            A(">")
+            A("> `C3` declaró `NO DETERMINABLE` la razón de la sustitución del "
+              "mecanismo de `C_i`, los pesos y el piso, **porque ningún "
+              "documento los explicaba**. Estas versiones no explican el "
+              "**por qué** —siguen sin haber texto—, pero sí pueden mostrar "
+              "**qué cambió y cuándo**, celda a celda.")
+            A("")
+            A("Y es exactamente lo que pasó con `metodologia.docx`: un "
+              "artefacto que nadie había abierto cambió una conclusión "
+              "cerrada. **Un `NO DETERMINABLE` sólo vale mientras no aparezca "
+              "la fuente** — declararlo no clausura la búsqueda.")
+            A("")
+            A("### ⚠️ Tres sistemas de versionado que no se corresponden")
+            A("")
+            A("| Fuente | Versiones |")
+            A("|---|---|")
+            A("| `H80_MODEL_REGISTRY` (dentro del motor) | `v1.0.0` · "
+              "`v1.0.1` · `v1.0.2` · `v2.1` · `v2.2` |")
+            A("| archivos en disco | `v1.0` · `v1.1` · `v3.0` · `v4.0` · "
+              "`v5.5` |")
+            A("| canon del repositorio | `v5.0` … `v5.7` |")
+            A("")
+            A("**Ninguno mapea contra otro.** El motor se llama a sí mismo "
+              "`v2.2`, el archivo que lo contiene se llama `v5.5` y el canon "
+              "habla de `v5.7`. No es un error de nadie: son tres esquemas que "
+              "nacieron por separado y nunca se reconciliaron — y es "
+              "precisamente el tipo de deriva que este refactor existe para "
+              "cerrar.")
+            A("")
+    A("### ⑥ Inventario NORMATIVO · `BM-01`")
     A("")
     if nor:
         A("| | Cuenta |")

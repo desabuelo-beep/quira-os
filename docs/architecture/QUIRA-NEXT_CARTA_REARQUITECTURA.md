@@ -4,8 +4,8 @@
 
 ```
   INVENTARIO_ID : QNEXT-INV-2026-09-05
-  COMMIT        : b5035ad
-  GENERATED_AT  : 2026-09-05T22:18:26+00:00
+  COMMIT        : 7033f4d
+  GENERATED_AT  : 2026-09-05T23:13:14+00:00
 ```
 
 > Sin esta estampilla, «412 documentos» es una **afirmación flotante**. Con ella es una **observación reproducible de un estado concreto del repositorio** — y explica sola por qué la v1 dijo 411 y esta dice otra cifra: el propio acto de escribir la carta añadió archivos.
@@ -155,8 +155,8 @@ La jerarquía normativa formal **no está poblada** para la gran mayoría del co
 | páginas de interfaz | `quira_pages/*.py` | **61** |
 | scripts | `scripts/**/*.py` | **175** |
 | pruebas | `tests/test_*.py` | **46** |
-| snapshots de datos | `data/**/*.json` | **470** |
-| | **TOTAL FÍSICO (suma de las filas en negrita)** | **1324** |
+| snapshots de datos | `data/**/*.json` | **471** |
+| | **TOTAL FÍSICO (suma de las filas en negrita)** | **1325** |
 
 ### ② Inventario DOCUMENTAL · el canon
 
@@ -186,7 +186,81 @@ La jerarquía normativa formal **no está poblada** para la gran mayoría del co
 | hojas del Gold Master | 123 |
 | metas del universo operacional | 25 de 66 |
 
-### ⑤ Inventario NORMATIVO · `BM-01`
+### ⑤ Inventario HISTÓRICO · el corpus en disco, fuera del repositorio
+
+Javo lo señaló como paréntesis —*«no sé si sea necesario»*—. **Lo era**, y por la misma razón que el corpus normativo: la carta inventariaba el repositorio y Supabase, y la historia del proyecto vive además en carpetas hermanas del disco.
+
+`Dylus Lab/_historico` · **898 archivos**:
+
+| Extensión | Archivos | Qué es |
+|---|---:|---|
+| `.js` | 146 | código legacy |
+| `.py` | 138 | código legacy |
+| `.ts` | 138 | código legacy |
+| `.md` | 121 | **documentación** |
+| `.txt` | 80 | **volcados de fórmulas** |
+| `.xlsx` | 66 | **versiones del motor** |
+| `.json` | 51 | datos |
+| `.xsd` | 39 | esquemas |
+| `.html` | 33 | prototipos |
+| `.sin_ext` | 22 | — |
+| `.png` | 21 | capturas |
+| `.docx` | 9 | **documentación** |
+
+Carpetas hermanas de `quira-os`:
+
+| Carpeta | Archivos |
+|---|---:|
+| `_historico` | 527 |
+| `documentos_proyecto` | 12 |
+| `governance` | 29 |
+| `metodologia_beta_Dctos` | 7 |
+| `ProyecT` | 495 |
+| `quira-harvester` | 106 |
+| `quiraintelligence-web` | 6 |
+| `Tecnic_SOLO_CONTIENE_API_KEY_GEMINI` | 1 |
+| `tesis historicas` | 17 |
+
+⚠️ **Y esto NO es teórico.** `metodologia.docx` estaba en una de esas carpetas y **reordenó `011-C3` entero**: obligó a corregir la fecha de `C_i` y explicó la superposición `E_i`↔`C_i` que `011-C2` había declarado inexplicada.
+
+### ★ Las versiones del motor conservadas en disco
+
+**83 archivos** son versiones fechadas del Gold Master, repartidas en 25 carpetas — una **serie temporal del instrumento** que `011-C3` no usó:
+
+| Carpeta | Versiones | Desde | Hasta |
+|---|---:|---|---|
+| `ProyecT/historial_gold_master` | 18 | 2026-05-10 | 2026-05-30 |
+| `ProyecT/historial_gold_master/Nueva carpeta` | 12 | 2026-05-30 | 2026-07-02 |
+| `_historico/TERRA_ECIAP` | 6 | 2026-04-24 | 2026-05-08 |
+| `_historico/ETL_scripts_legacy/quira_insumos_legacy` | 6 | 2026-05-03 | 2026-05-11 |
+| `ProyecT/Versiones previas a 5.7` | 5 | 2026-07-01 | 2026-07-29 |
+| `_historico/TERRA_ECIAP/Refactorizacion_TERRA/varios` | 4 | 2026-04-25 | 2026-04-30 |
+| `_historico/ETL_scripts_legacy/quira_insumos_legacy/Docum` | 4 | 2026-05-08 | 2026-05-10 |
+| `_historico/ETL_scripts_legacy/quira_insumos_legacy/scrip` | 4 | 2026-05-14 | 2026-05-20 |
+| `metodologia_beta_Dctos` | 3 | 2026-02-27 | 2026-04-10 |
+| `_historico/TERRA_ECIAP/Refactorizacion_TERRA/Nueva carpe` | 3 | 2026-04-30 | 2026-04-30 |
+| `_historico/TERRA_ECIAP/Refactorizacion_TERRA` | 2 | 2026-04-27 | 2026-05-08 |
+| `_historico/TERRA_ECIAP/Refactorizacion_TERRA/x` | 2 | 2026-05-01 | 2026-05-01 |
+
+> Y hay una carpeta que se llama literalmente **`historial_gold_master`**: la serie no es un accidente de backups sueltos, **está deliberadamente conservada**.
+
+> ### Esto puede reabrir `011-C3`
+>
+> `C3` declaró `NO DETERMINABLE` la razón de la sustitución del mecanismo de `C_i`, los pesos y el piso, **porque ningún documento los explicaba**. Estas versiones no explican el **por qué** —siguen sin haber texto—, pero sí pueden mostrar **qué cambió y cuándo**, celda a celda.
+
+Y es exactamente lo que pasó con `metodologia.docx`: un artefacto que nadie había abierto cambió una conclusión cerrada. **Un `NO DETERMINABLE` sólo vale mientras no aparezca la fuente** — declararlo no clausura la búsqueda.
+
+### ⚠️ Tres sistemas de versionado que no se corresponden
+
+| Fuente | Versiones |
+|---|---|
+| `H80_MODEL_REGISTRY` (dentro del motor) | `v1.0.0` · `v1.0.1` · `v1.0.2` · `v2.1` · `v2.2` |
+| archivos en disco | `v1.0` · `v1.1` · `v3.0` · `v4.0` · `v5.5` |
+| canon del repositorio | `v5.0` … `v5.7` |
+
+**Ninguno mapea contra otro.** El motor se llama a sí mismo `v2.2`, el archivo que lo contiene se llama `v5.5` y el canon habla de `v5.7`. No es un error de nadie: son tres esquemas que nacieron por separado y nunca se reconciliaron — y es precisamente el tipo de deriva que este refactor existe para cerrar.
+
+### ⑥ Inventario NORMATIVO · `BM-01`
 
 | | Cuenta |
 |---|---:|
@@ -444,4 +518,4 @@ En el esquema se ve por qué: **`IED` no pertenece a ningún dominio sectorial**
 > `GM-Ω` no existe para legitimar el pasado ni para destruirlo, sino para **ponerlo en su lugar**: el pasado como **linaje**, la norma como **restricción**, la evidencia como **fundamento**, la teoría como **justificación** — y el diseño como **decisión presente**.
 
 ---
-*QUIRA-NEXT · Carta de Rearquitectura `v2` · QNEXT-INV-2026-09-05 · commit `b5035ad` · el Gold Master no se modificó · baseline 27,4582 % congelado · Dylus Lab © 2026*
+*QUIRA-NEXT · Carta de Rearquitectura `v2` · QNEXT-INV-2026-09-05 · commit `7033f4d` · el Gold Master no se modificó · baseline 27,4582 % congelado · Dylus Lab © 2026*
