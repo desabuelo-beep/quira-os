@@ -19,10 +19,23 @@ Cada factor se clasifica por **qué hay que hacer realmente** para subirlo:
 |---|---|---|
 | `V_i` | **DOCUMENTAL** | aportar evidencia en los cuatro silos |
 | `T_i` | **MATERIAL** | devengar presupuesto — exige ejecutar |
-| `C_i` | **PENDIENTE** | ⚠️ atribución y entrega material verificada (acta, impacto) — su semántica la cierra 011-C2/C3 |
+| `C_i` | **PENDIENTE** | **calidad jurídica del proceso** (`011-C2`) — pero la naturaleza del esfuerzo sigue abierta: ver nota |
 | `E_i` | **ESTRUCTURAL** | modalidad de ejecución / control del director |
 | `P_i` | **FIJA** | peso presupuestario — no lo mueve el gestor |
 | `R_i` | **FIJA** | relevancia jurídica — la fija la norma |
+
+### La nota de `C_i` · por qué sigue sin clasificar
+
+`011-C2` **sí** resolvió qué mide: **calidad jurídica del proceso orgánico** —descuentos por infracciones normativas verificadas—, y **refutó** la hipótesis de la entrega material. Pero 009 no clasifica por lo que un factor mide, sino por **qué hay que hacer para subirlo**, y eso todavía se bifurca:
+
+| Si `011-C3` determina que rige… | …la naturaleza del esfuerzo es |
+|---|---|
+| el mecanismo determinista (deducción por infracciones) | **JURÍDICA** · exige no incurrir en infracciones |
+| el fallback `Ci_Manual_2025` | **FIJA** · ninguna acción del gestor la mueve, como `P_i` y `R_i` |
+
+Son incentivos opuestos —uno accionable, el otro inerte—, así que `C_i` **no se suma a ninguna vía** y no altera el resultado.
+
+⚠️ **Y esperar tuvo premio.** Si `009` hubiera dado por buena la hipótesis, habría publicado como respuesta del motor una defensa contra el maquillaje contable que **el motor no implementa**.
 
 ⚠️ **Y la comparación entre las dos primeras NO es un veredicto.** Decir «si documentar rinde más que ejecutar, el incentivo está torcido» sería una **hipótesis normativa**, no una conclusión matemática — y puede ser falsa: si el ICPI mide congruencia, **documentar correctamente lo ejecutado forma parte del fenómeno**, no es una manipulación.
 
@@ -45,10 +58,14 @@ Techo alcanzable llevando **todos** los factores de cada naturaleza a su máximo
 | **ESTRUCTURAL** | `E_i` | 28.6932 % | +1.23 pp |
 | **PENDIENTE** | `C_i` | 28.6814 % | +1.22 pp |
 
-> ### 🟢 EJECUTAR RINDE MÁS QUE DOCUMENTAR
+> ### En el corte de abril, la vía material tiene ~9.0× el techo de la documental
 > **+52.10 pp** frente a **+5.81 pp**.
 
-La vía más rentable para subir el índice **exige ejecución real**. El incentivo apunta al hecho, no al papel — que es lo que un indicador de integridad debe producir.
+La formulación defendible es **descriptiva y acotada al escenario**:
+
+> En el escenario de abril analizado, la capacidad contrafactual de incremento del ICPI mediante `T_i` es aproximadamente **9 veces** la obtenida mediante `V_i`.
+
+⚠️ **Y sólo en ese escenario.** Convertirlo en «el índice incentiva 9 veces más la ejecución» exigiría una teoría del coste y del comportamiento del gestor que 009 **no tiene**: un techo contrafactual no dice nada sobre qué es más barato o más probable de hacer.
 
 ## ⚠️ ¿Es un resultado de la FÓRMULA o del ESTADO?
 
@@ -65,14 +82,16 @@ Las tres palancas mayores son `T_i` **desde 0,30** — el valor del GAD central 
 **Y ésta es la respuesta real de 009**, más interesante que un sí o un no. La objeción era correcta: el resultado **no es una propiedad atemporal de la fórmula**, sino del estado de ejecución —
 
 ```
-  ENERO-ABRIL     ejecutar rinde 6,6× más que documentar
-        ↓         (queda mucho margen material)
-  MITAD DE AÑO    ejecutar sigue rindiendo más, pero por poco
-        ↓
-  CIERRE          documentar rinde el DOBLE que ejecutar   ⚠️
+  T = 0,30   techo material ≈ 9.0× el documental
+      ↓      (queda mucho margen material)
+  T = 0,75   sigue dominando el material, ≈ 1.7×
+      ↓
+  T = 0,90   se invierte: el documental ≈ 1.7× el material
 ```
 
-Y la mecánica es clara: cuando `T` se acerca a 1 **el margen material se agota**, mientras que las metas con `V = 0` siguen valiendo mucho —porque `V=0` anula la meta entera y recuperarla devuelve todo su peso—. El último tramo del año es exactamente donde **ejecutar ya no rinde y documentar sí**.
+⚠️ El eje es `T`, **no el calendario**. Rotularlo «enero-abril / cierre» sería atribuir a la simulación una escala temporal que no tiene: 009 movió `T` de golpe para todas las metas, y eso no es cómo avanza un ejercicio presupuestario real.
+
+Y la mecánica es transparente: cuando `T` se acerca a 1 **el margen material se agota**, mientras que las metas con `V = 0` siguen valiendo mucho —porque `V=0` anula la meta entera y recuperarla devuelve todo su peso—. Es decir, **la inversión no viene de una fecha sino del agotamiento del recorrido de un factor acotado en [0,1]**.
 
 ### La formulación exacta
 
@@ -120,11 +139,52 @@ Y de ahí salen cuatro distorsiones que afectan a cualquier evaluación de PDOT 
 | Distorsión | Qué pasa | Cómo responde el motor |
 |---|---|---|
 | **Falso negativo semestral** | al primer corte el avance es ~0 y se lee como incumplimiento, cuando el proyecto está en fase precontractual | `V_i` captura la **existencia documental** del proceso: distingue la inactividad de la maduración precontractual |
-| **Disociación financiero ↔ físico** | anticipo transferido en noviembre = gasto alto, obra sin empezar | `T_i` mide ejecución presupuestaria, pero `C_i` exige **atribución y entrega**: `T=1` con `C→0` penaliza la meta y anula el maquillaje contable |
+| **Disociación financiero ↔ físico** | anticipo transferido en noviembre = gasto alto, obra sin empezar | 🔴 **NO LO CAPTURA** · `011-C2` demostró que `C_i` mide **legalidad del proceso**, no entrega: sólo baja ante una infracción registrada, y hoy no hay ninguna |
 | **Reforma tardía** | se desvían fondos de infraestructura a gasto corriente rápido de contratar | dispara `SAT-II` / `SAT-IV`: la mutación de metas activa alertas de sustitución y fragmentación |
 | **Calidad del gasto** | programas de 8 meses comprimidos en campañas de 60 días | los indicadores de impacto se vuelven frágiles — y esto el motor **no lo captura hoy** |
 
-⚠️ **Esto reencuadra el hallazgo de 009.** La inversión del incentivo al cierre no describe un motor mal diseñado: describe **el momento del año en que la realidad institucional ecuatoriana concentra su presión**. Que el índice cambie de comportamiento justo ahí es coherente con el fenómeno, y por eso `011-C4` no puede juzgarlo sólo como propiedad algebraica.
+### 📜 CORRECCIÓN POSTERIOR — aportada por `011-C2`
+
+Una versión anterior de esta tabla afirmaba que el motor **sí** responde a la disociación financiero ↔ físico, porque «`C_i` exige atribución y entrega: `T=1` con `C→0` penaliza la meta». `011-C2` leyó el instrumento y lo desmintió:
+
+> `C_i` es **«Calidad de Proceso Orgánico»**. Nace en 1,00 por presunción de legalidad y se deduce por **infracciones normativas verificadas** (LOSNCP · CGE/NCI · COPFP · CPCCS). **Ninguna de las cuatro mide entrega material**, y hoy las cuatro están en cero para las 25 metas.
+
+De modo que **dos distorsiones quedan sin cubrir, no una**. La constancia se conserva: era una hipótesis del autor sobre el propósito, y describía bien lo que el motor *debería* hacer — no lo que hace.
+
+### ⚠️ Y aquí 009 tuvo que retirar una frase
+
+La versión anterior cerraba así:
+
+> ~~«La inversión del incentivo al cierre **no describe un motor mal diseñado**: describe el momento del año en que la realidad institucional ecuatoriana concentra su presión.»~~
+
+Suena bien y es **una absolución**. «No describe un motor mal diseñado» es un juicio de validez sobre la arquitectura, y `009` no tiene competencia para emitirlo — ni para condenar ni para absolver. La formulación forense es:
+
+> La inversión observada en los escenarios simulados **puede ser compatible** con la dinámica temporal de la gestión pública descrita, pero esa compatibilidad **no determina por sí misma que la arquitectura sea adecuada ni inadecuada**. La valoración corresponde a `011-C4`.
+
+### La triangulación que esto abre para `011-C2/C3`
+
+El marco institucional separa tres cosas que el motor **podría** estar midiendo por separado — y saber si lo hace es exactamente la pregunta de `011-C2`:
+
+| # | Dimensión | Pregunta | Fuente |
+|---|---|---|---|
+| 1 | Ejecución financiera · `T_i` | ¿cuánto presupuesto se ha devengado? | eSIGEF / Presupuesto |
+| 2 | Evidencia de trazabilidad · `V_i` | ¿existe respaldo documental del proceso? | LOTAIP / SERCOP |
+| 3 | Calidad jurídica del proceso · `C_i` | ¿hay infracciones normativas verificadas? | `H01` Secciones L/M — **resuelto por `011-C2`** |
+| 4 | Entrega o resultado material | ¿lo pagado y respaldado produjo el bien o servicio? | 🔴 **NINGUNA VARIABLE LO MIDE** |
+
+```
+  PRESUPUESTO
+       │
+       ▼
+     T = 1
+       ├──────────────┬──────────────┐
+       ▼              ▼              ▼
+  ¿se ejecutó?  ¿fue legal?     ¿se entregó?
+      T_i           C_i               ⬜
+                                  NADIE LO MIDE
+```
+
+⚠️ **La hipótesis se contrastó y no se sostuvo.** `011-C2` leyó el instrumento: `C_i` mide **calidad jurídica del proceso** —descuentos por infracciones verificadas—, no entrega del producto. La defensa contra el maquillaje contable de fin de ejercicio **no está implementada**; la rama derecha del diagrama está vacía.
 
 ### Y una consecuencia que apunta a `v2`
 
@@ -135,21 +195,53 @@ Eso conecta directamente con `008-R`: si una unidad operacional puede correspond
 ## ⚠️ Lo que este análisis NO demuestra
 
 - **No demuestra que nadie haya hecho esto.** Mide un incentivo estructural, no una conducta. Confundirlos sería una acusación sin evidencia — exactamente lo que el canon prohíbe.
-- **No demuestra que documentar sea ilegítimo.** Aportar evidencia a LOTAIP o al CPCCS **es una obligación legal**, y que el índice la premie es correcto. El problema aparecería sólo si documentar rindiera MÁS que ejecutar, porque entonces el índice premiaría más el cumplimiento formal que el material.
+- **No demuestra que documentar sea ilegítimo.** Aportar evidencia a LOTAIP o al CPCCS **es una obligación legal**, y que el índice la premie es coherente con un constructo de congruencia. Que la vía documental tenga más techo que la material en un escenario dado **no basta** para concluir que el incentivo esté torcido: eso exigiría demostrar que el incremento documental ocurre sin mejora del fenómeno, que es precisamente lo que 009 no puede observar.
 - **No mide el coste real de cada palanca.** Se asume que documentar es más barato que ejecutar, lo cual es plausible y **no está medido**.
+- **No resuelve qué es `C_i`.** La hipótesis de entrega material es del autor, no del expediente. `011-C2/C3`.
 
 ## Lo que 009 entrega a `011-C4`
 
 La pregunta de `011-C4` es si la **arquitectura multiplicativa** está justificada. `007-D` midió que es la decisión más consecuente del motor (51,26 pp). `009` añade la otra mitad:
 
-> **El incentivo que produce la arquitectura multiplicativa NO ES CONSTANTE: cambia de signo a lo largo del ejercicio.** Durante la mayor parte del año premia la ejecución material —lo que un indicador de integridad debe hacer— y en el tramo final premia la documental.
+> **El techo contrafactual que produce la arquitectura multiplicativa NO ES CONSTANTE: depende del estado de `T`.** Mientras queda margen material, la vía material domina; conforme `T` se agota, la documental puede superarla.
 
-Eso da a `011-C4` un argumento matizado y utilizable:
+Eso da a `011-C4` **dos entradas de signo opuesto**, y ninguna es un veredicto:
 
-- **A favor de conservarla**: durante la ventana operativa relevante, la vía rentable exige ejecutar. La multiplicatividad **no premia el papel** mientras quede margen material.
-- **A vigilar**: la inversión de fin de año es una propiedad estructural de la fórmula, no un defecto de datos. Cualquier rediseño debe conservar o corregir ese comportamiento **a sabiendas**.
+- La multiplicatividad produce, en el estado observado, un techo mayor por la vía que exige ejecución material.
+- Ese ordenamiento **no se conserva** en todo el rango de `T`. Cualquier rediseño —o la decisión de no rediseñar— debe tomarse **a sabiendas** de que el comportamiento se invierte.
 
-Y una pregunta que `009` entrega y no responde: **¿debería el índice tener un incentivo constante?** Un indicador cuyo estímulo cambia con el calendario puede ser exactamente lo correcto —al final del año lo que queda por hacer ES documentar lo ejecutado— o una debilidad. Eso es constructo, y lo juzga `011`.
+Y una pregunta que `009` entrega y no responde: **¿debería el índice tener un incentivo constante?** Un indicador cuyo estímulo cambia con el estado de ejecución puede ser exactamente lo correcto —cuando ya no queda nada que ejecutar, lo que queda por hacer ES documentar lo ejecutado— o una debilidad. Eso es constructo, y lo juzga `011`.
+
+### La pregunta que 009 le hereda a `011-C4`
+
+Más fina que «¿hay gaming?», y la formuló el colega:
+
+> **¿El ICPI está diseñado para evaluar el ESTADO de una meta en un momento del ciclo fiscal, o para evaluar RETROSPECTIVAMENTE la integridad de todo su proceso de materialización?**
+
+Porque son cosas distintas, y la misma tupla se lee al revés según cuál sea:
+
+| Estado | Lectura A · «estado en el ciclo» | Lectura B · «integridad retrospectiva» |
+|---|---|---|
+| `T` bajo · `V` alto | correctamente en fase precontractual | incumplimiento |
+| `T` alto · `V` alto | ejecutó y documentó | ejecutó y documentó |
+| `T` alto · `V` alto · resultado material bajo | ✅ el índice no lo ve | ⚠️ gastó y documentó sin producir |
+
+La tercera fila es donde `C_i` sería decisivo **si** su semántica resulta ser la que Javo propone. Otra razón para no cerrarla aquí.
+
+### Cadena de entradas al dictamen
+
+```
+  007-D  arquitectura multiplicativa        Δ estructural ≈ 51,26 pp
+     │
+  009    superficie de incentivo dinámica   depende de T
+     │
+  008    universo y unidad real             25 de 66 · N:1 no probado
+     │
+  010    transferibilidad LATAM             ¿qué parte es local?
+     │
+     ▼
+  011-C4 ¿es la multiplicatividad NECESARIA para el constructo?
+```
 
 ## Dictamen de 009 · por grado de certeza
 
@@ -164,17 +256,20 @@ Y una pregunta que `009` entrega y no responde: **¿debería el índice tener un
 | Algún GAD ha manipulado efectivamente el ICPI | **NO DETERMINABLE** |
 | Documentar constituye gaming | **NO DEMOSTRADO** |
 | Ejecutar es la única mejora legítima | **NO DEMOSTRADO** |
-| `C_i` es un factor documental | **PENDIENTE** · `011-C2/C3` |
+| `C_i` es un factor documental | **REFUTADO** por el propio autor |
+| `C_i` mide **atribución** | ✅ **CONFIRMADO** por `011-C2` · Sección I |
+| `C_i` mide **entrega material** | 🔴 **REFUTADO** por `011-C2` · mide infracciones normativas |
 | El gaming es propiedad permanente del índice | **REFUTADO** |
+| La arquitectura es adecuada / inadecuada | **FUERA DEL ALCANCE de 009** · `011-C4` |
 | La multiplicatividad debe conservarse por este resultado | **NO DETERMINABLE** · `011-C4` |
 
-> ### GM-Ω-009 — CERRADO COMO DIAGNÓSTICO CONTRAFACTUAL DE GAMEABILIDAD
+> ### GM-Ω-009 — CERRADO
 >
-> La capacidad de incremento contrafactual del ICPI mediante las distintas palancas **no es constante durante el ejercicio**. En los escenarios examinados la vía material domina mientras existe margen de ejecución, y su ventaja disminuye conforme `T_i` se aproxima a su máximo, pudiendo ser superada por la recuperación documental.
+> QUIRA identificó una **superficie de incentivo temporalmente variable** y delimitó las condiciones bajo las cuales la recuperación documental puede superar a la ejecución material. El análisis **no demuestra conducta de gaming ni resuelve la semántica de `C_i`**; ambas cuestiones quedan **fuera del alcance de 009**.
 >
-> **No demuestra** que haya ocurrido gaming real, ni que documentar sea conducta indebida, ni el instante de inversión, ni el coste relativo de cada acción.
+> Tampoco absuelve ni condena la arquitectura: la compatibilidad entre la inversión simulada y la dinámica real de la gestión pública **no determina que el diseño sea adecuado ni inadecuado**. Esa valoración es de `011-C4`.
 >
-> **Transferible a `011-C4`:** la arquitectura multiplicativa debe evaluarse no sólo por su sensibilidad estática (`007-D`: 51,26 pp) sino por los **incentivos marginales que produce a lo largo del ciclo temporal**.
+> **Transferible a `011-C4`:** la arquitectura multiplicativa debe evaluarse no sólo por su sensibilidad estática (`007-D`: 51,26 pp) sino por los **incentivos marginales que produce a lo largo del rango de ejecución**.
 
 Y la pregunta que ninguno de los dos responde, y que es la de `011-C4`:
 

@@ -145,6 +145,42 @@ _DOCTRINA = (
          verificador="test_ninguna_regla_generadora_se_infiere_del_patron_de_sus_resultados",
          por_que_ahi="con 25 casos y tres valores posibles, cualquier hipótesis "
                      "encuentra algunos que la respaldan: encajar no es derivar"),
+    dict(id="DOC-025", custodia=GATE,
+         regla="Una regla definida DOS VECES en el mismo sistema es una "
+               "divergencia latente, aunque hoy ambas versiones coincidan en "
+               "el resultado. Y «latente» no es «inofensiva»: se activa "
+               "exactamente cuando el sistema entra en el caso que la regla "
+               "gobierna — es decir, cuando más importa acertar",
+         fuente="GM-Ω-011-C2, 2026-09-05 · el glosario y la Sección L de `H01` "
+                "definen ambos las deducciones de `C_i` y discrepan en tres "
+                "puntos",
+         verificador="test_las_reglas_discrepantes_de_Ci_quedan_registradas",
+         por_que_ahi="es el patrón del «48,33 %» ocurriendo DENTRO del "
+                     "instrumento que audita: un derivado narrativo —el "
+                     "glosario— se desacopló de su fuente canónica —la matriz "
+                     "normativa— y ambos siguen circulando. Hoy no cambia "
+                     "ningún número porque no hay infracciones registradas; "
+                     "cambiaría la primera vez que se registre una"),
+    dict(id="DOC-024", custodia=GATE,
+         regla="El PROPÓSITO que el autor atribuye a un componente no es su "
+               "SEMÁNTICA demostrada. El propósito se declara; el mecanismo se "
+               "lee del instrumento. Mientras no se hayan comparado, la "
+               "interpretación se registra como hipótesis — y ningún análisis "
+               "posterior puede apoyarse en ella",
+         fuente="el colega, 2026-09-05 —«es una declaración metodológica de "
+                "Javo, no necesariamente una demostración documental de la "
+                "semántica canónica»— al detener el cierre de `009`",
+         verificador="test_Ci_mide_legalidad_del_proceso_y_no_entrega_material",
+         por_que_ahi="`009` estuvo a punto de fijar que `C_i` mide entrega "
+                     "material verificada. `011-C2` leyó el Gold Master y lo "
+                     "refutó: mide calidad JURÍDICA del proceso —descuentos "
+                     "por infracciones normativas—, y ninguna variable del "
+                     "ICPI verifica entrega. De haberla dado por buena, el "
+                     "expediente habría publicado como respuesta del motor una "
+                     "defensa contra el maquillaje contable que el motor NO "
+                     "implementa. ⚠️ Y la mitad de ATRIBUCIÓN sí se sostiene: "
+                     "una hipótesis parcialmente correcta es la más peligrosa, "
+                     "porque su mitad verdadera avala la falsa"),
     dict(id="DOC-023", custodia=GATE,
          regla="La evolución de la UNIDAD DE ANÁLISIS no es automáticamente una "
                "inconsistencia metodológica. Un cambio de unidad es una "

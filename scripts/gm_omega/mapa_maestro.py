@@ -84,12 +84,16 @@ _ETAPAS = [
     ("GM-Ω", "011-C1", "Genealogía algebraica · P·R·V·T → +E → +C · escalas",
      _ABIERTO, "★ 007-B0 la dejó reconstruida"),
     ("GM-Ω", "011-C2", "Genealogía semántica · qué significó cada factor",
-     _ABIERTO, ""),
+     _HECHO, "★ C_i mide LEGALIDAD del proceso, no entrega · E_i y C_i "
+             "comparten escala sin ser la misma · 4 divergencias latentes"),
     ("GM-Ω", "011-C3", "Justificación de cada transformación · qué·por qué·quién·cuándo",
-     _ABIERTO, "sin fuente documental → NO DETERMINABLE, no explicación inventada"),
+     _ABIERTO, "9 preguntas heredadas de C2 · sin fuente documental → NO "
+               "DETERMINABLE, no explicación inventada"),
     ("GM-Ω", "011-C4", "¿Es la multiplicatividad NECESARIA al constructo, o una "
      "arquitectura elegida y conservada?", _BLOQ,
-     "⚠️ faltan A · B · C1 · C2 · C3 · 010 — cerrar 009 NO la acerca"),
+     "⚠️ faltan A · B · C1 · C3 · 010 — y C2 la reformuló: la pregunta ya no "
+     "es sólo si el producto es correcto, sino sobre cuántas dimensiones "
+     "REALMENTE independientes opera"),
 
     ("TF", "T1", "Inventario de nombres propios", _HECHO, ""),
     ("TF", "T2", "Clasificación ontológica + capa de presentación", _HECHO, ""),
@@ -234,27 +238,43 @@ def _escribir(deu, docs, n_doc, n_test, hechas) -> None:
     A("## El orden, y qué se puede hacer en paralelo")
     A("")
     A("```")
-    A("  AHORA, en paralelo — nada de esto se bloquea entre sí")
+    A("  LA RUTA AL DICTAMEN — acordada 2026-09-05, saneamiento ontológico primero")
+    A("")
+    A("  011-C2  ✅ semántica de los factores      qué mide cada letra")
+    A("     ↓")
+    A("  011-C3     justificación                 por qué cambió · quién · cuándo")
+    A("     ↓")
+    A("  010        transferibilidad LATAM        qué parte del constructo es local")
+    A("     ↓")
+    A("  011-C4     DICTAMEN                      ¿es NECESARIA la multiplicatividad?")
+    A("")
+    A("  EN PARALELO — nada de esto se bloquea entre sí")
     A("  ├── GM-Ω 008-R resolver las 40 ambiguas · 66↔25  ← desbloquea v2")
-    A("  ├── GM-Ω 009   gaming: ¿se optimiza el índice sin mejorar la realidad?")
-    A("  ├── GM-Ω 010   transferibilidad LATAM")
+    A("  ├── GM-Ω 011-A2 declarar la unidad `i` en el canon")
     A("  ├── T3-R R0    diagnóstico de los 13 dominios")
     A("  ├── T3-R R1    modelos A · B · C de arquitectura de dominios")
     A("  ├── 2ING d07   curación de Transparencia")
-    A("  └── DEUDA      D-008 · D-009 · D-011 · D-012")
+    A("  └── DEUDA      D-008 · D-009 · D-011 · D-012 · D-013 · D-014")
     A("")
-    A("           ↓ los tres primeros alimentan")
-    A("")
-    A("  GM-Ω 011   DICTAMEN DE VALIDEZ DEL CONSTRUCTO")
-    A("             ¿qué mide el ICPI · qué significa su álgebra ·")
-    A("             conservar / corregir / potenciar / rediseñar?")
-    A("")
-    A("           ↓ y sólo entonces")
+    A("           ↓ y sólo tras el dictamen")
     A("")
     A("  ├── T3-R R2    residencia y ámbito de los índices")
     A("  ├── TF   T5    presentación dentro del dominio")
     A("  └── TF   T6    conservar / renombrar / deprecar / eliminar")
     A("```")
+    A("")
+    A("⚠️ **Por qué `010` va DESPUÉS de `C3` y no antes.** Esta dirección "
+      "proponía adelantarla —la transferibilidad también alimenta al "
+      "dictamen—. El criterio que prevaleció es el del colega y es mejor: "
+      "**mientras no se sepa qué significan `E_i` y `C_i`, todo análisis se "
+      "hace sobre variables cuya ontología seguimos reconstruyendo**. `011-C2` "
+      "lo demostró en el acto: la semántica que se daba por buena era falsa.")
+    A("")
+    A("⚠️ **`011-A2` y `011-B` siguen abiertas y la ruta acordada las "
+      "pospone.** No es un olvido: `A` tiene su genealogía resuelta y sólo "
+      "falta declararla en el canon, y `B` —la correspondencia documental ↔ "
+      "operacional— depende de `008-R`. Ninguna bloquea a `C3`. Pero **`C4` "
+      "sigue necesitándolas**, así que no desaparecen del camino.")
     A("")
     A("⚠️ **`R0` y `R1` NO dependen de `011`** —esta dirección lo tuvo mal y se "
       "corrigió—: son diagnóstico y **lo alimentan**. Sólo `R2` espera, porque "

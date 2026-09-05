@@ -50,27 +50,34 @@ Javo: *«tenemos la tesis, y todo el constructo metodológico allí claro […] 
 ## El orden, y qué se puede hacer en paralelo
 
 ```
-  AHORA, en paralelo — nada de esto se bloquea entre sí
+  LA RUTA AL DICTAMEN — acordada 2026-09-05, saneamiento ontológico primero
+
+  011-C2  ✅ semántica de los factores      qué mide cada letra
+     ↓
+  011-C3     justificación                 por qué cambió · quién · cuándo
+     ↓
+  010        transferibilidad LATAM        qué parte del constructo es local
+     ↓
+  011-C4     DICTAMEN                      ¿es NECESARIA la multiplicatividad?
+
+  EN PARALELO — nada de esto se bloquea entre sí
   ├── GM-Ω 008-R resolver las 40 ambiguas · 66↔25  ← desbloquea v2
-  ├── GM-Ω 009   gaming: ¿se optimiza el índice sin mejorar la realidad?
-  ├── GM-Ω 010   transferibilidad LATAM
+  ├── GM-Ω 011-A2 declarar la unidad `i` en el canon
   ├── T3-R R0    diagnóstico de los 13 dominios
   ├── T3-R R1    modelos A · B · C de arquitectura de dominios
   ├── 2ING d07   curación de Transparencia
-  └── DEUDA      D-008 · D-009 · D-011 · D-012
+  └── DEUDA      D-008 · D-009 · D-011 · D-012 · D-013 · D-014
 
-           ↓ los tres primeros alimentan
-
-  GM-Ω 011   DICTAMEN DE VALIDEZ DEL CONSTRUCTO
-             ¿qué mide el ICPI · qué significa su álgebra ·
-             conservar / corregir / potenciar / rediseñar?
-
-           ↓ y sólo entonces
+           ↓ y sólo tras el dictamen
 
   ├── T3-R R2    residencia y ámbito de los índices
   ├── TF   T5    presentación dentro del dominio
   └── TF   T6    conservar / renombrar / deprecar / eliminar
 ```
+
+⚠️ **Por qué `010` va DESPUÉS de `C3` y no antes.** Esta dirección proponía adelantarla —la transferibilidad también alimenta al dictamen—. El criterio que prevaleció es el del colega y es mejor: **mientras no se sepa qué significan `E_i` y `C_i`, todo análisis se hace sobre variables cuya ontología seguimos reconstruyendo**. `011-C2` lo demostró en el acto: la semántica que se daba por buena era falsa.
+
+⚠️ **`011-A2` y `011-B` siguen abiertas y la ruta acordada las pospone.** No es un olvido: `A` tiene su genealogía resuelta y sólo falta declararla en el canon, y `B` —la correspondencia documental ↔ operacional— depende de `008-R`. Ninguna bloquea a `C3`. Pero **`C4` sigue necesitándolas**, así que no desaparecen del camino.
 
 ⚠️ **`R0` y `R1` NO dependen de `011`** —esta dirección lo tuvo mal y se corrigió—: son diagnóstico y **lo alimentan**. Sólo `R2` espera, porque mover un indicador cuyo constructo está en dictamen sería reorganizar la casa antes de saber qué se guarda.
 
@@ -98,9 +105,9 @@ Y **`T6` espera a `011` por la misma razón**: deprecar `AVEP` o migrar el nombr
 | GM-Ω | `011-A` | Unidad de análisis · ¿qué es `i`? | 🔄 | ★ genealogía RESUELTA: era PROMESA CNE → META PDOT «pues era mandato» (Javo) · falta DECLARARLA en el canon |
 | GM-Ω | `011-B` | Regla de correspondencia PDOT → ICPI (1:1·N:1·1:N·N:N) | ⛔ | 011-A |
 | GM-Ω | `011-C1` | Genealogía algebraica · P·R·V·T → +E → +C · escalas | ⬜ | ★ 007-B0 la dejó reconstruida |
-| GM-Ω | `011-C2` | Genealogía semántica · qué significó cada factor | ⬜ |  |
-| GM-Ω | `011-C3` | Justificación de cada transformación · qué·por qué·quién·cuándo | ⬜ | sin fuente documental → NO DETERMINABLE, no explicación inventada |
-| GM-Ω | `011-C4` | ¿Es la multiplicatividad NECESARIA al constructo, o una arquitectura elegida y conservada? | ⛔ | ⚠️ faltan A · B · C1 · C2 · C3 · 010 — cerrar 009 NO la acerca |
+| GM-Ω | `011-C2` | Genealogía semántica · qué significó cada factor | ✅ | ★ C_i mide LEGALIDAD del proceso, no entrega · E_i y C_i comparten escala sin ser la misma · 4 divergencias latentes |
+| GM-Ω | `011-C3` | Justificación de cada transformación · qué·por qué·quién·cuándo | ⬜ | 9 preguntas heredadas de C2 · sin fuente documental → NO DETERMINABLE, no explicación inventada |
+| GM-Ω | `011-C4` | ¿Es la multiplicatividad NECESARIA al constructo, o una arquitectura elegida y conservada? | ⛔ | ⚠️ faltan A · B · C1 · C3 · 010 — y C2 la reformuló: la pregunta ya no es sólo si el producto es correcto, sino sobre cuántas dimensiones REALMENTE independientes opera |
 | TF | `T1` | Inventario de nombres propios | ✅ |  |
 | TF | `T2` | Clasificación ontológica + capa de presentación | ✅ |  |
 | TF | `T3` | Contrato índice → dominio → rol → pregunta → capa | 🔄 | se llena con la curación de cada dominio |
@@ -118,18 +125,18 @@ Y **`T6` espera a `011` por la misma razón**: deprecar `AVEP` o migrar el nombr
 | 2ING | `d02·d03` | Presupuesto · Gobernanza del Mandato | ⬜ |  |
 | 2ING | `d04·d05·d10-d13` | Sellados · sin construir | ⬜ |  |
 
-**15 de 35 etapas cerradas.**
+**16 de 35 etapas cerradas.**
 
 ## Estado derivado de las fuentes vivas
 
 | | |
 |---|---:|
-| Deudas declaradas | 12 |
+| Deudas declaradas | 14 |
 | Deudas resueltas | 6 |
-| Deudas abiertas | **6** |
-| Reglas de doctrina con custodio | 23 |
-| Pruebas que las fijan | 392 |
-| Documentos GM-Ω | 10 |
+| Deudas abiertas | **8** |
+| Reglas de doctrina con custodio | 25 |
+| Pruebas que las fijan | 403 |
+| Documentos GM-Ω | 11 |
 
 ### Deudas abiertas
 
@@ -137,6 +144,8 @@ Y **`T6` espera a `011` por la misma razón**: deprecar `AVEP` o migrar el nombr
 |---|---|
 | `D-001` | ABIERTA |
 | `D-008` | ABIERTA |
+| `D-014` | ABIERTA |
+| `D-013` | ABIERTA |
 | `D-012` | ABIERTA |
 | `D-011` | ABIERTA |
 | `D-010` | ABIERTA |
@@ -151,6 +160,7 @@ Y **`T6` espera a `011` por la misma razón**: deprecar `AVEP` o migrar el nombr
 - [`GM-OMEGA_ICPI_GAMING_009.md`](GM-OMEGA_ICPI_GAMING_009.md)
 - [`GM-OMEGA_ICPI_MATRIZ_004.md`](GM-OMEGA_ICPI_MATRIZ_004.md)
 - [`GM-OMEGA_ICPI_RECONCILIACION_008R.md`](GM-OMEGA_ICPI_RECONCILIACION_008R.md)
+- [`GM-OMEGA_ICPI_SEMANTICA_011C2.md`](GM-OMEGA_ICPI_SEMANTICA_011C2.md)
 - [`GM-OMEGA_ICPI_SENSIBILIDAD_007.md`](GM-OMEGA_ICPI_SENSIBILIDAD_007.md)
 - [`GM-OMEGA_MAPA_MAESTRO.md`](GM-OMEGA_MAPA_MAESTRO.md)
 - [`GM-OMEGA_TERMINOLOGIA_T1-T2.md`](GM-OMEGA_TERMINOLOGIA_T1-T2.md)
@@ -162,4 +172,4 @@ Y **`T6` espera a `011` por la misma razón**: deprecar `AVEP` o migrar el nombr
 3. **Este mapa se deriva.** El día que alguien lo edite a mano, dejará de reflejar el estado real sin que nada avise, y volveremos exactamente al punto que motivó escribirlo.
 
 ---
-*QUIRA · Mapa Maestro · 15/35 etapas cerradas · 6 deudas abiertas · Dylus Lab © 2026*
+*QUIRA · Mapa Maestro · 16/35 etapas cerradas · 8 deudas abiertas · Dylus Lab © 2026*

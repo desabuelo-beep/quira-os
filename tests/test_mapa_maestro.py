@@ -64,7 +64,7 @@ def test_las_dependencias_declaran_que_bloquea_a_que():
     Esta dirección lo tuvo mal —«011 antes que R2» era demasiado grueso—; son
     diagnóstico y lo ALIMENTAN. Sólo `R2` espera."""
     txt = _MAPA.read_text(encoding="utf-8")
-    assert "AHORA, en paralelo" in txt, (
+    assert "EN PARALELO" in txt, (
         "desapareció el bloque de lo que puede avanzar sin bloqueo. Sin él, un "
         "frente bloqueado se confunde con un frente parado")
     assert "`R0` y `R1` NO dependen de `011`" in txt, (
@@ -72,6 +72,32 @@ def test_las_dependencias_declaran_que_bloquea_a_que():
         "alimentan a 011; sólo R2 espera al dictamen")
     for etapa in ("008", "009", "010", "011", "R0", "R1", "R2", "T6"):
         assert etapa in txt, f"la etapa `{etapa}` desapareció del mapa"
+
+
+def test_la_ruta_al_dictamen_no_pierde_lo_que_pospone():
+    """La secuencia acordada el 2026-09-05 —`C2 → C3 → 010 → C4`— pospone dos
+    etapas que `C4` sigue necesitando: `011-A2` (declarar la unidad `i` en el
+    canon) y `011-B` (la correspondencia documental ↔ operacional).
+
+    ⚠️ POSPONER NO ES CERRAR, y ésa es justo la confusión que este mapa existe
+    para evitar. Una etapa que desaparece del camino porque otra se adelantó es
+    exactamente el «volver a hacer refactor porque no recordamos» que Javo pidió
+    impedir.
+
+    También vigila la razón del orden: `010` va DESPUÉS de `C3` porque analizar
+    transferibilidad sobre variables cuya ontología se está reconstruyendo es
+    construir sobre premisas que el propio análisis puede desmentir — y `011-C2`
+    lo demostró en el acto, refutando la semántica que se daba por buena."""
+    txt = _MAPA.read_text(encoding="utf-8")
+    assert "LA RUTA AL DICTAMEN" in txt, (
+        "desapareció la secuencia acordada hacia el dictamen")
+    assert "`011-A2` y `011-B` siguen abiertas" in txt, (
+        "el mapa dejó de declarar que la ruta acordada POSPONE dos etapas que "
+        "011-C4 sigue necesitando. Sin esa constancia, una etapa pospuesta se "
+        "lee como una etapa resuelta")
+    assert "Por qué `010` va DESPUÉS de `C3`" in txt, (
+        "se perdió la razón del orden. Una secuencia sin su porqué se "
+        "reordena en la siguiente sesión por conveniencia")
 
 
 def test_boot_lleva_al_mapa():
