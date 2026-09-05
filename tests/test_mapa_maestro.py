@@ -74,6 +74,44 @@ def test_las_dependencias_declaran_que_bloquea_a_que():
         assert etapa in txt, f"la etapa `{etapa}` desapareció del mapa"
 
 
+def test_la_genealogia_habilita_a_decidir_no_obliga_a_repetir():
+    """★ DOC-027 · el encuadre que Javo corrigió el 2026-09-05.
+
+        «Lo histórico no es la verdad absoluta o una camisa de fuerza
+         que se deba continuar.»
+
+    Tenía razón, y lo incómodo es que **el canon ya lo decía**: `DOC-013`
+    establece que QUIRA no conserva conceptos por herencia. Lo que pasó es que
+    `GM-Ω` reconstruyó tanta genealogía que produjo un sesgo conservador **de
+    hecho**, aunque **de derecho** dijera lo contrario.
+
+    La regla que lo corrige: un `NO DETERMINABLE` genealógico es un **grado de
+    libertad**, no una laguna. Donde no hay razón documentada no hay nada que
+    respetar.
+
+    ⚠️ Y LA DISTINCIÓN QUE IMPIDE QUE ESTO SE VUELVA LO CONTRARIO —borrón y
+    cuenta nueva—: hay una parte que no es herencia sino **anclaje normativo**.
+    `R_i`↔COOTAD, `V_i`↔LOTAIP, `T_i`↔COPFP/Acuerdo 067 no se revisan por
+    criterio propio: cambian si cambia la ley. Confundir las dos categorías
+    falla en ambas direcciones — congelar por costumbre lo mejorable, o
+    rediseñar por gusto lo que la norma fija."""
+    txt = _MAPA.read_text(encoding="utf-8")
+    assert "GRADO DE LIBERTAD, no una laguna" in txt, (
+        "desapareció DOC-027. Sin él, cada NO DETERMINABLE de la genealogía "
+        "vuelve a leerse como un hueco que hay que respetar, cuando es "
+        "exactamente lo contrario: nada que respetar")
+    assert "Herencia histórica ≠ anclaje normativo" in txt, (
+        "se perdió la distinción que impide que «lo histórico no obliga» se "
+        "convierta en borrón y cuenta nueva. Lo anclado a norma vigente no es "
+        "herencia revisable")
+    assert "no adelanta el momento de intervenir" in txt, (
+        "desapareció el límite. Ampliar QUÉ se puede decidir no adelanta "
+        "CUÁNDO se toca el motor: el Gold Master sigue congelado hasta C4")
+    assert "no autoriza a **inventar** la razón" in txt, (
+        "se perdió la salvaguarda de DOC-011. Un NO DETERMINABLE habilita a "
+        "decidir, no a rellenar el hueco con una razón fabricada")
+
+
 def test_la_ruta_al_dictamen_no_pierde_lo_que_pospone():
     """La secuencia acordada el 2026-09-05 —`C2 → C3 → 010 → C4`— pospone dos
     etapas que `C4` sigue necesitando: `011-A2` (declarar la unidad `i` en el

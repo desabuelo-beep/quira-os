@@ -145,6 +145,28 @@ _DOCTRINA = (
          verificador="test_ninguna_regla_generadora_se_infiere_del_patron_de_sus_resultados",
          por_que_ahi="con 25 casos y tres valores posibles, cualquier hipótesis "
                      "encuentra algunos que la respaldan: encajar no es derivar"),
+    dict(id="DOC-027", custodia=GATE,
+         regla="Un `NO DETERMINABLE` genealógico es un GRADO DE LIBERTAD, no "
+               "una laguna. Donde no hay razón documentada no hay nada que "
+               "respetar: reconstruir la historia habilita a decidir, no "
+               "obliga a repetir. ⚠️ Con una excepción que no es histórica "
+               "sino normativa — lo anclado a una norma vigente (`R_i`↔COOTAD, "
+               "`V_i`↔LOTAIP, `T_i`↔COPFP/Acuerdo 067) no es herencia: es "
+               "obligación, y sólo cambia si cambia la norma",
+         fuente="Javo, 2026-09-05 —«lo histórico no es la verdad absoluta o "
+                "una camisa de fuerza que se deba continuar»—",
+         verificador="test_la_genealogia_habilita_a_decidir_no_obliga_a_repetir",
+         por_que_ahi="`GM-Ω` reconstruyó tanta genealogía que empezó a "
+                     "producir un sesgo conservador de HECHO, aunque el canon "
+                     "dijera lo contrario de DERECHO: `DOC-013` ya establecía "
+                     "que QUIRA no conserva conceptos por herencia. Javo lo "
+                     "señaló y tiene razón. Y `011-C2`/`C3` producen munición "
+                     "para CAMBIAR, no para conservar: dos generaciones de "
+                     "`C_i` conviven sin que el instrumento declare cuál rige, "
+                     "y la residencia del ICPI en `d06` se apoya en un nombre "
+                     "que el canon ya retiró. Las tres razones que no constan "
+                     "no son huecos del peritaje: son las tres decisiones que "
+                     "`011-C4` puede tomar sin contradecir a nadie"),
     dict(id="DOC-026", custodia=GATE,
          regla="La fecha del ARTEFACTO que documenta un cambio no es la fecha "
                "del CONCEPTO. Un registro fechado prueba cuándo se escribió, "

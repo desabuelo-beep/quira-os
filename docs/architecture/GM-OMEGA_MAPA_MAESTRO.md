@@ -47,6 +47,57 @@ Javo: *«tenemos la tesis, y todo el constructo metodológico allí claro […] 
 | **2ING** · Segunda ingeniería · curación dominio a dominio | ¿cada dominio está curado de la fuente a la UI, por las 7 capas? | — | sí · y alimenta a TF y a T3-R |
 | **DEUDA** · Registro de deudas con ataque | ¿qué sabemos que está mal y aún no se ha corregido? | — | sí · cada una a su ritmo |
 
+## ★ Para qué sirve todo esto — el encuadre, fijado el 2026-09-05
+
+Javo:
+
+> *«Lo histórico no es la verdad absoluta o una camisa de fuerza que se deba continuar.»*
+
+**Tiene razón, y el canon ya lo decía.** `DOC-013`: QUIRA no conserva conceptos por herencia, sólo los que cumplen una función verificable. Lo que ocurrió es que `GM-Ω` reconstruyó tanta genealogía que empezó a producir un **sesgo conservador de hecho**, aunque de derecho el canon dijera lo contrario.
+
+### La corrección de encuadre
+
+```
+  reconstruir la historia   →   NO obliga a repetirla
+                            →   habilita a decidir SABIENDO qué se cambia
+```
+
+Y de ahí sale la regla operativa (`DOC-027`):
+
+> ### Un `NO DETERMINABLE` genealógico es un GRADO DE LIBERTAD, no una laguna
+>
+> Donde no hay razón documentada, **no hay nada que respetar**.
+
+Aplicado a lo que `011-C2` y `C3` acaban de producir, el balance se invierte: no son hallazgos para conservar, son **permisos para cambiar**.
+
+| Hallazgo | Lo que habilita |
+|---|---|
+| Dos generaciones de `C_i` conviven y el instrumento no declara cuál rige | **hay que elegir una** — no elegir también es una decisión, y hoy está tomada por omisión |
+| La razón de la sustitución, los pesos y el piso: `NO DETERMINABLE` | **tres decisiones libres**, sin contradecir a nadie |
+| La residencia del ICPI en `d06` se apoya en «Cumplimiento Institucional», nombre que el canon **ya retiró** | **la residencia está abierta**, y hay instrumento: la prueba de exportabilidad |
+
+### ⚠️ La única camisa de fuerza real, y no es histórica
+
+Hay una parte del constructo que **no puede rediseñarse libremente**, y conviene no confundirla con herencia:
+
+| | Naturaleza | ¿Se puede cambiar? |
+|---|---|---|
+| `R_i` ↔ COOTAD 54-55 · Constitución 12, 14 | **anclaje normativo** | 🔴 sólo si cambia la norma |
+| `V_i` ↔ LOTAIP 7 · LOSNCP 22 · NCI 410-11 | **anclaje normativo** | 🔴 sólo si cambia la norma |
+| `T_i` ↔ COPFP 115-117 · Acuerdo 067 MEF | **anclaje normativo** | 🔴 sólo si cambia la norma |
+| `P_i` ↔ COPFP 54 | **anclaje normativo** | 🔴 ídem |
+| pesos de deducción · piso `0,50` · qué constructo de `C_i` rige | **decisión de diseño** | ✅ **libre** |
+| residencia de cada índice en su dominio | **decisión de diseño** | ✅ **libre** |
+| nombres de presentación | **decisión de diseño** | ✅ libre, con basónimo (`DOC-015`) |
+
+> **Herencia histórica ≠ anclaje normativo.** Lo primero se revisa; lo segundo se acata. Confundirlos en cualquiera de las dos direcciones es el error: congelar por costumbre lo que se puede mejorar, o rediseñar por gusto lo que la ley fija.
+
+### Qué NO cambia este encuadre
+
+- **El Gold Master sigue congelado** hasta `011-C4`. Ampliar el alcance de lo que se puede decidir **no adelanta el momento de intervenir**.
+- **La genealogía no se descarta**: es lo que permite distinguir herencia de anclaje. Sin `C2`/`C3` no sabríamos cuál de las dos generaciones de `C_i` estamos eligiendo.
+- **`DOC-011` sigue vigente**: un vacío se clasifica por su naturaleza. Que un `NO DETERMINABLE` habilite a decidir no autoriza a **inventar** la razón que faltaba y presentarla como hallazgo.
+
 ## El orden, y qué se puede hacer en paralelo
 
 ```
@@ -134,8 +185,8 @@ Y **`T6` espera a `011` por la misma razón**: deprecar `AVEP` o migrar el nombr
 | Deudas declaradas | 14 |
 | Deudas resueltas | 6 |
 | Deudas abiertas | **8** |
-| Reglas de doctrina con custodio | 26 |
-| Pruebas que las fijan | 414 |
+| Reglas de doctrina con custodio | 27 |
+| Pruebas que las fijan | 415 |
 | Documentos GM-Ω | 12 |
 
 ### Deudas abiertas
