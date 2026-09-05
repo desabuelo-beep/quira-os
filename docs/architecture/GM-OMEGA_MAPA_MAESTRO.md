@@ -115,7 +115,8 @@ Hay una parte del constructo que **no puede rediseñarse libremente**, y convien
   EN PARALELO — nada de esto se bloquea entre sí
   ├── GM-Ω 008-R resolver las 40 ambiguas · 66↔25  ← desbloquea v2
   ├── GM-Ω 011-A2 declarar la unidad `i` en el canon
-  ├── QNEXT Q1   clasificar los 412 documentos en las 5 categorías
+  ├── QNEXT BM-01 corpus normativo: vigencia · clase · norma↔instrumento
+  ├── QNEXT Q1   matriz de clasificación · candidato → ratificado
   ├── T3-R R0    diagnóstico de los 13 dominios  ← desbloquea Q2
   ├── T3-R R1    modelos A · B · C de arquitectura de dominios
   ├── 2ING d07   curación de Transparencia
@@ -170,8 +171,9 @@ Y **`T6` espera a `011` por la misma razón**: deprecar `AVEP` o migrar el nombr
 | TF | `T4` | Rol de cada indicador | 🔄 | sin inventar: sólo con fuente |
 | TF | `T5` | Presentación dentro de su dominio | ⛔ | T3 · T4 |
 | TF | `T6` | Acción: conservar / renombrar / deprecar / eliminar | ⛔ | 011 · T5 |
-| QNEXT | `Q0` | Carta de rearquitectura · el plan del refactor integral | ✅ | ★ 5 categorías de tratamiento · 10 ejes · 1321 artefactos inventariados · FONDO/FORMA · NO ejecuta |
-| QNEXT | `Q1` | Clasificar los 412 documentos de canon en las 5 categorías | ⬜ | no espera al dictamen: clasificar no es cambiar |
+| QNEXT | `Q0` | Carta de rearquitectura v2 · el plan del refactor integral | ✅ | ★ 4 bases medulares · 5 categorías · 10 ejes · 4 inventarios separados · DOC-029 regla maestra · NO ejecuta |
+| QNEXT | `BM-01` | Corpus normativo · vigencia, clase y separación norma↔instrumento | ⬜ | 🔴 13.147 chunks SIN columna de vigencia · document_class vacía en 81 % · norma e instrumentos de gestión en la misma tabla |
+| QNEXT | `Q1` | Matriz de clasificación · candidato → ratificado | ⬜ | no espera al dictamen: clasificar no es cambiar · primer test = migración semántica de «auditoría» |
 | QNEXT | `Q2` | Dashboards y narrativa por dominio · visual→analítica→explicación | ⛔ | R0 — no 011: depende de saber qué pregunta cada dominio |
 | QNEXT | `Q3` | Ejecución del refactor · fondo y forma | ⛔ | 011-C4 · Q1 · R0/R1 |
 | T3-R | `R0` | Diagnóstico de los 13 dominios | ⬜ |  |
@@ -185,7 +187,7 @@ Y **`T6` espera a `011` por la misma razón**: deprecar `AVEP` o migrar el nombr
 | 2ING | `d02·d03` | Presupuesto · Gobernanza del Mandato | ⬜ |  |
 | 2ING | `d04·d05·d10-d13` | Sellados · sin construir | ⬜ |  |
 
-**18 de 39 etapas cerradas.**
+**18 de 40 etapas cerradas.**
 
 ## Estado derivado de las fuentes vivas
 
@@ -194,8 +196,8 @@ Y **`T6` espera a `011` por la misma razón**: deprecar `AVEP` o migrar el nombr
 | Deudas declaradas | 14 |
 | Deudas resueltas | 6 |
 | Deudas abiertas | **8** |
-| Reglas de doctrina con custodio | 28 |
-| Pruebas que las fijan | 421 |
+| Reglas de doctrina con custodio | 30 |
+| Pruebas que las fijan | 426 |
 | Documentos GM-Ω | 12 |
 
 ### Deudas abiertas
@@ -233,4 +235,4 @@ Y **`T6` espera a `011` por la misma razón**: deprecar `AVEP` o migrar el nombr
 3. **Este mapa se deriva.** El día que alguien lo edite a mano, dejará de reflejar el estado real sin que nada avise, y volveremos exactamente al punto que motivó escribirlo.
 
 ---
-*QUIRA · Mapa Maestro · 18/39 etapas cerradas · 8 deudas abiertas · Dylus Lab © 2026*
+*QUIRA · Mapa Maestro · 18/40 etapas cerradas · 8 deudas abiertas · Dylus Lab © 2026*

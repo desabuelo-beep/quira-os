@@ -145,6 +145,49 @@ _DOCTRINA = (
          verificador="test_ninguna_regla_generadora_se_infiere_del_patron_de_sus_resultados",
          por_que_ahi="con 25 casos y tres valores posibles, cualquier hipótesis "
                      "encuentra algunos que la respaldan: encajar no es derivar"),
+    dict(id="DOC-030", custodia=GATE,
+         regla="QUIRA se apoya en CUATRO bases medulares —normativa "
+               "(`BM-01`), metodológica (`BM-02`), evidencial (`BM-03`) y "
+               "ontológica (`BM-04`)—, no sólo en el Gold Master. Y la FUENTE "
+               "NORMATIVA TIENE PRECEDENCIA sobre el diseño: si la "
+               "metodología afirma que algo significa X y la norma vigente "
+               "determina otra cosa, la metodología no puede ignorarlo. "
+               "Norma ≠ evidencia ≠ inferencia QUIRA",
+         fuente="Javo, 2026-09-05 —«NO estamos tomando en consideración al "
+                "corpus normativo […] que es la otra base medular de "
+                "QUIRA»— · formalizado por el colega como Eje 0",
+         verificador="test_las_cuatro_bases_medulares_estan_en_el_eje_cero",
+         por_que_ahi="la `v1` de la carta inventarió el repositorio y llamó a "
+                     "eso «el ecosistema»: contaba archivos y omitía el "
+                     "corpus jurídico vectorizado, que es la base que permite "
+                     "afirmar que una competencia u obligación EXISTE. Y al "
+                     "medirlo aparecieron tres defectos que condicionan el "
+                     "refactor: `normativa_corpus` mezcla norma con "
+                     "instrumentos de gestión, **no tiene columna de "
+                     "vigencia** —no distingue norma vigente de derogada, "
+                     "chocando con la Regla de Oro 3— y `document_class` está "
+                     "vacía en el 81 % del corpus"),
+    dict(id="DOC-029", custodia=GATE,
+         regla="REGLA MAESTRA DE REARQUITECTURA. Ningún cambio se ejecuta "
+               "directamente sobre el ecosistema canónico: primero se "
+               "OBSERVA, después se CLASIFICA, luego se JUSTIFICA, después se "
+               "DISEÑA LA MIGRACIÓN, y sólo entonces se EJECUTA. ⚠️ Y ninguna "
+               "migración léxica puede alterar una referencia normativa "
+               "vigente por el solo hecho de compartir una cadena de "
+               "caracteres con un término que se desea reemplazar",
+         fuente="el colega, 2026-09-05 · al elevar «clasificar antes de "
+                "tocar», que era correcto pero insuficiente",
+         verificador="test_la_regla_maestra_ordena_las_cinco_fases",
+         por_que_ahi="es la diferencia entre hacer limpieza y hacer una "
+                     "rearquitectura gobernada. Y no es teórica: ante el "
+                     "ejemplo «quitar la palabra auditoría», esta dirección "
+                     "empezó a ejecutarlo. Medido después, **609 ocurrencias "
+                     "en 233 archivos** que NO son la misma palabra — "
+                     "`auditoría CGE` es norma citada, `auditable` es la "
+                     "propiedad que QUIRA certifica—. El reemplazo habría "
+                     "borrado artículos de ley en el primer minuto del primer "
+                     "ejemplo. QUIRA necesita ese mecanismo de protección "
+                     "ANTES de empezar a refactorizar QUIRA"),
     dict(id="DOC-028", custodia=GATE,
          regla="CONTINUIDAD HISTÓRICA ≠ CONTINUIDAD METODOLÓGICA. Conservar "
                "`ICPI_v1` no obliga a que `ICPI_v2 = ICPI_v1`; conservar "

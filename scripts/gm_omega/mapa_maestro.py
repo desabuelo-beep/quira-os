@@ -108,11 +108,16 @@ _ETAPAS = [
     ("TF", "T6", "Acción: conservar / renombrar / deprecar / eliminar", _BLOQ,
      "011 · T5"),
 
-    ("QNEXT", "Q0", "Carta de rearquitectura · el plan del refactor integral",
-     _HECHO, "★ 5 categorías de tratamiento · 10 ejes · 1321 artefactos "
-             "inventariados · FONDO/FORMA · NO ejecuta"),
-    ("QNEXT", "Q1", "Clasificar los 412 documentos de canon en las 5 categorías",
-     _ABIERTO, "no espera al dictamen: clasificar no es cambiar"),
+    ("QNEXT", "Q0", "Carta de rearquitectura v2 · el plan del refactor integral",
+     _HECHO, "★ 4 bases medulares · 5 categorías · 10 ejes · 4 inventarios "
+             "separados · DOC-029 regla maestra · NO ejecuta"),
+    ("QNEXT", "BM-01", "Corpus normativo · vigencia, clase y separación "
+                       "norma↔instrumento", _ABIERTO,
+     "🔴 13.147 chunks SIN columna de vigencia · document_class vacía en 81 % "
+     "· norma e instrumentos de gestión en la misma tabla"),
+    ("QNEXT", "Q1", "Matriz de clasificación · candidato → ratificado",
+     _ABIERTO, "no espera al dictamen: clasificar no es cambiar · primer test "
+               "= migración semántica de «auditoría»"),
     ("QNEXT", "Q2", "Dashboards y narrativa por dominio · visual→analítica→"
                     "explicación", _BLOQ, "R0 — no 011: depende de saber qué "
                                           "pregunta cada dominio"),
@@ -345,7 +350,8 @@ def _escribir(deu, docs, n_doc, n_test, hechas) -> None:
     A("  EN PARALELO — nada de esto se bloquea entre sí")
     A("  ├── GM-Ω 008-R resolver las 40 ambiguas · 66↔25  ← desbloquea v2")
     A("  ├── GM-Ω 011-A2 declarar la unidad `i` en el canon")
-    A("  ├── QNEXT Q1   clasificar los 412 documentos en las 5 categorías")
+    A("  ├── QNEXT BM-01 corpus normativo: vigencia · clase · norma↔instrumento")
+    A("  ├── QNEXT Q1   matriz de clasificación · candidato → ratificado")
     A("  ├── T3-R R0    diagnóstico de los 13 dominios  ← desbloquea Q2")
     A("  ├── T3-R R1    modelos A · B · C de arquitectura de dominios")
     A("  ├── 2ING d07   curación de Transparencia")

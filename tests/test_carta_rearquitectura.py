@@ -102,27 +102,190 @@ def test_la_carta_separa_lo_que_se_acata_de_lo_que_se_decide():
         "parecen incompatibles, y hay que elegir — y no hay que elegir")
 
 
-def test_el_inventario_se_cuenta_y_no_se_estima():
-    """Un plan que no sabe su tamaño no es un plan.
+def test_el_inventario_se_cuenta_y_lleva_estampilla():
+    """Un plan que no sabe su tamaño no es un plan — y un tamaño sin fecha ni
+    commit es una **afirmación flotante**.
 
-    ⚠️ Y AQUÍ LA CARTA COMETIÓ EL ERROR QUE VIENE A CORREGIR: su primera
-    versión sumó `ADR` y `PCD` —que viven dentro de `docs/`— contándolos dos
-    veces, y dejó fuera las pruebas por el error opuesto. Publicó un total
-    inflado en el documento cuyo objeto es no falsear datos.
+    ⚠️ EL EPISODIO QUE LO ENSEÑÓ. El colega objetó que el total `1321` no
+    cuadraba con `1265` y dedujo un error de cardinalidad. Verificado: el
+    total era correcto — la suma omitía `brn` (30), `governance` (23) y
+    `marco_teorico` (3) = **56**, exactamente la diferencia detectada.
 
-    Esta prueba vigila que el inventario siga derivándose del repositorio y
-    que la constancia del error no se limpie."""
+    Pero su conclusión valía igual **por otra razón**: si un lector experto
+    suma mal la tabla, la tabla no era legible. Se corrigió la tabla, no el
+    número, y se añadió la regla de conteo explícita.
+
+    Y la estampilla resuelve la otra ambigüedad —«411 o 412»— sin discutirla:
+    el número deja de ser una afirmación y pasa a ser una observación
+    reproducible de un estado concreto del repositorio."""
     fuente = _SCRIPT.read_text(encoding="utf-8")
     assert "rglob" in fuente, (
         "el inventario dejó de contarse del repositorio. Un tamaño escrito a "
         "mano se desactualiza en semanas y nadie se entera")
     txt = _CARTA.read_text(encoding="utf-8")
+    for campo in ("INVENTARIO_ID", "COMMIT", "GENERATED_AT"):
+        assert campo in txt, (
+            f"desapareció `{campo}` de la estampilla. Sin ella, cada cifra "
+            f"del inventario es una afirmación flotante que nadie puede "
+            f"reproducir ni fechar")
+    assert "afirmación flotante" in txt
+    assert "Regla de conteo" in txt, (
+        "se perdió la regla de conteo. Es lo que hace legible la tabla que un "
+        "lector experto ya sumó mal una vez")
     assert "no suman" in txt, (
-        "desapareció la marca de las filas contenidas en otras. Sin ella "
-        "vuelve el doble conteo")
-    assert "cometido en el documento que lo planifica" in txt, (
-        "se limpió la constancia del error de suma. Conservarla es lo que "
-        "hace creíble al resto de la carta")
+        "desapareció la marca de las filas contenidas en otras")
+    assert "la tabla no era legible" in txt, (
+        "se limpió la constancia del episodio. Conservarla es lo que explica "
+        "por qué la regla de conteo existe")
+
+
+def test_las_cuatro_bases_medulares_estan_en_el_eje_cero():
+    """★ El vacío que Javo detectó y que obligó a rehacer la carta.
+
+        «NO estamos tomando en consideración al corpus normativo de todo el
+         marco legal que hemos vectorizado a Supabase, que es la otra base
+         medular de QUIRA.»
+
+    La `v1` inventarió el repositorio y llamó a eso «el ecosistema». Pero
+    QUIRA se apoya en CUATRO bases, y el Excel es una de ellas:
+
+        BM-01 NORMATIVA     ¿qué derecho vigente permite afirmar que algo existe?
+        BM-02 METODOLÓGICA  ¿cómo se vuelve conocimiento calculable?
+        BM-03 EVIDENCIAL    ¿qué documento demuestra el hecho?
+        BM-04 ONTOLÓGICA    ¿qué cosas existen y cómo se relacionan?
+
+    ⚠️ Y LA CONSECUENCIA QUE NO PUEDE PERDERSE: **la norma tiene precedencia
+    sobre el diseño de QUIRA**. Si la metodología dice que un factor significa
+    X y la norma vigente determina otra cosa, la metodología no puede
+    ignorarlo. Esa es la línea entre `⚖️ NORMATIVO VIGENTE` y `🔧 DECISIÓN DE
+    DISEÑO`, y sin ella las cinco categorías se derrumban."""
+    txt = _CARTA.read_text(encoding="utf-8")
+    for bid in ("BM-01", "BM-02", "BM-03", "BM-04"):
+        assert bid in txt, (
+            f"desapareció la base medular `{bid}`. Con menos de cuatro, el "
+            f"refactor vuelve a tratar el repositorio como si fuera el "
+            f"ecosistema entero")
+    assert "PRECEDENCIA sobre el diseño de QUIRA" in txt, (
+        "se perdió la precedencia normativa. Sin ella, una decisión de diseño "
+        "puede sobrescribir lo que la ley determina, que es exactamente lo "
+        "que QUIRA existe para detectar en otros")
+    for pieza in ("**NORMA**", "**EVIDENCIA**", "**INFERENCIA QUIRA**"):
+        assert pieza in txt, (
+            f"desapareció {pieza} de la cadena. Mezclar norma con evidencia o "
+            f"con inferencia es el error que produce afirmaciones que parecen "
+            f"jurídicas y son metodológicas")
+
+
+def test_el_corpus_normativo_declara_lo_que_le_falta():
+    """★ Lo que midió `BM-01`, y que condiciona el refactor entero.
+
+        · la tabla se llama `normativa_corpus` y contiene DOS universos:
+          norma (~8.100) e instrumentos de gestión (~5.000) — BM-01 y BM-03
+        · NO existe columna de vigencia: sólo `ingestado_at`, que es cuándo
+          se cargó, no cuándo rige
+        · `document_class` y `authority_level` vacías en ~81 % del corpus
+
+    ⚠️ LO DE LA VIGENCIA ES LO MÁS GRAVE, y choca con la `Regla de Oro 3`
+    —«sin norma verificada, no hay dato»—: hoy el corpus puede devolver un
+    artículo derogado con la misma autoridad que uno vigente, y nada en el
+    esquema lo impide.
+
+    Esta prueba tolera que no haya conexión —el CI corre sin credenciales— y
+    exige que, si no la hay, se declare el tercer estado en vez de estimar."""
+    txt = _CARTA.read_text(encoding="utf-8")
+    assert "`BM-01` · El corpus normativo, medido" in txt, (
+        "desapareció la medición del corpus normativo")
+    tiene_datos = "fragmentos vectorizados" in txt
+    if not tiene_datos:
+        assert "NO DETERMINABLE" in txt, (
+            "sin conexión a Supabase, la carta debe DECLARAR el tercer estado "
+            "en vez de estimar el tamaño del corpus")
+        return
+    assert "dos universos" in txt, (
+        "se perdió que `normativa_corpus` mezcla norma con instrumentos de "
+        "gestión. El nombre de la tabla induce a tratarlos igual, y la norma "
+        "tiene precedencia mientras que la evidencia no")
+    assert "NO EXISTE COLUMNA DE VIGENCIA" in txt or "vigencia presentes" in txt, (
+        "la carta dejó de declarar el estado de la vigencia temporal del "
+        "corpus. Sin ese dato, «sin norma verificada no hay dato» no se puede "
+        "sostener: no se sabe si la norma sigue vigente")
+
+
+def test_la_clasificacion_epistemologica_no_se_automatiza():
+    """★ La corrección que impide crear una caja negra nueva.
+
+    La `v1` decía «que la clasificación sea derivable». Es insuficiente: la
+    máquina puede detectar referencias, dependencias y usos, pero **no puede
+    decidir** que algo es «una decisión de diseño antigua» o que está
+    «superado metodológicamente». Eso es epistemología, no búsqueda.
+
+        classification_candidate  ← lo propone el script
+        classification_status     ← lo ratifica la dirección
+
+    ⚠️ Y `NO_DETERMINADO` NO ES UNA SEXTA CATEGORÍA: es un estado de
+    evidencia. Sin esa separación el refactor deriva al silogismo falso «no
+    está justificado → se puede quitar», que es exactamente lo que `DOC-027`
+    prohíbe."""
+    txt = _CARTA.read_text(encoding="utf-8")
+    assert "classification_candidate" in txt and "classification_status" in txt, (
+        "desapareció el par candidato/estado. Sin él, automatizar la "
+        "clasificación convierte el refactor en una caja negra nueva")
+    assert "La máquina propone, la dirección ratifica" in txt or \
+           "la dirección ratifica" in txt
+    assert "no es una sexta categoría" in txt.lower(), (
+        "`NO_DETERMINADO` volvió a tratarse como categoría de tratamiento. Es "
+        "un estado de EVIDENCIA: una pieza tiene categoría y estado a la vez")
+    assert "nunca autoriza a eliminar" in txt.lower() or \
+           "**nunca significa" in txt, (
+        "se perdió la prohibición clave: NO_DETERMINADO significa «no lo "
+        "hemos demostrado todavía», nunca «la razón no existe»")
+
+
+def test_auditoria_es_la_prueba_patron_de_migracion_semantica():
+    """★ El caso que deja de ser anécdota y se vuelve gate.
+
+        auditoría CGE   ⚖️ referencia legal      INTOCABLE
+        GM-Ω «audit.»   🔧 terminología de trabajo  revisar
+        QUIRA «audita»  🔧 término incorrecto       sustituir
+        auditable       🔬 propiedad                preservar
+        auditabilidad   🔬 concepto                 evaluar
+
+    El gate que obliga a construir:
+
+        ninguna migración léxica puede alterar una referencia normativa
+        vigente por el solo hecho de compartir una cadena de caracteres
+        con un término que se desea reemplazar
+
+    ⚠️ 609 ocurrencias en 233 archivos. Un reemplazo sin clasificar habría
+    borrado artículos de ley, y estuvo a punto de ocurrir."""
+    txt = _CARTA.read_text(encoding="utf-8")
+    assert "prueba patrón de migración semántica" in txt, (
+        "el caso `auditoría` volvió a ser un ejemplo narrativo. Debe ser el "
+        "primer test de Q1: es el único que ya demostró el daño posible")
+    assert "por el solo hecho de compartir una cadena de caracteres" in txt, (
+        "desapareció el gate de migración léxica. Es la regla que separa un "
+        "refactor gobernado de un search-and-replace")
+    assert "609 ocurrencias" in txt and "233 archivos" in txt, (
+        "se perdió la medición. Sin el tamaño, el riesgo parece teórico")
+
+
+def test_la_regla_maestra_ordena_las_cinco_fases():
+    """`DOC-029` · lo que separa una limpieza de una rearquitectura gobernada.
+
+        OBSERVAR → CLASIFICAR → JUSTIFICAR → DISEÑAR LA MIGRACIÓN → EJECUTAR
+
+    ⚠️ «Clasificar antes de tocar» era correcto pero insuficiente: no decía
+    nada sobre justificar ni sobre diseñar la migración. Y el episodio de
+    `auditoría` mostró en vivo que QUIRA necesita ese mecanismo de protección
+    **antes** de empezar a refactorizar QUIRA."""
+    txt = _CARTA.read_text(encoding="utf-8")
+    assert "REGLA MAESTRA DE REARQUITECTURA" in txt
+    for fase in ("OBSERVA", "CLASIFICA", "JUSTIFICA", "DISEÑA LA MIGRACIÓN",
+                 "EJECUTA"):
+        assert fase in txt, (
+            f"desapareció la fase `{fase}` de la regla maestra. Con menos de "
+            f"cinco, el refactor puede saltar de observar a ejecutar")
+    assert "rearquitectura gobernada" in txt
 
 
 def test_el_nombre_va_al_final_de_la_secuencia():
