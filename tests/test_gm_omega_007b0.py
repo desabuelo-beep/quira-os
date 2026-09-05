@@ -76,8 +76,19 @@ def test_C_i_no_se_presenta_como_renombre_de_E_i():
         "factor renombrado, 011-C dejaría de preguntar por qué se AÑADIÓ una "
         "dimensión")
     assert "27-abr-2026" in txt, (
-        "se perdió la fecha de entrada de C_i, que es lo que cierra la ventana "
-        "genealógica a 24 días")
+        "se perdió la fecha de `Ci DETERMINISTA v1.0`")
+    # ⚠️ Y LA CORRECCIÓN QUE `011-C3` OBLIGÓ A HACER AQUÍ. Esta prueba decía
+    # «la fecha de ENTRADA de C_i, que cierra la ventana genealógica a 24
+    # días». Falso: `metodologia.docx` (25-mar-2026) ya define las seis
+    # variables. El 27-abr no entra el factor — cambia su MECANISMO.
+    assert "CORRECCIÓN POSTERIOR — aportada por `011-C3`" in txt, (
+        "007-B0 no recibió la corrección de C3 y sigue diciendo que C_i entró "
+        "el 27-abr. La celda H01!A94 data una VERSIÓN, no la creación del "
+        "factor — es el escalón 7: lo leído ≠ la fuente")
+    assert "sustitución de mecanismo bajo el mismo nombre" in txt, (
+        "se perdió qué ocurrió realmente el 27-abr. Sin ello, la genealogía "
+        "vuelve a leerse como una incorporación y 011-C4 preguntaría por qué "
+        "se AÑADIÓ una dimensión que ya estaba")
 
 
 def test_el_fallback_de_Ci_separa_mecanismo_de_vigencia():

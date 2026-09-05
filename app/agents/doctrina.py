@@ -145,6 +145,23 @@ _DOCTRINA = (
          verificador="test_ninguna_regla_generadora_se_infiere_del_patron_de_sus_resultados",
          por_que_ahi="con 25 casos y tres valores posibles, cualquier hipótesis "
                      "encuentra algunos que la respaldan: encajar no es derivar"),
+    dict(id="DOC-026", custodia=GATE,
+         regla="La fecha del ARTEFACTO que documenta un cambio no es la fecha "
+               "del CONCEPTO. Un registro fechado prueba cuándo se escribió, "
+               "no cuándo se pensó — y datar el concepto por su artefacto "
+               "produce una genealogía plausible y falsa",
+         fuente="GM-Ω-011-C3, 2026-09-05 · `metodologia.docx` (25-mar-2026) ya "
+                "define las seis variables, y `H01!A94` («Ci DETERMINISTA "
+                "v1.0, 27-Abr-2026») databa una versión, no la creación",
+         verificador="test_la_fecha_de_Ci_se_corrige_sin_borrar_el_error",
+         por_que_ahi="`007-B0` concluyó que `C_i` entró el 27-abr y cerró con "
+                     "eso una ventana genealógica. Era el **escalón 7 de la "
+                     "escalera —lo leído ≠ la fuente— aplicado a una "
+                     "genealogía**. Y la consecuencia no era menor: si el "
+                     "factor «entró», `011-C4` preguntaría por qué se AÑADIÓ "
+                     "una dimensión; sabiendo que ya existía, la pregunta "
+                     "correcta es por qué se SUSTITUYÓ su mecanismo, que es "
+                     "otra investigación"),
     dict(id="DOC-025", custodia=GATE,
          regla="Una regla definida DOS VECES en el mismo sistema es una "
                "divergencia latente, aunque hoy ambas versiones coincidan en "

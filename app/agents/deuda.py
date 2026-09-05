@@ -237,26 +237,29 @@ _DEUDAS = (
                "no un juicio de «bien». Cada uno de los 25 exige decidir QUÉ "
                "dice ese verde, y eso es curación de dominio, no un barrido"),
     dict(id="D-014", gravedad=FALSEA, capa="C1", dueño="Javo",
-         que="**El ICPI no verifica ENTREGA MATERIAL en ninguna de sus seis "
-             "variables.** `T_i` mide devengo presupuestario; `V_i`, existencia "
-             "de evidencia en los silos; `C_i` —según `H01` Secciones I/M y el "
-             "glosario `H02`— **calidad jurídica del proceso orgánico**: nace "
-             "en 1,00 por presunción de legalidad y sólo baja ante infracciones "
-             "normativas verificadas (LOSNCP · CGE/NCI · COPFP · CPCCS). "
-             "Ninguna pregunta si lo pagado produjo el bien o servicio. En "
-             "consecuencia, la disociación financiero ↔ físico —anticipo "
-             "transferido en noviembre con la obra sin empezar— **el motor no "
-             "la captura**. Lo estableció GM-Ω-011-C2 al contrastar la "
-             "hipótesis de Javo contra el instrumento.",
+         que="**El motor no VERIFICA la entrega material: la delega en la "
+             "corrección del dato de origen.** `C_i` no la mide —mide calidad "
+             "jurídica del proceso, `011-C2`—, pero `011-C3` encontró que "
+             "`T_i` **sí la contempla por vía normativa**: se define sobre el "
+             "DEVENGADO y no el compromiso, y el devengado exige «factura "
+             "válida, acta de entrega-recepción firmada e informe de "
+             "conformidad» (Acuerdo Ministerial 067 MEF). La metodología lo "
+             "justifica explícitamente como anti-gaming: «neutraliza reportar "
+             "contratos firmados en diciembre como metas ejecutadas cuando la "
+             "obra apenas comienza en enero». ⚠️ PERO EL MOTOR NO COMPRUEBA "
+             "QUE EL ACTA EXISTA: lee la columna «Devengado» de la cédula "
+             "eSIGEF. Si una entidad devenga sin acta bien formada, el ICPI no "
+             "puede detectarlo.",
          ataque="test_la_entrega_material_no_la_mide_ninguna_variable",
-         no_es="un defecto de datos ni una variable mal calibrada: es una "
-               "dimensión del constructo que **no está implementada**. Tampoco "
-               "es que `C_i` esté mal —hace bien lo que dice hacer—: es que "
-               "hace otra cosa. Y NO se arregla redefiniendo `C_i`, porque "
-               "entonces dejaría de medir legalidad del proceso, que sí "
-               "importa. La cura pertenece a `011-C4` y al `v2`: decidir si el "
-               "constructo necesita una séptima dimensión de entrega, o si la "
-               "descomposición por HITOS que Javo propuso la cubre desde `T_i`"),
+         no_es="una variable mal calibrada, y **tampoco es la ausencia total "
+               "de la dimensión** —así se enunció primero, y `011-C3` lo "
+               "corrigió al leer la metodología: la protección existe en `T_i` "
+               "y está razonada—. Es que la protección es NORMATIVA y no "
+               "VERIFICADA: el constructo confía en que el dato de origen "
+               "cumpla el Acuerdo 067. Y NO se arregla redefiniendo `C_i`, que "
+               "dejaría de medir legalidad del proceso. Si esa delegación es "
+               "suficiente lo juzga `011-C4`; la alternativa —verificar el "
+               "acta— exigiría una fuente que hoy no se ingiere"),
     dict(id="D-013", gravedad=FALSEA, capa="C1", dueño="Javo",
          que="**Tres reglas discrepantes definen el mismo factor `C_i`, y una "
              "cuarta contradicción sobre su naturaleza.** El glosario "

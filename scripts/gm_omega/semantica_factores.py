@@ -466,10 +466,34 @@ def _escribir(d, defs, mecs, sol, inf, ded) -> None:
       "infracciones documentadas. Es un **descuento punitivo-jurídico**, no una "
       "verificación de entrega.")
     A("")
+    A("### La formulación exacta del resultado")
+    A("")
+    A("⚠️ Decir «la hipótesis queda **refutada**», a secas, sería exceder lo "
+      "que esta etapa puede demostrar. `011-C2` establece **qué hace el "
+      "instrumento**; no puede establecer por sí sola **qué se quiso hacer**. "
+      "La formulación defendible es:")
+    A("")
+    A("> La hipótesis de que `C_i` mide o verifica la entrega material **no "
+      "encuentra respaldo en la especificación ni en el mecanismo actualmente "
+      "implementado**; la evidencia examinada **la contradice como descripción "
+      "del mecanismo vigente**.")
+    A("")
+    A("Que es una afirmación sobre el mecanismo, no sobre la intención:")
+    A("")
+    A("| Cuestión | Estado tras `011-C2` |")
+    A("|---|---|")
+    A("| Semántica implementada | calidad del proceso orgánico / "
+      "responsabilidad institucional · **DEMOSTRADO** |")
+    A("| Atribución | representada · **DEMOSTRADO** |")
+    A("| Entrega material | **no representada** |")
+    A("| Impacto | **no representado** |")
+    A("| **Intención original del autor** | ⬜ **NO DETERMINABLE** salvo "
+      "fuente documental · `011-C3` |")
+    A("")
     A("⚠️ **La hipótesis no era descabellada: era una lectura del propósito, no "
-      "del mecanismo.** La mitad de atribución se sostiene; la mitad de entrega "
-      "material **no está implementada en ninguna variable del ICPI**. Y eso "
-      "tiene una consecuencia directa sobre `009`:")
+      "del mecanismo** (`DOC-024`). La mitad de atribución se sostiene; la de "
+      "entrega material **no está implementada en ninguna variable del ICPI**. "
+      "Y eso tiene una consecuencia directa sobre `009`:")
     A("")
     A("| Distorsión institucional | Estado real de la respuesta |")
     A("|---|---|")
@@ -564,8 +588,29 @@ def _escribir(d, defs, mecs, sol, inf, ded) -> None:
     A("⚠️ Eso incluye la **discriminación positiva ×1,15 por "
       "`FONDO_CONCURSABLE`**, que el glosario declara y el motor canónico no "
       "aplica. Un premio definido y no implementado no es lo mismo que un "
-      "premio inexistente: es una **capacidad declarada sin efecto**, y va a "
-      "`011-C3`.")
+      "premio inexistente: es una **capacidad declarada sin efecto**.")
+    A("")
+    A("### La distinción que este hallazgo obliga a hacer")
+    A("")
+    A("```")
+    A("  DEFINIDO   ≠   CALCULADO   ≠   UTILIZADO")
+    A("```")
+    A("")
+    A("`Ci_Adaptativo` está **definido**. Que no participe del ICPI vigente es "
+      "**VERIFICADO**. Pero **no debe llamarse «error»**: hasta que aparezca "
+      "evidencia, su causa admite cinco lecturas incompatibles entre sí —")
+    A("")
+    A("| # | Lectura posible |")
+    A("|---|---|")
+    A("| 1 | componente experimental abandonado |")
+    A("| 2 | componente diseñado pero nunca conectado |")
+    A("| 3 | componente sustituido por otro |")
+    A("| 4 | residuo documental de una versión anterior |")
+    A("| 5 | implementación incompleta |")
+    A("")
+    A("> **Estado causal: `NO DETERMINABLE`.** Las cinco producen el mismo "
+      "síntoma observable, y elegir una sin fuente sería inventar la "
+      "genealogía. Va a `011-C3` como expediente propio (`C3-08`).")
     A("")
 
     # ── 4 · ¿opera el mecanismo? ──────────────────────────────────────────
@@ -630,6 +675,24 @@ def _escribir(d, defs, mecs, sol, inf, ded) -> None:
     A("| Esa calibración es metodológicamente admisible | ⬜ **NO LO JUZGA "
       "`011-C2`** · `011-C3` (justificación) y `011-C4` (dictamen) |")
     A("")
+    A("### Cómo se enuncia esto sin convertirlo en acusación")
+    A("")
+    A("Que exista una declaración escrita de que **se inyectaron valores "
+      "históricos para reproducir un ICPI predeterminado** es un **hecho "
+      "documental**, y hay que decirlo. Pero un hecho documental no es una "
+      "imputación de manipulación, y la diferencia está en la formulación:")
+    A("")
+    A("> La documentación demuestra una **calibración retrospectiva orientada "
+      "a reproducir un valor canónico preexistente**. La **legitimidad "
+      "metodológica** de dicha calibración queda **fuera de `011-C2`** y "
+      "requiere justificación en `C3`/`C4`.")
+    A("")
+    A("⚠️ Hay razones legítimas para calibrar así —fijar una línea base "
+      "comparable, preservar continuidad entre ejercicios— y razones que no lo "
+      "serían. **`011-C2` no puede distinguirlas y no lo intenta.** Lo que "
+      "hace es dejar el hecho registrado con su cita, para que `C3` lo "
+      "pregunte con la fuente delante.")
+    A("")
     A("⚠️ **Y hay que decir lo que esto NO es.** No registrar una infracción "
       "que no existe es **correcto**: el canon prohíbe fabricar infracciones "
       "para alimentar el motor. La cuestión abierta es distinta y es de "
@@ -672,9 +735,11 @@ def _escribir(d, defs, mecs, sol, inf, ded) -> None:
     A("|---|---|")
     A("| Comparten escala, vocabulario y fuente declarada | **DEMOSTRADO** |")
     A(f"| Coinciden en {sol['pct']:.0f} % de las metas | **DEMOSTRADO** |")
-    A("| **Son la misma variable duplicada** | 🔴 **REFUTADO** · divergen en "
-      f"{sol['n'] - sol['iguales']} metas; si fueran la misma, coincidirían "
-      "en todas |")
+    A("| **Son la misma variable** | 🔴 **REFUTADO** · propiedad matemática: "
+      f"divergen en {sol['n'] - sol['iguales']} metas, y si fueran la misma "
+      "coincidirían en todas |")
+    A("| **El motor cuenta dos veces la autonomía** | ⬜ **NO SE AFIRMA** · "
+      "esas mismas divergencias lo impiden |")
     A(f"| La etiqueta legal predice `E_i` | en {sol['pred_e']}/{sol['con_etq']} "
       "metas con etiqueta |")
     A(f"| La etiqueta legal predice `C_i` | en {sol['pred_c']}/{sol['con_etq']} "
@@ -683,9 +748,20 @@ def _escribir(d, defs, mecs, sol, inf, ded) -> None:
       "dimensiones distintas de la fórmula usan el mismo vocabulario y la "
       "misma escala sobre la misma fuente |")
     A("")
-    A("> ### El hallazgo NO es «están duplicadas». Es peor de diagnosticar y "
-      "mejor de corregir: **están parcialmente solapadas y no se sabe por qué "
-      "divergen donde divergen.**")
+    A("### La formulación exacta, y las dos que hay que evitar")
+    A("")
+    A("| Formulación | Veredicto |")
+    A("|---|---|")
+    A("| «`E_i` y `C_i` son la misma variable» | 🔴 falsa · divergen en "
+      f"{sol['n'] - sol['iguales']} metas |")
+    A("| «el motor duplica la autonomía» / «hay doble conteo» | 🔴 **no "
+      "demostrada** · sería exactamente el mismo error, con otro nombre |")
+    A("| **«existe una POTENCIAL SUPERPOSICIÓN SEMÁNTICA entre `E_i` y `C_i` "
+      "que requiere justificación»** | ✅ es lo que la evidencia sostiene |")
+    A("")
+    A("> El hallazgo es **peor de diagnosticar y mejor de corregir** que una "
+      "duplicación: están parcialmente superpuestas y **no se sabe por qué "
+      "divergen donde divergen**.")
     A("")
     A("Porque una divergencia puede significar dos cosas opuestas:")
     A("")
@@ -700,6 +776,34 @@ def _escribir(d, defs, mecs, sol, inf, ded) -> None:
       "**nada en el instrumento explica la diferencia** — no hay columna de "
       "justificación para `E_i`, que es literal en `H12` y carece de entrada "
       "propia en la Sección I.")
+    A("")
+    A("### 📜 CORRECCIÓN POSTERIOR — aportada por `011-C3`")
+    A("")
+    A("La frase anterior era **cierta del instrumento y falsa del corpus**, y "
+      "se conserva para que la corrección sea auditable. `011-C3` encontró en "
+      "`metodologia.docx` (25-mar-2026) las dos escalas originales, y la "
+      "superposición **sí está explicada**:")
+    A("")
+    A("| Variable | Eje que mide | Escala original |")
+    A("|---|---|---|")
+    A("| `E_i` · Fricción de Autonomía | **quién EJECUTA** — modalidad de "
+      "ejecución | directa `1,00` · convenio `0,90` · delegada `0,75` |")
+    A("| `C_i` · Imputabilidad Orgánica | **quién RESPONDE** — claridad de la "
+      "asignación | responsable único `1,00` · compartida `0,90` · difusa "
+      "`0,75` |")
+    A("")
+    A("> Comparten escala **porque ambas son escalas ordinales de tres grados "
+      "sobre el mismo Estatuto Orgánico**. La superposición es **deliberada y "
+      "justificada**, no un accidente — y por eso pueden divergir sin que eso "
+      "sea un error.")
+    A("")
+    A("La metodología incluso trae el caso: `M3` (Salud) con ejecución "
+      "**directa** (`E=1,00`) y responsabilidad **compartida** entre "
+      "Planificación y Obras Públicas (`C=0,90`).")
+    A("")
+    A("**Lo que sigue sin explicación** es cada una de las 12 asignaciones "
+      "divergentes del motor, meta a meta. Esa parte permanece `NO "
+      "DETERMINABLE`.")
     A("")
 
     # ── 6 · lo que se entrega ─────────────────────────────────────────────
@@ -724,12 +828,56 @@ def _escribir(d, defs, mecs, sol, inf, ded) -> None:
       "descubrió después? | §5 |")
     A("| 9 | ¿Por qué `Ci_Adaptativo` está definido y no se aplica? | §3-ter |")
     A("")
+    A("### ★ La pregunta que `C3` hereda por encima de las nueve")
+    A("")
+    A("Las cuatro divergencias tienen una forma común, y verla ordenada "
+      "cambia el encargo de `C3`. Sobre `C_i` conviven **cuatro reglas**:")
+    A("")
+    A("| | Regla | Dónde vive |")
+    A("|---|---|---|")
+    A("| **A** | ponderaciones y piso del glosario | `H02` "
+      "`Ci_Determinista` |")
+    A("| **B** | otra parametrización: `INF-03` `0,05`, `INF-04` FIJA, piso "
+      "`0,50` | `H01` Sección L |")
+    A("| **C** | el cálculo efectivo que alimenta el numerador | `H12` col. "
+      "`C_i` ← `H01` Sección M |")
+    A("| **D** | `Ci_Manual_2025` cuando no hay infracciones | nota "
+      "metodológica de la Sección M |")
+    A("")
+    A("> ### Que una regla esté documentada no la hace la regla vigente")
+    A(">")
+    A("> Lo que `C3` tiene que determinar no es cuál regla es mejor, sino "
+      "**cuál gobierna realmente el valor que entra en el ICPI** — y qué "
+      "evidencia justifica cada transición entre ellas.")
+    A("")
     A("### A `011-C4` · el dictamen")
     A("")
     A("> Si dos de los seis factores comparten escala, vocabulario y fuente, la "
       "pregunta de la multiplicatividad **cambia de forma**: ya no es sólo si "
       "el producto es la operación correcta, sino **sobre cuántas dimensiones "
       "realmente independientes opera**.")
+    A("")
+    A("### ★ La matriz dimensional que queda congelada para `C4`")
+    A("")
+    A("Tras `011-C2`, la arquitectura **ya no puede describirse** como "
+      "`V`=evidencia · `T`=ejecución · `E`=estructura · `C`=entrega. Esa "
+      "lectura quedó superada. La descripción provisional correcta es:")
+    A("")
+    A("| Factor | Dimensión | Estado de su semántica |")
+    A("|---|---|---|")
+    A("| `V_i` | **evidencial / documental** | establecida |")
+    A("| `T_i` | **temporal de ejecución** presupuestaria | establecida |")
+    A("| `E_i` | **estructural / competencial** (autonomía) | ⚠️ requiere "
+      "reconstrucción histórica completa |")
+    A("| `C_i` | **jurídico-orgánica**: calidad y responsabilidad del proceso "
+      "| ⚠️ regla efectiva y justificación **abiertas en `C3`** |")
+    A("| — | **entrega material / impacto físico** | 🔴 **EXCLUIDOS del "
+      "instrumento actual** |")
+    A("")
+    A("⚠️ La última fila es la que impide que QUIRA se atribuya una capacidad "
+      "que hoy no tiene. Mientras ningún dominio la incorpore, **el ICPI no "
+      "responde por el resultado material de una meta**, y así debe "
+      "presentarse.")
     A("")
     A("### A `009` · una corrección")
     A("")
@@ -747,16 +895,24 @@ def _escribir(d, defs, mecs, sol, inf, ded) -> None:
       f"**{'DEMOSTRADO' if not [f for f, e in defs.items() if not e] else 'PARCIAL'}** |")
     A("| `C_i` mide calidad jurídica del proceso orgánico | **DEMOSTRADO** · "
       "glosario `H02` + Secciones I/M |")
-    A("| `C_i` mide entrega material verificada | 🔴 **REFUTADO** · ninguna "
-      "deducción mide entrega |")
+    A("| `C_i` mide o verifica entrega material | 🔴 **SIN RESPALDO EN EL "
+      "MECANISMO VIGENTE** · la evidencia examinada la contradice como "
+      "descripción del mecanismo · ⚠️ no dice nada sobre la INTENCIÓN "
+      "original |")
     A("| `C_i` imputa la meta a una unidad orgánica responsable | "
       "**DEMOSTRADO** · Sección I |")
     A("| El valor vigente de `C_i` no procede del mecanismo declarado | "
       "**DECLARADO POR EL INSTRUMENTO** |")
     A("| `E_i` mide autonomía en el ejercicio de la competencia | "
       "**DEMOSTRADO** · glosario `H02` |")
-    A("| `E_i` y `C_i` son la misma variable | 🔴 **REFUTADO** |")
-    A("| `E_i` y `C_i` presentan ambigüedad ontológica | **DEMOSTRADO** |")
+    A("| `E_i` y `C_i` son la misma variable | 🔴 **REFUTADO** · propiedad "
+      "matemática |")
+    A("| Existe **potencial superposición semántica** `E_i` ↔ `C_i` que "
+      "requiere justificación | **DEMOSTRADO** |")
+    A("| El motor cuenta dos veces la autonomía (doble conteo) | ⬜ **NO SE "
+      "AFIRMA** · las divergencias lo impiden |")
+    A("| **Intención original del autor sobre `C_i`** | ⬜ **NO "
+      "DETERMINABLE** · `011-C3` |")
     A("| La razón de cada divergencia `E_i` ↔ `C_i` | ⬜ **NO DETERMINABLE** "
       "aquí · `011-C3` |")
     A("| El glosario y la Sección L discrepan sobre `INF-03`, `INF-04` y el "

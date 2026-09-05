@@ -54,7 +54,7 @@ Javo: *«tenemos la tesis, y todo el constructo metodológico allí claro […] 
 
   011-C2  ✅ semántica de los factores      qué mide cada letra
      ↓
-  011-C3     justificación                 por qué cambió · quién · cuándo
+  011-C3  ✅ justificación                  por qué cambió · quién · cuándo
      ↓
   010        transferibilidad LATAM        qué parte del constructo es local
      ↓
@@ -106,7 +106,7 @@ Y **`T6` espera a `011` por la misma razón**: deprecar `AVEP` o migrar el nombr
 | GM-Ω | `011-B` | Regla de correspondencia PDOT → ICPI (1:1·N:1·1:N·N:N) | ⛔ | 011-A |
 | GM-Ω | `011-C1` | Genealogía algebraica · P·R·V·T → +E → +C · escalas | ⬜ | ★ 007-B0 la dejó reconstruida |
 | GM-Ω | `011-C2` | Genealogía semántica · qué significó cada factor | ✅ | ★ C_i mide LEGALIDAD del proceso, no entrega · E_i y C_i comparten escala sin ser la misma · 4 divergencias latentes |
-| GM-Ω | `011-C3` | Justificación de cada transformación · qué·por qué·quién·cuándo | ⬜ | 9 preguntas heredadas de C2 · sin fuente documental → NO DETERMINABLE, no explicación inventada |
+| GM-Ω | `011-C3` | Justificación de cada transformación · qué·por qué·quién·cuándo | ✅ | ★ el 27-abr C_i no ENTRÓ: cambió de mecanismo (imputabilidad → calidad de proceso) · E_i↔C_i justificada · 3 de 9 NO DETERMINABLE porque la razón nunca se escribió |
 | GM-Ω | `011-C4` | ¿Es la multiplicatividad NECESARIA al constructo, o una arquitectura elegida y conservada? | ⛔ | ⚠️ faltan A · B · C1 · C3 · 010 — y C2 la reformuló: la pregunta ya no es sólo si el producto es correcto, sino sobre cuántas dimensiones REALMENTE independientes opera |
 | TF | `T1` | Inventario de nombres propios | ✅ |  |
 | TF | `T2` | Clasificación ontológica + capa de presentación | ✅ |  |
@@ -125,7 +125,7 @@ Y **`T6` espera a `011` por la misma razón**: deprecar `AVEP` o migrar el nombr
 | 2ING | `d02·d03` | Presupuesto · Gobernanza del Mandato | ⬜ |  |
 | 2ING | `d04·d05·d10-d13` | Sellados · sin construir | ⬜ |  |
 
-**16 de 35 etapas cerradas.**
+**17 de 35 etapas cerradas.**
 
 ## Estado derivado de las fuentes vivas
 
@@ -134,9 +134,9 @@ Y **`T6` espera a `011` por la misma razón**: deprecar `AVEP` o migrar el nombr
 | Deudas declaradas | 14 |
 | Deudas resueltas | 6 |
 | Deudas abiertas | **8** |
-| Reglas de doctrina con custodio | 25 |
-| Pruebas que las fijan | 403 |
-| Documentos GM-Ω | 11 |
+| Reglas de doctrina con custodio | 26 |
+| Pruebas que las fijan | 414 |
+| Documentos GM-Ω | 12 |
 
 ### Deudas abiertas
 
@@ -158,6 +158,7 @@ Y **`T6` espera a `011` por la misma razón**: deprecar `AVEP` o migrar el nombr
 - [`GM-OMEGA_ICPI_COBERTURA_008.md`](GM-OMEGA_ICPI_COBERTURA_008.md)
 - [`GM-OMEGA_ICPI_FICHA_FORENSE.md`](GM-OMEGA_ICPI_FICHA_FORENSE.md)
 - [`GM-OMEGA_ICPI_GAMING_009.md`](GM-OMEGA_ICPI_GAMING_009.md)
+- [`GM-OMEGA_ICPI_JUSTIFICACION_011C3.md`](GM-OMEGA_ICPI_JUSTIFICACION_011C3.md)
 - [`GM-OMEGA_ICPI_MATRIZ_004.md`](GM-OMEGA_ICPI_MATRIZ_004.md)
 - [`GM-OMEGA_ICPI_RECONCILIACION_008R.md`](GM-OMEGA_ICPI_RECONCILIACION_008R.md)
 - [`GM-OMEGA_ICPI_SEMANTICA_011C2.md`](GM-OMEGA_ICPI_SEMANTICA_011C2.md)
@@ -172,4 +173,4 @@ Y **`T6` espera a `011` por la misma razón**: deprecar `AVEP` o migrar el nombr
 3. **Este mapa se deriva.** El día que alguien lo edite a mano, dejará de reflejar el estado real sin que nada avise, y volveremos exactamente al punto que motivó escribirlo.
 
 ---
-*QUIRA · Mapa Maestro · 16/35 etapas cerradas · 8 deudas abiertas · Dylus Lab © 2026*
+*QUIRA · Mapa Maestro · 17/35 etapas cerradas · 8 deudas abiertas · Dylus Lab © 2026*

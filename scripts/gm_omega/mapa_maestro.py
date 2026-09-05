@@ -87,8 +87,9 @@ _ETAPAS = [
      _HECHO, "★ C_i mide LEGALIDAD del proceso, no entrega · E_i y C_i "
              "comparten escala sin ser la misma · 4 divergencias latentes"),
     ("GM-Ω", "011-C3", "Justificación de cada transformación · qué·por qué·quién·cuándo",
-     _ABIERTO, "9 preguntas heredadas de C2 · sin fuente documental → NO "
-               "DETERMINABLE, no explicación inventada"),
+     _HECHO, "★ el 27-abr C_i no ENTRÓ: cambió de mecanismo (imputabilidad → "
+             "calidad de proceso) · E_i↔C_i justificada · 3 de 9 NO "
+             "DETERMINABLE porque la razón nunca se escribió"),
     ("GM-Ω", "011-C4", "¿Es la multiplicatividad NECESARIA al constructo, o una "
      "arquitectura elegida y conservada?", _BLOQ,
      "⚠️ faltan A · B · C1 · C3 · 010 — y C2 la reformuló: la pregunta ya no "
@@ -242,7 +243,7 @@ def _escribir(deu, docs, n_doc, n_test, hechas) -> None:
     A("")
     A("  011-C2  ✅ semántica de los factores      qué mide cada letra")
     A("     ↓")
-    A("  011-C3     justificación                 por qué cambió · quién · cuándo")
+    A("  011-C3  ✅ justificación                  por qué cambió · quién · cuándo")
     A("     ↓")
     A("  010        transferibilidad LATAM        qué parte del constructo es local")
     A("     ↓")

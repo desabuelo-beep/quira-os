@@ -58,14 +58,14 @@ Techo alcanzable llevando **todos** los factores de cada naturaleza a su máximo
 | **ESTRUCTURAL** | `E_i` | 28.6932 % | +1.23 pp |
 | **PENDIENTE** | `C_i` | 28.6814 % | +1.22 pp |
 
-> ### En el corte de abril, la vía material tiene ~9.0× el techo de la documental
+> ### En el escenario de abril, el techo de `T_i` es 8.96× el de `V_i`
 > **+52.10 pp** frente a **+5.81 pp**.
 
-La formulación defendible es **descriptiva y acotada al escenario**:
+**Ésta es la única formulación canónica del resultado**, y está deliberadamente escrita en términos de factores y no de conductas:
 
-> En el escenario de abril analizado, la capacidad contrafactual de incremento del ICPI mediante `T_i` es aproximadamente **9 veces** la obtenida mediante `V_i`.
+> En el escenario contrafactual de abril, la capacidad de incremento del ICPI atribuida a la modificación de `T_i` fue aproximadamente **8.96 veces** la atribuida a la modificación de `V_i`, **manteniendo las demás condiciones del escenario**.
 
-⚠️ **Y sólo en ese escenario.** Convertirlo en «el índice incentiva 9 veces más la ejecución» exigiría una teoría del coste y del comportamiento del gestor que 009 **no tiene**: un techo contrafactual no dice nada sobre qué es más barato o más probable de hacer.
+⚠️ **Se retiró el marco «ejecución vs documentación».** Era cómodo y engañoso por dos motivos: sugiere una teoría del coste y del comportamiento del gestor que `009` **no tiene** —un techo contrafactual no dice qué es más barato ni más probable—, y presupone que cada factor equivale a una conducta. `011-C2` mostró que esa equivalencia no se sostiene: `C_i` no era lo que la lectura intuitiva decía, y nada garantiza que `V_i` y `T_i` sí lo sean.
 
 ## ⚠️ ¿Es un resultado de la FÓRMULA o del ESTADO?
 
@@ -145,11 +145,23 @@ Y de ahí salen cuatro distorsiones que afectan a cualquier evaluación de PDOT 
 
 ### 📜 CORRECCIÓN POSTERIOR — aportada por `011-C2`
 
-Una versión anterior de esta tabla afirmaba que el motor **sí** responde a la disociación financiero ↔ físico, porque «`C_i` exige atribución y entrega: `T=1` con `C→0` penaliza la meta». `011-C2` leyó el instrumento y lo desmintió:
+⚠️ **REGLA EDITORIAL DE ESTE EXPEDIENTE.** `009` **no se reescribe** para adoptar las conclusiones de `011-C2`. Conserva su naturaleza histórica y **anexa** la corrección, porque lo que GM-Ω necesita poder demostrar es la secuencia entera:
+
+```
+  qué pensábamos  →  qué evidencia apareció  →  qué hubo que corregir
+```
+
+Un expediente al que se le retocan las hipótesis para que todo parezca coherente en retrospectiva vale mucho menos que uno que muestra dónde se equivocó y con qué se corrigió.
+
+**Lo que 009 afirmó:** que el motor responde a la disociación financiero ↔ físico, porque «`C_i` exige atribución y entrega: `T=1` con `C→0` penaliza la meta».
+
+**Lo que `011-C2` encontró en el instrumento:**
 
 > `C_i` es **«Calidad de Proceso Orgánico»**. Nace en 1,00 por presunción de legalidad y se deduce por **infracciones normativas verificadas** (LOSNCP · CGE/NCI · COPFP · CPCCS). **Ninguna de las cuatro mide entrega material**, y hoy las cuatro están en cero para las 25 metas.
 
-De modo que **dos distorsiones quedan sin cubrir, no una**. La constancia se conserva: era una hipótesis del autor sobre el propósito, y describía bien lo que el motor *debería* hacer — no lo que hace.
+**Cómo queda la afirmación:** la hipótesis de que `C_i` mide o verifica la entrega material **no encuentra respaldo en la especificación ni en el mecanismo actualmente implementado**; la evidencia la contradice **como descripción del mecanismo vigente**. Lo que se quiso hacer originalmente es otra pregunta, y es `NO DETERMINABLE` hasta `011-C3`.
+
+**Consecuencia:** **dos distorsiones quedan sin cubrir, no una**.
 
 ### ⚠️ Y aquí 009 tuvo que retirar una frase
 
@@ -258,7 +270,7 @@ La tercera fila es donde `C_i` sería decisivo **si** su semántica resulta ser 
 | Ejecutar es la única mejora legítima | **NO DEMOSTRADO** |
 | `C_i` es un factor documental | **REFUTADO** por el propio autor |
 | `C_i` mide **atribución** | ✅ **CONFIRMADO** por `011-C2` · Sección I |
-| `C_i` mide **entrega material** | 🔴 **REFUTADO** por `011-C2` · mide infracciones normativas |
+| `C_i` mide o verifica **entrega material** | 🔴 **SIN RESPALDO EN EL MECANISMO VIGENTE** (`011-C2`) · mide infracciones normativas. La INTENCIÓN original queda `NO DETERMINABLE` hasta `011-C3` |
 | El gaming es propiedad permanente del índice | **REFUTADO** |
 | La arquitectura es adecuada / inadecuada | **FUERA DEL ALCANCE de 009** · `011-C4` |
 | La multiplicatividad debe conservarse por este resultado | **NO DETERMINABLE** · `011-C4` |

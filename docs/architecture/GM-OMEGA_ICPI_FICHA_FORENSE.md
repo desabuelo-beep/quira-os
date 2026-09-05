@@ -573,14 +573,43 @@ ENERO 2026      núcleo  P · R · V · T              chat «Profundo»
       ↓
 FEBRERO         i = PROMESA CNE · 5 factores · ×100    ANEXO M
       ↓
+25-MAR          6 factores CONCEPTUALES · C_i =        metodologia.docx
+                IMPUTABILIDAD ORGÁNICA                 (creado 2026-03-25)
+      ↓
 3-ABR           5 factores · ×100 · Ei: int(1-5)       ANEXO L QUADRUM v5.0
       ↓
-27-ABR          entra C_i → 6 factores                 Ci DETERMINISTA v1.0
+27-ABR          C_i cambia de MECANISMO:               Ci DETERMINISTA v1.0
+                imputabilidad → calidad de proceso
       ↓
 10-MAY          primer Gold Master conservado          ECIAP v1.1
       ↓
 v5.7 VIGENTE    i = META PDOT · 6 factores · B33 sin ×100
 ```
+
+### 📜 CORRECCIÓN POSTERIOR — aportada por `011-C3` (2026-09-05)
+
+Esta línea decía **«27-ABR · entra `C_i` → 6 factores»**. Es incorrecto, y el
+error se conserva porque su forma es reconocible y reincidente.
+
+`011-C3` encontró `metodologia.docx`, **creado el 25-mar-2026**, que ya define
+las **seis** variables — `C_i` incluida, como **«Imputabilidad Orgánica: grado de
+claridad en la asignación de responsabilidad según el Estatuto Orgánico»**, con
+fundamento en `Constitución 233` y `NCI 200-04 / 401-01`, y escala
+`{1,00 · 0,90 · 0,75}`.
+
+De modo que `H01!A94` —«★ **Ci DETERMINISTA v1.0** … 27-Abr-2026»— **data una
+versión, no la creación del factor**. Lo que ocurrió ese día no fue una
+incorporación sino una **sustitución de mecanismo bajo el mismo nombre**:
+
+| | antes (25-mar) | después (27-abr) |
+|---|---|---|
+| Constructo | imputabilidad orgánica | calidad de proceso orgánico |
+| Mide | claridad de la asignación | infracciones normativas |
+| Rango | mínimo `0,75` | mínimo `0,50` |
+
+⚠️ **Es el escalón 7 de la escalera aplicado a una genealogía**: se tomó la
+fecha del artefacto que *documenta* un cambio como si fuera la fecha del
+*concepto*. **Lo leído ≠ la fuente.**
 
 > **La arquitectura vigente es el resultado de una evolución metodológica documentable,
 > no una fórmula originaria que permaneció inalterada.** Que exista esa evolución **no

@@ -133,7 +133,23 @@ Y las **cuatro deducciones** que la Sección M registra son:
 >
 > El nombre canónico es **«Calidad de Proceso Orgánico»** / **«Trazabilidad Orgánica (imputabilidad responsable)»**. El proceso **nace en 1,00 por presunción de legalidad** y se deduce por infracciones documentadas. Es un **descuento punitivo-jurídico**, no una verificación de entrega.
 
-⚠️ **La hipótesis no era descabellada: era una lectura del propósito, no del mecanismo.** La mitad de atribución se sostiene; la mitad de entrega material **no está implementada en ninguna variable del ICPI**. Y eso tiene una consecuencia directa sobre `009`:
+### La formulación exacta del resultado
+
+⚠️ Decir «la hipótesis queda **refutada**», a secas, sería exceder lo que esta etapa puede demostrar. `011-C2` establece **qué hace el instrumento**; no puede establecer por sí sola **qué se quiso hacer**. La formulación defendible es:
+
+> La hipótesis de que `C_i` mide o verifica la entrega material **no encuentra respaldo en la especificación ni en el mecanismo actualmente implementado**; la evidencia examinada **la contradice como descripción del mecanismo vigente**.
+
+Que es una afirmación sobre el mecanismo, no sobre la intención:
+
+| Cuestión | Estado tras `011-C2` |
+|---|---|
+| Semántica implementada | calidad del proceso orgánico / responsabilidad institucional · **DEMOSTRADO** |
+| Atribución | representada · **DEMOSTRADO** |
+| Entrega material | **no representada** |
+| Impacto | **no representado** |
+| **Intención original del autor** | ⬜ **NO DETERMINABLE** salvo fuente documental · `011-C3` |
+
+⚠️ **La hipótesis no era descabellada: era una lectura del propósito, no del mecanismo** (`DOC-024`). La mitad de atribución se sostiene; la de entrega material **no está implementada en ninguna variable del ICPI**. Y eso tiene una consecuencia directa sobre `009`:
 
 | Distorsión institucional | Estado real de la respuesta |
 |---|---|
@@ -194,7 +210,25 @@ Es decir, entran: `P_i` · `R_i` · `V_i` · `E_i` · `T_i_2026` · `C_i`.
 | `Ci (Calidad de proceso)` — vía `H01` Sección M | ✅ sí, es la columna `C_i` |
 | `Ci_Adaptativo` — modificadores por `TIPO_FINANCIAMIENTO` e `INTANGIBLE_FLAG` | 🔴 **NO** · el numerador no lo referencia |
 
-⚠️ Eso incluye la **discriminación positiva ×1,15 por `FONDO_CONCURSABLE`**, que el glosario declara y el motor canónico no aplica. Un premio definido y no implementado no es lo mismo que un premio inexistente: es una **capacidad declarada sin efecto**, y va a `011-C3`.
+⚠️ Eso incluye la **discriminación positiva ×1,15 por `FONDO_CONCURSABLE`**, que el glosario declara y el motor canónico no aplica. Un premio definido y no implementado no es lo mismo que un premio inexistente: es una **capacidad declarada sin efecto**.
+
+### La distinción que este hallazgo obliga a hacer
+
+```
+  DEFINIDO   ≠   CALCULADO   ≠   UTILIZADO
+```
+
+`Ci_Adaptativo` está **definido**. Que no participe del ICPI vigente es **VERIFICADO**. Pero **no debe llamarse «error»**: hasta que aparezca evidencia, su causa admite cinco lecturas incompatibles entre sí —
+
+| # | Lectura posible |
+|---|---|
+| 1 | componente experimental abandonado |
+| 2 | componente diseñado pero nunca conectado |
+| 3 | componente sustituido por otro |
+| 4 | residuo documental de una versión anterior |
+| 5 | implementación incompleta |
+
+> **Estado causal: `NO DETERMINABLE`.** Las cinco producen el mismo síntoma observable, y elegir una sin fuente sería inventar la genealogía. Va a `011-C3` como expediente propio (`C3-08`).
 
 ## ★ 4 · ¿Está OPERANDO el mecanismo declarado?
 
@@ -238,6 +272,14 @@ Puestas una junto a otra, la Sección L y la Sección M **del mismo libro** afir
 | El valor vigente de `C_i` procede de `Ci_Manual_2025` | **DECLARADO POR EL INSTRUMENTO** · nota metodológica de la Sección M |
 | La calibración se ajustó para reproducir un ICPI previamente fijado | **DECLARADO POR EL INSTRUMENTO** · glosario, «Mapeo Retrospectivo» |
 | Esa calibración es metodológicamente admisible | ⬜ **NO LO JUZGA `011-C2`** · `011-C3` (justificación) y `011-C4` (dictamen) |
+
+### Cómo se enuncia esto sin convertirlo en acusación
+
+Que exista una declaración escrita de que **se inyectaron valores históricos para reproducir un ICPI predeterminado** es un **hecho documental**, y hay que decirlo. Pero un hecho documental no es una imputación de manipulación, y la diferencia está en la formulación:
+
+> La documentación demuestra una **calibración retrospectiva orientada a reproducir un valor canónico preexistente**. La **legitimidad metodológica** de dicha calibración queda **fuera de `011-C2`** y requiere justificación en `C3`/`C4`.
+
+⚠️ Hay razones legítimas para calibrar así —fijar una línea base comparable, preservar continuidad entre ejercicios— y razones que no lo serían. **`011-C2` no puede distinguirlas y no lo intenta.** Lo que hace es dejar el hecho registrado con su cita, para que `C3` lo pregunte con la fuente delante.
 
 ⚠️ **Y hay que decir lo que esto NO es.** No registrar una infracción que no existe es **correcto**: el canon prohíbe fabricar infracciones para alimentar el motor. La cuestión abierta es distinta y es de vigencia: **usar una calibración heurística de 2025 como valor de 2026**. `007-B0` ya dejó esa pregunta abierta; `011-C2` le pone nombre propio y la entrega a `011-C3`.
 
@@ -290,12 +332,21 @@ Misma escala, mismo vocabulario, misma fuente. **La pregunta obligada es si son 
 |---|---|
 | Comparten escala, vocabulario y fuente declarada | **DEMOSTRADO** |
 | Coinciden en 52 % de las metas | **DEMOSTRADO** |
-| **Son la misma variable duplicada** | 🔴 **REFUTADO** · divergen en 12 metas; si fueran la misma, coincidirían en todas |
+| **Son la misma variable** | 🔴 **REFUTADO** · propiedad matemática: divergen en 12 metas, y si fueran la misma coincidirían en todas |
+| **El motor cuenta dos veces la autonomía** | ⬜ **NO SE AFIRMA** · esas mismas divergencias lo impiden |
 | La etiqueta legal predice `E_i` | en 12/25 metas con etiqueta |
 | La etiqueta legal predice `C_i` | en 24/25 metas con etiqueta |
 | Existe **ambigüedad ontológica** entre ambas | **DEMOSTRADO** · dos dimensiones distintas de la fórmula usan el mismo vocabulario y la misma escala sobre la misma fuente |
 
-> ### El hallazgo NO es «están duplicadas». Es peor de diagnosticar y mejor de corregir: **están parcialmente solapadas y no se sabe por qué divergen donde divergen.**
+### La formulación exacta, y las dos que hay que evitar
+
+| Formulación | Veredicto |
+|---|---|
+| «`E_i` y `C_i` son la misma variable» | 🔴 falsa · divergen en 12 metas |
+| «el motor duplica la autonomía» / «hay doble conteo» | 🔴 **no demostrada** · sería exactamente el mismo error, con otro nombre |
+| **«existe una POTENCIAL SUPERPOSICIÓN SEMÁNTICA entre `E_i` y `C_i` que requiere justificación»** | ✅ es lo que la evidencia sostiene |
+
+> El hallazgo es **peor de diagnosticar y mejor de corregir** que una duplicación: están parcialmente superpuestas y **no se sabe por qué divergen donde divergen**.
 
 Porque una divergencia puede significar dos cosas opuestas:
 
@@ -306,6 +357,21 @@ Porque una divergencia puede significar dos cosas opuestas:
 ```
 
 Y `011-C2` **no puede distinguirlas**: exigiría la razón de cada asignación, que es material de `011-C3`. Lo que sí puede decir es que **nada en el instrumento explica la diferencia** — no hay columna de justificación para `E_i`, que es literal en `H12` y carece de entrada propia en la Sección I.
+
+### 📜 CORRECCIÓN POSTERIOR — aportada por `011-C3`
+
+La frase anterior era **cierta del instrumento y falsa del corpus**, y se conserva para que la corrección sea auditable. `011-C3` encontró en `metodologia.docx` (25-mar-2026) las dos escalas originales, y la superposición **sí está explicada**:
+
+| Variable | Eje que mide | Escala original |
+|---|---|---|
+| `E_i` · Fricción de Autonomía | **quién EJECUTA** — modalidad de ejecución | directa `1,00` · convenio `0,90` · delegada `0,75` |
+| `C_i` · Imputabilidad Orgánica | **quién RESPONDE** — claridad de la asignación | responsable único `1,00` · compartida `0,90` · difusa `0,75` |
+
+> Comparten escala **porque ambas son escalas ordinales de tres grados sobre el mismo Estatuto Orgánico**. La superposición es **deliberada y justificada**, no un accidente — y por eso pueden divergir sin que eso sea un error.
+
+La metodología incluso trae el caso: `M3` (Salud) con ejecución **directa** (`E=1,00`) y responsabilidad **compartida** entre Planificación y Obras Públicas (`C=0,90`).
+
+**Lo que sigue sin explicación** es cada una de las 12 asignaciones divergentes del motor, meta a meta. Esa parte permanece `NO DETERMINABLE`.
 
 ## Lo que `011-C2` entrega
 
@@ -323,9 +389,38 @@ Y `011-C2` **no puede distinguirlas**: exigiría la razón de cada asignación, 
 | 8 | ¿Se incorporó `C_i` sabiendo que solaparía con `E_i`, o se descubrió después? | §5 |
 | 9 | ¿Por qué `Ci_Adaptativo` está definido y no se aplica? | §3-ter |
 
+### ★ La pregunta que `C3` hereda por encima de las nueve
+
+Las cuatro divergencias tienen una forma común, y verla ordenada cambia el encargo de `C3`. Sobre `C_i` conviven **cuatro reglas**:
+
+| | Regla | Dónde vive |
+|---|---|---|
+| **A** | ponderaciones y piso del glosario | `H02` `Ci_Determinista` |
+| **B** | otra parametrización: `INF-03` `0,05`, `INF-04` FIJA, piso `0,50` | `H01` Sección L |
+| **C** | el cálculo efectivo que alimenta el numerador | `H12` col. `C_i` ← `H01` Sección M |
+| **D** | `Ci_Manual_2025` cuando no hay infracciones | nota metodológica de la Sección M |
+
+> ### Que una regla esté documentada no la hace la regla vigente
+>
+> Lo que `C3` tiene que determinar no es cuál regla es mejor, sino **cuál gobierna realmente el valor que entra en el ICPI** — y qué evidencia justifica cada transición entre ellas.
+
 ### A `011-C4` · el dictamen
 
 > Si dos de los seis factores comparten escala, vocabulario y fuente, la pregunta de la multiplicatividad **cambia de forma**: ya no es sólo si el producto es la operación correcta, sino **sobre cuántas dimensiones realmente independientes opera**.
+
+### ★ La matriz dimensional que queda congelada para `C4`
+
+Tras `011-C2`, la arquitectura **ya no puede describirse** como `V`=evidencia · `T`=ejecución · `E`=estructura · `C`=entrega. Esa lectura quedó superada. La descripción provisional correcta es:
+
+| Factor | Dimensión | Estado de su semántica |
+|---|---|---|
+| `V_i` | **evidencial / documental** | establecida |
+| `T_i` | **temporal de ejecución** presupuestaria | establecida |
+| `E_i` | **estructural / competencial** (autonomía) | ⚠️ requiere reconstrucción histórica completa |
+| `C_i` | **jurídico-orgánica**: calidad y responsabilidad del proceso | ⚠️ regla efectiva y justificación **abiertas en `C3`** |
+| — | **entrega material / impacto físico** | 🔴 **EXCLUIDOS del instrumento actual** |
+
+⚠️ La última fila es la que impide que QUIRA se atribuya una capacidad que hoy no tiene. Mientras ningún dominio la incorpore, **el ICPI no responde por el resultado material de una meta**, y así debe presentarse.
 
 ### A `009` · una corrección
 
@@ -337,12 +432,14 @@ El expediente de `009` afirma que el motor responde a la disociación financiero
 |---|---|
 | Cada factor tiene una definición canónica en el glosario del motor | **DEMOSTRADO** |
 | `C_i` mide calidad jurídica del proceso orgánico | **DEMOSTRADO** · glosario `H02` + Secciones I/M |
-| `C_i` mide entrega material verificada | 🔴 **REFUTADO** · ninguna deducción mide entrega |
+| `C_i` mide o verifica entrega material | 🔴 **SIN RESPALDO EN EL MECANISMO VIGENTE** · la evidencia examinada la contradice como descripción del mecanismo · ⚠️ no dice nada sobre la INTENCIÓN original |
 | `C_i` imputa la meta a una unidad orgánica responsable | **DEMOSTRADO** · Sección I |
 | El valor vigente de `C_i` no procede del mecanismo declarado | **DECLARADO POR EL INSTRUMENTO** |
 | `E_i` mide autonomía en el ejercicio de la competencia | **DEMOSTRADO** · glosario `H02` |
-| `E_i` y `C_i` son la misma variable | 🔴 **REFUTADO** |
-| `E_i` y `C_i` presentan ambigüedad ontológica | **DEMOSTRADO** |
+| `E_i` y `C_i` son la misma variable | 🔴 **REFUTADO** · propiedad matemática |
+| Existe **potencial superposición semántica** `E_i` ↔ `C_i` que requiere justificación | **DEMOSTRADO** |
+| El motor cuenta dos veces la autonomía (doble conteo) | ⬜ **NO SE AFIRMA** · las divergencias lo impiden |
+| **Intención original del autor sobre `C_i`** | ⬜ **NO DETERMINABLE** · `011-C3` |
 | La razón de cada divergencia `E_i` ↔ `C_i` | ⬜ **NO DETERMINABLE** aquí · `011-C3` |
 | El glosario y la Sección L discrepan sobre `INF-03`, `INF-04` y el piso | **DEMOSTRADO** |
 | `Ci_Adaptativo` no entra al numerador | **DEMOSTRADO** · la fórmula del numerador no lo referencia |

@@ -268,20 +268,24 @@ def _escribir(metas, pal, techos, base) -> None:
         A(f"| **{nat}** | {fs} | {t['icpi'] * 100:.4f} % | {t['delta']:+.2f} pp |")
     A("")
     razon = (mat / doc) if doc else float("inf")
-    A(f"> ### En el corte de abril, la vía material tiene ~{razon:.1f}× el techo "
-      f"de la documental")
+    A(f"> ### En el escenario de abril, el techo de `T_i` es {razon:.2f}× el de `V_i`")
     A(f"> **{mat:+.2f} pp** frente a **{doc:+.2f} pp**.")
     A("")
-    A("La formulación defendible es **descriptiva y acotada al escenario**:")
+    A("**Ésta es la única formulación canónica del resultado**, y está "
+      "deliberadamente escrita en términos de factores y no de conductas:")
     A("")
-    A(f"> En el escenario de abril analizado, la capacidad contrafactual de "
-      f"incremento del ICPI mediante `T_i` es aproximadamente **{razon:.0f} "
-      f"veces** la obtenida mediante `V_i`.")
+    A(f"> En el escenario contrafactual de abril, la capacidad de incremento "
+      f"del ICPI atribuida a la modificación de `T_i` fue aproximadamente "
+      f"**{razon:.2f} veces** la atribuida a la modificación de `V_i`, "
+      f"**manteniendo las demás condiciones del escenario**.")
     A("")
-    A("⚠️ **Y sólo en ese escenario.** Convertirlo en «el índice incentiva "
-      f"{razon:.0f} veces más la ejecución» exigiría una teoría del coste y del "
-      "comportamiento del gestor que 009 **no tiene**: un techo contrafactual "
-      "no dice nada sobre qué es más barato o más probable de hacer.")
+    A("⚠️ **Se retiró el marco «ejecución vs documentación».** Era cómodo y "
+      "engañoso por dos motivos: sugiere una teoría del coste y del "
+      "comportamiento del gestor que `009` **no tiene** —un techo "
+      "contrafactual no dice qué es más barato ni más probable—, y presupone "
+      "que cada factor equivale a una conducta. `011-C2` mostró que esa "
+      "equivalencia no se sostiene: `C_i` no era lo que la lectura intuitiva "
+      "decía, y nada garantiza que `V_i` y `T_i` sí lo sean.")
     A("")
 
     A("## ⚠️ ¿Es un resultado de la FÓRMULA o del ESTADO?")
@@ -426,10 +430,24 @@ def _escribir(metas, pal, techos, base) -> None:
     A("")
     A("### 📜 CORRECCIÓN POSTERIOR — aportada por `011-C2`")
     A("")
-    A("Una versión anterior de esta tabla afirmaba que el motor **sí** "
-      "responde a la disociación financiero ↔ físico, porque «`C_i` exige "
-      "atribución y entrega: `T=1` con `C→0` penaliza la meta». `011-C2` leyó "
-      "el instrumento y lo desmintió:")
+    A("⚠️ **REGLA EDITORIAL DE ESTE EXPEDIENTE.** `009` **no se reescribe** "
+      "para adoptar las conclusiones de `011-C2`. Conserva su naturaleza "
+      "histórica y **anexa** la corrección, porque lo que GM-Ω necesita poder "
+      "demostrar es la secuencia entera:")
+    A("")
+    A("```")
+    A("  qué pensábamos  →  qué evidencia apareció  →  qué hubo que corregir")
+    A("```")
+    A("")
+    A("Un expediente al que se le retocan las hipótesis para que todo parezca "
+      "coherente en retrospectiva vale mucho menos que uno que muestra dónde "
+      "se equivocó y con qué se corrigió.")
+    A("")
+    A("**Lo que 009 afirmó:** que el motor responde a la disociación "
+      "financiero ↔ físico, porque «`C_i` exige atribución y entrega: `T=1` "
+      "con `C→0` penaliza la meta».")
+    A("")
+    A("**Lo que `011-C2` encontró en el instrumento:**")
     A("")
     A("> `C_i` es **«Calidad de Proceso Orgánico»**. Nace en 1,00 por "
       "presunción de legalidad y se deduce por **infracciones normativas "
@@ -437,9 +455,13 @@ def _escribir(metas, pal, techos, base) -> None:
       "cuatro mide entrega material**, y hoy las cuatro están en cero para las "
       "25 metas.")
     A("")
-    A("De modo que **dos distorsiones quedan sin cubrir, no una**. La "
-      "constancia se conserva: era una hipótesis del autor sobre el propósito, "
-      "y describía bien lo que el motor *debería* hacer — no lo que hace.")
+    A("**Cómo queda la afirmación:** la hipótesis de que `C_i` mide o verifica "
+      "la entrega material **no encuentra respaldo en la especificación ni en "
+      "el mecanismo actualmente implementado**; la evidencia la contradice "
+      "**como descripción del mecanismo vigente**. Lo que se quiso hacer "
+      "originalmente es otra pregunta, y es `NO DETERMINABLE` hasta `011-C3`.")
+    A("")
+    A("**Consecuencia:** **dos distorsiones quedan sin cubrir, no una**.")
     A("")
     A("### ⚠️ Y aquí 009 tuvo que retirar una frase")
     A("")
@@ -603,8 +625,9 @@ def _escribir(metas, pal, techos, base) -> None:
     A("| Ejecutar es la única mejora legítima | **NO DEMOSTRADO** |")
     A("| `C_i` es un factor documental | **REFUTADO** por el propio autor |")
     A("| `C_i` mide **atribución** | ✅ **CONFIRMADO** por `011-C2` · Sección I |")
-    A("| `C_i` mide **entrega material** | 🔴 **REFUTADO** por `011-C2` · mide "
-      "infracciones normativas |")
+    A("| `C_i` mide o verifica **entrega material** | 🔴 **SIN RESPALDO EN EL "
+      "MECANISMO VIGENTE** (`011-C2`) · mide infracciones normativas. La "
+      "INTENCIÓN original queda `NO DETERMINABLE` hasta `011-C3` |")
     A("| El gaming es propiedad permanente del índice | **REFUTADO** |")
     A("| La arquitectura es adecuada / inadecuada | **FUERA DEL ALCANCE de 009** · `011-C4` |")
     A("| La multiplicatividad debe conservarse por este resultado | **NO DETERMINABLE** · `011-C4` |")

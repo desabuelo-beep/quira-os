@@ -125,12 +125,18 @@ def test_la_semantica_de_Ci_queda_abierta_para_011():
     assert "ni resuelve la semántica de `C_i`" in txt, (
         "el cierre de 009 dejó de declarar que no resuelve C_i. Ése es "
         "exactamente el límite de alcance que protege a 011")
-    # `011-C2` resolvió la semántica y REFUTÓ la hipótesis. Lo que 009 sigue sin
-    # poder fijar es la naturaleza del ESFUERZO, que depende de qué regla rija.
-    assert "🔴 **REFUTADO** por `011-C2`" in txt, (
-        "desapareció el resultado del contraste. La hipótesis de la entrega "
-        "material no quedó pendiente: quedó refutada contra el instrumento, y "
-        "el expediente debe decirlo")
+    # `011-C2` contrastó la hipótesis contra el instrumento. ⚠️ Y el resultado
+    # se enuncia CALIFICADO: 011-C2 demuestra qué HACE el instrumento, no qué
+    # se QUISO hacer. «Refutada», a secas, excedería lo demostrable.
+    assert "SIN RESPALDO EN EL MECANISMO VIGENTE" in txt, (
+        "desapareció el resultado del contraste, o volvió en su forma "
+        "absoluta. La formulación exacta es que la hipótesis no encuentra "
+        "respaldo en el MECANISMO VIGENTE — una afirmación sobre el "
+        "instrumento, no sobre la intención del autor")
+    assert "La INTENCIÓN original queda `NO DETERMINABLE`" in txt, (
+        "se perdió la mitad que 011-C2 no puede demostrar. Qué se quiso hacer "
+        "es genealogía y pertenece a 011-C3; darlo por resuelto aquí repetiría "
+        "el error que este mismo test vigila")
     assert "esperar tuvo premio" in txt.lower(), (
         "se perdió la constancia de por qué la cautela importó: si 009 hubiera "
         "dado por buena la hipótesis, habría publicado como respuesta del motor "
@@ -168,18 +174,29 @@ def test_009_no_absuelve_ni_condena_la_arquitectura():
 
 def test_la_ventaja_material_se_declara_acotada_al_escenario():
     """`+52,10` frente a `+5,81` es un hecho del corte de abril, no una
-    propiedad del índice.
+    propiedad del índice. La formulación canónica quedó congelada así:
 
-    La diferencia entre «en este escenario el techo material es ~9× el
-    documental» y «el índice incentiva 9 veces más la ejecución» es toda la
-    diferencia entre una medición y una teoría del comportamiento — y 009 sólo
-    tiene la primera. No midió el coste de ninguna de las dos vías."""
+        En el escenario contrafactual de abril, la capacidad de incremento del
+        ICPI atribuida a la modificación de `T_i` fue aproximadamente 8,97
+        veces la atribuida a la modificación de `V_i`, manteniendo las demás
+        condiciones del escenario.
+
+    ⚠️ Y SE RETIRÓ EL MARCO «ejecución vs documentación». Era cómodo y falso
+    por dos vías: presupone una teoría del coste que 009 no tiene, y presupone
+    que cada factor equivale a una conducta. `011-C2` mostró que esa
+    equivalencia no se sostiene —`C_i` no era lo que la lectura intuitiva
+    decía— y nada garantiza que `V_i` y `T_i` sí lo sean."""
     txt = _DOC.read_text(encoding="utf-8")
-    assert "En el escenario de abril analizado" in txt, (
+    assert "En el escenario contrafactual de abril" in txt, (
         "se perdió el acotamiento al escenario. La cifra sola invita a leerse "
         "como propiedad atemporal de la fórmula, y no lo es")
-    assert "Y sólo en ese escenario" in txt
-    assert "un techo contrafactual no dice nada sobre qué es más barato" in txt, (
+    assert "manteniendo las demás condiciones del escenario" in txt, (
+        "desapareció la cláusula ceteris paribus. Sin ella la razón entre "
+        "techos se lee como un efecto aislado, y no lo es")
+    assert "Se retiró el marco «ejecución vs documentación»" in txt, (
+        "volvió el marco que equipara cada factor con una conducta. Es la "
+        "misma clase de atajo que hizo clasificar mal a C_i dos veces")
+    assert "un techo contrafactual no dice qué es más barato" in txt, (
         "desapareció la salvedad de coste. Sin ella, «mayor techo» se convierte "
         "en «más rentable», que es una afirmación económica sin medición")
 
