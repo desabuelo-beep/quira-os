@@ -145,6 +145,27 @@ _DOCTRINA = (
          verificador="test_ninguna_regla_generadora_se_infiere_del_patron_de_sus_resultados",
          por_que_ahi="con 25 casos y tres valores posibles, cualquier hipótesis "
                      "encuentra algunos que la respaldan: encajar no es derivar"),
+    dict(id="DOC-031", custodia=GATE,
+         regla="REAPERTURA POR EVIDENCIA TARDÍA. Una conclusión cerrada puede "
+               "reabrirse cuando aparece un corpus documental relevante que "
+               "NO formó parte del universo de evidencia examinado. La "
+               "reapertura **no invalida automáticamente** la conclusión "
+               "anterior: verifica si la nueva evidencia modifica su estado. "
+               "⚠️ Y un `NO DETERMINABLE` vale mientras no aparezca la "
+               "fuente — declararlo no clausura la búsqueda",
+         fuente="el colega, 2026-09-05 · tras señalar Javo una carpeta con 898 "
+                "archivos y 83 versiones del Gold Master que `011-C3` no "
+                "había examinado",
+         verificador="test_la_reapertura_no_invalida_ni_confirma_por_defecto",
+         por_que_ahi="evita los dos extremos. El CONSERVADOR —«C3 cerró, "
+                     "jamás volver a mirar»— habría dejado el dictamen "
+                     "apoyado en un NO DETERMINABLE que ya no lo era. El "
+                     "REVISIONISTA —«apareció un documento, todo lo anterior "
+                     "estaba mal»— habría tirado un peritaje correcto. La "
+                     "posición científica es la tercera: análisis de "
+                     "sensibilidad. Aplicada aquí, `C3-R` no invalidó nada: "
+                     "PRECISÓ el resultado de «no sabemos nada» a «sabemos "
+                     "cuándo y qué, seguimos sin saber por qué»"),
     dict(id="DOC-030", custodia=GATE,
          regla="QUIRA se apoya en CUATRO bases medulares —normativa "
                "(`BM-01`), metodológica (`BM-02`), evidencial (`BM-03`) y "

@@ -115,11 +115,15 @@ _ETAPAS = [
                        "norma↔instrumento", _ABIERTO,
      "🔴 13.147 chunks SIN columna de vigencia · document_class vacía en 81 % "
      "· norma e instrumentos de gestión en la misma tabla"),
-    ("QNEXT", "BM-05", "Corpus histórico en disco · 898 archivos + 83 "
-                       "versiones del motor", _ABIERTO,
-     "★ existe `historial_gold_master` · puede REABRIR 011-C3: la serie "
-     "muestra QUÉ cambió aunque no POR QUÉ · 3 sistemas de versionado sin "
-     "reconciliar"),
+    ("QNEXT", "BM-05", "Memoria histórica de diseño · 898 archivos + 71 "
+                       "versiones únicas del motor", _HECHO,
+     "★ inventariada · la serie fechó el cambio de `C_i` · pendiente el resto "
+     "del corpus (121 .md · 80 .txt de fórmulas)"),
+    ("GM-Ω", "011-C3R", "Serie temporal del motor · verificación de "
+                        "sensibilidad documental", _HECHO,
+     "★ 25→29-abr-2026: `C_i` NO derivó, fue refactorizado en UN acto · "
+     "H01!A94 corroborada por evidencia independiente · el PORQUÉ sigue NO "
+     "DETERMINABLE"),
     ("QNEXT", "Q1", "Matriz de clasificación · candidato → ratificado",
      _ABIERTO, "no espera al dictamen: clasificar no es cambiar · primer test "
                "= migración semántica de «auditoría»"),

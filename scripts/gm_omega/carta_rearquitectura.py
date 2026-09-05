@@ -555,7 +555,7 @@ def _escribir(fis, total_fis, nor, his, inv_id) -> None:
     A("| hojas del Gold Master | 123 |")
     A("| metas del universo operacional | 25 de 66 |")
     A("")
-    A("### ⑤ Inventario HISTÓRICO · el corpus en disco, fuera del repositorio")
+    A("### ⑤ `BM-05` · Memoria histórica de diseño y evolución del ecosistema")
     A("")
     if not his:
         A(ND)
@@ -565,6 +565,24 @@ def _escribir(fis, total_fis, nor, his, inv_id) -> None:
           "era**, y por la misma razón que el corpus normativo: la carta "
           "inventariaba el repositorio y Supabase, y la historia del proyecto "
           "vive además en carpetas hermanas del disco.")
+        A("")
+        A("⚠️ **No se llama «histórico» a secas, y la diferencia importa.** No "
+          "es un archivo de cosas viejas: es **la arqueología de diseño de "
+          "QUIRA** — decisiones, prototipos, fórmulas, versiones, "
+          "nomenclaturas, experimentos, descartes y código abandonado.")
+        A("")
+        A("| Base | Responde a |")
+        A("|---|---|")
+        A("| `BM-01` normativa | ¿qué conocimiento jurídico tenemos? |")
+        A("| **`BM-05` memoria de diseño** | **¿cómo llegó QUIRA a ser lo que "
+          "es?** |")
+        A("")
+        A("> ### Y `BM-05` NO gobierna el diseño actual")
+        A(">")
+        A("> Su función es responder «¿de dónde vino esto?». **Nunca** «por "
+          "haber existido, ¿debemos conservarlo?». `DOC-013` y `DOC-027` "
+          "siguen intactos: la historia explica por qué QUIRA llegó hasta "
+          "aquí; **no decide hacia dónde debe ir**.")
         A("")
         A(f"`Dylus Lab/_historico` · **{his['historico_total']} archivos**:")
         A("")
@@ -616,10 +634,45 @@ def _escribir(fis, total_fis, nor, his, inv_id) -> None:
               "**por qué** —siguen sin haber texto—, pero sí pueden mostrar "
               "**qué cambió y cuándo**, celda a celda.")
             A("")
-            A("Y es exactamente lo que pasó con `metodologia.docx`: un "
-              "artefacto que nadie había abierto cambió una conclusión "
-              "cerrada. **Un `NO DETERMINABLE` sólo vale mientras no aparezca "
-              "la fuente** — declararlo no clausura la búsqueda.")
+            A("### ⚠️ Y cómo se enuncia esto sin pasarse")
+            A("")
+            A("Decir «`C3` no usó la serie, luego `C3` está incompleto» sería "
+              "**demasiado fuerte** y prejuzgaría el resultado. La "
+              "formulación forense es:")
+            A("")
+            A("> `011-C3` se ejecutó sobre el corpus documental **disponible** "
+              "y posteriormente se identificó un **corpus histórico externo "
+              "relevante que no formó parte de su universo de revisión**. Se "
+              "abre una **verificación de sensibilidad documental** para "
+              "determinar si dicho corpus contiene evidencia capaz de "
+              "modificar alguna conclusión de `C3`.")
+            A("")
+            A("Puede terminar **sin cambio**, **parcialmente modificado** o "
+              "**reabierto**. No se sabe, y por eso se verifica en vez de "
+              "declararlo.")
+            A("")
+            A("### `DOC-031` · Regla de reapertura por evidencia tardía")
+            A("")
+            A("> **Una conclusión cerrada puede reabrirse cuando aparece un "
+              "corpus documental relevante que no formó parte del universo de "
+              "evidencia examinado. La reapertura NO invalida automáticamente "
+              "la conclusión anterior: verifica si la nueva evidencia "
+              "modifica su estado.**")
+            A("")
+            A("Evita los dos extremos:")
+            A("")
+            A("| Error | Forma que toma |")
+            A("|---|---|")
+            A("| **conservador** | «`C3` cerró → jamás volver a mirar» |")
+            A("| **revisionista** | «apareció un documento → todo lo anterior "
+              "estaba mal» |")
+            A("")
+            A("La posición correcta es la tercera: **apareció nueva evidencia "
+              "→ se hace análisis de sensibilidad de la conclusión**. Y es "
+              "exactamente lo que pasó con `metodologia.docx`: un artefacto "
+              "que nadie había abierto cambió una conclusión cerrada. **Un "
+              "`NO DETERMINABLE` vale mientras no aparezca la fuente** — "
+              "declararlo no clausura la búsqueda.")
             A("")
             A("### ⚠️ Tres sistemas de versionado que no se corresponden")
             A("")

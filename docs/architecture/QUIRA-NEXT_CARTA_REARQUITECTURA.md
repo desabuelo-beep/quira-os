@@ -4,8 +4,8 @@
 
 ```
   INVENTARIO_ID : QNEXT-INV-2026-09-05
-  COMMIT        : 7033f4d
-  GENERATED_AT  : 2026-09-05T23:13:14+00:00
+  COMMIT        : 0ae8262
+  GENERATED_AT  : 2026-09-05T23:30:48+00:00
 ```
 
 > Sin esta estampilla, «412 documentos» es una **afirmación flotante**. Con ella es una **observación reproducible de un estado concreto del repositorio** — y explica sola por qué la v1 dijo 411 y esta dice otra cifra: el propio acto de escribir la carta añadió archivos.
@@ -145,7 +145,7 @@ La jerarquía normativa formal **no está poblada** para la gran mayoría del co
 
 | Artefactos | Raíz · patrón | Cuenta |
 |---|---|---:|
-| documentos de canon | `docs/**/*.md` | **412** |
+| documentos de canon | `docs/**/*.md` | **413** |
 |   ↳ de los cuales, `ADR` | `docs/adr` | *44* |
 |   ↳ de los cuales, `PCD` | `docs/pcd` | *7* |
 | reglas de negocio | `docs/brn/*.yaml` | **30** |
@@ -153,10 +153,10 @@ La jerarquía normativa formal **no está poblada** para la gran mayoría del co
 | marco teórico | `marco_teorico/*.md` | **3** |
 | módulos de aplicación | `app/**/*.py` | **104** |
 | páginas de interfaz | `quira_pages/*.py` | **61** |
-| scripts | `scripts/**/*.py` | **175** |
-| pruebas | `tests/test_*.py` | **46** |
-| snapshots de datos | `data/**/*.json` | **471** |
-| | **TOTAL FÍSICO (suma de las filas en negrita)** | **1325** |
+| scripts | `scripts/**/*.py` | **176** |
+| pruebas | `tests/test_*.py` | **47** |
+| snapshots de datos | `data/**/*.json` | **472** |
+| | **TOTAL FÍSICO (suma de las filas en negrita)** | **1329** |
 
 ### ② Inventario DOCUMENTAL · el canon
 
@@ -186,9 +186,20 @@ La jerarquía normativa formal **no está poblada** para la gran mayoría del co
 | hojas del Gold Master | 123 |
 | metas del universo operacional | 25 de 66 |
 
-### ⑤ Inventario HISTÓRICO · el corpus en disco, fuera del repositorio
+### ⑤ `BM-05` · Memoria histórica de diseño y evolución del ecosistema
 
 Javo lo señaló como paréntesis —*«no sé si sea necesario»*—. **Lo era**, y por la misma razón que el corpus normativo: la carta inventariaba el repositorio y Supabase, y la historia del proyecto vive además en carpetas hermanas del disco.
+
+⚠️ **No se llama «histórico» a secas, y la diferencia importa.** No es un archivo de cosas viejas: es **la arqueología de diseño de QUIRA** — decisiones, prototipos, fórmulas, versiones, nomenclaturas, experimentos, descartes y código abandonado.
+
+| Base | Responde a |
+|---|---|
+| `BM-01` normativa | ¿qué conocimiento jurídico tenemos? |
+| **`BM-05` memoria de diseño** | **¿cómo llegó QUIRA a ser lo que es?** |
+
+> ### Y `BM-05` NO gobierna el diseño actual
+>
+> Su función es responder «¿de dónde vino esto?». **Nunca** «por haber existido, ¿debemos conservarlo?». `DOC-013` y `DOC-027` siguen intactos: la historia explica por qué QUIRA llegó hasta aquí; **no decide hacia dónde debe ir**.
 
 `Dylus Lab/_historico` · **898 archivos**:
 
@@ -248,7 +259,26 @@ Carpetas hermanas de `quira-os`:
 >
 > `C3` declaró `NO DETERMINABLE` la razón de la sustitución del mecanismo de `C_i`, los pesos y el piso, **porque ningún documento los explicaba**. Estas versiones no explican el **por qué** —siguen sin haber texto—, pero sí pueden mostrar **qué cambió y cuándo**, celda a celda.
 
-Y es exactamente lo que pasó con `metodologia.docx`: un artefacto que nadie había abierto cambió una conclusión cerrada. **Un `NO DETERMINABLE` sólo vale mientras no aparezca la fuente** — declararlo no clausura la búsqueda.
+### ⚠️ Y cómo se enuncia esto sin pasarse
+
+Decir «`C3` no usó la serie, luego `C3` está incompleto» sería **demasiado fuerte** y prejuzgaría el resultado. La formulación forense es:
+
+> `011-C3` se ejecutó sobre el corpus documental **disponible** y posteriormente se identificó un **corpus histórico externo relevante que no formó parte de su universo de revisión**. Se abre una **verificación de sensibilidad documental** para determinar si dicho corpus contiene evidencia capaz de modificar alguna conclusión de `C3`.
+
+Puede terminar **sin cambio**, **parcialmente modificado** o **reabierto**. No se sabe, y por eso se verifica en vez de declararlo.
+
+### `DOC-031` · Regla de reapertura por evidencia tardía
+
+> **Una conclusión cerrada puede reabrirse cuando aparece un corpus documental relevante que no formó parte del universo de evidencia examinado. La reapertura NO invalida automáticamente la conclusión anterior: verifica si la nueva evidencia modifica su estado.**
+
+Evita los dos extremos:
+
+| Error | Forma que toma |
+|---|---|
+| **conservador** | «`C3` cerró → jamás volver a mirar» |
+| **revisionista** | «apareció un documento → todo lo anterior estaba mal» |
+
+La posición correcta es la tercera: **apareció nueva evidencia → se hace análisis de sensibilidad de la conclusión**. Y es exactamente lo que pasó con `metodologia.docx`: un artefacto que nadie había abierto cambió una conclusión cerrada. **Un `NO DETERMINABLE` vale mientras no aparezca la fuente** — declararlo no clausura la búsqueda.
 
 ### ⚠️ Tres sistemas de versionado que no se corresponden
 
@@ -518,4 +548,4 @@ En el esquema se ve por qué: **`IED` no pertenece a ningún dominio sectorial**
 > `GM-Ω` no existe para legitimar el pasado ni para destruirlo, sino para **ponerlo en su lugar**: el pasado como **linaje**, la norma como **restricción**, la evidencia como **fundamento**, la teoría como **justificación** — y el diseño como **decisión presente**.
 
 ---
-*QUIRA-NEXT · Carta de Rearquitectura `v2` · QNEXT-INV-2026-09-05 · commit `7033f4d` · el Gold Master no se modificó · baseline 27,4582 % congelado · Dylus Lab © 2026*
+*QUIRA-NEXT · Carta de Rearquitectura `v2` · QNEXT-INV-2026-09-05 · commit `0ae8262` · el Gold Master no se modificó · baseline 27,4582 % congelado · Dylus Lab © 2026*

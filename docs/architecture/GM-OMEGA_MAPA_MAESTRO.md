@@ -173,7 +173,8 @@ Y **`T6` espera a `011` por la misma razón**: deprecar `AVEP` o migrar el nombr
 | TF | `T6` | Acción: conservar / renombrar / deprecar / eliminar | ⛔ | 011 · T5 |
 | QNEXT | `Q0` | Carta de rearquitectura v2 · el plan del refactor integral | ✅ | ★ 4 bases medulares · 5 categorías · 10 ejes · 4 inventarios separados · DOC-029 regla maestra · NO ejecuta |
 | QNEXT | `BM-01` | Corpus normativo · vigencia, clase y separación norma↔instrumento | ⬜ | 🔴 13.147 chunks SIN columna de vigencia · document_class vacía en 81 % · norma e instrumentos de gestión en la misma tabla |
-| QNEXT | `BM-05` | Corpus histórico en disco · 898 archivos + 83 versiones del motor | ⬜ | ★ existe `historial_gold_master` · puede REABRIR 011-C3: la serie muestra QUÉ cambió aunque no POR QUÉ · 3 sistemas de versionado sin reconciliar |
+| QNEXT | `BM-05` | Memoria histórica de diseño · 898 archivos + 71 versiones únicas del motor | ✅ | ★ inventariada · la serie fechó el cambio de `C_i` · pendiente el resto del corpus (121 .md · 80 .txt de fórmulas) |
+| GM-Ω | `011-C3R` | Serie temporal del motor · verificación de sensibilidad documental | ✅ | ★ 25→29-abr-2026: `C_i` NO derivó, fue refactorizado en UN acto · H01!A94 corroborada por evidencia independiente · el PORQUÉ sigue NO DETERMINABLE |
 | QNEXT | `Q1` | Matriz de clasificación · candidato → ratificado | ⬜ | no espera al dictamen: clasificar no es cambiar · primer test = migración semántica de «auditoría» |
 | QNEXT | `Q2` | Dashboards y narrativa por dominio · visual→analítica→explicación | ⛔ | R0 — no 011: depende de saber qué pregunta cada dominio |
 | QNEXT | `Q3` | Ejecución del refactor · fondo y forma | ⛔ | 011-C4 · Q1 · R0/R1 |
@@ -188,7 +189,7 @@ Y **`T6` espera a `011` por la misma razón**: deprecar `AVEP` o migrar el nombr
 | 2ING | `d02·d03` | Presupuesto · Gobernanza del Mandato | ⬜ |  |
 | 2ING | `d04·d05·d10-d13` | Sellados · sin construir | ⬜ |  |
 
-**18 de 41 etapas cerradas.**
+**20 de 42 etapas cerradas.**
 
 ## Estado derivado de las fuentes vivas
 
@@ -197,9 +198,9 @@ Y **`T6` espera a `011` por la misma razón**: deprecar `AVEP` o migrar el nombr
 | Deudas declaradas | 14 |
 | Deudas resueltas | 6 |
 | Deudas abiertas | **8** |
-| Reglas de doctrina con custodio | 30 |
-| Pruebas que las fijan | 427 |
-| Documentos GM-Ω | 12 |
+| Reglas de doctrina con custodio | 31 |
+| Pruebas que las fijan | 433 |
+| Documentos GM-Ω | 13 |
 
 ### Deudas abiertas
 
@@ -226,6 +227,7 @@ Y **`T6` espera a `011` por la misma razón**: deprecar `AVEP` o migrar el nombr
 - [`GM-OMEGA_ICPI_RECONCILIACION_008R.md`](GM-OMEGA_ICPI_RECONCILIACION_008R.md)
 - [`GM-OMEGA_ICPI_SEMANTICA_011C2.md`](GM-OMEGA_ICPI_SEMANTICA_011C2.md)
 - [`GM-OMEGA_ICPI_SENSIBILIDAD_007.md`](GM-OMEGA_ICPI_SENSIBILIDAD_007.md)
+- [`GM-OMEGA_ICPI_SERIE_MOTOR_011C3R.md`](GM-OMEGA_ICPI_SERIE_MOTOR_011C3R.md)
 - [`GM-OMEGA_MAPA_MAESTRO.md`](GM-OMEGA_MAPA_MAESTRO.md)
 - [`GM-OMEGA_TERMINOLOGIA_T1-T2.md`](GM-OMEGA_TERMINOLOGIA_T1-T2.md)
 
@@ -236,4 +238,4 @@ Y **`T6` espera a `011` por la misma razón**: deprecar `AVEP` o migrar el nombr
 3. **Este mapa se deriva.** El día que alguien lo edite a mano, dejará de reflejar el estado real sin que nada avise, y volveremos exactamente al punto que motivó escribirlo.
 
 ---
-*QUIRA · Mapa Maestro · 18/41 etapas cerradas · 8 deudas abiertas · Dylus Lab © 2026*
+*QUIRA · Mapa Maestro · 20/42 etapas cerradas · 8 deudas abiertas · Dylus Lab © 2026*

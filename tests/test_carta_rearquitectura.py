@@ -292,9 +292,20 @@ def test_el_corpus_historico_en_disco_entra_al_inventario():
     La lección que esto fija: **un `NO DETERMINABLE` vale mientras no aparezca
     la fuente. Declararlo no clausura la búsqueda.**"""
     txt = _CARTA.read_text(encoding="utf-8")
-    assert "Inventario HISTÓRICO" in txt, (
+    assert "Memoria histórica de diseño" in txt, (
         "desapareció el corpus histórico en disco. Sin él, el inventario "
         "vuelve a confundir «el repositorio» con «el ecosistema»")
+    # ⚠️ El nombre es sustantivo, no cosmético: «histórico» a secas sugiere un
+    # archivo de cosas viejas. Es la ARQUEOLOGÍA DE DISEÑO —decisiones,
+    # prototipos, versiones, descartes— y responde a una pregunta que ninguna
+    # otra base responde: ¿cómo llegó QUIRA a ser lo que es?
+    assert "arqueología de diseño" in txt, (
+        "se perdió qué es realmente BM-05. Llamarlo «histórico» a secas lo "
+        "degrada a carpeta de archivos viejos")
+    assert "NO gobierna el diseño actual" in txt, (
+        "desapareció el límite de BM-05. Responde «¿de dónde vino esto?», "
+        "nunca «por haber existido, ¿debemos conservarlo?» — DOC-013 y "
+        "DOC-027 siguen intactos")
     assert "historial_gold_master" in txt, (
         "se perdió la serie de versiones del motor. Es la fuente que puede "
         "reabrir preguntas que 011-C3 cerró por falta de evidencia")
