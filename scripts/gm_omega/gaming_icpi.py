@@ -20,13 +20,17 @@ scripts/gm_omega/gaming_icpi.py — GM-Ω-ICPI-009 · GAMING
     cuánto sube el ICPI. Después se separan las palancas por **naturaleza del
     esfuerzo**:
 
-        DOCUMENTAL  se mejora aportando papeles   → V_i · C_i
-        MATERIAL    exige ejecutar de verdad      → T_i
-        ESTRUCTURAL depende del organigrama       → E_i
-        FIJA        no la mueve el gestor         → P_i · R_i
+        DOCUMENTAL  se mejora aportando evidencia  → V_i
+        MATERIAL    exige ejecutar de verdad        → T_i
+        ESTRUCTURAL depende del organigrama         → E_i
+        PENDIENTE   semántica sin cerrar            → C_i
+        FIJA        no la mueve el gestor           → P_i · R_i
 
-    Si el índice sube MÁS por documentar que por ejecutar, el incentivo está
-    torcido. Ésa es la prueba de 009.
+    ⚠️ Y LA COMPARACIÓN NO ES UN VEREDICTO. «Documentar rinde más que ejecutar»
+    NO equivale a «hay gaming»: documentar lo realmente hecho es una obligación
+    legal y forma parte del fenómeno que el ICPI mide. El gaming sería otra
+    cosa — que el índice suba SIN que el fenómeno mejore — y eso 009 no puede
+    observarlo desde la fórmula.
 
     LECTURA PURA · no toca el Gold Master · no recalcula el baseline oficial.
     Todo escenario es CONTRAFACTUAL y NO AUTORIZADO PARA PUBLICACIÓN (`DOC-010`).
@@ -50,10 +54,25 @@ _BASELINE = 0.27458226534062735
 
 # Naturaleza del esfuerzo que exige mover cada factor. Es la clasificación que
 # convierte una tabla de sensibilidad en una tabla de INCENTIVOS.
+# ⚠️ `C_i` ESTUVO CLASIFICADO AQUÍ COMO DOCUMENTAL y era un error de esta
+# dirección. Javo lo corrigió describiendo qué captura de verdad:
+#
+#   «Si T_i = 1,0 (dinero entregado) pero la obra no tiene acta de
+#    entrega-recepción ni impacto verificado (C_i → 0), el producto lógico
+#    penaliza la meta, anulando el maquillaje contable de fin de año.»
+#
+# Es decir: `C_i` mide ATRIBUCIÓN Y ENTREGA MATERIAL, no papeleo. Clasificarlo
+# como documental inflaba artificialmente el techo de la vía documental — y ése
+# era justamente el resultado que 009 mide.
+#
+# Se deja como PENDIENTE y NO se suma a ninguna vía: su semántica exacta es lo
+# que `011-C2/C3` tiene que cerrar, y prejuzgarla aquí sería que un análisis de
+# incentivos dictamine sobre el constructo que lo audita.
 _NATURALEZA = {
     "V": ("DOCUMENTAL", "aportar evidencia en los cuatro silos"),
-    "C": ("DOCUMENTAL", "no registrar infracciones / calibración"),
     "T": ("MATERIAL", "devengar presupuesto — exige ejecutar"),
+    "C": ("PENDIENTE", "⚠️ atribución y entrega material verificada (acta, "
+                       "impacto) — su semántica la cierra 011-C2/C3"),
     "E": ("ESTRUCTURAL", "modalidad de ejecución / control del director"),
     "P": ("FIJA", "peso presupuestario — no lo mueve el gestor"),
     "R": ("FIJA", "relevancia jurídica — la fija la norma"),
@@ -97,7 +116,7 @@ def por_naturaleza(pal: list[dict], metas: list[dict]) -> dict:
     la interacción multiplicativa."""
     base = _icpi(metas)
     techos = {}
-    for nat in ("DOCUMENTAL", "MATERIAL", "ESTRUCTURAL"):
+    for nat in ("DOCUMENTAL", "MATERIAL", "ESTRUCTURAL", "PENDIENTE"):
         factores = [f for f, (n, _) in _NATURALEZA.items() if n == nat]
         copia = [dict(x) for x in metas]
         for m in copia:
@@ -175,10 +194,21 @@ def _escribir(metas, pal, techos, base) -> None:
     for f, (nat, coste) in _NATURALEZA.items():
         A(f"| `{f}_i` | **{nat}** | {coste} |")
     A("")
-    A("Y la prueba de 009 es la comparación entre los dos primeros:")
+    A("⚠️ **Y la comparación entre las dos primeras NO es un veredicto.** Decir "
+      "«si documentar rinde más que ejecutar, el incentivo está torcido» sería "
+      "una **hipótesis normativa**, no una conclusión matemática — y puede ser "
+      "falsa: si el ICPI mide congruencia, **documentar correctamente lo "
+      "ejecutado forma parte del fenómeno**, no es una manipulación.")
     A("")
-    A("> **Si el índice sube más por DOCUMENTAR que por EJECUTAR, el incentivo "
-      "está torcido.**")
+    A("El gaming es algo más estrecho:")
+    A("")
+    A("```")
+    A("   sube V  →  sube el ICPI  →  pero el fenómeno real NO mejora")
+    A("```")
+    A("")
+    A("Es decir: **optimización del indicador sin mejora equivalente del "
+      "constructo**. Y eso **009 no puede observarlo desde la fórmula** — sólo "
+      "puede medir dónde está el margen.")
     A("")
 
     A("## ★ El resultado")
@@ -189,7 +219,7 @@ def _escribir(metas, pal, techos, base) -> None:
     A("")
     A("| Vía | Factores | ICPI alcanzable | Δ |")
     A("|---|---|---:|---:|")
-    for nat in ("DOCUMENTAL", "MATERIAL", "ESTRUCTURAL"):
+    for nat in ("DOCUMENTAL", "MATERIAL", "ESTRUCTURAL", "PENDIENTE"):
         t = techos[nat]
         fs = " · ".join(f"`{x}_i`" for x in t["factores"])
         A(f"| **{nat}** | {fs} | {t['icpi'] * 100:.4f} % | {t['delta']:+.2f} pp |")
@@ -230,7 +260,7 @@ def _escribir(metas, pal, techos, base) -> None:
             m["T"] = max(m["T"], tval)
         b2 = _icpi(sim)
         d2 = m2 = 0.0
-        for nat, factores in (("DOCUMENTAL", ("V", "C")), ("MATERIAL", ("T",))):
+        for nat, factores in (("DOCUMENTAL", ("V",)), ("MATERIAL", ("T",))):
             cop = [dict(x) for x in sim]
             for m in cop:
                 for f in factores:
@@ -243,7 +273,7 @@ def _escribir(metas, pal, techos, base) -> None:
         A(f"| {etiqueta} | {d2:+.2f} pp | {m2:+.2f} pp | "
           f"{'MATERIAL' if m2 > d2 else '**DOCUMENTAL**'} |")
     A("")
-    A("> ### 🔴 EL INCENTIVO SE INVIERTE A LO LARGO DEL AÑO")
+    A("> ### ★ LA SUPERFICIE DE INCENTIVO ES DINÁMICA")
     A("")
     A("**Y ésta es la respuesta real de 009**, más interesante que un sí o un "
       "no. La objeción era correcta: el resultado **no es una propiedad "
@@ -263,17 +293,22 @@ def _escribir(metas, pal, techos, base) -> None:
       "El último tramo del año es exactamente donde **ejecutar ya no rinde y "
       "documentar sí**.")
     A("")
-    A("### La ventana de gaming tiene fecha")
+    A("### La formulación exacta")
     A("")
-    A("No es que el ICPI sea gameable o no lo sea: **es gameable en una ventana "
-      "temporal concreta**, el tramo final del ejercicio. Y eso es mucho más "
-      "accionable que un veredicto binario, porque se puede vigilar.")
+    A("⚠️ Una versión anterior escribió «la ventana de gaming tiene fecha». Es "
+      "retóricamente potente y **epistemológicamente demasiado fuerte**: 009 no "
+      "ha identificado el momento real de inversión, sólo la diferencia entre "
+      "tres escenarios discretos. La formulación correcta es:")
     A("")
-    A("⚠️ **Y el motor ya tiene instrumentos para esa ventana** —`SAT-II Reforma "
-      "Tardía`, y el patrón `Q4_PUSH` del análisis longitudinal—. `009` no "
-      "descubre un flanco desprotegido: **descubre por qué esos instrumentos "
-      "eran necesarios**, y da la razón matemática de algo que el sistema ya "
-      "intuía.")
+    A("> **La ventaja relativa entre las palancas documental y material depende "
+      "del estado temporal del sistema y puede invertirse hacia el cierre del "
+      "ejercicio.**")
+    A("")
+    A("⚠️ Y sobre los instrumentos existentes —`SAT-II Reforma Tardía`, el patrón "
+      "`Q4_PUSH`— sólo puede decirse que **son compatibles con la vigilancia de "
+      "este patrón**. Afirmar que fueron diseñados como respuesta a este "
+      "fenómeno sería reconstruir la intención desde el resultado, que es lo "
+      "que `DOC-009` prohíbe. Si aparece un documento que lo diga, se eleva.")
     A("")
     A("⚠️ Salvedad de método: al subir `T` sube también el baseline y los deltas "
       "se comprimen; la simulación mueve `T` de golpe para todas las metas, que "
@@ -296,8 +331,66 @@ def _escribir(metas, pal, techos, base) -> None:
     A(f"**Las cinco palancas mayores suman {top5:.2f} pp** — de un baseline de "
       f"{base * 100:.2f} %. Y la primera sola vale {pal[0]['delta']:.2f} pp.")
     A("")
+    A("⚠️ «Palanca mayor» significa **mayor capacidad de incremento del ICPI bajo "
+      "la simulación contrafactual** — no «más rentable» en sentido económico. "
+      "Llevar `T` de 0,30 a 1,00 no es comparable con llevar `V` de 0 a 1 sin "
+      "saber cuánto cuesta materialmente producir cada incremento, y **eso no "
+      "está medido**.")
+    A("")
     docs_top = sum(1 for p in pal[:10] if p["naturaleza"] == "DOCUMENTAL")
     A(f"De las **10 palancas más rentables, {docs_top} son DOCUMENTALES**.")
+    A("")
+
+    A("## ★ El fenómeno institucional que hay detrás")
+    A("")
+    A("La inversión que 009 mide **no es una curiosidad matemática**: corresponde "
+      "a una dinámica real y conocida del sector público ecuatoriano, que Javo "
+      "describe así —")
+    A("")
+    A("> Los primeros meses se dedican a **planificación, regularización "
+      "institucional y procesos precontractuales**; la ejecución fuerte del "
+      "gasto se concentra en el **segundo semestre**.")
+    A("")
+    A("Y de ahí salen cuatro distorsiones que afectan a cualquier evaluación de "
+      "PDOT — con la particularidad de que **el ICPI tiene una respuesta para "
+      "cada una**:")
+    A("")
+    A("| Distorsión | Qué pasa | Cómo responde el motor |")
+    A("|---|---|---|")
+    A("| **Falso negativo semestral** | al primer corte el avance es ~0 y se "
+      "lee como incumplimiento, cuando el proyecto está en fase precontractual "
+      "| `V_i` captura la **existencia documental** del proceso: distingue la "
+      "inactividad de la maduración precontractual |")
+    A("| **Disociación financiero ↔ físico** | anticipo transferido en noviembre "
+      "= gasto alto, obra sin empezar | `T_i` mide ejecución presupuestaria, "
+      "pero `C_i` exige **atribución y entrega**: `T=1` con `C→0` penaliza la "
+      "meta y anula el maquillaje contable |")
+    A("| **Reforma tardía** | se desvían fondos de infraestructura a gasto "
+      "corriente rápido de contratar | dispara `SAT-II` / `SAT-IV`: la mutación "
+      "de metas activa alertas de sustitución y fragmentación |")
+    A("| **Calidad del gasto** | programas de 8 meses comprimidos en campañas "
+      "de 60 días | los indicadores de impacto se vuelven frágiles — y esto el "
+      "motor **no lo captura hoy** |")
+    A("")
+    A("⚠️ **Esto reencuadra el hallazgo de 009.** La inversión del incentivo al "
+      "cierre no describe un motor mal diseñado: describe **el momento del año "
+      "en que la realidad institucional ecuatoriana concentra su presión**. Que "
+      "el índice cambie de comportamiento justo ahí es coherente con el "
+      "fenómeno, y por eso `011-C4` no puede juzgarlo sólo como propiedad "
+      "algebraica.")
+    A("")
+    A("### Y una consecuencia que apunta a `v2`")
+    A("")
+    A("> Las metas del PDOT no pueden evaluarse como un valor binario a fin de "
+      "año. Requieren **descomposición por hitos** —viabilidad técnica, "
+      "adjudicación, entrega— y una lógica **plurianual** que asuma que las "
+      "obras grandes ocupan dos ejercicios.")
+    A("")
+    A("Eso conecta directamente con `008-R`: si una unidad operacional puede "
+      "corresponder a varias metas documentales, **también puede corresponder a "
+      "varios hitos temporales de la misma meta**. `011-B` heredaba una "
+      "pregunta de correspondencia entre universos; ahora hereda también una de "
+      "**correspondencia temporal**.")
     A("")
 
     A("## ⚠️ Lo que este análisis NO demuestra")
@@ -339,6 +432,46 @@ def _escribir(metas, pal, techos, base) -> None:
       "calendario puede ser exactamente lo correcto —al final del año lo que "
       "queda por hacer ES documentar lo ejecutado— o una debilidad. Eso es "
       "constructo, y lo juzga `011`.")
+    A("")
+    A("## Dictamen de 009 · por grado de certeza")
+    A("")
+    A("| Afirmación | Estado |")
+    A("|---|---|")
+    A("| Existe sensibilidad del ICPI a gaming contrafactual | **DEMOSTRADO** |")
+    A("| `T` tiene mayor techo que la vía documental en el corte de abril | **DEMOSTRADO** |")
+    A("| Esa ventaja disminuye al acercarse `T` a 1 | **DEMOSTRADO** |")
+    A("| Puede producirse inversión documental ↔ material | **DEMOSTRADO en escenarios simulados** |")
+    A("| La superficie de incentivo cambia con `T` | **DEMOSTRADO** |")
+    A("| Existe un mes exacto de inversión | **NO DETERMINABLE** |")
+    A("| Algún GAD ha manipulado efectivamente el ICPI | **NO DETERMINABLE** |")
+    A("| Documentar constituye gaming | **NO DEMOSTRADO** |")
+    A("| Ejecutar es la única mejora legítima | **NO DEMOSTRADO** |")
+    A("| `C_i` es un factor documental | **PENDIENTE** · `011-C2/C3` |")
+    A("| El gaming es propiedad permanente del índice | **REFUTADO** |")
+    A("| La multiplicatividad debe conservarse por este resultado | **NO DETERMINABLE** · `011-C4` |")
+    A("")
+    A("> ### GM-Ω-009 — CERRADO COMO DIAGNÓSTICO CONTRAFACTUAL DE GAMEABILIDAD")
+    A(">")
+    A("> La capacidad de incremento contrafactual del ICPI mediante las distintas "
+      "palancas **no es constante durante el ejercicio**. En los escenarios "
+      "examinados la vía material domina mientras existe margen de ejecución, y "
+      "su ventaja disminuye conforme `T_i` se aproxima a su máximo, pudiendo ser "
+      "superada por la recuperación documental.")
+    A(">")
+    A("> **No demuestra** que haya ocurrido gaming real, ni que documentar sea "
+      "conducta indebida, ni el instante de inversión, ni el coste relativo de "
+      "cada acción.")
+    A(">")
+    A("> **Transferible a `011-C4`:** la arquitectura multiplicativa debe "
+      "evaluarse no sólo por su sensibilidad estática (`007-D`: 51,26 pp) sino "
+      "por los **incentivos marginales que produce a lo largo del ciclo "
+      "temporal**.")
+    A("")
+    A("Y la pregunta que ninguno de los dos responde, y que es la de `011-C4`:")
+    A("")
+    A("> **¿Es la multiplicatividad una propiedad NECESARIA del constructo de "
+      "congruencia intersistémica, o una arquitectura matemática elegida durante "
+      "el desarrollo y conservada después?**")
     A("")
     A("---")
     A(f"*GM-Ω-ICPI-009 · {len(pal)} palancas medidas · baseline "

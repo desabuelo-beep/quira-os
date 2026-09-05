@@ -73,7 +73,7 @@ _ETAPAS = [
     ("GM-Ω", "v2", "Universo completo del PDOT (66) — decisión de Javo", _BLOQ,
      "011 · 008-R · exige ADR propio y recalibración (ADR-036 §4)"),
     ("GM-Ω", "009", "¿Se puede optimizar el índice sin mejorar la realidad?",
-     _HECHO, "★ el incentivo CAMBIA DE SIGNO: ejecutar rinde más casi todo el año · documentar rinde el doble al cierre"),
+     _HECHO, "★ superficie de incentivo DINÁMICA: la ventaja material domina mientras hay margen y puede invertirse al cierre"),
     ("GM-Ω", "010", "Transferibilidad LATAM · núcleo vs adaptador", _ABIERTO, ""),
     ("GM-Ω", "007-B0", "Genealogía del constructo · unidad `i` · factores",
      _HECHO, "★ reescrito con toda la evidencia · CERRADO como reconstrucción, NO como validación"),
@@ -87,9 +87,9 @@ _ETAPAS = [
      _ABIERTO, ""),
     ("GM-Ω", "011-C3", "Justificación de cada transformación · qué·por qué·quién·cuándo",
      _ABIERTO, "sin fuente documental → NO DETERMINABLE, no explicación inventada"),
-    ("GM-Ω", "011-C4", "Coherencia del estado vigente · ¿la multiplicatividad "
-     "es coherente con la unidad?", _BLOQ,
-     "011-A · 011-B · 011-C1-C3 · 008 · 009 · 010"),
+    ("GM-Ω", "011-C4", "¿Es la multiplicatividad NECESARIA al constructo, o una "
+     "arquitectura elegida y conservada?", _BLOQ,
+     "⚠️ faltan A · B · C1 · C2 · C3 · 010 — cerrar 009 NO la acerca"),
 
     ("TF", "T1", "Inventario de nombres propios", _HECHO, ""),
     ("TF", "T2", "Clasificación ontológica + capa de presentación", _HECHO, ""),

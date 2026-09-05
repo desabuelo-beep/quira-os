@@ -52,15 +52,18 @@ def test_la_inversion_del_incentivo_no_se_pierde():
     gameable». Lo correcto es que **es gameable en una ventana temporal
     concreta**, y eso sí se puede vigilar."""
     txt = _DOC.read_text(encoding="utf-8")
-    assert "EL INCENTIVO SE INVIERTE" in txt, (
+    assert "SUPERFICIE DE INCENTIVO ES DINÁMICA" in txt, (
         "desapareció el hallazgo central. Sin él, 009 se lee como un aprobado "
         "general del motor, y el corte de abril no autoriza esa conclusión")
-    assert "La ventana de gaming tiene fecha" in txt, (
-        "se perdió la formulación accionable: no es gameable o no, es gameable "
-        "en un tramo del año")
-    assert "propiedad estructural" in txt, (
-        "la inversión dejó de declararse estructural. Si se lee como un efecto "
-        "de los datos de este año, nadie la vigilará el año que viene")
+    # ⚠️ La formulación se corrigió: «la ventana de gaming tiene fecha» era
+    # retóricamente potente y epistemológicamente excesiva —009 no identificó el
+    # momento real de inversión, sólo la diferencia entre escenarios discretos—.
+    assert "puede invertirse hacia el cierre" in txt, (
+        "se perdió la formulación exacta: la ventaja relativa DEPENDE DEL ESTADO "
+        "temporal y PUEDE invertirse. Ni «es gameable» ni «tiene fecha»")
+    assert "epistemológicamente demasiado fuerte" in txt, (
+        "desapareció la constancia de que la formulación anterior era excesiva. "
+        "Sin ella, alguien la reintroduce por parecer más contundente")
 
 
 def test_009_no_convierte_un_incentivo_en_una_acusacion():

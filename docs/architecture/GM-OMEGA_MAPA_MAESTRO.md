@@ -92,7 +92,7 @@ Y **`T6` espera a `011` por la misma razón**: deprecar `AVEP` o migrar el nombr
 | GM-Ω | `008` | Cobertura real del universo medido | ✅ | veredicto: JUSTIFICADA EN v1 · criterio = mayor monto (Javo) |
 | GM-Ω | `008-R` | Reconciliación meta a meta 66 ↔ 25 | 🔄 | PARCIAL · caso N:1 demostrado · correspondencia exhaustiva sin reconciliar |
 | GM-Ω | `v2` | Universo completo del PDOT (66) — decisión de Javo | ⛔ | 011 · 008-R · exige ADR propio y recalibración (ADR-036 §4) |
-| GM-Ω | `009` | ¿Se puede optimizar el índice sin mejorar la realidad? | ✅ | ★ el incentivo CAMBIA DE SIGNO: ejecutar rinde más casi todo el año · documentar rinde el doble al cierre |
+| GM-Ω | `009` | ¿Se puede optimizar el índice sin mejorar la realidad? | ✅ | ★ superficie de incentivo DINÁMICA: la ventaja material domina mientras hay margen y puede invertirse al cierre |
 | GM-Ω | `010` | Transferibilidad LATAM · núcleo vs adaptador | ⬜ |  |
 | GM-Ω | `007-B0` | Genealogía del constructo · unidad `i` · factores | ✅ | ★ reescrito con toda la evidencia · CERRADO como reconstrucción, NO como validación |
 | GM-Ω | `011-A` | Unidad de análisis · ¿qué es `i`? | 🔄 | ★ genealogía RESUELTA: era PROMESA CNE → META PDOT «pues era mandato» (Javo) · falta DECLARARLA en el canon |
@@ -100,7 +100,7 @@ Y **`T6` espera a `011` por la misma razón**: deprecar `AVEP` o migrar el nombr
 | GM-Ω | `011-C1` | Genealogía algebraica · P·R·V·T → +E → +C · escalas | ⬜ | ★ 007-B0 la dejó reconstruida |
 | GM-Ω | `011-C2` | Genealogía semántica · qué significó cada factor | ⬜ |  |
 | GM-Ω | `011-C3` | Justificación de cada transformación · qué·por qué·quién·cuándo | ⬜ | sin fuente documental → NO DETERMINABLE, no explicación inventada |
-| GM-Ω | `011-C4` | Coherencia del estado vigente · ¿la multiplicatividad es coherente con la unidad? | ⛔ | 011-A · 011-B · 011-C1-C3 · 008 · 009 · 010 |
+| GM-Ω | `011-C4` | ¿Es la multiplicatividad NECESARIA al constructo, o una arquitectura elegida y conservada? | ⛔ | ⚠️ faltan A · B · C1 · C2 · C3 · 010 — cerrar 009 NO la acerca |
 | TF | `T1` | Inventario de nombres propios | ✅ |  |
 | TF | `T2` | Clasificación ontológica + capa de presentación | ✅ |  |
 | TF | `T3` | Contrato índice → dominio → rol → pregunta → capa | 🔄 | se llena con la curación de cada dominio |
