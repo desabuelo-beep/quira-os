@@ -145,14 +145,29 @@ _DOCTRINA = (
          verificador="test_ninguna_regla_generadora_se_infiere_del_patron_de_sus_resultados",
          por_que_ahi="con 25 casos y tres valores posibles, cualquier hipótesis "
                      "encuentra algunos que la respaldan: encajar no es derivar"),
+    dict(id="DOC-028", custodia=GATE,
+         regla="CONTINUIDAD HISTÓRICA ≠ CONTINUIDAD METODOLÓGICA. Conservar "
+               "`ICPI_v1` no obliga a que `ICPI_v2 = ICPI_v1`; conservar "
+               "`d06` histórico no obliga a que `d06` futuro sea igual. Toda "
+               "versión nueva de QUIRA debe declarar explícitamente cuál de "
+               "las dos continuidades mantiene con la anterior",
+         fuente="el colega, 2026-09-05 · al formalizar el refactor integral "
+                "que pidió Javo",
+         verificador="test_la_carta_separa_lo_que_se_acata_de_lo_que_se_decide",
+         por_que_ahi="es lo que permite que el refactor sea integral SIN "
+                     "romper la trazabilidad que Javo pidió conservar: lo "
+                     "viejo no se borra, se declara antecedente. Sin esta "
+                     "regla, «conservar la historia» y «rediseñar» parecen "
+                     "incompatibles y hay que elegir — y no hay que elegir"),
     dict(id="DOC-027", custodia=GATE,
-         regla="Un `NO DETERMINABLE` genealógico es un GRADO DE LIBERTAD, no "
-               "una laguna. Donde no hay razón documentada no hay nada que "
-               "respetar: reconstruir la historia habilita a decidir, no "
-               "obliga a repetir. ⚠️ Con una excepción que no es histórica "
-               "sino normativa — lo anclado a una norma vigente (`R_i`↔COOTAD, "
-               "`V_i`↔LOTAIP, `T_i`↔COPFP/Acuerdo 067) no es herencia: es "
-               "obligación, y sólo cambia si cambia la norma",
+         regla="Donde NO existe justificación documental de una decisión de "
+               "diseño, esa decisión **no adquiere autoridad metodológica por "
+               "antigüedad**; su permanencia debe evaluarse nuevamente frente "
+               "al fenómeno, la teoría, la evidencia, la norma y la "
+               "arquitectura actual. No queda validada ni invalidada: queda "
+               "ABIERTA. ⚠️ Y la excepción no es histórica sino normativa — lo "
+               "anclado a una norma vigente (`R_i`↔COOTAD, `V_i`↔LOTAIP, "
+               "`T_i`↔COPFP/Acuerdo 067) no es herencia: es obligación",
          fuente="Javo, 2026-09-05 —«lo histórico no es la verdad absoluta o "
                 "una camisa de fuerza que se deba continuar»—",
          verificador="test_la_genealogia_habilita_a_decidir_no_obliga_a_repetir",
@@ -160,13 +175,14 @@ _DOCTRINA = (
                      "producir un sesgo conservador de HECHO, aunque el canon "
                      "dijera lo contrario de DERECHO: `DOC-013` ya establecía "
                      "que QUIRA no conserva conceptos por herencia. Javo lo "
-                     "señaló y tiene razón. Y `011-C2`/`C3` producen munición "
-                     "para CAMBIAR, no para conservar: dos generaciones de "
-                     "`C_i` conviven sin que el instrumento declare cuál rige, "
-                     "y la residencia del ICPI en `d06` se apoya en un nombre "
-                     "que el canon ya retiró. Las tres razones que no constan "
-                     "no son huecos del peritaje: son las tres decisiones que "
-                     "`011-C4` puede tomar sin contradecir a nadie"),
+                     "señaló y tiene razón. ⚠️ Y LA PRIMERA REDACCIÓN DE ESTA "
+                     "REGLA SE FUE AL EXTREMO OPUESTO —«donde no hay razón "
+                     "documentada no hay nada que respetar»—, que convertía "
+                     "un sesgo conservador en uno destructivo. El colega la "
+                     "corrigió: sin justificación, una decisión antigua no es "
+                     "automáticamente incorrecta NI automáticamente correcta. "
+                     "Queda abierta, que es un tercer estado — el mismo "
+                     "patrón que el tercer estado de los ocho"),
     dict(id="DOC-026", custodia=GATE,
          regla="La fecha del ARTEFACTO que documenta un cambio no es la fecha "
                "del CONCEPTO. Un registro fechado prueba cuándo se escribió, "

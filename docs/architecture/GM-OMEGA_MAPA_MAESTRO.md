@@ -37,7 +37,7 @@ Javo: *«tenemos la tesis, y todo el constructo metodológico allí claro […] 
 
 > **Antes de decidir cualquier punto del refactor: ¿esto lo resuelve la tesis?** Si sí, se restaura y se cita. Si no, se decide **y se declara que es una decisión nueva**, no un hallazgo.
 
-## Los cinco frentes
+## Los 6 frentes
 
 | Frente | Qué pregunta responde | Depende de | ¿Puede avanzar ahora? |
 |---|---|---|---|
@@ -46,6 +46,7 @@ Javo: *«tenemos la tesis, y todo el constructo metodológico allí claro […] 
 | **T3-R** · Refactor de arquitectura de dominios | ¿la estructura de dominios representa lo que QUIRA sabe hoy? | TF · T3 | R0 y R1 sí · R2 espera a 011 |
 | **2ING** · Segunda ingeniería · curación dominio a dominio | ¿cada dominio está curado de la fuente a la UI, por las 7 capas? | — | sí · y alimenta a TF y a T3-R |
 | **DEUDA** · Registro de deudas con ataque | ¿qué sabemos que está mal y aún no se ha corregido? | — | sí · cada una a su ritmo |
+| **QNEXT** · Rearquitectura integral · fondo y forma | ¿cómo evoluciona el ecosistema entero sin dañar lo que es válido? | 011-C4 para EJECUTAR | Q0 ✅ · Q1 sí · Q3 espera al dictamen |
 
 ## ★ Para qué sirve todo esto — el encuadre, fijado el 2026-09-05
 
@@ -114,7 +115,8 @@ Hay una parte del constructo que **no puede rediseñarse libremente**, y convien
   EN PARALELO — nada de esto se bloquea entre sí
   ├── GM-Ω 008-R resolver las 40 ambiguas · 66↔25  ← desbloquea v2
   ├── GM-Ω 011-A2 declarar la unidad `i` en el canon
-  ├── T3-R R0    diagnóstico de los 13 dominios
+  ├── QNEXT Q1   clasificar los 412 documentos en las 5 categorías
+  ├── T3-R R0    diagnóstico de los 13 dominios  ← desbloquea Q2
   ├── T3-R R1    modelos A · B · C de arquitectura de dominios
   ├── 2ING d07   curación de Transparencia
   └── DEUDA      D-008 · D-009 · D-011 · D-012 · D-013 · D-014
@@ -123,8 +125,11 @@ Hay una parte del constructo que **no puede rediseñarse libremente**, y convien
 
   ├── T3-R R2    residencia y ámbito de los índices
   ├── TF   T5    presentación dentro del dominio
-  └── TF   T6    conservar / renombrar / deprecar / eliminar
+  ├── TF   T6    conservar / renombrar / deprecar / eliminar
+  └── QNEXT Q3   ejecución del refactor integral · fondo y forma
 ```
+
+⚠️ **El refactor integral (`QNEXT`) no es un frente que se abra después de `GM-Ω`: es el destino que le da sentido.** Su plan —la carta `Q0`— ya está, y `Q1` puede correr hoy porque **clasificar no es cambiar**. Lo que espera al dictamen es la EJECUCIÓN. Detalle: `QUIRA-NEXT_CARTA_REARQUITECTURA.md`.
 
 ⚠️ **Por qué `010` va DESPUÉS de `C3` y no antes.** Esta dirección proponía adelantarla —la transferibilidad también alimenta al dictamen—. El criterio que prevaleció es el del colega y es mejor: **mientras no se sepa qué significan `E_i` y `C_i`, todo análisis se hace sobre variables cuya ontología seguimos reconstruyendo**. `011-C2` lo demostró en el acto: la semántica que se daba por buena era falsa.
 
@@ -165,6 +170,10 @@ Y **`T6` espera a `011` por la misma razón**: deprecar `AVEP` o migrar el nombr
 | TF | `T4` | Rol de cada indicador | 🔄 | sin inventar: sólo con fuente |
 | TF | `T5` | Presentación dentro de su dominio | ⛔ | T3 · T4 |
 | TF | `T6` | Acción: conservar / renombrar / deprecar / eliminar | ⛔ | 011 · T5 |
+| QNEXT | `Q0` | Carta de rearquitectura · el plan del refactor integral | ✅ | ★ 5 categorías de tratamiento · 10 ejes · 1321 artefactos inventariados · FONDO/FORMA · NO ejecuta |
+| QNEXT | `Q1` | Clasificar los 412 documentos de canon en las 5 categorías | ⬜ | no espera al dictamen: clasificar no es cambiar |
+| QNEXT | `Q2` | Dashboards y narrativa por dominio · visual→analítica→explicación | ⛔ | R0 — no 011: depende de saber qué pregunta cada dominio |
+| QNEXT | `Q3` | Ejecución del refactor · fondo y forma | ⛔ | 011-C4 · Q1 · R0/R1 |
 | T3-R | `R0` | Diagnóstico de los 13 dominios | ⬜ |  |
 | T3-R | `R1` | Modelos A · B · C de arquitectura | ⬜ |  |
 | T3-R | `R2` | Decisión: residencia y ámbito de los índices | ⛔ | 011 |
@@ -176,7 +185,7 @@ Y **`T6` espera a `011` por la misma razón**: deprecar `AVEP` o migrar el nombr
 | 2ING | `d02·d03` | Presupuesto · Gobernanza del Mandato | ⬜ |  |
 | 2ING | `d04·d05·d10-d13` | Sellados · sin construir | ⬜ |  |
 
-**17 de 35 etapas cerradas.**
+**18 de 39 etapas cerradas.**
 
 ## Estado derivado de las fuentes vivas
 
@@ -185,8 +194,8 @@ Y **`T6` espera a `011` por la misma razón**: deprecar `AVEP` o migrar el nombr
 | Deudas declaradas | 14 |
 | Deudas resueltas | 6 |
 | Deudas abiertas | **8** |
-| Reglas de doctrina con custodio | 27 |
-| Pruebas que las fijan | 415 |
+| Reglas de doctrina con custodio | 28 |
+| Pruebas que las fijan | 421 |
 | Documentos GM-Ω | 12 |
 
 ### Deudas abiertas
@@ -224,4 +233,4 @@ Y **`T6` espera a `011` por la misma razón**: deprecar `AVEP` o migrar el nombr
 3. **Este mapa se deriva.** El día que alguien lo edite a mano, dejará de reflejar el estado real sin que nada avise, y volveremos exactamente al punto que motivó escribirlo.
 
 ---
-*QUIRA · Mapa Maestro · 17/35 etapas cerradas · 8 deudas abiertas · Dylus Lab © 2026*
+*QUIRA · Mapa Maestro · 18/39 etapas cerradas · 8 deudas abiertas · Dylus Lab © 2026*

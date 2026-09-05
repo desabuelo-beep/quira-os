@@ -52,6 +52,9 @@ _FRENTES = [
     ("DEUDA", "Registro de deudas con ataque",
      "¿qué sabemos que está mal y aún no se ha corregido?",
      "—", "sí · cada una a su ritmo"),
+    ("QNEXT", "Rearquitectura integral · fondo y forma",
+     "¿cómo evoluciona el ecosistema entero sin dañar lo que es válido?",
+     "011-C4 para EJECUTAR", "Q0 ✅ · Q1 sí · Q3 espera al dictamen"),
 ]
 
 # ── LAS ETAPAS DE CADA FRENTE ────────────────────────────────────────────────
@@ -104,6 +107,17 @@ _ETAPAS = [
     ("TF", "T5", "Presentación dentro de su dominio", _BLOQ, "T3 · T4"),
     ("TF", "T6", "Acción: conservar / renombrar / deprecar / eliminar", _BLOQ,
      "011 · T5"),
+
+    ("QNEXT", "Q0", "Carta de rearquitectura · el plan del refactor integral",
+     _HECHO, "★ 5 categorías de tratamiento · 10 ejes · 1321 artefactos "
+             "inventariados · FONDO/FORMA · NO ejecuta"),
+    ("QNEXT", "Q1", "Clasificar los 412 documentos de canon en las 5 categorías",
+     _ABIERTO, "no espera al dictamen: clasificar no es cambiar"),
+    ("QNEXT", "Q2", "Dashboards y narrativa por dominio · visual→analítica→"
+                    "explicación", _BLOQ, "R0 — no 011: depende de saber qué "
+                                          "pregunta cada dominio"),
+    ("QNEXT", "Q3", "Ejecución del refactor · fondo y forma", _BLOQ,
+     "011-C4 · Q1 · R0/R1"),
 
     ("T3-R", "R0", "Diagnóstico de los 13 dominios", _ABIERTO, ""),
     ("T3-R", "R1", "Modelos A · B · C de arquitectura", _ABIERTO, ""),
@@ -228,7 +242,7 @@ def _escribir(deu, docs, n_doc, n_test, hechas) -> None:
       "que es una decisión nueva**, no un hallazgo.")
     A("")
 
-    A("## Los cinco frentes")
+    A(f"## Los {len(_FRENTES)} frentes")
     A("")
     A("| Frente | Qué pregunta responde | Depende de | ¿Puede avanzar ahora? |")
     A("|---|---|---|---|")
@@ -331,7 +345,8 @@ def _escribir(deu, docs, n_doc, n_test, hechas) -> None:
     A("  EN PARALELO — nada de esto se bloquea entre sí")
     A("  ├── GM-Ω 008-R resolver las 40 ambiguas · 66↔25  ← desbloquea v2")
     A("  ├── GM-Ω 011-A2 declarar la unidad `i` en el canon")
-    A("  ├── T3-R R0    diagnóstico de los 13 dominios")
+    A("  ├── QNEXT Q1   clasificar los 412 documentos en las 5 categorías")
+    A("  ├── T3-R R0    diagnóstico de los 13 dominios  ← desbloquea Q2")
     A("  ├── T3-R R1    modelos A · B · C de arquitectura de dominios")
     A("  ├── 2ING d07   curación de Transparencia")
     A("  └── DEUDA      D-008 · D-009 · D-011 · D-012 · D-013 · D-014")
@@ -340,8 +355,15 @@ def _escribir(deu, docs, n_doc, n_test, hechas) -> None:
     A("")
     A("  ├── T3-R R2    residencia y ámbito de los índices")
     A("  ├── TF   T5    presentación dentro del dominio")
-    A("  └── TF   T6    conservar / renombrar / deprecar / eliminar")
+    A("  ├── TF   T6    conservar / renombrar / deprecar / eliminar")
+    A("  └── QNEXT Q3   ejecución del refactor integral · fondo y forma")
     A("```")
+    A("")
+    A("⚠️ **El refactor integral (`QNEXT`) no es un frente que se abra después "
+      "de `GM-Ω`: es el destino que le da sentido.** Su plan —la carta `Q0`— "
+      "ya está, y `Q1` puede correr hoy porque **clasificar no es cambiar**. "
+      "Lo que espera al dictamen es la EJECUCIÓN. Detalle: "
+      "`QUIRA-NEXT_CARTA_REARQUITECTURA.md`.")
     A("")
     A("⚠️ **Por qué `010` va DESPUÉS de `C3` y no antes.** Esta dirección "
       "proponía adelantarla —la transferibilidad también alimenta al "
