@@ -632,16 +632,38 @@ v5.7 VIGENTE    i = META PDOT · 6 factores · B33 sin ×100
 o modalidad institucional; `C_i`, calidad del proceso orgánico vía penalizaciones legales.
 La transición `5 → 6 factores` es **incorporación de una dimensión**, no sustitución.
 
-**2 · El fallback de `C_i` no es un defecto.** Usar el valor base ante ausencia de
-infracción es **coherente con la presunción de inocencia** que el propio motor declara —
-y `H01!A187` prohíbe expresamente lo contrario: *«NUNCA inventar infracciones»*. Lo que
-`011` debe juzgar es si un heurístico de 2025 es el fallback adecuado para 2026.
+**2 · El fallback de `C_i`: mecanismo coherente, vigencia abierta.** Son dos preguntas
+distintas y no deben colapsarse:
 
-**3 · Sobre el `×100`, un dato que refuerza pero no cierra.** `METODOLOGIA_GOLD_MASTER.md`
-—documento **vigente**, no histórico— declara la fórmula canónica **con `× 100`** y, dos
-líneas después, `B33 = B31/B32`. **El canon actual contiene ambas afirmaciones,
-contradictorias, en líneas consecutivas.** Eso inclina hacia la hipótesis de pérdida
-accidental, pero no la demuestra: nadie registró la decisión.
+| | |
+|---|---|
+| **No registrar una infracción inexistente** | ✅ correcto — coherente con la presunción de inocencia que el motor declara, y `H01!A187` prohíbe lo contrario: *«NUNCA inventar infracciones»* |
+| **Usar una calibración de 2025 en 2026** | ⚠️ **cuestión metodológica abierta** — vigencia, actualización y pertinencia temporal de `C_i` |
+
+Esta sección **no dictamina** que el fallback sea correcto: eso pertenece a `011-C4`, y
+la pregunta que le entrega es concreta — *¿es legítimo que un factor incorporado en 2026
+opere en las 25 unidades mediante un valor manual de 2025 cuando no hay infracciones
+registradas en 2026?*
+
+**3 · El `×100` es una INCONSISTENCIA CANÓNICA, no sólo histórica.**
+`METODOLOGIA_GOLD_MASTER.md` —documento **vigente**— declara la fórmula **con `× 100`** y,
+dos líneas después, `B33 = B31/B32`. El canon actual contiene ambas afirmaciones,
+contradictorias, en líneas consecutivas.
+
+| Afirmación | Estado |
+|---|---|
+| `ANEXO M` declara `×100` | **VERIFICADO** |
+| `ANEXO L` declara `×100` | **VERIFICADO** |
+| `METODOLOGIA_GOLD_MASTER` (vigente) declara `×100` | **VERIFICADO** |
+| `B33` opera como proporción `0-1` | **VERIFICADO** |
+| Existe contradicción documentación ↔ implementación | **VERIFICADO** |
+| El `×100` se eliminó accidentalmente | **NO DETERMINABLE** |
+| Fue decisión deliberada de almacenar `0-1` | **NO DETERMINABLE** |
+| La presentación convierte después a porcentaje | **probado sólo para `H73`** |
+
+⚠️ Y eso lo saca del terreno de la presentación: **es una transformación algebraica y
+representacional que debería tener decisión documentada**, y no la tiene. Alimenta a
+`011-C1` y `011-C3`.
 
 ### Dictamen
 
@@ -653,9 +675,16 @@ accidental, pero no la demuestra: nadie registró la decisión.
 
 Y una lectura que cambia el marco de `011`: **no encontramos «una fórmula mal
 documentada». Encontramos la biografía de un constructo que evolucionó mientras se
-construía TERRA → QUADRUM → QUIRA.** El hallazgo de que los `E_i` son idénticos desde el
-primer Gold Master elimina además una hipótesis incómoda: **no fueron ajustados después
-para producir el resultado actual.**
+construía TERRA → QUADRUM → QUIRA.** Y sobre `E_i`, una formulación que hay que decir con exactitud —«elimina la hipótesis»
+era demasiado fuerte—:
+
+> **La comparación de las siete versiones preservadas no evidencia ajustes posteriores de
+> los valores `E_i`.** Por tanto, no se observa manipulación retrospectiva **dentro de la
+> cadena versionada examinada**. La evidencia **no permite determinar** si los valores
+> fueron establecidos originalmente mediante un procedimiento distinto al documentado.
+
+La diferencia parece pequeña y en un expediente forense es enorme: descartar lo observable
+no es demostrar lo inobservable.
 
 `011-C` se abre en cuatro niveles: **C1** genealogía algebraica · **C2** genealogía
 semántica · **C3** justificación de cada transformación · **C4** coherencia del estado

@@ -80,21 +80,26 @@ def test_C_i_no_se_presenta_como_renombre_de_E_i():
         "genealógica a 24 días")
 
 
-def test_el_fallback_de_Ci_no_se_califica_de_defecto():
-    """`C_i` opera hoy con su fallback porque las 25 metas tienen `INF-01..04 =
-    0`. Y eso es coherente con la presunción de inocencia que el propio motor
-    declara: `H01!A187` prohíbe expresamente lo contrario —«NUNCA inventar
-    infracciones»—.
+def test_el_fallback_de_Ci_separa_mecanismo_de_vigencia():
+    """Dos preguntas que no deben colapsarse, y esta sección no dictamina ninguna:
 
-    ⚠️ Llamarlo defecto sería exigirle al sistema que fabrique evidencia. Lo que
-    `011` debe juzgar es otra cosa: si un heurístico de 2025 es el fallback
-    adecuado para 2026."""
+        no registrar una infracción inexistente   → correcto
+        usar una calibración de 2025 en 2026      → cuestión abierta
+
+    ⚠️ UNA VERSIÓN ANTERIOR DE ESTA PRUEBA exigía que la ficha dijera que el
+    fallback «no es un defecto». Era adelantar un dictamen que pertenece a
+    `011-C4`: 007-B0 reconstruye, no valida. La prueba ahora vigila que las dos
+    preguntas sigan separadas y que ninguna se resuelva aquí."""
     txt = _FICHA.read_text(encoding="utf-8")
-    assert "no es un defecto" in txt, (
-        "el fallback de C_i se calificó como defecto. Usar el valor base ante "
-        "ausencia de infracción es la conducta correcta bajo presunción de "
-        "inocencia; lo discutible es la vigencia del heurístico, no el mecanismo")
-    assert "NUNCA inventar infracciones" in txt
+    assert "NUNCA inventar infracciones" in txt, (
+        "desapareció la regla que hace correcto el mecanismo: el motor tiene "
+        "prohibido fabricar infracciones para alimentarse")
+    assert "cuestión metodológica abierta" in txt, (
+        "la vigencia del heurístico de 2025 dejó de declararse abierta. "
+        "Cerrarla aquí sería que 007-B0 dictamine lo que 011-C4 debe juzgar")
+    assert "011-C4" in txt, (
+        "se perdió el destino de la pregunta. Una cuestión abierta sin dueño "
+        "se convierte en una cuestión olvidada")
 
 
 def test_el_dictamen_no_confunde_reconstruir_con_aprobar():

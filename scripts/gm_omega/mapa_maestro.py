@@ -73,7 +73,7 @@ _ETAPAS = [
     ("GM-Ω", "v2", "Universo completo del PDOT (66) — decisión de Javo", _BLOQ,
      "011 · 008-R · exige ADR propio y recalibración (ADR-036 §4)"),
     ("GM-Ω", "009", "¿Se puede optimizar el índice sin mejorar la realidad?",
-     _ABIERTO, ""),
+     _HECHO, "★ el incentivo CAMBIA DE SIGNO: ejecutar rinde más casi todo el año · documentar rinde el doble al cierre"),
     ("GM-Ω", "010", "Transferibilidad LATAM · núcleo vs adaptador", _ABIERTO, ""),
     ("GM-Ω", "007-B0", "Genealogía del constructo · unidad `i` · factores",
      _HECHO, "★ reescrito con toda la evidencia · CERRADO como reconstrucción, NO como validación"),
