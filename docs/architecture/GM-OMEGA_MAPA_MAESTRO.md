@@ -174,7 +174,7 @@ Y **`T6` espera a `011` por la misma razón**: deprecar `AVEP` o migrar el nombr
 | QNEXT | `Q0` | Carta de rearquitectura v2 · el plan del refactor integral | ✅ | ★ 4 bases medulares · 5 categorías · 10 ejes · 4 inventarios separados · DOC-029 regla maestra · NO ejecuta |
 | QNEXT | `BM-01` | Corpus normativo · vigencia, clase y separación norma↔instrumento | ⬜ | 🔴 13.147 chunks SIN columna de vigencia · document_class vacía en 81 % · norma e instrumentos de gestión en la misma tabla |
 | QNEXT | `BM-05` | Memoria histórica de diseño · 898 archivos + 71 versiones únicas del motor | ✅ | ★ inventariada · la serie fechó el cambio de `C_i` · pendiente el resto del corpus (121 .md · 80 .txt de fórmulas) |
-| GM-Ω | `011-C3R` | Serie temporal del motor · verificación de sensibilidad documental | ✅ | ★ 25→29-abr-2026: `C_i` NO derivó, fue refactorizado en UN acto · H01!A94 corroborada por evidencia independiente · el PORQUÉ sigue NO DETERMINABLE |
+| GM-Ω | `011-C3R` | Serie temporal del motor + Fase 3 documental · sensibilidad de las conclusiones de C3 | ✅ | ★ 25→29-abr-2026 en UN acto · H01!A94 corroborada · `E-CRIT-04` declara el PORQUÉ del constructo («nunca el estatus jurídico de una entidad») · pesos y piso siguen NO DETERMINABLE |
 | QNEXT | `Q1` | Matriz de clasificación · candidato → ratificado | ⬜ | no espera al dictamen: clasificar no es cambiar · primer test = migración semántica de «auditoría» |
 | QNEXT | `Q2` | Dashboards y narrativa por dominio · visual→analítica→explicación | ⛔ | R0 — no 011: depende de saber qué pregunta cada dominio |
 | QNEXT | `Q3` | Ejecución del refactor · fondo y forma | ⛔ | 011-C4 · Q1 · R0/R1 |
@@ -199,7 +199,7 @@ Y **`T6` espera a `011` por la misma razón**: deprecar `AVEP` o migrar el nombr
 | Deudas resueltas | 6 |
 | Deudas abiertas | **8** |
 | Reglas de doctrina con custodio | 31 |
-| Pruebas que las fijan | 433 |
+| Pruebas que las fijan | 436 |
 | Documentos GM-Ω | 13 |
 
 ### Deudas abiertas

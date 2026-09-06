@@ -119,11 +119,11 @@ _ETAPAS = [
                        "versiones únicas del motor", _HECHO,
      "★ inventariada · la serie fechó el cambio de `C_i` · pendiente el resto "
      "del corpus (121 .md · 80 .txt de fórmulas)"),
-    ("GM-Ω", "011-C3R", "Serie temporal del motor · verificación de "
-                        "sensibilidad documental", _HECHO,
-     "★ 25→29-abr-2026: `C_i` NO derivó, fue refactorizado en UN acto · "
-     "H01!A94 corroborada por evidencia independiente · el PORQUÉ sigue NO "
-     "DETERMINABLE"),
+    ("GM-Ω", "011-C3R", "Serie temporal del motor + Fase 3 documental · "
+                        "sensibilidad de las conclusiones de C3", _HECHO,
+     "★ 25→29-abr-2026 en UN acto · H01!A94 corroborada · `E-CRIT-04` declara "
+     "el PORQUÉ del constructo («nunca el estatus jurídico de una entidad») · "
+     "pesos y piso siguen NO DETERMINABLE"),
     ("QNEXT", "Q1", "Matriz de clasificación · candidato → ratificado",
      _ABIERTO, "no espera al dictamen: clasificar no es cambiar · primer test "
                "= migración semántica de «auditoría»"),

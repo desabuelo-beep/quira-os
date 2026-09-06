@@ -167,6 +167,67 @@ def radiografia(p: Path) -> dict:
     return d
 
 
+# ── FASE 3 · sensibilidad documental acotada ──────────────────────────────
+#
+# NO se leen los 121 `.md` + 80 `.txt` completos. Se busca UNA sola cosa:
+# ¿existe evidencia documental que explique la decisión de diseño
+# materializada entre el 25 y el 29 de abril de 2026?
+_TERMINOS = re.compile(
+    r"(Ci[_ ]?Manual|Retrospective Mapping|Mapeo Retrospectivo|imputabilidad|"
+    r"calidad de (proceso|expediente)|Ci Determinista|Motor Ci|E-CRIT-04|"
+    r"27-Abr-2026|2026-04-2[579])", re.I)
+
+# Lo que convertiría una mención en una JUSTIFICACIÓN: lenguaje de decisión.
+_JUSTIFICA = re.compile(
+    r"(DECISI[OÓ]N|REEMPLAZAR|DETECTAR|nunca el estatus|mal definida|"
+    r"E-CRIT|porque|razón|criterio)", re.I)
+
+
+def fase3_documental() -> dict:
+    """★ El barrido acotado. Devuelve los archivos que contienen lenguaje de
+    DECISIÓN sobre `C_i`, no los que sólo lo mencionan.
+
+    ⚠️ La distinción es la que ya falló una vez al derivar la doctrina: que un
+    artefacto nombre a `C_i` no prueba que lo justifique."""
+    raices = [_BASE / x for x in ("_historico", "ProyecT", "tesis historicas",
+                                  "documentos_proyecto",
+                                  "metodologia_beta_Dctos")]
+    hallazgos, revisados = [], 0
+    for raiz in raices:
+        if not raiz.exists():
+            continue
+        for p in raiz.rglob("*"):
+            if p.suffix.lower() not in (".md", ".txt") or not p.is_file():
+                continue
+            if any(e in str(p) for e in _EXCLUIDOS):
+                continue
+            revisados += 1
+            try:
+                txt = p.read_text(encoding="utf-8", errors="replace")
+            except Exception:
+                continue
+            if not _TERMINOS.search(txt):
+                continue
+            # ¿Sólo menciona, o justifica?
+            citas = []
+            for m in _TERMINOS.finditer(txt):
+                ini = max(0, m.start() - 260)
+                frag = re.sub(r"\s+", " ", txt[ini:m.end() + 320]).strip()
+                if _JUSTIFICA.search(frag):
+                    citas.append(frag)
+                if len(citas) >= 2:
+                    break
+            if citas:
+                hallazgos.append({
+                    "archivo": p.name,
+                    "ruta": str(p.relative_to(_BASE)).replace("\\", "/"),
+                    "fecha": datetime.fromtimestamp(p.stat().st_mtime)
+                    .strftime("%Y-%m-%d"),
+                    "citas": citas})
+    hallazgos.sort(key=lambda x: x["fecha"])
+    return {"revisados": revisados, "hallazgos": hallazgos}
+
+
 def main() -> int:
     libros = candidatos()
     if not libros:
@@ -185,12 +246,16 @@ def main() -> int:
         if i % 10 == 0:
             print(f"  {i}/{len(libros)}…")
 
-    print(f"únicas por contenido: {len(radios)} de {len(libros)}")
+    print(f"únicos por contenido: {len(radios)} de {len(libros)}")
     ok = [r for r in radios if not r.get("error")]
-    print(f"legibles: {len(ok)} · con H12: "
+    print(f"con evidencia estructural del motor: "
           f"{sum(1 for r in ok if r.get('tiene_h12'))}")
 
-    _escribir(radios, libros, vistos)
+    f3 = fase3_documental()
+    print(f"FASE 3 · {f3['revisados']} documentos revisados · "
+          f"{len(f3['hallazgos'])} con lenguaje de decisión sobre C_i")
+
+    _escribir(radios, libros, vistos, f3)
     print(f"→ {_SALIDA.relative_to(_RAIZ).as_posix()}")
     return 0
 
@@ -209,7 +274,7 @@ def _transiciones(radios: list[dict], campo: str) -> list[tuple]:
     return out
 
 
-def _escribir(radios, libros, vistos) -> None:
+def _escribir(radios, libros, vistos, f3) -> None:
     o: list[str] = []
     A = o.append
     ok = [r for r in radios if not r.get("error")]
@@ -245,10 +310,20 @@ def _escribir(radios, libros, vistos) -> None:
     A("| | |")
     A("|---|---:|")
     A(f"| archivos candidatos | {len(libros)} |")
-    A(f"| **únicos por contenido** (SHA-256) | **{len(radios)}** |")
+    A(f"| **artefactos históricos únicos por contenido** (SHA-256) | "
+      f"**{len(radios)}** |")
     A(f"| legibles | {len(ok)} |")
-    A(f"| con hoja `H12` del motor | {sum(1 for r in ok if r.get('tiene_h12'))} |")
+    A(f"| **con evidencia estructural suficiente del motor** para las "
+      f"preguntas examinadas | **{sum(1 for r in ok if r.get('tiene_h12'))}** |")
     A(f"| con hoja `H01` de parámetros | {sum(1 for r in ok if r.get('tiene_h01'))} |")
+    A("")
+    A("⚠️ **La terminología es deliberada.** «Artefactos únicos por "
+      "contenido» **no** significa «estados históricos del motor». Un hash "
+      "distinto puede deberse a un cambio en el motor, en los datos, en otra "
+      "hoja, o a algo puramente cosmético. Llamarlos «versiones "
+      "metodológicas» confundiría *archivo distinto* con *diseño distinto* — "
+      "por eso el análisis trabaja con **transiciones de las variables "
+      "relevantes**, no con diferencias binarias del libro.")
     A("")
     dupes = sum(len(v) - 1 for v in vistos.values() if len(v) > 1)
     if dupes:
@@ -371,14 +446,102 @@ def _escribir(radios, libros, vistos) -> None:
         A("> ### `C_i` no derivó: fue REFACTORIZADO en un solo acto de diseño")
         A(">")
         A("> Mecanismo, pesos, piso, fallback y las dos secciones de `H01` "
-          "entran **juntos**. No hay versiones intermedias con pesos "
-          "distintos que luego se ajustaran, ni un piso que se añadiera "
-          "después. **Eso descarta la hipótesis de calibración iterativa.**")
+          "entran **juntos** en la primera versión identificada con el nuevo "
+          "mecanismo.")
         A("")
-        A("Y hay una magnitud que lo confirma: entre esas dos versiones el "
-          "libro pasa de **58 a 72 hojas** — catorce hojas nuevas. No fue un "
-          "ajuste de parámetros: fue una **refactorización mayor del "
-          "instrumento**.")
+        A("⚠️ **Y aquí la formulación exacta importa.** Decir que esto "
+          "«descarta la calibración iterativa» sería más fuerte de lo que la "
+          "serie permite: pudo haber ajustes fuera de los artefactos "
+          "preservados, o una calibración desarrollada antes y materializada "
+          "de golpe. Lo defendible es:")
+        A("")
+        A("> **La serie preservada no evidencia una calibración iterativa ni "
+          "un ajuste gradual de estos parámetros.** Por tanto, la hipótesis "
+          "de una calibración iterativa **observable en la serie** queda "
+          "**sin soporte documental**.")
+        A("")
+        A("Y una magnitud acompaña al cambio: entre esas dos versiones el "
+          "libro pasa de **58 a 72 hojas** — catorce nuevas. Eso es "
+          "**consistente con una modificación estructural sustantiva del "
+          "instrumento**; por sí solo no la demuestra.")
+        A("")
+
+    # ── FASE 3 ────────────────────────────────────────────────────────────
+    A("## ★ FASE 3 · sensibilidad documental acotada")
+    A("")
+    A(f"**{f3['revisados']} documentos** `.md` y `.txt` del corpus histórico, "
+      "revisados para responder **una sola pregunta**:")
+    A("")
+    A("> ¿Existe en el corpus tardíamente incorporado evidencia documental "
+      "que **explique la decisión** materializada entre el 25 y el 29 de "
+      "abril de 2026?")
+    A("")
+    A("No se leyeron completos. Se buscaron los términos de `C_i` y, de ésos, "
+      "**sólo los que además traen lenguaje de decisión** —«DECISIÓN», "
+      "«REEMPLAZAR», «DETECTAR», «razón», «criterio»—. ⚠️ Que un artefacto "
+      "**nombre** a `C_i` no prueba que lo **justifique**: es la distinción "
+      "que ya falló una vez al intentar derivar la doctrina por términos.")
+    A("")
+    A(f"**{len(f3['hallazgos'])} documentos** contienen lenguaje de decisión.")
+    A("")
+    if f3["hallazgos"]:
+        A("| Fecha | Documento |")
+        A("|---|---|")
+        for h in f3["hallazgos"][:14]:
+            A(f"| {h['fecha']} | `{h['ruta'][:76]}` |")
+        A("")
+        A("### ★ Y la respuesta a `P5` aparece")
+        A("")
+        A("`GOLDMASTER_REFACTOR_MASTER_v2.0.md` no menciona `C_i`: **lo "
+          "corrige**. Lo cataloga como error crítico y prescribe el "
+          "reemplazo —")
+        A("")
+        A("```")
+        A("  E-CRIT-04: Variable Ci mal definida o sin Motor Determinista")
+        A("")
+        A("  DETECTAR: «imputabilidad», «status legal», «personería")
+        A("            jurídica», «legalidad de la entidad» en la")
+        A("            definición de Ci")
+        A("  DETECTAR: Ci_mínimo = 0  (debe ser 0.50)")
+        A("  DETECTAR: INF-04 como deducción acumulable (debe ser FIJA)")
+        A("  DETECTAR: H01 sin Sección L o sin Sección M")
+        A("")
+        A("  REEMPLAZAR — Ci = Motor de Verificación Normativa v1.0")
+        A("  «Motor Ci Determinista v1.0 (DECISIÓN 27-Abr-2026)»")
+        A("```")
+        A("")
+        A("Y la razón, escrita:")
+        A("")
+        A("> **«`Ci` evalúa la CALIDAD DEL EXPEDIENTE ADMINISTRATIVO vía "
+          "infracciones normativas verificadas — nunca el estatus jurídico de "
+          "ninguna entidad.»**")
+        A("")
+        A("### Qué explica y qué no")
+        A("")
+        A("| Pregunta | Estado tras la Fase 3 |")
+        A("|---|---|")
+        A("| ¿por qué se **sustituyó el constructo**? | ✅ **DECLARADO** · "
+          "para que `C_i` no evalúe el **estatus jurídico de una entidad**. "
+          "La definición anterior —imputabilidad, personería, legalidad— se "
+          "catalogó como **error crítico** |")
+        A("| ¿por qué **esos pesos** `0,15 · 0,10 · 0,05`? | ⬜ **NO "
+          "DETERMINABLE** · el documento los enuncia, no los justifica |")
+        A("| ¿por qué el **piso `0,50`**? | ⬜ **NO DETERMINABLE** · dice "
+          "«NUNCA 0», no dice por qué `0,50` |")
+        A("")
+        A("> ### La razón declarada encaja con el canon, y eso la hace más "
+          "creíble sin volverla demostrada")
+        A(">")
+        A("> Evaluar «el estatus jurídico de una entidad» sería exactamente lo "
+          "que la `Regla de Oro 2` prohíbe —lenguaje acusatorio— y lo que el "
+          "principio rector niega: **QUIRA certifica verificabilidad, no "
+          "verdad**. La corrección de `C_i` es coherente con la doctrina que "
+          "el sistema ya tenía.")
+        A("")
+        A("⚠️ **Grado exacto: `DECLARADO`, no `DEMOSTRADO`.** Es una razón "
+          "escrita por el autor en un artefacto de trabajo fechado y "
+          "corroborada por la implementación resultante. No es una "
+          "demostración de la intención — `DOC-024` sigue aplicando.")
         A("")
 
     # ── Las seis preguntas ────────────────────────────────────────────────
@@ -394,26 +557,69 @@ def _escribir(radios, libros, vistos) -> None:
       "**DEMOSTRADO** |")
     A("| **P4** | ¿cuándo aparece `Ci_Manual_2025`? | **en el mismo acto** | "
       "✅ **DEMOSTRADO** |")
-    A("| **P5** | ¿hay evidencia del **porqué**? | 🔴 **no** · la serie "
-      "muestra secuencia, no causa | ⬜ **NO DETERMINABLE** |")
+    A("| **P5a** | ¿por qué se **sustituyó el constructo**? | para que `C_i` "
+      "no evalúe el **estatus jurídico de una entidad** · `E-CRIT-04` | ✅ "
+      "**DECLARADO** (Fase 3) |")
+    A("| **P5b** | ¿por qué **esos pesos**? | el documento los enuncia, no "
+      "los justifica | ⬜ **NO DETERMINABLE** |")
+    A("| **P5c** | ¿por qué el **piso `0,50`**? | «NUNCA 0», sin decir por "
+      "qué `0,50` | ⬜ **NO DETERMINABLE** |")
     A("| **P6** | ¿se reconcilia el versionado? | pendiente · tres esquemas "
       "sin correspondencia | 🔄 abierto |")
+    A("")
+    A("⚠️ **`P5` y `P6` son problemas distintos y no deben mezclarse.** `P5` "
+      "es **causalidad histórica** —por qué se sustituyó—; `P6` es "
+      "**identidad y versionado** —cómo se corresponden las nomenclaturas—. "
+      "`P6` podría resolverse por completo mañana y `P5b`/`P5c` seguir "
+      "abiertas. No sería una contradicción.")
+    A("")
+
+    # ── Los tres grados ───────────────────────────────────────────────────
+    A("## ★ Los tres grados · qué se demostró y qué no")
+    A("")
+    A("La distinción que impide que este expediente se lea como más "
+      "concluyente de lo que es:")
+    A("")
+    A("### ✅ DEMOSTRADO")
+    A("")
+    A("- existe una versión anterior **sin** el mecanismo determinista;")
+    A("- existe una posterior **con** él;")
+    A("- la transición queda acotada al **25-29 de abril de 2026**;")
+    A("- `H01!A94` declara el **27 de abril**, y esa fecha cae dentro;")
+    A("- el mecanismo aparece junto con pesos, piso, fallback y las Secciones "
+      "`L` y `M`;")
+    A("- la estructura del libro aumenta sustancialmente en el mismo salto;")
+    A("- existe un documento que **prescribe** el reemplazo y declara su "
+      "razón.")
+    A("")
+    A("### 🟡 INFERENCIA RAZONABLE")
+    A("")
+    A("- que se tratara de un **acto de refactorización deliberado y "
+      "unitario**. La evidencia estructural lo hace altamente plausible.")
+    A("")
+    A("### 🔴 NO DEMOSTRADO")
+    A("")
+    A("- **por qué esos pesos y ese piso concretos**;")
+    A("- que la razón declarada fuera la **única** motivación.")
+    A("")
+    A("> ### «Entraron juntos» ≠ «sabemos por qué entraron juntos»")
+    A(">")
+    A("> `DOC-009` aplica entero: la simultaneidad **sugiere** una decisión "
+      "única; no la prueba. Y una razón declarada por el autor es "
+      "`DECLARADO`, no `DEMOSTRADO` (`DOC-024`).")
     A("")
     A("> ### El estado de `C3` cambia — pero no en la dirección que se temía")
     A(">")
     A("> `011-C3` decía `NO DETERMINABLE` a secas sobre la sustitución del "
       "mecanismo, los pesos y el piso. Ahora dice:")
     A(">")
-    A("> **SECUENCIA DE CAMBIO DEMOSTRADA · JUSTIFICACIÓN AÚN NO DETERMINADA.**")
+    A("> **SECUENCIA DE CAMBIO DEMOSTRADA · RAZÓN DEL CONSTRUCTO DECLARADA · "
+      "JUSTIFICACIÓN DE LOS PARÁMETROS AÚN NO DETERMINADA.**")
     A("")
-    A("Sus conclusiones **no se invalidan**: se **precisan**. Lo que era «no "
-      "sabemos nada» pasa a «sabemos cuándo, qué y con qué otras cosas a la "
-      "vez; seguimos sin saber por qué».")
-    A("")
-    A("⚠️ **Y `P5` es la que ordena a las demás.** La serie **no autoriza a "
-      "inferir la causa desde la secuencia** — eso sería `DOC-009`. Que las "
-      "cuatro cosas entren juntas hace **plausible** una decisión deliberada "
-      "y única, y esa plausibilidad **no es una demostración**.")
+    A("Sus conclusiones **no se invalidan**: se **precisan**. Y una parte "
+      "—el porqué de la sustitución— pasa de `NO DETERMINABLE` a "
+      "`DECLARADO`, que es exactamente para lo que sirve una reapertura por "
+      "evidencia tardía (`DOC-031`).")
     A("")
     A("### Lo que esto le entrega a `011-C4`")
     A("")

@@ -111,15 +111,95 @@ def test_el_cambio_fue_un_acto_unico_y_eso_no_prueba_su_causa():
     txt = _DOC.read_text(encoding="utf-8")
     assert "no derivó: fue REFACTORIZADO en un solo acto de diseño" in txt, (
         "desapareció el hallazgo central de C3R")
-    assert "descarta la hipótesis de calibración iterativa" in txt, (
-        "se perdió lo que la simultaneidad permite descartar")
-    assert "SECUENCIA DE CAMBIO DEMOSTRADA · JUSTIFICACIÓN AÚN NO DETERMINADA" \
-           in txt, (
-        "desapareció el estado exacto del resultado. Sin esa fórmula, «sabemos "
-        "cuándo» se desliza hacia «sabemos por qué»")
-    assert "plausibilidad **no es una demostración**" in txt, (
+    # ⚠️ «Descarta la calibración iterativa» era MÁS FUERTE de lo que la serie
+    # permite: pudo haber ajustes fuera de los artefactos preservados, o una
+    # calibración desarrollada antes y materializada de golpe.
+    assert "no evidencia una calibración iterativa" in txt, (
+        "se perdió la formulación acotada. «Descartar» afirma sobre lo que no "
+        "se conservó; lo defendible es que la serie PRESERVADA no lo evidencia")
+    assert "sin soporte documental" in txt, (
+        "desapareció el grado exacto de la inferencia sobre la calibración")
+    assert "consistente con una modificación estructural sustantiva" in txt, (
+        "volvió «las 14 hojas demuestran una refactorización mayor». Un "
+        "aumento de hojas es CONSISTENTE con un cambio estructural; por sí "
+        "solo no lo demuestra")
+    assert "«Entraron juntos» ≠ «sabemos por qué entraron juntos»" in txt, (
         "se perdió la salvedad de DOC-009. La simultaneidad sugiere una "
         "decisión deliberada; no la prueba")
+    for grado in ("✅ DEMOSTRADO", "🟡 INFERENCIA RAZONABLE", "🔴 NO DEMOSTRADO"):
+        assert grado in txt, (
+            f"desapareció el grado `{grado}`. Sin los tres separados, una "
+            f"inferencia razonable se lee como un hecho demostrado")
+
+
+def test_la_fase3_encuentra_la_razon_del_constructo_y_no_la_de_los_pesos():
+    """★ El resultado de la Fase 3, y el matiz que lo hace utilizable.
+
+    `GOLDMASTER_REFACTOR_MASTER_v2.0.md` no menciona `C_i`: **lo corrige**. Lo
+    cataloga como `E-CRIT-04` —error crítico— y prescribe el reemplazo, con la
+    razón escrita:
+
+        «Ci evalúa la CALIDAD DEL EXPEDIENTE ADMINISTRATIVO vía infracciones
+         normativas verificadas — nunca el estatus jurídico de ninguna
+         entidad.»
+
+    Eso mueve `P5a` de `NO DETERMINABLE` a `DECLARADO`. Y encaja con el canon:
+    evaluar el estatus jurídico de una entidad sería lenguaje acusatorio, que
+    la `Regla de Oro 2` prohíbe.
+
+    ⚠️ PERO NO CUBRE TODO. El documento **enuncia** los pesos y el piso; no los
+    justifica. `P5b` y `P5c` siguen `NO DETERMINABLE`, y presentar la Fase 3
+    como si hubiera cerrado el porqué entero sería exagerar el hallazgo."""
+    txt = _DOC.read_text(encoding="utf-8")
+    assert "E-CRIT-04" in txt, (
+        "desapareció el hallazgo de la Fase 3: la definición anterior de C_i "
+        "se catalogó como error crítico, no se abandonó sin más")
+    assert "nunca el estatus jurídico de ninguna entidad" in txt, (
+        "se perdió la razón declarada del cambio de constructo")
+    assert "**DECLARADO**" in txt and "no `DEMOSTRADO`" in txt, (
+        "el grado se perdió. Una razón escrita por el autor en un artefacto "
+        "de trabajo es DECLARADO — DOC-024 sigue aplicando")
+    assert "los enuncia, no los justifica" in txt, (
+        "desapareció el límite de la Fase 3. Los pesos y el piso siguen sin "
+        "justificación, y presentar el hallazgo como si cerrara el porqué "
+        "entero sería exagerarlo")
+
+
+def test_P5_y_P6_no_se_mezclan():
+    """Son problemas distintos: `P5` es **causalidad histórica** —por qué se
+    sustituyó—; `P6` es **identidad y versionado** —cómo se corresponden las
+    nomenclaturas—.
+
+    `P6` podría resolverse por completo mañana y `P5b`/`P5c` seguir abiertas.
+    No sería una contradicción, y confundirlas haría parecer que resolver el
+    versionado explica la decisión de diseño."""
+    txt = _DOC.read_text(encoding="utf-8")
+    assert "son problemas distintos y no deben mezclarse" in txt, (
+        "P5 y P6 volvieron a tratarse como una sola cuestión abierta")
+    assert "causalidad histórica" in txt and "identidad y versionado" in txt
+
+
+def test_versiones_unicas_no_es_estados_del_motor():
+    """La salvaguarda de cardinalidad.
+
+    «71 artefactos únicos por contenido» **no** es «71 estados históricos del
+    motor». Un hash distinto puede deberse a un cambio en el motor, en los
+    datos, en otra hoja, o a algo cosmético.
+
+    ⚠️ Sin esta distinción, alguien podría objetar con razón que el estudio
+    confunde *archivo distinto* con *versión metodológica distinta* — y por
+    eso el análisis trabaja con transiciones de variables relevantes, no con
+    diferencias binarias del libro."""
+    txt = _DOC.read_text(encoding="utf-8")
+    assert "artefactos históricos únicos por contenido" in txt, (
+        "se perdió la terminología precisa. «Versiones» sugiere estados "
+        "metodológicos distintos, y un hash distinto no lo prueba")
+    assert "evidencia estructural suficiente del motor" in txt, (
+        "desapareció la calificación de los 68 libros: no son «los que "
+        "tienen H12», son los que traen evidencia suficiente para LAS "
+        "PREGUNTAS EXAMINADAS")
+    assert "confundiría *archivo distinto* con *diseño distinto*" in txt, (
+        "se limpió la salvaguarda que explica por qué la terminología importa")
 
 
 def test_el_ruido_de_lectura_no_se_cuenta_como_transicion():

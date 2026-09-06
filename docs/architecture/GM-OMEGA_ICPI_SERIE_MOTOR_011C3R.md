@@ -18,10 +18,12 @@ Que ya es mucho más rico que un `NO DETERMINABLE` seco.
 | | |
 |---|---:|
 | archivos candidatos | 82 |
-| **únicos por contenido** (SHA-256) | **71** |
+| **artefactos históricos únicos por contenido** (SHA-256) | **71** |
 | legibles | 71 |
-| con hoja `H12` del motor | 68 |
+| **con evidencia estructural suficiente del motor** para las preguntas examinadas | **68** |
 | con hoja `H01` de parámetros | 68 |
+
+⚠️ **La terminología es deliberada.** «Artefactos únicos por contenido» **no** significa «estados históricos del motor». Un hash distinto puede deberse a un cambio en el motor, en los datos, en otra hoja, o a algo puramente cosmético. Llamarlos «versiones metodológicas» confundiría *archivo distinto* con *diseño distinto* — por eso el análisis trabaja con **transiciones de las variables relevantes**, no con diferencias binarias del libro.
 
 ⚠️ **11 archivos son copias exactas** de otra versión —mismo contenido, distinto nombre—. Deduplicar por hash antes de analizar evita leer el mismo libro varias veces y, sobre todo, evita contar una copia como una transición.
 
@@ -185,9 +187,74 @@ Las transformaciones **no fueron graduales**. En la misma versión aparecen a la
 
 > ### `C_i` no derivó: fue REFACTORIZADO en un solo acto de diseño
 >
-> Mecanismo, pesos, piso, fallback y las dos secciones de `H01` entran **juntos**. No hay versiones intermedias con pesos distintos que luego se ajustaran, ni un piso que se añadiera después. **Eso descarta la hipótesis de calibración iterativa.**
+> Mecanismo, pesos, piso, fallback y las dos secciones de `H01` entran **juntos** en la primera versión identificada con el nuevo mecanismo.
 
-Y hay una magnitud que lo confirma: entre esas dos versiones el libro pasa de **58 a 72 hojas** — catorce hojas nuevas. No fue un ajuste de parámetros: fue una **refactorización mayor del instrumento**.
+⚠️ **Y aquí la formulación exacta importa.** Decir que esto «descarta la calibración iterativa» sería más fuerte de lo que la serie permite: pudo haber ajustes fuera de los artefactos preservados, o una calibración desarrollada antes y materializada de golpe. Lo defendible es:
+
+> **La serie preservada no evidencia una calibración iterativa ni un ajuste gradual de estos parámetros.** Por tanto, la hipótesis de una calibración iterativa **observable en la serie** queda **sin soporte documental**.
+
+Y una magnitud acompaña al cambio: entre esas dos versiones el libro pasa de **58 a 72 hojas** — catorce nuevas. Eso es **consistente con una modificación estructural sustantiva del instrumento**; por sí solo no la demuestra.
+
+## ★ FASE 3 · sensibilidad documental acotada
+
+**213 documentos** `.md` y `.txt` del corpus histórico, revisados para responder **una sola pregunta**:
+
+> ¿Existe en el corpus tardíamente incorporado evidencia documental que **explique la decisión** materializada entre el 25 y el 29 de abril de 2026?
+
+No se leyeron completos. Se buscaron los términos de `C_i` y, de ésos, **sólo los que además traen lenguaje de decisión** —«DECISIÓN», «REEMPLAZAR», «DETECTAR», «razón», «criterio»—. ⚠️ Que un artefacto **nombre** a `C_i` no prueba que lo **justifique**: es la distinción que ya falló una vez al intentar derivar la doctrina por términos.
+
+**12 documentos** contienen lenguaje de decisión.
+
+| Fecha | Documento |
+|---|---|
+| 2026-04-20 | `metodologia_beta_Dctos/INSUMOS METODOLOGIA.md` |
+| 2026-04-27 | `_historico/Prompt/GOLDMASTER_REFACTOR_MASTER_v2.0.md` |
+| 2026-04-28 | `_historico/TERRA_ECIAP/Refactorizacion_TERRA/varios/construccion de refactor` |
+| 2026-04-29 | `_historico/TERRA_ECIAP/Refactorizacion_TERRA/varios/construccion de refactor` |
+| 2026-04-29 | `_historico/TERRA_ECIAP/Refactorizacion_TERRA/varios/construccion de refactor` |
+| 2026-04-29 | `_historico/TERRA_ECIAP/Refactorizacion_TERRA/varios/construccion de refactor` |
+| 2026-04-29 | `_historico/TERRA_ECIAP/Refactorizacion_TERRA/varios/construccion de refactor` |
+| 2026-04-29 | `_historico/TERRA_ECIAP/Refactorizacion_TERRA/varios/construccion de refactor` |
+| 2026-04-29 | `_historico/TERRA_ECIAP/Refactorizacion_TERRA/varios/construccion de refactor` |
+| 2026-04-29 | `_historico/TERRA_ECIAP/Refactorizacion_TERRA/varios/construccion de refactor` |
+| 2026-04-29 | `_historico/TERRA_ECIAP/Refactorizacion_TERRA/varios/construccion de refactor` |
+| 2026-05-19 | `_historico/ETL_scripts_legacy/quira_insumos_legacy/scripts/gold_master_previ` |
+
+### ★ Y la respuesta a `P5` aparece
+
+`GOLDMASTER_REFACTOR_MASTER_v2.0.md` no menciona `C_i`: **lo corrige**. Lo cataloga como error crítico y prescribe el reemplazo —
+
+```
+  E-CRIT-04: Variable Ci mal definida o sin Motor Determinista
+
+  DETECTAR: «imputabilidad», «status legal», «personería
+            jurídica», «legalidad de la entidad» en la
+            definición de Ci
+  DETECTAR: Ci_mínimo = 0  (debe ser 0.50)
+  DETECTAR: INF-04 como deducción acumulable (debe ser FIJA)
+  DETECTAR: H01 sin Sección L o sin Sección M
+
+  REEMPLAZAR — Ci = Motor de Verificación Normativa v1.0
+  «Motor Ci Determinista v1.0 (DECISIÓN 27-Abr-2026)»
+```
+
+Y la razón, escrita:
+
+> **«`Ci` evalúa la CALIDAD DEL EXPEDIENTE ADMINISTRATIVO vía infracciones normativas verificadas — nunca el estatus jurídico de ninguna entidad.»**
+
+### Qué explica y qué no
+
+| Pregunta | Estado tras la Fase 3 |
+|---|---|
+| ¿por qué se **sustituyó el constructo**? | ✅ **DECLARADO** · para que `C_i` no evalúe el **estatus jurídico de una entidad**. La definición anterior —imputabilidad, personería, legalidad— se catalogó como **error crítico** |
+| ¿por qué **esos pesos** `0,15 · 0,10 · 0,05`? | ⬜ **NO DETERMINABLE** · el documento los enuncia, no los justifica |
+| ¿por qué el **piso `0,50`**? | ⬜ **NO DETERMINABLE** · dice «NUNCA 0», no dice por qué `0,50` |
+
+> ### La razón declarada encaja con el canon, y eso la hace más creíble sin volverla demostrada
+>
+> Evaluar «el estatus jurídico de una entidad» sería exactamente lo que la `Regla de Oro 2` prohíbe —lenguaje acusatorio— y lo que el principio rector niega: **QUIRA certifica verificabilidad, no verdad**. La corrección de `C_i` es coherente con la doctrina que el sistema ya tenía.
+
+⚠️ **Grado exacto: `DECLARADO`, no `DEMOSTRADO`.** Es una razón escrita por el autor en un artefacto de trabajo fechado y corroborada por la implementación resultante. No es una demostración de la intención — `DOC-024` sigue aplicando.
 
 ## ★ Dictamen de `C3-R` · las seis preguntas
 
@@ -197,18 +264,47 @@ Y hay una magnitud que lo confirma: entre esas dos versiones el libro pasa de **
 | **P2** | ¿cuándo cambian sus pesos? | **en el mismo acto** · `0,05 · 0,10 · 0,15` entran con el mecanismo | ✅ **DEMOSTRADO** |
 | **P3** | ¿cuándo aparece el piso `0,50`? | **en el mismo acto** | ✅ **DEMOSTRADO** |
 | **P4** | ¿cuándo aparece `Ci_Manual_2025`? | **en el mismo acto** | ✅ **DEMOSTRADO** |
-| **P5** | ¿hay evidencia del **porqué**? | 🔴 **no** · la serie muestra secuencia, no causa | ⬜ **NO DETERMINABLE** |
+| **P5a** | ¿por qué se **sustituyó el constructo**? | para que `C_i` no evalúe el **estatus jurídico de una entidad** · `E-CRIT-04` | ✅ **DECLARADO** (Fase 3) |
+| **P5b** | ¿por qué **esos pesos**? | el documento los enuncia, no los justifica | ⬜ **NO DETERMINABLE** |
+| **P5c** | ¿por qué el **piso `0,50`**? | «NUNCA 0», sin decir por qué `0,50` | ⬜ **NO DETERMINABLE** |
 | **P6** | ¿se reconcilia el versionado? | pendiente · tres esquemas sin correspondencia | 🔄 abierto |
+
+⚠️ **`P5` y `P6` son problemas distintos y no deben mezclarse.** `P5` es **causalidad histórica** —por qué se sustituyó—; `P6` es **identidad y versionado** —cómo se corresponden las nomenclaturas—. `P6` podría resolverse por completo mañana y `P5b`/`P5c` seguir abiertas. No sería una contradicción.
+
+## ★ Los tres grados · qué se demostró y qué no
+
+La distinción que impide que este expediente se lea como más concluyente de lo que es:
+
+### ✅ DEMOSTRADO
+
+- existe una versión anterior **sin** el mecanismo determinista;
+- existe una posterior **con** él;
+- la transición queda acotada al **25-29 de abril de 2026**;
+- `H01!A94` declara el **27 de abril**, y esa fecha cae dentro;
+- el mecanismo aparece junto con pesos, piso, fallback y las Secciones `L` y `M`;
+- la estructura del libro aumenta sustancialmente en el mismo salto;
+- existe un documento que **prescribe** el reemplazo y declara su razón.
+
+### 🟡 INFERENCIA RAZONABLE
+
+- que se tratara de un **acto de refactorización deliberado y unitario**. La evidencia estructural lo hace altamente plausible.
+
+### 🔴 NO DEMOSTRADO
+
+- **por qué esos pesos y ese piso concretos**;
+- que la razón declarada fuera la **única** motivación.
+
+> ### «Entraron juntos» ≠ «sabemos por qué entraron juntos»
+>
+> `DOC-009` aplica entero: la simultaneidad **sugiere** una decisión única; no la prueba. Y una razón declarada por el autor es `DECLARADO`, no `DEMOSTRADO` (`DOC-024`).
 
 > ### El estado de `C3` cambia — pero no en la dirección que se temía
 >
 > `011-C3` decía `NO DETERMINABLE` a secas sobre la sustitución del mecanismo, los pesos y el piso. Ahora dice:
 >
-> **SECUENCIA DE CAMBIO DEMOSTRADA · JUSTIFICACIÓN AÚN NO DETERMINADA.**
+> **SECUENCIA DE CAMBIO DEMOSTRADA · RAZÓN DEL CONSTRUCTO DECLARADA · JUSTIFICACIÓN DE LOS PARÁMETROS AÚN NO DETERMINADA.**
 
-Sus conclusiones **no se invalidan**: se **precisan**. Lo que era «no sabemos nada» pasa a «sabemos cuándo, qué y con qué otras cosas a la vez; seguimos sin saber por qué».
-
-⚠️ **Y `P5` es la que ordena a las demás.** La serie **no autoriza a inferir la causa desde la secuencia** — eso sería `DOC-009`. Que las cuatro cosas entren juntas hace **plausible** una decisión deliberada y única, y esa plausibilidad **no es una demostración**.
+Sus conclusiones **no se invalidan**: se **precisan**. Y una parte —el porqué de la sustitución— pasa de `NO DETERMINABLE` a `DECLARADO`, que es exactamente para lo que sirve una reapertura por evidencia tardía (`DOC-031`).
 
 ### Lo que esto le entrega a `011-C4`
 
