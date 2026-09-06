@@ -71,6 +71,17 @@ _LOS_CINCO = {
 }
 
 # Los diez campos que impiden que un ADR sea una justificación retrospectiva.
+def _plano(txt: str) -> str:
+    """Texto sin marcas de bloque ni saltos, para buscar frases que el markdown
+    parte en varias líneas.
+
+    ⚠️ Hace falta porque una cita larga se escribe como `> …` en varias líneas,
+    y buscar la frase literal falla por el `>` intercalado — no porque la frase
+    haya desaparecido. Un custodio que falla por el formato del documento en
+    vez de por su contenido es un custodio que enseña a ignorarlo."""
+    return re.sub(r"\s+", " ", re.sub(r"^\s*>\s?", "", txt, flags=re.M))
+
+
 _CAMPOS = [
     "1 · Decisión vigente",
     "2 · Fenómeno que pretende representar",
@@ -147,10 +158,11 @@ def test_D1_dice_las_dos_mitades():
 
     Perder cualquiera de las dos mitades convierte un dictamen en sentencia:
     con sólo la primera parece una condena; con sólo la segunda, un aval."""
-    txt = (_ADR / _LOS_CINCO["D1"]).read_text(encoding="utf-8")
-    assert "No se demuestra necesaria **ni incorrecta**" in txt, (
-        "D1 perdió una de sus dos mitades")
-    assert "elección metodológica" in txt and "no una propiedad derivada" in txt
+    txt = _plano((_ADR / _LOS_CINCO["D1"]).read_text(encoding="utf-8"))
+    assert "no demuestra que sea incorrecta ni que sea necesaria" in txt, (
+        "D1 perdió una de sus dos mitades. Con sólo la primera parece una "
+        "condena; con sólo la segunda, un aval")
+    assert "declaración metodológica explícita" in txt
 
 
 def test_D2_conserva_las_tres_proposiciones():
@@ -264,6 +276,105 @@ def test_los_tests_verifican_implementacion_no_validez():
         assert "La implementación actual aplica la regla" in d2, (
             "«QUIRA adopta la regla 3» es demasiado fuerte para un ADR "
             "propuesto: describe el estado del motor, no una decisión canónica")
+
+
+def test_ningun_ADR_propuesto_se_presenta_como_adoptado():
+    """★ El control semántico que protege el estado epistemológico.
+
+    No basta con prohibir una frase concreta: hay que impedir que un ADR
+    `PROPUESTO` **hable como si ya estuviera decidido**. «QUIRA adopta», «queda
+    aprobado», «se valida» — cualquiera de esas convertiría el estatus en una
+    aprobación disfrazada.
+
+    ⚠️ Y el riesgo es real, no teórico: `D2` decía «QUIRA adopta la regla 3» y
+    hubo que corregirlo a «la implementación actual aplica la regla 3». La
+    diferencia entre **describir el motor** y **decidir por la dirección**.
+
+    Se permite el vocabulario cuando aparece **negado o condicionado** —«no
+    significa que quede aprobado», «su eventual conservación»—: prohibir la
+    palabra en sí impediría explicar justamente lo que hay que explicar."""
+    _PROHIBIDO = re.compile(
+        r"(QUIRA (adopta|aprueba|valida)\b"
+        r"|queda (adoptad|aprobad|validad|sellad)"
+        r"|decisión (adoptada|aprobada|validada)"
+        r"|se (adopta|aprueba|valida) (esta|la) decisión)", re.I)
+    # ⚠️ EL FILTRO DE CONTEXTO YA PRODUJO UN FALSO POSITIVO, y conviene que
+    # quede dicho: la primera versión buscaba `no |NO ` y no cubría `No ` con
+    # mayúscula inicial. Marcó como infracción la frase de `D2` que dice «No
+    # es lo mismo que decir "QUIRA adopta la regla 3"» — es decir, marcó la
+    # línea que EXPLICA la distinción. Es el mismo patrón que `col_E`: un
+    # detector léxico que no mira el sentido. Se busca sin distinguir mayúsculas
+    # y se admite además la mención entrecomillada.
+    _NEGADO = re.compile(r"(\bno\b|nunca|≠|~~|eventual|pendiente|«|»)", re.I)
+    for d, nombre in _LOS_CINCO.items():
+        txt = (_ADR / nombre).read_text(encoding="utf-8")
+        if "PROPUESTO" not in txt:
+            continue          # ya sellado: el lenguaje de adopción es correcto
+        for m in _PROHIBIDO.finditer(txt):
+            ini = max(0, m.start() - 120)
+            ctx = txt[ini:m.end() + 80].replace("\n", " ")
+            # Negado, condicionado o citado es legítimo: así se explica el límite.
+            if _NEGADO.search(ctx):
+                continue
+            raise AssertionError(
+                f"el ADR de `{d}` está PROPUESTO y usa lenguaje de decisión "
+                f"tomada: «{m.group(0)}» en «…{ctx.strip()}…». Un ADR "
+                f"propuesto describe el estado del motor; no decide por la "
+                f"dirección")
+
+
+def test_D1_no_conserva_por_ausencia_de_refutacion():
+    """★ El control que el colega pidió expresamente sobre `D1`.
+
+    La formulación anterior —«conservable bajo declaración explícita»— se
+    desliza, leída deprisa, hacia: *«no encontramos que sea incorrecta, por
+    tanto la conservamos»*.
+
+    La correcta separa las dos cosas:
+
+        conservar provisionalmente  ≠  aprobar metodológicamente
+
+    La primera convierte el silencio de la evidencia en un aval. La segunda
+    deja la decisión abierta y en manos de la dirección."""
+    txt = (_ADR / _LOS_CINCO["D1"]).read_text(encoding="utf-8")
+    assert "permanece como decisión ACTUALMENTE IMPLEMENTADA" in txt, (
+        "D1 volvió a una formulación que presenta la permanencia como "
+        "resultado de la investigación, y no como decisión pendiente")
+    assert "Conservar provisionalmente ≠ aprobar metodológicamente" in txt, (
+        "desapareció la distinción que impide leer el silencio de la "
+        "evidencia como un aval")
+    assert "ABIERTA A EVALUACIÓN en `QUIRA-NEXT`" in txt, (
+        "D1 dejó de declarar dónde se resuelve. Una decisión abierta sin "
+        "destino se convierte en una decisión tomada por omisión")
+
+
+def test_D4_queda_marcada_para_QUIRA_NEXT():
+    """`D4` es probablemente la que más trabajo requiera — **no porque `0,50`
+    esté mal**, sino porque todavía no se sabe qué afirmación representa.
+
+    La pregunta que emerge y que ningún documento del sistema había planteado:
+
+        ¿Qué función debe cumplir una infracción normativa dentro de una
+        medida de congruencia de gestión?
+
+    Caben relaciones muy distintas —deterioro del proceso, deterioro
+    proporcional, pérdida acotada al 50 %— y elegir una es diseño.
+
+    ⚠️ Las premisas jurídicas definen **qué es** una infracción. **Ninguna
+    define cuánto debe descontar**, ni establece un tope. El `0,50` introduce
+    una relación cuantitativa que no está en ellas."""
+    txt = (_ADR / _LOS_CINCO["D4"]).read_text(encoding="utf-8")
+    assert "Marcado para `QUIRA-NEXT`" in txt, (
+        "D4 dejó de marcarse como la decisión que más trabajo requiere")
+    assert "No porque sepamos que `0,50` está mal" in txt, (
+        "se perdió el matiz: se marca por desconocimiento del fundamento, no "
+        "por defecto probado")
+    plano = _plano(txt)
+    assert "relación CUANTITATIVA que no está contenida en las premisas " \
+           "jurídicas" in plano, (
+        "desapareció el hallazgo central de D4: la norma define qué es una "
+        "infracción, no cuánto descuenta")
+    assert "Ninguna define **cuánto**" in plano
 
 
 def test_declarar_A_no_demuestra_validez():

@@ -157,4 +157,33 @@ en ninguna superficie.
 > **`D4` · FUNDAMENTO NO DETERMINADO · LATENTE · Y SOSTIENE UNA TESIS SUSTANTIVA SOBRE LA
 > RELACIÓN INFRACCIÓN ↔ DESEMPEÑO QUE REQUIERE FUNDAMENTO PROPIO.**
 
+## ★ Marcado para `QUIRA-NEXT` · probablemente la que más trabajo requiera
+
+⚠️ **No porque sepamos que `0,50` está mal.** Precisamente porque **todavía no sabemos qué
+afirmación sustantiva representa**.
+
+La pregunta que emerge, y que ningún documento del sistema ha planteado:
+
+> **¿Qué función debe cumplir una infracción normativa dentro de una medida de congruencia de
+> gestión?**
+
+Porque conceptualmente caben relaciones muy distintas, y elegir una es una decisión de diseño:
+
+```
+  infracción  →  deterioro del PROCESO
+                 (la infracción dice algo sobre cómo se gestionó)
+
+  infracción  →  deterioro PROPORCIONAL del desempeño
+                 (ya asume una función de transferencia)
+
+  infracción  →  pérdida MÁXIMA del 50 % de la contribución
+                 (asume además una cota, y una cota concreta)
+```
+
+> **El `0,50` introduce una relación CUANTITATIVA que no está contenida en las premisas
+> jurídicas.** `LOSNCP`, `NCI 406-01`, `COPFP` y `LO_CPCCS` definen **qué es** una infracción.
+> Ninguna define **cuánto** debe descontar de una medida de congruencia, ni establece un tope.
+
+Eso queda como **pregunta de diseño abierta**, no como defecto probado.
+
 *Dylus Lab © 2026 · deriva de `GM-OMEGA_ICPI_DICTAMEN_011C4.md`*

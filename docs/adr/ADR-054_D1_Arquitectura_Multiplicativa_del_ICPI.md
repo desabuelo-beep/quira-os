@@ -128,11 +128,24 @@ Se revisa si ocurre **cualquiera** de estas cosas:
 
 ## Dictamen que este ADR declara
 
-> **`D1` · DECISIÓN DE DISEÑO NO FUNDAMENTADA COMO NECESARIA, CONSERVABLE BAJO DECLARACIÓN
-> EXPLÍCITA.**
->
-> No se demuestra necesaria **ni incorrecta**. Puede conservarse siempre que el sistema declare
-> que es una **elección metodológica** y no una propiedad derivada del fenómeno.
+> **La multiplicatividad permanece como decisión ACTUALMENTE IMPLEMENTADA. `011-C4` no demuestra
+> que sea incorrecta ni que sea necesaria. Su eventual conservación requiere una declaración
+> metodológica explícita, y queda ABIERTA A EVALUACIÓN en `QUIRA-NEXT`.**
+
+### ⚠️ Por qué esta formulación y no la anterior
+
+Una versión previa decía *«conservable bajo declaración explícita»*. Leída deprisa, se desliza
+hacia el razonamiento prohibido:
+
+| 🔴 Lo que NO dice este ADR | ✅ Lo que sí dice |
+|---|---|
+| «no encontramos que la multiplicatividad sea incorrecta, por tanto la conservamos» | «permanece implementada; no está demostrada ni refutada; su permanencia es una decisión pendiente» |
+
+> **Conservar provisionalmente ≠ aprobar metodológicamente.**
+
+La diferencia es pequeña en lenguaje y grande en gobernanza: la primera convierte el silencio de
+la evidencia en un aval; la segunda deja la decisión donde está — abierta, y en manos de la
+dirección.
 
 ⚠️ Lo que este ADR **no** hace: no valida la decisión, no autoriza a cambiarla y no toca el
 motor. Cambia su **estatus epistemológico** — de regla aplicada sin declarar a decisión
