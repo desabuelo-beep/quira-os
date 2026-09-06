@@ -714,7 +714,22 @@ def _escribir(radios, libros, vistos, f3) -> None:
     A("")
     A("Para `011-C4` eso vale más que conocer la historia completa: un "
       "parámetro sin fundamento cuantitativo es una **decisión de diseño "
-      "abierta** (`DOC-027`), y hay tres.")
+      "abierta** (`DOC-027`).")
+    A("")
+    A("### Cuántas son, con precisión")
+    A("")
+    A("⚠️ Decir «tres decisiones abiertas» sería impreciso: hay **tres pesos "
+      "y un piso** — cuatro parámetros—, agrupables en **dos decisiones "
+      "paramétricas**:")
+    A("")
+    A("| # | Decisión paramétrica | Parámetros |")
+    A("|---|---|---|")
+    A("| 1 | **estructura de ponderación** de las infracciones | `0,15` · "
+      "`0,10` · `0,05` |")
+    A("| 2 | **piso mínimo** de `C_i` | `0,50` |")
+    A("")
+    A("La precisión del inventario de hallazgos importa tanto como la de los "
+      "hallazgos.")
     A("")
     A("### Lo que esto le entrega a `011-C4`")
     A("")

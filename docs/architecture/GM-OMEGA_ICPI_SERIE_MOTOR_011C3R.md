@@ -367,7 +367,18 @@ Y la ausencia **permanece como hallazgo, no como pendiente**:
 
 > Los parámetros fueron **establecidos documentalmente**, pero su **fundamento cuantitativo no ha sido determinado**.
 
-Para `011-C4` eso vale más que conocer la historia completa: un parámetro sin fundamento cuantitativo es una **decisión de diseño abierta** (`DOC-027`), y hay tres.
+Para `011-C4` eso vale más que conocer la historia completa: un parámetro sin fundamento cuantitativo es una **decisión de diseño abierta** (`DOC-027`).
+
+### Cuántas son, con precisión
+
+⚠️ Decir «tres decisiones abiertas» sería impreciso: hay **tres pesos y un piso** — cuatro parámetros—, agrupables en **dos decisiones paramétricas**:
+
+| # | Decisión paramétrica | Parámetros |
+|---|---|---|
+| 1 | **estructura de ponderación** de las infracciones | `0,15` · `0,10` · `0,05` |
+| 2 | **piso mínimo** de `C_i` | `0,50` |
+
+La precisión del inventario de hallazgos importa tanto como la de los hallazgos.
 
 ### Lo que esto le entrega a `011-C4`
 

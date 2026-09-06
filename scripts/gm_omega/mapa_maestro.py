@@ -77,7 +77,11 @@ _ETAPAS = [
      "011 · 008-R · exige ADR propio y recalibración (ADR-036 §4)"),
     ("GM-Ω", "009", "¿Se puede optimizar el índice sin mejorar la realidad?",
      _HECHO, "★ superficie de incentivo DINÁMICA: la ventaja material domina mientras hay margen y puede invertirse al cierre"),
-    ("GM-Ω", "010", "Transferibilidad LATAM · núcleo vs adaptador", _ABIERTO, ""),
+    ("GM-Ω", "010", "Transferibilidad LATAM · arquitectura vs contingencia",
+     _HECHO,
+     "★ 24 componentes: 7 núcleo · 10 adaptador · 2 sedimentación · 5 "
+     "contingentes · el núcleo es METODOLÓGICO, no métrico — y la "
+     "multiplicatividad está en `D`, no en `A`"),
     ("GM-Ω", "007-B0", "Genealogía del constructo · unidad `i` · factores",
      _HECHO, "★ reescrito con toda la evidencia · CERRADO como reconstrucción, NO como validación"),
     ("GM-Ω", "011-A", "Unidad de análisis · ¿qué es `i`?", _CURSO,
@@ -94,10 +98,10 @@ _ETAPAS = [
              "calidad de proceso) · E_i↔C_i justificada · 3 de 9 NO "
              "DETERMINABLE porque la razón nunca se escribió"),
     ("GM-Ω", "011-C4", "¿Es la multiplicatividad NECESARIA al constructo, o una "
-     "arquitectura elegida y conservada?", _BLOQ,
-     "⚠️ faltan A · B · C1 · C3 · 010 — y C2 la reformuló: la pregunta ya no "
-     "es sólo si el producto es correcto, sino sobre cuántas dimensiones "
-     "REALMENTE independientes opera"),
+     "arquitectura elegida y conservada?", _CURSO,
+     "★ DESBLOQUEADA: C2·C3·C3R·010 cerrados. Faltan A2 y B (no bloquean el "
+     "núcleo del dictamen) · 5 decisiones contingentes enumeradas · 2 "
+     "paramétricas sin fundamento cuantitativo"),
 
     ("TF", "T1", "Inventario de nombres propios", _HECHO, ""),
     ("TF", "T2", "Clasificación ontológica + capa de presentación", _HECHO, ""),

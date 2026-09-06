@@ -157,14 +157,14 @@ Y **`T6` espera a `011` por la misma razón**: deprecar `AVEP` o migrar el nombr
 | GM-Ω | `008-R` | Reconciliación meta a meta 66 ↔ 25 | 🔄 | PARCIAL · caso N:1 demostrado · correspondencia exhaustiva sin reconciliar |
 | GM-Ω | `v2` | Universo completo del PDOT (66) — decisión de Javo | ⛔ | 011 · 008-R · exige ADR propio y recalibración (ADR-036 §4) |
 | GM-Ω | `009` | ¿Se puede optimizar el índice sin mejorar la realidad? | ✅ | ★ superficie de incentivo DINÁMICA: la ventaja material domina mientras hay margen y puede invertirse al cierre |
-| GM-Ω | `010` | Transferibilidad LATAM · núcleo vs adaptador | ⬜ |  |
+| GM-Ω | `010` | Transferibilidad LATAM · arquitectura vs contingencia | ✅ | ★ 24 componentes: 7 núcleo · 10 adaptador · 2 sedimentación · 5 contingentes · el núcleo es METODOLÓGICO, no métrico — y la multiplicatividad está en `D`, no en `A` |
 | GM-Ω | `007-B0` | Genealogía del constructo · unidad `i` · factores | ✅ | ★ reescrito con toda la evidencia · CERRADO como reconstrucción, NO como validación |
 | GM-Ω | `011-A` | Unidad de análisis · ¿qué es `i`? | 🔄 | ★ genealogía RESUELTA: era PROMESA CNE → META PDOT «pues era mandato» (Javo) · falta DECLARARLA en el canon |
 | GM-Ω | `011-B` | Regla de correspondencia PDOT → ICPI (1:1·N:1·1:N·N:N) | ⛔ | 011-A |
 | GM-Ω | `011-C1` | Genealogía algebraica · P·R·V·T → +E → +C · escalas | ⬜ | ★ 007-B0 la dejó reconstruida |
 | GM-Ω | `011-C2` | Genealogía semántica · qué significó cada factor | ✅ | ★ C_i mide LEGALIDAD del proceso, no entrega · E_i y C_i comparten escala sin ser la misma · 4 divergencias latentes |
 | GM-Ω | `011-C3` | Justificación de cada transformación · qué·por qué·quién·cuándo | ✅ | ★ el 27-abr C_i no ENTRÓ: cambió de mecanismo (imputabilidad → calidad de proceso) · E_i↔C_i justificada · 3 de 9 NO DETERMINABLE porque la razón nunca se escribió |
-| GM-Ω | `011-C4` | ¿Es la multiplicatividad NECESARIA al constructo, o una arquitectura elegida y conservada? | ⛔ | ⚠️ faltan A · B · C1 · C3 · 010 — y C2 la reformuló: la pregunta ya no es sólo si el producto es correcto, sino sobre cuántas dimensiones REALMENTE independientes opera |
+| GM-Ω | `011-C4` | ¿Es la multiplicatividad NECESARIA al constructo, o una arquitectura elegida y conservada? | 🔄 | ★ DESBLOQUEADA: C2·C3·C3R·010 cerrados. Faltan A2 y B (no bloquean el núcleo del dictamen) · 5 decisiones contingentes enumeradas · 2 paramétricas sin fundamento cuantitativo |
 | TF | `T1` | Inventario de nombres propios | ✅ |  |
 | TF | `T2` | Clasificación ontológica + capa de presentación | ✅ |  |
 | TF | `T3` | Contrato índice → dominio → rol → pregunta → capa | 🔄 | se llena con la curación de cada dominio |
@@ -190,7 +190,7 @@ Y **`T6` espera a `011` por la misma razón**: deprecar `AVEP` o migrar el nombr
 | 2ING | `d02·d03` | Presupuesto · Gobernanza del Mandato | ⬜ |  |
 | 2ING | `d04·d05·d10-d13` | Sellados · sin construir | ⬜ |  |
 
-**20 de 43 etapas cerradas.**
+**21 de 43 etapas cerradas.**
 
 ## Estado derivado de las fuentes vivas
 
@@ -200,8 +200,8 @@ Y **`T6` espera a `011` por la misma razón**: deprecar `AVEP` o migrar el nombr
 | Deudas resueltas | 6 |
 | Deudas abiertas | **8** |
 | Reglas de doctrina con custodio | 31 |
-| Pruebas que las fijan | 441 |
-| Documentos GM-Ω | 13 |
+| Pruebas que las fijan | 448 |
+| Documentos GM-Ω | 14 |
 
 ### Deudas abiertas
 
@@ -231,6 +231,7 @@ Y **`T6` espera a `011` por la misma razón**: deprecar `AVEP` o migrar el nombr
 - [`GM-OMEGA_ICPI_SERIE_MOTOR_011C3R.md`](GM-OMEGA_ICPI_SERIE_MOTOR_011C3R.md)
 - [`GM-OMEGA_MAPA_MAESTRO.md`](GM-OMEGA_MAPA_MAESTRO.md)
 - [`GM-OMEGA_TERMINOLOGIA_T1-T2.md`](GM-OMEGA_TERMINOLOGIA_T1-T2.md)
+- [`GM-OMEGA_TRANSFERIBILIDAD_010.md`](GM-OMEGA_TRANSFERIBILIDAD_010.md)
 
 ## Las tres reglas que sostienen este mapa
 
@@ -239,4 +240,4 @@ Y **`T6` espera a `011` por la misma razón**: deprecar `AVEP` o migrar el nombr
 3. **Este mapa se deriva.** El día que alguien lo edite a mano, dejará de reflejar el estado real sin que nada avise, y volveremos exactamente al punto que motivó escribirlo.
 
 ---
-*QUIRA · Mapa Maestro · 20/43 etapas cerradas · 8 deudas abiertas · Dylus Lab © 2026*
+*QUIRA · Mapa Maestro · 21/43 etapas cerradas · 8 deudas abiertas · Dylus Lab © 2026*
