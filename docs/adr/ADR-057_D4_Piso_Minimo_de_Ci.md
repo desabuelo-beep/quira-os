@@ -14,6 +14,20 @@ decision_gm_omega: D4
 > **Propuesto por la dirección técnica tras `GM-Ω-011-C4`.** La IA propone; el humano valida
 > (`ADR-035 §5`). **Este ADR no cambia el motor.**
 
+## ⚠️ Qué significa —y qué no— sellar este ADR
+
+```
+NO DEMOSTRADO COMO NECESARIO  ≠  INCORRECTO  ≠  APROBADO
+```
+
+Este ADR **no razona** «como no encontramos evidencia de que la decisión sea incorrecta, se
+mantiene». Eso sería exactamente lo contrario de la disciplina que `GM-Ω` construyó.
+
+Y el sello **no significa** «la investigación demostró que esta decisión es verdadera». Significa:
+
+> **La dirección decide conscientemente adoptar esta decisión, conociendo qué está demostrado,
+> qué es inferencia y qué permanece abierto.**
+
 ## Por qué este ADR es distinto de los demás
 
 `D4` parece el más pequeño de los cinco —un número—, y es el que **afirma más**.
@@ -86,6 +100,39 @@ sugiere esa lectura; no consta declarada.
 
 > **Qué propiedad del fenómeno justifica que ninguna infracción pueda reducir `C_i` por debajo
 > de `0,50`.** `011-C3R` cerró: documentado, sin fundamento cuantitativo.
+
+### ★ Y la pregunta real, que es más profunda que «¿por qué 0,50?»
+
+> **¿Qué relación teórica existe entre una infracción normativa y la capacidad de una unidad de
+> gestión para contribuir a la congruencia medida?**
+
+El piso contiene una afirmación muy concreta, y hay que verla escrita:
+
+> **Ninguna cantidad de infracciones contempladas por el mecanismo puede destruir completamente
+> la contribución de la unidad.**
+
+Eso **no se deriva de la matemática**. **Tampoco se deriva automáticamente de la presunción de
+inocencia** —que justifica *empezar* en `1,00`, no *terminar* en `0,50`—. Y no basta invocar que
+QUIRA evita el lenguaje acusatorio:
+
+| Afirmación | Naturaleza |
+|---|---|
+| «QUIRA no declara culpabilidad» | principio de **lenguaje** (`Regla de Oro 2`) |
+| «una infracción verificada nunca puede reducir `C_i` por debajo de `0,50`» | decisión sobre la **función de medición** |
+
+**Son cosas distintas**, y la segunda necesita fundamento propio.
+
+### La censura superior de la penalización
+
+Hay una consecuencia estructural que conviene dejar explícita:
+
+> El piso introduce una **censura superior de la penalización**. El sistema puede degradar `C_i`,
+> pero existe un **límite estructural** a cuánto puede este factor afectar al índice —
+> exactamente `0,50` de recorrido, la mitad del rango teórico.
+
+Dicho de otro modo: por muchas infracciones que se registren, `C_i` **no puede** aportar menos de
+la mitad. La capacidad punitiva del factor está acotada por diseño, y esa acotación no se declara
+en ninguna superficie.
 
 ## 9 · Consecuencias de mantenerla
 

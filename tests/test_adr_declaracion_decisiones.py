@@ -23,6 +23,32 @@ que explica por qué lo que ya se hizo estaba bien.
 ⚠️ NINGUNO CAMBIA EL MOTOR. Declarar no es corregir, y `DOC-029` fija el orden:
 observar → clasificar → justificar → diseñar la migración → ejecutar.
 
+★★ LA BARRERA ENTRE `ADR` Y TEST — y es la que faltaba
+
+    ADR    declara la decisión
+    TEST   comprueba que la implementación respeta la decisión declarada
+
+⚠️ MIENTRAS UN ADR ESTÉ `PROPUESTO`, NINGÚN TEST PUEDE CONVERTIR SU DECISIÓN EN
+UNA VERDAD MATEMÁTICA. Con `D2` sin sellar, un test no puede exigir «`V=0` debe
+excluirse» **ni** «`V=0` debe anular»: sólo puede verificar el **estado actual**
+de la implementación —`V=0 → J=0`— y decir que eso comprueba **implementación,
+no validez metodológica**.
+
+Después del sello, si se adopta la lectura `A`, entonces sí cabe un **test de
+contrato semántico** que impida a la capa pública describir ese cero como
+«fenómeno no ocurrido». Antes del sello, ese test estaría afirmando por su
+cuenta lo que la dirección todavía no ha decidido.
+
+★ Y CUATRO COSAS QUE NO SE MEZCLAN
+
+    GM-Ω     dictamen metodológico
+    ADR      decisión explícita
+    tests    contrato de implementación
+    commit   evidencia de estado
+
+Un recuento de pruebas o un hash acreditan el **estado del artefacto**; no son
+evidencia de validez del modelo.
+
 Dylus Lab © 2026
 """
 from __future__ import annotations
@@ -185,6 +211,77 @@ def test_D4_enuncia_su_tesis_sustantiva():
     assert "acota cuánto puede penalizar el sistema" in txt, (
         "desapareció la consecuencia no declarada: un GAD con desacato firme "
         "conserva la mitad de su C_i")
+
+
+def test_ningun_ADR_razona_por_ausencia_de_refutacion():
+    """★ La regla que separa esto de una justificación retrospectiva.
+
+        NO DEMOSTRADO COMO NECESARIO ≠ INCORRECTO ≠ APROBADO
+
+    Ningún ADR puede razonar «como no encontramos evidencia de que la decisión
+    sea incorrecta, se mantiene». Sería exactamente lo contrario de la
+    disciplina que `GM-Ω` construyó — y el error simétrico del sesgo
+    conservador que `DOC-027` corrigió.
+
+    ⚠️ Y el sello **no significa** «la investigación demostró que esto es
+    verdadero». Significa: *la dirección decide conscientemente adoptar esta
+    decisión, conociendo qué está demostrado, qué es inferencia y qué
+    permanece abierto.* Institucionalmente eso es mucho más fuerte."""
+    for d, nombre in _LOS_CINCO.items():
+        txt = (_ADR / nombre).read_text(encoding="utf-8")
+        assert "NO DEMOSTRADO COMO NECESARIO  ≠  INCORRECTO  ≠  APROBADO" in txt, (
+            f"el ADR de `{d}` perdió la regla que impide razonar por ausencia "
+            f"de refutación")
+        assert "La dirección decide conscientemente adoptar esta decisión" in txt, (
+            f"el ADR de `{d}` dejó de declarar qué significa su sello. Sin "
+            f"eso, sellar se lee como «quedó demostrado»")
+
+
+def test_los_tests_verifican_implementacion_no_validez():
+    """★★ La barrera que faltaba entre `ADR` y test.
+
+        ADR    declara la decisión
+        TEST   comprueba que la implementación respeta lo declarado
+
+    Con `D2` en estado `PROPUESTO`, ningún test puede exigir «`V=0` debe
+    excluirse» ni «`V=0` debe anular». Sólo puede verificar el estado actual
+    —`V=0 → J=0`— y declarar que eso comprueba **implementación**.
+
+    ⚠️ Un test que fijara la decisión antes del sello estaría convirtiendo una
+    propuesta en verdad matemática, y la dirección se encontraría con que la
+    decisión ya está tomada por el custodio."""
+    fuente = Path(__file__).read_text(encoding="utf-8")
+    assert "implementación, no validez metodológica" in fuente, (
+        "se perdió la barrera. Sin ella, un test puede fijar una decisión que "
+        "todavía está PROPUESTA")
+    # Y la comprobación dura: ningún ADR PROPUESTO puede tener un test que
+    # afirme cuál de sus alternativas es la correcta.
+    d2 = (_ADR / _LOS_CINCO["D2"]).read_text(encoding="utf-8")
+    if "PROPUESTO" in d2:
+        assert "Lo que este ADR propone" in d2, (
+            "D2 debe PROPONER la lectura A, no adoptarla. Mientras esté "
+            "PROPUESTO, la regla está implementada, no adoptada")
+        assert "La implementación actual aplica la regla" in d2, (
+            "«QUIRA adopta la regla 3» es demasiado fuerte para un ADR "
+            "propuesto: describe el estado del motor, no una decisión canónica")
+
+
+def test_declarar_A_no_demuestra_validez():
+    """El límite de lo que `D2` resolvería.
+
+    Declarar la lectura `A` —«el ICPI mide congruencia acreditada»— **elimina
+    una ambigüedad semántica fundamental**. No demuestra que el ICPI sea un
+    indicador sustantivamente válido: la capa 3 de `011-C4` sigue
+    `NO DEMOSTRADA`.
+
+    ⚠️ Confundir ambas cosas convertiría un acto de precisión terminológica en
+    una acreditación de validez, que es justo lo que las tres capas del
+    dictamen existen para impedir."""
+    txt = (_ADR / _LOS_CINCO["D2"]).read_text(encoding="utf-8")
+    assert "no demuestra que el ICPI sea un indicador sustantivamente válido" \
+           in txt, (
+        "D2 dejó de declarar el límite de lo que resuelve. Declarar A quita "
+        "ambigüedad; no acredita validez")
 
 
 def test_D5_no_propone_escala_antes_de_declarar_objeto():

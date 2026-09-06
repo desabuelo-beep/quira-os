@@ -14,6 +14,20 @@ decision_gm_omega: D2
 > **Propuesto por la dirección técnica tras `GM-Ω-011-C4`.** La IA propone; el humano valida
 > (`ADR-035 §5`). **Este ADR no cambia el motor.**
 
+## ⚠️ Qué significa —y qué no— sellar este ADR
+
+```
+NO DEMOSTRADO COMO NECESARIO  ≠  INCORRECTO  ≠  APROBADO
+```
+
+Este ADR **no razona** «como no encontramos evidencia de que la decisión sea incorrecta, se
+mantiene». Eso sería exactamente lo contrario de la disciplina que `GM-Ω` construyó.
+
+Y el sello **no significa** «la investigación demostró que esta decisión es verdadera». Significa:
+
+> **La dirección decide conscientemente adoptar esta decisión, conociendo qué está demostrado,
+> qué es inferencia y qué permanece abierto.**
+
 ## Por qué éste es el más importante de los cinco
 
 `011-C4` lo llamó *la sección decisiva*, y con razón: es el único de los cinco `ADR` que toca
@@ -113,6 +127,21 @@ y no:
 La `3` es legítima. **No es consecuencia lógica de la `2`.** Y `V_i = 0` **no significa que el
 fenómeno no ocurriera**: significa que, bajo esta arquitectura, la unidad no puede aportar
 congruencia **acreditada**.
+
+### ⚠️ Y quién aplica esa regla hoy
+
+> **La implementación actual aplica la regla `3`.** No es lo mismo que decir «QUIRA adopta la
+> regla `3`»: mientras este ADR esté `PROPUESTO`, la regla está **implementada**, no **adoptada
+> como decisión canónica**.
+
+Lo que este ADR propone:
+
+> **Declarar explícitamente que dicha regla opera bajo la lectura `A`: el ICPI mide congruencia
+> acreditada.**
+
+⚠️ Y declarar `A` **no demuestra que el ICPI sea un indicador sustantivamente válido**. Elimina
+una ambigüedad semántica fundamental — nada más, y nada menos. La validez sustantiva sigue
+`NO DEMOSTRADA` (`011-C4`, capa 3).
 
 ## 10 · Condición objetiva para revisarla
 

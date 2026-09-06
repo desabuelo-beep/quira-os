@@ -15,6 +15,22 @@ decision_gm_omega: D1
 > (`ADR-035 §5`). **Este ADR no cambia el motor**: declara una decisión que hasta hoy operaba
 > sin declararse.
 
+## ⚠️ Qué significa —y qué no— sellar este ADR
+
+```
+NO DEMOSTRADO COMO NECESARIO  ≠  INCORRECTO  ≠  APROBADO
+```
+
+Este ADR **no razona** «como no encontramos evidencia de que la decisión sea incorrecta, se
+mantiene». Eso sería exactamente lo contrario de la disciplina que `GM-Ω` construyó.
+
+Y el sello **no significa** «la investigación demostró que esta decisión es verdadera». Significa:
+
+> **La dirección decide conscientemente adoptar esta decisión, conociendo qué está demostrado,
+> qué es inferencia y qué permanece abierto.**
+
+Institucionalmente eso es mucho más fuerte, y es lo que los diez campos hacen posible.
+
 ## Por qué existe este ADR
 
 `011-C4` estableció que **cinco decisiones sostienen el ICPI y ninguna está declarada como
