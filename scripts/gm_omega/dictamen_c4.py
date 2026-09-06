@@ -429,6 +429,33 @@ def _secciones_medidas(m, o) -> None:
       "parte del fenómeno—, pero **debe declararse como elección "
       "metodológica**, no asumirse.")
     A("")
+    A("### La formulación endurecida de `V_i = 0`")
+    A("")
+    A("> `V_i = 0` **no significa que el fenómeno no ocurrió**. Significa "
+      "que, bajo la arquitectura actual, **la unidad no puede aportar "
+      "congruencia acreditada al índice**.")
+    A("")
+    A("Y el salto `27,4582 % → 31,4883 %` **no vale porque `31,4883` sea "
+      "mejor** —no lo es ni pretende serlo—. Vale porque demuestra que **una "
+      "decisión semántica sobre el estado de la evidencia tiene efecto "
+      "material sobre el resultado**. Eso convierte a `D2` en una cuestión de "
+      "**diseño epistemológico**, no en un detalle de fórmula.")
+    A("")
+    A("### La pregunta que `D2` deja preparada — y que `C4` NO responde")
+    A("")
+    A("Si la trazabilidad forma parte del fenómeno observado, entonces `V_i` "
+      "**no es un defecto accidental del índice**: puede ser una dimensión "
+      "sustantiva. Pero entonces:")
+    A("")
+    A("> ¿Debe `V_i` estar **embebida multiplicativamente** dentro de un "
+      "único ICPI, o debe existir **además** como una medida explícita e "
+      "independiente de **acreditabilidad**?")
+    A("")
+    A("⚠️ **Esa pregunta pertenece a la arquitectura futura y no se responde "
+      "retrospectivamente aquí.** Resolverla dentro de `C4` sería rediseñar "
+      "desde un peritaje, que es precisamente lo que la `Regla Maestra` "
+      "(`DOC-029`) prohíbe.")
+    A("")
 
     # ── C4-5 ──────────────────────────────────────────────────────────────
     A("## `C4-5` · Parametrización")
@@ -542,25 +569,147 @@ def _secciones_medidas(m, o) -> None:
     A("- **No recalibra.** El Gold Master sigue intacto y el baseline "
       "congelado.")
     A("")
-    A("> ### Lo que sí dice, y es la conclusión de toda la investigación")
-    A(">")
-    A("> El constructo **funciona y es internamente coherente**. Lo que le "
-      "falta no son correcciones: es **declarar sus propias elecciones como "
-      "elecciones**. Cinco decisiones sostienen el índice y ninguna está "
-      "declarada como decisión — se presentan como si fueran propiedades del "
-      "fenómeno.")
+    A("### ⚠️ Y la corrección de la frase de cierre")
     A("")
-    A("Y de ahí sale la única acción que el dictamen sí autoriza, que no "
-      "toca una sola fórmula:")
+    A("Una versión anterior decía:")
     A("")
-    A("| Acción | Qué exige |")
+    A("> ~~«El constructo **funciona y es internamente coherente**.»~~")
+    A("")
+    A("Es **más amplia que lo demostrado**. `D1`-`D5` muestran justamente que "
+      "**operatividad matemática ≠ coherencia sustantiva demostrada**. La "
+      "formulación canónica es:")
+    A("")
+    A("> **La implementación actual del constructo es matemáticamente "
+      "operativa y sus reglas producen un resultado reproducible; su "
+      "coherencia sustantiva depende de decisiones metodológicas que `C4` ha "
+      "identificado y cuya necesidad no está completamente fundamentada.**")
+    A("")
+    A("### ★ Las tres capas, que no pueden colapsarse")
+    A("")
+    A("| # | Capa | Estado |")
+    A("|---|---|---|")
+    A("| 1 | **Operatividad computacional** — la fórmula corre y produce "
+      "`27,4582 %` de forma reproducible | ✅ **DEMOSTRADA** |")
+    A("| 2 | **Consistencia formal** — las reglas se ejecutan juntas sin "
+      "conflicto | 🟡 **PARCIAL** · hay decisiones semánticas sin declarar |")
+    A("| 3 | **Validez sustantiva** — el índice mide el fenómeno que dice "
+      "medir | ⬜ **NO DEMOSTRADA POR `C4`** |")
+    A("")
+    A("> La tercera capa es la que impide que «el motor funciona» se "
+      "convierta inadvertidamente en «el índice es válido». **Las tres pueden "
+      "ser ciertas a la vez sin contradicción.**")
+    A("")
+    A("### ⚠️ Y qué hace realmente `C4` con las decisiones `D`")
+    A("")
+    A("> **`C4` no las valida ni autoriza a conservarlas: cambia su ESTATUS "
+      "EPISTEMOLÓGICO.** Pasan de ser reglas aplicadas sin declarar a ser "
+      "decisiones identificadas, acotadas y con condición de revisión.")
+    A("")
+    A("Lo que le falta al constructo no son correcciones: es **declarar sus "
+      "propias elecciones como elecciones**. Cinco decisiones sostienen el "
+      "índice y ninguna está declarada como decisión — se presentan como si "
+      "fueran propiedades del fenómeno.")
+    A("")
+    A("### Dictamen global")
+    A("")
+    A("> **No existe evidencia suficiente para declarar que las decisiones "
+      "`D` sean incorrectas. Tampoco existe evidencia suficiente para "
+      "tratarlas como propiedades necesarias del fenómeno.**")
+    A("")
+    A("Ése es el punto medio que `GM-Ω` tenía que alcanzar: ni "
+      "conservadurismo ni revisionismo.")
+    A("")
+    A("### La acción que el dictamen autoriza · **cinco `ADR`, no cuatro**")
+    A("")
+    A("Son cinco decisiones y **no tienen el mismo tipo epistemológico**, así "
+      "que cada una necesita su propia declaración:")
+    A("")
+    A("| `ADR` | Decisión | Función de la declaración |")
+    A("|---|---|---|")
+    A("| `ADR-D1` | multiplicatividad | declarar la elección algebraica y sus "
+      "alternativas |")
+    A("| `ADR-D2` | `V_i` multiplicativo | declarar el significado de la "
+      "ausencia / no acreditación |")
+    A("| `ADR-D3` | pesos `C_i` | declarar el estado de fundamentación y la "
+      "condición de activación |")
+    A("| `ADR-D4` | piso `C_i ≥ 0,50` | declarar la tesis sustantiva "
+      "implícita y su revisión obligatoria |")
+    A("| `ADR-D5` | `AVEP` | declarar el objeto **antes** de usar el "
+      "baremo |")
+    A("")
+    A("Y cada `ADR` debe contener **los diez campos**, o se convierte en una "
+      "justificación retrospectiva:")
+    A("")
+    A("```")
+    A("   1. decisión vigente")
+    A("   2. fenómeno que pretende representar")
+    A("   3. unidad afectada")
+    A("   4. evidencia que la sostiene")
+    A("   5. alternativas consideradas")
+    A("   6. qué está DEMOSTRADO")
+    A("   7. qué es INFERENCIA")
+    A("   8. qué permanece NO DETERMINABLE")
+    A("   9. consecuencias de mantenerla")
+    A("  10. condición objetiva para revisarla")
+    A("```")
+    A("")
+    A("⚠️ **Los `ADR` primero; la implementación después.** El motor no se "
+      "toca hasta que sus decisiones estén declaradas.")
+    A("")
+    A("| Después de los cinco `ADR` | |")
     A("|---|---|")
-    A("| **Declarar el estatuto de cada decisión `D`** | un `ADR` por "
-      "decisión: qué se eligió, qué alternativas había, qué la sostiene |")
-    A("| **Declarar qué mide el índice** (`C4-4` lectura `A` o `B`) | cierra "
-      "`D2` sin tocar el álgebra |")
-    A("| **Declarar el objeto de `AVEP`** | desbloquea `D5` y `D-012` |")
     A("| **Corregir la capa de publicación** | `D-011`, ya abierta |")
+    A("| **Declarar el objeto de `AVEP`** | desbloquea `D5` y `D-012` |")
+    A("| **Ontología FONDO / FORMA** | `QUIRA-NEXT` |")
+    A("")
+    # ── La frontera ───────────────────────────────────────────────────────
+    A("## ★ La frontera · dónde termina `GM-Ω` y empieza la construcción")
+    A("")
+    A("```")
+    A("  C3            genealogía DEMOSTRADA")
+    A("  010           dependencia y contexto CLASIFICADOS provisionalmente")
+    A("  C4            suficiencia metodológica NO DEMOSTRADA")
+    A("  Gold Master   CONGELADO")
+    A("  baseline      27,4582 % CONGELADO")
+    A("  QUIRA-NEXT    autorizado para DISEÑO · no para ejecución todavía")
+    A("```")
+    A("")
+    A("Y el orden de la construcción, que invierte el hábito de empezar por "
+      "la fórmula:")
+    A("")
+    A("```")
+    A("  1. qué queremos CONOCER")
+    A("  2. qué EVIDENCIA hace falta para conocerlo")
+    A("  3. cómo INFERIMOS")
+    A("  4. …y sólo al final, qué FÓRMULA merece entrar al Gold Master")
+    A("```")
+    A("")
+    A("> ### La regla que protege de los dos entusiasmos")
+    A(">")
+    A("> **No se rediseña un indicador porque tenga un problema matemático. "
+      "Se rediseña cuando la relación entre fenómeno, unidad, evidencia, "
+      "inferencia y resultado deja de estar suficientemente justificada.**")
+    A("")
+    A("Y las tres cosas que hoy son ciertas **a la vez**, sin contradicción:")
+    A("")
+    A("| | |")
+    A("|---|---|")
+    A("| el motor funciona | ✅ |")
+    A("| el índice produce un resultado reproducible | ✅ |")
+    A("| **no se ha demostrado que ese resultado represente adecuadamente el "
+      "fenómeno que se quiere medir** | ⬜ |")
+    A("")
+    A("### El cambio de pregunta")
+    A("")
+    A("| Etapa | Pregunta |")
+    A("|---|---|")
+    A("| `GM-Ω` | ¿qué construimos, y cómo llegó a ser lo que es? |")
+    A("| **`QUIRA-NEXT`** | **¿qué debe ser QUIRA para responder "
+      "correctamente a aquello que queremos conocer sobre la gestión "
+      "pública?** |")
+    A("")
+    A("> **La historia ya hizo su trabajo. Ahora no debemos pedirle que "
+      "diseñe el futuro de QUIRA.**")
     A("")
     A("---")
     A("*GM-Ω-ICPI-011-C4 · dictamen sobre 5 decisiones de diseño · el Gold "

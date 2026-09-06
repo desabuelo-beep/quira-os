@@ -138,8 +138,11 @@ _ETAPAS = [
     ("QNEXT", "Q2", "Dashboards y narrativa por dominio · visual→analítica→"
                     "explicación", _BLOQ, "R0 — no 011: depende de saber qué "
                                           "pregunta cada dominio"),
+    ("QNEXT", "ADR-D", "Declarar las 5 decisiones · ADR-054 a ADR-058",
+     _CURSO, "★ los 5 redactados con los 10 campos · PROPUESTOS, pendientes "
+             "de sello de Javo (ADR-035 §5)"),
     ("QNEXT", "Q3", "Ejecución del refactor · fondo y forma", _BLOQ,
-     "011-C4 · Q1 · R0/R1"),
+     "ADR-D sellados · Q1 · R0/R1"),
 
     ("T3-R", "R0", "Diagnóstico de los 13 dominios", _ABIERTO, ""),
     ("T3-R", "R1", "Modelos A · B · C de arquitectura", _ABIERTO, ""),

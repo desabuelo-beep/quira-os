@@ -173,6 +173,20 @@ Si `V=0` anula la meta, el índice **resta** por no poder acreditar. Caben dos l
 
 ⚠️ Y el índice mide entonces **dos cosas a la vez**: la gestión y la capacidad de documentarla. Puede ser intencional y legítimo en un índice de *congruencia intersistémica* —donde la trazabilidad **es** parte del fenómeno—, pero **debe declararse como elección metodológica**, no asumirse.
 
+### La formulación endurecida de `V_i = 0`
+
+> `V_i = 0` **no significa que el fenómeno no ocurrió**. Significa que, bajo la arquitectura actual, **la unidad no puede aportar congruencia acreditada al índice**.
+
+Y el salto `27,4582 % → 31,4883 %` **no vale porque `31,4883` sea mejor** —no lo es ni pretende serlo—. Vale porque demuestra que **una decisión semántica sobre el estado de la evidencia tiene efecto material sobre el resultado**. Eso convierte a `D2` en una cuestión de **diseño epistemológico**, no en un detalle de fórmula.
+
+### La pregunta que `D2` deja preparada — y que `C4` NO responde
+
+Si la trazabilidad forma parte del fenómeno observado, entonces `V_i` **no es un defecto accidental del índice**: puede ser una dimensión sustantiva. Pero entonces:
+
+> ¿Debe `V_i` estar **embebida multiplicativamente** dentro de un único ICPI, o debe existir **además** como una medida explícita e independiente de **acreditabilidad**?
+
+⚠️ **Esa pregunta pertenece a la arquitectura futura y no se responde retrospectivamente aquí.** Resolverla dentro de `C4` sería rediseñar desde un peritaje, que es precisamente lo que la `Regla Maestra` (`DOC-029`) prohíbe.
+
 ## `C4-5` · Parametrización
 
 > ¿Hay fundamento suficiente para `0,15 / 0,10 / 0,05` y `0,50`?
@@ -242,18 +256,113 @@ La sección que convierte al dictamen en algo operativo. Lo que **27,4582 %** au
 - **No autoriza a eliminar nada.** `D` era incertidumbre, no condena.
 - **No recalibra.** El Gold Master sigue intacto y el baseline congelado.
 
-> ### Lo que sí dice, y es la conclusión de toda la investigación
->
-> El constructo **funciona y es internamente coherente**. Lo que le falta no son correcciones: es **declarar sus propias elecciones como elecciones**. Cinco decisiones sostienen el índice y ninguna está declarada como decisión — se presentan como si fueran propiedades del fenómeno.
+### ⚠️ Y la corrección de la frase de cierre
 
-Y de ahí sale la única acción que el dictamen sí autoriza, que no toca una sola fórmula:
+Una versión anterior decía:
 
-| Acción | Qué exige |
+> ~~«El constructo **funciona y es internamente coherente**.»~~
+
+Es **más amplia que lo demostrado**. `D1`-`D5` muestran justamente que **operatividad matemática ≠ coherencia sustantiva demostrada**. La formulación canónica es:
+
+> **La implementación actual del constructo es matemáticamente operativa y sus reglas producen un resultado reproducible; su coherencia sustantiva depende de decisiones metodológicas que `C4` ha identificado y cuya necesidad no está completamente fundamentada.**
+
+### ★ Las tres capas, que no pueden colapsarse
+
+| # | Capa | Estado |
+|---|---|---|
+| 1 | **Operatividad computacional** — la fórmula corre y produce `27,4582 %` de forma reproducible | ✅ **DEMOSTRADA** |
+| 2 | **Consistencia formal** — las reglas se ejecutan juntas sin conflicto | 🟡 **PARCIAL** · hay decisiones semánticas sin declarar |
+| 3 | **Validez sustantiva** — el índice mide el fenómeno que dice medir | ⬜ **NO DEMOSTRADA POR `C4`** |
+
+> La tercera capa es la que impide que «el motor funciona» se convierta inadvertidamente en «el índice es válido». **Las tres pueden ser ciertas a la vez sin contradicción.**
+
+### ⚠️ Y qué hace realmente `C4` con las decisiones `D`
+
+> **`C4` no las valida ni autoriza a conservarlas: cambia su ESTATUS EPISTEMOLÓGICO.** Pasan de ser reglas aplicadas sin declarar a ser decisiones identificadas, acotadas y con condición de revisión.
+
+Lo que le falta al constructo no son correcciones: es **declarar sus propias elecciones como elecciones**. Cinco decisiones sostienen el índice y ninguna está declarada como decisión — se presentan como si fueran propiedades del fenómeno.
+
+### Dictamen global
+
+> **No existe evidencia suficiente para declarar que las decisiones `D` sean incorrectas. Tampoco existe evidencia suficiente para tratarlas como propiedades necesarias del fenómeno.**
+
+Ése es el punto medio que `GM-Ω` tenía que alcanzar: ni conservadurismo ni revisionismo.
+
+### La acción que el dictamen autoriza · **cinco `ADR`, no cuatro**
+
+Son cinco decisiones y **no tienen el mismo tipo epistemológico**, así que cada una necesita su propia declaración:
+
+| `ADR` | Decisión | Función de la declaración |
+|---|---|---|
+| `ADR-D1` | multiplicatividad | declarar la elección algebraica y sus alternativas |
+| `ADR-D2` | `V_i` multiplicativo | declarar el significado de la ausencia / no acreditación |
+| `ADR-D3` | pesos `C_i` | declarar el estado de fundamentación y la condición de activación |
+| `ADR-D4` | piso `C_i ≥ 0,50` | declarar la tesis sustantiva implícita y su revisión obligatoria |
+| `ADR-D5` | `AVEP` | declarar el objeto **antes** de usar el baremo |
+
+Y cada `ADR` debe contener **los diez campos**, o se convierte en una justificación retrospectiva:
+
+```
+   1. decisión vigente
+   2. fenómeno que pretende representar
+   3. unidad afectada
+   4. evidencia que la sostiene
+   5. alternativas consideradas
+   6. qué está DEMOSTRADO
+   7. qué es INFERENCIA
+   8. qué permanece NO DETERMINABLE
+   9. consecuencias de mantenerla
+  10. condición objetiva para revisarla
+```
+
+⚠️ **Los `ADR` primero; la implementación después.** El motor no se toca hasta que sus decisiones estén declaradas.
+
+| Después de los cinco `ADR` | |
 |---|---|
-| **Declarar el estatuto de cada decisión `D`** | un `ADR` por decisión: qué se eligió, qué alternativas había, qué la sostiene |
-| **Declarar qué mide el índice** (`C4-4` lectura `A` o `B`) | cierra `D2` sin tocar el álgebra |
-| **Declarar el objeto de `AVEP`** | desbloquea `D5` y `D-012` |
 | **Corregir la capa de publicación** | `D-011`, ya abierta |
+| **Declarar el objeto de `AVEP`** | desbloquea `D5` y `D-012` |
+| **Ontología FONDO / FORMA** | `QUIRA-NEXT` |
+
+## ★ La frontera · dónde termina `GM-Ω` y empieza la construcción
+
+```
+  C3            genealogía DEMOSTRADA
+  010           dependencia y contexto CLASIFICADOS provisionalmente
+  C4            suficiencia metodológica NO DEMOSTRADA
+  Gold Master   CONGELADO
+  baseline      27,4582 % CONGELADO
+  QUIRA-NEXT    autorizado para DISEÑO · no para ejecución todavía
+```
+
+Y el orden de la construcción, que invierte el hábito de empezar por la fórmula:
+
+```
+  1. qué queremos CONOCER
+  2. qué EVIDENCIA hace falta para conocerlo
+  3. cómo INFERIMOS
+  4. …y sólo al final, qué FÓRMULA merece entrar al Gold Master
+```
+
+> ### La regla que protege de los dos entusiasmos
+>
+> **No se rediseña un indicador porque tenga un problema matemático. Se rediseña cuando la relación entre fenómeno, unidad, evidencia, inferencia y resultado deja de estar suficientemente justificada.**
+
+Y las tres cosas que hoy son ciertas **a la vez**, sin contradicción:
+
+| | |
+|---|---|
+| el motor funciona | ✅ |
+| el índice produce un resultado reproducible | ✅ |
+| **no se ha demostrado que ese resultado represente adecuadamente el fenómeno que se quiere medir** | ⬜ |
+
+### El cambio de pregunta
+
+| Etapa | Pregunta |
+|---|---|
+| `GM-Ω` | ¿qué construimos, y cómo llegó a ser lo que es? |
+| **`QUIRA-NEXT`** | **¿qué debe ser QUIRA para responder correctamente a aquello que queremos conocer sobre la gestión pública?** |
+
+> **La historia ya hizo su trabajo. Ahora no debemos pedirle que diseñe el futuro de QUIRA.**
 
 ---
 *GM-Ω-ICPI-011-C4 · dictamen sobre 5 decisiones de diseño · el Gold Master no se modificó · baseline 27,4582 % congelado · Dylus Lab © 2026*

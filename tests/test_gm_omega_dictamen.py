@@ -165,11 +165,96 @@ def test_la_conclusion_es_declarar_no_corregir():
     assert "declarar sus propias elecciones como elecciones" in txt.lower(), (
         "desapareció la conclusión del dictamen. Sin ella, C4 termina en "
         "cinco veredictos sueltos y ninguna acción")
-    assert "no toca una sola fórmula" in txt, (
-        "se perdió que la acción autorizada NO es intervenir el motor")
-    assert "un `ADR` por decisión" in txt, (
-        "desapareció la forma concreta de la acción: declarar el estatuto de "
-        "cada decisión D con sus alternativas")
+    assert "Los `ADR` primero; la implementación después" in txt, (
+        "se perdió que la acción autorizada NO es intervenir el motor. El "
+        "orden importa: declarar antes de tocar")
+    # ⚠️ CINCO ADR, no cuatro: las cinco decisiones no tienen el mismo tipo
+    # epistemológico, así que cada una necesita su propia declaración.
+    for adr in ("ADR-D1", "ADR-D2", "ADR-D3", "ADR-D4", "ADR-D5"):
+        assert adr in txt, (
+            f"falta `{adr}`. Agrupar decisiones de distinto tipo "
+            f"epistemológico en un solo ADR haría que una justifique a otra")
+    assert "condición objetiva para revisarla" in txt, (
+        "desapareció el décimo campo obligatorio del ADR. Sin condición de "
+        "revisión, un ADR se vuelve una justificación retrospectiva")
+
+
+def test_las_tres_capas_no_se_colapsan():
+    """★ La corrección de la frase de cierre, y la más importante del
+    dictamen.
+
+        «El constructo funciona y es internamente coherente» era MÁS AMPLIA
+        que lo demostrado. `D1`-`D5` muestran justamente que **operatividad
+        matemática ≠ coherencia sustantiva demostrada**.
+
+        1. operatividad computacional   ✅ demostrada
+        2. consistencia formal          🟡 parcial
+        3. validez sustantiva           ⬜ NO demostrada por C4
+
+    ⚠️ La tercera capa es la que impide que «el motor funciona» se convierta
+    inadvertidamente en «el índice es válido». Las tres pueden ser ciertas a
+    la vez sin contradicción — y perder la distinción sería regalarle al
+    índice una validez que nadie probó."""
+    txt = _DOC.read_text(encoding="utf-8")
+    assert "matemáticamente operativa y sus reglas producen un resultado " \
+           "reproducible" in txt, (
+        "se perdió la formulación canónica del cierre")
+    assert "Las tres capas, que no pueden colapsarse" in txt, (
+        "desapareció el desacoplamiento de las tres capas")
+    assert "NO DEMOSTRADA POR `C4`" in txt, (
+        "la validez sustantiva dejó de declararse no demostrada. Sin eso, "
+        "«el motor funciona» se lee como «el índice es válido»")
+    assert "cambia su ESTATUS EPISTEMOLÓGICO" in txt, (
+        "se perdió qué hace C4 con las decisiones D: no las valida ni "
+        "autoriza a conservarlas — cambia su estatus")
+
+
+def test_la_pregunta_de_Vi_queda_abierta_para_quira_next():
+    """`C4` no responde retrospectivamente una pregunta de arquitectura.
+
+    Si la trazabilidad forma parte del fenómeno, `V_i` no es un defecto: es
+    una dimensión sustantiva. Pero entonces queda abierto **si debe estar
+    embebida multiplicativamente en un único ICPI o existir además como medida
+    explícita de acreditabilidad**.
+
+    ⚠️ Resolverla dentro de `C4` sería rediseñar desde un peritaje — lo que la
+    Regla Maestra (`DOC-029`) prohíbe: observar, clasificar, justificar,
+    diseñar la migración, y sólo entonces ejecutar."""
+    txt = _DOC.read_text(encoding="utf-8")
+    assert "medida explícita e independiente de **acreditabilidad**" in txt, (
+        "desapareció la pregunta que D2 deja preparada para QUIRA-NEXT")
+    assert "no se responde retrospectivamente aquí" in txt, (
+        "C4 dejó de declarar que esa pregunta no le corresponde")
+    assert "`V_i = 0` **no significa que el fenómeno no ocurrió**" in txt, (
+        "se perdió la formulación endurecida: V=0 dice que la unidad no puede "
+        "aportar congruencia ACREDITADA, no que el hecho no ocurriera")
+
+
+def test_la_frontera_declara_que_QUIRA_NEXT_no_ejecuta_todavia():
+    """El cierre de `GM-Ω` y la apertura de la construcción.
+
+        QUIRA-NEXT — autorizado para DISEÑO, no para ejecución todavía.
+
+    Y el orden invierte el hábito de empezar por la fórmula: primero qué
+    queremos conocer, después qué evidencia hace falta, después cómo
+    inferimos, y **sólo al final** qué fórmula merece entrar al Gold Master.
+
+    ⚠️ Con la regla que protege de los dos entusiasmos: **no se rediseña un
+    indicador porque tenga un problema matemático; se rediseña cuando la
+    relación entre fenómeno, unidad, evidencia, inferencia y resultado deja de
+    estar suficientemente justificada.**"""
+    txt = _DOC.read_text(encoding="utf-8")
+    assert "autorizado para DISEÑO · no para ejecución todavía" in txt, (
+        "desapareció la frontera. Sin ella, cerrar C4 se lee como permiso "
+        "para empezar a cambiar el motor")
+    assert "No se rediseña un indicador porque tenga un problema matemático" \
+           in txt, (
+        "se perdió la regla que protege del entusiasmo refactorizador")
+    assert "y sólo al final, qué FÓRMULA" in txt, (
+        "desapareció el orden de la construcción. Empezar por la fórmula es "
+        "exactamente el hábito que GM-Ω vino a corregir")
+    assert "La historia ya hizo su trabajo" in txt, (
+        "se perdió el cierre: la genealogía explica, no diseña")
 
 
 def test_C4_2_declara_lo_que_no_puede_cerrar():
