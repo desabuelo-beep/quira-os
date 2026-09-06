@@ -97,11 +97,11 @@ _ETAPAS = [
      _HECHO, "★ el 27-abr C_i no ENTRÓ: cambió de mecanismo (imputabilidad → "
              "calidad de proceso) · E_i↔C_i justificada · 3 de 9 NO "
              "DETERMINABLE porque la razón nunca se escribió"),
-    ("GM-Ω", "011-C4", "¿Es la multiplicatividad NECESARIA al constructo, o una "
-     "arquitectura elegida y conservada?", _CURSO,
-     "★ DESBLOQUEADA: C2·C3·C3R·010 cerrados. Faltan A2 y B (no bloquean el "
-     "núcleo del dictamen) · 5 decisiones contingentes enumeradas · 2 "
-     "paramétricas sin fundamento cuantitativo"),
+    ("GM-Ω", "011-C4", "Dictamen · ¿merecen permanecer las decisiones de "
+     "diseño?", _HECHO,
+     "★ NINGUNA decisión resultó incorrecta · toda la anulación viene hoy de "
+     "`V_i` (6/25 metas · 12,8 % del peso) · tratar V=0 como «no acreditado» "
+     "movería +4,03 pp · la acción es DECLARAR, no corregir"),
 
     ("TF", "T1", "Inventario de nombres propios", _HECHO, ""),
     ("TF", "T2", "Clasificación ontológica + capa de presentación", _HECHO, ""),

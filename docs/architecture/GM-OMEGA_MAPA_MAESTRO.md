@@ -164,7 +164,7 @@ Y **`T6` espera a `011` por la misma razón**: deprecar `AVEP` o migrar el nombr
 | GM-Ω | `011-C1` | Genealogía algebraica · P·R·V·T → +E → +C · escalas | ⬜ | ★ 007-B0 la dejó reconstruida |
 | GM-Ω | `011-C2` | Genealogía semántica · qué significó cada factor | ✅ | ★ C_i mide LEGALIDAD del proceso, no entrega · E_i y C_i comparten escala sin ser la misma · 4 divergencias latentes |
 | GM-Ω | `011-C3` | Justificación de cada transformación · qué·por qué·quién·cuándo | ✅ | ★ el 27-abr C_i no ENTRÓ: cambió de mecanismo (imputabilidad → calidad de proceso) · E_i↔C_i justificada · 3 de 9 NO DETERMINABLE porque la razón nunca se escribió |
-| GM-Ω | `011-C4` | ¿Es la multiplicatividad NECESARIA al constructo, o una arquitectura elegida y conservada? | 🔄 | ★ DESBLOQUEADA: C2·C3·C3R·010 cerrados. Faltan A2 y B (no bloquean el núcleo del dictamen) · 5 decisiones contingentes enumeradas · 2 paramétricas sin fundamento cuantitativo |
+| GM-Ω | `011-C4` | Dictamen · ¿merecen permanecer las decisiones de diseño? | ✅ | ★ NINGUNA decisión resultó incorrecta · toda la anulación viene hoy de `V_i` (6/25 metas · 12,8 % del peso) · tratar V=0 como «no acreditado» movería +4,03 pp · la acción es DECLARAR, no corregir |
 | TF | `T1` | Inventario de nombres propios | ✅ |  |
 | TF | `T2` | Clasificación ontológica + capa de presentación | ✅ |  |
 | TF | `T3` | Contrato índice → dominio → rol → pregunta → capa | 🔄 | se llena con la curación de cada dominio |
@@ -190,7 +190,7 @@ Y **`T6` espera a `011` por la misma razón**: deprecar `AVEP` o migrar el nombr
 | 2ING | `d02·d03` | Presupuesto · Gobernanza del Mandato | ⬜ |  |
 | 2ING | `d04·d05·d10-d13` | Sellados · sin construir | ⬜ |  |
 
-**21 de 43 etapas cerradas.**
+**22 de 43 etapas cerradas.**
 
 ## Estado derivado de las fuentes vivas
 
@@ -200,8 +200,8 @@ Y **`T6` espera a `011` por la misma razón**: deprecar `AVEP` o migrar el nombr
 | Deudas resueltas | 6 |
 | Deudas abiertas | **8** |
 | Reglas de doctrina con custodio | 31 |
-| Pruebas que las fijan | 448 |
-| Documentos GM-Ω | 14 |
+| Pruebas que las fijan | 459 |
+| Documentos GM-Ω | 15 |
 
 ### Deudas abiertas
 
@@ -221,6 +221,7 @@ Y **`T6` espera a `011` por la misma razón**: deprecar `AVEP` o migrar el nombr
 - [`GM-OMEGA_CONTRATO_INDICE_DOMINIO.md`](GM-OMEGA_CONTRATO_INDICE_DOMINIO.md)
 - [`GM-OMEGA_GENEALOGIA_DOCUMENTAL.md`](GM-OMEGA_GENEALOGIA_DOCUMENTAL.md)
 - [`GM-OMEGA_ICPI_COBERTURA_008.md`](GM-OMEGA_ICPI_COBERTURA_008.md)
+- [`GM-OMEGA_ICPI_DICTAMEN_011C4.md`](GM-OMEGA_ICPI_DICTAMEN_011C4.md)
 - [`GM-OMEGA_ICPI_FICHA_FORENSE.md`](GM-OMEGA_ICPI_FICHA_FORENSE.md)
 - [`GM-OMEGA_ICPI_GAMING_009.md`](GM-OMEGA_ICPI_GAMING_009.md)
 - [`GM-OMEGA_ICPI_JUSTIFICACION_011C3.md`](GM-OMEGA_ICPI_JUSTIFICACION_011C3.md)
@@ -240,4 +241,4 @@ Y **`T6` espera a `011` por la misma razón**: deprecar `AVEP` o migrar el nombr
 3. **Este mapa se deriva.** El día que alguien lo edite a mano, dejará de reflejar el estado real sin que nada avise, y volveremos exactamente al punto que motivó escribirlo.
 
 ---
-*QUIRA · Mapa Maestro · 21/43 etapas cerradas · 8 deudas abiertas · Dylus Lab © 2026*
+*QUIRA · Mapa Maestro · 22/43 etapas cerradas · 8 deudas abiertas · Dylus Lab © 2026*
