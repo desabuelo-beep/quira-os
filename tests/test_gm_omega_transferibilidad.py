@@ -158,6 +158,85 @@ def test_la_multiplicatividad_no_se_defiende_por_transferibilidad():
     assert "Motor de congruencia multiplicativa" in txt
 
 
+def test_D_no_significa_incorrecto_ni_eliminable():
+    """★ La corrección más importante antes de entrar a `C4`.
+
+    Las cuatro categorías **no son del mismo tipo**: `A`, `B` y `C` son
+    clasificaciones **estructurales**; `D` es **una incertidumbre sobre la
+    necesidad del diseño**.
+
+        D = incorrecto                                     🔴 falso
+        D = debe eliminarse                                🔴 falso
+        D = no puede recibir presunción de necesidad       ✅
+
+    ⚠️ Es `DOC-027` aplicado a la arquitectura: **no validado no es
+    invalidado**. Si `C4` leyera `D` como condena, el dictamen estaría escrito
+    antes de empezar — y sería el error simétrico del que quisimos evitar al
+    corregir el sesgo conservador."""
+    txt = _DOC.read_text(encoding="utf-8")
+    assert "NO son categorías del mismo tipo" in txt, (
+        "desapareció la distinción de naturaleza entre A/B/C y D. Sin ella, "
+        "D se lee como una clasificación estructural más")
+    assert "no puede recibir presunción de necesidad arquitectónica" in txt, (
+        "se perdió la lectura correcta de D. Es la única de las tres que la "
+        "evidencia sostiene")
+    assert "no validado **no es** invalidado" in txt, (
+        "desapareció el vínculo con DOC-027, que es lo que impide que C4 "
+        "trate D como una lista de cosas a eliminar")
+
+
+def test_las_cinco_decisiones_D_llegan_a_C4_con_su_pregunta():
+    """★ Lo que convierte a `C4` en un peritaje y no en una opinión.
+
+        D1  multiplicatividad      ¿razón teórica, normativa o empírica?
+        D2  V_i multiplicativo     ¿la falta de evidencia debe ANULAR?
+        D3  pesos 0,15/0,10/0,05   ¿justificación para conservarlos?
+        D4  piso 0,50              ¿qué propiedad del fenómeno lo funda?
+        D5  AVEP                   ¿qué fenómeno pretende representar?
+
+    ⚠️ `D2` es la más grave y toca la raíz del canon: si `V=0` produce `J=0`,
+    el índice mide a la vez la **gestión** y la **capacidad de demostrarla**.
+    Puede ser legítimo, pero choca con el principio rector —«la ausencia de
+    evidencia es un RESULTADO, nunca autorización para inferir hechos»— y `C4`
+    debe resolver si anular la meta es un resultado o una inferencia.
+
+    Y `D5` no pregunta qué escala es correcta: pregunta **qué fenómeno
+    clasifica**. No se valida una escala antes de declarar su objeto
+    (`DOC-012`)."""
+    txt = _DOC.read_text(encoding="utf-8")
+    for d in ("`D1`", "`D2`", "`D3`", "`D4`", "`D5`"):
+        assert d in txt, (
+            f"desapareció la decisión {d}. Las cinco deben llegar a C4 "
+            f"enumeradas, o el dictamen vuelve a ser «¿está bien el ICPI?»")
+    assert "«no tengo evidencia»  ≠  «el fenómeno no ocurrió»" in txt, (
+        "se perdió la tensión de D2, que es la más grave: el índice puede "
+        "estar midiendo la gestión y la capacidad de demostrarla a la vez")
+    assert "No se puede validar una escala antes de declarar el fenómeno" in txt, (
+        "D5 volvió a preguntar por la escala antes que por su objeto")
+    assert "No basta con «así funciona el modelo»" in txt, (
+        "desapareció el listón de D1")
+
+
+def test_la_cadena_bloquea_los_dos_errores_simetricos():
+    """La regla de cierre de toda la investigación:
+
+        La historia explica. La transferibilidad clasifica.
+        La metodología justifica. La evidencia decide.
+
+    Y las tres últimas etapas preguntan cosas distintas: `C3` de dónde vino,
+    `010` a qué pertenece, `C4` si merece permanecer.
+
+    ⚠️ Eso bloquea los dos errores a la vez: «es antiguo, luego se conserva»
+    (`DOC-013`) y «es contingente, luego se elimina» (`DOC-027`)."""
+    txt = _DOC.read_text(encoding="utf-8")
+    assert "La historia explica. La transferibilidad clasifica." in txt, (
+        "desapareció la regla que ordena la cadena entera")
+    assert "es antiguo, por tanto debe conservarse" in txt and \
+           "es contingente, por tanto debe eliminarse" in txt, (
+        "se perdieron los dos errores simétricos. Nombrarlos es lo que "
+        "impide cometerlos")
+
+
 def test_010_no_declara_transferible_lo_que_no_probo():
     """La honestidad del cierre.
 
@@ -171,6 +250,18 @@ def test_010_no_declara_transferible_lo_que_no_probo():
     txt = _DOC.read_text(encoding="utf-8")
     assert "no confirma ni refuta la hipótesis: la hace formulable" in txt, (
         "010 dejó de declarar el límite de su propio hallazgo")
+    # ⚠️ La diferencia entre «en el caso analizado los A son metodológicos» y
+    # «el núcleo transferible de QUIRA es metodológico». La segunda convierte
+    # el resultado de una clasificación INTERNA en evidencia EXTERNA.
+    assert "candidatos a núcleo arquitectónico" in txt, (
+        "se perdió la palabra «candidatos». Sin ella, una clasificación "
+        "declarada se lee como transferibilidad demostrada")
+    assert "permanece pendiente de validación externa" in txt, (
+        "desapareció el límite de la conclusión: la generalización efectiva "
+        "no está probada y no puede estarlo con un solo caso")
+    assert "hipótesis arquitectónica emergente" in txt, (
+        "se perdió la hipótesis de que QUIRA admita múltiples modelos "
+        "métricos. Registrarla sin convertirla en doctrina es lo correcto")
     assert "exigiría un segundo caso" in txt and "DOC-019" in txt, (
         "se perdió por qué la transferibilidad no está demostrada: un caso no "
         "autoriza la regla general")

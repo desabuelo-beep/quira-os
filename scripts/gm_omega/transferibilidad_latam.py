@@ -267,6 +267,30 @@ def _escribir(dep, por_cat) -> None:
       "Sin `D`, toda decisión propia se colaría como núcleo **por el mero "
       "hecho de no citar una norma**.")
     A("")
+    A("### ★ Las cuatro NO son categorías del mismo tipo")
+    A("")
+    A("| | Qué tipo de afirmación es |")
+    A("|---|---|")
+    A("| 🟢 `A` | una **propiedad arquitectónica** |")
+    A("| 🔵 `B` | una arquitectura **parametrizada por un contexto "
+      "normativo** |")
+    A("| 🟠 `C` | una **procedencia** histórica |")
+    A("| 🟣 `D` | ⚠️ **una incertidumbre sobre la necesidad del diseño** |")
+    A("")
+    A("`A`, `B` y `C` son clasificaciones **estructurales**. `D` **no lo "
+      "es**: es un estado de duda. Y de ahí sale la lectura que `011-C4` "
+      "tiene prohibido hacer:")
+    A("")
+    A("| Lectura | Veredicto |")
+    A("|---|---|")
+    A("| `D` = incorrecto | 🔴 **falso** |")
+    A("| `D` = debe eliminarse | 🔴 **falso** |")
+    A("| **`D` = no puede recibir presunción de necesidad arquitectónica** | "
+      "✅ |")
+    A("")
+    A("> Es la misma disciplina que `DOC-027` aplicada a la arquitectura: no "
+      "validado **no es** invalidado.")
+    A("")
     A("### El test que decide la categoría")
     A("")
     A("```")
@@ -350,12 +374,45 @@ def _escribir(dep, por_cat) -> None:
       "norma→evidencia→inferencia**, la **trazabilidad**, el **estado "
       "canónico único**. Ninguno depende de qué mida el índice.")
     A("")
+    A("### ⚠️ La formulación exacta de este resultado")
+    A("")
+    A("Hay una diferencia que no puede perderse:")
+    A("")
+    A("| Afirmación | ¿Autorizada? |")
+    A("|---|---|")
+    A("| «en el caso analizado, los componentes clasificados como `A` son "
+      "metodológicos» | ✅ sí — es el resultado de la clasificación |")
+    A("| «el núcleo transferible de QUIRA es metodológico» | 🔴 **no** — eso "
+      "exigiría el segundo caso |")
+    A("")
+    A("La conclusión queda congelada así:")
+    A("")
+    A("> `010` identifica **candidatos a núcleo arquitectónico** cuya función "
+      "no presenta, **en el caso analizado**, dependencia necesaria de una "
+      "instancia normativa o institucional ecuatoriana. **Su generalización "
+      "efectiva permanece pendiente de validación externa.**")
+    A("")
+    A("Es más fuerte epistemológicamente, porque **no convierte el resultado "
+      "de una clasificación interna en evidencia externa de "
+      "transferibilidad**.")
+    A("")
     A("> ### `010` no confirma ni refuta la hipótesis: la hace formulable")
     A(">")
-    A("> Que el núcleo identificado sea **metodológico y no métrico** es "
+    A("> Que los candidatos a núcleo sean **metodológicos y no métricos** es "
       "**compatible** con la hipótesis. No la demuestra: para eso haría falta "
       "un segundo caso —otro país, u otro municipio con otro marco— y hoy no "
       "existe. `DOC-019`: un caso no autoriza la regla general.")
+    A("")
+    A("⚠️ Y hay una **hipótesis arquitectónica emergente** que conviene "
+      "nombrar sin convertirla en doctrina:")
+    A("")
+    A("> QUIRA podría ser una **arquitectura de inteligencia pública que "
+      "admite múltiples modelos métricos**, en lugar de una arquitectura "
+      "construida alrededor de un único índice.")
+    A("")
+    A("Emergente significa exactamente eso: **todavía no es un hallazgo**. Se "
+      "registra para que `C4` pueda considerarla, no para que la dé por "
+      "buena.")
     A("")
 
     # ── Lo que entrega ────────────────────────────────────────────────────
@@ -375,6 +432,83 @@ def _escribir(dep, por_cat) -> None:
     A(f"| **{por_cat['C']} componentes** son sedimentación | incluidos los "
       "13 dominios y el universo de 25: **`R0` y `v2` heredan esto** |")
     A("")
+    A("### ★ Las cinco decisiones `D`, con la pregunta que `C4` debe hacerle "
+      "a cada una")
+    A("")
+    A("`C4` ya no pregunta vagamente «¿está bien el ICPI?». Somete a prueba "
+      "**cinco decisiones enumeradas**:")
+    A("")
+    A("#### `D1` · Arquitectura multiplicativa")
+    A("")
+    A("`J_i = P_i × R_i × V_i × E_i × T_i × C_i`")
+    A("")
+    A("> ¿Existe razón **teórica, normativa o empírica** suficiente para que "
+      "la degradación de un componente reduzca **multiplicativamente** la "
+      "contribución de una unidad?")
+    A("")
+    A("⚠️ No basta con «así funciona el modelo».")
+    A("")
+    A("#### `D2` · `V_i` como factor multiplicativo")
+    A("")
+    A("> ¿La ausencia o insuficiencia documental debe poder **anular** la "
+      "contribución de una unidad al índice?")
+    A("")
+    A("Aquí hay una tensión epistemológica de primer orden, y toca la raíz "
+      "del canon:")
+    A("")
+    A("```")
+    A("  «no tengo evidencia»  ≠  «el fenómeno no ocurrió»")
+    A("```")
+    A("")
+    A("Si `V=0` produce `J=0`, el índice mide **dos cosas a la vez**: la "
+      "gestión **y** la capacidad de demostrarla documentalmente. Puede ser "
+      "**intencional y legítimo** —un índice de congruencia bien podría "
+      "querer eso—, pero entonces debe **demostrarse como elección "
+      "metodológica**, no asumirse.")
+    A("")
+    A("Y choca de frente con el principio rector: *«la ausencia de evidencia "
+      "es un RESULTADO de auditoría, nunca autorización para inferir "
+      "hechos»*. `C4` tiene que resolver si anular la meta es un resultado o "
+      "una inferencia.")
+    A("")
+    A("#### `D3` · Pesos de `C_i` — `0,15 / 0,10 / 0,05`")
+    A("")
+    A("> ¿Por qué esos valores y no otros?")
+    A("")
+    A("**No hay que volver a hacer genealogía.** `C3-R` ya cerró: están "
+      "documentados, su fundamento cuantitativo no está determinado. `C4` "
+      "pregunta sólo si existe **justificación metodológica suficiente para "
+      "conservarlos**.")
+    A("")
+    A("#### `D4` · Piso `C_i ≥ 0,50`")
+    A("")
+    A("> ¿Qué propiedad del fenómeno justifica que **ninguna infracción** "
+      "pueda reducir `C_i` por debajo de `0,50`?")
+    A("")
+    A("⚠️ **El piso no es sólo un parámetro técnico.** Introduce una "
+      "afirmación sustantiva sobre la relación entre infracción y desempeño: "
+      "presupone que **incluso acumulando infracciones existe un mínimo de "
+      "contribución institucional que debe preservarse**. Eso requiere "
+      "fundamento.")
+    A("")
+    A("#### `D5` · Escala `AVEP`")
+    A("")
+    A("⚠️ **No se pregunta todavía «¿qué escala es correcta?».** Primero:")
+    A("")
+    A("> ¿Qué **fenómeno** pretende representar `AVEP`?")
+    A("")
+    A("Si transforma un valor continuo del ICPI en categorías cualitativas, "
+      "hay que saber si esas categorías representan niveles de "
+      "**integridad**, de **cumplimiento**, de **desempeño**, de "
+      "**evidencia**, de **riesgo** — o si son **comunicación "
+      "institucional**.")
+    A("")
+    A("**No se puede validar una escala antes de declarar el fenómeno que "
+      "pretende clasificar** (`DOC-012`: un porcentaje no tiene significado "
+      "semántico por sí mismo). Y hay dos versiones divergentes conviviendo "
+      "(`D-012`).")
+    A("")
+
     A("> ### Y la advertencia con la que se entra a `C4`")
     A(">")
     A("> `010` no se hizo para demostrar que QUIRA es universal. La pregunta "
@@ -400,6 +534,42 @@ def _escribir(dep, por_cat) -> None:
     A("| Los componentes `D` son o no necesarios al constructo | ⬜ **FUERA "
       "DE ALCANCE** · `011-C4` |")
     A("")
+    A("## ★ La regla que ordena toda la cadena")
+    A("")
+    A("```")
+    A("  007-B0   genealogía del constructo")
+    A("  008      universo y correspondencia")
+    A("  009      superficie contrafactual de gameabilidad")
+    A("  011-C2   semántica de C_i")
+    A("  011-C3   mecanismo y genealogía documental")
+    A("  C3-R     cierre ante el corpus histórico adicional")
+    A("  010      arquitectura frente a contingencia")
+    A("  P6       reconciliación de artefactos y versiones")
+    A("  011-C4   juicio metodológico de las decisiones D")
+    A("```")
+    A("")
+    A("Y la transición entre las tres últimas etapas es limpia:")
+    A("")
+    A("| Etapa | Pregunta |")
+    A("|---|---|")
+    A("| `C3` | ¿**de dónde vino** la decisión? |")
+    A("| `010` | ¿la decisión pertenece al **núcleo** o al **contexto**? |")
+    A("| `C4` | ¿la decisión **merece permanecer**? |")
+    A("")
+    A("> ### La historia explica. La transferibilidad clasifica. La "
+      "metodología justifica. La evidencia decide.")
+    A("")
+    A("Esa secuencia bloquea los **dos errores simétricos**, y ninguno está "
+      "autorizado:")
+    A("")
+    A("| Error | Por qué es falso |")
+    A("|---|---|")
+    A("| «es antiguo, por tanto debe conservarse» | `DOC-013` · QUIRA no "
+      "conserva por herencia |")
+    A("| «es contingente, por tanto debe eliminarse» | `DOC-027` · no "
+      "validado no es invalidado |")
+    A("")
+
     A("> ### GM-Ω-010 — CERRADO COMO SEPARACIÓN ARQUITECTURA / CONTINGENCIA")
     A(">")
     A("> Se clasificaron los componentes del constructo en **núcleo**, "
