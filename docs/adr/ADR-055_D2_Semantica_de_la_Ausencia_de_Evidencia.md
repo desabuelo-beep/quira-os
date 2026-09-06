@@ -4,10 +4,26 @@ authority:
   parent: GOVERNANCE-001
   constitution_articles: [5, 9]
   type: METODOLOGICA
-status: PROPUESTO — pendiente de sello de Javo
+status: APROBADO — sellado por Javo (2026-09-06)
 fecha: 2026-09-06
 decision_gm_omega: D2
 ---
+
+> ## 🔏 SELLO · 2026-09-06 — el más sustantivo de los cinco
+>
+> **Se adopta explícitamente la LECTURA `A`: el ICPI mide CONGRUENCIA ACREDITADA.**
+>
+> Con eso, `V_i = 0` queda declarado como **un resultado de auditoría**, no como una inferencia
+> sobre el mundo: la unidad **no puede aportar congruencia acreditada**, y eso **no afirma que el
+> fenómeno no ocurriera**.
+>
+> ⚠️ **Lo que este sello NO significa.** No declara que el ICPI sea una medida sustantivamente
+> válida de toda la gestión pública. Elimina **una ambigüedad semántica fundamental** — nada más,
+> y nada menos. La capa 3 de `011-C4` (validez sustantiva) sigue `NO DEMOSTRADA`.
+>
+> **Consecuencia operativa inmediata:** queda prohibido que cualquier superficie describa un
+> `V_i = 0` como «la meta no se ejecutó» o «el fenómeno no ocurrió». Custodiado por
+> `test_contrato_semantico_D2_congruencia_acreditada`.
 
 # ADR-055 · `D2` — Qué significa la ausencia de evidencia
 

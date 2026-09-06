@@ -4,10 +4,19 @@ authority:
   parent: GOVERNANCE-001
   constitution_articles: [5, 9]
   type: METODOLOGICA
-status: PROPUESTO — pendiente de sello de Javo
+status: APROBADO — sellado por Javo (2026-09-06)
 fecha: 2026-09-06
 decision_gm_omega: D3
 ---
+
+> ## 🔏 SELLO · 2026-09-06
+>
+> **Se mantiene el esquema de pesos como decisión vigente, con REVISIÓN OBLIGATORIA ANTES DE SU
+> PRIMERA ACTIVACIÓN.**
+>
+> El sello **no convierte un `NO DETERMINABLE` en `DEMOSTRADO`**: el fundamento cuantitativo de
+> `0,15 / 0,10 / 0,05` sigue sin determinar (`§8`), y la divergencia con el glosario sobre
+> `INF-03` (`D-013`) sigue abierta.
 
 # ADR-056 · `D3` — Los pesos de deducción de `C_i`
 

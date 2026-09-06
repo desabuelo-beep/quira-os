@@ -4,10 +4,21 @@ authority:
   parent: GOVERNANCE-001
   constitution_articles: [5, 9]
   type: METODOLOGICA
-status: PROPUESTO — pendiente de sello de Javo
+status: APROBADO — sellado por Javo (2026-09-06)
 fecha: 2026-09-06
 decision_gm_omega: D5
 ---
+
+> ## 🔏 SELLO · 2026-09-06
+>
+> ⚠️ **Este sello NO valida el baremo `AVEP` como medida sustantiva.**
+>
+> Se adopta **únicamente** la decisión de que **`AVEP` no puede interpretarse hasta declarar
+> formalmente su objeto**. Es un sello sobre el **procedimiento**, no sobre la escala.
+>
+> Mientras el objeto no se declare, ninguna superficie puede presentar una categoría `AVEP` como
+> juicio de integridad, cumplimiento o desempeño — porque no está establecido cuál de esas cosas
+> clasifica.
 
 # ADR-058 · `D5` — El objeto del baremo `AVEP`
 

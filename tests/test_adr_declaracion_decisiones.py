@@ -126,20 +126,58 @@ def test_cada_ADR_lleva_los_diez_campos():
                 f"un ADR se convierte en una justificación retrospectiva")
 
 
-def test_ninguno_se_declara_aprobado_por_la_maquina():
+def test_el_sello_es_del_humano_no_de_la_maquina():
     """`ADR-035 §5`: la IA propone, el humano valida.
 
-    Un ADR que naciera `APROBADO` sin sello de Javo sería exactamente la caja
-    negra que la carta de rearquitectura prohíbe: la máquina ratificando sus
-    propias propuestas."""
+    Los cinco nacieron `PROPUESTO` y **Javo los selló el 2026-09-06**. Lo que
+    esta prueba vigila es que el sello siga siendo **atribuible a una persona**:
+    un ADR marcado `APROBADO` sin autor sería la máquina ratificando sus
+    propias propuestas — la caja negra que la carta de rearquitectura
+    prohíbe."""
     for d, nombre in _LOS_CINCO.items():
         txt = (_ADR / nombre).read_text(encoding="utf-8")
         m = re.search(r"^status:\s*(.+)$", txt, re.M)
         assert m, f"el ADR de `{d}` no declara `status`"
-        assert "PROPUESTO" in m.group(1), (
-            f"el ADR de `{d}` nace con status «{m.group(1).strip()}». Debe "
-            f"nacer PROPUESTO: la IA propone, el humano valida")
+        estado = m.group(1).strip()
+        assert "sellado por Javo" in estado, (
+            f"el ADR de `{d}` declara «{estado}» sin autor humano del sello. "
+            f"La IA propone; el humano valida")
         assert "La IA propone; el humano valida" in txt
+
+
+def test_el_sello_no_convierte_no_determinable_en_demostrado():
+    """★ La condición que el sello NO puede borrar.
+
+        El sello no convierte un `NO DETERMINABLE` en `DEMOSTRADO`.
+
+    Cada ADR debe seguir conservando **dentro de sí** qué está demostrado, qué
+    es inferencia y qué sigue abierto. Un ADR que al sellarse limpiara sus
+    campos 7 y 8 habría convertido una decisión consciente en una verdad
+    fabricada — exactamente lo contrario de por qué se selló.
+
+    ⚠️ Y por eso el sello dice qué se adopta **y con qué límite**: `D1`
+    «provisionalmente, sin declararla necesaria»; `D4` «sin afirmar que esté
+    teóricamente fundamentado»; `D5` «no valida el baremo»."""
+    for d, nombre in _LOS_CINCO.items():
+        txt = (_ADR / nombre).read_text(encoding="utf-8")
+        assert "🔏 SELLO" in txt, f"el ADR de `{d}` no registra su sello"
+        # Los campos que el sello tiene prohibido vaciar.
+        for campo in ("7 · Qué es INFERENCIA",
+                      "8 · Qué permanece NO DETERMINABLE",
+                      "10 · Condición objetiva para revisarla"):
+            assert campo in txt, (
+                f"al sellar el ADR de `{d}` desapareció «{campo}». El sello "
+                f"adopta una decisión conociendo sus límites; borrarlos "
+                f"convierte la decisión en una demostración que nadie hizo")
+    # Y los tres límites explícitos que el colega fijó al sellar.
+    d1 = _plano((_ADR / _LOS_CINCO["D1"]).read_text(encoding="utf-8"))
+    assert "PROVISIONALMENTE" in d1 and "SIN declararla necesaria" in d1
+    d4 = _plano((_ADR / _LOS_CINCO["D4"]).read_text(encoding="utf-8"))
+    assert "SIN afirmar que esté teóricamente fundamentado" in d4
+    d5 = _plano((_ADR / _LOS_CINCO["D5"]).read_text(encoding="utf-8"))
+    assert "NO valida el baremo `AVEP` como medida sustantiva" in d5, (
+        "el sello de D5 dejó de declarar que no valida la escala. Es un sello "
+        "sobre el PROCEDIMIENTO, no sobre el baremo")
 
 
 def test_ninguno_cambia_el_motor():

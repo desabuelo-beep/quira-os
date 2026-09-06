@@ -4,10 +4,19 @@ authority:
   parent: GOVERNANCE-001
   constitution_articles: [5, 9]
   type: METODOLOGICA
-status: PROPUESTO — pendiente de sello de Javo
+status: APROBADO — sellado por Javo (2026-09-06)
 fecha: 2026-09-06
 decision_gm_omega: D1
 ---
+
+> ## 🔏 SELLO · 2026-09-06
+>
+> **Se adopta PROVISIONALMENTE la multiplicatividad como arquitectura vigente, SIN declararla
+> necesaria.**
+>
+> El sello **no convierte un `NO DETERMINABLE` en `DEMOSTRADO`**. Los campos 6, 7 y 8 de este ADR
+> conservan intacto qué está demostrado, qué es inferencia y qué sigue abierto — y `§10` mantiene
+> viva la condición de revisión.
 
 # ADR-054 · `D1` — La arquitectura multiplicativa del ICPI
 

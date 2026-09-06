@@ -4,10 +4,19 @@ authority:
   parent: GOVERNANCE-001
   constitution_articles: [5, 9]
   type: METODOLOGICA
-status: PROPUESTO — pendiente de sello de Javo
+status: APROBADO — sellado por Javo (2026-09-06)
 fecha: 2026-09-06
 decision_gm_omega: D4
 ---
+
+> ## 🔏 SELLO · 2026-09-06
+>
+> **Se mantiene PROVISIONALMENTE el piso `C_i ≥ 0,50`, SIN afirmar que esté teóricamente
+> fundamentado, y queda MANDATADO PARA REVISIÓN en `QUIRA-NEXT`.**
+>
+> El sello **no convierte un `NO DETERMINABLE` en `DEMOSTRADO`**. La tesis sustantiva que el piso
+> sostiene —que ninguna cantidad de infracciones puede destruir completamente la contribución de
+> una unidad— queda **enunciada y abierta**, no acreditada.
 
 # ADR-057 · `D4` — El piso mínimo de `C_i`
 
