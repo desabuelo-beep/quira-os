@@ -165,6 +165,109 @@ def test_la_fase3_encuentra_la_razon_del_constructo_y_no_la_de_los_pesos():
         "entero sería exagerarlo")
 
 
+def test_cerrar_C3R_no_agota_la_genealogia():
+    """★ La salvaguarda que impide que `BM-05` se vuelva un pozo sin fondo.
+
+    Cerrar `C3-R` **no** significa que la genealogía histórica de QUIRA esté
+    agotada: significa que la evidencia examinada basta para actualizar las
+    conclusiones **específicas** de `C3` sin ampliar la búsqueda de forma
+    indefinida.
+
+    ⚠️ Y la ausencia de justificación de los parámetros permanece como
+    HALLAZGO, no como pendiente: «los parámetros fueron establecidos
+    documentalmente, pero su fundamento cuantitativo no ha sido determinado».
+    Para `011-C4` eso vale más que la historia completa — un parámetro sin
+    fundamento cuantitativo es una decisión de diseño **abierta** (`DOC-027`),
+    y hay tres."""
+    txt = _DOC.read_text(encoding="utf-8")
+    assert "no implica que la genealogía histórica completa" in txt, (
+        "desapareció la salvaguarda. Sin ella, «C3-R cerrado» se lee como "
+        "«ya no hay nada que buscar en BM-05», que es falso")
+    assert "pozo sin fondo" in txt, (
+        "se perdió la razón de la salvaguarda: perseguir indefinidamente una "
+        "frase que quizá nunca se escribió no es método")
+    assert "su **fundamento cuantitativo no ha sido determinado**" in txt, (
+        "la ausencia dejó de declararse como hallazgo. Un pendiente se "
+        "arrastra; un hallazgo entra al dictamen")
+    assert "C3-R` — CERRADO" in txt
+
+
+def test_las_cinco_preguntas_no_se_colapsan_en_una():
+    """★ La arquitectura epistemológica que `C3-R` deja montada.
+
+        Historia                  ¿qué mecanismo existía?          DEMOSTRADO
+        Evolución                 ¿cuándo fue sustituido?          DEMOSTRADO
+        Decisión                  ¿qué razón declaró el autor?     DECLARADO
+        Justificación metodológica ¿es válida esa solución?         → 011-C4
+        Parámetros                ¿por qué 0,15/0,10/0,05 y 0,50?  NO DETERMINABLE
+
+    ⚠️ Tratarlas como una sola —«la razón del cambio»— fue lo que hizo que
+    `011-C3` cerrara con un `NO DETERMINABLE` demasiado grueso. Hoy hay
+    respuestas de **calidad distinta** para cada una, y colapsarlas destruiría
+    justamente esa precisión."""
+    txt = _DOC.read_text(encoding="utf-8")
+    assert "Cinco preguntas distintas, cinco calidades de respuesta" in txt, (
+        "desapareció la separación de las cinco preguntas")
+    for p in ("**Historia**", "**Evolución**", "**Decisión**",
+              "**Justificación metodológica**", "**Parámetros**"):
+        assert p in txt, (
+            f"se perdió la pregunta {p}. Con menos de cinco, alguna se "
+            f"responde con la calidad de evidencia de otra")
+
+
+def test_la_definicion_anterior_se_conserva_como_antecedente():
+    """La precisión sobre qué le pasó al `C_i` original.
+
+    «No se abandonó, se catalogó como error crítico» es impreciso: **sí fue
+    abandonada como mecanismo operativo**. Lo que sobrevive es su condición de
+    antecedente histórico.
+
+    Es exactamente la categoría `📜 SUPERADO METODOLÓGICAMENTE` de la carta —
+    y la distinción importa porque `BM-05` conserva antecedentes, no reglas
+    vigentes."""
+    txt = _DOC.read_text(encoding="utf-8")
+    assert "conservada como antecedente histórico" in txt, (
+        "se perdió qué le pasó a la definición original: sobrevive como "
+        "antecedente, no como mecanismo")
+    assert "mecanismo operativo fue declarado un defecto crítico y " \
+           "sustituido" in txt, (
+        "desapareció que el mecanismo SÍ fue abandonado. Decir que «no se "
+        "abandonó» sugeriría que ambas definiciones siguen operando")
+
+
+def test_la_palabra_refactorizacion_declara_su_fuente():
+    """Disciplina de procedencia aplicada a un adjetivo.
+
+    «Refactorización» se usa porque **existe un documento que se declara a sí
+    mismo proceso de refactorización** y prescribe los cambios. El incremento
+    de 58 a 72 hojas es sólo **consistente** con ella.
+
+    ⚠️ Si la fuente de la clasificación fuera el conteo de hojas, sería
+    inferir la naturaleza de un cambio desde su tamaño — y eso es el mismo
+    error de forma que `DOC-009`."""
+    txt = _DOC.read_text(encoding="utf-8")
+    assert "La fuente de esa clasificación es ese documento, no el " \
+           "incremento de hojas" in txt, (
+        "desapareció la procedencia de la palabra «refactorización». Un "
+        "adjetivo sin fuente es una inferencia disfrazada de descripción")
+
+
+def test_P6_tiene_expediente_propio_y_no_cabe_en_010():
+    """`P6` es **identidad de artefactos**; `010` es **transferibilidad
+    LATAM**. Meterla ahí mezclaría dos problemas sin relación.
+
+    Y si se cierra, se cierra con un grafo de correspondencia cuya taxonomía
+    —`1:1` · `PROBABLE` · `RAMIFICACIÓN` · `DUPLICADO` · `NO DETERMINABLE`—
+    es la de `011-B`, que aparece por tercera vez en esta investigación."""
+    txt = _DOC.read_text(encoding="utf-8")
+    assert "no cabe en `010`" in txt, (
+        "P6 volvió a mezclarse con la transferibilidad LATAM")
+    assert "grafo de correspondencia de versiones" in txt
+    assert "**No bloquea a `C4`**" in txt, (
+        "se perdió que P6 no es bloqueante. Una cuestión abierta que no "
+        "bloquea nada debe decirlo, o se convierte en excusa para no avanzar")
+
+
 def test_P5_y_P6_no_se_mezclan():
     """Son problemas distintos: `P5` es **causalidad histórica** —por qué se
     sustituyó—; `P6` es **identidad y versionado** —cómo se corresponden las

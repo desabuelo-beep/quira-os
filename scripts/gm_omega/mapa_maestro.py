@@ -121,9 +121,13 @@ _ETAPAS = [
      "del corpus (121 .md · 80 .txt de fórmulas)"),
     ("GM-Ω", "011-C3R", "Serie temporal del motor + Fase 3 documental · "
                         "sensibilidad de las conclusiones de C3", _HECHO,
-     "★ 25→29-abr-2026 en UN acto · H01!A94 corroborada · `E-CRIT-04` declara "
-     "el PORQUÉ del constructo («nunca el estatus jurídico de una entidad») · "
-     "pesos y piso siguen NO DETERMINABLE"),
+     "★ CERRADO · 25→29-abr en UN acto · `E-CRIT-04` declara el PORQUÉ del "
+     "constructo · parámetros sin fundamento cuantitativo = 3 decisiones "
+     "ABIERTAS para C4"),
+    ("GM-Ω", "011-P6", "Grafo de correspondencia de versiones · identidad de "
+                       "artefactos", _ABIERTO,
+     "3 esquemas sin reconciliar · NO bloquea a C4 · no cabe en 010: es "
+     "identidad, no transferibilidad"),
     ("QNEXT", "Q1", "Matriz de clasificación · candidato → ratificado",
      _ABIERTO, "no espera al dictamen: clasificar no es cambiar · primer test "
                "= migración semántica de «auditoría»"),

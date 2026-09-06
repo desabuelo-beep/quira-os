@@ -254,7 +254,40 @@ Y la razón, escrita:
 >
 > Evaluar «el estatus jurídico de una entidad» sería exactamente lo que la `Regla de Oro 2` prohíbe —lenguaje acusatorio— y lo que el principio rector niega: **QUIRA certifica verificabilidad, no verdad**. La corrección de `C_i` es coherente con la doctrina que el sistema ya tenía.
 
-⚠️ **Grado exacto: `DECLARADO`, no `DEMOSTRADO`.** Es una razón escrita por el autor en un artefacto de trabajo fechado y corroborada por la implementación resultante. No es una demostración de la intención — `DOC-024` sigue aplicando.
+⚠️ **Grado exacto: `DECLARADO`, no `DEMOSTRADO`.** Es una razón escrita por el autor en un artefacto de trabajo fechado y corroborada por la implementación resultante. No es una demostración de la intención — `DOC-024` sigue aplicando. En concreto: **no hay evidencia independiente suficiente para afirmar que ésa fuera la ÚNICA motivación del rediseño**.
+
+### Y una precisión sobre qué le pasó a la definición anterior
+
+Decir «no se abandonó, se catalogó como error crítico» sería impreciso: **sí fue abandonada como mecanismo operativo**. Lo correcto:
+
+> La definición anterior fue **conservada como antecedente histórico**, pero su **mecanismo operativo fue declarado un defecto crítico y sustituido** por el Motor `C_i` Determinista v1.0.
+
+Que es exactamente la categoría `📜 SUPERADO METODOLÓGICAMENTE` de la carta de rearquitectura, y encaja con `BM-05` y `DOC-031`.
+
+### La cadena reconstruida
+
+```
+  C_i original         imputabilidad orgánica · responsabilidad
+        ↓
+  problema detectado   riesgo de evaluar atributos JURÍDICOS de
+                       la entidad
+        ↓
+  E-CRIT-04            esa definición = defecto crítico
+        ↓
+  27-abr-2026          DECISIÓN: sustituir el mecanismo
+        ↓
+  nuevo C_i            calidad del expediente vía infracciones
+                       normativas verificadas
+        ↓
+  regla de protección  nunca el estatus jurídico de la entidad
+        ↓
+  29-abr-2026          implementación: L + M + pesos + piso +
+                       fallback
+```
+
+> Esto ya no es arqueología: es **la traza documental de una decisión de diseño**.
+
+⚠️ Y la frontera se mantiene: hay evidencia de **lo que el documento prescribe y declara como razón**. No la hay de que ésa fuera la única motivación.
 
 ## ★ Dictamen de `C3-R` · las seis preguntas
 
@@ -306,12 +339,57 @@ La distinción que impide que este expediente se lea como más concluyente de lo
 
 Sus conclusiones **no se invalidan**: se **precisan**. Y una parte —el porqué de la sustitución— pasa de `NO DETERMINABLE` a `DECLARADO`, que es exactamente para lo que sirve una reapertura por evidencia tardía (`DOC-031`).
 
+## ★ Cinco preguntas distintas, cinco calidades de respuesta
+
+La arquitectura epistemológica que `C3-R` deja montada, y que evita que se hable de «la razón del cambio» como si fuera una sola cosa:
+
+| | Pregunta | Estado |
+|---|---|---|
+| **Historia** | ¿qué mecanismo existía? | ✅ **DEMOSTRADO** |
+| **Evolución** | ¿cuándo fue sustituido? | ✅ **DEMOSTRADO** |
+| **Decisión** | ¿qué razón declaró el diseñador? | 🟡 **DECLARADO** |
+| **Justificación metodológica** | ¿por qué esa solución es válida? | ⬜ **fuera de alcance** · `011-C4` |
+| **Parámetros** | ¿por qué `0,15 / 0,10 / 0,05` y `0,50`? | 🔴 **NO DETERMINABLE** |
+
+> Son cinco cosas diferentes, y hoy tenemos respuestas de **calidad distinta** para cada una. Tratarlas como una sola fue lo que hizo que `011-C3` cerrara con un `NO DETERMINABLE` demasiado grueso.
+
+> ### `C3-R` — CERRADO
+>
+> **SECUENCIA DE CAMBIO DEMOSTRADA · RAZÓN DEL CAMBIO DE MECANISMO DECLARADA · JUSTIFICACIÓN DE LOS PARÁMETROS AÚN NO DETERMINADA · RECONCILIACIÓN DE VERSIONADO PENDIENTE.**
+
+### ⚠️ Qué significa «cerrado» aquí — y qué no
+
+> Cerrar `C3-R` **no implica que la genealogía histórica completa de QUIRA esté agotada**. Implica que la evidencia adicional examinada es **suficiente para actualizar las conclusiones específicas de `C3`** sin necesidad de ampliar indefinidamente la búsqueda para las preguntas hoy abiertas.
+
+Esa distinción **protege a `BM-05` de convertirse en un pozo sin fondo**. No se seguirá excavando hasta encontrar una frase que diga «elegimos 0,15 porque…». Si aparece, se incorpora; perseguirla indefinidamente no es método.
+
+Y la ausencia **permanece como hallazgo, no como pendiente**:
+
+> Los parámetros fueron **establecidos documentalmente**, pero su **fundamento cuantitativo no ha sido determinado**.
+
+Para `011-C4` eso vale más que conocer la historia completa: un parámetro sin fundamento cuantitativo es una **decisión de diseño abierta** (`DOC-027`), y hay tres.
+
 ### Lo que esto le entrega a `011-C4`
 
 | Antes de `C3-R` | Después |
 |---|---|
-| «`C_i` cambió en algún momento, sin razón conocida» | «`C_i` fue **refactorizado en un acto único**, fechado, junto con una refactorización mayor del instrumento» |
-| la pregunta era: ¿por qué se fue acumulando? | la pregunta es: **¿qué motivó rediseñar el factor en un día?** |
+| «`C_i` cambió en algún momento, sin razón conocida» | «`C_i` fue sustituido en un acto fechado, con **razón declarada** y dentro de un proceso de refactorización documentado» |
+| la pregunta era: ¿por qué se fue acumulando? | la pregunta es: **¿es válida la solución que se adoptó, y sus parámetros?** |
+
+⚠️ **Sobre la palabra «refactorización».** Se usa porque existe un documento que se declara a sí mismo proceso de refactorización del Gold Master y prescribe los cambios. **La fuente de esa clasificación es ese documento, no el incremento de hojas** — el salto de 58 a 72 es sólo consistente con ella.
+
+### `P6` merece expediente propio, y no cabe en `010`
+
+`P6` es una cuestión de **identidad de artefactos**, no de transferibilidad LATAM. Meterla en `010` mezclaría dos problemas sin relación. Si se cierra, se cierra construyendo un **grafo de correspondencia de versiones**:
+
+```
+  archivo → hash → fecha → versión declarada → estructura →
+            fórmula → sucesor / progenitor probable
+```
+
+con estados `1:1 DEMOSTRADO` · `CORRESPONDENCIA PROBABLE` · `RAMIFICACIÓN` · `DUPLICADO POR CONTENIDO` · `NO DETERMINABLE` — la misma taxonomía de `011-B`, que aparece por tercera vez.
+
+**No bloquea a `C4`** mientras no afecte a una conclusión metodológica.
 
 ---
 *GM-Ω-ICPI-011-C3R · 71 versiones únicas de 82 archivos · lectura pura · el Gold Master vigente no se modificó · baseline 27,4582 % congelado · Dylus Lab © 2026*

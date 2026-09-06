@@ -541,7 +541,51 @@ def _escribir(radios, libros, vistos, f3) -> None:
         A("⚠️ **Grado exacto: `DECLARADO`, no `DEMOSTRADO`.** Es una razón "
           "escrita por el autor en un artefacto de trabajo fechado y "
           "corroborada por la implementación resultante. No es una "
-          "demostración de la intención — `DOC-024` sigue aplicando.")
+          "demostración de la intención — `DOC-024` sigue aplicando. En "
+          "concreto: **no hay evidencia independiente suficiente para "
+          "afirmar que ésa fuera la ÚNICA motivación del rediseño**.")
+        A("")
+        A("### Y una precisión sobre qué le pasó a la definición anterior")
+        A("")
+        A("Decir «no se abandonó, se catalogó como error crítico» sería "
+          "impreciso: **sí fue abandonada como mecanismo operativo**. Lo "
+          "correcto:")
+        A("")
+        A("> La definición anterior fue **conservada como antecedente "
+          "histórico**, pero su **mecanismo operativo fue declarado un "
+          "defecto crítico y sustituido** por el Motor `C_i` Determinista "
+          "v1.0.")
+        A("")
+        A("Que es exactamente la categoría `📜 SUPERADO METODOLÓGICAMENTE` de "
+          "la carta de rearquitectura, y encaja con `BM-05` y `DOC-031`.")
+        A("")
+        A("### La cadena reconstruida")
+        A("")
+        A("```")
+        A("  C_i original         imputabilidad orgánica · responsabilidad")
+        A("        ↓")
+        A("  problema detectado   riesgo de evaluar atributos JURÍDICOS de")
+        A("                       la entidad")
+        A("        ↓")
+        A("  E-CRIT-04            esa definición = defecto crítico")
+        A("        ↓")
+        A("  27-abr-2026          DECISIÓN: sustituir el mecanismo")
+        A("        ↓")
+        A("  nuevo C_i            calidad del expediente vía infracciones")
+        A("                       normativas verificadas")
+        A("        ↓")
+        A("  regla de protección  nunca el estatus jurídico de la entidad")
+        A("        ↓")
+        A("  29-abr-2026          implementación: L + M + pesos + piso +")
+        A("                       fallback")
+        A("```")
+        A("")
+        A("> Esto ya no es arqueología: es **la traza documental de una "
+          "decisión de diseño**.")
+        A("")
+        A("⚠️ Y la frontera se mantiene: hay evidencia de **lo que el "
+          "documento prescribe y declara como razón**. No la hay de que ésa "
+          "fuera la única motivación.")
         A("")
 
     # ── Las seis preguntas ────────────────────────────────────────────────
@@ -621,15 +665,91 @@ def _escribir(radios, libros, vistos, f3) -> None:
       "`DECLARADO`, que es exactamente para lo que sirve una reapertura por "
       "evidencia tardía (`DOC-031`).")
     A("")
+
+    # ── Las cinco preguntas distintas ─────────────────────────────────────
+    A("## ★ Cinco preguntas distintas, cinco calidades de respuesta")
+    A("")
+    A("La arquitectura epistemológica que `C3-R` deja montada, y que evita "
+      "que se hable de «la razón del cambio» como si fuera una sola cosa:")
+    A("")
+    A("| | Pregunta | Estado |")
+    A("|---|---|---|")
+    A("| **Historia** | ¿qué mecanismo existía? | ✅ **DEMOSTRADO** |")
+    A("| **Evolución** | ¿cuándo fue sustituido? | ✅ **DEMOSTRADO** |")
+    A("| **Decisión** | ¿qué razón declaró el diseñador? | 🟡 **DECLARADO** |")
+    A("| **Justificación metodológica** | ¿por qué esa solución es válida? | "
+      "⬜ **fuera de alcance** · `011-C4` |")
+    A("| **Parámetros** | ¿por qué `0,15 / 0,10 / 0,05` y `0,50`? | 🔴 **NO "
+      "DETERMINABLE** |")
+    A("")
+    A("> Son cinco cosas diferentes, y hoy tenemos respuestas de **calidad "
+      "distinta** para cada una. Tratarlas como una sola fue lo que hizo que "
+      "`011-C3` cerrara con un `NO DETERMINABLE` demasiado grueso.")
+    A("")
+
+    # ── Cierre ────────────────────────────────────────────────────────────
+    A("> ### `C3-R` — CERRADO")
+    A(">")
+    A("> **SECUENCIA DE CAMBIO DEMOSTRADA · RAZÓN DEL CAMBIO DE MECANISMO "
+      "DECLARADA · JUSTIFICACIÓN DE LOS PARÁMETROS AÚN NO DETERMINADA · "
+      "RECONCILIACIÓN DE VERSIONADO PENDIENTE.**")
+    A("")
+    A("### ⚠️ Qué significa «cerrado» aquí — y qué no")
+    A("")
+    A("> Cerrar `C3-R` **no implica que la genealogía histórica completa de "
+      "QUIRA esté agotada**. Implica que la evidencia adicional examinada es "
+      "**suficiente para actualizar las conclusiones específicas de `C3`** "
+      "sin necesidad de ampliar indefinidamente la búsqueda para las "
+      "preguntas hoy abiertas.")
+    A("")
+    A("Esa distinción **protege a `BM-05` de convertirse en un pozo sin "
+      "fondo**. No se seguirá excavando hasta encontrar una frase que diga "
+      "«elegimos 0,15 porque…». Si aparece, se incorpora; perseguirla "
+      "indefinidamente no es método.")
+    A("")
+    A("Y la ausencia **permanece como hallazgo, no como pendiente**:")
+    A("")
+    A("> Los parámetros fueron **establecidos documentalmente**, pero su "
+      "**fundamento cuantitativo no ha sido determinado**.")
+    A("")
+    A("Para `011-C4` eso vale más que conocer la historia completa: un "
+      "parámetro sin fundamento cuantitativo es una **decisión de diseño "
+      "abierta** (`DOC-027`), y hay tres.")
+    A("")
     A("### Lo que esto le entrega a `011-C4`")
     A("")
     A("| Antes de `C3-R` | Después |")
     A("|---|---|")
     A("| «`C_i` cambió en algún momento, sin razón conocida» | «`C_i` fue "
-      "**refactorizado en un acto único**, fechado, junto con una "
-      "refactorización mayor del instrumento» |")
-    A("| la pregunta era: ¿por qué se fue acumulando? | la pregunta es: **¿qué "
-      "motivó rediseñar el factor en un día?** |")
+      "sustituido en un acto fechado, con **razón declarada** y dentro de un "
+      "proceso de refactorización documentado» |")
+    A("| la pregunta era: ¿por qué se fue acumulando? | la pregunta es: **¿es "
+      "válida la solución que se adoptó, y sus parámetros?** |")
+    A("")
+    A("⚠️ **Sobre la palabra «refactorización».** Se usa porque existe un "
+      "documento que se declara a sí mismo proceso de refactorización del "
+      "Gold Master y prescribe los cambios. **La fuente de esa clasificación "
+      "es ese documento, no el incremento de hojas** — el salto de 58 a 72 "
+      "es sólo consistente con ella.")
+    A("")
+    A("### `P6` merece expediente propio, y no cabe en `010`")
+    A("")
+    A("`P6` es una cuestión de **identidad de artefactos**, no de "
+      "transferibilidad LATAM. Meterla en `010` mezclaría dos problemas sin "
+      "relación. Si se cierra, se cierra construyendo un **grafo de "
+      "correspondencia de versiones**:")
+    A("")
+    A("```")
+    A("  archivo → hash → fecha → versión declarada → estructura →")
+    A("            fórmula → sucesor / progenitor probable")
+    A("```")
+    A("")
+    A("con estados `1:1 DEMOSTRADO` · `CORRESPONDENCIA PROBABLE` · "
+      "`RAMIFICACIÓN` · `DUPLICADO POR CONTENIDO` · `NO DETERMINABLE` — la "
+      "misma taxonomía de `011-B`, que aparece por tercera vez.")
+    A("")
+    A("**No bloquea a `C4`** mientras no afecte a una conclusión "
+      "metodológica.")
     A("")
 
     A("---")
