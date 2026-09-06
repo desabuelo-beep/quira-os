@@ -46,7 +46,7 @@ Javo: *«tenemos la tesis, y todo el constructo metodológico allí claro […] 
 | **T3-R** · Refactor de arquitectura de dominios | ¿la estructura de dominios representa lo que QUIRA sabe hoy? | TF · T3 | R0 y R1 sí · R2 espera a 011 |
 | **2ING** · Segunda ingeniería · curación dominio a dominio | ¿cada dominio está curado de la fuente a la UI, por las 7 capas? | — | sí · y alimenta a TF y a T3-R |
 | **DEUDA** · Registro de deudas con ataque | ¿qué sabemos que está mal y aún no se ha corregido? | — | sí · cada una a su ritmo |
-| **QNEXT** · Rearquitectura integral · fondo y forma | ¿cómo evoluciona el ecosistema entero sin dañar lo que es válido? | 011-C4 para EJECUTAR | Q0 ✅ · Q1 sí · Q3 espera al dictamen |
+| **REARQ** · Rearquitectura integral · fondo y forma | ¿cómo evoluciona el ecosistema entero sin dañar lo que es válido? | 011-C4 para EJECUTAR | Q0 ✅ · Q1 sí · Q3 espera al dictamen |
 
 ## ★ Para qué sirve todo esto — el encuadre, fijado el 2026-09-05
 
@@ -115,8 +115,8 @@ Hay una parte del constructo que **no puede rediseñarse libremente**, y convien
   EN PARALELO — nada de esto se bloquea entre sí
   ├── GM-Ω 008-R resolver las 40 ambiguas · 66↔25  ← desbloquea v2
   ├── GM-Ω 011-A2 declarar la unidad `i` en el canon
-  ├── QNEXT BM-01 corpus normativo: vigencia · clase · norma↔instrumento
-  ├── QNEXT Q1   matriz de clasificación · candidato → ratificado
+  ├── REARQ BM-01 corpus normativo: vigencia · clase · norma↔instrumento
+  ├── REARQ Q1   matriz de clasificación · candidato → ratificado
   ├── T3-R R0    diagnóstico de los 13 dominios  ← desbloquea Q2
   ├── T3-R R1    modelos A · B · C de arquitectura de dominios
   ├── 2ING d07   curación de Transparencia
@@ -127,10 +127,24 @@ Hay una parte del constructo que **no puede rediseñarse libremente**, y convien
   ├── T3-R R2    residencia y ámbito de los índices
   ├── TF   T5    presentación dentro del dominio
   ├── TF   T6    conservar / renombrar / deprecar / eliminar
-  └── QNEXT Q3   ejecución del refactor integral · fondo y forma
+  └── REARQ Q3   ejecución del refactor integral · fondo y forma
 ```
 
-⚠️ **El refactor integral (`QNEXT`) no es un frente que se abra después de `GM-Ω`: es el destino que le da sentido.** Su plan —la carta `Q0`— ya está, y `Q1` puede correr hoy porque **clasificar no es cambiar**. Lo que espera al dictamen es la EJECUCIÓN. Detalle: `QUIRA-NEXT_CARTA_REARQUITECTURA.md`.
+### 📜 Cambio de nombre · `QNEXT` → `REARQ` (2026-09-06)
+
+Javo: *«podemos trabajar con nombres en español, no en inglés»*. El frente pasa de `QUIRA-NEXT` a **`REARQ` · Rearquitectura**.
+
+| | |
+|---|---|
+| basónimo anterior | `QNEXT` · `QUIRA-NEXT` |
+| identificador vigente | `REARQ` |
+| nombre de presentación | **Rearquitectura** |
+
+⚠️ **Se declara la correspondencia porque `DOC-015` lo exige**, aunque el coste sea cero: el nombre tenía horas de vida y ningún artefacto externo dependía de él. La regla no se aplica sólo cuando es cara.
+
+Y **no se tocaron** `Gold Master` (1506 usos · canónico por `Regla de Oro 1`), ni `snapshot`, `hash`, `gate`, `provenance` o `baseline` —técnicos, mayoría en código—. `dashboard` y `frontend` se traducen al curar cada dominio, no en un barrido: es la lección de «auditoría».
+
+⚠️ **El refactor integral (`REARQ`) no es un frente que se abra después de `GM-Ω`: es el destino que le da sentido.** Su plan —la carta `Q0`— ya está, y `Q1` puede correr hoy porque **clasificar no es cambiar**. Lo que espera al dictamen es la EJECUCIÓN. Detalle: `CARTA_REARQUITECTURA_QUIRA.md`.
 
 ⚠️ **Por qué `010` va DESPUÉS de `C3` y no antes.** Esta dirección proponía adelantarla —la transferibilidad también alimenta al dictamen—. El criterio que prevaleció es el del colega y es mejor: **mientras no se sepa qué significan `E_i` y `C_i`, todo análisis se hace sobre variables cuya ontología seguimos reconstruyendo**. `011-C2` lo demostró en el acto: la semántica que se daba por buena era falsa.
 
@@ -171,16 +185,16 @@ Y **`T6` espera a `011` por la misma razón**: deprecar `AVEP` o migrar el nombr
 | TF | `T4` | Rol de cada indicador | 🔄 | sin inventar: sólo con fuente |
 | TF | `T5` | Presentación dentro de su dominio | ⛔ | T3 · T4 |
 | TF | `T6` | Acción: conservar / renombrar / deprecar / eliminar | ⛔ | 011 · T5 |
-| QNEXT | `Q0` | Carta de rearquitectura v2 · el plan del refactor integral | ✅ | ★ 4 bases medulares · 5 categorías · 10 ejes · 4 inventarios separados · DOC-029 regla maestra · NO ejecuta |
-| QNEXT | `BM-01` | Corpus normativo · vigencia, clase y separación norma↔instrumento | ⬜ | 🔴 13.147 chunks SIN columna de vigencia · document_class vacía en 81 % · norma e instrumentos de gestión en la misma tabla |
-| QNEXT | `BM-05` | Memoria histórica de diseño · 898 archivos + 71 versiones únicas del motor | ✅ | ★ inventariada · la serie fechó el cambio de `C_i` · pendiente el resto del corpus (121 .md · 80 .txt de fórmulas) |
+| REARQ | `Q0` | Carta de rearquitectura v2 · el plan del refactor integral | ✅ | ★ 4 bases medulares · 5 categorías · 10 ejes · 4 inventarios separados · DOC-029 regla maestra · NO ejecuta |
+| REARQ | `BM-01` | Corpus normativo · vigencia, clase y separación norma↔instrumento | ⬜ | 🔴 13.147 chunks SIN columna de vigencia · document_class vacía en 81 % · norma e instrumentos de gestión en la misma tabla |
+| REARQ | `BM-05` | Memoria histórica de diseño · 898 archivos + 71 versiones únicas del motor | ✅ | ★ inventariada · la serie fechó el cambio de `C_i` · pendiente el resto del corpus (121 .md · 80 .txt de fórmulas) |
 | GM-Ω | `011-C3R` | Serie temporal del motor + Fase 3 documental · sensibilidad de las conclusiones de C3 | ✅ | ★ CERRADO · 25→29-abr en UN acto · `E-CRIT-04` declara el PORQUÉ del constructo · parámetros sin fundamento cuantitativo = 3 decisiones ABIERTAS para C4 |
 | GM-Ω | `011-P6` | Grafo de correspondencia de versiones · identidad de artefactos | ⬜ | 3 esquemas sin reconciliar · NO bloquea a C4 · no cabe en 010: es identidad, no transferibilidad |
-| QNEXT | `Q1` | Matriz de clasificación · candidato → ratificado | ⬜ | no espera al dictamen: clasificar no es cambiar · primer test = migración semántica de «auditoría» |
-| QNEXT | `Q2` | Dashboards y narrativa por dominio · visual→analítica→explicación | ⛔ | R0 — no 011: depende de saber qué pregunta cada dominio |
-| QNEXT | `ADR-D` | Declarar las 5 decisiones · ADR-054 a ADR-058 | ✅ | ★ SELLADOS por Javo 2026-09-06 · D2 adopta la lectura A: el ICPI mide CONGRUENCIA ACREDITADA · el sello no convierte NO DETERMINABLE en DEMOSTRADO |
-| QNEXT | `Q-M0` | Matriz ontológico-arquitectónica · ficha por indicador | ⬜ | ★ el PRIMER artefacto de QUIRA-NEXT · no una fórmula nueva · incluye «qué afirmación permite y cuál NO permite» el indicador |
-| QNEXT | `Q3` | Ejecución del refactor · fondo y forma | ⛔ | Q2 · Q1 · R0/R1 — ⚠️ QUIRA-NEXT autorizado SÓLO para diseño conceptual y arquitectónico |
+| REARQ | `Q1` | Matriz de clasificación · candidato → ratificado | ⬜ | no espera al dictamen: clasificar no es cambiar · primer test = migración semántica de «auditoría» |
+| REARQ | `Q2` | Dashboards y narrativa por dominio · visual→analítica→explicación | ⛔ | R0 — no 011: depende de saber qué pregunta cada dominio |
+| REARQ | `ADR-D` | Declarar las 5 decisiones · ADR-054 a ADR-058 | ✅ | ★ SELLADOS por Javo 2026-09-06 · D2 adopta la lectura A: el ICPI mide CONGRUENCIA ACREDITADA · el sello no convierte NO DETERMINABLE en DEMOSTRADO |
+| REARQ | `Q-M0` | Matriz ontológico-arquitectónica · ficha por indicador | ⬜ | ★ el PRIMER artefacto de la REARQUITECTURA · no una fórmula nueva · incluye «qué afirmación permite y cuál NO permite» el indicador |
+| REARQ | `Q3` | Ejecución del refactor · fondo y forma | ⛔ | Q2 · Q1 · R0/R1 — ⚠️ la REARQUITECTURA autorizada SÓLO para diseño conceptual y arquitectónico |
 | T3-R | `R0` | Diagnóstico de los 13 dominios | ⬜ |  |
 | T3-R | `R1` | Modelos A · B · C de arquitectura | ⬜ |  |
 | T3-R | `R2` | Decisión: residencia y ámbito de los índices | ⛔ | 011 |
@@ -201,8 +215,8 @@ Y **`T6` espera a `011` por la misma razón**: deprecar `AVEP` o migrar el nombr
 | Deudas declaradas | 14 |
 | Deudas resueltas | 6 |
 | Deudas abiertas | **8** |
-| Reglas de doctrina con custodio | 31 |
-| Pruebas que las fijan | 482 |
+| Reglas de doctrina con custodio | 32 |
+| Pruebas que las fijan | 483 |
 | Documentos GM-Ω | 15 |
 
 ### Deudas abiertas

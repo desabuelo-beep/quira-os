@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-scripts/gm_omega/carta_rearquitectura.py — QUIRA-NEXT · CARTA v2
+scripts/gm_omega/carta_rearquitectura.py — REARQUITECTURA · CARTA v2
 
     El refactor es INTEGRAL, de fondo y forma, sobre todo el ecosistema. Y por
     eso mismo necesita plan antes que ejecución.
@@ -41,7 +41,7 @@ sys.path.insert(0, str(_RAIZ))
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
-_SALIDA = _RAIZ / "docs" / "architecture" / "QUIRA-NEXT_CARTA_REARQUITECTURA.md"
+_SALIDA = _RAIZ / "docs" / "architecture" / "CARTA_REARQUITECTURA_QUIRA.md"
 
 # ── REGLA DE CONTEO ───────────────────────────────────────────────────────
 #
@@ -309,7 +309,7 @@ def _escribir(fis, total_fis, nor, his, inv_id) -> None:
     A = o.append
     ND = "⬜ **NO DETERMINABLE** · sin conexión a Supabase al generar"
 
-    A("# QUIRA-NEXT · CARTA DE REARQUITECTURA  `v2`")
+    A("# REARQUITECTURA · CARTA DE REARQUITECTURA  `v2`")
     A("")
     A("**DERIVADO — no editar a mano.** Lo regenera "
       "`scripts/gm_omega/carta_rearquitectura.py`.")
@@ -1020,7 +1020,7 @@ def _escribir(fis, total_fis, nor, his, inv_id) -> None:
       "**justificación** — y el diseño como **decisión presente**.")
     A("")
     A("---")
-    A(f"*QUIRA-NEXT · Carta de Rearquitectura `v2` · {inv_id} · commit "
+    A(f"*REARQUITECTURA · Carta de Rearquitectura `v2` · {inv_id} · commit "
       f"`{_commit()}` · el Gold Master no se modificó · baseline 27,4582 % "
       f"congelado · Dylus Lab © 2026*")
 

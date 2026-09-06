@@ -131,7 +131,7 @@ Se revisa si ocurre **cualquiera** de estas cosas:
    de acreditación y pasaría a ser uno de agregación.
 2. `011-A2` declara la unidad y la correspondencia `011-B` cambia el universo.
 3. Se adopta el universo completo de 66 metas (`v2`).
-4. `QUIRA-NEXT` decide extraer la verificabilidad a una dimensión propia (ver `ADR-055 §10`).
+4. `REARQUITECTURA` decide extraer la verificabilidad a una dimensión propia (ver `ADR-055 §10`).
 
 ---
 
@@ -139,7 +139,7 @@ Se revisa si ocurre **cualquiera** de estas cosas:
 
 > **La multiplicatividad permanece como decisión ACTUALMENTE IMPLEMENTADA. `011-C4` no demuestra
 > que sea incorrecta ni que sea necesaria. Su eventual conservación requiere una declaración
-> metodológica explícita, y queda ABIERTA A EVALUACIÓN en `QUIRA-NEXT`.**
+> metodológica explícita, y queda ABIERTA A EVALUACIÓN en `REARQUITECTURA`.**
 
 ### ⚠️ Por qué esta formulación y no la anterior
 

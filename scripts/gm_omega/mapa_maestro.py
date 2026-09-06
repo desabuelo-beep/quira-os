@@ -52,7 +52,7 @@ _FRENTES = [
     ("DEUDA", "Registro de deudas con ataque",
      "¿qué sabemos que está mal y aún no se ha corregido?",
      "—", "sí · cada una a su ritmo"),
-    ("QNEXT", "Rearquitectura integral · fondo y forma",
+    ("REARQ", "Rearquitectura integral · fondo y forma",
      "¿cómo evoluciona el ecosistema entero sin dañar lo que es válido?",
      "011-C4 para EJECUTAR", "Q0 ✅ · Q1 sí · Q3 espera al dictamen"),
 ]
@@ -112,14 +112,14 @@ _ETAPAS = [
     ("TF", "T6", "Acción: conservar / renombrar / deprecar / eliminar", _BLOQ,
      "011 · T5"),
 
-    ("QNEXT", "Q0", "Carta de rearquitectura v2 · el plan del refactor integral",
+    ("REARQ", "Q0", "Carta de rearquitectura v2 · el plan del refactor integral",
      _HECHO, "★ 4 bases medulares · 5 categorías · 10 ejes · 4 inventarios "
              "separados · DOC-029 regla maestra · NO ejecuta"),
-    ("QNEXT", "BM-01", "Corpus normativo · vigencia, clase y separación "
+    ("REARQ", "BM-01", "Corpus normativo · vigencia, clase y separación "
                        "norma↔instrumento", _ABIERTO,
      "🔴 13.147 chunks SIN columna de vigencia · document_class vacía en 81 % "
      "· norma e instrumentos de gestión en la misma tabla"),
-    ("QNEXT", "BM-05", "Memoria histórica de diseño · 898 archivos + 71 "
+    ("REARQ", "BM-05", "Memoria histórica de diseño · 898 archivos + 71 "
                        "versiones únicas del motor", _HECHO,
      "★ inventariada · la serie fechó el cambio de `C_i` · pendiente el resto "
      "del corpus (121 .md · 80 .txt de fórmulas)"),
@@ -132,21 +132,21 @@ _ETAPAS = [
                        "artefactos", _ABIERTO,
      "3 esquemas sin reconciliar · NO bloquea a C4 · no cabe en 010: es "
      "identidad, no transferibilidad"),
-    ("QNEXT", "Q1", "Matriz de clasificación · candidato → ratificado",
+    ("REARQ", "Q1", "Matriz de clasificación · candidato → ratificado",
      _ABIERTO, "no espera al dictamen: clasificar no es cambiar · primer test "
                "= migración semántica de «auditoría»"),
-    ("QNEXT", "Q2", "Dashboards y narrativa por dominio · visual→analítica→"
+    ("REARQ", "Q2", "Dashboards y narrativa por dominio · visual→analítica→"
                     "explicación", _BLOQ, "R0 — no 011: depende de saber qué "
                                           "pregunta cada dominio"),
-    ("QNEXT", "ADR-D", "Declarar las 5 decisiones · ADR-054 a ADR-058",
+    ("REARQ", "ADR-D", "Declarar las 5 decisiones · ADR-054 a ADR-058",
      _HECHO, "★ SELLADOS por Javo 2026-09-06 · D2 adopta la lectura A: el "
              "ICPI mide CONGRUENCIA ACREDITADA · el sello no convierte NO "
              "DETERMINABLE en DEMOSTRADO"),
-    ("QNEXT", "Q-M0", "Matriz ontológico-arquitectónica · ficha por indicador",
-     _ABIERTO, "★ el PRIMER artefacto de QUIRA-NEXT · no una fórmula nueva · "
+    ("REARQ", "Q-M0", "Matriz ontológico-arquitectónica · ficha por indicador",
+     _ABIERTO, "★ el PRIMER artefacto de la REARQUITECTURA · no una fórmula nueva · "
                "incluye «qué afirmación permite y cuál NO permite» el indicador"),
-    ("QNEXT", "Q3", "Ejecución del refactor · fondo y forma", _BLOQ,
-     "Q2 · Q1 · R0/R1 — ⚠️ QUIRA-NEXT autorizado SÓLO para diseño conceptual "
+    ("REARQ", "Q3", "Ejecución del refactor · fondo y forma", _BLOQ,
+     "Q2 · Q1 · R0/R1 — ⚠️ la REARQUITECTURA autorizada SÓLO para diseño conceptual "
      "y arquitectónico"),
 
     ("T3-R", "R0", "Diagnóstico de los 13 dominios", _ABIERTO, ""),
@@ -375,8 +375,8 @@ def _escribir(deu, docs, n_doc, n_test, hechas) -> None:
     A("  EN PARALELO — nada de esto se bloquea entre sí")
     A("  ├── GM-Ω 008-R resolver las 40 ambiguas · 66↔25  ← desbloquea v2")
     A("  ├── GM-Ω 011-A2 declarar la unidad `i` en el canon")
-    A("  ├── QNEXT BM-01 corpus normativo: vigencia · clase · norma↔instrumento")
-    A("  ├── QNEXT Q1   matriz de clasificación · candidato → ratificado")
+    A("  ├── REARQ BM-01 corpus normativo: vigencia · clase · norma↔instrumento")
+    A("  ├── REARQ Q1   matriz de clasificación · candidato → ratificado")
     A("  ├── T3-R R0    diagnóstico de los 13 dominios  ← desbloquea Q2")
     A("  ├── T3-R R1    modelos A · B · C de arquitectura de dominios")
     A("  ├── 2ING d07   curación de Transparencia")
@@ -387,14 +387,34 @@ def _escribir(deu, docs, n_doc, n_test, hechas) -> None:
     A("  ├── T3-R R2    residencia y ámbito de los índices")
     A("  ├── TF   T5    presentación dentro del dominio")
     A("  ├── TF   T6    conservar / renombrar / deprecar / eliminar")
-    A("  └── QNEXT Q3   ejecución del refactor integral · fondo y forma")
+    A("  └── REARQ Q3   ejecución del refactor integral · fondo y forma")
     A("```")
     A("")
-    A("⚠️ **El refactor integral (`QNEXT`) no es un frente que se abra después "
+    A("### 📜 Cambio de nombre · `QNEXT` → `REARQ` (2026-09-06)")
+    A("")
+    A("Javo: *«podemos trabajar con nombres en español, no en inglés»*. El "
+      "frente pasa de `QUIRA-NEXT` a **`REARQ` · Rearquitectura**.")
+    A("")
+    A("| | |")
+    A("|---|---|")
+    A("| basónimo anterior | `QNEXT` · `QUIRA-NEXT` |")
+    A("| identificador vigente | `REARQ` |")
+    A("| nombre de presentación | **Rearquitectura** |")
+    A("")
+    A("⚠️ **Se declara la correspondencia porque `DOC-015` lo exige**, aunque "
+      "el coste sea cero: el nombre tenía horas de vida y ningún artefacto "
+      "externo dependía de él. La regla no se aplica sólo cuando es cara.")
+    A("")
+    A("Y **no se tocaron** `Gold Master` (1506 usos · canónico por `Regla de "
+      "Oro 1`), ni `snapshot`, `hash`, `gate`, `provenance` o `baseline` "
+      "—técnicos, mayoría en código—. `dashboard` y `frontend` se traducen al "
+      "curar cada dominio, no en un barrido: es la lección de «auditoría».")
+    A("")
+    A("⚠️ **El refactor integral (`REARQ`) no es un frente que se abra después "
       "de `GM-Ω`: es el destino que le da sentido.** Su plan —la carta `Q0`— "
       "ya está, y `Q1` puede correr hoy porque **clasificar no es cambiar**. "
       "Lo que espera al dictamen es la EJECUCIÓN. Detalle: "
-      "`QUIRA-NEXT_CARTA_REARQUITECTURA.md`.")
+      "`CARTA_REARQUITECTURA_QUIRA.md`.")
     A("")
     A("⚠️ **Por qué `010` va DESPUÉS de `C3` y no antes.** Esta dirección "
       "proponía adelantarla —la transferibilidad también alimenta al "

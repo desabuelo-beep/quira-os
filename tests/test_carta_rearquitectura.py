@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-tests/test_carta_rearquitectura.py — QUIRA-NEXT · el plan del refactor integral
+tests/test_carta_rearquitectura.py — REARQUITECTURA · el plan del refactor integral
 ════════════════════════════════════════════════════════════════════════════════
 Javo pidió un refactor **integral de fondo y forma de todo el ecosistema**, y
 antes de cualquier ejecución pidió lo correcto:
@@ -31,7 +31,7 @@ RAIZ = Path(__file__).resolve().parents[1]
 if str(RAIZ) not in sys.path:
     sys.path.insert(0, str(RAIZ))
 
-_CARTA = RAIZ / "docs" / "architecture" / "QUIRA-NEXT_CARTA_REARQUITECTURA.md"
+_CARTA = RAIZ / "docs" / "architecture" / "CARTA_REARQUITECTURA_QUIRA.md"
 _SCRIPT = RAIZ / "scripts" / "gm_omega" / "carta_rearquitectura.py"
 
 

@@ -381,12 +381,12 @@ def test_D1_no_conserva_por_ausencia_de_refutacion():
     assert "Conservar provisionalmente ≠ aprobar metodológicamente" in txt, (
         "desapareció la distinción que impide leer el silencio de la "
         "evidencia como un aval")
-    assert "ABIERTA A EVALUACIÓN en `QUIRA-NEXT`" in txt, (
+    assert "ABIERTA A EVALUACIÓN en `REARQUITECTURA`" in txt, (
         "D1 dejó de declarar dónde se resuelve. Una decisión abierta sin "
         "destino se convierte en una decisión tomada por omisión")
 
 
-def test_D4_queda_marcada_para_QUIRA_NEXT():
+def test_D4_queda_marcada_para_REARQUITECTURA():
     """`D4` es probablemente la que más trabajo requiera — **no porque `0,50`
     esté mal**, sino porque todavía no se sabe qué afirmación representa.
 
@@ -402,7 +402,7 @@ def test_D4_queda_marcada_para_QUIRA_NEXT():
     define cuánto debe descontar**, ni establece un tope. El `0,50` introduce
     una relación cuantitativa que no está en ellas."""
     txt = (_ADR / _LOS_CINCO["D4"]).read_text(encoding="utf-8")
-    assert "Marcado para `QUIRA-NEXT`" in txt, (
+    assert "Marcado para `REARQUITECTURA`" in txt, (
         "D4 dejó de marcarse como la decisión que más trabajo requiere")
     assert "No porque sepamos que `0,50` está mal" in txt, (
         "se perdió el matiz: se marca por desconocimiento del fundamento, no "

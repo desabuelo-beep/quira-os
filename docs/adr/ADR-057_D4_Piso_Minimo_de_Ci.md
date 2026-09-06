@@ -12,7 +12,7 @@ decision_gm_omega: D4
 > ## 🔏 SELLO · 2026-09-06
 >
 > **Se mantiene PROVISIONALMENTE el piso `C_i ≥ 0,50`, SIN afirmar que esté teóricamente
-> fundamentado, y queda MANDATADO PARA REVISIÓN en `QUIRA-NEXT`.**
+> fundamentado, y queda MANDATADO PARA REVISIÓN en `REARQUITECTURA`.**
 >
 > El sello **no convierte un `NO DETERMINABLE` en `DEMOSTRADO`**. La tesis sustantiva que el piso
 > sostiene —que ninguna cantidad de infracciones puede destruir completamente la contribución de
@@ -166,7 +166,7 @@ en ninguna superficie.
 > **`D4` · FUNDAMENTO NO DETERMINADO · LATENTE · Y SOSTIENE UNA TESIS SUSTANTIVA SOBRE LA
 > RELACIÓN INFRACCIÓN ↔ DESEMPEÑO QUE REQUIERE FUNDAMENTO PROPIO.**
 
-## ★ Marcado para `QUIRA-NEXT` · probablemente la que más trabajo requiera
+## ★ Marcado para `REARQUITECTURA` · probablemente la que más trabajo requiera
 
 ⚠️ **No porque sepamos que `0,50` está mal.** Precisamente porque **todavía no sabemos qué
 afirmación sustantiva representa**.

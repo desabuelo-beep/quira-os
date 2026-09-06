@@ -660,7 +660,7 @@ def _secciones_medidas(m, o) -> None:
     A("|---|---|")
     A("| **Corregir la capa de publicación** | `D-011`, ya abierta |")
     A("| **Declarar el objeto de `AVEP`** | desbloquea `D5` y `D-012` |")
-    A("| **Ontología FONDO / FORMA** | `QUIRA-NEXT` |")
+    A("| **Ontología FONDO / FORMA** | `REARQUITECTURA` |")
     A("")
     # ── La frontera ───────────────────────────────────────────────────────
     A("## ★ La frontera · dónde termina `GM-Ω` y empieza la construcción")
@@ -671,7 +671,7 @@ def _secciones_medidas(m, o) -> None:
     A("  C4            suficiencia metodológica NO DEMOSTRADA")
     A("  Gold Master   CONGELADO")
     A("  baseline      27,4582 % CONGELADO")
-    A("  QUIRA-NEXT    autorizado para DISEÑO · no para ejecución todavía")
+    A("  REARQUITECTURA    autorizado para DISEÑO · no para ejecución todavía")
     A("```")
     A("")
     A("Y el orden de la construcción, que invierte el hábito de empezar por "
@@ -704,7 +704,7 @@ def _secciones_medidas(m, o) -> None:
     A("| Etapa | Pregunta |")
     A("|---|---|")
     A("| `GM-Ω` | ¿qué construimos, y cómo llegó a ser lo que es? |")
-    A("| **`QUIRA-NEXT`** | **¿qué debe ser QUIRA para responder "
+    A("| **`REARQUITECTURA`** | **¿qué debe ser QUIRA para responder "
       "correctamente a aquello que queremos conocer sobre la gestión "
       "pública?** |")
     A("")

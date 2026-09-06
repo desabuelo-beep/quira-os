@@ -164,7 +164,7 @@ una ambigüedad semántica fundamental — nada más, y nada menos. La validez s
 1. **Inmediata**: el sistema declara `A` o `B`. Declarar `A` **cierra esta decisión sin tocar el
    álgebra** — es la vía recomendada.
 2. Si se declara `B`, la anulación debe rediseñarse: sería una inferencia prohibida.
-3. `QUIRA-NEXT` responde la pregunta que este ADR deja abierta y **no resuelve**:
+3. `REARQUITECTURA` responde la pregunta que este ADR deja abierta y **no resuelve**:
 
 > ¿Debe `V_i` estar **embebida multiplicativamente** en un único ICPI, o existir **además** como
 > una medida explícita e independiente de **acreditabilidad**?

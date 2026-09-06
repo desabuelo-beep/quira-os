@@ -321,7 +321,7 @@ Y cada `ADR` debe contener **los diez campos**, o se convierte en una justificac
 |---|---|
 | **Corregir la capa de publicación** | `D-011`, ya abierta |
 | **Declarar el objeto de `AVEP`** | desbloquea `D5` y `D-012` |
-| **Ontología FONDO / FORMA** | `QUIRA-NEXT` |
+| **Ontología FONDO / FORMA** | `REARQUITECTURA` |
 
 ## ★ La frontera · dónde termina `GM-Ω` y empieza la construcción
 
@@ -331,7 +331,7 @@ Y cada `ADR` debe contener **los diez campos**, o se convierte en una justificac
   C4            suficiencia metodológica NO DEMOSTRADA
   Gold Master   CONGELADO
   baseline      27,4582 % CONGELADO
-  QUIRA-NEXT    autorizado para DISEÑO · no para ejecución todavía
+  REARQUITECTURA    autorizado para DISEÑO · no para ejecución todavía
 ```
 
 Y el orden de la construcción, que invierte el hábito de empezar por la fórmula:
@@ -360,7 +360,7 @@ Y las tres cosas que hoy son ciertas **a la vez**, sin contradicción:
 | Etapa | Pregunta |
 |---|---|
 | `GM-Ω` | ¿qué construimos, y cómo llegó a ser lo que es? |
-| **`QUIRA-NEXT`** | **¿qué debe ser QUIRA para responder correctamente a aquello que queremos conocer sobre la gestión pública?** |
+| **`REARQUITECTURA`** | **¿qué debe ser QUIRA para responder correctamente a aquello que queremos conocer sobre la gestión pública?** |
 
 > **La historia ya hizo su trabajo. Ahora no debemos pedirle que diseñe el futuro de QUIRA.**
 

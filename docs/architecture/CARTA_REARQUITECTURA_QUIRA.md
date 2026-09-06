@@ -1,11 +1,11 @@
-# QUIRA-NEXT · CARTA DE REARQUITECTURA  `v2`
+# REARQUITECTURA · CARTA DE REARQUITECTURA  `v2`
 
 **DERIVADO — no editar a mano.** Lo regenera `scripts/gm_omega/carta_rearquitectura.py`.
 
 ```
-  INVENTARIO_ID : QNEXT-INV-2026-09-05
-  COMMIT        : 0ae8262
-  GENERATED_AT  : 2026-09-05T23:30:48+00:00
+  INVENTARIO_ID : QNEXT-INV-2026-09-06
+  COMMIT        : 68187e6
+  GENERATED_AT  : 2026-09-06T12:17:53+00:00
 ```
 
 > Sin esta estampilla, «412 documentos» es una **afirmación flotante**. Con ella es una **observación reproducible de un estado concreto del repositorio** — y explica sola por qué la v1 dijo 411 y esta dice otra cifra: el propio acto de escribir la carta añadió archivos.
@@ -145,24 +145,24 @@ La jerarquía normativa formal **no está poblada** para la gran mayoría del co
 
 | Artefactos | Raíz · patrón | Cuenta |
 |---|---|---:|
-| documentos de canon | `docs/**/*.md` | **413** |
-|   ↳ de los cuales, `ADR` | `docs/adr` | *44* |
+| documentos de canon | `docs/**/*.md` | **420** |
+|   ↳ de los cuales, `ADR` | `docs/adr` | *49* |
 |   ↳ de los cuales, `PCD` | `docs/pcd` | *7* |
 | reglas de negocio | `docs/brn/*.yaml` | **30** |
 | gobernanza | `governance/**/*.md` | **23** |
 | marco teórico | `marco_teorico/*.md` | **3** |
 | módulos de aplicación | `app/**/*.py` | **104** |
 | páginas de interfaz | `quira_pages/*.py` | **61** |
-| scripts | `scripts/**/*.py` | **176** |
-| pruebas | `tests/test_*.py` | **47** |
-| snapshots de datos | `data/**/*.json` | **472** |
-| | **TOTAL FÍSICO (suma de las filas en negrita)** | **1329** |
+| scripts | `scripts/**/*.py` | **178** |
+| pruebas | `tests/test_*.py` | **51** |
+| snapshots de datos | `data/**/*.json` | **485** |
+| | **TOTAL FÍSICO (suma de las filas en negrita)** | **1355** |
 
 ### ② Inventario DOCUMENTAL · el canon
 
 | | Cuenta |
 |---|---:|
-| `ADR` | 44 |
+| `ADR` | 49 |
 | `PCD` | 7 |
 | doctrina con verificador | 28 |
 | deudas registradas | 14 |
@@ -548,4 +548,4 @@ En el esquema se ve por qué: **`IED` no pertenece a ningún dominio sectorial**
 > `GM-Ω` no existe para legitimar el pasado ni para destruirlo, sino para **ponerlo en su lugar**: el pasado como **linaje**, la norma como **restricción**, la evidencia como **fundamento**, la teoría como **justificación** — y el diseño como **decisión presente**.
 
 ---
-*QUIRA-NEXT · Carta de Rearquitectura `v2` · QNEXT-INV-2026-09-05 · commit `0ae8262` · el Gold Master no se modificó · baseline 27,4582 % congelado · Dylus Lab © 2026*
+*REARQUITECTURA · Carta de Rearquitectura `v2` · QNEXT-INV-2026-09-06 · commit `68187e6` · el Gold Master no se modificó · baseline 27,4582 % congelado · Dylus Lab © 2026*

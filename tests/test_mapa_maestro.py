@@ -112,6 +112,41 @@ def test_la_genealogia_habilita_a_decidir_no_obliga_a_repetir():
         "decidir, no a rellenar el hueco con una razón fabricada")
 
 
+def test_el_frente_se_nombra_en_espanol_con_su_basonimo():
+    """★ `DOC-032` · el ecosistema se nombra en español fuera del código.
+
+    Javo: *«podemos trabajar con nombres en español, no en inglés; lo que es
+    código como es con sus cosas del inglés, pero fuera de ello en español»*.
+
+    Al medirlo, los números impusieron el método:
+
+        Gold Master   1506 usos   ⚖️ canónico · Regla de Oro 1 · vive en el Excel
+        snapshot/hash/gate/…      🔧 técnicos · mayoría en código
+        dashboard/frontend  393   🔵 presentación · se traducen al curar cada dominio
+        QUIRA-NEXT     29 usos    ✅ reciente y propio · se cambia ahora
+
+    ⚠️ NO SE HIZO POR BARRIDO. Traducir `Gold Master` habría roto la
+    trazabilidad que el sistema entero sostiene — es exactamente la lección de
+    «auditoría», donde un reemplazo sin clasificar habría borrado artículos de
+    ley.
+
+    Y la correspondencia se declara aunque el coste fuera cero: `DOC-015` no
+    se aplica sólo cuando es cara."""
+    txt = _MAPA.read_text(encoding="utf-8")
+    assert "Cambio de nombre · `QNEXT` → `REARQ`" in txt, (
+        "desapareció el registro del cambio de nombre. Un identificador que "
+        "cambia sin dejar rastro rompe la trazabilidad que DOC-015 protege")
+    assert "basónimo anterior" in txt, (
+        "se perdió la declaración del basónimo. Sin ella, quien lea `QNEXT` "
+        "en un commit antiguo no sabrá que es el mismo frente")
+    assert "no se tocaron" in txt.lower() and "Gold Master" in txt, (
+        "desapareció qué NO se tradujo y por qué. Sin esa lista, el próximo "
+        "renombrado se hace por barrido")
+    assert "no en un barrido" in txt, (
+        "se perdió el método: clasificar antes de tocar, también con el "
+        "idioma")
+
+
 def test_la_ruta_al_dictamen_no_pierde_lo_que_pospone():
     """La secuencia acordada el 2026-09-05 —`C2 → C3 → 010 → C4`— pospone dos
     etapas que `C4` sigue necesitando: `011-A2` (declarar la unidad `i` en el

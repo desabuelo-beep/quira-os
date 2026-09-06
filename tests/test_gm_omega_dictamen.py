@@ -222,7 +222,7 @@ def test_la_pregunta_de_Vi_queda_abierta_para_quira_next():
     diseñar la migración, y sólo entonces ejecutar."""
     txt = _DOC.read_text(encoding="utf-8")
     assert "medida explícita e independiente de **acreditabilidad**" in txt, (
-        "desapareció la pregunta que D2 deja preparada para QUIRA-NEXT")
+        "desapareció la pregunta que D2 deja preparada para REARQUITECTURA")
     assert "no se responde retrospectivamente aquí" in txt, (
         "C4 dejó de declarar que esa pregunta no le corresponde")
     assert "`V_i = 0` **no significa que el fenómeno no ocurrió**" in txt, (
@@ -230,10 +230,10 @@ def test_la_pregunta_de_Vi_queda_abierta_para_quira_next():
         "aportar congruencia ACREDITADA, no que el hecho no ocurriera")
 
 
-def test_la_frontera_declara_que_QUIRA_NEXT_no_ejecuta_todavia():
+def test_la_frontera_declara_que_REARQUITECTURA_no_ejecuta_todavia():
     """El cierre de `GM-Ω` y la apertura de la construcción.
 
-        QUIRA-NEXT — autorizado para DISEÑO, no para ejecución todavía.
+        REARQUITECTURA — autorizado para DISEÑO, no para ejecución todavía.
 
     Y el orden invierte el hábito de empezar por la fórmula: primero qué
     queremos conocer, después qué evidencia hace falta, después cómo

@@ -145,6 +145,26 @@ _DOCTRINA = (
          verificador="test_ninguna_regla_generadora_se_infiere_del_patron_de_sus_resultados",
          por_que_ahi="con 25 casos y tres valores posibles, cualquier hipótesis "
                      "encuentra algunos que la respaldan: encajar no es derivar"),
+    dict(id="DOC-032", custodia=GATE,
+         regla="El ecosistema se nombra EN ESPAÑOL fuera del código. Los "
+               "identificadores técnicos —variables, funciones, campos, "
+               "términos de arte con uso establecido (`hash`, `commit`, "
+               "`snapshot`)— y los NOMBRES CANÓNICOS con historia "
+               "(`Gold Master`) se conservan. ⚠️ Y el cambio se hace por "
+               "CLASIFICACIÓN, nunca por barrido: un reemplazo léxico masivo "
+               "no distingue el nombre canónico del anglicismo evitable",
+         fuente="Javo, 2026-09-06 —«podemos trabajar con nombres en español, "
+                "no en inglés; lo que es código como es con sus cosas del "
+                "inglés, pero fuera de ello en español»—",
+         verificador="test_el_frente_se_nombra_en_espanol_con_su_basonimo",
+         por_que_ahi="es `DOC-014` —nombre técnico ≠ nombre de presentación— "
+                     "aplicado al idioma. Al medirlo aparecieron 1506 usos de "
+                     "`Gold Master`, que es canónico por `Regla de Oro 1` y "
+                     "vive dentro del propio Excel: traducirlo rompería la "
+                     "trazabilidad que el sistema entero sostiene. Se cambió "
+                     "lo reciente y propio —`QUIRA-NEXT` → `REARQ`, 29 usos— "
+                     "y se declaró la correspondencia aunque el coste fuera "
+                     "cero, porque `DOC-015` no se aplica sólo cuando es cara"),
     dict(id="DOC-031", custodia=GATE,
          regla="REAPERTURA POR EVIDENCIA TARDÍA. Una conclusión cerrada puede "
                "reabrirse cuando aparece un corpus documental relevante que "
