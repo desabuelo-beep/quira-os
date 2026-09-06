@@ -193,7 +193,8 @@ Y **`T6` espera a `011` por la misma razón**: deprecar `AVEP` o migrar el nombr
 | REARQ | `Q1` | Matriz de clasificación · candidato → ratificado | ⬜ | no espera al dictamen: clasificar no es cambiar · primer test = migración semántica de «auditoría» |
 | REARQ | `Q2` | Dashboards y narrativa por dominio · visual→analítica→explicación | ⛔ | R0 — no 011: depende de saber qué pregunta cada dominio |
 | REARQ | `ADR-D` | Declarar las 5 decisiones · ADR-054 a ADR-058 | ✅ | ★ SELLADOS por Javo 2026-09-06 · D2 adopta la lectura A: el ICPI mide CONGRUENCIA ACREDITADA · el sello no convierte NO DETERMINABLE en DEMOSTRADO |
-| REARQ | `Q-M0` | Matriz ontológico-arquitectónica · ficha por indicador | ⬜ | ★ el PRIMER artefacto de la REARQUITECTURA · no una fórmula nueva · incluye «qué afirmación permite y cuál NO permite» el indicador |
+| REARQ | `Q-M0` | Matriz ontológico-arquitectónica · ficha por indicador | ✅ | ★ 12 indicadores × 20 campos · 71 % POR DECLARAR, y ése es el hallazgo · IFE≟IEF · IED sin dominio · IBSC hereda D1 · TGI evalúa al evaluador |
+| REARQ | `Q-M1` | ¿Qué preguntas necesita responder QUIRA sobre la gestión pública? | ⬜ | la pregunta que abre Q-M0 · los indicadores se ganan su lugar dentro de la respuesta, el ICPI incluido |
 | REARQ | `Q3` | Ejecución del refactor · fondo y forma | ⛔ | Q2 · Q1 · R0/R1 — ⚠️ la REARQUITECTURA autorizada SÓLO para diseño conceptual y arquitectónico |
 | T3-R | `R0` | Diagnóstico de los 13 dominios | ⬜ |  |
 | T3-R | `R1` | Modelos A · B · C de arquitectura | ⬜ |  |
@@ -206,7 +207,7 @@ Y **`T6` espera a `011` por la misma razón**: deprecar `AVEP` o migrar el nombr
 | 2ING | `d02·d03` | Presupuesto · Gobernanza del Mandato | ⬜ |  |
 | 2ING | `d04·d05·d10-d13` | Sellados · sin construir | ⬜ |  |
 
-**23 de 45 etapas cerradas.**
+**24 de 46 etapas cerradas.**
 
 ## Estado derivado de las fuentes vivas
 
@@ -216,7 +217,7 @@ Y **`T6` espera a `011` por la misma razón**: deprecar `AVEP` o migrar el nombr
 | Deudas resueltas | 6 |
 | Deudas abiertas | **8** |
 | Reglas de doctrina con custodio | 32 |
-| Pruebas que las fijan | 483 |
+| Pruebas que las fijan | 491 |
 | Documentos GM-Ω | 15 |
 
 ### Deudas abiertas
@@ -257,4 +258,4 @@ Y **`T6` espera a `011` por la misma razón**: deprecar `AVEP` o migrar el nombr
 3. **Este mapa se deriva.** El día que alguien lo edite a mano, dejará de reflejar el estado real sin que nada avise, y volveremos exactamente al punto que motivó escribirlo.
 
 ---
-*QUIRA · Mapa Maestro · 23/45 etapas cerradas · 8 deudas abiertas · Dylus Lab © 2026*
+*QUIRA · Mapa Maestro · 24/46 etapas cerradas · 8 deudas abiertas · Dylus Lab © 2026*

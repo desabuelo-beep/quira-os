@@ -143,8 +143,13 @@ _ETAPAS = [
              "ICPI mide CONGRUENCIA ACREDITADA · el sello no convierte NO "
              "DETERMINABLE en DEMOSTRADO"),
     ("REARQ", "Q-M0", "Matriz ontológico-arquitectónica · ficha por indicador",
-     _ABIERTO, "★ el PRIMER artefacto de la REARQUITECTURA · no una fórmula nueva · "
-               "incluye «qué afirmación permite y cuál NO permite» el indicador"),
+     _HECHO, "★ 12 indicadores × 20 campos · 71 % POR DECLARAR, y ése es el "
+             "hallazgo · IFE≟IEF · IED sin dominio · IBSC hereda D1 · TGI "
+             "evalúa al evaluador"),
+    ("REARQ", "Q-M1", "¿Qué preguntas necesita responder QUIRA sobre la "
+                      "gestión pública?", _ABIERTO,
+     "la pregunta que abre Q-M0 · los indicadores se ganan su lugar dentro "
+     "de la respuesta, el ICPI incluido"),
     ("REARQ", "Q3", "Ejecución del refactor · fondo y forma", _BLOQ,
      "Q2 · Q1 · R0/R1 — ⚠️ la REARQUITECTURA autorizada SÓLO para diseño conceptual "
      "y arquitectónico"),
