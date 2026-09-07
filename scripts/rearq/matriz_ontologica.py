@@ -81,15 +81,26 @@ _CAMPOS = [
 # matriz completa y falsa — el defecto que esta matriz existe para evitar.
 _FICHAS: dict[str, dict[str, str]] = {
 
+    # ⚠️ FICHA CORREGIDA CON EVIDENCIA. La v1 afirmó que `IBSC` «hereda entera
+    # la multiplicatividad del ICPI» y que «si `D1` se rediseña, `IBSC` cambia».
+    # El colega exigió demostrar la dependencia causal antes de afirmarla, y al
+    # verificarla resultó **falsa en una mitad y real en la otra**:
+    #
+    #   154 fórmulas en `H12b_MOTOR_IBSC` · referencias a `H12_MOTOR`: NINGUNA
+    #   → `H14_PONDERADORES` 50 veces · `H04b_DIAGNÓSTICO_SOCIAL` 25 veces
     "IBSC": {
-        "01": "Bienestar social del cantón, por sustitución de `V·E·T·C` por "
-              "una variable `S_i` (glosario `H12b`)",
-        "15": "misma fórmula canónica del ICPI con `S_i` en lugar de "
-              "`V_i×E_i×T_i×C_i` · fuente `H04b`",
-        "16": "hereda **entera** la arquitectura multiplicativa del ICPI "
-              "(`ADR-054`/`D1`) sin declaración propia",
-        "20": "⚠️ **revisar dependencia**: si `D1` se rediseña, `IBSC` cambia "
-              "sin que nadie lo haya decidido para `IBSC`",
+        "05": "`H14_PONDERADORES` (50 referencias) para `P_i`/`R_i` · "
+              "`H04b_DIAGNÓSTICO_SOCIAL` (25) para `S_i`",
+        "15": "`Σ(P·R·S) / Σ(P·R) × 100` · **cálculo independiente**: sus 154 "
+              "fórmulas **no referencian `H12` ni una sola vez**",
+        "16": "🔵 **dependencia DEMOSTRADA de datos**: comparte los "
+              "ponderadores `P_i`/`R_i` de `H14` con el ICPI. 🟡 **coincidencia "
+              "de FORMA**: usa la misma álgebra multiplicativa, pero eso es "
+              "diseño compartido, **no herencia**",
+        "20": "⚠️ **acoplamiento asimétrico, y hay que decirlo con precisión**: "
+              "si `D1` se rediseña, `IBSC` **no cambia solo** —habría que "
+              "decidirlo aparte, y nadie ha declarado por qué usa esa forma—. "
+              "Si cambian los ponderadores de `H14`, **sí cambia**",
     },
 
     "ICODS": {
@@ -142,10 +153,14 @@ _FICHAS: dict[str, dict[str, str]] = {
         "03": "la dirección municipal del Estatuto Orgánico (`Res. 040-2025`)",
         "10": "**FORMA** — la pregunta aplica a Salud, Obras Públicas y "
               "Financiera por igual (`010`)",
+        "11": "capacidad institucional de la unidad ejecutora",
         "12": f"{_PD} — ⚠️ y por eso importa: **no pertenece a ningún dominio "
               "sectorial**, y hoy no existe el eje que lo albergaría",
         "15": "ejecución de metas PDOT desglosada por dirección · `H17` · `H30`",
-        "20": "🟢 **candidato a capacidad transversal de FORMA**",
+        "20": "🟢 **evidencia empírica** de que la ontología actual no dispone "
+              "de residencia adecuada para fenómenos transversales de "
+              "gestión — ⚠️ eso **respalda** la hipótesis del eje FORMA; no "
+              "la funda por sí solo",
     },
 
     "IEF": {
@@ -185,8 +200,10 @@ _FICHAS: dict[str, dict[str, str]] = {
         "12": "`d01` · `PCD-D01` **cerrado**",
         "15": "fórmula nativa en `H16b` · convertida a fórmula Excel para "
               "trazabilidad celda a celda",
-        "20": "🟢 **el más maduro**: dominio cerrado, pregunta declarada, "
-              "fórmula trazable",
+        "20": "🟢 **el más maduro en DECLARACIÓN**: dominio cerrado, pregunta "
+              "declarada, fórmula trazable. ⚠️ Patrón de **documentación**, "
+              "no de estructura conceptual: copiar su calidad de "
+              "declaración, no su forma",
     },
 
     "ITAM": {
@@ -214,14 +231,19 @@ _FICHAS: dict[str, dict[str, str]] = {
     },
 
     "TGI": {
-        "01": "confianza metodológica del propio sistema — **mide a QUIRA, no "
-              "al GAD**",
+        "01": "⚠️ **por formalizar en `Q-M1`**: «confianza metodológica» admite "
+              "al menos seis lecturas distintas —calidad de la evaluación · "
+              "confiabilidad del proceso · consistencia metodológica · "
+              "desempeño del evaluador · auditabilidad · confiabilidad de "
+              "los resultados— y no son lo mismo. Lo único establecido: "
+              "**mide a QUIRA, no al GAD**",
         "09": "🔴 `H95` `L-07`: los pesos `20/20/25/25/10` son **«criterio "
               "experto (Dylus Lab), no PCA ni regresión»**",
         "10": "**FORMA** · y de segundo orden: es metaevaluación",
         "12": f"{_PD} · «probablemente transversal» · capa INTERNA",
-        "19": "🔴 «QUIRA está validado» — `H95` `L-09` declara que es **una "
-              "evaluación interna, no verificada externamente**",
+        "19": "🔴 «QUIRA está validado». Lo que `H95` `L-09` permite afirmar es "
+              "que **la verificación externa de `TGI` no está demostrada en "
+              "el corpus actual** — no que `TGI` sea inválido",
         "20": "⚠️ **caso especial**: un indicador que evalúa al evaluador "
               "necesita un estatuto propio en la arquitectura",
     },
@@ -579,6 +601,26 @@ def _escribir(contrato, glosario, total, llenas, fichas, hojas,
       "los que nunca la tuvieron. **La matriz no descubre indicadores malos: "
       "descubre indicadores no curados.**")
     A("")
+    A("## ★ Tres categorías de hallazgo, que no son lo mismo")
+    A("")
+    A("⚠️ **Sin esta separación, `Q-M0` convertiría todo hallazgo en "
+      "«refactorizar».** Y la mayoría no lo son:")
+    A("")
+    A("| | Categoría | Ejemplo de esta matriz |")
+    A("|---|---|---|")
+    A("| **A** | **problema del instrumento** — la fórmula está definida pero "
+      "el fenómeno no | `TGI`: «confianza metodológica» admite seis lecturas |")
+    A("| **B** | **problema de arquitectura** — el indicador es correcto, "
+      "pero la ontología no tiene dónde ponerlo | `IED`: no hay residencia "
+      "para lo transversal |")
+    A("| **C** | **problema de presentación** — ni matemático ni conceptual: "
+      "de nomenclatura | `IFE` / `IEF`: siglas que se confunden |")
+    A("")
+    A("> Un hallazgo de tipo `B` **no dice que el indicador esté mal**: dice "
+      "que la arquitectura heredada no tiene todavía el lugar ontológico que "
+      "le corresponde. Y uno de tipo `C` no exige tocar una fórmula.")
+    A("")
+
     A("### 📜 El caso `IFE` · cómo se fabricó un hallazgo falso")
     A("")
     A("La `v1` de esta matriz publicó:")
@@ -635,12 +677,67 @@ def _escribir(contrato, glosario, total, llenas, fichas, hojas,
     A("- **No resuelve FONDO/FORMA**: lo aplica donde `010` lo estableció y "
       "deja ver dónde falta.")
     A("")
+    # ── Las reglas que se congelan antes de Q-M1 ──────────────────────────
+    A("## ★ Las cinco reglas que se congelan antes de `Q-M1`")
+    A("")
+    A("| # | Regla | Qué la demostró |")
+    A("|---|---|---|")
+    A("| 1 | **No inferir ontología por nombre.** La semejanza lexical entre "
+      "identificadores no es evidencia de proximidad conceptual | `IFE` ≠ "
+      "`IEF` |")
+    A("| 2 | **No inferir ausencia por falta de extracción.** No declarar "
+      "vacío sin agotar la evidencia primaria que razonablemente podría "
+      "contenerlo | 71 % → 62 % |")
+    A("| 3 | **No convertir dependencia matemática en dependencia conceptual "
+      "sin demostrarla** | `IBSC` no referencia `H12` |")
+    A("| 4 | **No convertir la existencia de un indicador en justificación "
+      "de su necesidad** | `Q-M1` empieza por las preguntas |")
+    A("| 5 | **Cada indicador necesita un CONTRATO DE AFIRMACIÓN**: qué "
+      "permite afirmar y qué explícitamente no | campos 18 y 19 |")
+    A("")
+    A("> ### El contrato de afirmación puede ser para QUIRA lo que el Gold "
+      "Master fue para la trazabilidad")
+    A(">")
+    A("> Porque separa tres cosas que hoy se dicen igual:")
+    A("")
+    A("```")
+    A("  «el indicador calcula 27,4582 %»          afirmación COMPUTACIONAL")
+    A("  «QUIRA puede afirmar X con ese número»    afirmación EPISTEMOLÓGICA")
+    A("  «la gestión pública está en tal estado»   INTERPRETACIÓN")
+    A("```")
+    A("")
     A("> ### La pregunta que abre `Q-M1`")
     A(">")
-    A("> No «¿qué índices conservamos?», sino **«¿qué preguntas sobre la "
-      "gestión pública necesita responder QUIRA, y qué evidencia permite "
-      "responderlas legítimamente?»**. Los indicadores tendrán que ganarse su "
-      "lugar dentro de esa respuesta — el ICPI incluido.")
+    A("> **«Si mañana borráramos mentalmente los doce índices históricos de "
+      "QUIRA, ¿qué preguntas fundamentales sobre la gestión pública "
+      "seguiríamos necesitando responder?»**")
+    A("")
+    A("Y sólo después volver a mirar cuáles de los doce sobreviven. La cadena "
+      "es:")
+    A("")
+    A("```")
+    A("  PREGUNTA → FENÓMENO → UNIDAD → UNIVERSO → EVIDENCIA →")
+    A("  ESTADO DE EVIDENCIA → INFERENCIA → MODELO → INDICADOR →")
+    A("  AFIRMACIÓN PERMITIDA → PRODUCTO")
+    A("```")
+    A("")
+    A("**Nunca al revés** —`INDICADOR → buscarle una razón de existir`—, que "
+      "es exactamente como se llegó a doce índices con `62 %` de campos sin "
+      "declarar.")
+    A("")
+    A("⚠️ Y `Q-M1` **no dirá «este índice sirve y este no»**. Recorrerá la "
+      "cadena por cada necesidad de inteligencia pública, y al final un "
+      "indicador podrá **conservarse · dividirse · fusionarse · trasladarse · "
+      "convertirse en componente de otro · pasar de indicador a capa "
+      "interpretativa · pasar de indicador a variable · o simplemente "
+      "documentarse mejor**. Ninguna de esas decisiones se toma antes de "
+      "recorrerla.")
+    A("")
+    A("> ### Y lo que `Q-M0` empieza a mostrar de fondo")
+    A(">")
+    A("> QUIRA **no tiene un problema de falta de indicadores**. Tiene un "
+      "problema de **correspondencia** entre preguntas de inteligencia, "
+      "fenómenos, evidencia, unidades e indicadores.")
     A("")
     A("---")
     A(f"*REARQ · `Q-M0` · {len(fichas)} indicadores × {len(_CAMPOS)} campos "

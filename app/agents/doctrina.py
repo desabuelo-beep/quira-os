@@ -145,6 +145,42 @@ _DOCTRINA = (
          verificador="test_ninguna_regla_generadora_se_infiere_del_patron_de_sus_resultados",
          por_que_ahi="con 25 casos y tres valores posibles, cualquier hipótesis "
                      "encuentra algunos que la respaldan: encajar no es derivar"),
+    dict(id="DOC-034", custodia=GATE,
+         regla="No se declara AUSENCIA ontológica sin haber agotado antes la "
+               "evidencia primaria que razonablemente podría contenerla. Y un "
+               "recuento de vacíos sólo significa «no pudo declararse a "
+               "partir de la evidencia consultada» — nunca «está mal "
+               "definido»",
+         fuente="Javo, 2026-09-06 —«pero todos están en el Excel "
+                "canónico»— · precisión del colega sobre cómo se lee el "
+                "porcentaje",
+         verificador="test_la_matriz_lee_el_instrumento_antes_de_declarar_vacio",
+         por_que_ahi="`Q-M0` publicó 71 % `POR DECLARAR` sin haber abierto "
+                     "las hojas de los índices; al leerlas bajó a 62 %. Es el "
+                     "tercer estado aplicado en la dirección contraria: «no "
+                     "pude obtener» no es «no existe», **y no haber mirado no "
+                     "autoriza a declarar vacío**. Esta dirección lo había "
+                     "señalado tres veces en otros —`E_i` `UNTRACEABLE`, «no "
+                     "existe artefacto índice→dominio», `011-C3`— y lo cometió"),
+    dict(id="DOC-033", custodia=GATE,
+         regla="La identidad o semejanza NOMINAL entre indicadores no "
+               "autoriza a inferir identidad, dependencia, "
+               "complementariedad, redundancia ni pertenencia ontológica "
+               "común. Toda relación entre indicadores debe derivarse de su "
+               "fenómeno, unidad, evidencia, fórmula, dominio o de una "
+               "relación explícitamente documentada",
+         fuente="el colega, 2026-09-07 · tras el caso `IFE`/`IEF` en `Q-M0`",
+         verificador="test_el_caso_IFE_queda_como_hallazgo_falso_corregido",
+         por_que_ahi="`Q-M0` anunció que `IFE` e `IEF` eran «materia "
+                     "contigua» con riesgo de duplicación. Bastó abrir la "
+                     "hoja: `IFE` es **Fidelidad Electoral** "
+                     "(`H03_S1_ELECTORAL_CNE`) e `IEF` es **Eficiencia "
+                     "Financiera** (`H20c`) — no tienen relación. El parecido "
+                     "de las siglas produjo una conclusión ontológica falsa, "
+                     "y es un error que un sistema automatizado cometería con "
+                     "enorme facilidad. ⚠️ El hallazgo REAL sobrevive: si esta "
+                     "dirección las confundió con el Excel delante, cualquier "
+                     "lector puede — y eso va a `T6`"),
     dict(id="DOC-032", custodia=GATE,
          regla="El ecosistema se nombra EN ESPAÑOL fuera del código. Los "
                "identificadores técnicos —variables, funciones, campos, "

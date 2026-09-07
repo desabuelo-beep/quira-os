@@ -16,10 +16,10 @@
 | indicadores | 12 |
 | campos por ficha | 20 |
 | celdas totales | 240 |
-| declaradas por `GM-Ω` | 72 |
+| declaradas por `GM-Ω` | 73 |
 | **derivadas del Gold Master** | **18** |
-| **establecidas en total** | **90** (38 %) |
-| **`POR DECLARAR`** | **150** (62 %) |
+| **establecidas en total** | **91** (38 %) |
+| **`POR DECLARAR`** | **149** (62 %) |
 
 ### 📜 CORRECCIÓN · la primera versión de esta matriz declaró vacío lo que el instrumento ya decía
 
@@ -45,14 +45,14 @@ Y el dato más incómodo, que el Excel **no** puede llenar: **9 de 12 indicadore
 
 | Índice | Eje | Residencia | Estado Rearquitectura |
 |---|---|---|---|
-| **`IBSC`** | ⬜ POR DECLARAR | **POR_DECLARAR** | ⚠️ **revisar dependencia**: si `D1` se rediseña, `IBSC` camb |
+| **`IBSC`** | ⬜ POR DECLARAR | **POR_DECLARAR** | ⚠️ **acoplamiento asimétrico, y hay que decirlo con precisió |
 | **`ICODS`** | FONDO — es sectorial | `d13` · Constitución §CAPA 0.5 | ⬜ POR DECLARAR |
 | **`ICPI`** | ⚠️ **en disputa** — reside en `d06` (FONDO) pe | `d06` Salud Institucional — ⚠️ apoyada en «C | ⚠️ **pendiente** — `C4` no lo declaró necesario ni incorrect |
-| **`IED`** | **FORMA** — la pregunta aplica a Salud, Obras  | ⬜ POR DECLARAR — ⚠️ y por eso importa: **no  | 🟢 **candidato a capacidad transversal de FORMA** |
+| **`IED`** | **FORMA** — la pregunta aplica a Salud, Obras  | ⬜ POR DECLARAR — ⚠️ y por eso importa: **no  | 🟢 **evidencia empírica** de que la ontología actual no dispo |
 | **`IEF`** | **FORMA** — es capacidad de gestión, no políti | **POR_DECLARAR** | ⬜ POR DECLARAR |
 | **`IFE`** | **FORMA** — fidelidad al mandato, no política  | candidato natural a `d03` Gobernanza del Man | ⚠️ **residencia por declarar** · y su sigla se confunde con  |
 | **`IGP`** | **FORMA** — capacidad institucional, no sector | `d08` · Constitución §CAPA 0.5 | ⚠️ **alcance en disputa** · `D-010` abierta |
-| **`IPE`** | **FORMA** — es articulación plan↔presupuesto | `d01` · `PCD-D01` **cerrado** | 🟢 **el más maduro**: dominio cerrado, pregunta declarada, fó |
+| **`IPE`** | **FORMA** — es articulación plan↔presupuesto | `d01` · `PCD-D01` **cerrado** | 🟢 **el más maduro en DECLARACIÓN**: dominio cerrado, pregunt |
 | **`ITAM`** | **FORMA** | `d07` · asignación **por confirmar** · `d07` | ⬜ POR DECLARAR |
 | **`MMP`** | ⬜ POR DECLARAR | ⬜ POR DECLARAR · capa INTERNA · `H25`-`H27` | ⚠️ ¿es un **indicador** o un **producto de seguimiento**? `T |
 | **`PSG`** | **FONDO** con lectura transversal — ⚠️ caso lí | `d12` · Constitución §CAPA 0.5 | ⬜ POR DECLARAR |
@@ -66,13 +66,11 @@ Y el dato más incómodo, que el Excel **no** puede llenar: **9 de 12 indicadore
 
 | # | Campo | |
 |---|---|---|
-| 01 | Fenómeno que se quiere conocer | Índice de Bienestar Social Cuantificado · IBSC usa la misma fórmula canónica del ICPI con variable Si en lugar de Vi×Ei×Ti×Ci. Fuente: H04b. AXIOMA H12 INTOCABLE.
-
-— *lectura de `GM-Ω`:* Bienestar social del cantón, por sustitución de `V·E·T·C` por una variable `S_i` (glosario `H12b`) |
+| 01 | Fenómeno que se quiere conocer | Índice de Bienestar Social Cuantificado · IBSC usa la misma fórmula canónica del ICPI con variable Si en lugar de Vi×Ei×Ti×Ci. Fuente: H04b. AXIOMA H12 INTOCABLE. |
 | 02 | Pregunta de gestión que responde | ⬜ POR DECLARAR |
 | 03 | Unidad que observa | ⬜ POR DECLARAR |
 | 04 | Universo que cubre | ⬜ POR DECLARAR |
-| 05 | Evidencia que necesita | declarada en la hoja: H04b |
+| 05 | Evidencia que necesita | `H14_PONDERADORES` (50 referencias) para `P_i`/`R_i` · `H04b_DIAGNÓSTICO_SOCIAL` (25) para `S_i` |
 | 06 | Estado de esa evidencia | ⬜ POR DECLARAR |
 | 07 | Inferencia que realiza | ⬜ POR DECLARAR |
 | 08 | Relación normativa que lo sostiene | ⬜ POR DECLARAR |
@@ -82,12 +80,12 @@ Y el dato más incómodo, que el Excel **no** puede llenar: **9 de 12 indicadore
 | 12 | Residencia | ⬜ POR DECLARAR |
 | 13 | Temporalidad | ⬜ POR DECLARAR |
 | 14 | Comparabilidad territorial | ⬜ POR DECLARAR |
-| 15 | Fórmula que utiliza hoy | misma fórmula canónica del ICPI con `S_i` en lugar de `V_i×E_i×T_i×C_i` · fuente `H04b` |
-| 16 | Decisiones históricas de las que depende | hereda **entera** la arquitectura multiplicativa del ICPI (`ADR-054`/`D1`) sin declaración propia |
+| 15 | Fórmula que utiliza hoy | `Σ(P·R·S) / Σ(P·R) × 100` · **cálculo independiente**: sus 154 fórmulas **no referencian `H12` ni una sola vez** |
+| 16 | Decisiones históricas de las que depende | 🔵 **dependencia DEMOSTRADA de datos**: comparte los ponderadores `P_i`/`R_i` de `H14` con el ICPI. 🟡 **coincidencia de FORMA**: usa la misma álgebra multiplicativa, pero eso es diseño compartido, **no herencia** |
 | 17 | Dependencia ecuatoriana | ⬜ POR DECLARAR |
 | 18 | ✅ Qué afirmación PERMITE hacer | ⬜ POR DECLARAR |
 | 19 | 🔴 Qué afirmación NO PERMITE hacer | ⬜ POR DECLARAR |
-| 20 | Estado Rearquitectura | ⚠️ **revisar dependencia**: si `D1` se rediseña, `IBSC` cambia sin que nadie lo haya decidido para `IBSC` |
+| 20 | Estado Rearquitectura | ⚠️ **acoplamiento asimétrico, y hay que decirlo con precisión**: si `D1` se rediseña, `IBSC` **no cambia solo** —habría que decidirlo aparte, y nadie ha declarado por qué usa esa forma—. Si cambian los ponderadores de `H14`, **sí cambia** |
 
 ### `ICODS`
 
@@ -163,7 +161,7 @@ Y el dato más incómodo, que el Excel **no** puede llenar: **9 de 12 indicadore
 | 08 | Relación normativa que lo sostiene | ⬜ POR DECLARAR |
 | 09 | Relación teórica que lo sostiene | ⬜ POR DECLARAR |
 | 10 | FONDO o FORMA | **FORMA** — la pregunta aplica a Salud, Obras Públicas y Financiera por igual (`010`) |
-| 11 | Subdominio o capacidad que representa | ⬜ POR DECLARAR |
+| 11 | Subdominio o capacidad que representa | capacidad institucional de la unidad ejecutora |
 | 12 | Residencia | ⬜ POR DECLARAR — ⚠️ y por eso importa: **no pertenece a ningún dominio sectorial**, y hoy no existe el eje que lo albergaría |
 | 13 | Temporalidad | ⬜ POR DECLARAR |
 | 14 | Comparabilidad territorial | ⬜ POR DECLARAR |
@@ -172,7 +170,7 @@ Y el dato más incómodo, que el Excel **no** puede llenar: **9 de 12 indicadore
 | 17 | Dependencia ecuatoriana | ⬜ POR DECLARAR |
 | 18 | ✅ Qué afirmación PERMITE hacer | ⬜ POR DECLARAR |
 | 19 | 🔴 Qué afirmación NO PERMITE hacer | ⬜ POR DECLARAR |
-| 20 | Estado Rearquitectura | 🟢 **candidato a capacidad transversal de FORMA** |
+| 20 | Estado Rearquitectura | 🟢 **evidencia empírica** de que la ontología actual no dispone de residencia adecuada para fenómenos transversales de gestión — ⚠️ eso **respalda** la hipótesis del eje FORMA; no la funda por sí solo |
 
 ### `IEF`
 
@@ -282,7 +280,7 @@ Y el dato más incómodo, que el Excel **no** puede llenar: **9 de 12 indicadore
 | 17 | Dependencia ecuatoriana | ⬜ POR DECLARAR |
 | 18 | ✅ Qué afirmación PERMITE hacer | ⬜ POR DECLARAR |
 | 19 | 🔴 Qué afirmación NO PERMITE hacer | ⬜ POR DECLARAR |
-| 20 | Estado Rearquitectura | 🟢 **el más maduro**: dominio cerrado, pregunta declarada, fórmula trazable |
+| 20 | Estado Rearquitectura | 🟢 **el más maduro en DECLARACIÓN**: dominio cerrado, pregunta declarada, fórmula trazable. ⚠️ Patrón de **documentación**, no de estructura conceptual: copiar su calidad de declaración, no su forma |
 
 ### `ITAM`
 
@@ -375,7 +373,7 @@ Y el dato más incómodo, que el Excel **no** puede llenar: **9 de 12 indicadore
 |---|---|---|
 | 01 | Fenómeno que se quiere conocer | Gobernar con evidencia · Decidir con territorio · No medir solo cuánto se gastó — medir si transformó el territorio
 
-— *lectura de `GM-Ω`:* confianza metodológica del propio sistema — **mide a QUIRA, no al GAD** |
+— *lectura de `GM-Ω`:* ⚠️ **por formalizar en `Q-M1`**: «confianza metodológica» admite al menos seis lecturas distintas —calidad de la evaluación · confiabilidad del proceso · consistencia metodológica · desempeño del evaluador · auditabilidad · confiabilidad de los resultados— y no son lo mismo. Lo único establecido: **mide a QUIRA, no al GAD** |
 | 02 | Pregunta de gestión que responde | ⬜ POR DECLARAR |
 | 03 | Unidad que observa | ⬜ POR DECLARAR |
 | 04 | Universo que cubre | ⬜ POR DECLARAR |
@@ -393,7 +391,7 @@ Y el dato más incómodo, que el Excel **no** puede llenar: **9 de 12 indicadore
 | 16 | Decisiones históricas de las que depende | ⬜ POR DECLARAR |
 | 17 | Dependencia ecuatoriana | ⬜ POR DECLARAR |
 | 18 | ✅ Qué afirmación PERMITE hacer | ⬜ POR DECLARAR |
-| 19 | 🔴 Qué afirmación NO PERMITE hacer | 🔴 «QUIRA está validado» — `H95` `L-09` declara que es **una evaluación interna, no verificada externamente** |
+| 19 | 🔴 Qué afirmación NO PERMITE hacer | 🔴 «QUIRA está validado». Lo que `H95` `L-09` permite afirmar es que **la verificación externa de `TGI` no está demostrada en el corpus actual** — no que `TGI` sea inválido |
 | 20 | Estado Rearquitectura | ⚠️ **caso especial**: un indicador que evalúa al evaluador necesita un estatuto propio en la arquitectura |
 
 ## ★ Lo que la matriz deja ver de un vistazo
@@ -410,6 +408,18 @@ Y el dato más incómodo, que el Excel **no** puede llenar: **9 de 12 indicadore
 > ### Y el patrón de fondo
 >
 > Los indicadores que **sí** tienen pregunta declarada son los que pasaron por curación de dominio (`PCD`). Los que están en blanco son los que nunca la tuvieron. **La matriz no descubre indicadores malos: descubre indicadores no curados.**
+
+## ★ Tres categorías de hallazgo, que no son lo mismo
+
+⚠️ **Sin esta separación, `Q-M0` convertiría todo hallazgo en «refactorizar».** Y la mayoría no lo son:
+
+| | Categoría | Ejemplo de esta matriz |
+|---|---|---|
+| **A** | **problema del instrumento** — la fórmula está definida pero el fenómeno no | `TGI`: «confianza metodológica» admite seis lecturas |
+| **B** | **problema de arquitectura** — el indicador es correcto, pero la ontología no tiene dónde ponerlo | `IED`: no hay residencia para lo transversal |
+| **C** | **problema de presentación** — ni matemático ni conceptual: de nomenclatura | `IFE` / `IEF`: siglas que se confunden |
+
+> Un hallazgo de tipo `B` **no dice que el indicador esté mal**: dice que la arquitectura heredada no tiene todavía el lugar ontológico que le corresponde. Y uno de tipo `C` no exige tocar una fórmula.
 
 ### 📜 El caso `IFE` · cómo se fabricó un hallazgo falso
 
@@ -449,9 +459,45 @@ Y ya tiene un caso probado: el ICPI mide congruencia acreditada de 25 metas al c
 - **No toca fórmulas** ni el Gold Master.
 - **No resuelve FONDO/FORMA**: lo aplica donde `010` lo estableció y deja ver dónde falta.
 
+## ★ Las cinco reglas que se congelan antes de `Q-M1`
+
+| # | Regla | Qué la demostró |
+|---|---|---|
+| 1 | **No inferir ontología por nombre.** La semejanza lexical entre identificadores no es evidencia de proximidad conceptual | `IFE` ≠ `IEF` |
+| 2 | **No inferir ausencia por falta de extracción.** No declarar vacío sin agotar la evidencia primaria que razonablemente podría contenerlo | 71 % → 62 % |
+| 3 | **No convertir dependencia matemática en dependencia conceptual sin demostrarla** | `IBSC` no referencia `H12` |
+| 4 | **No convertir la existencia de un indicador en justificación de su necesidad** | `Q-M1` empieza por las preguntas |
+| 5 | **Cada indicador necesita un CONTRATO DE AFIRMACIÓN**: qué permite afirmar y qué explícitamente no | campos 18 y 19 |
+
+> ### El contrato de afirmación puede ser para QUIRA lo que el Gold Master fue para la trazabilidad
+>
+> Porque separa tres cosas que hoy se dicen igual:
+
+```
+  «el indicador calcula 27,4582 %»          afirmación COMPUTACIONAL
+  «QUIRA puede afirmar X con ese número»    afirmación EPISTEMOLÓGICA
+  «la gestión pública está en tal estado»   INTERPRETACIÓN
+```
+
 > ### La pregunta que abre `Q-M1`
 >
-> No «¿qué índices conservamos?», sino **«¿qué preguntas sobre la gestión pública necesita responder QUIRA, y qué evidencia permite responderlas legítimamente?»**. Los indicadores tendrán que ganarse su lugar dentro de esa respuesta — el ICPI incluido.
+> **«Si mañana borráramos mentalmente los doce índices históricos de QUIRA, ¿qué preguntas fundamentales sobre la gestión pública seguiríamos necesitando responder?»**
+
+Y sólo después volver a mirar cuáles de los doce sobreviven. La cadena es:
+
+```
+  PREGUNTA → FENÓMENO → UNIDAD → UNIVERSO → EVIDENCIA →
+  ESTADO DE EVIDENCIA → INFERENCIA → MODELO → INDICADOR →
+  AFIRMACIÓN PERMITIDA → PRODUCTO
+```
+
+**Nunca al revés** —`INDICADOR → buscarle una razón de existir`—, que es exactamente como se llegó a doce índices con `62 %` de campos sin declarar.
+
+⚠️ Y `Q-M1` **no dirá «este índice sirve y este no»**. Recorrerá la cadena por cada necesidad de inteligencia pública, y al final un indicador podrá **conservarse · dividirse · fusionarse · trasladarse · convertirse en componente de otro · pasar de indicador a capa interpretativa · pasar de indicador a variable · o simplemente documentarse mejor**. Ninguna de esas decisiones se toma antes de recorrerla.
+
+> ### Y lo que `Q-M0` empieza a mostrar de fondo
+>
+> QUIRA **no tiene un problema de falta de indicadores**. Tiene un problema de **correspondencia** entre preguntas de inteligencia, fenómenos, evidencia, unidades e indicadores.
 
 ---
-*REARQ · `Q-M0` · 12 indicadores × 20 campos · 150 celdas por declarar · el Gold Master no se modificó · Dylus Lab © 2026*
+*REARQ · `Q-M0` · 12 indicadores × 20 campos · 149 celdas por declarar · el Gold Master no se modificó · Dylus Lab © 2026*

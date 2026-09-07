@@ -208,6 +208,111 @@ def test_el_caso_IFE_queda_como_hallazgo_falso_corregido():
         "ser auditable — y este audita, entre otras cosas, a quien lo escribe")
 
 
+def test_IBSC_distingue_dependencia_de_forma_compartida():
+    """★ El hallazgo que hubo que **demostrar** antes de afirmarlo.
+
+    La `v1` dijo que `IBSC` «hereda entera la multiplicatividad del ICPI» y
+    que «si `D1` se rediseña, `IBSC` cambia». El colega exigió demostrar la
+    dependencia causal, y al verificarla resultó **falsa en una mitad y real
+    en la otra**:
+
+        154 fórmulas en H12b_MOTOR_IBSC · referencias a H12_MOTOR: NINGUNA
+        → H14_PONDERADORES ×50 · H04b_DIAGNÓSTICO_SOCIAL ×25
+
+    Es decir: **comparte insumos** (`P_i`/`R_i` de `H14`) — dependencia real
+    de datos — y **comparte forma algebraica** — coincidencia de diseño, no
+    herencia.
+
+    ⚠️ La consecuencia precisa es la contraria a la que se había escrito: si
+    `D1` se rediseña, `IBSC` **no cambia solo**. Si cambian los ponderadores
+    de `H14`, **sí**. Confundir ambas cosas habría hecho que un rediseño del
+    ICPI arrastrara a `IBSC` sin que nadie lo notara — o que no lo arrastrara
+    creyendo que sí."""
+    txt = _DOC.read_text(encoding="utf-8")
+    assert "no referencian `H12` ni una sola vez" in txt, (
+        "se perdió la evidencia. Sin ella vuelve la afirmación de herencia, "
+        "que es falsa")
+    assert "coincidencia" in txt and "no herencia" in txt, (
+        "desapareció la distinción entre dependencia de datos y forma "
+        "compartida — que es exactamente lo que el colega pidió demostrar")
+    assert "no cambia solo" in txt, (
+        "se perdió la consecuencia precisa del acoplamiento asimétrico")
+
+
+def test_los_hallazgos_se_clasifican_en_tres_categorias():
+    """★ Sin esta separación, `Q-M0` convertiría todo hallazgo en
+    «refactorizar» — y la mayoría no lo son:
+
+        A  problema del INSTRUMENTO   la fórmula existe, el fenómeno no
+        B  problema de ARQUITECTURA   el indicador está bien; falta su sitio
+        C  problema de PRESENTACIÓN   ni matemático ni conceptual: nombres
+
+    ⚠️ Un hallazgo `B` **no dice que el indicador esté mal**: dice que la
+    ontología heredada no tiene todavía el lugar que le corresponde. Y uno `C`
+    no exige tocar una sola fórmula."""
+    txt = _DOC.read_text(encoding="utf-8")
+    assert "Tres categorías de hallazgo" in txt, (
+        "desapareció la clasificación. Sin ella, «IED no tiene dominio» se "
+        "lee como «IED está mal»")
+    for cat in ("problema del instrumento", "problema de arquitectura",
+                "problema de presentación"):
+        assert cat in txt, f"falta la categoría «{cat}»"
+    assert "no dice que el indicador esté mal" in txt
+
+
+def test_las_cinco_reglas_se_congelan_antes_de_Q_M1():
+    """Las reglas que impiden que `Q-M1` herede los errores de `Q-M0`.
+
+        1  no inferir ontología por nombre          IFE ≠ IEF
+        2  no inferir ausencia por no haber mirado  71 % → 62 %
+        3  no confundir dependencia con forma       IBSC no referencia H12
+        4  existir no justifica ser necesario       Q-M1 parte de preguntas
+        5  cada indicador necesita CONTRATO DE AFIRMACIÓN
+
+    ⚠️ La quinta puede ser para QUIRA lo que el Gold Master fue para la
+    trazabilidad: separa la afirmación **computacional** («calcula 27,4582 %»)
+    de la **epistemológica** («QUIRA puede afirmar X») y de la
+    **interpretación** («la gestión está en tal estado»)."""
+    txt = _DOC.read_text(encoding="utf-8")
+    assert "cinco reglas que se congelan antes de `Q-M1`" in txt
+    assert "CONTRATO DE AFIRMACIÓN" in txt, (
+        "desapareció la quinta regla, que es la que convierte los campos 18 y "
+        "19 en una barrera epistemológica y no en documentación")
+    assert "afirmación COMPUTACIONAL" in txt and \
+           "afirmación EPISTEMOLÓGICA" in txt and "INTERPRETACIÓN" in txt, (
+        "se perdieron los tres niveles que el contrato separa")
+
+
+def test_Q_M1_parte_de_las_preguntas_y_no_de_los_indices():
+    """★ El cambio de fase, y la pregunta que lo abre:
+
+        «Si mañana borráramos mentalmente los doce índices históricos de
+         QUIRA, ¿qué preguntas fundamentales sobre la gestión pública
+         seguiríamos necesitando responder?»
+
+    La cadena va `PREGUNTA → FENÓMENO → … → AFIRMACIÓN PERMITIDA → PRODUCTO`
+    y **nunca al revés** — `INDICADOR → buscarle una razón de existir` es
+    exactamente cómo se llegó a doce índices con 62 % de campos sin declarar.
+
+    ⚠️ Y `Q-M1` no dirá «este sirve y este no»: un indicador podrá
+    conservarse, dividirse, fusionarse, trasladarse, volverse componente,
+    volverse capa interpretativa, volverse variable, o sólo documentarse
+    mejor."""
+    txt = _DOC.read_text(encoding="utf-8")
+    assert "borráramos mentalmente los doce índices" in txt, (
+        "desapareció la pregunta que abre Q-M1. Sin ella, Q-M1 vuelve a ser "
+        "una revisión de los doce índices")
+    assert "Nunca al revés" in txt
+    assert "no dirá «este índice sirve y este no»" in txt.replace(
+        "no dirá **«este índice sirve y este no»**",
+        "no dirá «este índice sirve y este no»") or \
+        "no dirá **«este índice sirve y este no»**" in txt, (
+        "Q-M1 dejó de declarar que no emite veredictos de utilidad")
+    assert "problema de **correspondencia**" in txt, (
+        "se perdió el diagnóstico de fondo: no faltan indicadores, falta "
+        "correspondencia entre preguntas, fenómenos, evidencia y unidades")
+
+
 def test_el_orden_de_los_campos_es_el_metodo():
     """Primero el fenómeno, al final la fórmula.
 
