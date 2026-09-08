@@ -495,9 +495,11 @@ Y sólo después volver a mirar cuáles de los doce sobreviven. La cadena es:
 
 ⚠️ Y `Q-M1` **no dirá «este índice sirve y este no»**. Recorrerá la cadena por cada necesidad de inteligencia pública, y al final un indicador podrá **conservarse · dividirse · fusionarse · trasladarse · convertirse en componente de otro · pasar de indicador a capa interpretativa · pasar de indicador a variable · o simplemente documentarse mejor**. Ninguna de esas decisiones se toma antes de recorrerla.
 
-> ### Y lo que `Q-M0` empieza a mostrar de fondo
+> ### Y lo que `Q-M0` empieza a mostrar de fondo — como HIPÓTESIS
 >
-> QUIRA **no tiene un problema de falta de indicadores**. Tiene un problema de **correspondencia** entre preguntas de inteligencia, fenómenos, evidencia, unidades e indicadores.
+> `Q-M0` **proporciona evidencia** de que existen problemas de **correspondencia** entre preguntas, fenómenos, unidades, evidencia, indicadores y capas de presentación. **`Q-M1` determinará si esa falta de correspondencia constituye el problema arquitectónico central de QUIRA.**
+
+⚠️ La versión anterior lo enunciaba como diagnóstico cerrado —«QUIRA no tiene falta de indicadores, tiene un problema de correspondencia»—. Es una hipótesis estratégica buena y **todavía no demostrada**: es más lento decirlo así, y es lo correcto.
 
 ---
 *REARQ · `Q-M0` · 12 indicadores × 20 campos · 149 celdas por declarar · el Gold Master no se modificó · Dylus Lab © 2026*

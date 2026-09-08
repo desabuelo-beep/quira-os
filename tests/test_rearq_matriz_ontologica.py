@@ -308,9 +308,17 @@ def test_Q_M1_parte_de_las_preguntas_y_no_de_los_indices():
         "no dirá «este índice sirve y este no»") or \
         "no dirá **«este índice sirve y este no»**" in txt, (
         "Q-M1 dejó de declarar que no emite veredictos de utilidad")
-    assert "problema de **correspondencia**" in txt, (
-        "se perdió el diagnóstico de fondo: no faltan indicadores, falta "
+    # ⚠️ Y se enuncia como HIPÓTESIS, no como diagnóstico cerrado. La versión
+    # anterior afirmaba «QUIRA no tiene falta de indicadores, tiene un problema
+    # de correspondencia»: es una hipótesis estratégica buena y todavía no
+    # demostrada. `Q-M1` es quien determina si es el problema CENTRAL.
+    assert "problemas de **correspondencia**" in txt, (
+        "se perdió la hipótesis de fondo: que el problema está en la "
         "correspondencia entre preguntas, fenómenos, evidencia y unidades")
+    assert "`Q-M1` determinará si esa falta de correspondencia constituye" \
+           in txt, (
+        "la hipótesis volvió a enunciarse como diagnóstico cerrado. Q-M0 "
+        "aporta evidencia; no demuestra que sea el problema central")
 
 
 def test_el_orden_de_los_campos_es_el_metodo():

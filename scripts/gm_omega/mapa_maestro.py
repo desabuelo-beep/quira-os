@@ -147,9 +147,14 @@ _ETAPAS = [
              "hallazgo · IFE≟IEF · IED sin dominio · IBSC hereda D1 · TGI "
              "evalúa al evaluador"),
     ("REARQ", "Q-M1", "¿Qué preguntas necesita responder QUIRA sobre la "
-                      "gestión pública?", _ABIERTO,
-     "la pregunta que abre Q-M0 · los indicadores se ganan su lugar dentro "
-     "de la respuesta, el ICPI incluido"),
+                      "gestión pública?", _HECHO,
+     "★ las 4 familias YA estaban en el canon (macroejes) · 11 de 13 dominios "
+     "SIN pregunta rectora · y aparece al CURAR, no al escribirla: el método "
+     "es el PCD"),
+    ("REARQ", "Q-M2", "Cruce pregunta ↔ indicador · A responde · B parcial · "
+                      "C responde otra · D no existe", _BLOQ,
+     "necesita las 11 preguntas que faltan · hoy sólo d01 y d09 son "
+     "cruzables"),
     ("REARQ", "Q3", "Ejecución del refactor · fondo y forma", _BLOQ,
      "Q2 · Q1 · R0/R1 — ⚠️ la REARQUITECTURA autorizada SÓLO para diseño conceptual "
      "y arquitectónico"),

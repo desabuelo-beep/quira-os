@@ -733,11 +733,18 @@ def _escribir(contrato, glosario, total, llenas, fichas, hojas,
       "documentarse mejor**. Ninguna de esas decisiones se toma antes de "
       "recorrerla.")
     A("")
-    A("> ### Y lo que `Q-M0` empieza a mostrar de fondo")
+    A("> ### Y lo que `Q-M0` empieza a mostrar de fondo — como HIPÓTESIS")
     A(">")
-    A("> QUIRA **no tiene un problema de falta de indicadores**. Tiene un "
-      "problema de **correspondencia** entre preguntas de inteligencia, "
-      "fenómenos, evidencia, unidades e indicadores.")
+    A("> `Q-M0` **proporciona evidencia** de que existen problemas de "
+      "**correspondencia** entre preguntas, fenómenos, unidades, evidencia, "
+      "indicadores y capas de presentación. **`Q-M1` determinará si esa falta "
+      "de correspondencia constituye el problema arquitectónico central de "
+      "QUIRA.**")
+    A("")
+    A("⚠️ La versión anterior lo enunciaba como diagnóstico cerrado —«QUIRA "
+      "no tiene falta de indicadores, tiene un problema de "
+      "correspondencia»—. Es una hipótesis estratégica buena y **todavía no "
+      "demostrada**: es más lento decirlo así, y es lo correcto.")
     A("")
     A("---")
     A(f"*REARQ · `Q-M0` · {len(fichas)} indicadores × {len(_CAMPOS)} campos "
