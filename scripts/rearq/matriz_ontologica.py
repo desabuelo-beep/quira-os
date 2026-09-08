@@ -597,9 +597,17 @@ def _escribir(contrato, glosario, total, llenas, fichas, hojas,
     A("> ### Y el patrón de fondo")
     A(">")
     A("> Los indicadores que **sí** tienen pregunta declarada son los que "
-      "pasaron por curación de dominio (`PCD`). Los que están en blanco son "
-      "los que nunca la tuvieron. **La matriz no descubre indicadores malos: "
-      "descubre indicadores no curados.**")
+      "pasaron por curación de dominio (`PCD`).")
+    A("")
+    A("⚠️ **Pero la conclusión hay que enunciarla con cuidado.** Una versión "
+      "anterior decía «la matriz no descubre indicadores malos: descubre "
+      "indicadores no curados» — y eso presupone que ningún indicador tiene "
+      "problemas metodológicos, cuando `011-C4` demostró que algunos sí. La "
+      "formulación correcta:")
+    A("")
+    A("> **La matriz no presume que un indicador sea bueno o malo: "
+      "identifica el estado de curación, evidencia y correspondencia "
+      "disponible para evaluarlo.**")
     A("")
     A("## ★ Tres categorías de hallazgo, que no son lo mismo")
     A("")

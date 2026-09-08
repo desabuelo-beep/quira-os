@@ -100,6 +100,59 @@ def leer_dominios() -> list[dict]:
     return out
 
 
+# ── ESTADO DE CURACIÓN ────────────────────────────────────────────────────
+#
+# ⚠️ LA CORRECCIÓN QUE JAVO IMPUSO. La v1 de `Q-M1` publicó «11 de 13 dominios
+# no tienen pregunta rectora» como si fuera una carencia de la ontología. No lo
+# es: **esos dominios todavía no se han curado**. Es una fotografía del estado
+# de MADURACIÓN del trabajo, no del canon.
+#
+# Y es el mismo error del 71 %→62 %, ahora a nivel de dominio: confundir
+# «todavía no trabajado» con «no existe». Por eso hacen falta cinco estados y
+# no dos.
+_ESTADOS = [
+    ("DECLARADO", "✅", "curado, y la pregunta rectora tiene respaldo "
+                        "documental en su `PCD`"),
+    ("INCOMPLETO", "🟡", "la curación empezó y no terminó"),
+    ("NO INICIADO", "⬜", "el dominio **todavía no ha pasado** por curación — "
+                         "⚠️ no es lo mismo que carecer de pregunta"),
+    ("NO DECLARADO", "🔴", "se curó y **aun así** no hay pregunta explícita"),
+    ("NO DETERMINABLE", "❓", "evidencia parcial o conflictiva que impide "
+                             "establecer el estado"),
+]
+
+
+def estado_curacion() -> dict[str, tuple[str, str]]:
+    """El estado real de cada dominio, derivado de los `PCD` que existen en
+    disco y de lo que `BOOT` declara — no de lo que se recuerde.
+
+    ⚠️ Y donde la evidencia discrepa se dice `NO DETERMINABLE`, no se elige la
+    versión más cómoda."""
+    pcd = {p.stem.split("_")[0].replace("PCD-D", "d").lower()
+           for p in (_RAIZ / "docs" / "pcd").glob("PCD-D*.md")}
+    pcd = {f"d{int(x[1:]):02d}" for x in pcd if x[1:].isdigit()}
+
+    boot = ""
+    b = _RAIZ / "governance" / "BOOT.md"
+    if b.exists():
+        boot = b.read_text(encoding="utf-8")
+
+    out: dict[str, tuple[str, str]] = {}
+    for i in range(1, 14):
+        d = f"d{i:02d}"
+        if re.search(rf"{d} en curaci[óo]n", boot, re.I):
+            out[d] = ("INCOMPLETO", "`BOOT` lo declara en curación")
+        elif d in pcd:
+            out[d] = ("DECLARADO", f"`PCD-D{i:02d}` existe en `docs/pcd/`")
+        elif re.search(rf"{d} ENTRABLE", boot):
+            out[d] = ("NO DETERMINABLE",
+                      "`BOOT` lo declara ENTRABLE y **no hay `PCD`**, pero "
+                      "Javo lo señala como trabajado — evidencia conflictiva")
+        else:
+            out[d] = ("NO INICIADO", "sin `PCD` y sin mención de curación")
+    return out
+
+
 def clasificar(dominios: list[dict]) -> dict:
     """Cuántas preguntas están declaradas, y dónde. El recuento es el primer
     resultado de `Q-M1`: **no se puede diseñar desde preguntas que nadie ha
@@ -118,9 +171,17 @@ def main() -> int:
     if not dominios:
         print("[no determinable] no se pudo leer el contrato índice→dominio.")
         return 2
+    cur = estado_curacion()
+    for d in dominios:
+        d["estado"], d["prueba"] = cur.get(d["id"], ("NO DETERMINABLE", "—"))
     c = clasificar(dominios)
+    c["por_estado"] = {}
+    for d in dominios:
+        c["por_estado"].setdefault(d["estado"], []).append(d)
 
     print(f"dominios leídos del canon: {len(dominios)}")
+    for e, ds in c["por_estado"].items():
+        print(f"  {e:<17} {len(ds):>2} · {', '.join(x['id'] for x in ds)}")
     print(f"con pregunta rectora declarada: {len(c['con'])} "
           f"({', '.join(d['id'] for d in c['con'])})")
     print(f"SIN pregunta declarada: {len(c['sin'])}")
@@ -160,25 +221,86 @@ def _escribir(dominios, c) -> None:
     A("")
 
     # ── El primer resultado ───────────────────────────────────────────────
-    A("## ★ El primer resultado · no se puede diseñar desde preguntas que "
-      "nadie escribió")
+    A("## ★ El primer resultado · un MAPA DE MADUREZ, no un inventario de "
+      "carencias")
     A("")
-    A("| | |")
-    A("|---|---:|")
-    A(f"| dominios en el canon | {len(dominios)} |")
-    A(f"| **con pregunta rectora declarada** | **{len(c['con'])}** |")
-    A(f"| **sin pregunta declarada** | **{len(c['sin'])}** |")
+    A("### 📜 CORRECCIÓN · la `v1` confundió «no trabajado» con «no existe»")
     A("")
-    A("Los dos que la tienen —" +
-      " y ".join(f"`{d['id']}`" for d in c["con"]) +
-      "— son precisamente **los que tienen `PCD` cerrado**. La pregunta no "
-      "aparece por escribirla: aparece al curar el dominio.")
+    A("La primera versión publicó **«11 de 13 dominios no tienen pregunta "
+      "rectora»** como si fuera una carencia de la ontología. Javo lo "
+      "corrigió:")
     A("")
-    A("> ### Y eso reordena `Q-M1` antes de empezar")
+    A("> *«Los dominios no están completos todos, hemos estado trabajando uno "
+      "por uno […] Los demás no se ha empezado su trabajo.»*")
+    A("")
+    A("⚠️ **Es el mismo error del `71 %` → `62 %`, ahora a nivel de dominio.** "
+      "La formulación correcta:")
+    A("")
+    A("> En el estado actual de curación del corpus, sólo se dispone de "
+      "preguntas rectoras formalmente declaradas para los dominios que han "
+      "alcanzado el nivel de curación correspondiente. **Los dominios aún no "
+      "trabajados no pueden clasificarse como carentes de pregunta.**")
+    A("")
+    A("### Los cinco estados, y por qué no bastan dos")
+    A("")
+    A("| | Estado | Significa |")
+    A("|---|---|---|")
+    for nombre, icono, desc in _ESTADOS:
+        A(f"| {icono} | **{nombre}** | {desc} |")
+    A("")
+    A("### El mapa, derivado de los `PCD` en disco y de `BOOT`")
+    A("")
+    A("| Estado | Dominios | Prueba |")
+    A("|---|---|---|")
+    _ICO = {n: i for n, i, _d in _ESTADOS}
+    for estado in ("DECLARADO", "INCOMPLETO", "NO DETERMINABLE",
+                   "NO INICIADO"):
+        ds = c["por_estado"].get(estado, [])
+        if not ds:
+            continue
+        ids = " · ".join(f"`{d['id']}`" for d in ds)
+        A(f"| {_ICO.get(estado, '')} **{estado}** ({len(ds)}) | {ids} | "
+          f"{ds[0]['prueba']} |")
+    A("")
+    A("> ### Lo que esto cambia")
     A(">")
-    A("> `Q-M1` no puede **derivar** las once preguntas que faltan: sólo "
-      "puede **mostrar el hueco y la forma que tendría llenarlo**. "
-      "Derivarlas desde un script sería inventarlas.")
+    A("> No es «`2/13` con pregunta y `11/13` sin ella». Es **un estado de "
+      "curación heterogéneo sobre un universo ontológico todavía "
+      "parcialmente observado** — y eso es esperable: la Rearquitectura se "
+      "hace **mientras se termina de construir el conocimiento del "
+      "sistema**.")
+    A("")
+    A("⚠️ **No es una debilidad: es lo que permite hacer `REARQ` bien.** La "
+      "cadena correcta es `lo trabajado → evidencia disponible → lo no "
+      "trabajado → incertidumbre explícita → siguiente dominio`. Nunca `lo "
+      "que todavía no vimos → vacío → defecto`.")
+    A("")
+
+    # ── Las discrepancias ─────────────────────────────────────────────────
+    A("## ★ Tres discrepancias entre el canon y lo que la dirección declara")
+    A("")
+    A("⚠️ **Se registran; no se resuelven aquí.** Resolver una discrepancia "
+      "entre el canon y la memoria del autor exige la fuente, no el criterio "
+      "de un script.")
+    A("")
+    A("| # | Discrepancia | Estado |")
+    A("|---|---|---|")
+    A("| 1 | **¿12 o 13 dominios?** Javo: *«no son 13 sino doce; el dom SAT "
+      "se eliminó para que cada SAT fuera parte de las alertas de cada "
+      "dominio»*. Pero `d04 Alertas Institucionales` **sigue en la "
+      "Constitución Ontológica** en cuatro lugares | 🔴 **la eliminación no "
+      "se propagó al canon** |")
+    A("| 2 | **`d08` Participación Ciudadana**: Javo lo señala como "
+      "trabajado; `BOOT` lo declara `ENTRABLE` y **no existe `PCD-D08`** | ❓ "
+      "**NO DETERMINABLE** · evidencia conflictiva |")
+    A("| 3 | **`d06` Salud Institucional** tiene `PCD` cerrado y no figura "
+      "entre los que Javo enumera como trabajados | ❓ por confirmar |")
+    A("")
+    A("⚠️ Y una cuarta que `DOC-033` obliga a no dar por hecha: que "
+      "*«Rendición de Cuentas y Transparencia»* —mencionado como un trabajo— "
+      "corresponda **uno a uno** con `d09` y `d07` tal como están definidos "
+      "hoy. **El nombre no lo demuestra**; lo demostraría la correspondencia "
+      "documental.")
     A("")
 
     # ── Las familias ──────────────────────────────────────────────────────
@@ -266,10 +388,61 @@ def _escribir(dominios, c) -> None:
         A(f"| `{d['id']}` | ⬜ sin pregunta | {d['indicador'][:38]} | 🔴 **no "
           f"cruzable**: no hay pregunta contra la cual evaluar |")
     A("")
-    A(f"⚠️ **{len(c['sin'])} de {len(dominios)} dominios no son cruzables "
-      f"hoy.** No porque su indicador sea malo, sino porque **falta el otro "
-      f"lado del cruce**. Un indicador sin pregunta declarada no puede "
-      f"responder bien ni mal: no se puede evaluar.")
+    A("### ⚠️ `Q-M2` NO está bloqueada · está ACOTADA")
+    A("")
+    A("La `v1` decía que `Q-M2` quedaba bloqueada porque faltaban once "
+      "preguntas. Es demasiado fuerte. La formulación correcta:")
+    A("")
+    A("> **`Q-M2` puede comenzar únicamente sobre los dominios cuya curación "
+      "ya permite establecer una pregunta rectora.** Para los dominios no "
+      "iniciados o incompletos, cualquier evaluación indicador↔pregunta debe "
+      "permanecer pendiente hasta completar su curación.")
+    A("")
+    n_maduros = len(c["por_estado"].get("DECLARADO", []))
+    A(f"Y eso significa que **`Q-M2` puede trabajar hoy sobre el subconjunto "
+      f"maduro de {n_maduros} dominios** — no sobre ninguno, como decía la "
+      f"versión anterior.")
+    A("")
+    A("Un indicador sin pregunta declarada **no puede responder bien ni mal: "
+      "no se puede evaluar**. Eso no lo convierte en malo — es la categoría "
+      "`B` de `Q-M0`, problema de arquitectura y no del instrumento.")
+    A("")
+
+    # ── La unificación ────────────────────────────────────────────────────
+    A("## ★ Lo que el refactor debe hacer con los dominios ya curados")
+    A("")
+    A("Javo:")
+    A("")
+    A("> *«Los curados deben entrar en el refactor. Por ejemplo unificar "
+      "planificación y presupuesto —`d01` y `d02`— para trabajar toda esa "
+      "sección en un solo dominio, no dos. Y así todos los cambios en cada "
+      "dominio que mejoren sustancialmente a QUIRA.»*")
+    A("")
+    A("> ### Estar curado no significa quedar congelado")
+    A(">")
+    A("> Un dominio curado entra al refactor **con más autoridad, no con "
+      "menos**: es el único que tiene evidencia suficiente para decidir si "
+      "debe unificarse, dividirse o trasladarse. Los no curados no pueden "
+      "ni siquiera plantearse esa pregunta.")
+    A("")
+    A("### El caso `d01` + `d02` — lo que habría que verificar antes")
+    A("")
+    A("| Criterio | Por qué importa |")
+    A("|---|---|")
+    A("| ¿responden **la misma pregunta rectora** o dos distintas? | `d01` la "
+      "tiene declarada; `d02` **no** — y sin ella no se puede comparar |")
+    A("| ¿comparten **unidad de análisis**? | unificar dominios con unidades "
+      "distintas produce un dominio que mide dos cosas |")
+    A("| ¿comparten **evidencia primaria**? | `IPE` cruza gasto ejecutado con "
+      "metas del PDOT: **ya opera sobre ambos** |")
+    A("| ¿qué pasa con sus indicadores y sus `PCD` cerrados? | `DOC-028`: "
+      "continuidad histórica ≠ continuidad metodológica |")
+    A("")
+    A("⚠️ **La unificación es plausible y no está demostrada.** `IPE` —el "
+      "indicador más maduro— vive en `d01` y mide precisamente la "
+      "articulación plan↔presupuesto: eso es **evidencia a favor**. Pero "
+      "`d02` no tiene pregunta declarada, así que **hoy falta un lado de la "
+      "comparación**. Es `Q-M2` sobre el subconjunto maduro.")
     A("")
 
     # ── Lo que Q-M1 entrega ───────────────────────────────────────────────

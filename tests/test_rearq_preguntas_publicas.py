@@ -89,13 +89,94 @@ def test_un_indicador_sin_pregunta_no_se_evalua_como_malo():
     once indicadores quedarían marcados por un vacío que no es suyo. Es la
     categoría `B` de `Q-M0`: problema de arquitectura, no del instrumento."""
     txt = _DOC.read_text(encoding="utf-8")
-    assert "no son cruzables hoy" in txt
-    assert "No porque su indicador sea malo" in txt, (
-        "se perdió por qué 11 dominios no se pueden cruzar. Sin esa línea, "
-        "un hueco de la ontología se le imputa al indicador")
     assert "no puede responder bien ni mal: no se puede evaluar" in txt, (
         "desapareció la consecuencia lógica: sin pregunta no hay evaluación "
         "posible, ni positiva ni negativa")
+    assert "Eso no lo convierte en malo" in txt, (
+        "se perdió por qué un dominio no cruzable no imputa nada al "
+        "indicador. Sin esa línea, un hueco de la ontología se le achaca")
+    # ⚠️ Y `Q-M2` no queda bloqueada: queda ACOTADA al subconjunto maduro.
+    # Decir «bloqueada» era demasiado fuerte y detenía trabajo que sí puede
+    # hacerse.
+    assert "`Q-M2` NO está bloqueada · está ACOTADA" in txt, (
+        "Q-M2 volvió a declararse bloqueada. Puede trabajar sobre los "
+        "dominios cuya curación ya permite establecer una pregunta")
+    assert "subconjunto maduro" in txt
+
+
+def test_el_mapa_de_madurez_distingue_no_trabajado_de_inexistente():
+    """★ REGLA PROTEGIDA: **«todavía no trabajado» ≠ «no existe»**, ahora a
+    nivel de dominio.
+
+    La `v1` publicó «11 de 13 dominios no tienen pregunta rectora» como si
+    fuera una carencia de la ontología. Javo lo corrigió: *«los dominios no
+    están completos todos, hemos estado trabajando uno por uno»*.
+
+    Es el mismo error del `71 %` → `62 %`, y por eso hacen falta **cinco
+    estados y no dos**:
+
+        DECLARADO · INCOMPLETO · NO INICIADO · NO DECLARADO · NO DETERMINABLE
+
+    ⚠️ `NO INICIADO` y `NO DECLARADO` parecen lo mismo y son opuestos: el
+    primero es un dominio que nadie ha curado; el segundo, uno que se curó y
+    **aun así** no produjo pregunta. Sólo el segundo sería un hallazgo."""
+    txt = _DOC.read_text(encoding="utf-8")
+    assert "MAPA DE MADUREZ, no un inventario de carencias" in txt, (
+        "el mapa volvió a leerse como inventario de carencias")
+    for estado in ("DECLARADO", "INCOMPLETO", "NO INICIADO", "NO DECLARADO",
+                   "NO DETERMINABLE"):
+        assert estado in txt, f"falta el estado `{estado}`"
+    assert "no pueden clasificarse como carentes de pregunta" in txt, (
+        "desapareció la formulación correcta del resultado")
+    assert "lo que todavía no vimos → vacío → defecto" in txt, (
+        "se perdió la cadena que NO debe seguirse")
+
+
+def test_las_discrepancias_se_registran_y_no_se_resuelven():
+    """★ REGLA PROTEGIDA: **una discrepancia entre el canon y la memoria del
+    autor no la resuelve un script.**
+
+    Aparecieron tres, y ninguna se decidió aquí:
+
+        1. ¿12 o 13 dominios? Javo dice que `d04` (SAT) se eliminó; la
+           Constitución Ontológica lo mantiene en cuatro lugares
+        2. `d08` — Javo lo señala trabajado; `BOOT` dice ENTRABLE y no hay PCD
+        3. `d06` tiene PCD cerrado y no figura entre los que Javo enumera
+
+    ⚠️ Y una cuarta, que `DOC-033` obliga a no dar por hecha: que «Rendición
+    de Cuentas y Transparencia» corresponda uno a uno con `d09` y `d07`. **El
+    nombre no lo demuestra.**"""
+    txt = _DOC.read_text(encoding="utf-8")
+    assert "Se registran; no se resuelven aquí" in txt, (
+        "el expediente empezó a resolver discrepancias por su cuenta")
+    assert "la eliminación no se propagó al canon" in txt, (
+        "desapareció la discrepancia del dominio SAT, que es la que afecta al "
+        "número de dominios de toda la ontología")
+    assert "El nombre no lo demuestra" in txt, (
+        "se perdió la aplicación de DOC-033 a la correspondencia de dominios "
+        "por nombre")
+
+
+def test_estar_curado_no_significa_quedar_congelado():
+    """★ REGLA PROTEGIDA: **un dominio curado entra al refactor con más
+    autoridad, no con menos.**
+
+    Javo pidió unificar `d01` y `d02` en un solo dominio. Y tiene sentido que
+    lo pidan los curados: son los únicos con evidencia suficiente para decidir
+    si deben unificarse, dividirse o trasladarse.
+
+    ⚠️ Pero la unificación concreta **es plausible y no está demostrada**:
+    `IPE` —el indicador más maduro— vive en `d01` y mide precisamente la
+    articulación plan↔presupuesto, lo que es evidencia a favor; y `d02` no
+    tiene pregunta rectora declarada, así que **falta un lado de la
+    comparación**."""
+    txt = _DOC.read_text(encoding="utf-8")
+    assert "Estar curado no significa quedar congelado" in txt, (
+        "se perdió que la curación habilita el refactor en vez de blindarlo")
+    assert "plausible y no está demostrada" in txt, (
+        "la unificación d01+d02 se dio por buena. Es evidencia a favor, no "
+        "una decisión tomada")
+    assert "falta un lado de la comparación" in txt
 
 
 def test_la_pregunta_aparece_al_curar_el_dominio():

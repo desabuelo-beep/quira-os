@@ -407,7 +407,11 @@ Y el dato más incómodo, que el Excel **no** puede llenar: **9 de 12 indicadore
 
 > ### Y el patrón de fondo
 >
-> Los indicadores que **sí** tienen pregunta declarada son los que pasaron por curación de dominio (`PCD`). Los que están en blanco son los que nunca la tuvieron. **La matriz no descubre indicadores malos: descubre indicadores no curados.**
+> Los indicadores que **sí** tienen pregunta declarada son los que pasaron por curación de dominio (`PCD`).
+
+⚠️ **Pero la conclusión hay que enunciarla con cuidado.** Una versión anterior decía «la matriz no descubre indicadores malos: descubre indicadores no curados» — y eso presupone que ningún indicador tiene problemas metodológicos, cuando `011-C4` demostró que algunos sí. La formulación correcta:
+
+> **La matriz no presume que un indicador sea bueno o malo: identifica el estado de curación, evidencia y correspondencia disponible para evaluarlo.**
 
 ## ★ Tres categorías de hallazgo, que no son lo mismo
 

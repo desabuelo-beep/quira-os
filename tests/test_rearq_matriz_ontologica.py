@@ -146,9 +146,13 @@ def test_los_hallazgos_estructurales_no_se_pierden():
         assert clave.lower() in txt.lower(), (
             f"se perdió el hallazgo «{clave}». Son los que justifican que la "
             f"matriz exista como vista de conjunto y no como fichas sueltas")
-    assert "descubre indicadores no curados" in txt, (
-        "desapareció el patrón de fondo. Sin él, las celdas vacías parecen "
-        "descuido y son la huella de qué dominios no se curaron")
+    # ⚠️ Y la conclusión se enuncia con cuidado: «no descubre indicadores
+    # malos, descubre no curados» presuponía que ninguno tiene problemas
+    # metodológicos — y `011-C4` demostró que algunos sí.
+    assert "no presume que un indicador sea bueno o malo" in txt, (
+        "desapareció el patrón de fondo, o volvió en su forma excesiva. La "
+        "matriz identifica el estado de curación y evidencia disponible para "
+        "evaluar; no absuelve por adelantado")
 
 
 def test_la_matriz_lee_el_instrumento_antes_de_declarar_vacio():

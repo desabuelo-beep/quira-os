@@ -9,19 +9,54 @@ No significa borrarlos: significa **suspender su autoridad epistemológica duran
 
 ⚠️ **Las preguntas no se inventan aquí.** Se derivan del corpus, la doctrina y la arquitectura declarada. Escribir en un script las preguntas que el canon no tiene sería **escribir el canon desde un script** — lo contrario de cómo QUIRA construye.
 
-## ★ El primer resultado · no se puede diseñar desde preguntas que nadie escribió
+## ★ El primer resultado · un MAPA DE MADUREZ, no un inventario de carencias
 
-| | |
-|---|---:|
-| dominios en el canon | 13 |
-| **con pregunta rectora declarada** | **2** |
-| **sin pregunta declarada** | **11** |
+### 📜 CORRECCIÓN · la `v1` confundió «no trabajado» con «no existe»
 
-Los dos que la tienen —`d01` y `d09`— son precisamente **los que tienen `PCD` cerrado**. La pregunta no aparece por escribirla: aparece al curar el dominio.
+La primera versión publicó **«11 de 13 dominios no tienen pregunta rectora»** como si fuera una carencia de la ontología. Javo lo corrigió:
 
-> ### Y eso reordena `Q-M1` antes de empezar
+> *«Los dominios no están completos todos, hemos estado trabajando uno por uno […] Los demás no se ha empezado su trabajo.»*
+
+⚠️ **Es el mismo error del `71 %` → `62 %`, ahora a nivel de dominio.** La formulación correcta:
+
+> En el estado actual de curación del corpus, sólo se dispone de preguntas rectoras formalmente declaradas para los dominios que han alcanzado el nivel de curación correspondiente. **Los dominios aún no trabajados no pueden clasificarse como carentes de pregunta.**
+
+### Los cinco estados, y por qué no bastan dos
+
+| | Estado | Significa |
+|---|---|---|
+| ✅ | **DECLARADO** | curado, y la pregunta rectora tiene respaldo documental en su `PCD` |
+| 🟡 | **INCOMPLETO** | la curación empezó y no terminó |
+| ⬜ | **NO INICIADO** | el dominio **todavía no ha pasado** por curación — ⚠️ no es lo mismo que carecer de pregunta |
+| 🔴 | **NO DECLARADO** | se curó y **aun así** no hay pregunta explícita |
+| ❓ | **NO DETERMINABLE** | evidencia parcial o conflictiva que impide establecer el estado |
+
+### El mapa, derivado de los `PCD` en disco y de `BOOT`
+
+| Estado | Dominios | Prueba |
+|---|---|---|
+| ✅ **DECLARADO** (5) | `d01` · `d02` · `d03` · `d06` · `d09` | `PCD-D01` existe en `docs/pcd/` |
+| 🟡 **INCOMPLETO** (1) | `d07` | `BOOT` lo declara en curación |
+| ❓ **NO DETERMINABLE** (1) | `d08` | `BOOT` lo declara ENTRABLE y **no hay `PCD`**, pero Javo lo señala como trabajado — evidencia conflictiva |
+| ⬜ **NO INICIADO** (6) | `d04` · `d05` · `d10` · `d11` · `d12` · `d13` | sin `PCD` y sin mención de curación |
+
+> ### Lo que esto cambia
 >
-> `Q-M1` no puede **derivar** las once preguntas que faltan: sólo puede **mostrar el hueco y la forma que tendría llenarlo**. Derivarlas desde un script sería inventarlas.
+> No es «`2/13` con pregunta y `11/13` sin ella». Es **un estado de curación heterogéneo sobre un universo ontológico todavía parcialmente observado** — y eso es esperable: la Rearquitectura se hace **mientras se termina de construir el conocimiento del sistema**.
+
+⚠️ **No es una debilidad: es lo que permite hacer `REARQ` bien.** La cadena correcta es `lo trabajado → evidencia disponible → lo no trabajado → incertidumbre explícita → siguiente dominio`. Nunca `lo que todavía no vimos → vacío → defecto`.
+
+## ★ Tres discrepancias entre el canon y lo que la dirección declara
+
+⚠️ **Se registran; no se resuelven aquí.** Resolver una discrepancia entre el canon y la memoria del autor exige la fuente, no el criterio de un script.
+
+| # | Discrepancia | Estado |
+|---|---|---|
+| 1 | **¿12 o 13 dominios?** Javo: *«no son 13 sino doce; el dom SAT se eliminó para que cada SAT fuera parte de las alertas de cada dominio»*. Pero `d04 Alertas Institucionales` **sigue en la Constitución Ontológica** en cuatro lugares | 🔴 **la eliminación no se propagó al canon** |
+| 2 | **`d08` Participación Ciudadana**: Javo lo señala como trabajado; `BOOT` lo declara `ENTRABLE` y **no existe `PCD-D08`** | ❓ **NO DETERMINABLE** · evidencia conflictiva |
+| 3 | **`d06` Salud Institucional** tiene `PCD` cerrado y no figura entre los que Javo enumera como trabajados | ❓ por confirmar |
+
+⚠️ Y una cuarta que `DOC-033` obliga a no dar por hecha: que *«Rendición de Cuentas y Transparencia»* —mencionado como un trabajo— corresponda **uno a uno** con `d09` y `d07` tal como están definidos hoy. **El nombre no lo demuestra**; lo demostraría la correspondencia documental.
 
 ## Las cuatro familias de preguntas · macroejes de la Constitución
 
@@ -111,7 +146,36 @@ Y **sólo `D` obliga a crear algo nuevo**. `A` conserva, `B` amplía, `C` **tras
 | `d04` | ⬜ sin pregunta | Cola del SAT | 🔴 **no cruzable**: no hay pregunta contra la cual evaluar |
 | `d05` | ⬜ sin pregunta | Promedio de entidades | 🔴 **no cruzable**: no hay pregunta contra la cual evaluar |
 
-⚠️ **11 de 13 dominios no son cruzables hoy.** No porque su indicador sea malo, sino porque **falta el otro lado del cruce**. Un indicador sin pregunta declarada no puede responder bien ni mal: no se puede evaluar.
+### ⚠️ `Q-M2` NO está bloqueada · está ACOTADA
+
+La `v1` decía que `Q-M2` quedaba bloqueada porque faltaban once preguntas. Es demasiado fuerte. La formulación correcta:
+
+> **`Q-M2` puede comenzar únicamente sobre los dominios cuya curación ya permite establecer una pregunta rectora.** Para los dominios no iniciados o incompletos, cualquier evaluación indicador↔pregunta debe permanecer pendiente hasta completar su curación.
+
+Y eso significa que **`Q-M2` puede trabajar hoy sobre el subconjunto maduro de 5 dominios** — no sobre ninguno, como decía la versión anterior.
+
+Un indicador sin pregunta declarada **no puede responder bien ni mal: no se puede evaluar**. Eso no lo convierte en malo — es la categoría `B` de `Q-M0`, problema de arquitectura y no del instrumento.
+
+## ★ Lo que el refactor debe hacer con los dominios ya curados
+
+Javo:
+
+> *«Los curados deben entrar en el refactor. Por ejemplo unificar planificación y presupuesto —`d01` y `d02`— para trabajar toda esa sección en un solo dominio, no dos. Y así todos los cambios en cada dominio que mejoren sustancialmente a QUIRA.»*
+
+> ### Estar curado no significa quedar congelado
+>
+> Un dominio curado entra al refactor **con más autoridad, no con menos**: es el único que tiene evidencia suficiente para decidir si debe unificarse, dividirse o trasladarse. Los no curados no pueden ni siquiera plantearse esa pregunta.
+
+### El caso `d01` + `d02` — lo que habría que verificar antes
+
+| Criterio | Por qué importa |
+|---|---|
+| ¿responden **la misma pregunta rectora** o dos distintas? | `d01` la tiene declarada; `d02` **no** — y sin ella no se puede comparar |
+| ¿comparten **unidad de análisis**? | unificar dominios con unidades distintas produce un dominio que mide dos cosas |
+| ¿comparten **evidencia primaria**? | `IPE` cruza gasto ejecutado con metas del PDOT: **ya opera sobre ambos** |
+| ¿qué pasa con sus indicadores y sus `PCD` cerrados? | `DOC-028`: continuidad histórica ≠ continuidad metodológica |
+
+⚠️ **La unificación es plausible y no está demostrada.** `IPE` —el indicador más maduro— vive en `d01` y mide precisamente la articulación plan↔presupuesto: eso es **evidencia a favor**. Pero `d02` no tiene pregunta declarada, así que **hoy falta un lado de la comparación**. Es `Q-M2` sobre el subconjunto maduro.
 
 ## Lo que `Q-M1` entrega, y lo que no
 
