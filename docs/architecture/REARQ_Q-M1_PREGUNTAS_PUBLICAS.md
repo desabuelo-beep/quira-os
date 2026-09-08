@@ -50,13 +50,76 @@ La primera versión publicó **«11 de 13 dominios no tienen pregunta rectora»*
 
 ⚠️ **Se registran; no se resuelven aquí.** Resolver una discrepancia entre el canon y la memoria del autor exige la fuente, no el criterio de un script.
 
-| # | Discrepancia | Estado |
+### ★ Un solo estado no alcanza · hacen falta CINCO dimensiones
+
+Las discrepancias no eran contradicciones: eran **dimensiones distintas colapsadas en una sola columna**.
+
+| Dimensión | Qué mide |
+|---|---|
+| **trabajo** | qué se ha hecho realmente |
+| **curación** | qué nivel formal alcanzó (`PCD`) |
+| **documental** | qué está formalmente registrado en el canon |
+| **decisión** | qué ha sido aprobado |
+| **implementación** | qué está efectivizado en el producto |
+
+> **Usar la existencia de un `PCD` como sustituto de la realidad del proceso** fue el error de la versión anterior. Trabajo realizado ≠ `PCD` cerrado ≠ implementado.
+
+### Los tres casos, resueltos por dimensión
+
+| | `d04` Alertas | `d06` Salud Inst. | `d08` Participación |
+|---|---|---|---|
+| **trabajo** | — | 🔴 **no iniciado** (Javo) | ✅ **trabajado** (Javo) |
+| **curación** | — | ⚠️ existe `PCD-D06` en disco | ❌ sin `PCD-D08` |
+| **documental** | 🔴 **sigue en la Constitución** (4 lugares) | `PCD` presente | `BOOT`: `ENTRABLE` |
+| **decisión** | ✅ **aprobada** — eliminarlo | — | — |
+| **implementación** | ✅ **efectivizada** — fuera del frontend | — | — |
+
+Y así los tres dejan de ser «discrepancias» y pasan a ser **estados precisos**:
+
+| # | Caso | Lectura correcta |
 |---|---|---|
-| 1 | **¿12 o 13 dominios?** Javo: *«no son 13 sino doce; el dom SAT se eliminó para que cada SAT fuera parte de las alertas de cada dominio»*. Pero `d04 Alertas Institucionales` **sigue en la Constitución Ontológica** en cuatro lugares | 🔴 **la eliminación no se propagó al canon** |
-| 2 | **`d08` Participación Ciudadana**: Javo lo señala como trabajado; `BOOT` lo declara `ENTRABLE` y **no existe `PCD-D08`** | ❓ **NO DETERMINABLE** · evidencia conflictiva |
-| 3 | **`d06` Salud Institucional** tiene `PCD` cerrado y no figura entre los que Javo enumera como trabajados | ❓ por confirmar |
+| 1 | **¿12 o 13 dominios?** | **No es binario.** El **producto** tiene hoy **12 dominios visibles**; el **canon** conserva **13**. `d04` fue eliminado por decisión aprobada y efectivizada — lo pendiente **no es decidirlo, es propagarlo al canon** |
+| 2 | **`d08` Participación** | ✅ **trabajado**. La ausencia de `PCD` cerrado **no autoriza** a clasificarlo como no trabajado: mide la **formalización**, no el trabajo |
+| 3 | **`d06` Salud Institucional** | 🔴 **no iniciado**, según Javo — ⚠️ y existe un `PCD-D06` en disco. **Discrepancia real que queda abierta**: habrá que determinar qué documenta ese `PCD` |
 
 ⚠️ Y una cuarta que `DOC-033` obliga a no dar por hecha: que *«Rendición de Cuentas y Transparencia»* —mencionado como un trabajo— corresponda **uno a uno** con `d09` y `d07` tal como están definidos hoy. **El nombre no lo demuestra**; lo demostraría la correspondencia documental.
+
+### Lo que `d04` enseña como patrón
+
+> **decisión aprobada ✅ + implementación efectivizada ✅ + canon no propagado 🔴**
+>
+> No es un dominio en disputa: es una **deuda de propagación documental**. Y conviene verificar además que la decisión tenga su anclaje canónico —si existe, la deuda es sólo de propagación; si no, hay que reconstruir esa autoridad.
+
+Su motivo, además, es arquitectónicamente interesante: los `SAT` dejaron de ser un dominio propio **para volverse alertas dentro de cada dominio**. Eso es exactamente una decisión de `FORMA` con consecuencias en `FONDO`.
+
+### `d06` y el ICPI · la hipótesis que NO se decide aquí
+
+Javo:
+
+> *«Ahí estaba pensado meter el ICPI; pero éste posiblemente sea transversal y debe estar fuera, y el dominio de Salud Institucional iría con el índice de eficiencia directiva — o todo lo que implique, visualizo yo, pero no sé si sea lo más adecuado.»*
+
+⚠️ **Decidir ahora `d06 → IED` sería exactamente lo que `Q-M1` acaba de prohibir**: meter un indicador existente en un dominio porque encaja de tamaño. El orden obligado es:
+
+```
+  1. ¿qué fenómeno es «Salud Institucional»?
+  2. ¿qué pregunta pública necesita responder?
+  3. ¿qué evidencia lo observa?
+  4. ¿qué indicador —si alguno— responde esa pregunta?
+  5. …y sólo entonces: ¿debe existir un dominio visible con ese nombre?
+```
+
+Seis salidas siguen abiertas, y ninguna está descartada:
+
+| | Salida |
+|---|---|
+| A | `d06` es realmente necesario |
+| B | `d06` queda absorbido por otro dominio |
+| C | «salud institucional» es un **fenómeno transversal**, no un dominio |
+| D | `IED` es un **componente** de ese fenómeno, no su indicador |
+| E | `ICPI` e `IED` son dos medidas de **una misma dimensión transversal** |
+| F | ninguno de los indicadores históricos lo representa y hay que **reconstruir** |
+
+La intuición de Javo —el ICPI fuera de `d06` por transversal— **es coherente con lo que `010` y `Q-M0` ya midieron**. Eso la hace plausible; no la convierte en decisión.
 
 ## Las cuatro familias de preguntas · macroejes de la Constitución
 
@@ -103,24 +166,50 @@ La primera versión publicó **«11 de 13 dominios no tienen pregunta rectora»*
 | `d12` Inclusión, Equidad y Género | inclusión y equidad | ⬜ **por declarar** | Presupuesto con enfoque de género (PSG) |
 | `d13` Sostenibilidad y Resiliencia Ambiental | resiliencia | ⬜ **por declarar** | ICODS · biofísico/riesgo |
 
-## ★ `FONDO` / `FORMA` · contrastada contra los macroejes, no asumida
+## ★★ DOS EJES, no dos versiones del mismo · y ambos valen
 
-La hipótesis de `010` decía que QUIRA necesita dos ejes: **qué** gestiona la administración y **cómo** la gestiona. Puesta contra los macroejes que el canon ya tiene:
+### 📜 CORRECCIÓN · `FONDO`/`FORMA` significaba dos cosas distintas
 
-| Macroeje | Capacidades que agrupa | ¿FONDO o FORMA? |
-|---|---|---|
-| 1 DIRECCIÓN | trayectoria · movilización · fidelidad democrática | **FORMA** — son modos de administrar |
-| 2 CAPACIDAD | anticipación · articulación · sostenibilidad interna | **FORMA** — son modos de administrar |
-| 3 DEMOCRACIA | verificabilidad · inteligencia colectiva · responsabilidad pública | **FORMA** — son modos de administrar |
-| 4 TERRITORIO | acceso colectivo · dinamización · inclusión y equidad · resiliencia | **FONDO** — son sectores y poblaciones |
+`Q-M1` leyó los macroejes como `FONDO`/`FORMA` en sentido **ontológico** —qué gestiona la administración frente a cómo la gestiona—. Javo usa los mismos términos en sentido **arquitectónico**:
 
-> ### El hallazgo: la Constitución **ya contiene** el eje FONDO/FORMA, sin nombrarlo
+> *«Cuando me refiero a FONDO es lo estructural —código, documentación, metodología—; FORMA, a lo que vemos en el frontend de los dominios.»*
+
+⚠️ **Dos cosas distintas con el mismo nombre es exactamente lo que `DOC-033` prohíbe**, y esta vez el nombre lo compartían dos ideas **ambas correctas**. Javo pidió conservar las dos. Así que no se descarta ninguna: **se separan**.
+
+| | Eje | Pregunta | Vocabulario |
+|---|---|---|---|
+| **1** | **ARQUITECTÓNICO** — de producto | ¿dónde y cómo existe el conocimiento **dentro de QUIRA**? | **`FONDO`** / **`FORMA`** |
+| **2** | **ONTOLÓGICO** — de la gestión pública | ¿qué realidad estamos intentando conocer? | **`SECTORIAL`** / **`TRANSVERSAL`** |
+
+Renombrar el segundo eje **no le quita valor**: le quita la colisión. «Transversal» ya se usa en el proyecto, así que no inflama el canon (`Regla de Oro 7`).
+
+### Eje 1 · `FONDO` / `FORMA` — arquitectura de QUIRA
+
+| | Qué contiene |
+|---|---|
+| **`FONDO`** | código · Gold Master · datos · conectores · metodología · fórmulas · reglas · evidencia · documentación · ontología · trazabilidad · pruebas · gobernanza |
+| **`FORMA`** | frontend · dominios visibles · navegación · indicadores presentados · mapas · narrativa · semáforos · comparaciones · experiencia |
+
+> ### Y de aquí sale una regla de precisión
 >
-> Los macroejes `1`, `2` y `3` agrupan **modos de administrar** —dirigir, sostener, responder—; el `4` agrupa **materias y poblaciones**. La distinción que `010` propuso como novedad estaba **implícita en la ontología desde el principio**.
+> **No se dice «el ICPI es FONDO».** Se dice: el constructo pertenece al conocimiento metodológico de QUIRA; **su cálculo reside en `FONDO` y su representación en `FORMA`**. Decir lo primero mezcla niveles.
 
-⚠️ **Y eso no la valida todavía.** Que los macroejes se dejen leer así es **compatible** con la hipótesis; no demuestra que `FONDO`/`FORMA` organice las preguntas **mejor** que la agrupación actual. Para eso haría falta comparar ambas contra un conjunto de preguntas declaradas — y **once de trece no existen**.
+### Eje 2 · `SECTORIAL` / `TRANSVERSAL` — la realidad observada
 
-Es la misma disciplina que se aplicó a `IED`: evidencia que respalda una hipótesis no es la hipótesis demostrada.
+| Macroeje | Capacidades que agrupa | Lectura |
+|---|---|---|
+| 1 DIRECCIÓN | trayectoria · movilización · fidelidad democrática | **TRANSVERSAL** — modos de administrar |
+| 2 CAPACIDAD | anticipación · articulación · sostenibilidad interna | **TRANSVERSAL** — modos de administrar |
+| 3 DEMOCRACIA | verificabilidad · inteligencia colectiva · responsabilidad pública | **TRANSVERSAL** — modos de administrar |
+| 4 TERRITORIO | acceso colectivo · dinamización · inclusión y equidad · resiliencia | **SECTORIAL** — materias y poblaciones |
+
+> La distinción **ya estaba implícita en la Constitución**: los macroejes `1`, `2` y `3` agrupan modos de administrar; el `4`, materias y poblaciones.
+
+⚠️ **Y eso sigue sin validarla.** Que los macroejes admitan esa lectura es **compatible** con la hipótesis; no demuestra que organice las preguntas **mejor** que la agrupación actual. Compararlo exigiría las preguntas, y **la mayoría de los dominios aún no está curada**. Es la misma disciplina que se aplicó a `IED`.
+
+> ### Los dos ejes son ORTOGONALES, y por eso ambos sirven
+>
+> Un indicador **transversal** puede residir en `FONDO` y mostrarse en `FORMA`. Un dominio **sectorial** también. Cruzar los dos ejes es lo que permite preguntar, por ejemplo, si un fenómeno transversal tiene hoy una `FORMA` que lo represente — y el caso `IED` sugiere que **no la tiene**.
 
 ## El cruce · las cuatro respuestas posibles
 
@@ -165,6 +254,38 @@ Javo:
 > ### Estar curado no significa quedar congelado
 >
 > Un dominio curado entra al refactor **con más autoridad, no con menos**: es el único que tiene evidencia suficiente para decidir si debe unificarse, dividirse o trasladarse. Los no curados no pueden ni siquiera plantearse esa pregunta.
+
+### ★ La misión, dicha por Javo
+
+> *«Los dominios deben subsanarse, mejorarse, elevarse a lo que realmente necesitamos para QUIRA — ésa es la misiva de este refactor, no dejarlos como están. Todos deben revisarse íntegramente para potenciar y elevar cada dominio, con base en el Excel y la normativa. Todo debe crecer.»*
+
+Eso cambia la naturaleza de `REARQ`. **No es una auditoría de conservación.** No pregunta «¿está bien el dominio actual?», sino:
+
+> **¿Qué debería ser este dominio para que QUIRA cumpla adecuadamente su propósito?**
+
+Con una regla que no cambia: **primero entendemos qué existe; después decidimos qué debe existir.** El método es `CLASIFICAR → COMPRENDER → EVALUAR → REDISEÑAR → IMPLEMENTAR`, nunca `CLASIFICAR → CONSERVAR`.
+
+### Nueve destinos posibles, no seis
+
+«Refactorizar» se quedaba corto: sugería arreglar defectos, y la misión es **elevar**.
+
+| | Destino | Cuándo |
+|---|---|---|
+| **CONSERVAR** | funciona y satisface la necesidad |
+| **MEJORAR** | necesita elevarse |
+| **REESTRUCTURAR** | requiere cambio interno importante |
+| **UNIFICAR** | combinar con otro dominio |
+| **DESCOMPONER** | separar fenómenos mezclados |
+| **TRASLADAR** | cambiar residencia |
+| **RECONSTRUIR** | lo existente no representa lo que QUIRA necesita conocer |
+| **DEPRECAR** | dejarlo fuera |
+| **PENDIENTE** | evidencia insuficiente para decidir |
+
+> ### Y la regla central de `Q-M1`, reformulada
+>
+> **Los dominios históricos no conservan automáticamente su residencia, nombre, estructura ni indicador.** Cada uno será evaluado frente a las preguntas que QUIRA necesita responder, y podrá conservarse, mejorarse, reestructurarse, unificarse, descomponerse, trasladarse, reconstruirse o deprecarse.
+
+Es una vuelta más que «los indicadores se ganan su residencia»: **los dominios también**.
 
 ### El caso `d01` + `d02` — lo que habría que verificar antes
 

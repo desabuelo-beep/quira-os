@@ -283,24 +283,112 @@ def _escribir(dominios, c) -> None:
       "entre el canon y la memoria del autor exige la fuente, no el criterio "
       "de un script.")
     A("")
-    A("| # | Discrepancia | Estado |")
+    A("### ★ Un solo estado no alcanza · hacen falta CINCO dimensiones")
+    A("")
+    A("Las discrepancias no eran contradicciones: eran **dimensiones "
+      "distintas colapsadas en una sola columna**.")
+    A("")
+    A("| Dimensión | Qué mide |")
+    A("|---|---|")
+    A("| **trabajo** | qué se ha hecho realmente |")
+    A("| **curación** | qué nivel formal alcanzó (`PCD`) |")
+    A("| **documental** | qué está formalmente registrado en el canon |")
+    A("| **decisión** | qué ha sido aprobado |")
+    A("| **implementación** | qué está efectivizado en el producto |")
+    A("")
+    A("> **Usar la existencia de un `PCD` como sustituto de la realidad del "
+      "proceso** fue el error de la versión anterior. Trabajo realizado ≠ "
+      "`PCD` cerrado ≠ implementado.")
+    A("")
+    A("### Los tres casos, resueltos por dimensión")
+    A("")
+    A("| | `d04` Alertas | `d06` Salud Inst. | `d08` Participación |")
+    A("|---|---|---|---|")
+    A("| **trabajo** | — | 🔴 **no iniciado** (Javo) | ✅ **trabajado** (Javo) |")
+    A("| **curación** | — | ⚠️ existe `PCD-D06` en disco | ❌ sin `PCD-D08` |")
+    A("| **documental** | 🔴 **sigue en la Constitución** (4 lugares) | "
+      "`PCD` presente | `BOOT`: `ENTRABLE` |")
+    A("| **decisión** | ✅ **aprobada** — eliminarlo | — | — |")
+    A("| **implementación** | ✅ **efectivizada** — fuera del frontend | — | "
+      "— |")
+    A("")
+    A("Y así los tres dejan de ser «discrepancias» y pasan a ser **estados "
+      "precisos**:")
+    A("")
+    A("| # | Caso | Lectura correcta |")
     A("|---|---|---|")
-    A("| 1 | **¿12 o 13 dominios?** Javo: *«no son 13 sino doce; el dom SAT "
-      "se eliminó para que cada SAT fuera parte de las alertas de cada "
-      "dominio»*. Pero `d04 Alertas Institucionales` **sigue en la "
-      "Constitución Ontológica** en cuatro lugares | 🔴 **la eliminación no "
-      "se propagó al canon** |")
-    A("| 2 | **`d08` Participación Ciudadana**: Javo lo señala como "
-      "trabajado; `BOOT` lo declara `ENTRABLE` y **no existe `PCD-D08`** | ❓ "
-      "**NO DETERMINABLE** · evidencia conflictiva |")
-    A("| 3 | **`d06` Salud Institucional** tiene `PCD` cerrado y no figura "
-      "entre los que Javo enumera como trabajados | ❓ por confirmar |")
+    A("| 1 | **¿12 o 13 dominios?** | **No es binario.** El **producto** "
+      "tiene hoy **12 dominios visibles**; el **canon** conserva **13**. "
+      "`d04` fue eliminado por decisión aprobada y efectivizada — lo "
+      "pendiente **no es decidirlo, es propagarlo al canon** |")
+    A("| 2 | **`d08` Participación** | ✅ **trabajado**. La ausencia de `PCD` "
+      "cerrado **no autoriza** a clasificarlo como no trabajado: mide la "
+      "**formalización**, no el trabajo |")
+    A("| 3 | **`d06` Salud Institucional** | 🔴 **no iniciado**, según Javo — "
+      "⚠️ y existe un `PCD-D06` en disco. **Discrepancia real que queda "
+      "abierta**: habrá que determinar qué documenta ese `PCD` |")
     A("")
     A("⚠️ Y una cuarta que `DOC-033` obliga a no dar por hecha: que "
       "*«Rendición de Cuentas y Transparencia»* —mencionado como un trabajo— "
       "corresponda **uno a uno** con `d09` y `d07` tal como están definidos "
       "hoy. **El nombre no lo demuestra**; lo demostraría la correspondencia "
       "documental.")
+    A("")
+    A("### Lo que `d04` enseña como patrón")
+    A("")
+    A("> **decisión aprobada ✅ + implementación efectivizada ✅ + canon no "
+      "propagado 🔴**")
+    A(">")
+    A("> No es un dominio en disputa: es una **deuda de propagación "
+      "documental**. Y conviene verificar además que la decisión tenga su "
+      "anclaje canónico —si existe, la deuda es sólo de propagación; si no, "
+      "hay que reconstruir esa autoridad.")
+    A("")
+    A("Su motivo, además, es arquitectónicamente interesante: los `SAT` "
+      "dejaron de ser un dominio propio **para volverse alertas dentro de "
+      "cada dominio**. Eso es exactamente una decisión de `FORMA` con "
+      "consecuencias en `FONDO`.")
+    A("")
+
+    # ── d06 y el ICPI ─────────────────────────────────────────────────────
+    A("### `d06` y el ICPI · la hipótesis que NO se decide aquí")
+    A("")
+    A("Javo:")
+    A("")
+    A("> *«Ahí estaba pensado meter el ICPI; pero éste posiblemente sea "
+      "transversal y debe estar fuera, y el dominio de Salud Institucional "
+      "iría con el índice de eficiencia directiva — o todo lo que implique, "
+      "visualizo yo, pero no sé si sea lo más adecuado.»*")
+    A("")
+    A("⚠️ **Decidir ahora `d06 → IED` sería exactamente lo que `Q-M1` acaba "
+      "de prohibir**: meter un indicador existente en un dominio porque "
+      "encaja de tamaño. El orden obligado es:")
+    A("")
+    A("```")
+    A("  1. ¿qué fenómeno es «Salud Institucional»?")
+    A("  2. ¿qué pregunta pública necesita responder?")
+    A("  3. ¿qué evidencia lo observa?")
+    A("  4. ¿qué indicador —si alguno— responde esa pregunta?")
+    A("  5. …y sólo entonces: ¿debe existir un dominio visible con ese nombre?")
+    A("```")
+    A("")
+    A("Seis salidas siguen abiertas, y ninguna está descartada:")
+    A("")
+    A("| | Salida |")
+    A("|---|---|")
+    A("| A | `d06` es realmente necesario |")
+    A("| B | `d06` queda absorbido por otro dominio |")
+    A("| C | «salud institucional» es un **fenómeno transversal**, no un "
+      "dominio |")
+    A("| D | `IED` es un **componente** de ese fenómeno, no su indicador |")
+    A("| E | `ICPI` e `IED` son dos medidas de **una misma dimensión "
+      "transversal** |")
+    A("| F | ninguno de los indicadores históricos lo representa y hay que "
+      "**reconstruir** |")
+    A("")
+    A("La intuición de Javo —el ICPI fuera de `d06` por transversal— **es "
+      "coherente con lo que `010` y `Q-M0` ya midieron**. Eso la hace "
+      "plausible; no la convierte en decisión.")
     A("")
 
     # ── Las familias ──────────────────────────────────────────────────────
@@ -328,37 +416,79 @@ def _escribir(dominios, c) -> None:
         A("")
 
     # ── FONDO / FORMA como hipótesis ──────────────────────────────────────
-    A("## ★ `FONDO` / `FORMA` · contrastada contra los macroejes, no asumida")
+    A("## ★★ DOS EJES, no dos versiones del mismo · y ambos valen")
     A("")
-    A("La hipótesis de `010` decía que QUIRA necesita dos ejes: **qué** "
-      "gestiona la administración y **cómo** la gestiona. Puesta contra los "
-      "macroejes que el canon ya tiene:")
+    A("### 📜 CORRECCIÓN · `FONDO`/`FORMA` significaba dos cosas distintas")
     A("")
-    A("| Macroeje | Capacidades que agrupa | ¿FONDO o FORMA? |")
+    A("`Q-M1` leyó los macroejes como `FONDO`/`FORMA` en sentido **ontológico** "
+      "—qué gestiona la administración frente a cómo la gestiona—. Javo usa "
+      "los mismos términos en sentido **arquitectónico**:")
+    A("")
+    A("> *«Cuando me refiero a FONDO es lo estructural —código, "
+      "documentación, metodología—; FORMA, a lo que vemos en el frontend de "
+      "los dominios.»*")
+    A("")
+    A("⚠️ **Dos cosas distintas con el mismo nombre es exactamente lo que "
+      "`DOC-033` prohíbe**, y esta vez el nombre lo compartían dos ideas "
+      "**ambas correctas**. Javo pidió conservar las dos. Así que no se "
+      "descarta ninguna: **se separan**.")
+    A("")
+    A("| | Eje | Pregunta | Vocabulario |")
+    A("|---|---|---|---|")
+    A("| **1** | **ARQUITECTÓNICO** — de producto | ¿dónde y cómo existe el "
+      "conocimiento **dentro de QUIRA**? | **`FONDO`** / **`FORMA`** |")
+    A("| **2** | **ONTOLÓGICO** — de la gestión pública | ¿qué realidad "
+      "estamos intentando conocer? | **`SECTORIAL`** / **`TRANSVERSAL`** |")
+    A("")
+    A("Renombrar el segundo eje **no le quita valor**: le quita la colisión. "
+      "«Transversal» ya se usa en el proyecto, así que no inflama el canon "
+      "(`Regla de Oro 7`).")
+    A("")
+    A("### Eje 1 · `FONDO` / `FORMA` — arquitectura de QUIRA")
+    A("")
+    A("| | Qué contiene |")
+    A("|---|---|")
+    A("| **`FONDO`** | código · Gold Master · datos · conectores · "
+      "metodología · fórmulas · reglas · evidencia · documentación · "
+      "ontología · trazabilidad · pruebas · gobernanza |")
+    A("| **`FORMA`** | frontend · dominios visibles · navegación · "
+      "indicadores presentados · mapas · narrativa · semáforos · "
+      "comparaciones · experiencia |")
+    A("")
+    A("> ### Y de aquí sale una regla de precisión")
+    A(">")
+    A("> **No se dice «el ICPI es FONDO».** Se dice: el constructo pertenece "
+      "al conocimiento metodológico de QUIRA; **su cálculo reside en `FONDO` "
+      "y su representación en `FORMA`**. Decir lo primero mezcla niveles.")
+    A("")
+    A("### Eje 2 · `SECTORIAL` / `TRANSVERSAL` — la realidad observada")
+    A("")
+    A("| Macroeje | Capacidades que agrupa | Lectura |")
     A("|---|---|---|")
     for eje in sorted(c["por_eje"]):
         nombre, _p = _MACROEJES.get(eje, ("?", ""))
         caps = " · ".join(d["capacidad"] for d in c["por_eje"][eje])
-        lectura = ("**FONDO** — son sectores y poblaciones" if eje == "4"
-                   else "**FORMA** — son modos de administrar")
+        lectura = ("**SECTORIAL** — materias y poblaciones" if eje == "4"
+                   else "**TRANSVERSAL** — modos de administrar")
         A(f"| {eje} {nombre} | {caps} | {lectura} |")
     A("")
-    A("> ### El hallazgo: la Constitución **ya contiene** el eje FONDO/FORMA, "
-      "sin nombrarlo")
+    A("> La distinción **ya estaba implícita en la Constitución**: los "
+      "macroejes `1`, `2` y `3` agrupan modos de administrar; el `4`, "
+      "materias y poblaciones.")
+    A("")
+    A("⚠️ **Y eso sigue sin validarla.** Que los macroejes admitan esa "
+      "lectura es **compatible** con la hipótesis; no demuestra que organice "
+      "las preguntas **mejor** que la agrupación actual. Compararlo exigiría "
+      "las preguntas, y **la mayoría de los dominios aún no está curada**. Es "
+      "la misma disciplina que se aplicó a `IED`.")
+    A("")
+    A("> ### Los dos ejes son ORTOGONALES, y por eso ambos sirven")
     A(">")
-    A("> Los macroejes `1`, `2` y `3` agrupan **modos de administrar** "
-      "—dirigir, sostener, responder—; el `4` agrupa **materias y "
-      "poblaciones**. La distinción que `010` propuso como novedad estaba "
-      "**implícita en la ontología desde el principio**.")
-    A("")
-    A("⚠️ **Y eso no la valida todavía.** Que los macroejes se dejen leer así "
-      "es **compatible** con la hipótesis; no demuestra que `FONDO`/`FORMA` "
-      "organice las preguntas **mejor** que la agrupación actual. Para eso "
-      "haría falta comparar ambas contra un conjunto de preguntas "
-      "declaradas — y **once de trece no existen**.")
-    A("")
-    A("Es la misma disciplina que se aplicó a `IED`: evidencia que respalda "
-      "una hipótesis no es la hipótesis demostrada.")
+    A("> Un indicador **transversal** puede residir en `FONDO` y mostrarse en "
+      "`FORMA`. Un dominio **sectorial** también. Cruzar los dos ejes es lo "
+      "que permite preguntar, por ejemplo, si un fenómeno transversal tiene "
+      "hoy una `FORMA` que lo represente — y el caso `IED` sugiere que **no "
+      "la tiene**.")
     A("")
 
     # ── El cruce ──────────────────────────────────────────────────────────
@@ -424,6 +554,53 @@ def _escribir(dominios, c) -> None:
       "menos**: es el único que tiene evidencia suficiente para decidir si "
       "debe unificarse, dividirse o trasladarse. Los no curados no pueden "
       "ni siquiera plantearse esa pregunta.")
+    A("")
+    A("### ★ La misión, dicha por Javo")
+    A("")
+    A("> *«Los dominios deben subsanarse, mejorarse, elevarse a lo que "
+      "realmente necesitamos para QUIRA — ésa es la misiva de este refactor, "
+      "no dejarlos como están. Todos deben revisarse íntegramente para "
+      "potenciar y elevar cada dominio, con base en el Excel y la normativa. "
+      "Todo debe crecer.»*")
+    A("")
+    A("Eso cambia la naturaleza de `REARQ`. **No es una auditoría de "
+      "conservación.** No pregunta «¿está bien el dominio actual?», sino:")
+    A("")
+    A("> **¿Qué debería ser este dominio para que QUIRA cumpla adecuadamente "
+      "su propósito?**")
+    A("")
+    A("Con una regla que no cambia: **primero entendemos qué existe; después "
+      "decidimos qué debe existir.** El método es `CLASIFICAR → COMPRENDER → "
+      "EVALUAR → REDISEÑAR → IMPLEMENTAR`, nunca `CLASIFICAR → CONSERVAR`.")
+    A("")
+    A("### Nueve destinos posibles, no seis")
+    A("")
+    A("«Refactorizar» se quedaba corto: sugería arreglar defectos, y la "
+      "misión es **elevar**.")
+    A("")
+    A("| | Destino | Cuándo |")
+    A("|---|---|---|")
+    A("| **CONSERVAR** | funciona y satisface la necesidad |")
+    A("| **MEJORAR** | necesita elevarse |")
+    A("| **REESTRUCTURAR** | requiere cambio interno importante |")
+    A("| **UNIFICAR** | combinar con otro dominio |")
+    A("| **DESCOMPONER** | separar fenómenos mezclados |")
+    A("| **TRASLADAR** | cambiar residencia |")
+    A("| **RECONSTRUIR** | lo existente no representa lo que QUIRA necesita "
+      "conocer |")
+    A("| **DEPRECAR** | dejarlo fuera |")
+    A("| **PENDIENTE** | evidencia insuficiente para decidir |")
+    A("")
+    A("> ### Y la regla central de `Q-M1`, reformulada")
+    A(">")
+    A("> **Los dominios históricos no conservan automáticamente su "
+      "residencia, nombre, estructura ni indicador.** Cada uno será evaluado "
+      "frente a las preguntas que QUIRA necesita responder, y podrá "
+      "conservarse, mejorarse, reestructurarse, unificarse, descomponerse, "
+      "trasladarse, reconstruirse o deprecarse.")
+    A("")
+    A("Es una vuelta más que «los indicadores se ganan su residencia»: **los "
+      "dominios también**.")
     A("")
     A("### El caso `d01` + `d02` — lo que habría que verificar antes")
     A("")

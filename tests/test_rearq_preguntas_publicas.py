@@ -68,14 +68,25 @@ def test_FONDO_FORMA_sigue_siendo_hipotesis_contrastada():
     ⚠️ Pero no demuestra que organice las preguntas **mejor** que la
     agrupación actual. Para compararlo harían falta las preguntas, y **once de
     trece no existen**. Es la misma cautela que se aplicó a `IED`."""
+    # ⚠️ Y la corrección que Javo obligó a hacer: `FONDO`/`FORMA` significaba
+    # DOS COSAS distintas —arquitectura de producto y ontología de la gestión—
+    # y ambas eran correctas. No se descarta ninguna: se SEPARAN, porque dos
+    # ideas con el mismo nombre es lo que `DOC-033` prohíbe.
     txt = _DOC.read_text(encoding="utf-8")
-    assert "contrastada contra los macroejes, no asumida" in txt, (
-        "FONDO/FORMA volvió a darse por buena. Se contrasta; no se asume")
-    assert "no la valida todavía" in txt, (
+    assert "DOS EJES, no dos versiones del mismo" in txt, (
+        "los dos ejes volvieron a colapsarse en uno. Ambos valen; lo que no "
+        "vale es que compartan nombre")
+    assert "`SECTORIAL`" in txt and "`TRANSVERSAL`" in txt, (
+        "el eje ontológico perdió su vocabulario propio y vuelve a colisionar "
+        "con el arquitectónico")
+    assert "ORTOGONALES" in txt, (
+        "se perdió que los ejes se cruzan en vez de competir — que es lo que "
+        "permite preguntar si un fenómeno transversal tiene FORMA")
+    assert "No se dice «el ICPI es FONDO»" in txt, (
+        "desapareció la regla de precisión que impide mezclar niveles")
+    assert "sigue sin validarla" in txt, (
         "se perdió el límite del hallazgo. Que los macroejes admitan esa "
         "lectura no demuestra que sea mejor que la actual")
-    assert "once de trece no existen" in txt, (
-        "desapareció la razón por la que la comparación no puede hacerse aún")
 
 
 def test_un_indicador_sin_pregunta_no_se_evalua_como_malo():
@@ -149,9 +160,17 @@ def test_las_discrepancias_se_registran_y_no_se_resuelven():
     txt = _DOC.read_text(encoding="utf-8")
     assert "Se registran; no se resuelven aquí" in txt, (
         "el expediente empezó a resolver discrepancias por su cuenta")
-    assert "la eliminación no se propagó al canon" in txt, (
-        "desapareció la discrepancia del dominio SAT, que es la que afecta al "
-        "número de dominios de toda la ontología")
+    assert "es propagarlo al canon" in txt, (
+        "desapareció el caso `d04`. Y su lectura correcta no es «¿12 o 13?» "
+        "sino: decisión aprobada + implementación efectivizada + canon no "
+        "propagado")
+    assert "CINCO dimensiones" in txt, (
+        "un solo estado volvió a colapsar trabajo, curación, documentación, "
+        "decisión e implementación — que es lo que producía las falsas "
+        "discrepancias")
+    assert "no autoriza" in txt and "clasificarlo como no trabajado" in txt, (
+        "se perdió que la ausencia de PCD mide la FORMALIZACIÓN, no el "
+        "trabajo realizado")
     assert "El nombre no lo demuestra" in txt, (
         "se perdió la aplicación de DOC-033 a la correspondencia de dominios "
         "por nombre")
