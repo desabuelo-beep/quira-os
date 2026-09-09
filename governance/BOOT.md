@@ -33,7 +33,7 @@ PROMESA→PLAN→PRESUPUESTO→EJECUCIÓN→RESULTADO→TERRITORIO → BRECHAS. 
 📚 **doctrina → `doctrina.py`** · con verificador **cambia de custodio**; sin él, se queda aquí.
 📑 ⛔ `.docx` gana al `.pdf`.
 ⚖️ **CANON**: ⛔ DOM **consume RO, NO lee la ley** · estado derivado → `canon.py` (consúltalo, NO lo escribas) · ⛔ **d01·d03·d09: RO NO cargada** (d07·d02 sí) · **VIII propuesta → d08 mide, NO dictamina** (D-6).
-📡 **SITA 2025 0,4448** · **0 actas** · num.6 sin ingresos.
+📡 SITA **26(1-5) 0,8382 vig** · 25→D-015 · 0 actas · num.6 s/ingr.
 🧪 **§6-bis**: falta evidencia→**degrada** · identidad contradictoria→**BLOQUEA** · el SHA prueba el archivo, NO la atribución (esc.4/7 lo cierran).
 🎨 **049/050**: la gráfica no sabe más que el motor · CANTERA hereda capacidades, NO productos.
 🔧 **v5.7_TGI** · promover = **recalcular y GUARDAR**.
@@ -46,7 +46,7 @@ PROMESA→PLAN→PRESUPUESTO→EJECUCIÓN→RESULTADO→TERRITORIO → BRECHAS. 
 🪞 **052** (⛔ NO toca CAPA 0): **naturaleza ≠ estado de la evidencia** · `no_documental` sólo lo declara el CORPUS · ⛔ no publicar ≠ no exigible.
 🧬 **§6-sexies**: **segmento ≠ condición ≠ exigencia** · *etiqueta incorrecta = número falso*.
 ➡️ **SIGUIENTE**: Capa 2 a los 24 numerales (⏸ valid. jurídica de 105) · luego los 636.
-🧾 **SCORING vs Instr.**: SITA·CTA·ETA·RP ✅ · **CI mal** (Anexo 1: 1×1). ⛔ NO tocar SITA.
+🧾 **SCORING vs Instr.**: SITA·CTA·ETA·RP·CI ✅ (Anexo 1 1×1) · ⛔ NO tocar SITA.
 🧷 **PROCEDENCIA POR AFIRMACIÓN**, no por dominio (d09).
 🗺️ **FRENTES → `GM-OMEGA_MAPA_MAESTRO.md`** · ICPI **27,4582 % CONGELADO** hasta 011 · ⛔ el Excel NO se toca.
 🧿 **011-C2·C3** `C_i`=**legalidad del proceso** (D-013·14) · 27-abr cambió mecanismo, no entró

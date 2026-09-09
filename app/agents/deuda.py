@@ -236,6 +236,30 @@ _DEUDAS = (
                "verdes oficiales de Naciones Unidas, que son identidad ajena y "
                "no un juicio de «bien». Cada uno de los 25 exige decidir QUÉ "
                "dice ese verde, y eso es curación de dominio, no un barrido"),
+    dict(id="D-015", gravedad=FALSEA, capa="C6", dueño="Javo",
+         que="**Cuatro cifras distintas circulan como `SITA 2025` y ninguna "
+             "está reconciliada.** `governance/BOOT.md` publica **0,4448** — "
+             "un valor **huérfano: no aparece en ningún otro lugar del "
+             "repositorio**. `PCD-D07` afirma **0,4646** en tres sitios, uno "
+             "de ellos diciendo que resistió la migración de cadencia y "
+             "plazo. Y las corridas selladas de d07 traen **dos** valores "
+             "para el mismo año y los mismos doce meses: "
+             "`RUN-D07-2026-08-18-0001` da **0,9719** y `-0002` da **0,4630**, "
+             "ambas `COMPLETED`, ambas con el mismo `vara_sha`. ⚠️ El corte "
+             "2026 sí está acreditado: `-0003` (meses 1-5) da **0,8382**, que "
+             "coincide con `PCD-D07` y con el arqueo. Es el patrón de `D-009` "
+             "—verdades simultáneas en lugares distintos— aplicado al índice "
+             "que d07 publica hacia afuera.",
+         ataque="test_BOOT_no_publica_una_cifra_de_SITA_sin_respaldo",
+         no_es="un error de cálculo del motor, y **tampoco autoriza a elegir "
+               "una de las cuatro**. La fórmula `SITA` está verificada contra "
+               "el Instructivo DPE 2024 (`PCD-D07`) y `BOOT` ordena ⛔ **NO "
+               "tocar SITA**: esta deuda es de **procedencia del dato "
+               "publicado**, no de metodología. Se resuelve determinando qué "
+               "corrida es la vigente para 2025 y por qué hay dos, no "
+               "recalculando. Mientras tanto el valor de 2025 es **NO "
+               "DETERMINABLE** — el tercer estado— y publicar cualquiera de "
+               "los cuatro sería fabricar precisión"),
     dict(id="D-014", gravedad=FALSEA, capa="C1", dueño="Javo",
          que="**El motor no VERIFICA la entrega material: la delega en la "
              "corrección del dato de origen.** `C_i` no la mide —mide calidad "
