@@ -40,12 +40,35 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent.parent
 
 # ── LÍMITES DE PRESUPUESTO DE CONTEXTO (bytes) ────────────────────────────────
-# Si estos archivos crecen más allá del límite, el arranque vuelve a pesar.
-# Ajustar conscientemente si el proyecto realmente lo necesita.
+#
+# ⚠️ RECALIBRADO 2026-09-09, y el motivo queda escrito porque
+# `test_el_tope_de_boot_sigue_siendo_una_decision_y_no_un_estorbo` obliga a
+# pasar por aquí — hizo exactamente su trabajo.
+#
+# ⛔ CORRECCIÓN DE UNA ATRIBUCIÓN FALSA: se dijo que estos topes «nacieron para
+# ahorrar tokens». NO es cierto, y la propia prueba lo desmiente: *«el tope NO
+# existe para ahorrar tokens — existe para FORZAR SÍNTESIS. Un BOOT de 20.000
+# bytes nadie lo lee bien, y entonces deja de proteger.»* Ese razonamiento
+# sigue vigente y no se deroga.
+#
+# POR QUÉ SE SUBE IGUALMENTE, y no es «no encontré qué recortar»:
+# la dirección ordenó que el arranque incluya `QUIRA_MASTER_INDEX` —«¿dónde
+# vive la verdad?»— tras medir que su omisión costó una sesión reconstruyendo
+# con `grep` lo que ya era canon. Esa instrucción NO es doctrina migrable a
+# `doctrina.py`: es la instrucción de arranque, y tiene que estar donde se
+# arranca. Con 6000 la presión ya no producía síntesis sino CRIPTOGRAFÍA
+# —`SITA 26(1-5) 0,8382 vig · 25→D-015`—, que es la otra forma de dejar de
+# proteger.
+#
+#     el techo protege la LEGIBILIDAD del arranque, en sus dos extremos:
+#     ni tan largo que no se lea, ni tan comprimido que no se entienda.
+#
+# 7000 conserva la presión de síntesis. Lo que no quepa se ROUTEA desde el
+# índice; no se borra ni se cifra.
 CONTEXT_BUDGET = {
-    "CLAUDE.md":              4000,   # guía canónica mínima
+    "CLAUDE.md":              4500,   # guía canónica + ruta al índice
     ".claude/CLAUDE.md":       500,   # solo punteros de skills
-    "governance/BOOT.md":     6000,   # única fuente de estado vivo
+    "governance/BOOT.md":     7000,   # estado vivo · legible, no comprimido
     "governance/QUIRA_STATE.md": 1500,  # stub redirector (no contenido)
 }
 

@@ -78,4 +78,7 @@ Neo4j AuraDB `8dc8519a` (user=DB=instance ID) · Supabase `normativa_corpus` · 
 
 ## EQUIPO
 Javo (fundador, decide) · Claude (director técnico, ejecuta) · Colega (asesor externo, revisa).
-Flujo: "revise, mejore, supere, ejecute". Javo financia solo → **cada token cuenta**.
+Flujo: "revise, mejore, supere, ejecute".
+⛔ **El token NO es criterio** (Javo · 2026-09-09). Lo escaso es el TIEMPO: **leer < reconstruir**.
+Meta: que QUIRA sirva **inexpugnablemente en Ecuador y LATAM**. No se diseña sobre el recuerdo de
+QUIRA: se diseña sobre su **evidencia completa** → `QUIRA_MASTER_INDEX` primero, siempre.

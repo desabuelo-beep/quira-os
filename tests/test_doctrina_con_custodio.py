@@ -129,15 +129,43 @@ def test_el_tope_de_boot_sigue_siendo_una_decision_y_no_un_estorbo():
 
     Subirlo habría quitado la presión que produjo este registro. Si algún día se
     sube, que sea una decisión escrita y no el resultado de no encontrar qué
-    recortar; esta prueba obliga a pasar por aquí."""
+    recortar; esta prueba obliga a pasar por aquí.
+
+    ★ 2026-09-09 · 6000 → 7000. LA PRUEBA HIZO SU TRABAJO: detuvo el cambio y
+    exigió el motivo. Queda escrito, y también la corrección de una atribución
+    falsa que se hizo al subirlo —«el tope nació para ahorrar tokens»—, que
+    esta misma docstring desmiente.
+
+    El motivo real: la dirección ordenó que el arranque incluya
+    `QUIRA_MASTER_INDEX` («¿dónde vive la verdad?»), tras medir que omitirlo
+    costó una sesión entera reconstruyendo con `grep` lo que ya era canon. Esa
+    instrucción **no es doctrina migrable** a `doctrina.py`: es la instrucción
+    de arranque y debe vivir donde se arranca.
+
+    ⚠️ Y la observación que justifica el número: con 6000 la presión ya no
+    producía síntesis sino **criptografía** —`SITA 26(1-5) 0,8382 vig ·
+    25→D-015`—, que es la otra manera de dejar de proteger. Un arranque
+    ilegible por comprimido tampoco se lee bien.
+
+        el techo protege la LEGIBILIDAD en sus DOS extremos:
+        ni tan largo que no se lea, ni tan comprimido que no se entienda.
+
+    7000 conserva la presión. Si vuelve a no caber, la salida sigue siendo
+    migrar a `doctrina.py` o **routear desde el índice** — nunca cifrar."""
     fuente = (RAIZ / "scripts" / "ci" / "check_health.py").read_text(encoding="utf-8")
     import re
     m = re.search(r'"governance/BOOT\.md":\s*(\d+)', fuente)
     assert m, "cambió la forma del presupuesto de BOOT"
-    assert int(m.group(1)) == 6000, (
+    assert int(m.group(1)) == 7000, (
         f"el tope de BOOT pasó a {m.group(1)}. Si fue deliberado, actualiza esta "
         f"prueba y deja escrito el motivo; si fue para hacer sitio, la salida "
-        f"era migrar doctrina a `doctrina.py`, no ensanchar el arranque")
+        f"era migrar doctrina a `doctrina.py` o routear desde el índice, no "
+        f"ensanchar el arranque")
+    # ⚠️ El motivo debe estar escrito en el propio gate, no sólo aquí: quien
+    # lea el presupuesto tiene que encontrar por qué es ese número.
+    assert "FORZAR SÍNTESIS" in fuente and "MASTER_INDEX" in fuente, (
+        "el gate subió el tope sin dejar escrito el motivo. Un límite sin "
+        "razón registrada es un número que el próximo lector volverá a mover")
 
 
 # ── D-009 · EL PATRÓN 48,33 EN EL RESTO DEL SISTEMA ──────────────────────────
