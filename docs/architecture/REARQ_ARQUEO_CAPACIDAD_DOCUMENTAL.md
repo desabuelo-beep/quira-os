@@ -241,7 +241,9 @@ Estados: `DECLARADO → IMPLEMENTADO → CONECTADO → OPERATIVO → REUTILIZADO
 | `S1` | CNE | por determinar | `data/contraste_cne/` — 3 archivos | por ciclo electoral | 🔴 **sin curador** | DECLARADO |
 | `S6` | SIGAD (autorreporte) | ⛔ ninguno | — | — | 🔴 **sin curador** | `ICM` no se calcula · `SAT-I` apagada |
 | `S9` | Agenda ODS | ⛔ ninguno | — | — | 🔴 **sin curador** | DECLARADO |
-| — | GAD · **web institucional** (PDOT · orgánico · POA · PAC · presupuesto en formato propio) | ⛔ **sin conector** — `despacho.py:108` | — | variable | varios | **DECLARADO SIN CONECTOR** · 4 agentes en Fase 4 |
+| — | GAD · **web institucional** (PDOT · orgánico · POA · PAC · presupuesto en formato propio) | ⛔ **sin conector** — `despacho.py:108` · sólo se usa para contrastar LOTAIP | — | variable | varios | **DECLARADO SIN CONECTOR** · 4 agentes en Fase 4 |
+| — | GAD · **respuesta a solicitud** (transparencia pasiva) | oficio ciudadano o de Dylus · `ADR-045 §4` **exigibilidad asistida** | `OFICIO 0143-2026` · cédulas 2023-2024 | eventual | d07 · d02 | IMPLEMENTADO como **precedente**, no como capacidad |
+| — | **Aporte ciudadano** — QUIRA Ciudadana | ⛔ sin formulario construido · `ADR-046 §2` le da nombre y lugar | documentos, actas, fotos, geolocalización | eventual | todos | **CANON · 3 de 4 capacidades declaradas, sin superficie** |
 
 ### ★ `S7` ya tiene DOS canales, y la doctrina que los distingue
 
@@ -262,9 +264,91 @@ Y al capturar el canal ② se descubrió que el portal del GAD sirve **dos oríg
 `localYears 2019-2024` desde el propio GAD (`api/local-year.php`) y **2025-2026 desde la DPE**.
 Un mismo portal, dos procedencias.
 
-> ⚠️ Luego la **triangulación documental** no es una capacidad por diseñar: existe, está
-> implementada y tiene doctrina —qué canal evalúa y qué canal contrasta—. Lo que falta es
-> **generalizarla** a los demás canales y sistemas de origen.
+> ⚠️ **Y lo que NO se afirma.** Se escribió que esto era ya «triangulación documental» como
+> capacidad general. **Se retira**: lo demostrado es que existen dos canales técnicamente
+> diferenciados con doctrina de uso para la evaluación de transparencia. Que un artefacto del
+> canal ① y otro del ② sean el mismo objeto, versiones distintas o evidencias complementarias
+> **hay que determinarlo caso por caso** — con `NO DETERMINABLE` como salida legítima.
+>
+> Tampoco se eleva «DPE = original · GAD = copia» a regla ontológica. Es doctrina **de
+> evaluación**, no de identidad documental.
+
+### ⛔ Y la web del GAD NO es sólo el contraste de LOTAIP
+
+*(Javo, 2026-09-09, insistiendo sobre una lectura estrecha de este arqueo.)*
+
+> *«La web del GAD no es sólo para verificar si LOTAIP está bien, sino que nos sirve para sacar
+> los documentos de PDOT, POA, PAC, Presupuesto, orgánico, y todos los otros documentos oficiales
+> que no salgan de transparencia.»*
+
+`capturar_lotaip_portal.py` la usa **para un solo fin**: contrastar la publicación LOTAIP. Eso es
+un uso de la web institucional, **no su alcance**. Los cuatro agentes en Fase 4 —`PDOT`, `POA`,
+`PAC`, `Resultado`— ya la declaran como entrada para documentos que **no pasan por transparencia**.
+
+> **Es el canal de los documentos en formato institucional propio**, y hoy es el único identificado
+> para los silos `S2`, `S3`, `S3b` y `S8b`, que la matriz tiene «por determinar».
+
+### ★ El CANAL CIUDADANO · tercera vía, y ya es canon
+
+*(Javo, 2026-09-09.)*
+
+> *«Los ciudadanos, para realizar sus análisis, pueden subir sus documentos oficiales; y también
+> pueden solicitar vía solicitud de transparencia al GAD para que este les entregue vía digital,
+> para que QUIRA revise las firmas, sellos y, con la info, pueda realizar los análisis del
+> ciudadano. Y a su vez esta info se queda con QUIRA para ampliar su labor a más municipios, con
+> la ayuda de los ciudadanos.»*
+
+Está **entero en `ADR-046`**, del 2026-08-10, con base legal:
+
+| capacidad cívica | qué hace | estado |
+|---|---|---|
+| **Evidencia territorial** | documentos, actas, fotografías y geolocalización → evidencia estructurada y trazable | canon · `ADR-045 §3` |
+| **Exigibilidad asistida** | **redacta el oficio, corre el cronómetro**, prepara el escalón siguiente | canon · `ADR-045 §4` |
+| **Inteligencia cívica** | los 12 dominios legibles sin jerga | canon · `ADR-023` |
+| **Acción territorial** | incidencia, control social, formulación de proyectos | admitida, sin construir |
+
+Y las firmas y sellos que la dirección menciona tienen tabla y fundamento —`COA Art. 94`
+(`SHA256 d306997e…`) · `LCEFEMD Art. 44` · `NCI-CGE` (`SHA256 37f338e2…`):
+
+| qué es el documento | techo |
+|---|---|
+| acto con **firma electrónica certificada** por entidad acreditada | **institucional** |
+| acto con **firma física y sello**, digitalizado | **institucional** |
+| comunicación desde dominio institucional **sin firma** | institucional, **con reserva declarada** |
+| evidencia propia del aportante (foto, factura, testimonio) | **parcial**, hasta corroborar |
+
+### ★★ La regla que zanja la pregunta abierta · `ADR-046 §1`
+
+La duda era si el canal determina lo que la evidencia acredita. **El canon ya lo resolvió, y en
+sentido contrario:**
+
+| | qué responde | qué determina |
+|---|---|---|
+| **Custodia** | ¿qué presenció QUIRA de la adquisición? | la **trazabilidad del ingreso** |
+| **Acreditación** | ¿qué acredita el documento en sí mismo? | **el techo de verificabilidad** |
+
+> **«Lo que se verifica es el certificado, no el portador. Un acto de la administración no deja de
+> serlo porque lo entregue un vecino en vez de un scraper.»**
+
+Luego DPE, web del GAD, vía pasiva y aporte ciudadano son **custodias distintas del mismo eje**, y
+ninguna fija por sí sola el valor de la evidencia. Las tres custodias de `ADR-045 §3` —**captura
+directa · adquisición asistida · aporte directo**— ya son el modelo de canales que esta matriz
+estaba reconstruyendo.
+
+### Y la respuesta a la escalabilidad de los 222, que también estaba escrita
+
+> **«QUIRA observa 222 GAD, pero sólo calcula sobre lo que existe. Un municipio que no publica
+> tiene sus doce dominios vacíos. Quien aporta la evidencia de su municipio enciende la lectura de
+> su propio territorio.»** *(`ADR-046 §2.4`)*
+
+Con la consecuencia de diseño ya declarada: *«la ciudadanía puede activar su cantón — que es la
+**única vía realista** de llegar a 222 sin depender de la voluntad de 222 alcaldías»*.
+
+Y la salvaguarda del §2.5, que impide el atajo perverso:
+
+> **Que la ciudadanía llene el hueco no absuelve al GAD de haberlo dejado.** Cuando una evidencia
+> entra por aporte ciudadano supliendo una publicación ausente, **el `IOC` sigue registrando que el
+> GAD no publicó**. El dominio se enciende; el incumplimiento no se borra.
 
 ### Lo que esto corrige de este mismo arqueo
 
