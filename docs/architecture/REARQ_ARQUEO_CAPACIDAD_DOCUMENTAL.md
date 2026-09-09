@@ -214,21 +214,75 @@ Y el objeto de estudio deja de ser la relación entre dominios: es **cómo circu
 Las fuentes observan · la evidencia circula · los dominios interpretan · el Gold Master fija el
 estado canónico.
 
-### La matriz de fuentes, verificada contra el disco el 2026-09-09
+### ⛔ El nombre del silo NO es su vía · cinco dimensiones, no dos
+
+*(Modelo del colega, 2026-09-09, tras el caso `S5`.)* Una fuente no es una etiqueta: es una
+**cadena de procedencia**. Confundir el sistema donde nace el dato con la puerta por donde QUIRA
+lo obtiene es lo que produjo el error de `S5`.
+
+```
+SISTEMA DE ORIGEN → CANAL DE ADQUISICIÓN → ARTEFACTO OBSERVADO
+                  → EVIDENCIA CANÓNICA → DOMINIO → REUTILIZACIÓN
+```
+
+### La matriz, verificada contra el disco el 2026-09-09
 
 Estados: `DECLARADO → IMPLEMENTADO → CONECTADO → OPERATIVO → REUTILIZADO → PROBADO`
 
-| Fuente · silo | Conector | Captura | Evidencia materializada | Cadencia | Grado verificado |
-|---|---|---|---|---|---|
-| **DPE / LOTAIP** · `S7` | `connectors/dpe.py` | `capturar_lotaip_dpe.py` · `descargar_lotaip.py` | `data/lotaip/` — **1.748 archivos · 1,8 GB** | **mensual e incremental** | **PROBADO** — orquestador de 9 etapas con gates · 3 corridas selladas · 36 pruebas |
-| **SERCOP** · `S4` | `connectors/sercop.py` | `fetch_sercop.py` · `capturar_sercop_holding.py` · `enriquecer_sercop_estado.py` | `data/scouting/` — 5 JSON | **mensual** (dirección) | IMPLEMENTADO · operatividad **por verificar** |
-| **CPCCS** · `S8` | `connectors/cpccs.py` | `fetch_rdc_cpccs.py` | `data/motor_narrativo/` + normativa en vault | **anual** (dirección) | IMPLEMENTADO · d09 cerró con este insumo |
-| **Financiero** · `S5` | ⛔ **eSIGEF NO es vía** (ver abajo) | `enrich_presupuesto.py` lee `H07` | Gold Master | periódica | OPERATIVO **por vía indirecta** |
-| **PDOT / POA** · `S2`·`S3` | — | `extract_poa_pdf.py` | `data/pdot/` — 10 archivos · 1,1 MB | — | IMPLEMENTADO parcial |
-| **CNE** · `S1` | — | — | `data/contraste_cne/` — 3 archivos | por ciclo electoral | DECLARADO · **silo sin dominio curador** |
-| **SIGAD** · `S6` | — | — | — | — | 🔴 **silo sin dominio curador** · `ICM` no se calcula |
-| **ODS** · `S9` | — | — | — | — | 🔴 **silo sin dominio curador** |
-| **Web institucional del GAD** | ⛔ **ninguno** | `capturar_lotaip_portal.py` toca `montecristi.gob.ec` sólo para LOTAIP | — | — | **DECLARADO SIN CONECTOR** |
+| Silo | Sistema de origen | Canal de adquisición | Artefacto · evidencia canónica | Cadencia | DOM | Estado |
+|---|---|---|---|---|---|---|
+| `S7` | GAD reporta al Comité de Transparencia | **① Portal DPE** `capturar_lotaip_dpe.py` → `dpe_montecristi.json`<br>**② Portal del GAD** `capturar_lotaip_portal.py` → `portal_montecristi.json` | 1.748 archivos · 1,8 GB · `artefactos/*.bin` **direccionados por hash** | **mensual e incremental** | d07 | **PROBADO** — 9 etapas con gates · 3 corridas selladas · 36 pruebas |
+| `S4` | SERCOP | Portal SERCOP **OCDS** · `connectors/sercop.py` + 3 scripts | `data/scouting/` — 5 JSON | **mensual** | d03 | IMPLEMENTADO · operatividad **por verificar** |
+| `S8` | CPCCS | Portal CPCCS · `connectors/cpccs.py` · `fetch_rdc_cpccs.py` | RDC en `motor_narrativo/` + normativa en vault | **anual** | d09 | IMPLEMENTADO · d09 cerró con este insumo |
+| `S5` | **eSIGEF** — ⛔ caja negra, sin canal público | ① LOTAIP (`CD-06`) · ② transparencia **pasiva** (`OFICIO 0143-2026`) · ③ carga al Gold Master | cédula presupuestaria · `H07` | según publicación | d02 | OPERATIVO **por vía indirecta** |
+| `S2`·`S3` | GAD (PDOT · POA) | por determinar | `data/pdot/` — 10 archivos · 1,1 MB | — | d01 | IMPLEMENTADO parcial |
+| `S3b` | GAD · SERCOP | por determinar | — | — | d03 | DECLARADO |
+| `S8b` | GAD (presupuesto participativo) | por determinar | actas en `ProyecT/` | — | d08 | IMPLEMENTADO parcial |
+| `S1` | CNE | por determinar | `data/contraste_cne/` — 3 archivos | por ciclo electoral | 🔴 **sin curador** | DECLARADO |
+| `S6` | SIGAD (autorreporte) | ⛔ ninguno | — | — | 🔴 **sin curador** | `ICM` no se calcula · `SAT-I` apagada |
+| `S9` | Agenda ODS | ⛔ ninguno | — | — | 🔴 **sin curador** | DECLARADO |
+| — | GAD · **web institucional** (PDOT · orgánico · POA · PAC · presupuesto en formato propio) | ⛔ **sin conector** — `despacho.py:108` | — | variable | varios | **DECLARADO SIN CONECTOR** · 4 agentes en Fase 4 |
+
+### ★ `S7` ya tiene DOS canales, y la doctrina que los distingue
+
+No es una hipótesis: está implementado y decidido. Javo, 2026-08-17, en el propio capturador:
+
+> *«La evaluación de LOTAIP no se debe hacer desde la web del GAD, sino desde transparencia de la
+> DPE. Ése es el reporte que ellos hacen con los filtros del Comité de Transparencia, que es quien
+> avala la información que se reporta mensualmente.»*
+>
+> *«El repositorio del propio municipio sirve para **contrastar**; el acto sujeto a control es el
+> que se registra ante la Defensoría del Pueblo. **Evaluar la copia en lugar del acto era medir el
+> lugar equivocado.**»*
+
+    canal ①  Portal DPE      →  el ACTO sujeto a control     →  se EVALÚA
+    canal ②  Portal del GAD  →  la COPIA publicada           →  se CONTRASTA
+
+Y al capturar el canal ② se descubrió que el portal del GAD sirve **dos orígenes distintos**:
+`localYears 2019-2024` desde el propio GAD (`api/local-year.php`) y **2025-2026 desde la DPE**.
+Un mismo portal, dos procedencias.
+
+> ⚠️ Luego la **triangulación documental** no es una capacidad por diseñar: existe, está
+> implementada y tiene doctrina —qué canal evalúa y qué canal contrasta—. Lo que falta es
+> **generalizarla** a los demás canales y sistemas de origen.
+
+### Lo que esto corrige de este mismo arqueo
+
+Se escribió que LOTAIP era **«la única puerta pública»** para la evidencia financiera. **Es
+falso**, y se retira: existen al menos tres canales —LOTAIP, web institucional y transparencia
+pasiva— y el propio LOTAIP tiene dos. La formulación correcta:
+
+> **El dato financiero no tiene canal público directo desde su sistema de origen. Llega a QUIRA
+> sólo por lo que el GAD publica o entrega, a través de varios canales cuya cobertura,
+> periodicidad, integridad y confiabilidad hay que determinar por separado.**
+
+Y de ahí la regla que el caso deja, aplicable a todos los silos:
+
+> ### `SISTEMA_ORIGEN ≠ CANAL_DE_ADQUISICIÓN`
+>
+> Y su corolario de ausencia, que `DOC-035` ya gobierna: **no hallado en un canal ≠ no publicado ≠
+> no existe ≠ no entregado por vía pasiva ≠ no procesable.** Cada canal tiene su propio universo,
+> y la ausencia se declara respecto de los canales efectivamente inspeccionados.
 
 ### ⛔ `S5` · el nombre del silo no es su vía de adquisición
 
@@ -271,8 +325,12 @@ Las vías reales por las que el dato financiero ha entrado, todas verificables:
 >
 > Metodológicamente es correcto —no publicar es un resultado de auditoría, no una excusa—, pero
 > **cambia el cálculo de escalabilidad**: replicar a 222 GAD no depende sólo de la capacidad
-> técnica de QUIRA, sino del comportamiento publicador de cada municipio. Y eleva a `S7`/LOTAIP de
-> «una fuente más» a **la única puerta pública para cierta evidencia**.
+> técnica de QUIRA, sino del comportamiento publicador de cada municipio.
+>
+> ⚠️ Lo que **no** se sigue: que LOTAIP sea «la única puerta». Hay al menos tres canales, y el
+> propio LOTAIP tiene dos. La pregunta correcta no es *«¿cuál es la puerta?»* sino **«¿qué
+> canales permiten obtener evidencia sobre un mismo objeto institucional, y qué cobertura,
+> periodicidad, integridad y confiabilidad aporta cada uno?»**
 >
 > Eso no es una decisión que tome este arqueo. Es una restricción del entorno que `REARQ` debe
 > incorporar al diseño.
