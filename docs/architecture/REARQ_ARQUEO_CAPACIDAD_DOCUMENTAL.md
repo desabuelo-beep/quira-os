@@ -154,15 +154,45 @@ Esto fija tres cosas que el arqueo no podía establecer por sí solo:
 |---|---|
 | **la cadencia** | **mensual** — no es una carga inicial, es un flujo recurrente |
 | **la dirección** | de d07 **hacia** los demás dominios |
-| **el diagnóstico de fondo** | el ecosistema se construyó **en silos, dominio por dominio, sin conectar** |
+| **el diagnóstico de partida** | los dominios se desarrollaron **uno por uno, sin implementar las conexiones del ecosistema** |
 
-> ⚠️ Y reordena la lectura de todo lo hallado: **los huecos que este arqueo encontró no son
-> defectos de un dominio — son la consecuencia previsible de haber construido sin conectar.**
-> `d06` sin silo `S6`, la ingesta que hoy suple una persona, el valor vigente sin corrida
-> preservada: los tres son el mismo síntoma.
+Es un **requisito arquitectónico** que viene de la dirección del proyecto, no una hipótesis que
+haya que descubrir en el código. Y la formulación que se conserva es la acotada:
 
-Por eso `REARQ` no es una auditoría de calidad de dominios. Es **la conexión que nunca se
-hizo**, y la razón por la que existe.
+> **La construcción histórica en silos constituye una condición de partida de `REARQ`: las
+> capacidades de los dominios se desarrollaron sin implementar todas las conexiones interdominio
+> que la arquitectura objetivo requiere. `REARQ` debe determinar y diseñar esas interfaces,
+> dependencias, contratos de intercambio y cadencias.**
+
+> ### ⚠️ Lo que NO se afirma
+>
+> Que los huecos hallados sean «todos el mismo síntoma». Sería convertir una declaración de
+> diseño en explicación retrospectiva de cada defecto, y **eso no está demostrado**. Cuáles
+> conexiones se previeron, cuáles se implementaron y cuáles nunca existieron es trabajo de
+> arqueología —`Q-M2`—, no de inferencia desde esta cita.
+
+### ★ Y la arqueología ya empezó a responder: las conexiones existen
+
+Verificado el 2026-09-09, contra el código y el canon:
+
+| evidencia | qué demuestra |
+|---|---|
+| `ADR-017` diseñó los circuitos `C01`, `C02`, `C03` | las interfaces **se previeron** |
+| `ADR-026` **confirma `C01` en código** | y se **implementaron**, al menos una |
+| `p07_transparencia.py:82-113, 118-139` — `_C01_NODES`, `_calcular_chs_c01()` | **d07 es ORIGEN del circuito**, con regla de colapso activa: *«Dom07 ORIGEN falla → CHS_C01 = 0.0»* |
+| `ADR-026:455` | cadencia de d07 ya declarada: **«Mensual (publicación LOTAIP)»** |
+| `ADR-026:104` | **d08** es «nodo de unión · mayor conectividad» — `IGP→D06`, `D08→D09` |
+| `ADR-026:118` | **d06** «lee explícitamente de otros dominios»: `IGP` de d08, `IOC` de d07, `IET` de d10, `ISP` de d04/d02 |
+| `ADR-026` · d09 | su checklist «referencia exclusivamente métricas de otros dominios» |
+
+⚠️ **Cero imports cruzados entre `app/agents/dXX/`**, y las menciones de un dominio en otro son
+docstrings. Las conexiones existentes **no viven en los agentes**: viven en el motor, en el canon
+y en la capa de superficie. Dónde deben vivir es pregunta de `RECONCILIACIÓN`.
+
+Y queda una tensión registrada, sin resolver: la dirección señala que las relaciones
+interdominio están «entre los dominios creados antes de Transparencia», mientras `ADR-026`
+documenta a d07 como origen de `C01`. Puede que ambas sean ciertas —d07 **emite** y no
+**consume**— pero **el nombre no lo demuestra** y hace falta el inventario completo.
 
 ## 5 · La distinción que se conserva
 
@@ -224,10 +254,22 @@ apariencia de total**.
 refiere al dominio de Transparencia como `DOM06`. **La discrepancia se registra y no se resuelve
 aquí** (`DOC-033`: el nombre no demuestra la correspondencia).
 
-**Lo que sí queda en pie:** `d06 Salud Institucional` conserva su silo `S6` (`H08` autorreporte
-SIGAD) abierto, sin `ICM` y con `SAT-I` apagada (`app/services/sat_evaluator.py:297`, verificado
-el 2026-09-08). Es **otro** hueco, distinto del de Transparencia, y `OBS-009` documenta
-precisamente la divergencia entre ambos silos.
+**Lo que sí queda en pie, con la formulación corregida.** Se dijo «`d06` sin silo `S6`», y es
+una inferencia de las que este mismo documento prohíbe. El canon dice otra cosa:
+`MATRIZ_CABLEADO_CANONICO:71` **asigna `S6` (`H08_S6_AUTOREPORTE_SIGAD`) a `d06`**, y lo que
+declara ausente es el agente — *«`d00`, `d05` y `d06` no existen en `app/agents/`»*.
+
+> El silo **existe y está asignado**. Lo que falta es quien lo cure.
+
+Formulación que se conserva:
+
+> **El estado y la función de `S6`/`QINV-006`, y su relación con el dominio hoy denominado
+> `d06`, requieren reconciliación ontológica y funcional.**
+
+Hechos verificados que la acompañan: `ICM` no se calcula y `SAT-I` sigue apagada
+(`app/services/sat_evaluator.py:297`, comprobado el 2026-09-08). `OBS-009` documenta la
+divergencia `SIGAD`↔`LOTAIP`, es decir entre `S6` y `S7` — y **`S7` (`H09_S7_TRANSPARENCIA_LOTAIP`)
+es el silo de `d07`**, con `V_LOTAIP` y `H18_ITAM`, según esa misma matriz.
 
 ---
 *REARQ · Arqueo `001` · Dylus Lab © 2026 · el Gold Master no se modificó · baseline 27,4582 %
