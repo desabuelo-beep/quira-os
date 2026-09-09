@@ -1,7 +1,7 @@
 # QUIRA OS — Guía Canónica (Dylus Lab)
 
-> **ARRANQUE: lee SOLO `governance/BOOT.md`. Nada más hasta saber tu tarea.**
-> NO leas archivos "por si acaso". Javo financia solo: **cada token cuenta.**
+> **ARRANQUE: `governance/BOOT.md` + `governance/QUIRA_MASTER_INDEX.md` (dónde vive cada verdad).**
+> ⛔ **Antes de buscar, consulta el Index. Adivinar cuesta más que leer** — el tiempo es el recurso escaso.
 
 ## QUÉ ES QUIRA
 QUIRA NO calcula métricas: las **demuestra documentalmente**. El **Gold Master** (Excel SIAP-ICPI v5.5)
