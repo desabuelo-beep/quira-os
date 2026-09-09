@@ -223,12 +223,59 @@ Estados: `DECLARADO → IMPLEMENTADO → CONECTADO → OPERATIVO → REUTILIZADO
 | **DPE / LOTAIP** · `S7` | `connectors/dpe.py` | `capturar_lotaip_dpe.py` · `descargar_lotaip.py` | `data/lotaip/` — **1.748 archivos · 1,8 GB** | **mensual e incremental** | **PROBADO** — orquestador de 9 etapas con gates · 3 corridas selladas · 36 pruebas |
 | **SERCOP** · `S4` | `connectors/sercop.py` | `fetch_sercop.py` · `capturar_sercop_holding.py` · `enriquecer_sercop_estado.py` | `data/scouting/` — 5 JSON | **mensual** (dirección) | IMPLEMENTADO · operatividad **por verificar** |
 | **CPCCS** · `S8` | `connectors/cpccs.py` | `fetch_rdc_cpccs.py` | `data/motor_narrativo/` + normativa en vault | **anual** (dirección) | IMPLEMENTADO · d09 cerró con este insumo |
-| **eSIGEF** · `S5` | vía Gold Master `H07` | `enrich_presupuesto.py` | Gold Master | periódica | OPERATIVO — es `CD-06`, la cédula compartida |
+| **Financiero** · `S5` | ⛔ **eSIGEF NO es vía** (ver abajo) | `enrich_presupuesto.py` lee `H07` | Gold Master | periódica | OPERATIVO **por vía indirecta** |
 | **PDOT / POA** · `S2`·`S3` | — | `extract_poa_pdf.py` | `data/pdot/` — 10 archivos · 1,1 MB | — | IMPLEMENTADO parcial |
 | **CNE** · `S1` | — | — | `data/contraste_cne/` — 3 archivos | por ciclo electoral | DECLARADO · **silo sin dominio curador** |
 | **SIGAD** · `S6` | — | — | — | — | 🔴 **silo sin dominio curador** · `ICM` no se calcula |
 | **ODS** · `S9` | — | — | — | — | 🔴 **silo sin dominio curador** |
 | **Web institucional del GAD** | ⛔ **ninguno** | `capturar_lotaip_portal.py` toca `montecristi.gob.ec` sólo para LOTAIP | — | — | **DECLARADO SIN CONECTOR** |
+
+### ⛔ `S5` · el nombre del silo no es su vía de adquisición
+
+*(Javo, 2026-09-09.)*
+
+> *«La vía eSIGEF no existe: es portal web y LOTAIP. El eSIGEF no tiene portal público para
+> extraer información, es sólo para instituciones públicas. **Es la caja negra del Estado
+> ecuatoriano.**»*
+
+Verificado el 2026-09-09 en `app/connectors/`, `app/fetchers/`, `scripts/` y `app/`:
+
+```
+conectores de eSIGEF ....... 0
+fetchers de eSIGEF ......... 0
+scripts que capturen eSIGEF  0
+```
+
+Y el canon ya lo decía, si se leía con cuidado: `META_CATALOGO_AGENTES:45` declara que la entrada
+de **«eSIGEF (Fuente)» es `Gold Master H07`** —el Excel, no el sistema—, mientras el **`Budget
+Agent`** (línea 39) entra por **`portal transparencia (=CD-06 d07)`**.
+
+> **`S5` se llama `H07_S5_FINANCIERO_eSIGEF` por el sistema donde NACE el dato, no por la puerta
+> por donde QUIRA lo obtiene.** Y `V_eSIGEF` es un **verificador** de que el dato existe, no un
+> conector que lo capture. Es `DOC-033` aplicado a los silos: **el nombre no acredita la vía.**
+
+Las vías reales por las que el dato financiero ha entrado, todas verificables:
+
+| vía | evidencia |
+|---|---|
+| **portal de transparencia** (LOTAIP) | `CD-06` · cédula presupuestaria · `Budget Agent` |
+| **transparencia pasiva** (solicitud) | `OFICIO N.º 0143-2026-SG-JAMZ-GADMCM` — entrega de cédulas 2023-2024 reportadas al MEF |
+| **carga al Gold Master** | `H07`, por gobernanza |
+
+> ### ⚠️ Y la consecuencia para los 222 GAD, que es de primer orden
+>
+> La fórmula de `V_i` es `=SI(O(V_eSIGEF=0,V_SERCOP=0),0,…)`, justificada como *«sin núcleo
+> financiero = sin score»*. Si el dato financiero **sólo puede llegar por lo que cada GAD publique
+> o entregue**, entonces **QUIRA no tiene vía independiente para el núcleo financiero**: su
+> disponibilidad depende del propio sujeto observado.
+>
+> Metodológicamente es correcto —no publicar es un resultado de auditoría, no una excusa—, pero
+> **cambia el cálculo de escalabilidad**: replicar a 222 GAD no depende sólo de la capacidad
+> técnica de QUIRA, sino del comportamiento publicador de cada municipio. Y eleva a `S7`/LOTAIP de
+> «una fuente más» a **la única puerta pública para cierta evidencia**.
+>
+> Eso no es una decisión que tome este arqueo. Es una restricción del entorno que `REARQ` debe
+> incorporar al diseño.
 
 ### La web institucional: declarada, y con su razón escrita
 
