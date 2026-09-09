@@ -100,56 +100,153 @@ def leer_dominios() -> list[dict]:
     return out
 
 
-# ── ESTADO DE CURACIÓN ────────────────────────────────────────────────────
+# ── LAS CINCO DIMENSIONES DE ESTADO ───────────────────────────────────────
 #
-# ⚠️ LA CORRECCIÓN QUE JAVO IMPUSO. La v1 de `Q-M1` publicó «11 de 13 dominios
-# no tienen pregunta rectora» como si fuera una carencia de la ontología. No lo
-# es: **esos dominios todavía no se han curado**. Es una fotografía del estado
-# de MADURACIÓN del trabajo, no del canon.
+# ⚠️ LA CORRECCIÓN DE FONDO. La `v1` calculaba **un** estado por dominio y lo
+# derivaba de «¿existe el `PCD`?». Ese es exactamente el atajo que la
+# metodología prohíbe: usar la existencia de un documento como sustituto de la
+# realidad del proceso.
 #
-# Y es el mismo error del 71 %→62 %, ahora a nivel de dominio: confundir
-# «todavía no trabajado» con «no existe». Por eso hacen falta cinco estados y
-# no dos.
-_ESTADOS = [
-    ("DECLARADO", "✅", "curado, y la pregunta rectora tiene respaldo "
-                        "documental en su `PCD`"),
-    ("INCOMPLETO", "🟡", "la curación empezó y no terminó"),
-    ("NO INICIADO", "⬜", "el dominio **todavía no ha pasado** por curación — "
-                         "⚠️ no es lo mismo que carecer de pregunta"),
-    ("NO DECLARADO", "🔴", "se curó y **aun así** no hay pregunta explícita"),
-    ("NO DETERMINABLE", "❓", "evidencia parcial o conflictiva que impide "
-                             "establecer el estado"),
-]
+# `PCD-D06` lo demostró. Está **CERRADO** y su dominio no tiene silo de
+# entrada, no calcula `ICM` y su alerta sigue apagada un mes después
+# (`sat_evaluator.py:297`). De ahí la regla:
+#
+#     Un `PCD` cerrado certifica CONFORMIDAD de lo que existe,
+#     no SUFICIENCIA de lo que debería existir.
+#
+# Es lo mismo que QUIRA hace con un municipio: no dice que esté bien, dice que
+# lo que hay es trazable y que lo que falta está declarado.
+_DIMENSIONES = (
+    ("trabajo", "qué se ha hecho realmente"),
+    ("curacion", "qué nivel formal alcanzó el proceso"),
+    ("documental", "qué está registrado en el canon"),
+    ("decision", "qué ha sido aprobado"),
+    ("implementacion", "qué está efectivizado en el producto"),
+)
+
+_ND = ("NO DETERMINABLE", "sin evidencia en disco que lo establezca")
+
+# Lo que la dirección declaró en sesión.
+#
+# ⚠️ CLASIFICACIÓN FORENSE: esto es **DECLARADO**, no **DEMOSTRADO**. Se
+# registra con esa etiqueta y no se promueve a hecho. Donde el disco aporta
+# evidencia material, esa manda y la declaración queda como concordancia.
+_DECLARADO_DIRECCION: dict[str, dict[str, tuple[str, str]]] = {
+    "d04": {
+        "decision": ("APROBADA · declarada",
+                     "la dirección declara aprobada la baja del dominio SAT"),
+        "implementacion": ("EFECTIVIZADA · declarada",
+                           "la dirección declara que salió del frontend"),
+    },
+    "d06": {
+        "trabajo": ("NO INICIADO · declarado",
+                    "la dirección lo señala no iniciado — ⚠️ y existe un "
+                    "`PCD-D06` **cerrado** en disco"),
+    },
+    "d08": {
+        "trabajo": ("TRABAJADO · declarado",
+                    "la dirección lo señala trabajado"),
+    },
+}
 
 
-def estado_curacion() -> dict[str, tuple[str, str]]:
-    """El estado real de cada dominio, derivado de los `PCD` que existen en
-    disco y de lo que `BOOT` declara — no de lo que se recuerde.
+def _agentes() -> set[str]:
+    """Dominios con agente propio en `app/agents/`.
 
-    ⚠️ Y donde la evidencia discrepa se dice `NO DETERMINABLE`, no se elige la
-    versión más cómoda."""
-    pcd = {p.stem.split("_")[0].replace("PCD-D", "d").lower()
-           for p in (_RAIZ / "docs" / "pcd").glob("PCD-D*.md")}
-    pcd = {f"d{int(x[1:]):02d}" for x in pcd if x[1:].isdigit()}
+    ⚠️ Es la única dimensión que hoy se lee del disco **sin intermediarios**:
+    código que alguien escribió es evidencia material de trabajo, no una
+    declaración sobre el trabajo."""
+    base = _RAIZ / "app" / "agents"
+    if not base.is_dir():
+        return set()
+    return {p.name for p in base.iterdir()
+            if p.is_dir() and re.fullmatch(r"d\d\d", p.name)}
 
-    boot = ""
+
+def _pcds() -> dict[str, dict]:
+    """Los `PCD` en disco, con el `status` que cada uno declara de sí mismo.
+
+    ⚠️ Y aquí va la corrección central: **la presencia del archivo alimenta la
+    dimensión `documental` y ninguna otra**. Que exista `PCD-DXX` no dice nada
+    por sí solo sobre curación, decisión ni implementación.
+
+    Los seis `PCD` en disco tampoco son un tipo homogéneo: cinco se declaran
+    `type: NORMATIVA` y uno `type: EXPEDIENTE`. Mismo prefijo, dos naturalezas
+    — `DOC-033`: el nombre no demuestra la correspondencia."""
+    out: dict[str, dict] = {}
+    for p in (_RAIZ / "docs" / "pcd").glob("PCD-D*.md"):
+        m = re.match(r"PCD-D(\d+)", p.stem)
+        if not m:
+            continue
+        cab = p.read_text(encoding="utf-8")[:800]
+        st = re.search(r"^status:\s*(.+)$", cab, re.M)
+        ty = re.search(r"^\s*type:\s*(\S+)", cab, re.M)
+        out[f"d{int(m.group(1)):02d}"] = {
+            "archivo": p.name,
+            "status": st.group(1).strip() if st else None,
+            "tipo": ty.group(1).strip() if ty else None,
+        }
+    return out
+
+
+def estado_dimensional() -> dict[str, dict[str, tuple[str, str]]]:
+    """Las cinco dimensiones de cada dominio, **cada una con su propia
+    evidencia y calculada por separado**.
+
+    ⚠️ Ninguna dimensión se infiere de otra. Que exista un `PCD` no vuelve
+    trabajado al dominio; que no exista no lo vuelve no trabajado — mide la
+    **formalización**, que es otra cosa.
+
+    Donde no hay evidencia se dice `NO DETERMINABLE`, que es el tercer estado y
+    no un relleno: **no haber mirado no autoriza a declarar vacío**."""
+    pcd = _pcds()
+    agentes = _agentes()
     b = _RAIZ / "governance" / "BOOT.md"
-    if b.exists():
-        boot = b.read_text(encoding="utf-8")
+    boot = b.read_text(encoding="utf-8") if b.exists() else ""
 
-    out: dict[str, tuple[str, str]] = {}
+    out: dict[str, dict[str, tuple[str, str]]] = {}
     for i in range(1, 14):
         d = f"d{i:02d}"
-        if re.search(rf"{d} en curaci[óo]n", boot, re.I):
-            out[d] = ("INCOMPLETO", "`BOOT` lo declara en curación")
-        elif d in pcd:
-            out[d] = ("DECLARADO", f"`PCD-D{i:02d}` existe en `docs/pcd/`")
-        elif re.search(rf"{d} ENTRABLE", boot):
-            out[d] = ("NO DETERMINABLE",
-                      "`BOOT` lo declara ENTRABLE y **no hay `PCD`**, pero "
-                      "Javo lo señala como trabajado — evidencia conflictiva")
+        dim: dict[str, tuple[str, str]] = {k: _ND for k, _ in _DIMENSIONES}
+
+        # documental — lo único que la presencia del archivo acredita
+        if d in pcd:
+            dim["documental"] = (
+                "PCD PRESENTE",
+                f"`{pcd[d]['archivo']}`"
+                + (f" · `type: {pcd[d]['tipo']}`" if pcd[d]["tipo"] else ""))
         else:
-            out[d] = ("NO INICIADO", "sin `PCD` y sin mención de curación")
+            dim["documental"] = ("PCD AUSENTE",
+                                 "no hay expediente en `docs/pcd/`")
+
+        # curación — del `status` que el propio PCD declara, nunca de su
+        # mera existencia
+        if d in pcd and pcd[d]["status"]:
+            # ⚠️ Se cita **literal**. Normalizarlo a mayúsculas convertiría la
+            # declaración del expediente en una categoría nuestra.
+            dim["curacion"] = (pcd[d]["status"],
+                               f"declarado por `{pcd[d]['archivo']}`")
+        elif re.search(rf"{d} en curaci[óo]n", boot, re.I):
+            dim["curacion"] = ("EN CURACIÓN", "`BOOT` lo declara en curación")
+        elif d in pcd:
+            dim["curacion"] = ("NO DETERMINABLE",
+                               "el `PCD` existe pero **no declara** su estado")
+        else:
+            dim["curacion"] = ("NO COMPLETADA",
+                               "no hay `PCD` que acredite el cierre formal — "
+                               "⚠️ no equivale a «no trabajado»")
+
+        # trabajo — evidencia material primero
+        if d in agentes:
+            dim["trabajo"] = ("DEMOSTRADO",
+                              f"existe `app/agents/{d}/` — código escrito")
+
+        # lo declarado por la dirección, sin promoverlo a hecho
+        for k, v in _DECLARADO_DIRECCION.get(d, {}).items():
+            if dim[k] == _ND or (k == "trabajo" and d not in agentes):
+                dim[k] = v
+
+        out[d] = dim
     return out
 
 
@@ -171,20 +268,23 @@ def main() -> int:
     if not dominios:
         print("[no determinable] no se pudo leer el contrato índice→dominio.")
         return 2
-    cur = estado_curacion()
+    # ⚠️ NO se asigna un `estado` único al dominio. Cada dimensión viaja con su
+    # propia evidencia, y ninguna se deriva de otra.
+    dim = estado_dimensional()
     for d in dominios:
-        d["estado"], d["prueba"] = cur.get(d["id"], ("NO DETERMINABLE", "—"))
+        d["dim"] = dim.get(d["id"], {k: _ND for k, _ in _DIMENSIONES})
     c = clasificar(dominios)
-    c["por_estado"] = {}
-    for d in dominios:
-        c["por_estado"].setdefault(d["estado"], []).append(d)
 
     print(f"dominios leídos del canon: {len(dominios)}")
-    for e, ds in c["por_estado"].items():
-        print(f"  {e:<17} {len(ds):>2} · {', '.join(x['id'] for x in ds)}")
+    for nombre, _q in _DIMENSIONES:
+        cuenta: dict[str, int] = {}
+        for d in dominios:
+            cuenta[d["dim"][nombre][0]] = cuenta.get(d["dim"][nombre][0], 0) + 1
+        resumen = " · ".join(f"{k} {v}" for k, v in sorted(cuenta.items()))
+        print(f"  {nombre:<15} {resumen}")
     print(f"con pregunta rectora declarada: {len(c['con'])} "
           f"({', '.join(d['id'] for d in c['con'])})")
-    print(f"SIN pregunta declarada: {len(c['sin'])}")
+    print(f"sin pregunta formalmente disponible: {len(c['sin'])}")
     for eje, ds in sorted(c["por_eje"].items()):
         n, _p = _MACROEJES.get(eje, ("?", ""))
         print(f"  macroeje {eje} {n:<12} {len(ds)} dominios")
@@ -241,26 +341,50 @@ def _escribir(dominios, c) -> None:
       "alcanzado el nivel de curación correspondiente. **Los dominios aún no "
       "trabajados no pueden clasificarse como carentes de pregunta.**")
     A("")
-    A("### Los cinco estados, y por qué no bastan dos")
+    A("### Las cinco dimensiones, y por qué no basta una")
     A("")
-    A("| | Estado | Significa |")
-    A("|---|---|---|")
-    for nombre, icono, desc in _ESTADOS:
-        A(f"| {icono} | **{nombre}** | {desc} |")
+    A("| Dimensión | Qué mide |")
+    A("|---|---|")
+    for nombre, desc in _DIMENSIONES:
+        A(f"| **{nombre}** | {desc} |")
     A("")
-    A("### El mapa, derivado de los `PCD` en disco y de `BOOT`")
+    A("> ### 📜 La regla que `PCD-D06` obligó a escribir")
+    A(">")
+    A("> `PCD-D06` está **CERRADO** y su dominio no tiene silo de entrada, no "
+      "calcula `ICM` y su alerta sigue apagada un mes después "
+      "(`sat_evaluator.py:297`). Luego:")
+    A(">")
+    A("> **Un `PCD` cerrado certifica CONFORMIDAD de lo que existe, no "
+      "SUFICIENCIA de lo que debería existir.**")
+    A(">")
+    A("> Es lo mismo que QUIRA hace con un municipio: no dice que esté bien, "
+      "dice que lo que hay es trazable y que **lo que falta está declarado**. "
+      "Por eso `PCD` presente **no** puede traducirse a «dominio curado», y "
+      "por eso cada dimensión se calcula por separado.")
     A("")
-    A("| Estado | Dominios | Prueba |")
-    A("|---|---|---|")
-    _ICO = {n: i for n, i, _d in _ESTADOS}
-    for estado in ("DECLARADO", "INCOMPLETO", "NO DETERMINABLE",
-                   "NO INICIADO"):
-        ds = c["por_estado"].get(estado, [])
-        if not ds:
-            continue
-        ids = " · ".join(f"`{d['id']}`" for d in ds)
-        A(f"| {_ICO.get(estado, '')} **{estado}** ({len(ds)}) | {ids} | "
-          f"{ds[0]['prueba']} |")
+    A("### El mapa dimensional, derivado del disco")
+    A("")
+    A("⚠️ Cada celda trae **su propia prueba**. Ninguna dimensión se infiere "
+      "de otra, y donde no hay evidencia se dice `NO DETERMINABLE` — que es el "
+      "tercer estado, no un relleno.")
+    A("")
+    A("| Dominio | trabajo | curación | documental | decisión | "
+      "implementación |")
+    A("|---|---|---|---|---|---|")
+    for d in dominios:
+        fila = " | ".join(d["dim"][k][0] for k, _ in _DIMENSIONES)
+        A(f"| `{d['id']}` {d['nombre'][:22]} | {fila} |")
+    A("")
+    A("**Pruebas de las celdas que no son `NO DETERMINABLE`:**")
+    A("")
+    A("| Dominio | Dimensión | Estado | Prueba |")
+    A("|---|---|---|---|")
+    for d in dominios:
+        for k, _q in _DIMENSIONES:
+            est, prb = d["dim"][k]
+            if est == "NO DETERMINABLE":
+                continue
+            A(f"| `{d['id']}` | {k} | {est} | {prb} |")
     A("")
     A("> ### Lo que esto cambia")
     A(">")
@@ -304,13 +428,21 @@ def _escribir(dominios, c) -> None:
     A("")
     A("| | `d04` Alertas | `d06` Salud Inst. | `d08` Participación |")
     A("|---|---|---|---|")
-    A("| **trabajo** | — | 🔴 **no iniciado** (Javo) | ✅ **trabajado** (Javo) |")
-    A("| **curación** | — | ⚠️ existe `PCD-D06` en disco | ❌ sin `PCD-D08` |")
+    A("| **trabajo** | — | 🔴 no iniciado · **declarado** | ✅ **DEMOSTRADO** — "
+      "existe `app/agents/d08/` |")
+    A("| **curación** | — | `CERRADO con hueco declarado — silo S6 abierto` | "
+      "❌ sin `PCD-D08` |")
     A("| **documental** | 🔴 **sigue en la Constitución** (4 lugares) | "
-      "`PCD` presente | `BOOT`: `ENTRABLE` |")
-    A("| **decisión** | ✅ **aprobada** — eliminarlo | — | — |")
-    A("| **implementación** | ✅ **efectivizada** — fuera del frontend | — | "
-      "— |")
+      "`PCD` presente · `type: EXPEDIENTE` | `BOOT`: `ENTRABLE` |")
+    A("| **decisión** | ✅ aprobada · **declarada** — eliminarlo | — | — |")
+    A("| **implementación** | ✅ efectivizada · **declarada** | 🟡 parcial — "
+      "`SAT-I` apagada | — |")
+    A("")
+    A("> ⚠️ `d08` **dejó de ser `NO DETERMINABLE`.** La existencia de "
+      "`app/agents/d08/` es evidencia **material** de trabajo: código que "
+      "alguien escribió. Lo que `BOOT` dice —`ENTRABLE`— mide otra cosa, y en "
+      "este punto está **desactualizado**. La discrepancia se resolvió por "
+      "evidencia, no por criterio.")
     A("")
     A("Y así los tres dejan de ser «discrepancias» y pasan a ser **estados "
       "precisos**:")
@@ -324,15 +456,32 @@ def _escribir(dominios, c) -> None:
     A("| 2 | **`d08` Participación** | ✅ **trabajado**. La ausencia de `PCD` "
       "cerrado **no autoriza** a clasificarlo como no trabajado: mide la "
       "**formalización**, no el trabajo |")
-    A("| 3 | **`d06` Salud Institucional** | 🔴 **no iniciado**, según Javo — "
-      "⚠️ y existe un `PCD-D06` en disco. **Discrepancia real que queda "
-      "abierta**: habrá que determinar qué documenta ese `PCD` |")
+    A("| 3 | **`d06` Salud Institucional** | ✅ **resuelto por lectura del "
+      "expediente.** No era contradicción: `PCD-D06` documenta una "
+      "**auditoría de 7 capas**, no la construcción del dominio. Cerró "
+      "`CERRADO con hueco declarado — silo S6 abierto`, y el hueco sigue "
+      "abierto |")
     A("")
     A("⚠️ Y una cuarta que `DOC-033` obliga a no dar por hecha: que "
       "*«Rendición de Cuentas y Transparencia»* —mencionado como un trabajo— "
       "corresponda **uno a uno** con `d09` y `d07` tal como están definidos "
       "hoy. **El nombre no lo demuestra**; lo demostraría la correspondencia "
       "documental.")
+    A("")
+    A("### Lo que `d06` resolvió, y lo que abrió")
+    A("")
+    A("La lectura de `PCD-D06` disolvió la discrepancia: **ambas lecturas eran "
+      "ciertas en dimensiones distintas.** «No iniciado» es exacto en `FONDO` "
+      "—no hay `app/agents/d06`, ni silo `S6`, ni `ICM`—; «funcionalmente "
+      "vivo» es exacto en `FORMA` —la superficie lee del snapshot, sin "
+      "`demo_data`, contrastada contra el motor—.")
+    A("")
+    A("> **`d06` es la prueba de que una sola dimensión no bastaba**, y "
+      "apareció justo después de separarlas.")
+    A("")
+    A("Lo que abrió está registrado en `REARQ_ARQUEO_CAPACIDAD_DOCUMENTAL`: la "
+      "capacidad documental de Transparencia **existe, está preservada y no se "
+      "reconstruye**. Su destino `REARQ` sigue sin decidirse.")
     A("")
     A("### Lo que `d04` enseña como patrón")
     A("")
@@ -344,10 +493,14 @@ def _escribir(dominios, c) -> None:
       "anclaje canónico —si existe, la deuda es sólo de propagación; si no, "
       "hay que reconstruir esa autoridad.")
     A("")
-    A("Su motivo, además, es arquitectónicamente interesante: los `SAT` "
-      "dejaron de ser un dominio propio **para volverse alertas dentro de "
-      "cada dominio**. Eso es exactamente una decisión de `FORMA` con "
-      "consecuencias en `FONDO`.")
+    A("Su motivo es arquitectónicamente interesante: los `SAT` dejaron de ser "
+      "un dominio propio **para volverse alertas dentro de cada dominio**.")
+    A("")
+    A("⚠️ Y conviene decirlo con precisión: **no es «una decisión de `FORMA`».** "
+      "Se **manifiesta** en `FORMA` —el dominio desaparece del frontend— pero "
+      "constituye una **decisión arquitectónica con consecuencias en ambos "
+      "ejes**: cambia dónde reside la alerta, quién la calcula y a qué dominio "
+      "pertenece su evidencia. Eso es `FONDO`.")
     A("")
 
     # ── d06 y el ICPI ─────────────────────────────────────────────────────
@@ -472,9 +625,16 @@ def _escribir(dominios, c) -> None:
                    else "**TRANSVERSAL** — modos de administrar")
         A(f"| {eje} {nombre} | {caps} | {lectura} |")
     A("")
-    A("> La distinción **ya estaba implícita en la Constitución**: los "
-      "macroejes `1`, `2` y `3` agrupan modos de administrar; el `4`, "
-      "materias y poblaciones.")
+    A("> ### ⚠️ Esa columna es una HIPÓTESIS DE LECTURA ONTOLÓGICA")
+    A(">")
+    A("> El reparto `1,2,3 → TRANSVERSAL` y `4 → SECTORIAL` **no está "
+      "declarado en la Constitución**: es una lectura que el canon *admite*, "
+      "no una clasificación que el canon *hace*. Se marca como hipótesis y se "
+      "publica como tal.")
+    A(">")
+    A("> Confundir «el canon admite esta lectura» con «el canon lo dice» es la "
+      "misma promoción indebida que `Q-M0` tuvo que corregir. La lectura es "
+      "**útil para pensar** y no es todavía una propiedad del canon.")
     A("")
     A("⚠️ **Y eso sigue sin validarla.** Que los macroejes admitan esa "
       "lectura es **compatible** con la hipótesis; no demuestra que organice "
@@ -502,10 +662,16 @@ def _escribir(dominios, c) -> None:
     for cid, ico, txt in _CRUCE:
         A(f"| **{cid}** | {ico} | el indicador existente {txt} |")
     A("")
-    A("Y **sólo `D` obliga a crear algo nuevo**. `A` conserva, `B` amplía, "
-      "`C` **traslada** — que es el caso más interesante y el que ya "
-      "sospechamos en el ICPI: reside en `d06` pero puede estar respondiendo "
-      "una pregunta de otro eje.")
+    A("⚠️ **El cruce no determina por sí solo el destino `REARQ`.** Es "
+      "**evidencia para evaluarlo**, no la decisión. Un indicador puede "
+      "«responder bien» y aun así deber trasladarse, o «no responder» porque "
+      "la pregunta está mal planteada. Leer `D → RECONSTRUIR` de forma "
+      "automática sería sustituir el juicio arquitectónico por una tabla.")
+    A("")
+    A("Con esa cautela: `A` es evidencia a favor de conservar, `B` de ampliar, "
+      "`C` de trasladar —el caso más interesante, y el que ya se sospecha en "
+      "el ICPI: reside en `d06` y puede estar respondiendo una pregunta de "
+      "otro eje— y `D` es el único que **puede** obligar a crear algo nuevo.")
     A("")
     A("### Lo que hoy puede cruzarse")
     A("")
@@ -528,14 +694,17 @@ def _escribir(dominios, c) -> None:
       "iniciados o incompletos, cualquier evaluación indicador↔pregunta debe "
       "permanecer pendiente hasta completar su curación.")
     A("")
-    n_maduros = len(c["por_estado"].get("DECLARADO", []))
     A(f"Y eso significa que **`Q-M2` puede trabajar hoy sobre el subconjunto "
-      f"maduro de {n_maduros} dominios** — no sobre ninguno, como decía la "
-      f"versión anterior.")
+      f"maduro de {len(c['con'])} dominios** — los que tienen pregunta "
+      f"rectora declarada, no sobre ninguno como decía la versión anterior.")
     A("")
     A("Un indicador sin pregunta declarada **no puede responder bien ni mal: "
-      "no se puede evaluar**. Eso no lo convierte en malo — es la categoría "
-      "`B` de `Q-M0`, problema de arquitectura y no del instrumento.")
+      "no se puede evaluar**. Eso no lo convierte en malo.")
+    A("")
+    A("⚠️ Y tampoco autoriza a clasificarlo: **su estado en `Q-M0` permanece "
+      "pendiente de clasificación**. Decir «es la categoría `B`, problema de "
+      "arquitectura» sería adjudicar una causa antes de tener el lado de la "
+      "comparación que falta.")
     A("")
 
     # ── La unificación ────────────────────────────────────────────────────
@@ -573,13 +742,13 @@ def _escribir(dominios, c) -> None:
       "decidimos qué debe existir.** El método es `CLASIFICAR → COMPRENDER → "
       "EVALUAR → REDISEÑAR → IMPLEMENTAR`, nunca `CLASIFICAR → CONSERVAR`.")
     A("")
-    A("### Nueve destinos posibles, no seis")
+    A("### Ocho destinos posibles, no seis")
     A("")
     A("«Refactorizar» se quedaba corto: sugería arreglar defectos, y la "
       "misión es **elevar**.")
     A("")
-    A("| | Destino | Cuándo |")
-    A("|---|---|---|")
+    A("| Destino | Cuándo |")
+    A("|---|---|")
     A("| **CONSERVAR** | funciona y satisface la necesidad |")
     A("| **MEJORAR** | necesita elevarse |")
     A("| **REESTRUCTURAR** | requiere cambio interno importante |")
@@ -589,7 +758,18 @@ def _escribir(dominios, c) -> None:
     A("| **RECONSTRUIR** | lo existente no representa lo que QUIRA necesita "
       "conocer |")
     A("| **DEPRECAR** | dejarlo fuera |")
-    A("| **PENDIENTE** | evidencia insuficiente para decidir |")
+    A("")
+    A("> ### ⚠️ `PENDIENTE` no es un destino")
+    A(">")
+    A("> Se listaba como noveno y **no pertenece a la misma familia**. Los "
+      "ocho de arriba responden *«¿qué hacemos con este dominio?»*; "
+      "`PENDIENTE` responde *«¿ya podemos decidirlo?»*. Es un **estado de la "
+      "decisión**, no un destino.")
+    A(">")
+    A("> Mezclarlos permitiría cerrar un dominio con destino `PENDIENTE` y dar "
+      "por hecho el análisis. Un dominio con la decisión pendiente **no tiene "
+      "destino asignado todavía** — que es justamente lo que hay que poder "
+      "decir.")
     A("")
     A("> ### Y la regla central de `Q-M1`, reformulada")
     A(">")
@@ -625,10 +805,12 @@ def _escribir(dominios, c) -> None:
     # ── Lo que Q-M1 entrega ───────────────────────────────────────────────
     A("## Lo que `Q-M1` entrega, y lo que no")
     A("")
+    n_sin = len(c["sin"])
     A("| ✅ Establecido | ⬜ Abierto |")
     A("|---|---|")
-    A("| las cuatro familias existen en el canon y agrupan los 13 dominios | "
-      "las once preguntas rectoras que faltan |")
+    A(f"| las cuatro familias existen en el canon y agrupan los "
+      f"{len(dominios)} dominios | las preguntas rectoras **aún no "
+      f"formalmente disponibles** ({n_sin}) |")
     A("| los macroejes se dejan leer como `FONDO`/`FORMA` | si esa lectura "
       "organiza **mejor** que la actual |")
     A("| la pregunta aparece al **curar** el dominio, no al escribirla | qué "
@@ -637,22 +819,26 @@ def _escribir(dominios, c) -> None:
     A("> ### La consecuencia operativa, y no es la que se esperaba")
     A(">")
     A("> `Q-M1` iba a reconstruir las preguntas necesarias. Lo que encuentra "
-      "es que **el canon ya declaró las familias** y que **once de trece "
-      "preguntas no existen todavía** — y que el camino para que existan **ya "
-      "está definido**: es el `PCD`, la curación de dominio (`Regla de Oro "
-      "8`).")
+      "es que **el canon ya declaró las familias** y que el camino para que "
+      "las preguntas existan **ya está definido**: es el `PCD`, la curación "
+      "de dominio (`Regla de Oro 8`).")
     A(">")
-    A("> No hace falta un método nuevo. Hace falta **aplicar el que hay a "
-      "once dominios**.")
+    A("> No hace falta un método nuevo. Hace falta **aplicar el que hay**.")
     A("")
-    A("⚠️ Y eso **no** significa «curar los once antes de seguir». Significa "
-      "que la Rearquitectura tiene ahora una **dependencia declarada**: "
-      "cualquier decisión sobre residencia de indicadores se apoya en "
-      "preguntas que, en once casos, todavía no están escritas.")
+    A(f"⚠️ **Formulación cuidada:** no se dice «faltan {n_sin} preguntas», "
+      f"porque eso imputaría una carencia. Se dice que **las preguntas "
+      f"rectoras todavía no están formalmente disponibles para los dominios "
+      f"no curados** — que es una fotografía del avance del trabajo, no un "
+      f"defecto de la ontología.")
+    A("")
+    A("Y eso **no** significa «curar todos antes de seguir». Significa que la "
+      "Rearquitectura tiene una **dependencia declarada**: cualquier decisión "
+      "sobre residencia de indicadores se apoya en preguntas que, en varios "
+      "casos, todavía no están escritas.")
     A("")
     A("## Lo que `Q-M1` NO hace")
     A("")
-    A("- **No inventa las once preguntas que faltan.**")
+    A("- **No inventa las preguntas que todavía no están disponibles.**")
     A("- **No dice «este índice sirve y este no».**")
     A("- **No valida `FONDO`/`FORMA`**: la contrasta y declara qué falta para "
       "poder decidirlo.")

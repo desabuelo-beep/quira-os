@@ -52,8 +52,13 @@ def test_las_preguntas_se_derivan_del_canon_y_no_se_inventan():
     txt = _DOC.read_text(encoding="utf-8")
     assert "escribir el canon desde un script" in txt, (
         "desapareció la regla que impide inventar las preguntas que faltan")
-    assert "No inventa las once preguntas que faltan" in txt, (
+    assert "No inventa las preguntas que todavía no están disponibles" in txt, (
         "Q-M1 dejó de declarar explícitamente qué no hace")
+    # ⚠️ Y la corrección del colega sobre CÓMO se nombra ese vacío: decir
+    # «faltan once preguntas» imputa una carencia a la ontología. El estado
+    # real es que todavía no están disponibles para los dominios no curados.
+    assert "aún no" in txt and "formalmente disponibles" in txt, (
+        "volvió la formulación que convierte trabajo pendiente en carencia")
 
 
 def test_FONDO_FORMA_sigue_siendo_hipotesis_contrastada():
@@ -123,24 +128,108 @@ def test_el_mapa_de_madurez_distingue_no_trabajado_de_inexistente():
     fuera una carencia de la ontología. Javo lo corrigió: *«los dominios no
     están completos todos, hemos estado trabajando uno por uno»*.
 
-    Es el mismo error del `71 %` → `62 %`, y por eso hacen falta **cinco
-    estados y no dos**:
-
-        DECLARADO · INCOMPLETO · NO INICIADO · NO DECLARADO · NO DETERMINABLE
-
-    ⚠️ `NO INICIADO` y `NO DECLARADO` parecen lo mismo y son opuestos: el
-    primero es un dominio que nadie ha curado; el segundo, uno que se curó y
-    **aun así** no produjo pregunta. Sólo el segundo sería un hallazgo."""
+    ⚠️ Y la `v2` lo decía en prosa mientras **calculaba un solo estado**. Las
+    cinco dimensiones son ahora estructura del script, no redacción: cada una
+    viaja con su propia prueba y **ninguna se infiere de otra**."""
     txt = _DOC.read_text(encoding="utf-8")
     assert "MAPA DE MADUREZ, no un inventario de carencias" in txt, (
         "el mapa volvió a leerse como inventario de carencias")
-    for estado in ("DECLARADO", "INCOMPLETO", "NO INICIADO", "NO DECLARADO",
-                   "NO DETERMINABLE"):
-        assert estado in txt, f"falta el estado `{estado}`"
+    for dim in ("trabajo", "curación", "documental", "decisión",
+                "implementación"):
+        assert dim in txt, f"falta la dimensión `{dim}`"
     assert "no pueden clasificarse como carentes de pregunta" in txt, (
         "desapareció la formulación correcta del resultado")
     assert "lo que todavía no vimos → vacío → defecto" in txt, (
         "se perdió la cadena que NO debe seguirse")
+
+
+def test_un_PCD_cerrado_no_acredita_que_el_dominio_este_completo():
+    """★ REGLA PROTEGIDA: **conformidad ≠ suficiencia.**
+
+    Es el hallazgo que `PCD-D06` obligó a escribir, y el que la `v2` violaba en
+    código: derivaba el estado del dominio de «¿existe el `PCD`?».
+
+    `PCD-D06` está **CERRADO** y su dominio no tiene silo de entrada, no
+    calcula `ICM` y su alerta sigue apagada (`sat_evaluator.py:297`, verificado
+    un mes después del cierre).
+
+    ⚠️ El `PCD` hace con el dominio **lo mismo que QUIRA hace con el GAD**: no
+    certifica que esté bien, certifica que lo que hay es trazable y que lo que
+    falta está declarado. Sin esta regla, seis archivos en `docs/pcd/` se leen
+    como seis dominios terminados."""
+    fuente = _SCRIPT.read_text(encoding="utf-8")
+    assert "estado_dimensional" in fuente, (
+        "volvió el estado único por dominio. Cada dimensión debe calcularse "
+        "por separado y con su propia evidencia")
+    assert "estado_curacion" not in fuente, (
+        "reapareció la función que colapsaba las cinco dimensiones en una")
+    txt = _DOC.read_text(encoding="utf-8")
+    assert "CONFORMIDAD de lo que existe" in txt and "SUFICIENCIA" in txt, (
+        "desapareció la regla que impide leer un PCD cerrado como un dominio "
+        "completo")
+    # ⚠️ La dimensión `trabajo` se prueba con evidencia MATERIAL —código en
+    # disco—, no con la declaración de nadie. Fue lo que resolvió `d08`.
+    assert "app/agents/" in fuente, (
+        "el script dejó de leer los agentes en disco. Sin esa lectura, "
+        "`trabajo` vuelve a depender de lo que alguien recuerde")
+
+
+def test_PENDIENTE_no_es_un_destino_REARQ():
+    """★ REGLA PROTEGIDA: **un estado de la decisión no es un destino.**
+
+    Se listaba `PENDIENTE` como noveno destino junto a `CONSERVAR`,
+    `TRASLADAR` o `DEPRECAR`. No pertenece a esa familia: los ocho responden
+    *«¿qué hacemos con este dominio?»* y `PENDIENTE` responde *«¿ya podemos
+    decidirlo?»*.
+
+    ⚠️ Mezclarlos permitiría cerrar un dominio con destino `PENDIENTE` y dar
+    el análisis por terminado. Un dominio con la decisión pendiente **no tiene
+    destino asignado todavía**, que es justo lo que hay que poder decir."""
+    txt = _DOC.read_text(encoding="utf-8")
+    assert "`PENDIENTE` no es un destino" in txt, (
+        "PENDIENTE volvió a listarse como destino REARQ")
+    assert "Ocho destinos" in txt, (
+        "el conteo de destinos volvió a incluir el estado de la decisión")
+    assert "estado de la\ndecisión" in txt or "estado de la decisión" in txt
+
+
+def test_el_cruce_es_evidencia_y_no_dictamen():
+    """★ REGLA PROTEGIDA: **el cruce `A/B/C/D` no determina el destino.**
+
+    Es evidencia para evaluarlo. Un indicador puede «responder bien» y aun así
+    deber trasladarse; puede «no responder» porque la pregunta está mal
+    planteada.
+
+    ⚠️ Leer `D → RECONSTRUIR` automáticamente sustituiría el juicio
+    arquitectónico por una tabla — que es la versión sofisticada del mismo
+    error que `Q-M0` cometió al derivar estado de la existencia de un
+    archivo."""
+    txt = _DOC.read_text(encoding="utf-8")
+    assert "no determina por sí solo el destino" in txt, (
+        "el cruce volvió a leerse como dictamen automático de destino")
+    assert "evidencia para evaluarlo" in txt
+
+
+def test_la_lectura_SECTORIAL_TRANSVERSAL_se_marca_como_hipotesis():
+    """★ REGLA PROTEGIDA: **lo que el canon admite ≠ lo que el canon dice.**
+
+    El reparto `1,2,3 → TRANSVERSAL` y `4 → SECTORIAL` es una lectura que la
+    Constitución **admite**, no una clasificación que **haga**.
+
+    ⚠️ Publicarlo sin marca lo convertiría en propiedad del canon por el solo
+    hecho de aparecer en un documento derivado — exactamente la promoción
+    indebida que `Q-M0` tuvo que corregir."""
+    txt = _DOC.read_text(encoding="utf-8")
+    assert "HIPÓTESIS DE LECTURA ONTOLÓGICA" in txt, (
+        "la lectura sectorial/transversal se publicó como hecho del canon")
+    assert "no está declarado en la Constitución" in _plano(txt), (
+        "desapareció el límite explícito de la hipótesis")
+
+
+def _plano(t: str) -> str:
+    """Une los saltos de línea del markdown para que una aserción no dependa
+    de dónde cayó el ajuste de línea."""
+    return " ".join(t.split())
 
 
 def test_las_discrepancias_se_registran_y_no_se_resuelven():

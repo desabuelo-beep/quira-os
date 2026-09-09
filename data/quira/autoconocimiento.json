@@ -1,8 +1,8 @@
 {
  "_meta": {
   "que_es": "perímetro de lo que QUIRA sabe hacer, derivado de su propia evidencia",
-  "derivado": "2026-09-08T08:56:06",
-  "sha256_estado": "8e871b59ec7c965b9ad964ab30d54ef4808a314d24d45fe46de00f49cdb23f55",
+  "derivado": "2026-09-09T09:58:32",
+  "sha256_estado": "51b3cea9c6698d45dd38ae489c3bd28e281df9773eea36e390e932b510fbc89b",
   "fuentes": [
    "sellos de ejecución de cada dominio (cadena_estado.json)",
    "perfiles de sujeto (data/sujetos/)",
@@ -91,7 +91,7 @@
    "dominio": "d07",
    "grado": "validado",
    "sujeto": "130801 Montecristi",
-   "fundamento": "QUIRA la ejecutó (2026-09-08T08:56:06) y «test_quira_reconstruye_sus_derivados_sin_ayuda» la reproduce desde cero"
+   "fundamento": "QUIRA la ejecutó (2026-09-09T09:58:32) y «test_quira_reconstruye_sus_derivados_sin_ayuda» la reproduce desde cero"
   },
   {
    "capacidad": "enlaces",

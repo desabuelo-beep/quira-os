@@ -21,24 +21,79 @@ La primera versión publicó **«11 de 13 dominios no tienen pregunta rectora»*
 
 > En el estado actual de curación del corpus, sólo se dispone de preguntas rectoras formalmente declaradas para los dominios que han alcanzado el nivel de curación correspondiente. **Los dominios aún no trabajados no pueden clasificarse como carentes de pregunta.**
 
-### Los cinco estados, y por qué no bastan dos
+### Las cinco dimensiones, y por qué no basta una
 
-| | Estado | Significa |
-|---|---|---|
-| ✅ | **DECLARADO** | curado, y la pregunta rectora tiene respaldo documental en su `PCD` |
-| 🟡 | **INCOMPLETO** | la curación empezó y no terminó |
-| ⬜ | **NO INICIADO** | el dominio **todavía no ha pasado** por curación — ⚠️ no es lo mismo que carecer de pregunta |
-| 🔴 | **NO DECLARADO** | se curó y **aun así** no hay pregunta explícita |
-| ❓ | **NO DETERMINABLE** | evidencia parcial o conflictiva que impide establecer el estado |
+| Dimensión | Qué mide |
+|---|---|
+| **trabajo** | qué se ha hecho realmente |
+| **curacion** | qué nivel formal alcanzó el proceso |
+| **documental** | qué está registrado en el canon |
+| **decision** | qué ha sido aprobado |
+| **implementacion** | qué está efectivizado en el producto |
 
-### El mapa, derivado de los `PCD` en disco y de `BOOT`
+> ### 📜 La regla que `PCD-D06` obligó a escribir
+>
+> `PCD-D06` está **CERRADO** y su dominio no tiene silo de entrada, no calcula `ICM` y su alerta sigue apagada un mes después (`sat_evaluator.py:297`). Luego:
+>
+> **Un `PCD` cerrado certifica CONFORMIDAD de lo que existe, no SUFICIENCIA de lo que debería existir.**
+>
+> Es lo mismo que QUIRA hace con un municipio: no dice que esté bien, dice que lo que hay es trazable y que **lo que falta está declarado**. Por eso `PCD` presente **no** puede traducirse a «dominio curado», y por eso cada dimensión se calcula por separado.
 
-| Estado | Dominios | Prueba |
-|---|---|---|
-| ✅ **DECLARADO** (5) | `d01` · `d02` · `d03` · `d06` · `d09` | `PCD-D01` existe en `docs/pcd/` |
-| 🟡 **INCOMPLETO** (1) | `d07` | `BOOT` lo declara en curación |
-| ❓ **NO DETERMINABLE** (1) | `d08` | `BOOT` lo declara ENTRABLE y **no hay `PCD`**, pero Javo lo señala como trabajado — evidencia conflictiva |
-| ⬜ **NO INICIADO** (6) | `d04` · `d05` · `d10` · `d11` · `d12` · `d13` | sin `PCD` y sin mención de curación |
+### El mapa dimensional, derivado del disco
+
+⚠️ Cada celda trae **su propia prueba**. Ninguna dimensión se infiere de otra, y donde no hay evidencia se dice `NO DETERMINABLE` — que es el tercer estado, no un relleno.
+
+| Dominio | trabajo | curación | documental | decisión | implementación |
+|---|---|---|---|---|---|
+| `d01` Planificación Estratég | DEMOSTRADO | NO DETERMINABLE | PCD PRESENTE | NO DETERMINABLE | NO DETERMINABLE |
+| `d02` Presupuesto y Financia | DEMOSTRADO | NO DETERMINABLE | PCD PRESENTE | NO DETERMINABLE | NO DETERMINABLE |
+| `d03` Gobernanza del Mandato | DEMOSTRADO | NO DETERMINABLE | PCD PRESENTE | NO DETERMINABLE | NO DETERMINABLE |
+| `d04` Alertas Institucionale | NO DETERMINABLE | NO COMPLETADA | PCD AUSENTE | APROBADA · declarada | EFECTIVIZADA · declarada |
+| `d05` Holding e Integración  | NO DETERMINABLE | NO COMPLETADA | PCD AUSENTE | NO DETERMINABLE | NO DETERMINABLE |
+| `d06` Salud Institucional | NO INICIADO · declarado | CERRADO con hueco declarado — silo S6 abierto | PCD PRESENTE | NO DETERMINABLE | NO DETERMINABLE |
+| `d07` Transparencia | DEMOSTRADO | EN CURACIÓN | PCD PRESENTE | NO DETERMINABLE | NO DETERMINABLE |
+| `d08` Participación Ciudadan | DEMOSTRADO | NO COMPLETADA | PCD AUSENTE | NO DETERMINABLE | NO DETERMINABLE |
+| `d09` Rendición de Cuentas | DEMOSTRADO | NO DETERMINABLE | PCD PRESENTE | NO DETERMINABLE | NO DETERMINABLE |
+| `d10` Cobertura de Servicios | NO DETERMINABLE | NO COMPLETADA | PCD AUSENTE | NO DETERMINABLE | NO DETERMINABLE |
+| `d11` Desarrollo Económico T | NO DETERMINABLE | NO COMPLETADA | PCD AUSENTE | NO DETERMINABLE | NO DETERMINABLE |
+| `d12` Inclusión, Equidad y G | NO DETERMINABLE | NO COMPLETADA | PCD AUSENTE | NO DETERMINABLE | NO DETERMINABLE |
+| `d13` Sostenibilidad y Resil | NO DETERMINABLE | NO COMPLETADA | PCD AUSENTE | NO DETERMINABLE | NO DETERMINABLE |
+
+**Pruebas de las celdas que no son `NO DETERMINABLE`:**
+
+| Dominio | Dimensión | Estado | Prueba |
+|---|---|---|---|
+| `d01` | trabajo | DEMOSTRADO | existe `app/agents/d01/` — código escrito |
+| `d01` | documental | PCD PRESENTE | `PCD-D01_Planificacion.md` · `type: NORMATIVA` |
+| `d02` | trabajo | DEMOSTRADO | existe `app/agents/d02/` — código escrito |
+| `d02` | documental | PCD PRESENTE | `PCD-D02_Presupuesto_Financiamiento.md` · `type: NORMATIVA` |
+| `d03` | trabajo | DEMOSTRADO | existe `app/agents/d03/` — código escrito |
+| `d03` | documental | PCD PRESENTE | `PCD-D03_Gobernanza_Mandato.md` · `type: NORMATIVA` |
+| `d04` | curacion | NO COMPLETADA | no hay `PCD` que acredite el cierre formal — ⚠️ no equivale a «no trabajado» |
+| `d04` | documental | PCD AUSENTE | no hay expediente en `docs/pcd/` |
+| `d04` | decision | APROBADA · declarada | la dirección declara aprobada la baja del dominio SAT |
+| `d04` | implementacion | EFECTIVIZADA · declarada | la dirección declara que salió del frontend |
+| `d05` | curacion | NO COMPLETADA | no hay `PCD` que acredite el cierre formal — ⚠️ no equivale a «no trabajado» |
+| `d05` | documental | PCD AUSENTE | no hay expediente en `docs/pcd/` |
+| `d06` | trabajo | NO INICIADO · declarado | la dirección lo señala no iniciado — ⚠️ y existe un `PCD-D06` **cerrado** en disco |
+| `d06` | curacion | CERRADO con hueco declarado — silo S6 abierto | declarado por `PCD-D06_Salud_Institucional.md` |
+| `d06` | documental | PCD PRESENTE | `PCD-D06_Salud_Institucional.md` · `type: EXPEDIENTE` |
+| `d07` | trabajo | DEMOSTRADO | existe `app/agents/d07/` — código escrito |
+| `d07` | curacion | EN CURACIÓN | `BOOT` lo declara en curación |
+| `d07` | documental | PCD PRESENTE | `PCD-D07_Transparencia.md` · `type: NORMATIVA` |
+| `d08` | trabajo | DEMOSTRADO | existe `app/agents/d08/` — código escrito |
+| `d08` | curacion | NO COMPLETADA | no hay `PCD` que acredite el cierre formal — ⚠️ no equivale a «no trabajado» |
+| `d08` | documental | PCD AUSENTE | no hay expediente en `docs/pcd/` |
+| `d09` | trabajo | DEMOSTRADO | existe `app/agents/d09/` — código escrito |
+| `d09` | documental | PCD PRESENTE | `PCD-D09_Rendicion_Cuentas.md` · `type: NORMATIVA` |
+| `d10` | curacion | NO COMPLETADA | no hay `PCD` que acredite el cierre formal — ⚠️ no equivale a «no trabajado» |
+| `d10` | documental | PCD AUSENTE | no hay expediente en `docs/pcd/` |
+| `d11` | curacion | NO COMPLETADA | no hay `PCD` que acredite el cierre formal — ⚠️ no equivale a «no trabajado» |
+| `d11` | documental | PCD AUSENTE | no hay expediente en `docs/pcd/` |
+| `d12` | curacion | NO COMPLETADA | no hay `PCD` que acredite el cierre formal — ⚠️ no equivale a «no trabajado» |
+| `d12` | documental | PCD AUSENTE | no hay expediente en `docs/pcd/` |
+| `d13` | curacion | NO COMPLETADA | no hay `PCD` que acredite el cierre formal — ⚠️ no equivale a «no trabajado» |
+| `d13` | documental | PCD AUSENTE | no hay expediente en `docs/pcd/` |
 
 > ### Lo que esto cambia
 >
@@ -68,11 +123,13 @@ Las discrepancias no eran contradicciones: eran **dimensiones distintas colapsad
 
 | | `d04` Alertas | `d06` Salud Inst. | `d08` Participación |
 |---|---|---|---|
-| **trabajo** | — | 🔴 **no iniciado** (Javo) | ✅ **trabajado** (Javo) |
-| **curación** | — | ⚠️ existe `PCD-D06` en disco | ❌ sin `PCD-D08` |
-| **documental** | 🔴 **sigue en la Constitución** (4 lugares) | `PCD` presente | `BOOT`: `ENTRABLE` |
-| **decisión** | ✅ **aprobada** — eliminarlo | — | — |
-| **implementación** | ✅ **efectivizada** — fuera del frontend | — | — |
+| **trabajo** | — | 🔴 no iniciado · **declarado** | ✅ **DEMOSTRADO** — existe `app/agents/d08/` |
+| **curación** | — | `CERRADO con hueco declarado — silo S6 abierto` | ❌ sin `PCD-D08` |
+| **documental** | 🔴 **sigue en la Constitución** (4 lugares) | `PCD` presente · `type: EXPEDIENTE` | `BOOT`: `ENTRABLE` |
+| **decisión** | ✅ aprobada · **declarada** — eliminarlo | — | — |
+| **implementación** | ✅ efectivizada · **declarada** | 🟡 parcial — `SAT-I` apagada | — |
+
+> ⚠️ `d08` **dejó de ser `NO DETERMINABLE`.** La existencia de `app/agents/d08/` es evidencia **material** de trabajo: código que alguien escribió. Lo que `BOOT` dice —`ENTRABLE`— mide otra cosa, y en este punto está **desactualizado**. La discrepancia se resolvió por evidencia, no por criterio.
 
 Y así los tres dejan de ser «discrepancias» y pasan a ser **estados precisos**:
 
@@ -80,9 +137,17 @@ Y así los tres dejan de ser «discrepancias» y pasan a ser **estados precisos*
 |---|---|---|
 | 1 | **¿12 o 13 dominios?** | **No es binario.** El **producto** tiene hoy **12 dominios visibles**; el **canon** conserva **13**. `d04` fue eliminado por decisión aprobada y efectivizada — lo pendiente **no es decidirlo, es propagarlo al canon** |
 | 2 | **`d08` Participación** | ✅ **trabajado**. La ausencia de `PCD` cerrado **no autoriza** a clasificarlo como no trabajado: mide la **formalización**, no el trabajo |
-| 3 | **`d06` Salud Institucional** | 🔴 **no iniciado**, según Javo — ⚠️ y existe un `PCD-D06` en disco. **Discrepancia real que queda abierta**: habrá que determinar qué documenta ese `PCD` |
+| 3 | **`d06` Salud Institucional** | ✅ **resuelto por lectura del expediente.** No era contradicción: `PCD-D06` documenta una **auditoría de 7 capas**, no la construcción del dominio. Cerró `CERRADO con hueco declarado — silo S6 abierto`, y el hueco sigue abierto |
 
 ⚠️ Y una cuarta que `DOC-033` obliga a no dar por hecha: que *«Rendición de Cuentas y Transparencia»* —mencionado como un trabajo— corresponda **uno a uno** con `d09` y `d07` tal como están definidos hoy. **El nombre no lo demuestra**; lo demostraría la correspondencia documental.
+
+### Lo que `d06` resolvió, y lo que abrió
+
+La lectura de `PCD-D06` disolvió la discrepancia: **ambas lecturas eran ciertas en dimensiones distintas.** «No iniciado» es exacto en `FONDO` —no hay `app/agents/d06`, ni silo `S6`, ni `ICM`—; «funcionalmente vivo» es exacto en `FORMA` —la superficie lee del snapshot, sin `demo_data`, contrastada contra el motor—.
+
+> **`d06` es la prueba de que una sola dimensión no bastaba**, y apareció justo después de separarlas.
+
+Lo que abrió está registrado en `REARQ_ARQUEO_CAPACIDAD_DOCUMENTAL`: la capacidad documental de Transparencia **existe, está preservada y no se reconstruye**. Su destino `REARQ` sigue sin decidirse.
 
 ### Lo que `d04` enseña como patrón
 
@@ -90,7 +155,9 @@ Y así los tres dejan de ser «discrepancias» y pasan a ser **estados precisos*
 >
 > No es un dominio en disputa: es una **deuda de propagación documental**. Y conviene verificar además que la decisión tenga su anclaje canónico —si existe, la deuda es sólo de propagación; si no, hay que reconstruir esa autoridad.
 
-Su motivo, además, es arquitectónicamente interesante: los `SAT` dejaron de ser un dominio propio **para volverse alertas dentro de cada dominio**. Eso es exactamente una decisión de `FORMA` con consecuencias en `FONDO`.
+Su motivo es arquitectónicamente interesante: los `SAT` dejaron de ser un dominio propio **para volverse alertas dentro de cada dominio**.
+
+⚠️ Y conviene decirlo con precisión: **no es «una decisión de `FORMA`».** Se **manifiesta** en `FORMA` —el dominio desaparece del frontend— pero constituye una **decisión arquitectónica con consecuencias en ambos ejes**: cambia dónde reside la alerta, quién la calcula y a qué dominio pertenece su evidencia. Eso es `FONDO`.
 
 ### `d06` y el ICPI · la hipótesis que NO se decide aquí
 
@@ -203,7 +270,11 @@ Renombrar el segundo eje **no le quita valor**: le quita la colisión. «Transve
 | 3 DEMOCRACIA | verificabilidad · inteligencia colectiva · responsabilidad pública | **TRANSVERSAL** — modos de administrar |
 | 4 TERRITORIO | acceso colectivo · dinamización · inclusión y equidad · resiliencia | **SECTORIAL** — materias y poblaciones |
 
-> La distinción **ya estaba implícita en la Constitución**: los macroejes `1`, `2` y `3` agrupan modos de administrar; el `4`, materias y poblaciones.
+> ### ⚠️ Esa columna es una HIPÓTESIS DE LECTURA ONTOLÓGICA
+>
+> El reparto `1,2,3 → TRANSVERSAL` y `4 → SECTORIAL` **no está declarado en la Constitución**: es una lectura que el canon *admite*, no una clasificación que el canon *hace*. Se marca como hipótesis y se publica como tal.
+>
+> Confundir «el canon admite esta lectura» con «el canon lo dice» es la misma promoción indebida que `Q-M0` tuvo que corregir. La lectura es **útil para pensar** y no es todavía una propiedad del canon.
 
 ⚠️ **Y eso sigue sin validarla.** Que los macroejes admitan esa lectura es **compatible** con la hipótesis; no demuestra que organice las preguntas **mejor** que la agrupación actual. Compararlo exigiría las preguntas, y **la mayoría de los dominios aún no está curada**. Es la misma disciplina que se aplicó a `IED`.
 
@@ -222,7 +293,9 @@ Cuando exista la pregunta, el cruce con el indicador histórico da una de cuatro
 | **C** | 🔵 | el indicador existente responde una pregunta DISTINTA de la que su dominio plantea |
 | **D** | 🔴 | el indicador existente no hay indicador para esta pregunta |
 
-Y **sólo `D` obliga a crear algo nuevo**. `A` conserva, `B` amplía, `C` **traslada** — que es el caso más interesante y el que ya sospechamos en el ICPI: reside en `d06` pero puede estar respondiendo una pregunta de otro eje.
+⚠️ **El cruce no determina por sí solo el destino `REARQ`.** Es **evidencia para evaluarlo**, no la decisión. Un indicador puede «responder bien» y aun así deber trasladarse, o «no responder» porque la pregunta está mal planteada. Leer `D → RECONSTRUIR` de forma automática sería sustituir el juicio arquitectónico por una tabla.
+
+Con esa cautela: `A` es evidencia a favor de conservar, `B` de ampliar, `C` de trasladar —el caso más interesante, y el que ya se sospecha en el ICPI: reside en `d06` y puede estar respondiendo una pregunta de otro eje— y `D` es el único que **puede** obligar a crear algo nuevo.
 
 ### Lo que hoy puede cruzarse
 
@@ -241,9 +314,11 @@ La `v1` decía que `Q-M2` quedaba bloqueada porque faltaban once preguntas. Es d
 
 > **`Q-M2` puede comenzar únicamente sobre los dominios cuya curación ya permite establecer una pregunta rectora.** Para los dominios no iniciados o incompletos, cualquier evaluación indicador↔pregunta debe permanecer pendiente hasta completar su curación.
 
-Y eso significa que **`Q-M2` puede trabajar hoy sobre el subconjunto maduro de 5 dominios** — no sobre ninguno, como decía la versión anterior.
+Y eso significa que **`Q-M2` puede trabajar hoy sobre el subconjunto maduro de 2 dominios** — los que tienen pregunta rectora declarada, no sobre ninguno como decía la versión anterior.
 
-Un indicador sin pregunta declarada **no puede responder bien ni mal: no se puede evaluar**. Eso no lo convierte en malo — es la categoría `B` de `Q-M0`, problema de arquitectura y no del instrumento.
+Un indicador sin pregunta declarada **no puede responder bien ni mal: no se puede evaluar**. Eso no lo convierte en malo.
+
+⚠️ Y tampoco autoriza a clasificarlo: **su estado en `Q-M0` permanece pendiente de clasificación**. Decir «es la categoría `B`, problema de arquitectura» sería adjudicar una causa antes de tener el lado de la comparación que falta.
 
 ## ★ Lo que el refactor debe hacer con los dominios ya curados
 
@@ -265,12 +340,12 @@ Eso cambia la naturaleza de `REARQ`. **No es una auditoría de conservación.** 
 
 Con una regla que no cambia: **primero entendemos qué existe; después decidimos qué debe existir.** El método es `CLASIFICAR → COMPRENDER → EVALUAR → REDISEÑAR → IMPLEMENTAR`, nunca `CLASIFICAR → CONSERVAR`.
 
-### Nueve destinos posibles, no seis
+### Ocho destinos posibles, no seis
 
 «Refactorizar» se quedaba corto: sugería arreglar defectos, y la misión es **elevar**.
 
-| | Destino | Cuándo |
-|---|---|---|
+| Destino | Cuándo |
+|---|---|
 | **CONSERVAR** | funciona y satisface la necesidad |
 | **MEJORAR** | necesita elevarse |
 | **REESTRUCTURAR** | requiere cambio interno importante |
@@ -279,7 +354,12 @@ Con una regla que no cambia: **primero entendemos qué existe; después decidimo
 | **TRASLADAR** | cambiar residencia |
 | **RECONSTRUIR** | lo existente no representa lo que QUIRA necesita conocer |
 | **DEPRECAR** | dejarlo fuera |
-| **PENDIENTE** | evidencia insuficiente para decidir |
+
+> ### ⚠️ `PENDIENTE` no es un destino
+>
+> Se listaba como noveno y **no pertenece a la misma familia**. Los ocho de arriba responden *«¿qué hacemos con este dominio?»*; `PENDIENTE` responde *«¿ya podemos decidirlo?»*. Es un **estado de la decisión**, no un destino.
+>
+> Mezclarlos permitiría cerrar un dominio con destino `PENDIENTE` y dar por hecho el análisis. Un dominio con la decisión pendiente **no tiene destino asignado todavía** — que es justamente lo que hay que poder decir.
 
 > ### Y la regla central de `Q-M1`, reformulada
 >
@@ -302,21 +382,23 @@ Es una vuelta más que «los indicadores se ganan su residencia»: **los dominio
 
 | ✅ Establecido | ⬜ Abierto |
 |---|---|
-| las cuatro familias existen en el canon y agrupan los 13 dominios | las once preguntas rectoras que faltan |
+| las cuatro familias existen en el canon y agrupan los 13 dominios | las preguntas rectoras **aún no formalmente disponibles** (11) |
 | los macroejes se dejan leer como `FONDO`/`FORMA` | si esa lectura organiza **mejor** que la actual |
 | la pregunta aparece al **curar** el dominio, no al escribirla | qué indicador responde a qué pregunta (`Q-M2`) |
 
 > ### La consecuencia operativa, y no es la que se esperaba
 >
-> `Q-M1` iba a reconstruir las preguntas necesarias. Lo que encuentra es que **el canon ya declaró las familias** y que **once de trece preguntas no existen todavía** — y que el camino para que existan **ya está definido**: es el `PCD`, la curación de dominio (`Regla de Oro 8`).
+> `Q-M1` iba a reconstruir las preguntas necesarias. Lo que encuentra es que **el canon ya declaró las familias** y que el camino para que las preguntas existan **ya está definido**: es el `PCD`, la curación de dominio (`Regla de Oro 8`).
 >
-> No hace falta un método nuevo. Hace falta **aplicar el que hay a once dominios**.
+> No hace falta un método nuevo. Hace falta **aplicar el que hay**.
 
-⚠️ Y eso **no** significa «curar los once antes de seguir». Significa que la Rearquitectura tiene ahora una **dependencia declarada**: cualquier decisión sobre residencia de indicadores se apoya en preguntas que, en once casos, todavía no están escritas.
+⚠️ **Formulación cuidada:** no se dice «faltan 11 preguntas», porque eso imputaría una carencia. Se dice que **las preguntas rectoras todavía no están formalmente disponibles para los dominios no curados** — que es una fotografía del avance del trabajo, no un defecto de la ontología.
+
+Y eso **no** significa «curar todos antes de seguir». Significa que la Rearquitectura tiene una **dependencia declarada**: cualquier decisión sobre residencia de indicadores se apoya en preguntas que, en varios casos, todavía no están escritas.
 
 ## Lo que `Q-M1` NO hace
 
-- **No inventa las once preguntas que faltan.**
+- **No inventa las preguntas que todavía no están disponibles.**
 - **No dice «este índice sirve y este no».**
 - **No valida `FONDO`/`FORMA`**: la contrasta y declara qué falta para poder decidirlo.
 - **No toca el motor.** Gold Master intacto · baseline **27,4582 %** congelado.
