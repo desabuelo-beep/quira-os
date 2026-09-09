@@ -237,6 +237,20 @@ _DEUDAS = (
                "no un juicio de «bien». Cada uno de los 25 exige decidir QUÉ "
                "dice ese verde, y eso es curación de dominio, no un barrido"),
     dict(id="D-015", gravedad=FALSEA, capa="C6", dueño="Javo",
+         estado="ABIERTA · **PROCEDENCIA RESUELTA · REPRODUCCIÓN PENDIENTE**. "
+                "Son dos propiedades distintas y no deben colapsarse:\n"
+                "  existe el valor `0,4448` .................. DEMOSTRADO\n"
+                "  tiene procedencia documental .............. DEMOSTRADO (`76ca5de`)\n"
+                "  hay un cambio acreditado que lo explica ... DEMOSTRADO (`CI` 0,4792→0,4000)\n"
+                "  es el valor vigente ....................... DEMOSTRADO por genealogía\n"
+                "  existe corrida preservada que lo reproduzca 🔴 NO DEMOSTRADO\n"
+                "  puede reproducirse ........................ ⏳ PENDIENTE DE EJECUCIÓN\n"
+                "  `0,4646` tuvo corrida propia .............. ❓ NO DETERMINABLE\n"
+                "  `0,4630` equivale a `0,4646` .............. 🔴 NO DEMOSTRADO\n"
+                "⚠️ La condición para regenerar **se cumple** (universo agotado "
+                "y declarado en `docs/registry/UNIVERSO_BUSQUEDA_D-015.md`), "
+                "pero **condición cumplida ≠ orden ejecutada**: queda LISTA "
+                "para regeneración, no cerrada",
          que="**El valor vigente de `SITA 2025` no tiene corrida sellada que "
              "lo respalde, y el expediente cita el valor anterior.**\n\n"
              "GENEALOGÍA RECONSTRUIDA (`git log -S`, 2026-09-09):\n"

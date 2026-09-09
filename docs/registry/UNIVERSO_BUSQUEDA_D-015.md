@@ -54,7 +54,8 @@ La procedencia de las cuatro cifras que circulan como `SITA 2025`, y en particul
 | U10 | `metodologia_beta_Dctos/` | `grep` + OOXML + PDF | 0 |
 | U11 | Obsidian — `data/vault_backup_p2/`, `docs/corpus_obsidian/`, `vault_registry.json` | `grep` | 0 |
 | U12 | **372 archivos OOXML** (`.xlsx`/`.xlsm`/`.docx`/`.pptx`) | descomprimidos como ZIP, XML interno | 0 decimales |
-| U13 | **129 PDF** | `pypdf`, texto extraído íntegro | 0 |
+| U13a | **108 PDF con capa de texto** | `pypdf`, texto extraído y analizado | 0 |
+| U13b | **21 PDF sin capa de texto** | sólo se detectó la ausencia de capa textual | ⚠️ **NO DETERMINABLE sin OCR** |
 
 ## 3 · Términos y variantes
 
@@ -96,34 +97,50 @@ grupos son el margen declarado de esta búsqueda.
 
 ## 7 · Resultado
 
-**No existe ningún artefacto —en ninguno de los trece universos inspeccionados— posterior al
-2026-08-20 que reproduzca `0,4448`.** Tampoco aparece ninguna corrida que produzca `0,4646` fuera
-de las citas de `PCD-D07` y de la propia historia de git.
+> **Dentro de los universos documentales y repositorios inspeccionados, y bajo el método aquí
+> declarado, no se identificó ningún artefacto posterior al 2026-08-20 que reproduzca `0,4448`.
+> Esta conclusión NO se extiende a los 21 PDF sin capa de texto ni a los almacenes remotos no
+> consultados.**
+
+Tampoco se identificó ninguna corrida que produzca `0,4646` fuera de las citas de `PCD-D07` y de
+la propia historia de git — con el mismo alcance y las mismas exclusiones.
+
+⚠️ La formulación importa. «No existe» es una afirmación sobre el mundo; **«no se identificó
+dentro del universo inspeccionado» es una afirmación sobre nuestra observación**, y es la única
+que la evidencia autoriza. `DOC-035` se escribió para impedir ese salto, y la primera versión de
+este mismo registro lo dio.
 
 La única fuente que acredita el valor vigente es **la genealogía del repositorio**: el commit
 `76ca5de` (2026-08-20), que documenta la transformación `0,4646 → 0,4448` al acreditar `enlaces`
 e `inventario`, con el movimiento de `CI` (0,4792 → 0,4000) y su razón — *«la medición anterior
 contaba como bueno lo que nunca se había mirado»*.
 
-## 8 · Conclusión autorizada
+## 8 · Conclusión autorizada · **procedencia ≠ reproducción**
 
-> `0,4448` es el valor **vigente** de `SITA 2025`, con **procedencia documental y de cambio
-> demostrada**, y **sin reproducción computacional preservada**. Las corridas de
-> `data/d07/corridas/` son todas del 2026-08-18 y nunca se regeneraron tras la acreditación del
-> 20-ago.
+Son dos propiedades distintas y el registro debe mantenerlas separadas:
 
-Lo que **no** se concluye, por no estar demostrado:
+| Propiedad | Estado |
+|---|---|
+| existe el valor `0,4448` | **DEMOSTRADO** |
+| tiene procedencia documental | **DEMOSTRADO** — `76ca5de` |
+| existe un cambio acreditado que lo explica | **DEMOSTRADO** — acreditación de `enlaces` e `inventario`; `CI` 0,4792 → 0,4000 |
+| es el valor vigente | **DEMOSTRADO** por la genealogía actual |
+| existe corrida preservada que lo reproduzca | 🔴 **NO DEMOSTRADO** |
+| puede reproducirse | ⏳ **PENDIENTE DE EJECUCIÓN** |
+| `0,4646` tuvo corrida propia | ❓ **NO DETERMINABLE** |
+| `0,4630` equivale a `0,4646` | 🔴 **NO DEMOSTRADO** — son cifras distintas y su diferencia sigue sin explicarse |
 
-- que `0,4646` carezca de corrida propia — pudo existir y no conservarse
-- que los 21 PDF escaneados no contengan nada pertinente
-- que `0,4630` sea equivalente a `0,4646`: son cifras distintas y su diferencia sigue sin
-  explicarse
+> **La procedencia de `0,4448` está resuelta. Su reproducción computacional, no.** Confundirlas
+> haría pasar por reproducible una cifra que hoy sólo es trazable.
 
-## 9 · Lo que habilita
+Y lo que **no** se concluye, por no estar demostrado: que `0,4646` carezca de corrida propia
+—pudo existir y no conservarse—; que los 21 PDF escaneados no contengan nada pertinente.
+
+## 9 · Lo que habilita · **condición cumplida ≠ orden ejecutada**
 
 La condición que la dirección fijó —*«si no aparece un artefacto posterior al 20-08 que reproduzca
-`0,4448`, entonces sí regenerar»*— **se cumple**. Queda habilitada, a la espera de autorización
-explícita:
+`0,4448`, entonces sí regenerar»*— **se cumple**. Eso **habilita** la acción siguiente; **no la
+autoriza**. `D-015` queda **listo para regeneración, no cerrado**:
 
 ```
 regenerar corrida 2025 → preservar JSON → SHA → registrar run

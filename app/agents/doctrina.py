@@ -145,18 +145,46 @@ _DOCTRINA = (
          verificador="test_ninguna_regla_generadora_se_infiere_del_patron_de_sus_resultados",
          por_que_ahi="con 25 casos y tres valores posibles, cualquier hipótesis "
                      "encuentra algunos que la respaldan: encajar no es derivar"),
+    dict(id="DOC-037", custodia=GATE,
+         regla="**Un sello de metodología acredita la REGLA aplicada; no "
+               "acredita el CORPUS DE ENTRADA sobre el que se aplicó.** Una "
+               "misma vara sobre universos distintos produce resultados "
+               "distintos, y ambos son legítimos bajo ese sello. Por eso una "
+               "cifra sólo es REPRODUCIBLE cuando puede reconstruirse la "
+               "cadena entera: MÉTODO (hash de metodología) → UNIVERSO (qué "
+               "unidades se consideraron) → ESTADO DE EVIDENCIA (qué estaba "
+               "disponible y acreditado) → EJECUCIÓN (fecha · run) → "
+               "ARTEFACTO (resultado preservado) → HASH (integridad) → "
+               "RESULTADO. Faltando un eslabón, la cifra es trazable pero no "
+               "reproducible, y decir lo contrario fabrica confianza",
+         fuente="el colega, 2026-09-09, al leer la forense de `D-015`: «el "
+                "hallazgo estructural no es realmente SITA»",
+         verificador="test_un_sello_de_canon_no_acredita_el_universo_de_entrada",
+         por_que_ahi="dos corridas de `d07` con el **mismo `vara_sha`**, el "
+                     "mismo año y los mismos doce meses dieron `0,9719` y "
+                     "`0,4630`. La diferencia era el universo: la primera "
+                     "excluyó `CD-01/07/10`, los tres conjuntos que el portal "
+                     "no publica, y por eso no produjo ni una fila en cero. "
+                     "⚠️ Un sello leído como garantía de reproducibilidad "
+                     "habría hecho pasar por equivalentes dos mediciones que "
+                     "no lo son — y la alta premiaba la opacidad (`ADR-046`). "
+                     "De ahí la regla hermana: **el universo de una medición "
+                     "son los conjuntos EXIGIBLES, no los ENCONTRADOS**"),
     dict(id="DOC-036", custodia=GATE,
-         regla="Antes de emitir una conclusión sobre un hecho del proyecto se "
-               "REVISA TODO EL CORPUS RELEVANTE DISPONIBLE: repo → worktrees "
-               "→ historia de git → `_historico` → Obsidian → documentos → "
-               "datos → pruebas → registros → artefactos generados → "
-               "metadatos → hashes → commits → referencias cruzadas. Y se "
-               "registra el UNIVERSO DE BÚSQUEDA —qué se revisó · qué rutas · "
-               "qué términos y variantes · qué filtros · qué períodos · qué "
-               "quedó fuera y por qué · resultado · conclusión autorizada—. "
-               "⛔ **El coste en tokens no es criterio para decidir qué "
-               "evidencia mirar**: la economía de tokens no puede convertirse "
-               "en economía de evidencia",
+         regla="**Protocolo forense de búsqueda.** Antes de CUALQUIER "
+               "conclusión de ausencia: 1 declarar universo · 2 identificar "
+               "fuentes · 3 identificar rutas · 4 variantes terminológicas · "
+               "5 variantes numéricas y de formato · 6 período · 7 filtros · "
+               "8 exclusiones · 9 inspeccionar formatos legibles · 10 "
+               "identificar formatos NO legibles · 11 revisar historia y "
+               "procedencia cuando corresponda · 12 registrar falsos "
+               "positivos · 13 registrar el universo NO inspeccionado · 14 "
+               "sólo entonces formular la conclusión. Y la regla que ordena "
+               "todo: **«no aparece» significa «no fue identificado dentro "
+               "del universo y bajo el método declarados» — nunca «no "
+               "existe»**. ⛔ El coste en tokens no es criterio para decidir "
+               "qué evidencia mirar: la economía de tokens no puede "
+               "convertirse en economía de evidencia",
          fuente="Javo, 2026-09-09 —«siempre nos pasa, no se revisa […] debe "
                 "revisarse todo, no importan los tokens, y no asumir nada de "
                 "memoria o suponer»— tras cuatro conclusiones prematuras "
@@ -175,7 +203,19 @@ _DOCTRINA = (
                      "recuerdo dice una cosa y el corpus otra, manda el "
                      "corpus. Primero agotar la evidencia; después "
                      "interpretar. Nunca interpretar para decidir qué "
-                     "evidencia mirar"),
+                     "evidencia mirar.\n\n"
+                     "★ Y la simetría que lo vuelve arquitectura, no higiene: "
+                     "es **exactamente el problema que QUIRA resuelve para "
+                     "terceros**. Frente a «busqué y no encontré el "
+                     "documento», QUIRA debe poder decir «inspeccioné estas "
+                     "fuentes, en estas fechas, bajo estas reglas; encontré "
+                     "estos objetos, procesé estos, estos quedaron no "
+                     "procesables, estos los descarté por estas razones, y "
+                     "por tanto mi afirmación de ausencia tiene ESTE "
+                     "alcance». Eso es inteligencia pública verificable y no "
+                     "scraping. Luego QUIRA no sólo conserva evidencia de los "
+                     "GAD: **conserva evidencia de cómo llegó a sus propias "
+                     "conclusiones**"),
     dict(id="DOC-035", custodia=GATE,
          regla="El resultado de una búsqueda sólo autoriza una conclusión de "
                "ausencia **respecto del universo efectivamente inspeccionado**. "

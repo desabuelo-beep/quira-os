@@ -140,6 +140,30 @@ Portal LOTAIP → documento → captura → SHA → extracción → verificació
 
 La evidencia documental **no debería capturarse cinco veces porque cinco dominios la necesitan.**
 
+### La finalidad, declarada por la dirección · 2026-09-09
+
+> *«El dominio de Transparencia alimentará a los demás dominios de manera mensual. Pero para la
+> construcción no hemos conectado: hemos construido dominio por dominio, sin conectar totalmente
+> el ecosistema. De esa manera hemos estado trabajando todo este tiempo. Es una práctica no
+> buena, y por eso —y todo lo demás— salió la idea de toda esta Rearquitectura y las auditorías
+> previas: para tener un ecosistema totalmente eficiente en todo nivel y sentido.»*
+
+Esto fija tres cosas que el arqueo no podía establecer por sí solo:
+
+| | |
+|---|---|
+| **la cadencia** | **mensual** — no es una carga inicial, es un flujo recurrente |
+| **la dirección** | de d07 **hacia** los demás dominios |
+| **el diagnóstico de fondo** | el ecosistema se construyó **en silos, dominio por dominio, sin conectar** |
+
+> ⚠️ Y reordena la lectura de todo lo hallado: **los huecos que este arqueo encontró no son
+> defectos de un dominio — son la consecuencia previsible de haber construido sin conectar.**
+> `d06` sin silo `S6`, la ingesta que hoy suple una persona, el valor vigente sin corrida
+> preservada: los tres son el mismo síntoma.
+
+Por eso `REARQ` no es una auditoría de calidad de dominios. Es **la conexión que nunca se
+hizo**, y la razón por la que existe.
+
 ## 5 · La distinción que se conserva
 
 | | |
