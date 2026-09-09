@@ -450,6 +450,97 @@ de discrepancias de fecha o versión, y qué significa que una de las dos falte.
 resolvió la mitad interna del problema —`publicación ≠ artefacto`, con SHA-256— y esa distinción
 es probablemente el punto de partida. **No se decide aquí.**
 
+## 4-ter · Las tres verificaciones de canal · 2026-09-09
+
+*(Encargo cerrado del asesor: determinar por evidencia, no por declaración.)*
+**Universo inspeccionado:** repo `quira-os` completo incluidos `worktrees`, y `Dylus Lab/ProyecT/`.
+
+### V1 · QUIRA Ciudadana — **canon sí, código no**
+
+| | |
+|---|---|
+| canon | `ADR-046 §2` le da nombre, lugar y 4 capacidades · base legal con SHA |
+| superficie de aporte | ⛔ **no existe** |
+| flujo de acreditación | ⛔ **no existe** |
+| lo que sí hay | `m1_situacion.py:107` — la narrativa que **invita** a aportar (`ADR-046 §2.4`) |
+
+Los dos `st.file_uploader` del repositorio (`p_carga.py:118`, `p_ingesta.py:327`) se montan en
+**`env_ops.py`** y son del **Técnico**: *«permite al Técnico actualizar el snapshot maestro»*. No
+son superficie ciudadana.
+
+> **La capacidad está decidida y no está construida.** `ADR-046` advertía exactamente contra esto:
+> *«una capacidad sin fecha, sin lugar y sin nombre es abandono con otro nombre»*. Tiene nombre y
+> lugar; le falta lo demás.
+
+### V2 · Transparencia pasiva — el artefacto existe, **sin cadena de procedencia**
+
+```
+ProyecT/Holding_Municipal_Montecristi/
+    OFICIO N. 0143-2026-SG-JAMZ-GADMCM-A  Sr. Ronald Delgado-signed.pdf
+```
+
+Está **firmado** —lo que por `ADR-046` le daría techo **institucional**—, pero:
+
+- **no tiene SHA registrado** en ningún artefacto de evidencia de QUIRA
+- no aparece en `data/`, sólo citado en prosa en `PROTOCOLO_CURACION_DOMINIO:255`
+- y ese mismo protocolo lo declaró así a propósito: *«se registra como prueba de viabilidad del
+  canal, nada más — no se audita aquí»*
+
+> Luego la vía pasiva tiene **un precedente acreditado, no una capacidad operativa**. La distinción
+> es de `ADR-051`: el programa existe ≠ QUIRA lo ejecuta ≠ es reproducible.
+
+### V3 · Web institucional — dónde viven realmente los documentos
+
+Recuento por tipo, `2026-09-09`:
+
+| documento | `ProyecT/` | `quira-os/data/` |
+|---|---:|---:|
+| POA | **32** | 4 |
+| PAC | **29** | 6 |
+| Presupuesto | **18** | 5 |
+| PDOT | 14 | 11 |
+| Orgánico | **11** | 1 |
+| **Audiencias** | **49** | **0** |
+| **Ordenanzas** | **2** | **0** |
+
+⚠️ **Y la lectura fácil de esa tabla es falsa.** `ProyecT/` **no está fuera del sistema**: es la
+**frontera de datos declarada**, accedida por `config.DATOS_DIR`, con su propio gate
+—`scripts/ci/check_portabilidad.py`, `_FRONTERA = "ProyecT"`— y **trinquete en cero** desde el
+2026-08-25 (`frontera_fija 0/0`). Los enrichers leen de ahí: `enrich_poa_multianio`,
+`enrich_mandato`, `d08/extraer_demandas`, `d08/cruzar_demandas`.
+
+### ★ La diferencia real: con o sin cadena de procedencia
+
+No es «dentro / fuera del sistema». Es esto:
+
+| | `S7` · DPE | todo lo demás |
+|---|---|---|
+| captura | automatizada, con etapas y gates | manual, previa al sistema |
+| SHA por artefacto | ✅ **422 entradas** en `inventario_documental.json` | ⛔ ninguno — `poa_multianio.json` no contiene SHA |
+| registro de captura | `descargas_indice.json` · `enlaces.json` | ⛔ ninguno |
+| invalidación | por cambio de SHA del insumo | ⛔ ninguna |
+| reproducibilidad | 1 etapa `validada`, 2 en `ejecución` (`ADR-051`) | ⛔ no medida |
+
+> **QUIRA tiene una sola cadena de adquisición completa —`S7`/DPE— y un régimen sin procedencia
+> por artefacto para todo lo demás.** Es exactamente el criterio 2 de `ADR-053 §5`: *«procedencia
+> en el artefacto, escrita por el generador»*, cumplido en un canal y pendiente en el resto.
+
+### Respuesta provisional a la gran pregunta de `Q-M2`
+
+> *¿QUIRA posee una arquitectura transversal de evidencia, o sólo piezas distribuidas
+> históricamente entre dominios y mecanismos de adquisición?*
+
+Con lo verificado hasta hoy:
+
+> **La arquitectura CONCEPTUAL es transversal y está acreditada** —custodia ≠ acreditación,
+> tres modalidades, techo por documento, ocho estados de captura (`ADR-045`/`046`/`042`)—.
+> **Su IMPLEMENTACIÓN no lo es todavía**: un canal la realiza entera; los demás operan sin
+> cadena de procedencia por artefacto.
+
+⚠️ Es una respuesta **provisional**, acotada a los canales inspeccionados. No mide `SERCOP` ni
+`CPCCS` en la misma profundidad, y no se apoya en la suite de pruebas: **930 pruebas verdes
+acreditan salud del software, no conexión operacional de un canal.**
+
 ## 5 · La distinción que se conserva
 
 | | |
