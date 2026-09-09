@@ -114,7 +114,18 @@ def test_BOOT_no_publica_una_cifra_de_SITA_sin_respaldo():
 
     Y no exige que `BOOT` publique todas las cifras. Exige que las que publique
     sean acreditables: **callar un valor no reconciliado es correcto;
-    publicarlo con apariencia de dato firme, no.**"""
+    publicarlo con apariencia de dato firme, no.**
+
+    ⚠️⚠️ SU PRIMERA VERSIÓN ACREDITABA CONTRA UN UNIVERSO DEMASIADO ESTRECHO
+    —sólo corridas selladas y `PCD-D07`— y dio un **falso positivo** contra
+    `0,4448`, que es el valor vigente: su respaldo estaba en la genealogía del
+    repositorio (`76ca5de`), no en un artefacto de datos. Casi se retira de
+    `BOOT` la única cifra correcta.
+
+    Es `DOC-035` cometida por el propio verificador escrito para impedirla: **el
+    alcance de la búsqueda es parte del resultado, también cuando quien busca es
+    una prueba.** Por eso el registro de deuda —donde la genealogía queda
+    escrita— entra ahora en el universo de acreditación."""
     linea = ""
     for ln in _BOOT.read_text(encoding="utf-8").splitlines():
         if "SITA" in ln and re.search(r"0,\d{3,4}", ln):
@@ -137,21 +148,32 @@ def test_BOOT_no_publica_una_cifra_de_SITA_sin_respaldo():
 
     for c in _corridas().values():
         hurga(c)
-    pcd = _PCD07.read_text(encoding="utf-8") if _PCD07.is_file() else ""
+
+    # El universo de acreditación, declarado: artefactos de datos, expediente
+    # y registro de deuda —donde vive la genealogía de una cifra cuyo origen
+    # es un cambio de método y no una corrida conservada—.
+    from app.agents import deuda as _d
+    prosa = json.dumps([x for x in _d._DEUDAS], ensure_ascii=False)
+    if _PCD07.is_file():
+        prosa += _PCD07.read_text(encoding="utf-8")
 
     sin_respaldo = []
     for cifra in re.findall(r"0,\d{3,4}", linea):
         en_corrida = any(a.startswith(cifra) or cifra.startswith(a.rstrip("0"))
                          for a in acreditadas)
-        if not en_corrida and cifra not in pcd:
+        if not en_corrida and cifra not in prosa:
             sin_respaldo.append(cifra)
 
     assert not sin_respaldo, (
-        "`BOOT` publica cifras de SITA que ninguna corrida sellada ni "
-        "`PCD-D07` acreditan: " + " · ".join(sin_respaldo)
+        "`BOOT` publica cifras de SITA sin respaldo en ninguna corrida "
+        "sellada, ni en `PCD-D07`, ni en el registro de deuda: "
+        + " · ".join(sin_respaldo)
         + f"\nacreditadas por corridas: {sorted(acreditadas) or '—'}"
         + "\n⚠️ NO se corrige inventando el respaldo ni eligiendo una cifra "
-          "cercana: se publica la que la fuente sostiene, o ninguna")
+          "cercana. Y antes de declarar una cifra sin respaldo, **revise la "
+          "genealogía del repositorio** (`git log -S`): un valor puede venir "
+          "de un cambio de método documentado en un commit y no de un "
+          "artefacto de datos")
 
 
 def test_un_sello_de_canon_no_acredita_el_universo_de_entrada():
@@ -180,11 +202,16 @@ def test_un_sello_de_canon_no_acredita_el_universo_de_entrada():
     assert "mismo `vara_sha` no significa" in txt, (
         "se perdió la regla que la forense dejó: un sello de canon acredita la "
         "regla aplicada, no el universo de entrada")
-    assert "NO DETERMINABLE" in txt, (
-        "se perdió el tercer estado. Sin él, `D-015` se leería como «falta "
-        "calcularlo» cuando lo que falta es determinar la procedencia")
-    # ⚠️ La corrección del colega: «no respaldado» describe lo comprobado;
-    # «huérfano» insinúa que no tiene origen, y eso no está demostrado.
-    assert "no respaldado por los artefactos examinados" in txt, (
-        "volvió una formulación que afirma más de lo comprobado sobre el "
-        "origen de `0,4448` — DOC-035 aplicado a nosotros mismos")
+    # ⚠️ La genealogía completa debe quedar escrita, no sólo su conclusión.
+    # Sin las cuatro cifras y su orden, la próxima lectura vuelve a encontrar
+    # números sueltos y a sospechar del correcto — que es lo que pasó.
+    for cifra in ("0,9719", "0,4630", "0,4646", "0,4448"):
+        assert cifra in txt, (
+            f"`D-015` dejó de registrar `{cifra}`. La genealogía se sostiene "
+            "con las cuatro y su orden, no con la conclusión sola")
+    assert "76ca5de" in txt, (
+        "desapareció el commit que acredita el valor vigente. Sin esa "
+        "referencia, `0,4448` vuelve a parecer una cifra sin origen")
+    assert "VIGENTE" in txt, (
+        "`D-015` dejó de declarar cuál es el valor vigente de 2025, que es "
+        "precisamente lo que la genealogía estableció")

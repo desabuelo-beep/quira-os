@@ -33,7 +33,7 @@ PROMESA→PLAN→PRESUPUESTO→EJECUCIÓN→RESULTADO→TERRITORIO → BRECHAS. 
 📚 **doctrina → `doctrina.py`** · con verificador **cambia de custodio**; sin él, se queda aquí.
 📑 ⛔ `.docx` gana al `.pdf`.
 ⚖️ **CANON**: ⛔ DOM **consume RO, NO lee la ley** · estado derivado → `canon.py` (consúltalo, NO lo escribas) · ⛔ **d01·d03·d09: RO NO cargada** (d07·d02 sí) · **VIII propuesta → d08 mide, NO dictamina** (D-6).
-📡 SITA **26(1-5) 0,8382 vig** · 25→D-015 · 0 actas · num.6 s/ingr.
+📡 SITA **25 0,4448 · 26(1-5) 0,8382** vig · 0 actas · num.6 s/ingr.
 🧪 **§6-bis**: falta evidencia→**degrada** · identidad contradictoria→**BLOQUEA** · el SHA prueba el archivo, NO la atribución (esc.4/7 lo cierran).
 🎨 **049/050**: la gráfica no sabe más que el motor · CANTERA hereda capacidades, NO productos.
 🔧 **v5.7_TGI** · promover = **recalcular y GUARDAR**.
