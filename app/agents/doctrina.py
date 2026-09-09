@@ -146,12 +146,15 @@ _DOCTRINA = (
          por_que_ahi="con 25 casos y tres valores posibles, cualquier hipótesis "
                      "encuentra algunos que la respaldan: encajar no es derivar"),
     dict(id="DOC-035", custodia=GATE,
-         regla="El ALCANCE de una búsqueda es parte de su resultado. Quien "
-               "informa una ausencia debe declarar qué rutas incluyó, qué "
-               "términos usó y qué excluyó. Una búsqueda acotada no autoriza "
-               "a declarar que algo no existe — y un `PCD` cerrado acredita "
-               "CONFORMIDAD de lo que existe, nunca SUFICIENCIA de lo que "
-               "debería existir",
+         regla="El resultado de una búsqueda sólo autoriza una conclusión de "
+               "ausencia **respecto del universo efectivamente inspeccionado**. "
+               "El alcance —rutas, términos, exclusiones, fuentes y filtros— "
+               "forma parte de la evidencia del resultado y debe declararse "
+               "junto a él. Corolarios de la misma familia: un `PCD` cerrado "
+               "acredita CONFORMIDAD de lo que existe y nunca SUFICIENCIA de "
+               "lo que debería existir; y un sello de canon (`vara_sha`) "
+               "acredita la REGLA aplicada, nunca el UNIVERSO sobre el que se "
+               "aplicó",
          fuente="Javo, 2026-09-09 —«dígame que sí existe y no se perdió toda "
                 "esta información»— tras un informe que declaró vacía la "
                 "capacidad documental de Transparencia",
@@ -162,8 +165,12 @@ _DOCTRINA = (
                      "las dos cosas. Existían `PCD-D07`, 1.748 archivos, la "
                      "norma con SHA y 936 evidencias. Es `DOC-034` aplicado "
                      "al observador: **no haber mirado bien no es haber "
-                     "mirado** — y `d07` ya daba el ejemplo al declarar "
-                     "`cortado_por_tope_de_tamano` en vez de negar el archivo"),
+                     "mirado**. Y no es una regla nueva del proyecto: es la "
+                     "misma que `d07` ya practicaba en tres formas —"
+                     "`no_procesable` ≠ ausente · `cortado_por_tope_de_tamano` "
+                     "≠ inexistente · `no_observable` ≠ incumplimiento—. "
+                     "Faltaba la cuarta, que nos aplica a nosotros: "
+                     "**`no_encontrado_en_la_búsqueda` ≠ inexistente**"),
     dict(id="DOC-034", custodia=GATE,
          regla="No se declara AUSENCIA ontológica sin haber agotado antes la "
                "evidencia primaria que razonablemente podría contenerla. Y un "

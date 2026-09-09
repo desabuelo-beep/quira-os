@@ -1,22 +1,27 @@
 # -*- coding: utf-8 -*-
 """
-tests/test_boot_cifras_publicadas.py — ataque de `D-015`
+tests/test_boot_cifras_publicadas.py — ataques de `D-015`
 ════════════════════════════════════════════════════════════════════════════════
 ★ POR QUÉ EXISTE
 
 `BOOT.md` es contexto operativo: se lee en cada arranque y **sus cifras se
-propagan a todo lo que se escriba después**. Una cifra stale ahí no envejece en
-silencio — contamina lecturas futuras.
+propagan a todo lo que se escriba después**. Publicaba `SITA 2025 0,4448`, un
+valor que ningún artefacto examinado respalda.
 
-Publicaba `SITA 2025 0,4448`, un valor que **no aparece en ningún otro lugar del
-repositorio**. Ni en las corridas selladas de `d07`, ni en `PCD-D07`, ni en las
-pruebas. Un número huérfano en el archivo que más se lee.
+Al buscar el valor correcto apareció algo mayor: **dos corridas selladas del
+mismo año, los mismos doce meses y el mismo `vara_sha`, con `0,9719` y
+`0,4630`**. La forense mostró que la diferencia no era metodológica sino de
+**universo de entrada** — y que la corrida alta había excluido justo los tres
+conjuntos que el portal no publica.
 
-    Una cifra publicada en el arranque debe poder señalar su fuente.
+    El universo de una medición son los conjuntos EXIGIBLES,
+    nunca los conjuntos ENCONTRADOS.
 
-Es la Regla de Oro 3 —«sin norma verificada, no hay dato»— aplicada a nuestro
-propio estado: si el sujeto observado debe acreditar lo que publica, el
-observador no puede publicar sin acreditar.
+Medir sólo lo que existe produce un municipio casi perfecto. Es exactamente lo
+que `ADR-046` advierte: así «el sistema premiaría la opacidad».
+
+⚠️ Estas pruebas protegen REGLAS, no el estado actual: siguen siendo válidas
+aunque mañana cambien todos los valores.
 
 Dylus Lab © 2026
 """
@@ -34,44 +39,82 @@ if str(RAIZ) not in sys.path:
 _BOOT = RAIZ / "governance" / "BOOT.md"
 _PCD07 = RAIZ / "docs" / "pcd" / "PCD-D07_Transparencia.md"
 _CORRIDAS = RAIZ / "data" / "d07" / "corridas"
+_CATALOGO = RAIZ / "data" / "d07"
 
 
-def _sita_de_las_corridas() -> set[str]:
-    """Los `SITA` que las corridas selladas de `d07` acreditan, normalizados a
-    cuatro decimales con coma — que es como `BOOT` los escribe."""
-    out: set[str] = set()
+def _universo_canonico() -> set[str]:
+    """Los conjuntos de datos exigibles, **derivados del catálogo** que se
+    declara `fuente_verdad`, nunca de un número escrito en una prueba."""
+    cats = sorted(_CATALOGO.glob("catalogo_cd_d07_v*.yaml"))
+    if not cats:
+        return set()
+    return set(re.findall(r"\bCD-[A-Z0-9]+",
+                          cats[-1].read_text(encoding="utf-8")))
 
-    def hurga(o):
-        if isinstance(o, dict):
-            for k, v in o.items():
-                if k == "SITA" and isinstance(v, (int, float)):
-                    out.add(f"{v:.4f}".replace(".", ","))
-                hurga(v)
-        elif isinstance(o, list):
-            for x in o:
-                hurga(x)
 
-    if _CORRIDAS.is_dir():
-        for f in _CORRIDAS.glob("*.json"):
-            hurga(json.loads(f.read_text(encoding="utf-8")))
-    return out
+def _corridas() -> dict[str, dict]:
+    if not _CORRIDAS.is_dir():
+        return {}
+    return {f.stem: json.loads(f.read_text(encoding="utf-8"))
+            for f in sorted(_CORRIDAS.glob("*.json"))}
+
+
+def test_una_corrida_no_excluye_del_universo_lo_no_publicado():
+    """★ ATAQUE DE `D-015` · REGLA PROTEGIDA: **el universo son los conjuntos
+    exigibles, no los encontrados.**
+
+    `RUN-D07-2026-08-18-0001` midió 21 de 24 conjuntos y no produjo **ni una
+    fila en cero** — `SITA 0,9719`. Los tres que faltaban eran precisamente
+    `CD-01`, `CD-07` y `CD-10`, los que el portal no publica.
+
+    ⚠️ Una corrida así no es una medición alternativa: es una medición **mal
+    encuadrada**, y su cifra recompensa al sujeto por no publicar. La doctrina
+    del proyecto es la contraria — la ausencia de evidencia es un **resultado**
+    de la observación, no una exclusión de su universo.
+
+    Esta prueba no prohíbe que existan corridas parciales: prohíbe que existan
+    **sin estar reconocidas**. Una corrida incompleta que nadie declaró es una
+    cifra suelta esperando a ser citada como si fuera el índice del año."""
+    universo = _universo_canonico()
+    assert universo, (
+        "no se pudo derivar el universo canónico del catálogo de `d07`. Sin "
+        "esa referencia, ninguna corrida puede declararse completa")
+
+    from app.agents import deuda as _d
+    d015 = json.dumps(
+        next((x for x in _d._DEUDAS if x["id"] == "D-015"), {}),
+        ensure_ascii=False)
+
+    parciales = []
+    for nombre, c in _corridas().items():
+        usados = {r["cd"] for r in c.get("resultados", [])}
+        faltan = universo - usados
+        if faltan and c.get("run_id", "") not in d015 and nombre not in d015:
+            parciales.append(f"{nombre} omite {sorted(faltan)}")
+
+    assert not parciales, (
+        "hay corridas selladas cuyo universo es menor que el catálogo y que "
+        "NO están reconocidas en `D-015`:\n  " + "\n  ".join(parciales)
+        + "\n⚠️ Una corrida parcial no se corrige borrándola ni completando el "
+          "universo a posteriori: se declara parcial, para que su cifra no se "
+          "cite como el índice del período")
 
 
 def test_BOOT_no_publica_una_cifra_de_SITA_sin_respaldo():
-    """★ ATAQUE DE `D-015` · REGLA PROTEGIDA: **toda cifra del arranque debe
-    poder señalar su fuente.**
+    """★ REGLA PROTEGIDA: **toda cifra del arranque debe poder señalar su
+    fuente.**
 
-    `BOOT` publicaba `SITA 2025 0,4448`. Ese número no existe en las corridas
-    selladas, ni en `PCD-D07`, ni en ninguna prueba: apareció en el archivo más
-    leído del proyecto y nadie podía decir de dónde salía.
+    Es la `Regla de Oro 3` —«sin norma verificada, no hay dato»— aplicada a
+    nosotros: si el sujeto observado debe acreditar lo que publica, el
+    observador no puede publicar sin acreditar.
 
-    ⚠️ Esta prueba **no valida el cálculo** — la fórmula `SITA` está verificada
-    contra el Instructivo DPE 2024 y `BOOT` ordena ⛔ no tocarla. Valida la
-    **procedencia de lo publicado**, que es una deuda distinta (`D-015`).
+    ⚠️ No valida el cálculo: la fórmula `SITA` está verificada contra el
+    Instructivo DPE 2024 y `BOOT` ordena ⛔ no tocarla. Valida la
+    **procedencia de lo publicado**, que es otra cosa.
 
-    Y no exige que `BOOT` publique todas las cifras: exige que **las que
-    publique sean acreditables**. Callar un valor no reconciliado es correcto;
-    publicarlo con apariencia de dato firme, no."""
+    Y no exige que `BOOT` publique todas las cifras. Exige que las que publique
+    sean acreditables: **callar un valor no reconciliado es correcto;
+    publicarlo con apariencia de dato firme, no.**"""
     linea = ""
     for ln in _BOOT.read_text(encoding="utf-8").splitlines():
         if "SITA" in ln and re.search(r"0,\d{3,4}", ln):
@@ -80,44 +123,68 @@ def test_BOOT_no_publica_una_cifra_de_SITA_sin_respaldo():
     if not linea:
         return  # BOOT no publica ninguna cifra de SITA: correcto y suficiente
 
-    acreditadas = _sita_de_las_corridas()
+    acreditadas: set[str] = set()
+
+    def hurga(o):
+        if isinstance(o, dict):
+            for k, v in o.items():
+                if k == "SITA" and isinstance(v, (int, float)):
+                    acreditadas.add(f"{v:.4f}".replace(".", ","))
+                hurga(v)
+        elif isinstance(o, list):
+            for x in o:
+                hurga(x)
+
+    for c in _corridas().values():
+        hurga(c)
     pcd = _PCD07.read_text(encoding="utf-8") if _PCD07.is_file() else ""
-    huerfanas = []
+
+    sin_respaldo = []
     for cifra in re.findall(r"0,\d{3,4}", linea):
-        # una corrida sellada la acredita, o el expediente la afirma
         en_corrida = any(a.startswith(cifra) or cifra.startswith(a.rstrip("0"))
                          for a in acreditadas)
         if not en_corrida and cifra not in pcd:
-            huerfanas.append(cifra)
+            sin_respaldo.append(cifra)
 
-    assert not huerfanas, (
-        "`BOOT` publica cifras de SITA que ninguna corrida sellada de `d07` ni "
-        "`PCD-D07` acreditan: " + " · ".join(huerfanas)
+    assert not sin_respaldo, (
+        "`BOOT` publica cifras de SITA que ninguna corrida sellada ni "
+        "`PCD-D07` acreditan: " + " · ".join(sin_respaldo)
         + f"\nacreditadas por corridas: {sorted(acreditadas) or '—'}"
         + "\n⚠️ NO se corrige inventando el respaldo ni eligiendo una cifra "
-          "cercana: se publica la que la fuente sostiene, o no se publica "
-          "ninguna (D-015)")
+          "cercana: se publica la que la fuente sostiene, o ninguna")
 
 
-def test_la_deuda_D015_sigue_registrada_mientras_2025_no_se_reconcilie():
-    """★ REGLA PROTEGIDA: **el hueco no se cierra al dejar de mirarlo.**
+def test_un_sello_de_canon_no_acredita_el_universo_de_entrada():
+    """★ REGLA PROTEGIDA: **mismo `vara_sha` no significa mismo estado de
+    entrada.**
 
-    Quitar `0,4448` de `BOOT` corrige lo publicado y **no resuelve** por qué
-    hay dos corridas `COMPLETED` del mismo año, mismos doce meses y mismo
-    `vara_sha` con `0,9719` y `0,4630`.
+    Las dos corridas de 2025 comparten vara y catálogo, y difieren en más de
+    medio punto. El sello acredita **la regla aplicada**, jamás el universo
+    sobre el que se aplicó.
 
-    ⚠️ Si esta prueba estorbara algún día, la salida no es borrarla: es cerrar
-    `D-015` determinando qué corrida es la vigente para 2025."""
+    ⚠️ Sin esta distinción, dos resultados con el mismo sello parecen
+    contradecirse y se resuelve escogiendo el más cómodo. Con ella, la pregunta
+    correcta deja de ser *«¿cuál cifra es la buena?»* —que invita a escoger— y
+    pasa a ser *«¿qué diferencia de entrada produjo dos resultados bajo la
+    misma vara?»*, que obliga a reconstruir.
+
+    Es la misma familia que `no_procesable ≠ ausente` y `no_observable ≠
+    incumplimiento`: **la trazabilidad de una parte no acredita el todo.**"""
     from app.agents import deuda as _d
 
     reg = {x["id"]: x for x in _d._DEUDAS}
     assert "D-015" in reg, (
-        "desapareció `D-015`. El valor de `SITA 2025` sigue sin reconciliar "
-        "mientras existan dos corridas selladas discrepantes")
+        "desapareció `D-015`. Mientras el residuo de 2025 no se cierre, la "
+        "deuda sostiene la regla")
     txt = json.dumps(reg["D-015"], ensure_ascii=False)
-    assert "0,9719" in txt and "0,4630" in txt, (
-        "la deuda dejó de nombrar las dos corridas discrepantes, que son la "
-        "evidencia concreta de que el valor no está determinado")
+    assert "mismo `vara_sha` no significa" in txt, (
+        "se perdió la regla que la forense dejó: un sello de canon acredita la "
+        "regla aplicada, no el universo de entrada")
     assert "NO DETERMINABLE" in txt, (
         "se perdió el tercer estado. Sin él, `D-015` se leería como «falta "
-        "calcularlo» cuando lo que falta es decidir cuál es la fuente")
+        "calcularlo» cuando lo que falta es determinar la procedencia")
+    # ⚠️ La corrección del colega: «no respaldado» describe lo comprobado;
+    # «huérfano» insinúa que no tiene origen, y eso no está demostrado.
+    assert "no respaldado por los artefactos examinados" in txt, (
+        "volvió una formulación que afirma más de lo comprobado sobre el "
+        "origen de `0,4448` — DOC-035 aplicado a nosotros mismos")
