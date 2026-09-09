@@ -194,6 +194,73 @@ interdominio están «entre los dominios creados antes de Transparencia», mient
 documenta a d07 como origen de `C01`. Puede que ambas sean ciertas —d07 **emite** y no
 **consume**— pero **el nombre no lo demuestra** y hace falta el inventario completo.
 
+## 4-bis · ⛔ CORRECCIÓN MAYOR · d07 no es el proveedor universal
+
+*(Javo, 2026-09-09, corrigiendo el planteamiento de este arqueo.)*
+
+> *«No sólo es el dominio de transparencia el que alimenta. También el portal del CPCCS, con el
+> informe de rendición de cuentas (anual); y el monitoreo del portal de SERCOP (mensual). Y quizá
+> la página institucional de los GAD, para buscar PDOT, orgánico, POA, PAC y Presupuesto en sus
+> formatos institucionales, fuera de los formatos determinados por transparencia.»*
+
+Eso invalida la formulación «d07 alimenta a los demás dominios». La correcta:
+
+> **QUIRA observa el Estado desde MÚLTIPLES fuentes institucionales externas. Transparencia es una
+> de ellas —hoy la más desarrollada—, no la única ni necesariamente la principal.** Cada fuente
+> produce evidencia potencialmente reutilizable; cada dominio conserva su propia interpretación
+> metodológica.
+
+Y el objeto de estudio deja de ser la relación entre dominios: es **cómo circula la evidencia**.
+Las fuentes observan · la evidencia circula · los dominios interpretan · el Gold Master fija el
+estado canónico.
+
+### La matriz de fuentes, verificada contra el disco el 2026-09-09
+
+Estados: `DECLARADO → IMPLEMENTADO → CONECTADO → OPERATIVO → REUTILIZADO → PROBADO`
+
+| Fuente · silo | Conector | Captura | Evidencia materializada | Cadencia | Grado verificado |
+|---|---|---|---|---|---|
+| **DPE / LOTAIP** · `S7` | `connectors/dpe.py` | `capturar_lotaip_dpe.py` · `descargar_lotaip.py` | `data/lotaip/` — **1.748 archivos · 1,8 GB** | **mensual e incremental** | **PROBADO** — orquestador de 9 etapas con gates · 3 corridas selladas · 36 pruebas |
+| **SERCOP** · `S4` | `connectors/sercop.py` | `fetch_sercop.py` · `capturar_sercop_holding.py` · `enriquecer_sercop_estado.py` | `data/scouting/` — 5 JSON | **mensual** (dirección) | IMPLEMENTADO · operatividad **por verificar** |
+| **CPCCS** · `S8` | `connectors/cpccs.py` | `fetch_rdc_cpccs.py` | `data/motor_narrativo/` + normativa en vault | **anual** (dirección) | IMPLEMENTADO · d09 cerró con este insumo |
+| **eSIGEF** · `S5` | vía Gold Master `H07` | `enrich_presupuesto.py` | Gold Master | periódica | OPERATIVO — es `CD-06`, la cédula compartida |
+| **PDOT / POA** · `S2`·`S3` | — | `extract_poa_pdf.py` | `data/pdot/` — 10 archivos · 1,1 MB | — | IMPLEMENTADO parcial |
+| **CNE** · `S1` | — | — | `data/contraste_cne/` — 3 archivos | por ciclo electoral | DECLARADO · **silo sin dominio curador** |
+| **SIGAD** · `S6` | — | — | — | — | 🔴 **silo sin dominio curador** · `ICM` no se calcula |
+| **ODS** · `S9` | — | — | — | — | 🔴 **silo sin dominio curador** |
+| **Web institucional del GAD** | ⛔ **ninguno** | `capturar_lotaip_portal.py` toca `montecristi.gob.ec` sólo para LOTAIP | — | — | **DECLARADO SIN CONECTOR** |
+
+### La web institucional: declarada, y con su razón escrita
+
+`app/observatorio/despacho.py:108` lo dice sin rodeos:
+
+```python
+"web_gad": "Sin conector. Cada municipio publica en su propio formato."
+```
+
+Y `META_CATALOGO_AGENTES` ya declara **cuatro agentes** cuya entrada es `web GAD`, todos en
+`⬜ Fase 4`: `PDOT Agent` · `POA Agent` · `PAC Agent` (`SERCOP / web GAD`) · `Resultado Agent`
+(`web GAD / transparencia`). Están en pausa por presupuesto de API, con vía alternativa ya
+identificada (inferencia local con `llama-cpp-python`).
+
+> ⚠️ Luego la intuición de la dirección **no abre un frente nuevo: reactiva uno declarado y
+> pausado**. Lo que falta no es decidir que la web del GAD es fuente — ya lo es en el canon —
+> sino resolver el problema que la dejó sin conector: **cada municipio publica en su propio
+> formato**, y eso no escala a 222 GAD por conector individual.
+
+### Y la pregunta que esto abre, sin resolver
+
+Un mismo documento —el PDOT, el PAC, el presupuesto— puede aparecer **en el portal de
+transparencia y en la web institucional**. Formulada por el colega:
+
+> **¿Son dos copias de la misma evidencia, o dos observaciones independientes del mismo
+> documento?**
+
+De la respuesta dependen la deduplicación, la validación cruzada, la procedencia, el tratamiento
+de discrepancias de fecha o versión, y qué significa que una de las dos falte. `PCD-D07` ya
+resolvió la mitad interna del problema —`publicación ≠ artefacto`, con SHA-256— y esa distinción
+es probablemente el punto de partida. **No se decide aquí.**
+
 ## 5 · La distinción que se conserva
 
 | | |
