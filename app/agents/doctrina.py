@@ -145,6 +145,37 @@ _DOCTRINA = (
          verificador="test_ninguna_regla_generadora_se_infiere_del_patron_de_sus_resultados",
          por_que_ahi="con 25 casos y tres valores posibles, cualquier hipótesis "
                      "encuentra algunos que la respaldan: encajar no es derivar"),
+    dict(id="DOC-036", custodia=GATE,
+         regla="Antes de emitir una conclusión sobre un hecho del proyecto se "
+               "REVISA TODO EL CORPUS RELEVANTE DISPONIBLE: repo → worktrees "
+               "→ historia de git → `_historico` → Obsidian → documentos → "
+               "datos → pruebas → registros → artefactos generados → "
+               "metadatos → hashes → commits → referencias cruzadas. Y se "
+               "registra el UNIVERSO DE BÚSQUEDA —qué se revisó · qué rutas · "
+               "qué términos y variantes · qué filtros · qué períodos · qué "
+               "quedó fuera y por qué · resultado · conclusión autorizada—. "
+               "⛔ **El coste en tokens no es criterio para decidir qué "
+               "evidencia mirar**: la economía de tokens no puede convertirse "
+               "en economía de evidencia",
+         fuente="Javo, 2026-09-09 —«siempre nos pasa, no se revisa […] debe "
+                "revisarse todo, no importan los tokens, y no asumir nada de "
+                "memoria o suponer»— tras cuatro conclusiones prematuras "
+                "seguidas",
+         verificador="test_DOC_035_el_alcance_de_la_busqueda_es_parte_del_resultado",
+         por_que_ahi="`DOC-035` fija el principio; ésta fija el PROCEDIMIENTO, "
+                     "porque el principio solo no impidió reincidir. En una "
+                     "misma sesión se declaró inexistente una capacidad con "
+                     "semanas de trabajo, se llamó huérfana la única cifra "
+                     "correcta, se anunció una búsqueda «exhaustiva» con dos "
+                     "universos sin abrir, y la prueba escrita para impedirlo "
+                     "produjo el falso positivo por acreditar contra un "
+                     "universo demasiado estrecho. ⚠️ Y la asimetría que lo "
+                     "hace obligatorio: **la memoria orienta la búsqueda, "
+                     "jamás sustituye la evidencia del repositorio**. Si el "
+                     "recuerdo dice una cosa y el corpus otra, manda el "
+                     "corpus. Primero agotar la evidencia; después "
+                     "interpretar. Nunca interpretar para decidir qué "
+                     "evidencia mirar"),
     dict(id="DOC-035", custodia=GATE,
          regla="El resultado de una búsqueda sólo autoriza una conclusión de "
                "ausencia **respecto del universo efectivamente inspeccionado**. "
