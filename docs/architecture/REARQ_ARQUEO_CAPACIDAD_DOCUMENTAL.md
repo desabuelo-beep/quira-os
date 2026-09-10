@@ -525,21 +525,108 @@ No es «dentro / fuera del sistema». Es esto:
 > por artefacto para todo lo demás.** Es exactamente el criterio 2 de `ADR-053 §5`: *«procedencia
 > en el artefacto, escrita por el generador»*, cumplido en un canal y pendiente en el resto.
 
+### V4 · SERCOP — ⛔ CORRECCIÓN: sin SHA **no** significa sin procedencia
+
+La formulación anterior —«un régimen sin procedencia para el resto»— **era falsa**, y el asesor lo
+señaló antes de que se consolidara. Verificado en `data/scouting/`:
+
+```
+sercop_2026_parcial.json       fuente: "SERCOP OCDS · montecristi"
+                               fecha_corte: 2026-08-12 · estado_captura: "completa"
+sercop_estado_contractual.json _meta.generado: 2026-08-17
+                               _meta.fuente: https://datosabiertos.compraspublicas.gob…
+sercop_holding.json            _meta.generado: 2026-08-12 · _meta.fuente: URL
+sercop_montecristi_2026.json   fuente + fecha_corte: 2026-06-24
+sercop_sprint0_holding.json    fecha: 2026-05-28T20:02:55Z
+```
+
+Canal: **API OCDS** (`/PLATAFORMA/api/search_ocds` + `/record`), no scraping. Con doctrina
+declarada en el propio script: *«el Excel es la base. Este conector trae el dato limpio del SERCOP
+para ingerirlo al silo `H06`; el cajón cablea desde el Excel, no desde la API.»*
+
+> **Hay procedencia: fuente, URL, fecha de corte y hasta estado de captura. Lo que no hay es
+> identidad ni integridad por artefacto.**
+
+### V5 · CPCCS — doctrina dual, y una mitad que exige un humano
+
+Canal: portal `rendiciondecuentas.cpccs.gob.ec`. Marco legal declarado: `LOPC Arts. 88-95` ·
+`COOTAD Art. 302` · `Res. CPCCS-004-2026`. Y **dos componentes verificables por separado**:
+
+| | qué es | estado verificado |
+|---|---|---|
+| **A · Informe Técnico** | lo que el GAD sube al portal — auto-declarativo pero verificable | bloque llega al snapshot (`rendicion.cpccs`), con `brecha_compromisos` **vacío** |
+| **B · Evento Público** | vídeo en YouTube/Facebook — **evidencia independiente** de que el acto ocurrió | ⛔ *«MANUAL REQUERIDO»*, dicho por el propio script |
+
+⚠️ **No existe ningún `rdc_*.json` en `data/scouting/`**: la vía de artefacto independiente no se
+ha ejecutado. Y el insumo con el que `d09` cerró llegó por **otra vía** —`enrich_rdc_docx.py` sobre
+los informes en `ProyecT/`—, no por este conector.
+
+> El componente B es notable por sí mismo: **contrastar la declaración institucional contra
+> evidencia performativa externa.** Es la idea más avanzada del arqueo y hoy la ejecuta una
+> persona.
+
+### ★ Tres niveles de procedencia, no dos
+
+| nivel | qué acredita | quién lo tiene hoy |
+|---|---|---|
+| **por artefacto** | identidad e integridad · invalidación por cambio de contenido | `S7`/DPE — **422 entradas con SHA-256** |
+| **por dataset/corte** | fuente, URL, fecha de corte, estado de captura | **SERCOP** |
+| **por documento, humana no formalizada** | quién, cuándo y de dónde — **conocido, no registrado por el sistema** | `ProyecT/` |
+
+### ★★ Qué es `ProyecT/` · declarado por su autor, 2026-09-09
+
+> *«Es la carpeta que yo creé para alojar toda la información que obtuve de la solicitud de acceso
+> a la información; de la búsqueda en su página web; de técnicos municipales; y de portales
+> institucionales como SERCOP, CPCCS, etc. Se desarrolló de esa manera para poder construir el
+> Excel Gold Master y realizar su validación empírica del modelo. Eso fue febrero… ni idea que
+> íbamos a terminar construyendo una QUIRA.»*
+
+Eso reencuadra todo el hallazgo:
+
+> **`ProyecT/` no es un régimen de adquisición defectuoso: es el CORPUS FUNDACIONAL.** Reunido a
+> mano desde febrero de 2026 por cuatro vías —solicitud de acceso · web del GAD · técnicos
+> municipales · portales institucionales— con un fin explícito: **construir el Gold Master y
+> validar empíricamente el modelo**. Precede al sistema que hoy lo consume.
+
+De ahí que su procedencia **exista y no esté registrada**: cuando esos documentos se reunieron, no
+había sistema que registrara nada. **No es deuda técnica; es la condición de origen** — y la
+distinción importa, porque una deuda se salda y una condición de origen se documenta.
+
+⚠️ Lo que sí es consecuencia arquitectónica: **ese método no escala a 222 GAD.** Una persona
+reuniendo documentos por cuatro vías produce un corpus fundacional excelente y **un solo
+municipio**. Lo que escala es lo que `S7` demostró, y lo que `ADR-046 §2.4` propone por la vía
+ciudadana.
+
 ### Respuesta provisional a la gran pregunta de `Q-M2`
 
 > *¿QUIRA posee una arquitectura transversal de evidencia, o sólo piezas distribuidas
 > históricamente entre dominios y mecanismos de adquisición?*
 
-Con lo verificado hasta hoy:
+Con los seis canales ya inspeccionados, la formulación que la evidencia autoriza:
 
-> **La arquitectura CONCEPTUAL es transversal y está acreditada** —custodia ≠ acreditación,
-> tres modalidades, techo por documento, ocho estados de captura (`ADR-045`/`046`/`042`)—.
-> **Su IMPLEMENTACIÓN no lo es todavía**: un canal la realiza entera; los demás operan sin
-> cadena de procedencia por artefacto.
+> **La arquitectura CONCEPTUAL es transversal y está acreditada** —custodia ≠ acreditación, tres
+> modalidades, techo por documento, ocho estados de captura (`ADR-045`/`046`/`042`)—. Lo que la
+> implementación muestra **no es ausencia, sino GRADOS DE MADUREZ DISTINTOS de una misma
+> arquitectura**: procedencia por artefacto en un canal, por corte en otro, humana no formalizada
+> en el corpus fundacional, y declarada sin construir en el canal ciudadano.
 
-⚠️ Es una respuesta **provisional**, acotada a los canales inspeccionados. No mide `SERCOP` ni
-`CPCCS` en la misma profundidad, y no se apoya en la suite de pruebas: **930 pruebas verdes
-acreditan salud del software, no conexión operacional de un canal.**
+⛔ **No se cierra la hipótesis.** Queda formulada, no concluida:
+
+| canal | arquitectura de adquisición | procedencia | consumo | reutilización |
+|---|---|---|---|---|
+| **DPE** | completa · 9 etapas con gates | **por artefacto** (SHA · 422) | d07 | por determinar |
+| **Web GAD** | sin conector · uso limitado a contraste | por artefacto, **por determinar** | varios, vía `ProyecT/` | por determinar |
+| **Pasiva** | caso demostrado, no capacidad | artefacto firmado, **sin ingesta** | por determinar | por determinar |
+| **Ciudadana** | **declarada, sin construir** | no aplica todavía | ninguno | ninguno |
+| **SERCOP** | API OCDS · captura automatizada | **por corte** (fuente · fecha · estado) | `H06` vía Excel | por determinar |
+| **CPCCS** | portal · doctrina dual A/B | bloque al snapshot, sin artefacto | d09 llegó **por otra vía** | por determinar |
+
+Lo que falta para cerrarla: **reutilización efectiva en cada fila**, y el recorrido artefacto por
+artefacto de `ProyecT/` —qué se descargó, cuándo, de qué URL, si es exactamente lo publicado—.
+Ninguna celda se rellena por inferencia.
+
+⚠️ Y esta respuesta **no se apoya en la suite de pruebas**: 930 pruebas verdes acreditan salud del
+software, **no conexión operacional de un canal**. Son cosas distintas y se citan por separado.
 
 ## 5 · La distinción que se conserva
 
