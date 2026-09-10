@@ -280,11 +280,28 @@ def test_la_metrica_declara_su_unidad_y_excluye_el_ruido():
         "más nombres únicos que documentos: la unidad se rompió")
     assert e["citados_por_artefactos"] + e["no_determinables"] == e["nombres_unicos"], (
         "las partes no suman el total en su propia unidad")
+    # ⚠️ 2026-09-09 · ESTA ASERCIÓN MEDÍA UN PROXY, NO LA PROPIEDAD.
+    # Decía `documentos < 258`: un umbral absoluto que servía de sustituto de
+    # «el ruido no se cuenta». Funcionó mientras el corpus no creció — y falló
+    # en cuanto creció **legítimamente** (276 físicos · 9 de sistema · 267
+    # documentos), acusando de contar ruido a un filtro que estaba excluyéndolo
+    # bien.
+    #
+    # Es el mismo error que este expediente persigue en otros: tomar un
+    # indicador correlacionado por la propiedad que se quiere proteger. Ahora
+    # se mide la propiedad directamente, y sobrevive a que el corpus cambie.
     H = D.raiz_de_evidencia_primaria()
     if H:
-        assert not any(f.name.lower() == "desktop.ini"
-                       for f in H.rglob("*") if f.is_file()) or e["documentos"] < 258, (
-            "volvió a contarse el ruido del sistema de archivos")
+        fisicos = [f for f in H.rglob("*") if f.is_file()]
+        del_sistema = [f for f in fisicos if D._es_artefacto_del_sistema(f)]
+        assert e["documentos"] == len(fisicos) - len(del_sistema), (
+            f"el conteo no excluye los artefactos del sistema: "
+            f"{len(fisicos)} físicos − {len(del_sistema)} del sistema ≠ "
+            f"{e['documentos']} documentos")
+        assert not any(f.name.lower() in ("desktop.ini", "thumbs.db", ".ds_store")
+                       for f in fisicos if f not in set(del_sistema)), (
+            "un archivo con nombre de artefacto del sistema pasó el filtro por "
+            "atributos: revise si perdió HIDDEN∧SYSTEM antes de tocar el filtro")
 
 
 def test_los_territorios_no_inspeccionados_se_declaran_sin_veredicto():
