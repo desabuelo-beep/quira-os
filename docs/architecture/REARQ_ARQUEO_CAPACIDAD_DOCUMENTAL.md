@@ -735,9 +735,63 @@ cadena sigue abierta:
 | clasificación del JSON de `scouting/` | ✅ **RESUELTA** |
 | cadena `API → respuesta → dict → consumidor → resultado → persistencia → reutilización → prueba` | ⬜ **PENDIENTE DE CIERRE** |
 
-Falta determinar qué función consume el `dict`, dónde se materializa el resultado, qué evidencia
-queda asociada, qué se reutiliza después, qué procedencia conserva el resultado respecto de la
-respuesta de la API, y qué prueba impide que el camino se rompa.
+### A · La cadena SERCOP, cerrada · 2026-09-09
+
+| # | tramo | estado | evidencia |
+|---|---|---|---|
+| 1 | sistema de origen → **canal** | **DEMOSTRADO** | API OCDS `/PLATAFORMA/api/search_ocds` + `/record`, endpoint subsanado y validado en vivo el 2026-06-24 |
+| 2 | canal → **respuesta** | **DEMOSTRADO** | `build_contratacion_block(year, search, buyer)` |
+| 3 | respuesta → **construcción del objeto** | **DEMOSTRADO** | `dict` con `status` · `source_id` · `reliability 0.95` · `data` · `error`; **degrada a 0,475 si la API responde parcial** y a 0,0 si falla |
+| 4 | objeto → **consumidor** | **DEMOSTRADO** | `_step_fetch_sercop` → `_results["sercop"]` → `_step_normalize_sources` (conserva el envoltorio íntegro, no aplana) |
+| 5 | consumidor → **materialización** | ⚠️ **PARCIALMENTE DEMOSTRADO** | existe en código —`snapshot_pipeline:364`, `{**gm_cont, **sources["sercop"]["data"]}`— pero **el snapshot vigente no la contiene** |
+| 6 | materialización → **evidencia/resultado** | ⚠️ **PARCIALMENTE DEMOSTRADO** | pesa `0.35` en `TRACEABILITY_SCORE` y cuenta en `coverage`; **pero eso sólo ocurre si el snapshot lo genera el pipeline** |
+| 7 | evidencia → **reutilización** | 🔴 **NO DEMOSTRADO** | ningún dominio verificado que la consuma |
+| 8 | → **prueba** | ⚠️ **PARCIALMENTE DEMOSTRADO** | `test_pipeline_smoke.py` la ejercita con `@patch` y `_SERCOP_MOCK`: acredita la **integración del pipeline**, no el canal contra la API real |
+
+### ★ Lo que sólo aparece al recorrer la cadena entera: hay DOS generadores de snapshot
+
+```
+scripts/_update_snapshot.py      Gold Master H73_OUTPUT_API → snapshot   ← EL VIGENTE
+app/pipelines/snapshot_pipeline  conectores DPE·SERCOP·CPCCS → snapshot   ← el que consume SERCOP
+```
+
+El snapshot vigente lo delata su propio `_meta`:
+
+```
+fuente        SIAP-ICPI_GOLD_MASTER_v5.7_TGI.xlsx — H73_OUTPUT_API
+_pipeline     ausente  ← el pipeline lo añadiría en su paso 9
+contratacion  la clave NO EXISTE en el snapshot vigente
+```
+
+> **El pipeline que consume SERCOP no es el que produjo el estado vigente.** La cadena está
+> construida y hoy no está ejercida: el `snapshot` que el sistema usa viene del Gold Master, y por
+> eso la contratación de SERCOP no aparece en él.
+
+⚠️ **Y una tensión que se registra sin resolver.** En `snapshot_pipeline:364` el orden del merge
+—`{**gm_cont, **sercop_data}`— da **precedencia a SERCOP sobre el Gold Master** en las claves
+coincidentes. Las que SERCOP aporta (`year`, `fuente`, `fecha_corte`, `n_procesos`, `total_usd`,
+`conteos_por_etapa`, `procesos`, `alertas`, `via_api`, `transporte`, `estado_captura`) son
+descriptivas del corte de captura, así que el solapamiento **parece** improbable — pero
+`Regla de Oro 1` dice *Excel = Estado*, y esa precedencia no debería depender de que las claves no
+choquen por casualidad. **No se toca: se registra para `REARQ`.**
+
+### El JSON de `scouting/` conserva valor probatorio · no operativo ≠ irrelevante
+
+| artefacto | fecha | fuente | estado captura | resultados |
+|---|---|---|---|---|
+| `sercop_2026_parcial` | `fecha_corte 2026-08-12` | `SERCOP OCDS · montecristi` | **completa** | 26 procesos |
+| `sercop_estado_contractual` | `generado 2026-08-17` | **URL de la API** | — | — |
+| `sercop_holding` | `generado 2026-08-12` | URL de la API | — | — |
+| `sercop_montecristi_2026` | `fecha_corte 2026-06-24` | con comprador | — | 7 procesos |
+| `sercop_sprint0_holding` | `2026-05-28T20:02:55Z` | — | — | — |
+
+> **Genealogía de adquisición presente, desigual, y con una tendencia:** el de mayo lleva sólo
+> fecha; los de agosto llevan fuente, fecha y estado de captura. **La procedencia mejoró con el
+> tiempo** — el registro va madurando junto con el sistema.
+
+Ninguno lleva la URL exacta de la consulta ni los parámetros como campo propio (van embebidos en
+el string `fuente`), y ninguno lleva identificador que lo relacione con una ejecución posterior.
+Eso es lo que impide hoy usarlos como **genealogía formal** en lugar de como registro.
 
 ### `Web GAD` · consumidores por tipo — y lo que eso **no** demuestra
 
