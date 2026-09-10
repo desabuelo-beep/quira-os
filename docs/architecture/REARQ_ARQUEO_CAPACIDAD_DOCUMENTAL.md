@@ -565,13 +565,67 @@ los informes en `ProyecT/`—, no por este conector.
 > evidencia performativa externa.** Es la idea más avanzada del arqueo y hoy la ejecuta una
 > persona.
 
-### ★ Tres niveles de procedencia, no dos
+### V6 · Las cadenas cerradas · consumo, reutilización y prueba
+
+**SERCOP**
+
+```
+API OCDS → fetch_sercop.py → data/scouting/*.json (con fuente · fecha_corte · estado_captura)
+                           → snapshot_pipeline._step_fetch_sercop  ← llama al CONECTOR EN VIVO
+```
+
+⚠️ Dos precisiones que sólo aparecen al recorrer la cadena entera:
+
+- el pipeline **no lee los JSON guardados**: invoca `fetch_sercop_data(ruc, year)` en vivo
+  (`snapshot_pipeline.py:174`). Los artefactos de `scouting/` son **registro de captura, no insumo
+  del pipeline**
+- **no existe ninguna prueba** que ejercite este canal (universo: `tests/`)
+
+**CPCCS — y aquí se confirma la distinción que el asesor anticipó**
+
+```
+conector      app/connectors/cpccs.py  →  snapshot_pipeline.py:189   ✅ está en el pipeline
+d09 en cambio  motor.py → _ENRICHER_PATH = scripts/enrich_rdc.py
+                        → _SNAPSHOT_PATH = data/gm_snapshot.json     ⛔ NO usa el conector
+```
+
+> **«El conector existe» y «el dominio se alimenta de ese conector» son dos afirmaciones
+> distintas.** Aquí la primera es verdadera y la segunda **falsa**: `d09` se alimenta del enricher
+> y del snapshot, no del portal CPCCS.
+
+Y el `Componente B` —el vídeo del acto— sigue diciendo `MANUAL REQUERIDO` en el propio script. La
+formulación que la evidencia autoriza:
+
+> **El diseño contempla dos componentes de evidencia potencialmente independientes —declaración
+> institucional y evidencia externa del acto—. La integración efectiva de ambos en el flujo
+> operativo NO está demostrada.** No se le llama «triangulación» hasta que lo esté.
+
+### ★ Cuatro niveles de procedencia, y ninguno es «sin procedencia»
 
 | nivel | qué acredita | quién lo tiene hoy |
 |---|---|---|
 | **por artefacto** | identidad e integridad · invalidación por cambio de contenido | `S7`/DPE — **422 entradas con SHA-256** |
 | **por dataset/corte** | fuente, URL, fecha de corte, estado de captura | **SERCOP** |
-| **por documento, humana no formalizada** | quién, cuándo y de dónde — **conocido, no registrado por el sistema** | `ProyecT/` |
+| **por insumo y motor** | SHA del Excel de origen **y del script que lo lee** | `d09/motor.py` — `evidencia_sha256` · `motor_sha256` |
+| **histórica documentable** | quién, cuándo, con qué fin y por qué vías — **conocido, anterior al sistema** | `ProyecT/` |
+
+⚠️ Y sobre el último nivel, la precisión que corrige una formulación anterior de este arqueo:
+
+> No es lo mismo **«no conocemos de dónde vino»** que **«conocemos su historia de adquisición, pero
+> esa historia no fue registrada por el sistema porque el sistema aún no existía»**. `ProyecT/` es
+> lo segundo, y por declaración directa de quien lo reunió: fecha de inicio, autor, finalidad,
+> cuatro vías y tipos de fuente. Eso es **proveniencia histórica documentable**, no ausencia.
+
+> ### ⛔ Y lo que NO se hará con ello
+>
+> `ProyecT/` **no es deuda a saldar retroactivamente**. La pregunta de `REARQ` no es *«¿cómo
+> hacemos que febrero de 2026 parezca una captura automatizada?»* sino:
+>
+> **¿Qué propiedades de aquella adquisición humana deben conservarse como conocimiento histórico,
+> y qué propiedades del sistema posterior hay que construir para que esa labor sea reproducible y
+> escalable a 222 GAD?**
+>
+> Eso separa **genealogía** de **arquitectura futura**, y las dos se pierden si se confunden.
 
 ### ★★ Qué es `ProyecT/` · declarado por su autor, 2026-09-09
 
@@ -618,8 +672,8 @@ Con los seis canales ya inspeccionados, la formulación que la evidencia autoriz
 | **Web GAD** | sin conector · uso limitado a contraste | por artefacto, **por determinar** | varios, vía `ProyecT/` | por determinar |
 | **Pasiva** | caso demostrado, no capacidad | artefacto firmado, **sin ingesta** | por determinar | por determinar |
 | **Ciudadana** | **declarada, sin construir** | no aplica todavía | ninguno | ninguno |
-| **SERCOP** | API OCDS · captura automatizada | **por corte** (fuente · fecha · estado) | `H06` vía Excel | por determinar |
-| **CPCCS** | portal · doctrina dual A/B | bloque al snapshot, sin artefacto | d09 llegó **por otra vía** | por determinar |
+| **SERCOP** | API OCDS · captura automatizada | **por corte** (fuente · fecha · estado) | pipeline, **en vivo** — no lee los JSON | ⛔ **sin prueba** |
+| **CPCCS** | portal · dos componentes, uno manual | bloque al snapshot, sin artefacto | ⛔ **d09 NO usa el conector** | por determinar |
 
 Lo que falta para cerrarla: **reutilización efectiva en cada fila**, y el recorrido artefacto por
 artefacto de `ProyecT/` —qué se descargó, cuándo, de qué URL, si es exactamente lo publicado—.
