@@ -735,7 +735,28 @@ cadena sigue abierta:
 | clasificación del JSON de `scouting/` | ✅ **RESUELTA** |
 | cadena `API → respuesta → dict → consumidor → resultado → persistencia → reutilización → prueba` | ⬜ **PENDIENTE DE CIERRE** |
 
-### A · La cadena SERCOP, cerrada · 2026-09-09
+### A · La cadena SERCOP · **CERRADA COMO ARQUEOLOGÍA DE CAPACIDAD/CADENA**
+
+> ⛔ **No leer esto como «SERCOP cerrado».** Lo cerrado es el **expediente de arqueología**: qué
+> existe, hasta dónde llega y qué no está demostrado. **No acredita que SERCOP sea hoy una ruta
+> activa del estado canónico de QUIRA.**
+
+| elemento | estado |
+|---|---|
+| genealogía del JSON de `scouting/` | **RESUELTA** |
+| canal → API → respuesta | **DEMOSTRADO** |
+| normalización | **DEMOSTRADA** |
+| materialización en la ruta del pipeline | **DEMOSTRADA COMO CÓDIGO** |
+| presencia en el snapshot **vigente** | 🔴 **NO DEMOSTRADA** |
+| evidencia canónica | 🔴 **NO DEMOSTRADA** |
+| reutilización *downstream* | 🔴 **NO DEMOSTRADA** |
+| prueba contra el canal real | 🔴 **NO DEMOSTRADA** (sólo mock) |
+| merge por colisión de claves | **RESUELTO · ∅** |
+| solapamiento semántico | ⬜ **ABIERTO PARA CANON** |
+| múltiples productores del snapshot | **DEMOSTRADO** |
+| productor canónico | ⬜ **ABIERTO** |
+
+### El detalle de los tramos · 2026-09-09
 
 | # | tramo | estado | evidencia |
 |---|---|---|---|
@@ -964,6 +985,81 @@ D · ProyecT   recién entonces, con una vara arquitectónica explícita en la m
 
 > **`D` va al final a propósito**: recorrer el corpus histórico antes de tener la vara obligaría a
 > inventarla mientras se recorre, que es cómo se fabrican criterios a medida del hallazgo.
+
+## 4-sexies · B · WEB GAD · matriz por tipo documental · 2026-09-10
+
+**Universo declarado:** `scripts/` y `app/` en `*.py`. **Términos:** por tipo documental en el
+nombre del archivo, cruzados con `requests` · `httpx` · `urllib.request` · `playwright` ·
+`selenium` · `aiohttp`. **Exclusiones:** ninguna.
+
+### B.1 · ¿Existe captura desde la web del GAD?
+
+| tipo | script con captura HTTP propia |
+|---|---|
+| PDOT · POA · PAC · Presupuesto · Orgánico | ⛔ **NINGUNO** |
+| Actas de Concejo · Ordenanzas · Audiencias · Ppto. participativo | ⛔ **NINGUNO** |
+
+**Cero capturadores para los nueve tipos.** El único script que toca `montecristi.gob.ec` es
+`capturar_lotaip_portal.py`, y lo hace **sólo para contrastar LOTAIP**.
+
+### B.2 · ¿De dónde lee cada consumidor?
+
+| tipo | consumidor | origen real de lectura |
+|---|---|---|
+| PDOT | `enrich_planificacion.py` · `data/pdot_context.py` | **frontera `ProyecT/`** · Gold Master |
+| POA | `enrich_poa_multianio.py` · `extract_poa_pdf.py` | **frontera `ProyecT/`** |
+| Presupuesto | `enrich_presupuesto.py` · `ingest_presupuesto_h07.py` | **frontera `ProyecT/`** |
+| Orgánico | `holding/manifest_holding.py` | **frontera `ProyecT/`** |
+| Ordenanzas | `normativa/manifest.py` | **frontera `ProyecT/`** |
+| Audiencias | `d08/extraer_demandas.py` · `enrich_participacion.py` | **frontera `ProyecT/`** · `data/` |
+| Ppto. participativo | `d08/cruzar_demandas.py` | **frontera `ProyecT/`** |
+| PAC | `capturar_sercop_holding.py` | ⚠ no determinado en este barrido |
+
+**Ocho de nueve leen de la frontera `ProyecT/`.**
+
+### ★ B.3 · La conclusión, con la distinción que la hace válida
+
+> **CONSUMO: demostrado para los nueve tipos. ADQUISICIÓN desde el canal Web GAD: NO demostrada
+> para ninguno.**
+
+Y por tanto la formulación que la evidencia autoriza:
+
+> **«Web GAD» no es hoy un canal de adquisición de QUIRA. Es el origen histórico de parte del
+> corpus fundacional, sin ruta reproducible desde el sistema.** Los artefactos entraron por las
+> cuatro vías de febrero de 2026 y viven en la frontera de datos, donde los enrichers los leen.
+
+⛔ **Ningún tipo se cierra por estar presente en `ProyecT/`.** Presencia histórica ≠ adquisición
+por el canal. Es la regla que `A` dejó y que aquí decide las nueve filas.
+
+### B.4 · Y la excepción que el barrido encontró
+
+`scripts/rc_scout.py` —motor de exploración municipal, endpoints de la DPE obtenidos por
+ingeniería inversa— **sí adquiere presupuesto de forma automatizada**:
+
+```
+GET  /admin/public/establishment/list?function=7     → lista TODOS los GAD
+GET  /admin/public/establishment/{id}                → detalle de entidad
+POST /public/public/presupuesto {ruc, year, month}   → PRESUPUESTO MENSUAL
+GET  /transparency/anual-report/establishment?…      → informe anual
+```
+
+Con productos ya materializados: `gad_municipales_all.json` (21) · `manabi_scan.json` (50).
+
+> ⚠️ **Pero eso no es «Web GAD»: es DPE.** El presupuesto tiene canal automatizado y multi-GAD
+> — por el portal nacional, no por la web municipal. Y es la única capacidad verificada hoy que
+> opera sobre **más de un municipio**.
+>
+> `discovery.json` lo confirma por omisión: sus `portals` sólo contienen la DPE, con `selectors`
+> y `notes` **vacíos**. El descubridor de portales existe y sólo ha explorado uno.
+
+### B.5 · Productor del estado canónico
+
+| tipo | productor del estado que llega al canon |
+|---|---|
+| los nueve | **`scripts/enrich_*.py` → Gold Master → `_update_snapshot.py`** |
+
+Ninguno pasa por `snapshot_pipeline`. Coherente con el hallazgo transversal de abajo: **el
+productor del estado vigente es el Gold Master, no la ruta de conectores.**
 
 ## 4-quinquies · ⚠️ HALLAZGO TRANSVERSAL · multiplicidad de productores del snapshot
 
