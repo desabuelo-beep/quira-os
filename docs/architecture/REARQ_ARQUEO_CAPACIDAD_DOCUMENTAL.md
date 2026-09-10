@@ -727,7 +727,19 @@ PIPELINE  connectors/sercop.py   →  dict en memoria → snapshot insumo real d
 > Respuesta a la pregunta: **el JSON de `scouting/` no es artefacto canónico ni insumo del
 > pipeline. Es registro de exploración** — y el nombre del directorio ya lo decía.
 
-### `Web GAD` · por tipo documental, todos tienen consumidor
+⛔ **Y eso NO es «SERCOP resuelto».** Lo resuelto es el **rol ontológico de un artefacto**. La
+cadena sigue abierta:
+
+| SERCOP | estado |
+|---|---|
+| clasificación del JSON de `scouting/` | ✅ **RESUELTA** |
+| cadena `API → respuesta → dict → consumidor → resultado → persistencia → reutilización → prueba` | ⬜ **PENDIENTE DE CIERRE** |
+
+Falta determinar qué función consume el `dict`, dónde se materializa el resultado, qué evidencia
+queda asociada, qué se reutiliza después, qué procedencia conserva el resultado respecto de la
+respuesta de la API, y qué prueba impide que el camino se rompa.
+
+### `Web GAD` · consumidores por tipo — y lo que eso **no** demuestra
 
 | tipo | consumidor verificado |
 |---|---|
@@ -738,12 +750,39 @@ PIPELINE  connectors/sercop.py   →  dict en memoria → snapshot insumo real d
 | Audiencias · Participación | `d08/extraer_demandas` · `enrich_participacion` · `normativa/extend_lopc_neo4j` |
 | Actas | `d08/extraer_demandas` · `neo4j_load_qtmp` · `normativa/analizar_documentos_lotaip` |
 
-**Ningún tipo documental está huérfano.** Lo que falta determinar es la evidencia de *captura* de
-cada uno —no su consumo, que está demostrado.
+⛔ **«Ningún tipo huérfano» era una conclusión más fuerte de lo que esa tabla permite.** Lo
+verificado es que existe **código que menciona y consume cada tipo documental**. Son cuatro
+preguntas distintas y sólo una está respondida:
 
-### CINCO formas de procedencia · el `SHA` es una, no todas
+| pregunta | estado |
+|---|---|
+| ¿existe código que consuma ese tipo documental? | ✅ **sí**, verificado |
+| ¿hay evidencia de que se **buscó** en la web del GAD? | ⬜ por determinar, por tipo |
+| ¿hay evidencia de que fue **capturado** desde ahí? | ⬜ por determinar, por tipo |
+| ¿ese consumidor recibe evidencia **proveniente del canal Web GAD**? | ⬜ **debe demostrarse** |
 
-| forma | qué acredita | dónde se observa hoy |
+> ### La distinción que impide el salto
+>
+> *«`enrich_poa_multianio.py` lee POA desde `ProyecT/`»* **no equivale** a *«Web GAD → captura →
+> POA → `enrich_poa_multianio.py`»*.
+>
+> `ProyecT/` es el corpus fundacional y puede contener material obtenido por **cualquiera de las
+> cuatro vías**: solicitud de información, web municipal, técnico municipal o portal
+> institucional. **Consumidor del documento ≠ consumidor demostrado del canal.**
+
+Lo que falta para cerrar Web GAD es la matriz por tipo, con una columna que hoy no tenemos:
+**procedencia del artefacto conocida**.
+
+### CINCO dimensiones de procedencia **observadas** · el `SHA` es una, no todas
+
+⚠️ Se las llama **dimensiones observadas en el corpus**, no una ontología canónica. Todavía hay
+que demostrar si son cinco dimensiones independientes, cinco granularidades de lo mismo, o
+combinaciones. Lo que **sí** está sólido:
+
+> **La procedencia en QUIRA no se reduce al `SHA`. El corpus evidencia mecanismos de procedencia
+> de distinta granularidad y naturaleza.**
+
+| dimensión | qué acredita | dónde se observa hoy |
 |---|---|---|
 | **de artefacto** | identidad e integridad · invalidación por contenido | `S7`/DPE — 422 con SHA-256 |
 | **de dataset** | fuente, corte temporal, estado de captura | SERCOP |
@@ -783,9 +822,42 @@ una forma de sellado, y `ProyecT/` tiene historia de adquisición conocida.
 > ### El método que está funcionando
 >
 > **Cada vez que una clasificación resulta demasiado binaria, la evidencia obliga a reemplazarla
-> por una distinción mejor.** Ocurrió con procedencia sí/no → cinco formas; con canal único → seis
-> canales; con dentro/fuera del sistema → grados de formalización. Eso es conocimiento
+> por una distinción mejor.** Ocurrió con procedencia sí/no → cinco dimensiones; con canal único →
+> seis canales; con dentro/fuera del sistema → grados de formalización. Eso es conocimiento
 > arquitectónico, no inventario de archivos.
+
+### Cierre provisional de `Q-M2` — la formulación que se sella
+
+> **QUIRA no nació con una arquitectura homogénea de adquisición de evidencia. Nació de un corpus
+> empírico construido mediante modalidades heterogéneas de adquisición. La arquitectura posterior
+> ha comenzado a transformar esas prácticas en mecanismos sistémicos de captura, custodia,
+> procedencia y reutilización, pero la cobertura y uniformidad de esa transformación aún deben
+> demostrarse canal por canal.**
+
+### ⛔ Lo que NO se cierra · lista explícita
+
+Para que ninguna de estas frases aparezca en un informe posterior como si estuviera demostrada:
+
+- «SERCOP está completamente cerrado»
+- «todos los tipos de Web GAD tienen consumidor»
+- «todos los tipos de Web GAD están integrados al canal Web GAD»
+- «QUIRA ya posee una infraestructura transversal homogénea de evidencia»
+- «`ProyecT/` tiene procedencia sistémica completa»
+- «la arquitectura documental transversal ya está demostrada»
+
+### Orden de trabajo pendiente
+
+```
+A · SERCOP    cerrar la cadena completa (no volver a discutir el JSON)
+B · Web GAD   matriz por tipo, con la columna PROCEDENCIA DEL ARTEFACTO CONOCIDA
+C · síntesis  ¿en qué medida QUIRA transforma evidencia de distintos orígenes,
+              canales y custodias en evidencia canónica reutilizable, conservando
+              procedencia suficiente para sostener las inferencias posteriores?
+D · ProyecT   recién entonces, con una vara arquitectónica explícita en la mano
+```
+
+> **`D` va al final a propósito**: recorrer el corpus histórico antes de tener la vara obligaría a
+> inventarla mientras se recorre, que es cómo se fabrican criterios a medida del hallazgo.
 
 ## 5 · La distinción que se conserva
 

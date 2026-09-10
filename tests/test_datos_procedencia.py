@@ -304,6 +304,80 @@ def test_la_metrica_declara_su_unidad_y_excluye_el_ruido():
             "atributos: revise si perdió HIDDEN∧SYSTEM antes de tocar el filtro")
 
 
+def test_el_ruido_se_clasifica_por_atributo_y_no_por_nombre():
+    """★ REGLA PROTEGIDA: **la clasificación es por propiedad del archivo, no
+    por lista de nombres** *(colega, 2026-09-01)*.
+
+    La prueba anterior dependía del estado accidental del `ProyecT` real: un
+    umbral que dejó de valer cuando el corpus creció. Ésta usa **casos de
+    control** y no depende de qué haya hoy en el disco del usuario.
+
+    Los tres casos, y el tercero es el que de verdad importa:
+
+        archivo normal ................................. cuenta
+        `desktop.ini` con HIDDEN∧SYSTEM ................ NO cuenta
+        `desktop.ini` SIN esos atributos ............... **cuenta** ← deliberado
+
+    ⚠️ El tercero parece un defecto y es la decisión de diseño. Filtrar por
+    nombre volvería a crear el problema metodológico que ya se corrigió: una
+    lista blanca que se autoconsidera completa. Si un archivo de sistema pierde
+    sus atributos, el sistema lo cuenta **y eso debe verse**, en lugar de que
+    un nombre lo esconda. En Linux —sin atributos— cae al último recurso de los
+    nombres, y ese límite está declarado en el propio docstring de la función.
+    """
+    import os
+    import ctypes
+
+    tmp = RAIZ / "data" / "_control_ruido_tmp"
+    tmp.mkdir(parents=True, exist_ok=True)
+    try:
+        normal = tmp / "documento_oficial.pdf"
+        normal.write_text("x", encoding="utf-8")
+
+        oculto = tmp / "desktop.ini"
+        oculto.write_text("[.ShellClassInfo]", encoding="utf-8")
+
+        impostor = tmp / "otro_desktop.ini_renombrado.txt"
+        impostor.write_text("x", encoding="utf-8")
+
+        tiene_attrs = hasattr(os.stat(normal), "st_file_attributes")
+        if tiene_attrs:  # Windows: marcar OCULTO(0x2) ∧ SISTEMA(0x4)
+            ctypes.windll.kernel32.SetFileAttributesW(str(oculto), 0x2 | 0x4)
+
+        assert not D._es_artefacto_del_sistema(normal), (
+            "un documento normal fue clasificado como ruido del sistema")
+
+        if tiene_attrs:
+            assert D._es_artefacto_del_sistema(oculto), (
+                "un archivo con HIDDEN∧SYSTEM no fue clasificado como ruido: "
+                "el filtro por atributos dejó de funcionar")
+            # ⚠️ EL CASO QUE PROTEGE LA DECISIÓN DE DISEÑO
+            ctypes.windll.kernel32.SetFileAttributesW(str(oculto), 0x80)  # NORMAL
+            assert not D._es_artefacto_del_sistema(oculto), (
+                "se clasificó como ruido por su NOMBRE. El diseño clasifica por "
+                "atributo a propósito: una lista de nombres se autoconsidera "
+                "completa y deja pasar el artefacto de sistema siguiente")
+        else:
+            # Sin atributos —Linux, CI— el último recurso SÍ es el nombre, y es
+            # el límite declarado de la función.
+            assert D._es_artefacto_del_sistema(oculto), (
+                "sin atributos del SO, el último recurso por nombre no actuó")
+
+        assert not D._es_artefacto_del_sistema(impostor)
+    finally:
+        for f in tmp.glob("*"):
+            try:
+                if hasattr(os.stat(f), "st_file_attributes"):
+                    ctypes.windll.kernel32.SetFileAttributesW(str(f), 0x80)
+                f.unlink()
+            except OSError:
+                pass
+        try:
+            tmp.rmdir()
+        except OSError:
+            pass
+
+
 def test_los_territorios_no_inspeccionados_se_declaran_sin_veredicto():
     """Supabase y Obsidian son **territorios conocidos y no consultados**. Su
     estado no es «cumple» ni «falla»: es `declarado_no_inspeccionado`, con el
