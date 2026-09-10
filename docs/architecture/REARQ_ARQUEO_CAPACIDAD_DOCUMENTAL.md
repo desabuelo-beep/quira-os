@@ -682,6 +682,111 @@ Ninguna celda se rellena por inferencia.
 ⚠️ Y esta respuesta **no se apoya en la suite de pruebas**: 930 pruebas verdes acreditan salud del
 software, **no conexión operacional de un canal**. Son cosas distintas y se citan por separado.
 
+## 4-quater · SÍNTESIS INTERMEDIA DE `Q-M2` · 2026-09-09
+
+> **La conclusión que ordena todo lo demás:**
+>
+> **QUIRA no nació con una arquitectura de adquisición. Nació con un CORPUS EMPÍRICO, y después
+> empezó a construir una arquitectura capaz de adquirir, acreditar y reutilizar evidencia.**
+
+Eso explica la mayor parte de las diferencias entre DPE, SERCOP, CPCCS, Web GAD, pasiva y
+Ciudadana. No son incoherencias: son **capas de una historia**.
+
+### Dos fases, y no deben compararse entre sí
+
+```
+FASE GENEALÓGICA · pre-QUIRA          FASE SISTÉMICA · post-QUIRA
+    persona                               fuente
+      ↓                                     ↓
+    solicitud · web · técnico · portal    capturador
+      ↓                                     ↓
+    documento                             artefacto
+      ↓                                     ↓
+    corpus ProyecT                        identidad · SHA
+      ↓                                     ↓
+    Gold Master                           inventario → evidencia → dominio
+      ↓
+    QUIRA
+```
+
+> ⚠️ **No tiene sentido exigirle a febrero de 2026 un mecanismo de SHA que no existía.** Comparar
+> `ProyecT/` con `S7` como si fueran dos implementaciones del mismo diseño es un error de método.
+
+### `SERCOP` · qué es realmente el JSON de `scouting/`
+
+Recorrida la cadena entera: **el conector no lee ni escribe JSON**. Llama a
+`build_contratacion_block(year, search, buyer)` y devuelve un `dict` en memoria al pipeline
+(`status` · `source_id` · `reliability 0.95` · `data` · `error`), degradando la fiabilidad a la
+mitad si la API responde parcial. Hay **dos caminos que no se encuentran**:
+
+```
+CLI       fetch_sercop.py --out  →  data/scouting/*.json      registro de una captura manual
+PIPELINE  connectors/sercop.py   →  dict en memoria → snapshot insumo real del sistema
+```
+
+> Respuesta a la pregunta: **el JSON de `scouting/` no es artefacto canónico ni insumo del
+> pipeline. Es registro de exploración** — y el nombre del directorio ya lo decía.
+
+### `Web GAD` · por tipo documental, todos tienen consumidor
+
+| tipo | consumidor verificado |
+|---|---|
+| PDOT · POA · PAC | `analysis/explainability_report` · `metrics_mcr` · `tag_domains` |
+| Cédulas presupuestarias | `enrich_poa_multianio` · `ingest_presupuesto_h07` · `motor_narrativo/extract_cedula_xls` |
+| Orgánico | `holding/manifest_holding` · `normativa/manifest` |
+| Ordenanzas | `normativa/manifest` · `vis/objeto_canonico` |
+| Audiencias · Participación | `d08/extraer_demandas` · `enrich_participacion` · `normativa/extend_lopc_neo4j` |
+| Actas | `d08/extraer_demandas` · `neo4j_load_qtmp` · `normativa/analizar_documentos_lotaip` |
+
+**Ningún tipo documental está huérfano.** Lo que falta determinar es la evidencia de *captura* de
+cada uno —no su consumo, que está demostrado.
+
+### CINCO formas de procedencia · el `SHA` es una, no todas
+
+| forma | qué acredita | dónde se observa hoy |
+|---|---|---|
+| **de artefacto** | identidad e integridad · invalidación por contenido | `S7`/DPE — 422 con SHA-256 |
+| **de dataset** | fuente, corte temporal, estado de captura | SERCOP |
+| **de insumo y motor** | SHA del insumo **y del proceso que lo transforma** | `d09/motor.py` |
+| **histórica** | quién, cuándo, con qué fin y por qué vías — sin registro de máquina | `ProyecT/` |
+| **de custodia** | quién obtuvo, aportó o transmitió el documento | `ADR-045 §3` · `ADR-046 §1.1` |
+
+> **El `SHA` acredita identidad e integridad de un artefacto. No es toda la genealogía del dato.**
+> Tomarlo como sinónimo de procedencia fue el error que este arqueo tuvo que corregir dos veces.
+
+### La pregunta de `Q-M2`, reformulada · y su respuesta graduada
+
+Ya no es *«¿existe una arquitectura transversal de evidencia?»* —binaria y por eso engañosa—. Es:
+
+> **¿En qué medida QUIRA ha transformado la adquisición histórica y heterogénea de evidencia en
+> una infraestructura común de evidencia canónica, procedencia y reutilización interdominio?**
+
+Con cuatro respuestas posibles, **ninguna elegida todavía**:
+
+| | |
+|---|---|
+| **A** | ya existe transversalmente |
+| **B** | existe parcialmente y **está emergiendo desde varios patrones** |
+| **C** | existe sólo en determinados canales |
+| **D** | los patrones son conceptualmente compatibles, pero **no hay infraestructura común** |
+
+### Lo que la evidencia autoriza a decir hoy, con esa precisión
+
+> **En el universo examinado, `S7` presenta el mayor nivel de formalización sistémica de la
+> procedencia entre los canales estudiados. Los demás muestran mecanismos de procedencia de
+> distinta granularidad o antigüedad que aún deben reconciliarse.**
+
+⛔ Se retira la inferencia anterior —*«el canal más maduro es el único construido después de existir
+el sistema»*—: es sugerente y **demasiado general**. SERCOP sí tiene procedencia, `d09` sí tiene
+una forma de sellado, y `ProyecT/` tiene historia de adquisición conocida.
+
+> ### El método que está funcionando
+>
+> **Cada vez que una clasificación resulta demasiado binaria, la evidencia obliga a reemplazarla
+> por una distinción mejor.** Ocurrió con procedencia sí/no → cinco formas; con canal único → seis
+> canales; con dentro/fuera del sistema → grados de formalización. Eso es conocimiento
+> arquitectónico, no inventario de archivos.
+
 ## 5 · La distinción que se conserva
 
 | | |
