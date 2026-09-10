@@ -743,10 +743,26 @@ cadena sigue abierta:
 | 2 | canal → **respuesta** | **DEMOSTRADO** | `build_contratacion_block(year, search, buyer)` |
 | 3 | respuesta → **construcción del objeto** | **DEMOSTRADO** | `dict` con `status` · `source_id` · `reliability 0.95` · `data` · `error`; **degrada a 0,475 si la API responde parcial** y a 0,0 si falla |
 | 4 | objeto → **consumidor** | **DEMOSTRADO** | `_step_fetch_sercop` → `_results["sercop"]` → `_step_normalize_sources` (conserva el envoltorio íntegro, no aplana) |
-| 5 | consumidor → **materialización** | ⚠️ **PARCIALMENTE DEMOSTRADO** | existe en código —`snapshot_pipeline:364`, `{**gm_cont, **sources["sercop"]["data"]}`— pero **el snapshot vigente no la contiene** |
-| 6 | materialización → **evidencia/resultado** | ⚠️ **PARCIALMENTE DEMOSTRADO** | pesa `0.35` en `TRACEABILITY_SCORE` y cuenta en `coverage`; **pero eso sólo ocurre si el snapshot lo genera el pipeline** |
-| 7 | evidencia → **reutilización** | 🔴 **NO DEMOSTRADO** | ningún dominio verificado que la consuma |
-| 8 | → **prueba** | ⚠️ **PARCIALMENTE DEMOSTRADO** | `test_pipeline_smoke.py` la ejercita con `@patch` y `_SERCOP_MOCK`: acredita la **integración del pipeline**, no el canal contra la API real |
+| 5 | objeto → **normalización** | **DEMOSTRADO** | `_step_normalize_sources` conserva el envoltorio íntegro, no aplana |
+| 6 | normalización → **materialización** | ⚠️ **PARCIALMENTE DEMOSTRADO** | existe en código —`snapshot_pipeline:364`, `{**gm_cont, **sources["sercop"]["data"]}`— pero **el snapshot vigente no la contiene** |
+| 7 | materialización → **evidencia canónica** | 🔴 **NO DEMOSTRADO** | ⚠️ entrar al snapshot demuestra **materialización del dato**, no que sea evidencia acreditada. Nada verificado le asigna techo, custodia ni acreditación |
+| 8 | evidencia → **dominio** | 🔴 **NO DEMOSTRADO** | ningún dominio verificado que la consuma |
+| 9 | dominio → **inferencia / reutilización** | 🔴 **NO DEMOSTRADO** | — |
+| 10 | → **prueba** | ⚠️ **PARCIALMENTE DEMOSTRADO** | `test_pipeline_smoke.py` la ejercita con `@patch` y `_SERCOP_MOCK`: acredita la **integración del pipeline**, no el canal contra la API real |
+
+> ### ⛔ La corrección que separa el tramo 6 del 7
+>
+> La versión anterior encadenaba `materialización → evidencia/resultado` como un solo paso. **Es
+> un salto conceptual**, y precisamente el que este expediente existe para impedir:
+>
+> **dato disponible ≠ evidencia acreditada.** Que un valor entre al snapshot demuestra que el
+> dato se materializó; no que tenga techo de acreditación, custodia declarada ni procedencia
+> suficiente para sostener una inferencia. Son transiciones distintas y cada una necesita su
+> propia demostración.
+>
+> Lo que sí aporta SERCOP al resultado —y es real— es su `reliability` graduada: pesa `0.35` en
+> `TRACEABILITY_SCORE` y cuenta en `coverage`. Pero **sólo si el snapshot lo genera el pipeline**,
+> que no es el caso del vigente.
 
 ### ★ Lo que sólo aparece al recorrer la cadena entera: hay DOS generadores de snapshot
 
@@ -767,13 +783,42 @@ contratacion  la clave NO EXISTE en el snapshot vigente
 > construida y hoy no está ejercida: el `snapshot` que el sistema usa viene del Gold Master, y por
 > eso la contratación de SERCOP no aparece en él.
 
-⚠️ **Y una tensión que se registra sin resolver.** En `snapshot_pipeline:364` el orden del merge
-—`{**gm_cont, **sercop_data}`— da **precedencia a SERCOP sobre el Gold Master** en las claves
-coincidentes. Las que SERCOP aporta (`year`, `fuente`, `fecha_corte`, `n_procesos`, `total_usd`,
-`conteos_por_etapa`, `procesos`, `alertas`, `via_api`, `transporte`, `estado_captura`) son
-descriptivas del corte de captura, así que el solapamiento **parece** improbable — pero
-`Regla de Oro 1` dice *Excel = Estado*, y esa precedencia no debería depender de que las claves no
-choquen por casualidad. **No se toca: se registra para `REARQ`.**
+### El merge de `:364`, auditado clave por clave
+
+Se dijo que el solapamiento «parece improbable». **Eso no era una auditoría.** Hecha:
+
+```
+GM.contratacion   pac_publicado · procesos_adjudicados · procesos_cancelados · cancelados_pct
+SERCOP.data       year · fuente · fecha_corte · n_procesos · total_usd · conteos_por_etapa
+                  procesos · alertas · via_api · transporte · estado_captura
+
+INTERSECCIÓN DE CLAVES  =  ∅
+```
+
+| categoría | resultado |
+|---|---|
+| sin colisión | **las 15 claves son disjuntas** |
+| colisión semánticamente compatible | — |
+| colisión con **autoridad distinta** | ⚠️ **ninguna por nombre · SÍ por semántica** |
+| no determinable | — |
+
+> **No hay colisión de claves, pero sí SOLAPAMIENTO SEMÁNTICO sin autoridad declarada.**
+> `procesos_adjudicados` y `procesos_cancelados` (Gold Master) describen el mismo fenómeno que
+> `conteos_por_etapa` y `procesos` (SERCOP), por vías distintas y con cortes temporales distintos.
+
+Con esa precisión, la lectura del merge cambia:
+
+    GM      = estado canónico certificado
+    SERCOP  = enriquecimiento con el corte externo vivo
+
+y la operación **es legítima hoy** — el `dict` no pisa nada. Lo que queda abierto no es el orden
+del merge sino la pregunta de fondo:
+
+> Si el Gold Master dice `procesos_adjudicados = X` y SERCOP entrega `conteos_por_etapa` con otro
+> número para el mismo período, **el snapshot llevaría ambos sin declarar cuál tiene autoridad**.
+> Eso se resuelve por canon, **no por el orden de un `dict`**.
+
+**No se toca: se registra para `REARQ`.**
 
 ### El JSON de `scouting/` conserva valor probatorio · no operativo ≠ irrelevante
 
@@ -785,9 +830,16 @@ choquen por casualidad. **No se toca: se registra para `REARQ`.**
 | `sercop_montecristi_2026` | `fecha_corte 2026-06-24` | con comprador | — | 7 procesos |
 | `sercop_sprint0_holding` | `2026-05-28T20:02:55Z` | — | — | — |
 
-> **Genealogía de adquisición presente, desigual, y con una tendencia:** el de mayo lleva sólo
-> fecha; los de agosto llevan fuente, fecha y estado de captura. **La procedencia mejoró con el
-> tiempo** — el registro va madurando junto con el sistema.
+> **Genealogía de adquisición presente y desigual.** Formulación forense, que sustituye a la
+> anterior:
+>
+> **Los artefactos examinados muestran un incremento temporal en la granularidad de los metadatos
+> de captura registrados. La causa de esa evolución no se determina a partir de los JSON.**
+
+⛔ Se retira *«la procedencia maduró junto con el sistema»*: describía una **narrativa causal** que
+los artefactos no acreditan. Lo observable es la evolución de la información registrada; atribuirla
+a una maduración deliberada del sistema exigiría evidencia distinta —decisiones, commits, ADR— que
+no se buscó aquí.
 
 Ninguno lleva la URL exacta de la consulta ni los parámetros como campo propio (van embebidos en
 el string `fuente`), y ninguno lleva identificador que lo relacione con una ejecución posterior.
@@ -912,6 +964,49 @@ D · ProyecT   recién entonces, con una vara arquitectónica explícita en la m
 
 > **`D` va al final a propósito**: recorrer el corpus histórico antes de tener la vara obligaría a
 > inventarla mientras se recorre, que es cómo se fabrican criterios a medida del hallazgo.
+
+## 4-quinquies · ⚠️ HALLAZGO TRANSVERSAL · multiplicidad de productores del snapshot
+
+> **Estado: ABIERTO · REQUIERE RECONCILIACIÓN.** No se declara defecto.
+
+Salió al recorrer SERCOP, **pero no pertenece a SERCOP**: afecta al artefacto central del sistema.
+
+```
+        Gold Master                    SERCOP · DPE · CPCCS
+             │                                  │
+     _update_snapshot.py                snapshot_pipeline.py
+             ↓                                  ↓
+      snapshot VIGENTE                    otro snapshot
+```
+
+Y el `DEPENDENCY_ATLAS` ya listaba **tres** escritores del snapshot —`_update_snapshot` ·
+`snapshot_pipeline` · `p_carga` (consola Dylus)— sin declarar cuál es el canónico.
+
+> **¿Cuál es el generador canónico de `gm_snapshot.json`, y bajo qué condiciones puede existir
+> más de una ruta de producción del mismo artefacto?**
+
+Tener dos productores **no es necesariamente incorrecto**: puede haber razones históricas,
+operativas o de compatibilidad. Pero es una **tensión arquitectónica demostrada**, y exactamente
+el tipo de cosa que `REARQ` debe encontrar.
+
+Las diez preguntas que la reconciliación debe responder, **antes de tocar una línea de código**:
+
+| # | pregunta |
+|---|---|
+| 1 | ¿cuál es el snapshot canónico? |
+| 2 | ¿cuál es el productor **normativo**? |
+| 3 | ¿cuál es **histórico**? |
+| 4 | ¿cuál es **operativo**? |
+| 5 | ¿puede producirse el mismo archivo por dos rutas legítimas? |
+| 6 | si sí, ¿qué relación existe entre ambas? |
+| 7 | ¿qué fuente tiene **autoridad sobre cada campo**? |
+| 8 | ¿cómo se **detecta divergencia** entre productores? |
+| 9 | ¿qué consumidor *downstream* recibe cada versión? |
+| 10 | ¿existe un **único punto de publicación**? |
+
+⚠️ La pregunta 7 conecta con el solapamiento semántico del merge de `:364`: si dos productores
+pueden escribir el mismo atributo semántico por vías distintas, la autoridad **debe estar
+declarada en el canon**, no emerger del orden de un `dict` ni de cuál script se ejecutó último.
 
 ## 5 · La distinción que se conserva
 
