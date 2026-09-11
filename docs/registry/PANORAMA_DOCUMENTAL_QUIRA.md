@@ -225,7 +225,29 @@ normalizada**, y ahí aplica `DOC-025`: *la misma regla definida dos veces es di
 > última capa conversacional tipo LLM de gestión pública. Si no es viable o si no sirve, me
 > avisa.»*
 
-**Sí es viable y sí sirve.** No son experimentos: son infraestructura con consumidores reales.
+**Sí es viable y sí sirve** — con la precisión que separa lo demostrado de lo supuesto:
+
+> **Neo4j y Supabase no son hipótesis arquitectónicas: su integración y su función prevista están
+> demostradas en el sistema. Su estado operativo, contenido y cobertura actuales permanecen
+> `NO DETERMINABLES` mientras no exista consulta verificable a las instancias remotas.**
+
+| | **DEMOSTRADO** | **NO DETERMINABLE** |
+|---|---|---|
+| **Neo4j** | integración en código · múltiples consumidores · loaders Cypher · conectores con fallback · `MISMA_FUENTE_QUE` · artefactos derivados de ejecuciones anteriores · papel arquitectónico para grafo/`MDN` | que la instancia responda hoy · que contenga los nodos y relaciones esperados · que los loaders se hayan ejecutado recientemente · que el grafo corresponda al estado actual del Gold Master · que `QUIRA IA` pueda consultarlo en producción |
+| **Supabase** | integración en código · referencias a `normativa_corpus`, `corpus`, `municipality_snapshots` y otras · rutas preparadas para consumirlas · arquitectura que lo contempla como persistencia/origen | contenido actual · cobertura · número de registros · **correspondencia entre `normativa_corpus` y el corpus normativo declarado** · frescura · disponibilidad |
+
+⚠️ `centrality_results.json` (2026-06-02) **demuestra que hubo una ejecución**, no que Neo4j esté
+operativo hoy. Y los *114 chunks RDC* conocidos de sesiones anteriores **no entran como evidencia
+de este barrido**: no se halló en él el artefacto que los acredita.
+
+⛔ Dos precisiones que quedan blindadas:
+
+- **«Neo4j significa» no implica que Neo4j sea dueño de toda la semántica de QUIRA.**
+- **Supabase como repositorio no equivale a autoridad epistemológica ni jurídica.** La autoridad
+  jurídica viene del ordenamiento y de la fuente oficial; Supabase es la infraestructura donde
+  QUIRA conserva y procesa esa representación.
+
+
 
 | | evidencia verificada |
 |---|---|
@@ -259,6 +281,70 @@ no que las bases respondan hoy ni qué volumen contienen. La única señal de ej
 
 > Verificar que responden, con qué datos y con qué cobertura, **exige conexión** y queda
 > explícitamente fuera de este registro.
+
+## 5-ter · `P1` · NO SE EJECUTÓ COMO SE PLANEÓ — y el motivo es el hallazgo
+
+`P1` debía normalizar «472 reglas». **Dos cosas lo impidieron, y ambas son resultado.**
+
+### 1 · El conteo de 472 era del instrumento, no del corpus
+
+| medición | qué contaba | resultado |
+|---|---|---|
+| primera | `**Regla…**` **+ listas numeradas en negrita** | 472 |
+| segunda | sólo declaraciones explícitas de regla | **89** |
+
+Las listas numeradas en negrita **no son declaraciones de regla**. Es el **cuarto fallo de
+instrumento** de esta auditoría, y confirma la advertencia del asesor: *472 detecciones ≠ 472
+reglas*.
+
+### 2 · El detector falló la validación · 3 de 5 casos conocidos
+
+Aplicando la regla —*validar contra casos conocidos antes de publicar el agregado*— **no se
+publica agregado**:
+
+| caso conocido | forma real en que vive | ¿capturado? |
+|---|---|---|
+| `Regla de Oro 1` · Excel = Estado | lista numerada en `CLAUDE.md` | ⛔ no |
+| `ADR-042 §6-quinquies` | **encabezado de sección** | ⛔ no |
+| `DOC-035` | entrada en **`doctrina.py`** (fuera del universo documental) | ⛔ no |
+| `BRN` invariantes `I1-I8` | tabla | ✅ sí |
+| «Regla de oro del plano» BRN | negrita | ✅ sí |
+
+> **Las reglas de QUIRA no tienen forma sintáctica única.** Viven como listas numeradas,
+> encabezados, tablas, blockquotes, entradas de Python y texto con `⛔`. **Ninguna detección
+> léxica puede inventariarlas**, y forzar una sería repetir el error que `DOC-035` prohíbe.
+
+### ★★ Y entonces apareció lo que hacía innecesaria la pregunta
+
+> **`app/agents/doctrina.py` ES el registro canónico de reglas: 37 entradas (`DOC-001`…`DOC-037`),
+> las 37 con verificador declarado.**
+
+Y `BOOT` fija el **criterio de admisión**, que ya existía:
+
+> *«doctrina → `doctrina.py` · **con verificador cambia de custodio; sin él, se queda aquí**.»*
+
+    regla CON verificador   →  migra a doctrina.py · custodia GATE
+    regla SIN verificador   →  permanece donde está
+
+Luego la pregunta de `P1` estaba mal planteada. No es *«¿cómo normalizo las detecciones?»* sino:
+
+> **¿Qué formulaciones dispersas merecen un verificador y, por tanto, la migración al registro
+> que ya existe para ellas?**
+
+Eso **no es un problema de script: es una decisión de gobernanza**, una por una, y el criterio
+—tener prueba que la vigile— ya está escrito.
+
+### Lo que `P1` sí deja
+
+| | |
+|---|---|
+| **capa A · evidencia bruta** | 89 ocurrencias con documento, línea, fragmento y marcas de contexto (histórica · negación · condicional · referencial · ejemplo) — **preservada, nada destruido** |
+| **capa B · normalización** | ⛔ **no producida.** El instrumento no supera la validación y el corpus no tiene forma canónica |
+| **el registro que sí existe** | `doctrina.py` · 37 reglas · 37 verificadores · custodia `GATE` |
+
+⚠️ De las 89 ocurrencias: **16 con marca histórica** · **26 con negación** · **25 condicionales**
+· **23 referenciales**. Ninguna de esas categorías equivale a «regla vigente», y por eso ni
+siquiera las 89 son un inventario: son **candidatas a examen**.
 
 ## 6 · Y la finalidad, dicha por la dirección
 
