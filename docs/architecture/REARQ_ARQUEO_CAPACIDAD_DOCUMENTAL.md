@@ -1335,6 +1335,73 @@ propagación, aunque de naturaleza distinta a la registrada.
 - la `BRN_MATRIZ_COBERTURA` y el `PROTOCOLO_CURACION_CORPUS_BRN` en su contenido
 - la relación entre las 8 CNO vigentes y los 9 silos de la matriz de cableado
 
+## 4-nonies · ⛔ AUDITORÍA DEL PROPIO ARQUEO · el barrido fue selectivo
+
+> Javo, 2026-09-10: *«su auditoría pareciera fuese direccionada o sesgada; pensaba que estaba
+> barriendo toda la documentación que tenemos, no con selectividad, sino toda, para que su
+> diagnóstico sea certero y no sigamos pagando estas consecuencias.»*
+
+**Tiene razón, y el inventario lo mide.**
+
+| | |
+|---|---|
+| documentación en las carpetas principales | **275 documentos · 3,1 MB** |
+| leídos durante `Q-M2` | ~15 |
+| **cobertura real del barrido** | **< 6 %** |
+
+El método fue **seguir pistas**, no barrer el corpus. Por eso los huecos aparecieron de uno en
+uno y la dirección tuvo que señalarlos tres veces. Eso no es auditoría: es reacción.
+
+### Lo que el barrido completo encontró, y que `Q-M2` reconstruyó desde cero
+
+| documento | fecha | lo que ya decidía |
+|---|---|---|
+| **`ADR-033` · Las dos verdades** | **2026-07-13** | **Motor de Evidencia + Motor de Evaluación** · tres capas epistemológicas con autoridad decreciente · **regla de PROVENIENCIA EXPLÍCITA de 3 tipos** |
+| **`ADR-042` · Consola de Monitoreo** | — | *«la **capa de adquisición** del Observatorio»* · la cadena completa · semántica de estados · atribución de evidencia · relación fuente↔dominio |
+
+### Los cuatro duplicados, con su original
+
+| lo que `Q-M2` «descubrió» | dónde ya estaba |
+|---|---|
+| «evidencia ≠ vara de evaluación» | `ADR-033` · **Motor de Evidencia / Motor de Evaluación** |
+| las «cinco dimensiones de procedencia» | `ADR-033` · **proveniencia explícita de 3 tipos**, con autoridad decreciente |
+| «dato disponible ≠ evidencia acreditada» | `ADR-033` · *«la analítica **hereda** la confianza de la evidencia sobre la que se calcula»* |
+| la **matriz de fuentes** por canal | `ADR-042 §7` · *«la relación fuente↔dominio es de **muchos a muchos**; NO existe correspondencia rígida `SERCOP → d02`»* |
+
+Y `ADR-042 §7` cierra con la frase que el asesor formuló como pregunta abierta y que ya era canon:
+
+> *«Es lo que distingue una **infraestructura de conocimiento** de **un conjunto de raspadores con
+> destino fijo**.»*
+
+### ⚠️ `DOC-035` duplica `ADR-042 §6-quinquies` · se subordina
+
+> `ADR-042 §6-quinquies` — **«Hallar un término prueba presencia; no hallarlo NO prueba
+> ausencia.»** Con casos reales: *«ya evitó cinco hallazgos falsos en el numeral 8»*.
+
+`DOC-035` se escribió ayer como hallazgo nuevo. **No lo es.** Lo que sí añade —y por eso no se
+retira, sino que **se subordina y declara su origen**— es el **plano**: `ADR-042 §6-quinquies`
+gobierna la búsqueda lexical **en los documentos del sujeto observado**; `DOC-035` aplica el mismo
+principio **al observador buscando en su propio corpus**. Mismo principio, dos planos.
+
+    ADR-042 §6-quinquies   →  el sujeto: no hallar el término ≠ ausencia de la obligación
+    DOC-035 (derivada)     →  el observador: no hallar el artefacto ≠ ausencia del artefacto
+
+Por `Regla de Oro 7`, lo que sólo renombra no entra. Esto no renombra: **extiende el plano** — pero
+tenía que haberlo declarado como derivación desde el primer momento, no como descubrimiento.
+
+### La lección, que es de método y no de contenido
+
+> **El barrido por pistas encuentra lo que la pista señala. El barrido completo encuentra lo que
+> uno no sabía que buscaba.** `DOC-036` ya ordenaba consultar el índice en su PASO 0 — y el índice
+> **no lista** `ADR-033` ni `ADR-042` en su tabla de autoridad, porque su tabla rutea por *tipo de
+> verdad*, no por *documento*. Consultar el índice era necesario y **no suficiente**.
+
+Corolario operativo, que `Q-M2` paga en carne propia:
+
+> **Antes de declarar un hallazgo arquitectónico, barrer el inventario COMPLETO de `docs/` y
+> `governance/` por título y propósito.** Son 275 documentos: leer sus títulos cuesta minutos;
+> reconstruir lo que ya decidían costó tres días.
+
 ## 5 · La distinción que se conserva
 
 | | |
