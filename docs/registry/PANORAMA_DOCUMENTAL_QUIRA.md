@@ -346,6 +346,89 @@ Eso **no es un problema de script: es una decisión de gobernanza**, una por una
 · **23 referenciales**. Ninguna de esas categorías equivale a «regla vigente», y por eso ni
 siquiera las 89 son un inventario: son **candidatas a examen**.
 
+## 5-quater · `P1.1` · EL RÉGIMEN DE CUSTODIA DE REGLAS
+
+> ⛔ **Corrección de partida:** `doctrina.py` es el registro canónico de **reglas verificadas**.
+> Que `BOOT` diga *«con verificador cambia de custodio»* es un **criterio de migración**, no una
+> demostración de que toda regla vigente ya esté allí. Lo que sigue reconcilia cuatro universos
+> **sin migrar, sin elevar y sin tocar código**.
+
+### `U1` · `doctrina.py` — 37 reglas
+
+| | |
+|---|---|
+| entradas | **37** (`DOC-001`…`DOC-037`) |
+| con verificador declarado | **37** |
+| **verificadores que NO existen en `tests/`** | **0** ✅ |
+
+> **El eje de verificación está sano: ninguna regla de `doctrina.py` promete una prueba que no
+> exista.**
+
+⚠️ Pero su **procedencia** revela otra cosa:
+
+> **31 de las 37 declaran fuente CONVERSACIONAL, no documental** — *«Javo, 2026-09-06»*, *«el
+> colega, 2026-09-05»*… Sólo 6 citan un rector (`ADR`, `PCD`, `.md`, Constitución, `CLAUDE`,
+> `BOOT`).
+
+Eso **no es un defecto**: `ADR-035 §5` establece que la IA propone y **el humano valida**, y la
+decisión del fundador es fuente legítima de autoridad. Pero fija la función real del artefacto:
+
+> **`doctrina.py` es el mecanismo que convierte decisión conversacional en regla verificada.** Es
+> lo que impide que la evolución hablada se pierda — el mismo problema que
+> `GM-OMEGA_GENEALOGIA_DOCUMENTAL` registró como *«no hay documento: la evolución fue
+> conversacional»*.
+
+### `U4` · Gates — 14 reglas ejecutables
+
+| gate | autoridad citada |
+|---|---|
+| `check_captura_dpe` · `check_corridas` · `check_errores_silenciosos` · `check_estados_captura` | `ADR-042` |
+| `check_consistencia` | `ADR-041` · `ADR-042` · `D-004` · `D-007` · `PCD-D07` |
+| `check_extraccion` | `ADR-042` · `D-004` · `D-007` · `OBS-027` |
+| `check_sat_brn` | `ADR-038` · `OBS-022` · `RO-VIII-003` |
+| `check_portabilidad` | `D-004` · `OBS-032` |
+| `check_health` | `D-015` |
+| `smoke_cajones` | `ADR-041` |
+| **`check_credenciales` · `check_epistemico` · `check_sistema_visual` · `registrar_ejecucion`** | ⛔ **ninguna** |
+
+★ **`ADR-042` gobierna 6 de los 14 gates.** Es el rector operativo real de la capa de adquisición
+— el mismo que una métrica defectuosa de este arqueo clasificó como «canon inerte» horas antes.
+
+⚠️ Los **4 sin ID citado no son reglas huérfanas**: declaran su origen **en prosa** dentro de su
+propio docstring —un incidente real de credenciales el 2026-08-06, el cierre epistemológico de
+`d01`, el mínimo WCAG de contraste, la división productor/lector—. Lo que les falta no es
+fundamento: es **identificador citable**.
+
+### Las relaciones entre universos
+
+| relación | estado |
+|---|---|
+| `U1 ∩ U4` | **1 verificada** — `check_health` cita `D-015`; el resto de gates cita ADR/OBS/PCD, no `DOC-*` |
+| `U1 − U2` | **31 de 37** — reglas verificadas cuya autoridad es conversacional, no documental |
+| `U2 − U1` | ⬜ **no medible con este instrumento** — las reglas del canon no tienen forma sintáctica única (`P1`) |
+| `U3 − U1` | ⬜ **no concluible** — las 89 son candidatas textuales, no reglas |
+| `U4 − U1 − U2` | **4 gates** con fundamento en prosa y sin identificador |
+
+### ★ Lo que `P1.1` deja demostrado
+
+> **QUIRA tiene al menos TRES regímenes de custodia de reglas, y son distintos por naturaleza,
+> no por descuido:**
+>
+> | régimen | dónde | cómo acredita | verificación |
+> |---|---|---|---|
+> | **doctrinal** | `doctrina.py` | 37 entradas con fuente y `por_que_ahi` | **prueba por regla** |
+> | **normativo** | `CNO`/`RO` en `docs/brn` | SHA al corpus jurídico · estado propio | invariantes `I1-I8` |
+> | **ejecutable** | `scripts/ci/check_*` | cita `ADR`/`OBS`/`D` o funda en prosa | el propio gate |
+>
+> **No deben forzarse a un mismo esquema de `frontmatter`.** La pregunta correcta no es *«¿tiene
+> frontmatter?»* sino: **¿cada clase de artefacto tiene un contrato de autoridad explícito y
+> verificable adecuado a su naturaleza?** Para estos tres, la respuesta es **sí**.
+
+### Y la regla que esta fase congela
+
+> **Un detector puede descubrir candidatos; sólo la cadena de autoridad, contexto, evidencia y
+> verificación convierte un candidato en regla gobernante.**
+
 ## 6 · Y la finalidad, dicha por la dirección
 
 > *«No es una auditoría, sino **elevar este ecosistema**… para potenciar, mejorar y elevar el nivel
