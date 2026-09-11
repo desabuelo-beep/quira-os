@@ -1226,6 +1226,115 @@ formula.
 - No abrió los 21 PDF sin capa de texto
 - **No tocó** ICPI, Gold Master, metodología ni ninguno de los artefactos bajo preservación
 
+## 4-octies · ⛔ LO QUE `Q-M2` OMITIÓ · LA CAPA NORMATIVA (BRN · CNO · RO)
+
+> Javo, 2026-09-10: *«consultar si revisó el tema del corpus normativo de Supabase. Y otra cosa
+> importante es toda la documentación que estructura la BRN y las CNO/RO. Lo menciono ya que **la
+> norma es la base de la administración pública**.»*
+
+**No estaba revisado.** Se declaró «fuera de universo» dos veces —en `C6` y en el registro de
+`D-015`— y declararlo no lo resuelve. Es la **segunda vez** que la dirección señala este hueco:
+ya lo había hecho semanas atrás —*«no estamos tomando en consideración al corpus normativo… que
+es la otra base medular de QUIRA»*—.
+
+Y tiene consecuencia directa sobre `C`: la síntesis recorre **adquisición → transformación →
+circulación de la evidencia**, y **no dice nada de la vara normativa contra la que esa evidencia
+se evalúa**.
+
+### Lo que existe, y es una capa entera con su propia arquitectura
+
+| rector | qué decide |
+|---|---|
+| `ADR-035` | **la BRN existe** · la ley como fuente autorizada de lógica de cumplimiento · la IA propone, el humano valida |
+| `ADR-037` | frame de 4 dimensiones (Gobierno · Territorio · Inteligencia · Norma) |
+| `ADR-038` | **el nodo es la REGLA (CNO), no el artículo** · 4 niveles · `MDN` |
+| `ADR-039` | Estado ≠ Configuración · compilación de la RO al motor |
+| `BRN_PLANO_MAESTRO` | el mapa que integra las cuatro |
+| `BRN_CICLO_VIDA_Y_MOLDE` · `BRN_GLOSARIO` · `BRN_MATRIZ_COBERTURA` · `PROTOCOLO_CURACION_CORPUS_BRN` | molde, vocabulario, cobertura y curación |
+
+### Las cinco capas · y dónde encaja lo que `Q-M2` sí estudió
+
+```
+   QUIRA IA · DOM · dashboards          ← CONSUMEN (explican, no deciden)
+   SAT  ── lleva solo el ID de su RO    ← MIDE
+   RO   ── variable · umbral · periodo  ← OPERACIONALIZA (no interpreta)
+   CNO  ── la cadena jurídica completa  ← REPRESENTA el Derecho
+   Corpus ── texto oficial + SHA256     ← PRUEBA (la verdad vive aquí)
+   ══════════════════════════════════════════════════════════════════
+   Gold Master ── motor inmutable       ← EJECUTA config COMPILADA
+```
+
+> **Regla de oro del plano:** el conocimiento **baja para probarse** (IA→RO→CNO→Corpus) y **sube
+> compilado para ejecutarse** (RO→compilador→Gold Master). **Nunca la BRN escribe al motor en
+> runtime.**
+
+⚠️ Esto reencuadra todo `Q-M2`: lo que el arqueo estudió —canales, custodias, procedencia— es la
+**capa de evidencia**. La BRN es la **capa de vara**. Un sistema que mide cumplimiento necesita
+las dos, y sólo una fue auditada.
+
+### Estado verificado del catálogo · 2026-09-10
+
+`docs/brn/` → **16 CNO · 13 RO**
+
+| CNO | n.º | familias |
+|---|---|---|
+| **vigente** | **8** | `I-001` · `III-001` · `IV-001` · `IX-001` · `VII-001..004` |
+| propuesta | 7 | `VIII-000..006` — toda la familia de participación |
+| `no_localizada_independiente` | 1 | `VIII-007` |
+
+| RO | n.º | |
+|---|---|---|
+| **vigente** | **7** | `I-001` · `I-002` · `III-001` · `IV-001` · `IX-001` · `VII-001` · `VII-005` |
+| `no_determinable` | 2 | `VII-002` · `VII-003` |
+| `no_observable` | 1 | `VII-004` |
+| propuesta | 3 | `VIII-001..003` |
+
+> ★ **La BRN aplica la misma doctrina epistemológica que el resto del sistema.** Sus estados no
+> son `ok`/`falla`: son `vigente` · `propuesta` · **`no_determinable`** · **`no_observable`** ·
+> `no_localizada_independiente`. El tercer estado está en el corazón de la vara, no sólo en la
+> medición.
+
+Las CNO vigentes anclan al corpus con **SHA** (6 a 16 referencias cada una); las RO no llevan SHA
+propio porque **derivan de su CNO**, que es la que prueba. Eso es el invariante `I5`: *toda RO
+deriva de una CNO, y sólo compila si ambas están vigentes*.
+
+### Ocho invariantes de plataforma, cada uno con su prueba
+
+`I1` sólo el `ROAdapter` lee el YAML · `I2` `ROModel` es el contrato interno inmutable · `I3` el
+compilador **no** tiene ramas por dominio · `I4` las RO no conocen el motor · `I5` toda RO deriva
+de una CNO · `I6` todo artefacto es idempotente · `I7` la firma depende sólo de la configuración
+ejecutable · `I8` incorporar un dominio deja la infraestructura intacta.
+
+Con **línea base v2.1 congelada** el 2026-07-20 y suite de regresión propia.
+
+### ★★ Y la corrección que esto obliga: `d04` no fue eliminado — **TRANSMUTÓ**
+
+> `ADR-035:14` — **«el DOM de Alertas Institucionales NO se elimina — TRANSMUTA en la BRN»**
+> *(decisión de Javo, 2026-07-15)*
+
+Todo el expediente `Q-M1` trató `d04` como *«decisión aprobada + implementación efectivizada +
+canon no propagado»*. **Es una lectura incompleta.** El canon sí registra qué pasó con `d04`, y
+no es una baja: es un **cambio de capa** — de dominio visible a biblioteca normativa.
+
+Y el `BRN_PLANO_MAESTRO` lo confirma en su hoja de ruta: *«d04 y los siguientes se modelan sin
+tocar infraestructura»* · *«siguiente: modelar **d04** u otro dominio — ya no valida la
+arquitectura, la ejerce»*.
+
+    lectura anterior   d04 = dominio dado de baja, canon sin propagar
+    lectura corregida  d04 = dominio TRANSMUTADO a la capa BRN, en cola de modelado
+
+⚠️ Lo que **sigue abierto** y esta corrección no resuelve: que la Constitución Ontológica lo
+mantenga como dominio en cuatro lugares. Si `d04` transmutó a otra capa, el canon ontológico
+debería reflejar **la transmutación**, no la permanencia — y eso sigue siendo deuda de
+propagación, aunque de naturaleza distinta a la registrada.
+
+### Lo que sigue sin inspeccionar, declarado
+
+- **el corpus normativo en Supabase** (`normativa_corpus`) — almacén remoto, requiere credenciales;
+  no consultado en vivo en ningún momento de `Q-M2`
+- la `BRN_MATRIZ_COBERTURA` y el `PROTOCOLO_CURACION_CORPUS_BRN` en su contenido
+- la relación entre las 8 CNO vigentes y los 9 silos de la matriz de cableado
+
 ## 5 · La distinción que se conserva
 
 | | |

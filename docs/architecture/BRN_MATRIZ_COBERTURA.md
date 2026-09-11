@@ -7,7 +7,7 @@
 
 ## Los 4 invariantes que cada dominio debe cumplir
 1. **El molde sirve** para ese dominio (la cadena se modela como CNO; la lógica, como RO).
-2. **El compilador no cambia al incorporar el dominio** (matiz del colega · 2026-07-18: el compilador
+2. **El compilador no cambia al incorporar el dominio** (matiz de javo · 2026-07-18: el compilador
    *sí* evolucionó durante el diseño, y era normal; el criterio de generalidad es que **agregar d05,
    d06 o d222 no toque su lógica** — `if dominio==...` = fuga).
 3. **El runtime tampoco cambia** (resuelve vigencia igual para todos).
