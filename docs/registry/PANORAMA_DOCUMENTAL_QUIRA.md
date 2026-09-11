@@ -87,15 +87,95 @@ puntúa alto sin estar obsoleto — es el caso de `CARTA_REARQUITECTURA` (23) y 
 > **La señal indica dónde mirar, no qué concluir.** `DOC-035` aplicado a esta misma métrica:
 > hallar el término prueba presencia del término, no obsolescencia del documento.
 
+## 4-bis · `P0` · CLASIFICACIÓN POR AUTORIDAD × USO EFECTIVO
+
+*(Encargo del asesor: clasificar cada documento, no cada palabra.)*
+
+**Método:** para cada documento se buscan sus referencias entrantes en **todo el repositorio**
+—`.md` · `.py` · `.yaml` · `.json`— usando **su identificador real** (`ADR-042`, `DOC-035`,
+`CNO-VII-001`…) y no sólo el nombre del archivo. Se distingue **autoridad declarada** (frontmatter
+`parent`) de **uso efectivo** (citado por ≥3 documentos, o por código, o por pruebas, o listado en
+el índice).
+
+| cuadrante | qué significa | docs | reglas |
+|---|---|---:|---:|
+| **A · CANON VIVO** | declara autoridad **y** se usa | **101** | 24 |
+| **B · CANON INERTE** | declara autoridad y **nadie lo invoca** | **14** | 3 |
+| **C · RECTOR DE FACTO** | **no declara** autoridad y **sí se usa** | **100** | **40** |
+| **D · SEDIMENTO** | no declara y no se usa | **61** | 20 |
+| *de los cuales* **huérfanos absolutos** | 0 citas · 0 código · 0 pruebas · fuera del índice | **24** | — |
+
+### ★ La deuda real: `C` · 100 rectores de facto
+
+Documentos que el sistema **invoca** sin que declaren de dónde deriva su autoridad:
+
+| reglas | código | pruebas | documento |
+|---:|---:|---:|---|
+| 3 | **8** | 0 | `NOMENCLATURA_CANONICA.md` |
+| 2 | **7** | 1 | `ARQUITECTURA_CANONICA.md` — rector del Nivel 2 del stack |
+| 4 | 2 | 0 | `architecture/CONSTITUCION_VISUAL_QUIRA.md` |
+| 0 | **9** | 1 | `brn/RO-VIII-003.yaml` |
+| 3 | 1 | 0 | `corpus_externo/QUIRA_STATE.md` |
+| 1 | 3 | 1 | `QUIRA_DOCTRINE_v1.md` — la doctrina fundacional |
+| 2 | 1 | 0 | `architecture/BRN_CICLO_VIDA_Y_MOLDE.md` |
+
+⚠️ Las `RO-*.yaml` aparecen aquí por el mismo motivo del §3: **declaran autoridad con otro
+esquema**. No son deuda: son un tipo distinto de artefacto y no deben contarse con este criterio.
+
+### `B` · Los 14 inertes — y qué son realmente
+
+`DEUDA_TECNICA_D07` (30K) · `ADR-048` · `DESCUBRIMIENTO_NORMATIVO_ADR031` · `OBS-025` · `OBS-019`
+· `ADR-034` · `GENEALOGIA_QUIRA` · dos prompts de arranque · **`CNO-VIII-004..007`** · y este
+mismo panorama, recién creado.
+
+> **Inerte ≠ inválido.** Los `CNO-VIII-*` están en `propuesta` —es coherente que nada los invoque
+> todavía—; los dos prompts son operativos de sesión; `OBS-019`/`OBS-025` son observaciones
+> cerradas. El cuadrante mide **invocación**, no validez.
+
+## 4-ter · ⛔ LA LECCIÓN · la métrica produjo el hallazgo, tres veces
+
+La primera versión de esta clasificación buscaba referencias **por nombre de archivo**. Como los
+ADR se citan por su número, el resultado fue catastrofista y **falso**:
+
+| | métrica defectuosa | identificadores reales |
+|---|---:|---:|
+| canon inerte | 73 | **14** |
+| canon vivo | 42 | **101** |
+| huérfanos absolutos | 81 | **24** |
+
+Y produjo una conclusión que llegué a escribir: *«`ADR-042`, el rector de la capa de adquisición,
+es canon inerte»*. **Falso**: ningún ADR tiene cero citas. Sólo 6 de 46 tienen tres o menos.
+
+> **Tercera vez en la misma sesión que una métrica mal construida genera el hallazgo:**
+>
+> | # | métrica | falso hallazgo |
+> |---|---|---|
+> | 1 | umbral `documentos < 258` | «el filtro de ruido dejó de funcionar» — el corpus había crecido |
+> | 2 | señal léxica de obsolescencia | documentos vivos que **hablan** de deprecar puntúan alto |
+> | 3 | referencias por nombre de archivo | «73 documentos de canon inerte» |
+>
+> **Regla que esto deja:** antes de publicar una cifra derivada de una métrica propia, **falsarla
+> contra un caso conocido**. `ADR-042` se citaba en decenas de sitios y la métrica decía cero: un
+> solo contraste lo habría revelado antes de escribir la conclusión.
+>
+> Es `ADR-042 §6-bis` —*«falsar el mecanismo antes de culpar al objeto»*— aplicado al instrumento
+> de esta auditoría.
+
 ## 5 · Lo que este panorama habilita
 
-No una poda. Tres preguntas que antes no se podían formular con evidencia:
+No una poda. Cuatro preguntas que antes no se podían formular con evidencia — y **ninguna se
+responde aquí**:
 
-| # | pregunta |
-|---|---|
-| 1 | ¿qué hacemos con **376 reglas sin rector declarado**? ¿elevarlas a ADR, derivarlas de uno, o retirarlas? |
-| 2 | los documentos que el `MASTER_INDEX` trata como rectores y no declaran autoridad — ¿**declaran** su autoridad, o el índice deja de tratarlos como tales? |
-| 3 | `sprint-b` · `sprint-d` · `corpus_externo` (72 documentos, 84 reglas) — ¿son **sedimento histórico** con valor genealógico, o material vivo sin registrar? |
+| # | pregunta | magnitud verificada |
+|---|---|---|
+| 1 | ¿los **100 rectores de facto** declaran su autoridad, se subordinan, se derivan o pierden esa función? | 100 docs · 40 reglas |
+| 2 | de las **472 detecciones de regla**, ¿cuántas son reglas sustantivas **distintas**? ¿cuántas duplican, contradicen o derivan de otra? | requiere `P1` |
+| 3 | los **24 huérfanos absolutos** — ¿histórico con valor genealógico, contenido absorbido, o retiro? | 24 docs |
+| 4 | **¿por qué el gate de gobernanza tiene un universo distinto del universo documental real?** ¿qué significa «activo» y quién lo determina? | 129 activos vs 276 documentos |
+
+⚠️ La pregunta 2 **no puede responderse con el conteo actual**: `472` son **detecciones léxicas**,
+no reglas normalizadas. La unidad de análisis correcta —`P1`— no es el documento sino **la regla
+normalizada**, y ahí aplica `DOC-025`: *la misma regla definida dos veces es divergencia latente*.
 
 ## 6 · Y la finalidad, dicha por la dirección
 
