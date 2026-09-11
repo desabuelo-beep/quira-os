@@ -1031,7 +1031,11 @@ Y por tanto la formulación que la evidencia autoriza:
 ⛔ **Ningún tipo se cierra por estar presente en `ProyecT/`.** Presencia histórica ≠ adquisición
 por el canal. Es la regla que `A` dejó y que aquí decide las nueve filas.
 
-### B.4 · Y la excepción que el barrido encontró
+### B.4 · Un hallazgo TRANSVERSAL encontrado durante B — **que no pertenece a B**
+
+> **Durante la investigación de `B` se identificó una capacidad automatizada multi-GAD que
+> adquiere información presupuestaria mediante endpoints de la DPE. Esa capacidad pertenece al
+> canal DPE, no al canal Web GAD, y por tanto NO modifica la conclusión de `B`.**
 
 `scripts/rc_scout.py` —motor de exploración municipal, endpoints de la DPE obtenidos por
 ingeniería inversa— **sí adquiere presupuesto de forma automatizada**:
@@ -1054,12 +1058,19 @@ Con productos ya materializados: `gad_municipales_all.json` (21) · `manabi_scan
 
 ### B.5 · Productor del estado canónico
 
-| tipo | productor del estado que llega al canon |
+| tipo | ruta observada hasta el estado vigente |
 |---|---|
-| los nueve | **`scripts/enrich_*.py` → Gold Master → `_update_snapshot.py`** |
+| los nueve | `scripts/enrich_*.py` → Gold Master → `_update_snapshot.py` |
 
-Ninguno pasa por `snapshot_pipeline`. Coherente con el hallazgo transversal de abajo: **el
-productor del estado vigente es el Gold Master, no la ruta de conectores.**
+⚠️ **Dos afirmaciones que NO se mezclan:**
+
+| | |
+|---|---|
+| «los nueve consumidores **llegan hoy** por `_update_snapshot.py`» | **HECHO OPERACIONAL DEMOSTRADO** |
+| «`_update_snapshot.py` es el **productor canónico** de esos nueve» | ⬜ **ABIERTO** — depende de la reconciliación de `A` |
+
+Ninguno pasa por `snapshot_pipeline`, y eso es coherente con el hallazgo transversal. Pero
+observar por dónde llega el estado **no declara quién tiene autoridad para producirlo**.
 
 ## 4-quinquies · ⚠️ HALLAZGO TRANSVERSAL · multiplicidad de productores del snapshot
 
@@ -1103,6 +1114,117 @@ Las diez preguntas que la reconciliación debe responder, **antes de tocar una l
 ⚠️ La pregunta 7 conecta con el solapamiento semántico del merge de `:364`: si dos productores
 pueden escribir el mismo atributo semántico por vías distintas, la autoridad **debe estar
 declarada en el canon**, no emerger del orden de un `dict` ni de cuál script se ejecutó último.
+
+## 4-septies · C · SÍNTESIS DE `Q-M2` · 2026-09-10
+
+> ⛔ **Qué es esta sección y qué no es.** Sintetiza lo demostrado en `A` y `B`, separa las brechas
+> y formula las preguntas que quedan abiertas. **No crea arquitectura normativa.** Que la DPE sea
+> la única ruta automatizada encontrada **no la convierte en la arquitectura que QUIRA deba
+> adoptar**: primero diagnóstico, después diseño.
+
+**La pregunta que `A` + `B` permiten abordar:**
+
+> **¿Puede QUIRA transformar evidencia procedente de distintos sistemas de origen y modalidades
+> de adquisición en un estado canónico común, conservando la procedencia necesaria para que otros
+> dominios la reutilicen sin volver a adquirirla?**
+
+### C1 · Capacidad de ADQUISICIÓN
+
+| canal | estado demostrado |
+|---|---|
+| **DPE** | **DEMOSTRADA · multi-GAD** — `S7` con 9 etapas y gates · `rc_scout` con endpoints de entidad y presupuesto |
+| **SERCOP** | **DEMOSTRADA como ruta codificada**; su activación en el estado canónico queda **abierta** |
+| **CPCCS** | conector demostrado; **el dominio que debería alimentar llega por otra vía** |
+| **Web GAD** | 🔴 **NO DEMOSTRADA** como canal reproducible |
+| **`ProyecT/`** | **adquisición histórica humana demostrada** — cuatro vías, febrero 2026 |
+| **Pasiva** | canal **viable** demostrado (un caso); operacionalización general **abierta** |
+| **Ciudadana** | **declarada** en canon; implementación **no demostrada** |
+
+⚠️ Redacción forense de la conclusión más citable de este arqueo:
+
+> **Dentro del universo inspeccionado en `Q-M2`, la única ruta de adquisición automatizada
+> multi-GAD identificada y demostrada corresponde a infraestructura de la DPE.**
+
+No dice que sea la única que QUIRA pueda tener. Dice que es la única que se encontró y se pudo
+demostrar en el universo inspeccionado (`DOC-035`/`DOC-036`).
+
+### C2 · Capacidad de TRANSFORMACIÓN
+
+```
+captura → normalización → materialización → evidencia canónica → Gold Master
+```
+
+| tramo | dónde está demostrado |
+|---|---|
+| captura → normalización | `S7` (9 etapas) · SERCOP (`_step_normalize_sources`, conserva envoltorio) |
+| normalización → materialización | `S7` ✅ · SERCOP **sólo como código**, ausente del snapshot vigente |
+| materialización → **evidencia canónica** | 🔴 **sólo `S7`** — 422 artefactos con SHA, inventario y estados |
+| evidencia → Gold Master | los nueve tipos de `B`, vía `enrich_*` |
+
+> **La existencia del código no prueba que la ruta sea productiva.** `SERCOP` tiene la
+> transformación escrita y el estado vigente no la contiene; `Web GAD` no tiene el primer tramo.
+> **Sólo `S7` recorre la cadena entera hasta evidencia canónica.**
+
+### C3 · Capacidad de CIRCULACIÓN y REUTILIZACIÓN
+
+```
+EVIDENCIA → DOMINIO A → MISMA_FUENTE_QUE → DOMINIO B
+```
+
+| | estado |
+|---|---|
+| mecanismo de reutilización | **EXISTE** — `MISMA_FUENTE_QUE`, 3 relaciones en `scripts/cypher/` |
+| principio declarado | **EXISTE** — *«la cédula se extrae una vez, no dos»* |
+| contrato de consulta interdominio | **DECIDIDO Y SELLADO** — `ADR-053 §6-bis`, con sus dos condiciones |
+| **reutilización efectiva** | 🔴 **NO DEMOSTRADA** — `ADR-053` lo midió: *«consultas dominio → dominio: NINGUNA»* |
+
+> **Existencia de mecanismo de reutilización ≠ reutilización efectiva demostrada.** Es la misma
+> distinción que decidió `A` (conector ≠ dominio alimentado) y `B` (consumo ≠ adquisición).
+> Aparece por tercera vez, en tres capas distintas — y eso ya no es casualidad: **es la forma que
+> tiene este sistema de estar construido.**
+
+### ★ C4 · La respuesta, con el grado que la evidencia autoriza
+
+De las cuatro opciones que `Q-M2` dejó abiertas —`A` transversal · `B` emergente · `C` sólo en
+algunos canales · `D` compatibles sin infraestructura común—, lo demostrado apunta a **`B`**, y
+conviene decirlo con sus palabras exactas:
+
+> **QUIRA posee una arquitectura conceptual de evidencia común y acreditada. Su realización está
+> distribuida entre múltiples productores, canales, generaciones de adquisición y niveles de
+> procedencia, con madureces desiguales. Una sola ruta —DPE— recorre hoy la cadena completa hasta
+> evidencia canónica; las demás están codificadas, son históricas o permanecen declaradas.**
+
+Y la reformulación del problema de `REARQ` que esto produce:
+
+> El problema quizá no sea **«construir una capa documental transversal»** — que supondría que no
+> existe. Puede ser **«unificar bajo una arquitectura común las distintas rutas existentes de
+> adquisición, acreditación, materialización y reutilización, sin destruir su procedencia
+> histórica ni atribuirles capacidades que no poseen»**.
+
+⛔ Eso es una **hipótesis de rediseño**, no una decisión. `REARQ` la evaluará; `Q-M2` sólo la
+formula.
+
+### C5 · Las preguntas que quedan abiertas para `REARQ`
+
+| # | pregunta | de dónde sale |
+|---|---|---|
+| 1 | ¿cuál es el productor canónico del snapshot? | `A` · hallazgo transversal, 10 preguntas |
+| 2 | ¿qué fuente tiene autoridad cuando dos describen el mismo fenómeno? | `A` · solapamiento semántico del merge |
+| 3 | ¿debe `Web GAD` convertirse en canal reproducible, y con qué diseño ante 222 formatos? | `B` |
+| 4 | ¿se construye el contrato de consulta interdominio, y cuándo? | `ADR-053 §6-bis` · condición: dos dominios migrados |
+| 5 | ¿qué propiedades de la adquisición fundacional pasan a capacidad sistémica? | `ProyecT/` · genealogía ≠ arquitectura |
+| 6 | ¿se implementa la superficie de QUIRA Ciudadana? | `ADR-046` declarado sin construir |
+| 7 | ¿qué hacer con `S6` SIGAD y `S9` ODS, silos sin curador? | matriz de silos |
+| 8 | ¿cómo se lleva a los demás canales el régimen de procedencia que `S7` demostró? | `C2` |
+
+### C6 · Lo que `Q-M2` NO hizo, declarado
+
+- No recorrió `ProyecT/` artefacto por artefacto (`D`, pendiente y deliberadamente último)
+- No midió `CPCCS` con la profundidad de `SERCOP`
+- No verificó el canal `PAC` vía `capturar_sercop_holding`
+- No consultó Supabase ni Neo4j en vivo
+- No abrió los 21 PDF sin capa de texto
+- **No tocó** ICPI, Gold Master, metodología ni ninguno de los artefactos bajo preservación
 
 ## 5 · La distinción que se conserva
 
