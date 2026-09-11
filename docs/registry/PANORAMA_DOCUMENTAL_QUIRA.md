@@ -105,7 +105,49 @@ el índice).
 | **D · SEDIMENTO** | no declara y no se usa | **61** | 20 |
 | *de los cuales* **huérfanos absolutos** | 0 citas · 0 código · 0 pruebas · fuera del índice | **24** | — |
 
-### ★ La deuda real: `C` · 100 rectores de facto
+### `P0.1` · CALIBRACIÓN — lo que estos cuadrantes NO autorizan a decir
+
+**1 · El universo, congelado y reconciliado.**
+
+```
+P0 inicial      275 documentos
+P0 corregido    276 documentos
+Δ = +1          este mismo PANORAMA_DOCUMENTAL_QUIRA.md, creado entre ambos barridos
+```
+
+Queda registrado para que dentro de tres días nadie audite el instrumento en lugar del objeto.
+**`U-P0 = 276`**, con los quince directorios declarados en la cabecera.
+
+**2 · «Rector de facto» es una interpretación demasiado fuerte para los 100.**
+
+Lo demostrado es más modesto y más defendible:
+
+> **Existe un conjunto de documentos cuyo papel operativo o arquitectónico NO queda explicado por
+> el esquema formal de autoridad que usa el gate.**
+
+Un documento citado por código puede ser cuatro cosas distintas, y el conteo no las separa:
+
+| | |
+|---|---|
+| **rector efectivo no declarado** | gobierna una decisión o regla |
+| **derivado correctamente usado** | deriva de otro que sí declara |
+| **artefacto operativo** | catálogo, configuración, plantilla, dato — **consumido, no normativo** |
+| **referencia incidental** | mención histórica o de contexto |
+
+> ⛔ **Uso en código ≠ autoridad normativa.** `RO-VIII-003.yaml` tiene 9 usos en código y **no es
+> un rector**: es una regla operativa que el compilador consume. La etiqueta «rector de facto»
+> se reserva para `P2`, cuando exista evidencia de que el documento **gobierna** algo.
+
+**3 · El conteo de referencias no distingue el TIPO de vínculo.** Hoy suma por igual `cita ·
+deriva_de · gobernado_por · implementa · verifica · sustituye · mención incidental`. Mientras no
+se separen, **100 es una señal, no una conclusión**.
+
+**4 · Y la regla que gobierna todo lo que sigue:**
+
+> **Ningún documento se depreca, fusiona, eleva o elimina como consecuencia exclusiva de una
+> métrica automática.** La máquina descubre · la evidencia contextualiza · **la gobernanza decide**.
+
+### El cuadrante `C` · los de mayor peso
 
 Documentos que el sistema **invoca** sin que declaren de dónde deriva su autoridad:
 
@@ -176,6 +218,47 @@ responde aquí**:
 ⚠️ La pregunta 2 **no puede responderse con el conteo actual**: `472` son **detecciones léxicas**,
 no reglas normalizadas. La unidad de análisis correcta —`P1`— no es el documento sino **la regla
 normalizada**, y ahí aplica `DOC-025`: *la misma regla definida dos veces es divergencia latente*.
+
+## 5-bis · Neo4j y Supabase · respuesta a la dirección
+
+> Javo, 2026-09-10: *«recuerde, tenemos Supabase y también Neo4j, que se creó para QUIRA IA como
+> última capa conversacional tipo LLM de gestión pública. Si no es viable o si no sirve, me
+> avisa.»*
+
+**Sí es viable y sí sirve.** No son experimentos: son infraestructura con consumidores reales.
+
+| | evidencia verificada |
+|---|---|
+| **Neo4j** | usado por **14+ módulos**: catálogos de `d01`/`d07`/`_template` · `persistencia` · `doctrina.py` · `fondos_matcher` · dos conectores (`neo4j_crdc`, `neo4j_qtmp`) **con fallback declarado** · 7 cypher loaders · `MISMA_FUENTE_QUE` · `compute_centrality` |
+| **Supabase** | usado por **14+ módulos** · **7 tablas**: `normativa_corpus` (126 menciones en código) · `corpus` · `municipality_snapshots` · `pdot_indicadores` · `holding_structured_data` · `fondos_convocatorias` · `documents` |
+
+Y el reparto de papeles ya está fijado por el `DEPENDENCY_ATLAS`:
+
+> **«Graphify produce · Gephi explica · Neo4j SIGNIFICA.»** Neo4j es el que porta el significado
+> —causalidad, circuitos, dependencias normativas—, y `ADR-038 §9` recomienda montar sobre él el
+> **MDN**, el grafo de dependencias normativas de la BRN.
+
+### Lo que NO está construido, y está declarado así en el canon
+
+> `ADR-033:56` — **«QUIRA IA es OTRA capa — la CONVERSACIONAL (arquitectónica · aún por
+> construir)»**: el usuario conversa sobre todo lo que hay en QUIRA, **anclado a evidencia e
+> índices, sin alucinar**.
+
+    Neo4j + Supabase   →  EXISTEN, integrados, con consumidores
+    QUIRA IA           →  la capa que los coronaría · declarada PENDIENTE
+
+No es un olvido ni un abandono: es una capa **decidida y no construida**, igual que la superficie
+de QUIRA Ciudadana. La infraestructura que necesitaría **ya está puesta**.
+
+### ⚠️ Y lo que NO se puede afirmar desde aquí
+
+**Estado operativo en vivo: `NO DETERMINABLE`.** No se consultó ninguna de las dos bases —son
+remotas y requieren credenciales que no se manipulan—. Lo verificado es **integración en código**,
+no que las bases respondan hoy ni qué volumen contienen. La única señal de ejecución hallada es
+`data/centrality_results.json`, del **2026-06-02**: análisis de grafo ejecutado hace tres meses.
+
+> Verificar que responden, con qué datos y con qué cobertura, **exige conexión** y queda
+> explícitamente fuera de este registro.
 
 ## 6 · Y la finalidad, dicha por la dirección
 
