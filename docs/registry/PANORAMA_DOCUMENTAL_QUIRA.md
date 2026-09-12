@@ -429,6 +429,259 @@ fundamento: es **identificador citable**.
 > **Un detector puede descubrir candidatos; sólo la cadena de autoridad, contexto, evidencia y
 > verificación convierte un candidato en regla gobernante.**
 
+## 5-quinquies · `P2/P3` · AUTORIDAD, CUSTODIA, VERIFICACIÓN Y EJECUCIÓN
+
+> ⛔ **Corrección de partida, y es sobre lo que este mismo registro afirmó.** `P1.1` cerró
+> diciendo: *«¿cada clase de artefacto tiene un contrato de autoridad explícito y verificable
+> adecuado a su naturaleza? Para estos tres, la respuesta es sí.»* **Esa frase generalizaba un
+> subconjunto inspeccionado.** Se restringe a: *«para el subconjunto inspeccionado se demostró la
+> existencia de contratos diferenciados; su cobertura sobre el universo completo no estaba
+> medida.»* `P2/P3` la mide.
+
+### La distinción que hace posible medir — cuatro preguntas, no una
+
+«Autoridad» no es una propiedad: son **cuatro preguntas independientes**, y confundirlas es lo que
+produjo los hallazgos falsos de `P0` y `P1`.
+
+| Pregunta | Qué determina | Puede estar sana mientras otra falla |
+|---|---|---|
+| **¿Quién autoriza?** | autoridad | ✅ |
+| **¿Dónde reside?** | custodia | ✅ |
+| **¿Cómo se verifica?** | mecanismo de verificación | ✅ |
+| **¿Dónde se ejecuta?** | implementación efectiva | ✅ |
+
+Una regla puede tener **autoridad** en una decisión humana validada, **custodia** en `doctrina.py`,
+**verificación** en un `verificador`, y **ejecución** en un gate — sin que ninguna de las cuatro
+tenga por qué compartir forma documental con las otras. *(Formulación del colega · 2026-09-12.)*
+
+### La matriz de reconciliación · los tres regímenes contra las cuatro preguntas
+
+| | **doctrinal** | **normativo** | **ejecutable** |
+|---|---|---|---|
+| **¿Quién autoriza?** | decisión humana validada · `ADR-035 §5` — **31/37 fuente conversacional**, 6/37 cita un rector | corpus jurídico vía `CNO` — **107 eslabones con SHA** | `ADR`/`OBS`/`D` citado en **10/14**; fundamento en prosa en **4/14** |
+| **¿Dónde reside?** | `doctrina.py` · **37** entradas | `docs/brn/*.yaml` · **16 CNO + 13 RO** | `scripts/ci/` · **14** archivos |
+| **¿Cómo se verifica?** | verificador por regla · **37/37 existen**, 0 inexistentes | `I5` **13/13** ✅ · `Regla 3` **16/16** ✅ | el propio gate, con **tres estados** |
+| **¿Dónde se ejecuta?** | `pytest tests/` en CI ✅ | `test_brn_lector` + gate `check_sat_brn` en CI ✅ | CI en bucle · **12/14** |
+| **Forma del contrato** | entrada Python con `fuente` y `por_que_ahi` | **YAML nativo** con `authority:` | docstring + `exit code` |
+
+### ★ El hallazgo que corrige `P1.1` — y lo hace por la vía contraria a la esperada
+
+**No apareció un régimen roto. Apareció que el instrumento con que se miden los regímenes
+pertenece a uno solo de ellos.**
+
+Al medir «documentos sin frontmatter» el detector reportó **31 archivos de `docs/brn` sin
+autoridad declarada**. Es falso: **29 de los 30 YAML de la BRN declaran `authority:`** — como
+**YAML nativo**, sin los delimitadores `---` del frontmatter markdown. El detector exigía
+`startswith("---")`.
+
+> **Aplicar el instrumento del régimen documental al régimen normativo fabrica un hueco que no
+> existe.** Es la demostración empírica de por qué no deben forzarse a un mismo esquema: no es una
+> preferencia de estilo, es que **la medición cruzada produce falsos positivos**.
+
+Cifra corregida: **133 artefactos declaran autoridad** (104 por frontmatter + 29 por YAML), no 104.
+
+### `A` · Autoridad DECLARADA — el árbol está bien formado
+
+| | |
+|---|---|
+| `authority.parent` distintos | **13** |
+| **que resuelven a un artefacto real** | **13 / 13** ✅ — cero huérfanos |
+| raíz del árbol | `identity/CONSTITUCION_INSTITUCIONAL.md` · `parent: null` **declarado**, no omitido |
+| concentración | **76 de 104** cuelgan de `GOVERNANCE-001` → `governance/GOVERNANCE_CHARTER.md` |
+
+⚠️ Matiz: 4 de los 13 padres resuelven **por nombre de archivo**, no por `id:` declarado
+(`ADR-023`, `ADR-051`, `PROTOCOLO_CURACION_DOMINIO`, `REARQUITECTURA_QUIRA`). El eslabón se
+sostiene por convención de nombre, que es más débil que un identificador declarado.
+
+### `B` · Autoridad EFECTIVA — quién gobierna de hecho
+
+| entrantes | documento | ¿nombrado en el Index? |
+|---:|---|---|
+| **52** | `ADR-035` · Biblioteca de Reglas Normativas (BRN) | ⛔ **no** |
+| 31 | `ADR-023` · Arquitectura de tres niveles | ⛔ no |
+| 20 | `ADR-024` · Radar Nacional | ✅ sí |
+| 20 | `ADR-042` · Consola de Monitoreo | ⛔ no |
+| 17 | `ADR-038` · Cadenas Normativas Operativas | ⛔ no |
+
+> **`ADR-035` es el documento más citado de todo QUIRA — 52 referencias entrantes — y no aparece
+> nominalmente en la tabla de autoridad.**
+
+⚠️ **Límite declarado:** 2 stems colisionan (`QUIRA_STATE`, `README`) y su conteo **no es
+atribuible**. Verificado que **no son duplicados**: `governance/QUIRA_STATE.md` 637 b ·
+`docs/corpus_externo/QUIRA_STATE.md` 17.204 b, SHA distintos. Son 4 documentos afectados de 276.
+
+### `C` · Autoridad REGISTRADA — `MASTER_INDEX` contra la realidad
+
+**Lo que está sano:**
+
+```
+rutas citadas por el Index que resuelven en disco …… 28 / 28   ✅
+```
+
+Ninguna ruta rota. *(Tres se dieron por ausentes en la primera pasada: estaban citadas por
+nombre corto heredando la ruta del vecino. Existen las tres.)*
+
+**Los dos defectos, y son distintos:**
+
+| defecto | naturaleza |
+|---|---|
+| 3 citas por nombre sin ruta | el Index **no es auditable por máquina** hoy |
+| **cero filas para la BRN** | hueco de **registro de autoridad** |
+
+`BRN` aparece 5 veces en el Index — **siempre como atributo de un dominio** (*«cadena BRN»*,
+*«familia BRN CNO-VIII»*), **nunca como rector**. No existe la fila que responda *«¿dónde vive la
+verdad normativa?»*.
+
+> ★ **Y entonces los dos huecos son el mismo hueco.** `ADR-035` no está en el Index porque **la
+> BRN entera no está en el Index**: ni el plano maestro, ni los 16 `CNO`, ni las 13 `RO`, ni los
+> invariantes `I1-I8`.
+
+### ★★ Pero la BRN sí está registrada — en el OTRO registro
+
+Antes de llamar a eso un vacío de gobernanza, se verificó `registry/registry.yaml`. **La BRN está
+ahí**: `canon_cno` **12** · `canon_ro` **8** — 20 activos normativos, y el gate `check_health`
+los verifica:
+
+```
+[5/5] Cadena de autoridad (Carta de Gobernanza Art. 1)
+      activos registrados : 129
+      declaran autoridad  : 129 (100.0%)
+      cadena reconstruible: 111 aristas, 0 rotas          ✅
+```
+
+> **QUIRA tiene DOS registros de autoridad, con propósitos distintos, y ninguno declara al otro:**
+>
+> | | `registry/registry.yaml` | `governance/QUIRA_MASTER_INDEX.md` |
+> |---|---|---|
+> | **qué es** | registro de **activos y cadena de autoridad** | tabla de **routeo humano** |
+> | **responde** | *«¿de qué cuelga este artefacto?»* | *«¿dónde vive la verdad de X?»* |
+> | **lector** | máquina · gate `check_health [5/5]` | persona, al empezar a trabajar |
+> | **cobertura** | 129 activos · 111 aristas · 0 rotas | 33 documentos nombrados |
+> | **¿verificado?** | ✅ por gate, en cada CI | ⛔ por nadie |
+
+Esto responde la pregunta que el colega dejó abierta —*«¿el `MASTER_INDEX` ya es la capa que
+resuelve esa autoridad?»*— y la respuesta es **más limpia de lo esperado: no, porque esa capa ya
+existe y es otra.** El `MASTER_INDEX` nunca fue el registro de autoridad: es el **DNS**, y lo dice
+en su primera línea (*«NO explica, NO define, NO interpreta — ROUTEA»*).
+
+**El hueco real, entonces, no es que falte autoridad. Es que el routeo humano no cubre el régimen
+normativo**, mientras el registro de máquina sí. Quien llega al proyecto y pregunta *«¿dónde vive
+la norma?»* no encuentra respuesta en el sitio donde el canon le manda preguntar.
+
+**Y la cobertura del registro de máquina también es parcial**, medida contra disco:
+
+| clase | registrados | en disco | |
+|---|---:|---:|---|
+| `canon_cno` | 12 | 16 | faltan 4 |
+| `canon_ro` | 8 | 13 | faltan 5 |
+| `gate` | 1 | 14 | faltan 13 |
+
+⚠️ Que la cadena esté **0 aristas rotas** acredita **lo registrado**, no el universo — es
+literalmente la advertencia que el propio CI imprime: *«un mecanismo de cobertura no es autoridad
+sobre su propia cobertura»*. **El registro está íntegro; su cobertura es otra pregunta, y esta es
+la primera vez que se mide.**
+
+### `D` · Custodia NORMATIVA — medida por primera vez
+
+| invariante | resultado |
+|---|---|
+| **`I5`** · toda RO deriva de una CNO | **13 / 13** ✅ |
+| **`Regla de Oro 3`** · sin SHA no hay eslabón | **16 / 16** CNO · **107 eslabones** ✅ |
+
+Los `sha256` son **hashes truncados a 12 hex**: identificadores de chunk del corpus vectorizado
+— la *«ley vectorizada»* de Supabase. **Trazables por diseño, no verificables desde disco.**
+
+**Y aquí el régimen normativo muestra una capacidad que los otros dos no tienen:**
+
+| estado de la RO | n | qué significa |
+|---|---|---|
+| `vigente` + CNO `vigente` | **7** | compila al motor |
+| `propuesta` | 3 | existe, no gobierna aún (familia `VIII`) |
+| **`no_determinable`** | 2 | la regla existe; **no puede evaluarse** |
+| **`no_observable`** | 1 | requiere otra fuente, **no otro cálculo** |
+
+> **La BRN es el único régimen que puede decir «esta regla existe y no puede evaluarse».** El
+> tercer estado de QUIRA, aplicado a la norma. `doctrina.py` y los gates no tienen esa
+> expresividad: una regla ahí está o no está.
+
+### `E` · Custodia EJECUTABLE — y el fallo que casi se publica al revés
+
+Se midió *«¿quién invoca cada gate?»* buscando rutas literales y el resultado fue **8 de 14 sin
+ejecutor**. Era falso: el workflow los corre **en un bucle sobre `scripts/ci/check_*.py`**, con la
+ruta en una variable.
+
+```
+CI ejecuta …… check_health explícito + los 12 check_*.py en bucle + pytest completo
+fuera del glob …… registrar_ejecucion.py · smoke_cajones.py
+```
+
+★ **Y el bucle implementa los tres estados de QUIRA en la propia infraestructura:**
+
+| exit | tratamiento en CI |
+|---|---|
+| `0` | verificado |
+| **`2`** | *«NO DETERMINABLE — este gate no pudo verificar, y por tanto **NO acredita nada**»* |
+| otro | hallazgos · falla |
+
+Con la nota explícita: *«un verde acredita lo inspeccionado, nunca el resto»*. **La doctrina del
+tercer estado no vive sólo en el canon: está ejecutada en el CI**, y ningún barrido anterior lo
+había registrado.
+
+**El único hueco que sobrevive en este eje:** `registry/registry.yaml` registra **1 de 14** gates
+(`GATE-check_health`). No es falta de ejecución — es falta de **registro**.
+
+### Los huecos que sobreviven a la falsación
+
+| # | hueco | naturaleza | tipo |
+|---|---|---|---|
+| **1** | **el routeo humano no cubre el régimen normativo** — ni la BRN ni `ADR-035` (52 entrantes) tienen fila en el `MASTER_INDEX`, aunque **sí estén** en `registry.yaml` | routeo, no autoridad | `NO_RUTEADA` |
+| **2** | **cobertura del registro de máquina**: 12/16 `CNO` · 8/13 `RO` · **1/14** gates | cobertura | `PARCIAL` |
+| 3 | 2 gates fuera del glob de CI (`registrar_ejecucion`, `smoke_cajones`) | ejecución | `PARCIAL` |
+| 4 | 3 citas del Index no resolubles por máquina | auditabilidad | `FORMA` |
+| 5 | 4 padres resueltos por nombre, no por `id:` | fuerza del eslabón | `FORMA` |
+
+**Ninguno es una regla gobernando sin autoridad.** Los cinco son de **registro, routeo y forma**,
+no de fundamento. El experimento que el colega llamó decisivo —*«¿son los 37 un subconjunto correcto o
+se solapan con BRN/ADR/gates?»*— responde: **no se solapan. Son tres poblaciones disjuntas con
+contratos distintos**, y `U1 ∩ U4` sigue siendo **1** (`check_health` ↔ `D-015`).
+
+### La genealogía del método — que no se borra
+
+```
+472 detecciones  →  89 candidatos  →  falsaciones y calibraciones  →  37 reglas verificadas
+                                                                   →  reconciliación de regímenes
+```
+
+Y en `P2/P3`, **nueve falsaciones del propio instrumento**, todas antes de publicar:
+
+| # | lo que el instrumento dijo | lo que era |
+|---|---|---|
+| 6 | 3 rutas del Index rotas | existían las tres · citadas por nombre corto |
+| 7 | 13 RO con CNO inexistente | **13/13 correctas** · comparación invertida |
+| 8 | 0/16 CNO con SHA | **16/16** · el SHA es de 12 hex, no 64 |
+| 9 | 8 gates sin ejecutor | **12/14 corren en CI** · el bucle usa variable |
+| 10 | 31 YAML de BRN sin autoridad | **29/30 la declaran** · en YAML nativo |
+| 11 | «la BRN no está registrada» | **`registry.yaml` registra 20 activos normativos** · existe un segundo registro |
+
+> Seis de seis habrían sido **hallazgos graves y falsos**. La `9` habría afirmado lo contrario de
+> la verdad; la `11` habría acusado de vacío de gobernanza a un régimen que **tiene su propio
+> registro verificado por gate**. **El instrumento de auditoría es, sistemáticamente, la fuente
+> de error más probable de esta auditoría** — ya es la conclusión metodológica más repetida del
+> barrido, y la única que no ha fallado ninguna vez.
+>
+> ⛔ Y el patrón tiene una forma constante: **cada falso hallazgo nació de buscar una cosa en la
+> forma de otra** — la ruta literal cuando estaba en una variable, el hash de 64 cuando era de 12,
+> el frontmatter markdown cuando era YAML nativo, un registro cuando había dos. **No falló la
+> búsqueda: falló la suposición sobre la forma.**
+
+### Condición de salida hacia `Q-M2-C`
+
+> **No se avanza hasta poder explicar, de cualquier regla: quién la autoriza, dónde reside, cómo
+> se verifica y dónde se ejecuta — sin exigir que los tres regímenes adopten la misma forma
+> documental.** Con `P2/P3` esa condición se cumple para los tres. Queda pendiente **`P4`**
+> (obsolescencia y conflictos semánticos) y **`P5`** (decisiones de gobernanza), donde se resuelve
+> el hueco `1`.
+
 ## 6 · Y la finalidad, dicha por la dirección
 
 > *«No es una auditoría, sino **elevar este ecosistema**… para potenciar, mejorar y elevar el nivel
@@ -440,5 +693,10 @@ Elevar el ecosistema **incluye crear y elevar capacidades**, y también **retira
 sostiene ninguna**.
 
 ---
-*Panorama documental · 275 documentos · 2,83 MB · 472 reglas · Dylus Lab © 2026 · insumo para
-decisión de gobernanza, no decisión.*
+*Panorama documental · 276 documentos + 30 YAML BRN + 14 gates · 133 con autoridad declarada ·
+37 reglas verificadas · 3 regímenes de custodia · Dylus Lab © 2026 · insumo para decisión de
+gobernanza, no decisión.*
+
+> El pie anterior decía **«472 reglas»**. Esa cifra fue falsada en `§5-ter` por este mismo
+> documento y se corrige aquí: era del instrumento, no del corpus. **Un registro que conserva en
+> su pie una cifra que su cuerpo desmintió enseña la cifra, no la corrección.**
