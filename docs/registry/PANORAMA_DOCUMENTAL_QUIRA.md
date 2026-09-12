@@ -929,13 +929,23 @@ en artefactos vigentes, cada uno con su prueba**.
 | par | ¿mismo fenómeno? | ¿misma unidad? | ¿misma condición? | ¿misma temporalidad? | veredicto |
 |---|---|---|---|---|---|
 | `0,9719` ↔ `0,4630` | sí | sí | ⛔ **NO — 21 CD vs 24 CD** | sí | **no hay conflicto: dos universos.** Y el alto es inválido: midió *encontrados*, no *exigibles* |
-| `0,4646` ↔ `0,4448` | sí | sí | ⛔ **NO — hay un cambio acreditado entre ambas** | ⛔ no | **no hay conflicto: el expediente cita el valor anterior** |
+| `0,4646` ↔ `0,4448` | sí | sí | ⛔ **NO MISMA CONDICIÓN DEMOSTRADA** | ⛔ no | **no hay conflicto semántico demostrado**: corresponden a estados/versiones temporales distintos, y el expediente cita el anterior |
 | `0,4630` ↔ `0,4646` | sí | sí | ❓ **NO DETERMINABLE** | ❓ | 🔴 **abierto — y ya registrado** |
 
 > ★ **Las cinco preguntas, aplicadas al caso más consecuente de QUIRA, no producen ningún
-> conflicto semántico.** Disuelven dos pares aparentes y dejan uno solo sin explicar — que
+> conflicto semántico demostrado.** Disuelven dos pares aparentes y dejan uno sin explicar — que
 > **`D-015` ya tenía registrado, con su ataque, desde el 2026-09-09**: *«`0,4630` equivale a
 > `0,4646` … 🔴 NO DEMOSTRADO»*.
+
+> ### ⛔ Y `P4` NO cierra `D-015`.
+>
+> **Lo que `P4` puede afirmar:** *no hay conflicto semántico demostrado entre `0,4646` y `0,4448`.*
+> **Lo que `P4` NO puede afirmar:** *que la transición `0,4646 → 0,4448` esté reconciliada.*
+>
+> Lo acreditado es la **modificación del expediente y del criterio**, no la **reproducción
+> computacional de ambos estados**. `D-015` sigue abierta exactamente donde estaba: *«tiene corrida
+> sellada que lo reproduzca — **PENDIENTE**»*. **Una fase de diagnóstico no puede cerrar una deuda
+> de reproducción por el camino de no haber hallado un conflicto.**
 
 **Y `D-015` es más precisa de lo que este barrido habría sido**, porque separa dos propiedades que
 un detector habría colapsado: *existe el valor* `DEMOSTRADO` · *tiene procedencia documental*
@@ -957,11 +967,37 @@ está escrita dentro del propio documento (`ADR-041:263`).
 | **`DESCUBRIMIENTO_NORMATIVO_ADR031`** | — | — | — | — | ⛔ **el caso se DISUELVE.** No es `NO_VIGENTE`; `AUTORIDAD_PROPOSICIONES:292` lo trataba como vigente y **tenía razón**. Instrumentación de `C10`, *bloqueada por `R-E`* |
 | **`ADR-019` `STRONGLY_SUPPORTED` · `ADR-022` `SUPPORTED`** | ✅ sí | ✅ sí | — | ✅ sí | ⚖️ **VIGENTE con estado epistémico deliberado.** ⛔ **No es deuda:** `Regla de Oro 10` los mantiene así a propósito |
 | **`OBS-012` «SHA256 obsoletos»** | — | — | ✅ sí | — | ✅ **RESUELTO el mismo día (2026-07-23)**, con propagación documentada a 4 artefactos. **El título describe el hallazgo, no un pendiente** — clasificar por título habría sido el error |
-| **135 documentos sin estado** | ⛔ no | ✅ sí | — | ✅ sí | 🔬 **DATOS, no normas** (59 en `architecture`, mayoría volcados del Gold Master). Exigirles estado sería el error de forma otra vez |
+| **135 sin estado declarado** *(agregado, no caso individual)* | ❓ | ❓ | ❓ | ❓ | ⛔ **NO CLASIFICABLE con esta evidencia.** Lo demostrado: *no presentan estado en el régimen de metadatos inspeccionado*. **Eso no autoriza a llamarlos datos** — ver recuadro |
 
-**Cuatro de los seis casos no eran lo que parecían.** Dos se disuelven por completo
-(`DESCUBRIMIENTO_NORMATIVO`, `OBS-012`), uno no es deuda sino capacidad (`ADR-019`/`ADR-022`), y
-uno invierte su lectura (`corpus_externo`).
+> ### ⛔ Y aquí el informe estuvo a punto de cometer el error que acaba de documentar
+>
+> Se escribió *«135 documentos sin estado = **datos, no normas**»*. **Ese salto es exactamente el
+> patrón que `P4` descubrió**: concluir la naturaleza de un artefacto a partir de la ausencia de
+> una representación esperada. Un documento sin estado declarado puede ser dato, corpus externo,
+> artefacto histórico, material explicativo, instrumento, documentación auxiliar **o una pieza
+> normativa cuyo régimen expresa el estado de otra manera** — que es precisamente lo que ocurrió
+> con los 30 `.yaml` de la BRN en este mismo apartado.
+>
+> **Enunciado correcto:** *135 artefactos no presentan estado declarado en el régimen de metadatos
+> inspeccionado. Su ausencia de estado no autoriza a clasificarlos.* Clasificarlos exige
+> inspeccionar su régimen propio, y eso **no se hizo**.
+
+### ⚠️ Y los «seis casos» no son seis piezas homogéneas
+
+La lista mezcla naturalezas distintas, y conviene decirlo para que el informe sea auditable:
+
+| # | caso | qué es | evidencia | clasificación | cierre |
+|---|---|---|---|---|---|
+| 1 | `corpus_externo` · 3 docs `Alpha 0.9` | **conjunto** de 3 artefactos | 11 de 13 citas son internas al propio cuerpo | 🏛️ histórico · útil · sin autoridad actual | ✅ clasificado |
+| 2 | `ADR-040` | **artefacto** único | autodeclarado revertido · citado por `CNO-VII-001` | 🏛️ histórico con función explicativa activa | ✅ clasificado |
+| 3 | `DESCUBRIMIENTO_NORMATIVO_ADR031` | **artefacto** único | el `NO_VIGENTE` es de un bloque de ejemplo | ⛔ **el supuesto no se sostiene** | ✅ disuelto |
+| 4 | `ADR-019` · `ADR-022` | **dos artefactos**, no uno | `Regla de Oro 10` los sostiene así | ⚖️ vigentes · estado epistémico deliberado | ✅ clasificado — **no es deuda** |
+| 5 | `OBS-012` | **artefacto** único | `RESUELTO 2026-07-23`, propagación a 4 artefactos | ✅ resuelto en origen | ✅ cerrado |
+| 6 | 135 sin estado | **agregado del barrido**, no un caso | ausencia en un régimen de metadatos | ⛔ **no clasificable con esta evidencia** | ⚠️ **queda abierto** |
+
+**De los cinco casos documentales (1-5), cuatro no eran lo que parecían**: dos se disuelven
+(`3`, `5`), uno es capacidad y no deuda (`4`), y uno invierte su lectura (`1`). **El sexto no es
+un caso: es un resultado agregado**, y se devuelve a `P5` sin clasificar.
 
 ### ⛔ Y una corrección que alcanza a `P2/P3`
 
@@ -970,10 +1006,20 @@ El ranking de **autoridad efectiva** publicado en `§5-quinquies B` cuenta refer
 entrantes** — pero **11 provienen de `docs/corpus_externo/` citándose a sí mismo**. No es
 autoridad efectiva: es **un cuerpo congelado con alta densidad interna**.
 
-> **La métrica de grado entrante mide citación, no gobierno.** Para los `ADR` —citados desde todo
-> el repositorio— el sesgo es menor, **pero no se midió**, y por tanto **el ranking de
-> `§5-quinquies B` se lee como orden de citación, no como orden de autoridad**. `ADR-035` sigue
-> siendo el más citado; que sea *el que más gobierna* **no está demostrado por esa cifra**.
+La métrica se publicó bajo el rótulo **«autoridad efectiva»**. Su nombre correcto es otro:
+
+> ### **densidad de referencias entrantes dentro del universo inspeccionado.**
+
+No es lo mismo, y la diferencia importa porque confirma la separación que esta serie viene
+sosteniendo: **`uso ≠ autoridad ≠ gobierno ≠ utilidad ≠ vigencia`** — cinco preguntas, otra vez,
+donde se estaba usando una sola cifra.
+
+⚠️ **Qué invalida y qué no.** **No invalida `P2/P3`**: las mediciones siguen siendo correctas —
+28/28 rutas, 13/13 padres, `I5` 13/13, 12/14 gates en CI, los dos registros. **Invalida
+únicamente la lectura semántica de esa cifra.** Para los `ADR` —citados desde todo el
+repositorio— el sesgo es previsiblemente menor, **pero no se midió**. Por tanto el ranking de
+`§5-quinquies B` se lee como **orden de citación**, no de autoridad: `ADR-035` sigue siendo el más
+citado del corpus, y que sea *el que más gobierna* **no está demostrado por esa cifra**.
 
 ### `P4` · CERRADO
 
@@ -983,15 +1029,58 @@ autoridad efectiva: es **un cuerpo congelado con alta densidad interna**.
 | continuidad (`d04`) | ✅ **continuidad funcional demostrada**, no identidad |
 | sustitución | ✅ **por sección, bidireccional, con acuse** — 4 casos íntegros |
 | vocabularios de estado | ✅ **cuatro**, uno de ellos deliberadamente incompleto |
-| **conflicto** | ✅ **ejecutado** — cero nuevos · 1 abierto ya registrado · 1 cerrado |
-| **seis casos** | ✅ **clasificados** — cuatro no eran lo que parecían |
+| **conflicto** | ✅ **ejecutado** — cero nuevos demostrados · 1 abierto ya registrado · 1 cerrado en origen |
+| **casos** | ✅ **5 documentales clasificados** · ⚠️ **1 agregado devuelto sin clasificar** |
 
 **Nada congelado fue modificado. No se creó doctrina, taxonomía ni registro nuevo.**
 
-> Y la lección que la fase deja, formulada por el colega: **el riesgo principal de QUIRA ya no es
-> que falte documentación — es interpretar incorrectamente documentación que ya existe.** Las
-> quince falsaciones de este barrido son la evidencia: **ninguna encontró un vacío; todas
-> encontraron una lectura equivocada de algo que estaba escrito.**
+### El alcance exacto de este cierre
+
+> **`P4` cierra como cierre de la prueba acotada y de la clasificación documental. NO cierra como
+> «se demostró que no existen conflictos semánticos en QUIRA».**
+>
+> Lo demostrado, en su forma falsable: **en el conjunto de candidatos de alta consecuencia
+> inspeccionado mediante la `PRUEBA 2`, no apareció ningún conflicto semántico nuevo demostrado.**
+
+Y la frontera del caso `d04`, que conviene dejar tabulada:
+
+| afirmación | estado |
+|---|---|
+| una función del antiguo `d04` permanece | ✅ **DEMOSTRADO** |
+| esa función pasa hoy por `BRN/SAT` | ✅ **DEMOSTRADO** |
+| existe continuidad funcional **parcial** | ✅ **DEMOSTRADO** |
+| `d04` completo = BRN | ❌ |
+| BRN es el nuevo nombre de `d04` | ❌ |
+| todo el significado histórico de `d04` sobrevive | ❌ |
+
+**`continuidad funcional ≠ continuidad ontológica ≠ identidad arquitectónica`.**
+
+### La lección, sin el absoluto
+
+El riesgo principal de QUIRA ya no parece ser que falte documentación: **es interpretar
+incorrectamente documentación que ya existe.** Las quince falsaciones lo evidencian.
+
+> ⛔ Pero **no todo lo que apareció era un error de lectura.** La primera redacción decía
+> *«ninguna encontró un vacío; todas encontraron una lectura equivocada»*, y eso es demasiado
+> absoluto: induciría a creer que **todo** problema aparente se disuelve al releer. **No es así.**
+>
+> **Las falsaciones de `P4` mostraron que varios aparentes vacíos eran errores de representación o
+> de lectura contextual. Los casos que sobrevivieron permanecen como cuestiones abiertas, y no
+> fueron convertidos artificialmente en conclusiones.**
+
+Lo que sobrevive, y no es poco:
+
+| | |
+|---|---|
+| `0,4630 ↔ 0,4646` | reconciliación **abierta** (`D-015`) |
+| reproducción de `0,4448` | **pendiente** — corrida sellada |
+| uso efectivo externo de varios documentos | **menor** de lo que la métrica sugería |
+| autoridad por citación | **no demostrada** como gobierno |
+| continuidad completa de `d04` | **no demostrada** — sólo una función |
+| 135 artefactos | **sin clasificar** |
+
+> **`P4` no modificó el sistema para que la evidencia encajara. Modificó las conclusiones del
+> auditor para que encajaran con la evidencia.**
 
 ## 6 · Y la finalidad, dicha por la dirección
 
