@@ -641,9 +641,21 @@ había registrado.
 | 5 | 4 padres resueltos por nombre, no por `id:` | fuerza del eslabón | `FORMA` |
 
 **Ninguno es una regla gobernando sin autoridad.** Los cinco son de **registro, routeo y forma**,
-no de fundamento. El experimento que el colega llamó decisivo —*«¿son los 37 un subconjunto correcto o
-se solapan con BRN/ADR/gates?»*— responde: **no se solapan. Son tres poblaciones disjuntas con
-contratos distintos**, y `U1 ∩ U4` sigue siendo **1** (`check_health` ↔ `D-015`).
+no de fundamento.
+
+> ⛔ **Y aquí este registro se corrige a sí mismo antes de que la frase cuaje.** Se escribió: *«no
+> se solapan. Son tres poblaciones disjuntas»*, apoyado en `U1 ∩ U4 = 1`. **Esa inferencia no se
+> sostiene.** `U1 ∩ U4` mide **co-representación por citación** —cuántas reglas aparecen
+> simultáneamente bajo dos criterios de búsqueda—, y de ahí **no se sigue independencia
+> ontológica**. Dos reglas pueden gobernar el mismo fenómeno sin citarse jamás.
+>
+> Es `DOC-033` aplicada a los regímenes en lugar de a los indicadores: *«la identidad o semejanza
+> nominal no autoriza a inferir identidad, dependencia, complementariedad ni redundancia»* — y su
+> simétrica también vale: **la ausencia de co-citación tampoco autoriza a inferir independencia.**
+>
+> Lo demostrado se restringe a: **`U1 ∩ U4 = 1` · una sola regla está representada bajo ambos
+> criterios** (`check_health` ↔ `D-015`). **Si los tres regímenes tienen relación semántica entre
+> sí es una pregunta abierta, y es materia de `P4`.**
 
 ### La genealogía del método — que no se borra
 
@@ -674,6 +686,18 @@ Y en `P2/P3`, **nueve falsaciones del propio instrumento**, todas antes de publi
 > el frontmatter markdown cuando era YAML nativo, un registro cuando había dos. **No falló la
 > búsqueda: falló la suposición sobre la forma.**
 
+### 📌 Criterio transversal que estas once falsaciones producen
+
+> **La ausencia de una forma esperada no demuestra la ausencia de la función.**
+>
+> Inspeccionar un término, un patrón, un `frontmatter`, un hash de cierta longitud o una llamada
+> literal autoriza a concluir ausencia **únicamente respecto de esa representación**. La función
+> puede existir bajo otra forma, en otro registro o en otro régimen.
+
+*(Formulación del colega · 2026-09-12. Es el equivalente documental de `DOC-035`, que gobierna el
+alcance de búsqueda. **Se registra aquí, NO se eleva a `doctrina.py`:** `P4` observa y clasifica;
+`P5` decide. Queda propuesta como candidata doctrinal con verificador pendiente.)*
+
 ### Condición de salida hacia `Q-M2-C`
 
 > **No se avanza hasta poder explicar, de cualquier regla: quién la autoriza, dónde reside, cómo
@@ -681,6 +705,164 @@ Y en `P2/P3`, **nueve falsaciones del propio instrumento**, todas antes de publi
 > documental.** Con `P2/P3` esa condición se cumple para los tres. Queda pendiente **`P4`**
 > (obsolescencia y conflictos semánticos) y **`P5`** (decisiones de gobernanza), donde se resuelve
 > el hueco `1`.
+
+## 5-sexies · `P4` · SEMÁNTICA, CONTINUIDAD Y CONFLICTO
+
+> 🔒 **Congelamiento vigente durante toda esta fase** (instrucción del colega · 2026-09-12): **no
+> se modifica `doctrina.py`, `registry.yaml`, la BRN, el `MASTER_INDEX`, los gates ni los
+> workflows como consecuencia de `P4`. P4 observa y clasifica; `P5` decide.**
+
+### ★★ Y por segunda vez, lo que `P4` iba a construir YA EXISTE
+
+`P1` se detuvo al descubrir que el registro canónico de reglas ya existía. **`P4` se detiene
+igual:** la taxonomía semántica está escrita desde antes, en `CARTA_REARQUITECTURA_QUIRA §2`.
+
+| | Categoría | Qué es | Qué se hace |
+|---|---|---|---|
+| 🏛️ | **HISTÓRICO** | existió y ya no opera | se PRESERVA — nunca se borra |
+| ⚖️ | **NORMATIVO VIGENTE** | lo fija una norma en vigor | se ACATA mientras rija |
+| 🔬 | **EMPÍRICAMENTE ÚTIL** | funciona y hay evidencia de ello | se CONSERVA si supera validación |
+| 🔧 | **DECISIÓN DE DISEÑO ANTIGUA** | se eligió, no se dedujo | queda ABIERTA a rediseño |
+| 📜 | **SUPERADO METODOLÓGICAMENTE** | fue correcto y el conocimiento lo desplazó | ANTECEDENTE, no regla |
+
+Con diez reglas de refactor, cada una anclada a doctrina (`DOC-013`, `DOC-014`, `DOC-015`,
+`DOC-016`, `DOC-027`, `DOC-028`, Reglas de Oro 2·7·8·9).
+
+### Y la Carta es más fina que la lista propuesta, en el punto decisivo
+
+> ### ⚠️ `NO_DETERMINADO` **no es una sexta categoría. Es un estado de evidencia transversal.**
+> *«Una pieza tiene **categoría** y **estado** a la vez.»*
+
+| Pieza | Categoría | Estado de evidencia |
+|---|---|---|
+| `Constitución Art. 233` | ⚖️ normativo vigente | ✅ fuente primaria localizada |
+| peso `C_i = 0,20` | 🔧 decisión de diseño | ❓ justificación no determinada |
+
+**La lista de nueve estados propuesta para `P4` pone `NO_DETERMINABLE` como una etiqueta más, al
+lado de `VIGENTE` y `HISTÓRICO`. Eso colapsa dos ejes en uno** — exactamente el error que `P2/P3`
+acaba de corregir al separar autoridad · custodia · verificación · ejecución. **La Carta ya lo
+había separado**, y además cierra el silogismo que la fusión habilita:
+
+> *«Sin esta separación, el refactor derivaría al silogismo falso: «no está justificado → se puede
+> quitar». `DOC-027` lo prohíbe.»*
+
+**Lo que sí falta en la Carta**, y es la contribución real de la propuesta: `TRANSMUTADO`,
+`OPERACIONAL`, `EXPLICATIVO`, `CONFLICTIVO`, `VIGENTE DERIVADO`. Y hay un motivo de alcance:
+**la Carta clasifica CONSTRUCTOS del modelo analítico** (`C_i`, `V_i`, pesos, escala `AVEP`),
+**no artefactos documentales.** Aplicarla a documentos es una extensión, no una lectura.
+
+### `PASO 1` · Lo que cada artefacto declara de sí mismo
+
+```
+universo …………… 276          declaran estado …… 147          no declaran …… 129
+```
+
+En **cuatro formas distintas** — 73 en línea de negrita · 50 `frontmatter estado` · 23
+`frontmatter status` · 1 en tabla. **Y en cuatro vocabularios que corresponden a regímenes
+distintos:**
+
+| vocabulario | ejemplos | régimen |
+|---|---|---|
+| **deliberativo** | `RATIFICADO` · `APROBADO` · `Aceptado` · `CONGELADO` | canon (ADR/PCD) |
+| **normativo** | `vigente` · `propuesta` · `no_determinable` · `no_observable` | BRN |
+| **epistémico** | `CONFIRMED` · `SUPPORTED` · `STRONGLY_SUPPORTED` | observaciones e hipótesis |
+| **operativo** | `ABIERTO` · `CERRADO` · `EJECUTADO` · `PENDIENTE` | expedientes y registros |
+
+> ★ **`P1.1` encontró tres regímenes de custodia de REGLAS. `P4` encuentra cuatro vocabularios de
+> ESTADO, y no son los mismos tres.** El **epistémico** —`CONFIRMED`/`SUPPORTED`/
+> `STRONGLY_SUPPORTED`— no había aparecido en ningún barrido previo, y no es descuido: la
+> **Regla de Oro 10** lo ordena — *«no congelar teoría antes que el grafo hable: `ADR-019` sigue
+> `STRONGLY_SUPPORTED` a propósito»*. **Un estado que se conserva deliberadamente incompleto es
+> una capacidad, no una deuda.**
+
+### `PRUEBA 1` · Sustitución — y el mecanismo real de QUIRA
+
+Barrido de **14 familias léxicas** sobre 276 `.md` + 30 `.yaml`:
+
+```
+850  ocurrencias con señal de sustitución, en 191 documentos
+ 39  nombran al menos un identificador
+  3  nombran dos o más en la misma línea      ← y ninguna de las 3 es una sustitución
+```
+
+Con eso se concluyó «cero pares demostrados». **Era falso, y es la falsación 12.** El instrumento
+exigía dos identificadores en una línea; **QUIRA no sustituye así.**
+
+> ★ **QUIRA sustituye POR SECCIÓN, y lo declara en AMBOS extremos, con acuse.**
+
+| A · queda superado | → | B · supera | dónde lo declara A | dónde lo declara B |
+|---|---|---|---|---|
+| `ADR-024 §Capa C` | → | `ADR-044` | `ADR-024:15,19` | `ADR-044:116` ✅ al sellar |
+| `ADR-043 §2` fila Adquisición | → | `ADR-045` | `ADR-043:15` | `ADR-045:209` ⏳ al sellar |
+| `ADR-045 §10` cláusula del nombre | → | `ADR-046` | — | `ADR-046:105,178` |
+| `ARQUITECTURA_CANONICA §SaaS` | → | `ADR-024` + `BOOT §TESIS` | `ARQUITECTURA_CANONICA:48` | — |
+
+**Ningún documento de canon ha sido sustituido entero.** Lo que se supera es **una sección
+nombrada**, el resto sigue vigente y el propio documento lo dice arriba: *«el resto de este
+documento sigue vigente»*. Y el que supera **lo registra en su tabla de cierre con casilla de
+verificación**. Eso es un protocolo, no una costumbre — y ningún barrido lo había descrito.
+
+⚠️ **Las 850 señales restantes hablan del OBJETO, no del canon**: ordenanzas derogadas, normas
+reformadas, datos migrados. Es el límite ya declarado en `§4`, ahora **medido**: de 850 señales
+léxicas de obsolescencia, **las que tocan al canon son 4**.
+
+### `PRUEBA 3` · Continuidad funcional — el caso `d04`
+
+**Declaración:** `ADR-035:14` y `§3` — *«el **DOM de Alertas Institucionales NO se elimina —
+TRANSMUTA en la BRN**»* (Javo · 2026-07-15). No es interpretación: es literal.
+
+**Función que sobrevivió**, verificada por mecanismo y no por nombre:
+
+```
+ANTES  tablero de alertas sueltas, generadas por reglas escritas en el sistema
+AHORA  SAT derivada de RO derivada de CNO derivada del corpus, con SHA por eslabón
+```
+
+`ADR-035:99` lo formula así: *«se cataloga su artículo, se valida su regla, y el SAT aparece»*. La
+función **alertar sobre incumplimiento normativo** sigue viva; lo que murió es **que la alerta
+naciera en el sistema en vez de en la ley**. Custodio actual: gate `check_sat_brn`, que cita
+`ADR-038` · `OBS-022` · `RO-VIII-003`.
+
+> **`d04` = 📜 SUPERADO METODOLÓGICAMENTE en su forma · ⚖️ NORMATIVO VIGENTE en su función.**
+> Ninguna de las dos etiquetas sola lo describe, y por eso `TRANSMUTADO` sí hace falta.
+
+### ⛔ Y la trampa en la que `P4` iba a caer — el canon ya la había cerrado
+
+`app/agents/canon.py:299`:
+
+> *«El CNO se alcanza por la RO que deriva de él: **el vínculo lo declara el canon, no se infiere
+> del numeral romano (`CNO-IV` es `d02`, no `d04`)**.»*
+
+Contar la familia `CNO-IV` como evidencia de que `d04` sigue vivo habría sido exactamente
+`DOC-033` —*la semejanza nominal no autoriza a inferir pertenencia ontológica*— cometida sobre
+numerales. **El código lo previó y lo dejó escrito en un comentario.** Es la tercera vez en esta
+auditoría que la respuesta ya estaba escrita antes de que la pregunta se formulara.
+
+### Casos abiertos que `P4` deja identificados, sin clasificar
+
+| caso | evidencia | por qué no se clasifica aquí |
+|---|---|---|
+| **`docs/corpus_externo/` · 3 docs `Alpha 0.9 — fundacional pre-Neo4j`** | `QUIRA_CAUSAL_MODEL_v1.0` tiene **13 referencias entrantes**, más que muchos `ADR` vigentes | autodeclaran anterioridad a la arquitectura actual **y** siguen siendo citados: `HISTÓRICO` y `EFECTIVO` a la vez. Requiere la prueba de continuidad, no una etiqueta |
+| **`ADR-040` `⛔ REVERTIDO`** | se autodeclara falso; `CNO-VII-001` lo cita como escarmiento que *«bloqueó el Catálogo 26 días»* | un artefacto **revertido como regla** y **vivo como antecedente citado por norma vigente** |
+| **`DESCUBRIMIENTO_NORMATIVO_ADR031` `NO_VIGENTE`** | único documento que se declara así | falta determinar si algo depende de él |
+| **`ADR-019` `STRONGLY_SUPPORTED` · `ADR-022` `SUPPORTED`** | `Regla de Oro 10` los mantiene así **a propósito** | ⛔ **no son deuda.** Clasificarlos como incompletos sería romper la regla que los protege |
+| **`OBS-012` · «BRN con SHA256 obsoletos»** | título declara obsolescencia en la cadena normativa | toca la `Regla de Oro 3`; se examina con la BRN delante, no por su título |
+| **129 documentos sin estado declarado** | 59 en `docs/architecture`, mayoría volcados del Gold Master | **son datos, no normas.** Exigirles estado sería el error de forma otra vez |
+
+### Lo que `P4` deja demostrado
+
+1. **La taxonomía existe** (`Carta §2`), y separa **categoría × estado de evidencia** — un eje que la propuesta de nueve etiquetas habría vuelto a colapsar.
+2. **Hay un cuarto vocabulario de estado, el epistémico**, y expresa una capacidad deliberada.
+3. **La sustitución en QUIRA es por sección, bidireccional y con acuse.** Cuatro casos, todos íntegros.
+4. **`d04` TRANSMUTÓ**, con función demostrable y custodio actual — no se infirió del nombre.
+5. **De 850 señales léxicas de obsolescencia, 4 tocan al canon.** El resto habla del objeto observado.
+
+### Lo que `P4` NO resolvió, y queda para `P5`
+
+- La **`PRUEBA 2` de conflicto** (fenómeno · unidad · condición · temporalidad · función) **no se ejecutó**: requiere pares candidatos, y ningún instrumento léxico puede proponerlos sin repetir el error de `IFE`/`IEF` que `DOC-033` registra. **Se declara no ejecutada, no vacía.**
+- La **extensión de la taxonomía a artefactos documentales** (`TRANSMUTADO`, `OPERACIONAL`, `EXPLICATIVO`, `CONFLICTIVO`, `VIGENTE DERIVADO`) es **decisión de gobernanza**, no medición.
+- Los **seis casos abiertos** de arriba.
+- El **hueco 1 de `P2/P3`** — la BRN sin fila de routeo.
 
 ## 6 · Y la finalidad, dicha por la dirección
 
