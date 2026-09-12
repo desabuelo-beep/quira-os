@@ -757,6 +757,9 @@ había separado**, y además cierra el silogismo que la fusión habilita:
 universo …………… 276          declaran estado …… 147          no declaran …… 129
 ```
 
+> ⛔ **Cifra corregida en `§5-septies`: son 141 y 135.** Seis de los 147 se leyeron de bloques de
+> ejemplo citados dentro del documento, no de su cabecera.
+
 En **cuatro formas distintas** — 73 en línea de negrita · 50 `frontmatter estado` · 23
 `frontmatter status` · 1 en tabla. **Y en cuatro vocabularios que corresponden a regímenes
 distintos:**
@@ -818,13 +821,28 @@ ANTES  tablero de alertas sueltas, generadas por reglas escritas en el sistema
 AHORA  SAT derivada de RO derivada de CNO derivada del corpus, con SHA por eslabón
 ```
 
-`ADR-035:99` lo formula así: *«se cataloga su artículo, se valida su regla, y el SAT aparece»*. La
-función **alertar sobre incumplimiento normativo** sigue viva; lo que murió es **que la alerta
-naciera en el sistema en vez de en la ley**. Custodio actual: gate `check_sat_brn`, que cita
-`ADR-038` · `OBS-022` · `RO-VIII-003`.
+`ADR-035:99` lo formula así: *«se cataloga su artículo, se valida su regla, y el SAT aparece»*.
+Custodio actual: gate `check_sat_brn`, que cita `ADR-038` · `OBS-022` · `RO-VIII-003`.
 
-> **`d04` = 📜 SUPERADO METODOLÓGICAMENTE en su forma · ⚖️ NORMATIVO VIGENTE en su función.**
-> Ninguna de las dos etiquetas sola lo describe, y por eso `TRANSMUTADO` sí hace falta.
+> ⛔ **Y aquí este registro se corrige otra vez.** Se escribió *«la función alertar sobre
+> incumplimiento normativo sobrevive como SAT»*. **Eso afirma identidad, y sólo se demostró
+> continuidad.** Enunciado correcto:
+>
+> ### **Se demostró continuidad funcional de la detección y señalamiento normativo mediante la cadena `CNO → RO → SAT`. NO se demostró que el mecanismo actual sea semánticamente idéntico al antiguo `d04`.**
+>
+> **`continuidad funcional ≠ identidad funcional completa`.** El `d04` original pudo tener
+> presentación, semáforos, eventos, priorización, interfaz y lógica institucional propias; lo
+> verificado es que **una** función nuclear —que la señal derive de norma— vive hoy en la cadena
+> BRN. **Qué más tenía `d04` y si algo de eso no tiene sucesor es una pregunta abierta**, y
+> responderla exige el inventario del `d04` histórico, que este barrido no hizo.
+>
+> Por tanto **no se dice «`d04` vive en la BRN»**, sino: **una función demostrable del antiguo
+> `d04` transmutó hacia la arquitectura normativa `BRN/SAT`.**
+
+> **En lo demostrado: 📜 SUPERADO METODOLÓGICAMENTE en su forma · ⚖️ NORMATIVO VIGENTE en la
+> función que se pudo rastrear.** Ninguna etiqueta sola lo describe — por eso `TRANSMUTADO` hace
+> falta; y `TRANSMUTADO` **no significa «equivalente»**, significa «hay continuidad demostrada de
+> al menos una función, bajo otra forma».
 
 ### ⛔ Y la trampa en la que `P4` iba a caer — el canon ya la había cerrado
 
@@ -844,7 +862,7 @@ auditoría que la respuesta ya estaba escrita antes de que la pregunta se formul
 |---|---|---|
 | **`docs/corpus_externo/` · 3 docs `Alpha 0.9 — fundacional pre-Neo4j`** | `QUIRA_CAUSAL_MODEL_v1.0` tiene **13 referencias entrantes**, más que muchos `ADR` vigentes | autodeclaran anterioridad a la arquitectura actual **y** siguen siendo citados: `HISTÓRICO` y `EFECTIVO` a la vez. Requiere la prueba de continuidad, no una etiqueta |
 | **`ADR-040` `⛔ REVERTIDO`** | se autodeclara falso; `CNO-VII-001` lo cita como escarmiento que *«bloqueó el Catálogo 26 días»* | un artefacto **revertido como regla** y **vivo como antecedente citado por norma vigente** |
-| **`DESCUBRIMIENTO_NORMATIVO_ADR031` `NO_VIGENTE`** | único documento que se declara así | falta determinar si algo depende de él |
+| ~~**`DESCUBRIMIENTO_NORMATIVO_ADR031` `NO_VIGENTE`**~~ | ⛔ **falso — ver `§5-septies`**: el `NO_VIGENTE` estaba en un bloque de ejemplo | el documento **no declara estado**; el caso se disuelve |
 | **`ADR-019` `STRONGLY_SUPPORTED` · `ADR-022` `SUPPORTED`** | `Regla de Oro 10` los mantiene así **a propósito** | ⛔ **no son deuda.** Clasificarlos como incompletos sería romper la regla que los protege |
 | **`OBS-012` · «BRN con SHA256 obsoletos»** | título declara obsolescencia en la cadena normativa | toca la `Regla de Oro 3`; se examina con la BRN delante, no por su título |
 | **129 documentos sin estado declarado** | 59 en `docs/architecture`, mayoría volcados del Gold Master | **son datos, no normas.** Exigirles estado sería el error de forma otra vez |
@@ -863,6 +881,117 @@ auditoría que la respuesta ya estaba escrita antes de que la pregunta se formul
 - La **extensión de la taxonomía a artefactos documentales** (`TRANSMUTADO`, `OPERACIONAL`, `EXPLICATIVO`, `CONFLICTIVO`, `VIGENTE DERIVADO`) es **decisión de gobernanza**, no medición.
 - Los **seis casos abiertos** de arriba.
 - El **hueco 1 de `P2/P3`** — la BRN sin fila de routeo.
+
+## 5-septies · `P4` · CIERRE — `PRUEBA 2` ejecutada y los seis casos clasificados
+
+> Instrucción del colega · 2026-09-12: *«Completar `P4` únicamente con la Prueba 2 de conflicto y
+> la clasificación de los seis casos abiertos. No modificar ningún artefacto congelado. No crear
+> nuevas doctrinas, taxonomías ni registros.»* **Se acata literalmente.**
+
+### ⛔ Primero: el `PASO 1` de `P4` estaba mal medido
+
+Se publicó *«147 de 276 declaran estado»*. **Seis de esos 147 no son estados del artefacto: son
+valores dentro de un bloque de ejemplo citado por él.**
+
+| documento | lo que se leyó | lo que declara de verdad |
+|---|---|---|
+| `ADR-016` | `PROPUESTO \| ACTIVO \| CONGELADO \| REVISANDO` | **`CONGELADO v1.0`** — era la enumeración de valores posibles |
+| `ADR-017` | `PARCIAL` | **no declara estado** |
+| `DESCUBRIMIENTO_NORMATIVO_ADR031` | `NO_VIGENTE` | **no declara estado** — el `NO_VIGENTE` es de un hallazgo hipotético de 2027 |
+| `DCO_Dom08` · `BRN_CICLO_VIDA` · `corpus_externo/QUIRA_STATE` | idem | idem |
+
+Es **`DOC-036 PASO 0`**: confundir el contenido citado con la declaración del artefacto — el mismo
+defecto que `P1` cometió al contar listas numeradas como reglas.
+
+```
+estados declarados …… 141   (no 147)          no declaran …… 135   (no 129)
+```
+
+⚠️ Y el verificador de esa falsación **también falló**: marcó 30 `.yaml` de la BRN como
+sospechosos por no tener el `estado:` en los primeros 400 bytes. **No son sospechosos.** Es YAML
+nativo, cuyo cuerpo empieza tras el bloque de comentarios. **Tercera vez en esta sola fase que se
+aplica el criterio de forma del régimen documental al régimen normativo.**
+
+### `PRUEBA 2` · CONFLICTO SEMÁNTICO — ejecutada, acotada
+
+No se buscó *«documentos que se contradicen»* (trampa `IFE`/`IEF` · `DOC-033`). Se buscó **una
+sola clase de candidato objetivo: un mismo indicador publicado con valores distintos**, sobre 13
+indicadores de alta consecuencia.
+
+⚠️ **El primer instrumento se descartó entero (falsación 13):** tomaba el primer número tras el
+nombre del indicador, y devolvía `SITA → 07` (era `d07`), `ICPI → 12` (era `H12`), `→ 5.5` (era
+`v5.5`). **Ningún resultado suyo se usó.** Se rehízo exigiendo **forma de métrica publicada**
+—decimal de cuatro cifras—, que no colisiona con identificadores.
+
+**Candidato hallado, y es el de máxima consecuencia del proyecto:** `SITA 2025`, con **dos valores
+en artefactos vigentes, cada uno con su prueba**.
+
+| par | ¿mismo fenómeno? | ¿misma unidad? | ¿misma condición? | ¿misma temporalidad? | veredicto |
+|---|---|---|---|---|---|
+| `0,9719` ↔ `0,4630` | sí | sí | ⛔ **NO — 21 CD vs 24 CD** | sí | **no hay conflicto: dos universos.** Y el alto es inválido: midió *encontrados*, no *exigibles* |
+| `0,4646` ↔ `0,4448` | sí | sí | ⛔ **NO — hay un cambio acreditado entre ambas** | ⛔ no | **no hay conflicto: el expediente cita el valor anterior** |
+| `0,4630` ↔ `0,4646` | sí | sí | ❓ **NO DETERMINABLE** | ❓ | 🔴 **abierto — y ya registrado** |
+
+> ★ **Las cinco preguntas, aplicadas al caso más consecuente de QUIRA, no producen ningún
+> conflicto semántico.** Disuelven dos pares aparentes y dejan uno solo sin explicar — que
+> **`D-015` ya tenía registrado, con su ataque, desde el 2026-09-09**: *«`0,4630` equivale a
+> `0,4646` … 🔴 NO DEMOSTRADO»*.
+
+**Y `D-015` es más precisa de lo que este barrido habría sido**, porque separa dos propiedades que
+un detector habría colapsado: *existe el valor* `DEMOSTRADO` · *tiene procedencia documental*
+`DEMOSTRADO (76ca5de)` · *tiene corrida sellada que lo reproduzca* **`PENDIENTE`**.
+
+**El único conflicto interno de estado documentado en QUIRA** —`ADR-041`, frontmatter `APROBADO`
+contra pie *«propuesta, sin sellar»*— **fue detectado y corregido el 2026-08-26**, y la corrección
+está escrita dentro del propio documento (`ADR-041:263`).
+
+> **Resultado de la `PRUEBA 2`: cero conflictos semánticos nuevos. Uno abierto, ya registrado como
+> deuda. Uno cerrado hace tres semanas. `P4` queda completo en este eje.**
+
+### Los seis casos, clasificados por las cuatro preguntas
+
+| caso | ¿gobierna? | ¿sirve hoy? | ¿explica el origen? | ¿se usa de hecho? | clasificación |
+|---|---|---|---|---|---|
+| **`corpus_externo` · 3 docs `Alpha 0.9`** | ⛔ no — el `Index` rutea la causalidad a Neo4j + Constitución Ontológica | ✅ sí — fuente del concepto `C10` | ✅ sí — corpus fundacional | ⚠️ **bajo**: 11 de 13 citas son internas a su propio cuerpo | 🏛️ **HISTÓRICO · alta utilidad explicativa · sin autoridad actual** |
+| **`ADR-040` `⛔ REVERTIDO`** | ⛔ no — revertido por la fuente primaria | ✅ sí | ✅ sí | ✅ **sí — `CNO-VII-001` lo cita como escarmiento** | 🏛️ **HISTÓRICO con función explicativa ACTIVA, citada por norma vigente** |
+| **`DESCUBRIMIENTO_NORMATIVO_ADR031`** | — | — | — | — | ⛔ **el caso se DISUELVE.** No es `NO_VIGENTE`; `AUTORIDAD_PROPOSICIONES:292` lo trataba como vigente y **tenía razón**. Instrumentación de `C10`, *bloqueada por `R-E`* |
+| **`ADR-019` `STRONGLY_SUPPORTED` · `ADR-022` `SUPPORTED`** | ✅ sí | ✅ sí | — | ✅ sí | ⚖️ **VIGENTE con estado epistémico deliberado.** ⛔ **No es deuda:** `Regla de Oro 10` los mantiene así a propósito |
+| **`OBS-012` «SHA256 obsoletos»** | — | — | ✅ sí | — | ✅ **RESUELTO el mismo día (2026-07-23)**, con propagación documentada a 4 artefactos. **El título describe el hallazgo, no un pendiente** — clasificar por título habría sido el error |
+| **135 documentos sin estado** | ⛔ no | ✅ sí | — | ✅ sí | 🔬 **DATOS, no normas** (59 en `architecture`, mayoría volcados del Gold Master). Exigirles estado sería el error de forma otra vez |
+
+**Cuatro de los seis casos no eran lo que parecían.** Dos se disuelven por completo
+(`DESCUBRIMIENTO_NORMATIVO`, `OBS-012`), uno no es deuda sino capacidad (`ADR-019`/`ADR-022`), y
+uno invierte su lectura (`corpus_externo`).
+
+### ⛔ Y una corrección que alcanza a `P2/P3`
+
+El ranking de **autoridad efectiva** publicado en `§5-quinquies B` cuenta referencias entrantes
+**sin distinguir cita externa de cohesión interna**. `QUIRA_CAUSAL_MODEL_v1.0` figura con **13
+entrantes** — pero **11 provienen de `docs/corpus_externo/` citándose a sí mismo**. No es
+autoridad efectiva: es **un cuerpo congelado con alta densidad interna**.
+
+> **La métrica de grado entrante mide citación, no gobierno.** Para los `ADR` —citados desde todo
+> el repositorio— el sesgo es menor, **pero no se midió**, y por tanto **el ranking de
+> `§5-quinquies B` se lee como orden de citación, no como orden de autoridad**. `ADR-035` sigue
+> siendo el más citado; que sea *el que más gobierna* **no está demostrado por esa cifra**.
+
+### `P4` · CERRADO
+
+| eje | estado |
+|---|---|
+| taxonomía | ✅ **existe** (`Carta §2`) — no se reinventa |
+| continuidad (`d04`) | ✅ **continuidad funcional demostrada**, no identidad |
+| sustitución | ✅ **por sección, bidireccional, con acuse** — 4 casos íntegros |
+| vocabularios de estado | ✅ **cuatro**, uno de ellos deliberadamente incompleto |
+| **conflicto** | ✅ **ejecutado** — cero nuevos · 1 abierto ya registrado · 1 cerrado |
+| **seis casos** | ✅ **clasificados** — cuatro no eran lo que parecían |
+
+**Nada congelado fue modificado. No se creó doctrina, taxonomía ni registro nuevo.**
+
+> Y la lección que la fase deja, formulada por el colega: **el riesgo principal de QUIRA ya no es
+> que falte documentación — es interpretar incorrectamente documentación que ya existe.** Las
+> quince falsaciones de este barrido son la evidencia: **ninguna encontró un vacío; todas
+> encontraron una lectura equivocada de algo que estaba escrito.**
 
 ## 6 · Y la finalidad, dicha por la dirección
 
