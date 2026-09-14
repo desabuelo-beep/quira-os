@@ -72,7 +72,7 @@ def test_los_artefactos_protegidos_siguen_en_disco():
         + " — recupérelos; NO edite esta lista para que la prueba pase")
 
 
-def test_el_corpus_capturado_del_portal_sigue_completo():
+def test_el_corpus_capturado_del_portal_sigue_completo(evidencia_capturada):
     """★ REGLA PROTEGIDA: **la evidencia capturada es irreemplazable.**
 
     Son 1.748 archivos descargados del portal LOTAIP, organizados por año, mes
@@ -80,7 +80,19 @@ def test_el_corpus_capturado_del_portal_sigue_completo():
     febrero de 2026 puede no estar mañana.
 
     ⚠️ Por eso una captura no es un caché. Es **el estado del sujeto observado
-    en una fecha**, y borrarla destruye la única prueba de lo que había."""
+    en una fecha**, y borrarla destruye la única prueba de lo que había.
+
+    ⛔ LA DEPENDENCIA SE DECLARA EN LA FIRMA (corregido 2026-09-14). La primera
+    versión exigía `data/lotaip/descargas/` en cualquier entorno, y `.gitignore`
+    la excluye del repositorio por decisión: en un clon limpio —y en el runner—
+    NUNCA existe. La reproducción del CI sobre el commit empujado la delató como
+    el único fallo de la suite. Es el defecto que `conftest.gold_master` ya
+    documentaba: la prueba heredaba el entorno de la máquina donde se escribió.
+
+    Con el fixture, la prueba corre entera donde vive la captura y se salta,
+    diciéndolo, donde no. ⚠️ Y la señal de entorno es `data/lotaip/artefactos`,
+    no `descargas/`: si en la máquina de la evidencia desaparece sólo
+    `descargas/`, la prueba sigue FALLANDO, que es su razón de ser."""
     base = RAIZ / "data" / "lotaip"
     desc = base / "descargas"
     assert desc.is_dir(), (
