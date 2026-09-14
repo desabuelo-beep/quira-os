@@ -1709,6 +1709,119 @@ en **un** punto; la relación `MISMA_FUENTE_QUE` existe en `scripts/cypher/003`,
 `005` une una `Fuente` con un `Dominio`, no con otra fuente. Si esa relación conserva o transforma la
 confianza es lo que `Q-M2-C` tiene que responder.
 
+## 5-undecies · Push, CI reproducido, y apertura de `Q-M2-C`
+
+### Autorización y push · Javo · 2026-09-14
+
+> *«Haga push señor director y abra Q-M2-C.»*
+
+| paso | resultado |
+|---|---|
+| push de `174c380` a `origin/main` | primer intento rechazado por GitHub (`Internal Server Error`, lado servidor) · **segundo intento aceptado** · local y remoto sincronizados |
+| CI remoto | **disparado**, y ⛔ **no legible desde este entorno**: sin `gh` instalado y sin herramienta que lea GitHub Actions. **No se afirma su resultado** |
+
+### El CI reproducido encontró lo que el checkpoint dejó `NO DETERMINABLE`
+
+Se siguió **la receta que el propio workflow documenta**, con sus tres pasos: clon limpio sin lo que
+`.gitignore` excluye · `check_health` compilando contra 3.11 · gates y suite con `QUIRA_DATOS`
+apuntando a una carpeta vacía.
+
+| commit | `check_health` | gates | suite |
+|---|---|---|---|
+| `174c380` | ✅ | 10 verificados · 1 no determinable · 0 hallazgos | ⛔ **1 falla** · 877 pasan · 64 omitidas |
+| `ffb581e` | ✅ | 10 · 1 · 0 | ✅ **0 fallan** · 877 pasan · 65 omitidas |
+
+**La prueba que fallaba no venía de `P5`:** `test_el_corpus_capturado_del_portal_sigue_completo`,
+escrita en el arqueo documental anterior, exigía `data/lotaip/descargas/` en cualquier entorno, y
+`.gitignore` la excluye por decisión. **El CI remoto de `174c380` casi con seguridad la muestra
+fallando.** Corregida en `ffb581e` con el mecanismo del repositorio —el fixture
+`evidencia_capturada`— y verificada en sus tres ramas: pasa en el entorno completo · se salta
+diciéndolo en un clon limpio · **falla** si la evidencia está pero `descargas/` desaparece.
+
+**Lo que la reproducción NO cubre:** Linux · el runtime 3.11 (sí la compilación contra 3.11) · una
+instalación limpia de dependencias. Por eso:
+
+> **`P5` — IMPLEMENTADO · CI REPRODUCIDO EN CLON LIMPIO: VERDE (`ffb581e`) · CIERRE FORMAL: PENDIENTE
+> DE LEER EL CI REMOTO** en GitHub Actions, por quien tenga acceso.
+
+### ⛔ Falsación 18 — `Q-M2-C` estuvo a punto de abrirse sobre una copia vieja
+
+`docs/architecture/REARQ_ARQUEO_CAPACIDAD_DOCUMENTAL.md` **en disco tiene 995 líneas; en `HEAD`,
+1.484**. No son finales de línea: faltan en disco `§4-sexies` a `§4-nonies` —la matriz de Web GAD,
+el hallazgo de los productores del snapshot, **la síntesis `C` de `Q-M2`**, la capa normativa omitida
+y la auditoría del propio arqueo—. Algo restauró una versión anterior del archivo, fuera de este
+trabajo.
+
+La orientación de `Q-M2-C` **empezó leyendo esa copia**, y habría partido de un `Q-M2` sin su
+síntesis. Es exactamente el aviso con que el colega cerró `P5`: *antes de concluir, preguntar si se
+mira la representación equivocada o un derivado envejecido*. **Se leyó de `HEAD`.**
+
+⚠️ **El archivo en disco NO se revirtió** —no es de este trabajo— **ni se incluyó en ningún commit.**
+Commitearlo tal como está borraría medio arqueo. **Hasta que la dirección lo reconcilie, `Q-M2-C` lee
+el arqueo desde `HEAD`.**
+
+### `Q-M2-C` · APERTURA — sin ejecución probatoria
+
+**La pregunta** (colega · 2026-09-14):
+
+> **¿Cómo circula una evidencia —y cómo circulan las reglas que permiten interpretarla— entre la
+> BRN, el Gold Master, los dominios y los futuros agentes, preservando procedencia, unidad, estado
+> epistemológico, autoridad y confianza, sin que el tránsito cree semántica o confianza que no
+> existía en el origen?**
+
+**El linaje, leído de `HEAD`.** El identificador se conserva; la pregunta crece (`DOC-015`):
+
+| | pregunta | dónde |
+|---|---|---|
+| `Q-M2` | ¿en qué medida QUIRA transformó la adquisición heterogénea en infraestructura común de evidencia, procedencia y reutilización interdominio? | `REARQ_ARQUEO §4-quater` |
+| `C` | ¿puede transformar evidencia de distintos orígenes en un estado canónico común, conservando la procedencia que otros dominios necesitan para reutilizarla sin readquirirla? | `§4-septies` · respuesta **`B`**: arquitectura conceptual común, realización distribuida y desigual |
+| omisión | la síntesis recorrió adquisición → transformación → circulación **sin la capa normativa** | `§4-octies` |
+| duplicación | `Q-M2` reconstruyó lo que `ADR-033` y `ADR-042` ya decidían | `§4-nonies` |
+| **`Q-M2-C`** | reescribir `C` **derivando de lo decidido**, con la capa normativa dentro, y extendida a **la circulación de las reglas y de la confianza** | este registro |
+
+**El punto de partida que `C3` ya dejó demostrado** —y del que no se parte de cero:
+
+| | estado según `§4-septies C3` |
+|---|---|
+| mecanismo de reutilización | existe · `MISMA_FUENTE_QUE` en `scripts/cypher/` |
+| principio | existe · *«la cédula se extrae una vez, no dos»* |
+| contrato de consulta interdominio | **decidido y sellado** · `ADR-053 §6-bis` · `app/agents/consulta.py` declara implementarlo —*«POR QUÉ EXISTE (2026-08-30 · ADR-053 §6-bis)»*— |
+| **reutilización efectiva** | `C3` dice 🔴 **no demostrada**, citando `ADR-053`: *«consultas dominio → dominio: NINGUNA»* |
+
+> ⚠️ **Y esa cita tiene fecha.** `ADR-053` midió *«NINGUNA»* el **2026-08-26**; `consulta.py` se creó
+> el **2026-08-30**; la síntesis `C3` del **2026-09-10** siguió citando la medición anterior como estado.
+> Es el patrón de `P5` —un derivado que envejece— en una cita de prosa.
+>
+> ⛔ **Tampoco se afirma lo contrario:** que el módulo exista no prueba que ningún dominio lo invoque
+> (corolario de presencia). **Primera pregunta probatoria de `Q-M2-C`: ¿hay hoy consultas
+> dominio → dominio en el código, y quién llama a `consulta.py`?**
+
+**El universo por plano** —verificado sólo en existencia; ningún contenido leído todavía como
+prueba—:
+
+| plano | residencia a inspeccionar |
+|---|---|
+| **BRN** | `BRN_PLANO_MAESTRO` · `BRN_CICLO_VIDA_Y_MOLDE` · `ADR-035/038/039` · `docs/brn/` · `brn_lector.py` · `canon.py` |
+| **evidencia** | `ADR-042 §6` · `ADR-045` custodias · `ADR-046` acreditación · `procedencia.py` · `sujeto.py` · `datos.py` |
+| **Gold Master** | `ADR-023` · `ADR-029` · `ADR-033` · `ADR-039` compilación · `ADR-047` · `gold_master.py` · `BRIDGE_EXCEL_CORPUS` |
+| **dominios** | `ADR-031` · `ADR-053` · `app/agents/d0X/` · `data/d0X/catalogo_*` |
+| **indicadores** | `GM-OMEGA_CONTRATO_INDICE_DOMINIO` · matrices de procedencia del ICPI |
+| **inferencia** | `ADR-033` capas epistemológicas · `ADR-051 §4` niveles semánticos · `check_epistemico` |
+| **interdominio** | `scripts/cypher/001…007` · `consulta.py` · `acoplamiento.py` |
+| **agentes** | `META_CATALOGO_AGENTES` · `ADR-051 §2 §5 §9` · `ejecucion.py` · `apropiacion.py` |
+| **cambio** | `CICLO_VIDA §5` · MDN `ADR-038 §9` · `REFORMA_SIMULADA_CNO-IV-001` · `DOC-031` |
+| **confianza** | pesos de `procedencia.py` · `ADR-033` *«la analítica hereda la confianza de la evidencia»* · `ADR-046` techo por acreditación |
+
+⚠️ **Alcance de este universo, declarado:** la orientación barrió `docs/` y `governance/` **sólo por
+título**, y un barrido por título deja fuera lo que no nombra su tema —por ejemplo `ADR-045`—. La
+tabla se completó desde el `MASTER_INDEX`, el propio arqueo y lo leído en `P0–P5`. **Antes de concluir
+cualquier ausencia se barre por propósito** (`DOC-036 PASO 0-bis`).
+
+**Método:** `DOC-035` · `DOC-036` · `DOC-037` y el corolario de presencia —*hallar una representación
+no prueba su función*—. **Fuera de alcance:** la unificación de dominios, diferida por la dirección.
+
+**Ejecución probatoria:** empieza cuando se lea el CI remoto.
+
 ## 6 · Y la finalidad, dicha por la dirección
 
 > *«No es una auditoría, sino **elevar este ecosistema**… para potenciar, mejorar y elevar el nivel
