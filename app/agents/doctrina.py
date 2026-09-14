@@ -837,6 +837,29 @@ def puede_salir_de_boot(regla_id: str) -> dict:
             "por_que": f"la sostiene {d['verificador']} en {d['verificador_en']}"}
 
 
+def _custodia_citada_inexistente() -> list[tuple[str, str]]:
+    """Pruebas que una regla NOMBRA en su texto como custodia y que no existen.
+
+    El campo `verificador` es uno por regla, y es el único que `doctrina()`
+    localizaba. Pero una regla puede crecer: el corolario de presencia de
+    `DOC-035` (2026-09-14) nombra en su texto la prueba que lo ataca. Si esa
+    prueba se renombra, la doctrina seguiría AFIRMANDO una custodia que ya no
+    existe — rótulo ≠ función, el defecto que `P5` encontró en el propio gate
+    del registro. Se exige lo mismo que al campo: que la prueba exista."""
+    import re
+
+    definidas: set[str] = set()
+    for f in (RAIZ / "tests").glob("test_*.py"):
+        definidas |= set(re.findall(r"^def (test_\w+)\(",
+                                    f.read_text(encoding="utf-8", errors="replace"),
+                                    re.M))
+    faltan = []
+    for d in _DOCTRINA:
+        citadas = set(re.findall(r"\b(test_\w+)", f"{d['regla']} {d['por_que_ahi']}"))
+        faltan += [(d["id"], t) for t in sorted(citadas - {d["verificador"]} - definidas)]
+    return faltan
+
+
 def cobertura_de_doctrina() -> dict:
     """Qué doctrina se aplica sola y cuál depende de que alguien la recuerde."""
     filas = doctrina()
@@ -846,6 +869,7 @@ def cobertura_de_doctrina() -> dict:
         "reglas": filas,
         "con_verificador": con_gate,
         "sin_verificador": huerfanas,
+        "custodia_citada_inexistente": _custodia_citada_inexistente(),
         "universo": {
             "que": "doctrina operativa que vivía en §AHORA de BOOT.md",
             "donde": "app/agents/doctrina.py, contrastado con tests/",

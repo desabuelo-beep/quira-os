@@ -56,6 +56,18 @@ def test_toda_regla_migrada_nombra_un_verificador_que_existe():
         f"Salieron de BOOT y no las sostiene nada")
 
 
+def test_toda_custodia_citada_en_el_texto_de_una_regla_existe():
+    """La custodia no vive sólo en el campo `verificador`.
+
+    `DOC-035` nombra en su texto la prueba que ataca su corolario de presencia.
+    Esa relación era documental: nada comprobaba que la prueba citada existiera,
+    y un renombrado habría dejado a la doctrina afirmando una custodia inexistente
+    — rótulo ≠ función (`PANORAMA §5-nonies`, cierre de `P5-05`)."""
+    faltan = DOC.cobertura_de_doctrina()["custodia_citada_inexistente"]
+    assert not faltan, (
+        f"reglas que citan como custodia una prueba que no existe: {faltan}")
+
+
 def test_el_registro_declara_que_es_parcial():
     """C0. Un registro de doctrina que no declarara su alcance haría creer que
     la doctrina restante de BOOT no tiene gate, cuando lo que pasa es que el

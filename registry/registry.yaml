@@ -19,7 +19,7 @@ componentes:
     kind: normative
     level: 1
     path: governance/BOOT.md
-    hash: 8bc4394b572f36e7
+    hash: 0fc34473578f5bfe
     authority_declared: true
     parent: GOVERNANCE-001
   - id: GOVERNANCE-001

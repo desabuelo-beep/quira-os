@@ -1531,6 +1531,148 @@ regenera un derivado de gobernanza, y cuándo**.
 | `PR1–PR3` · el corolario llevado a la adquisición de los GAD | **la capacidad de producto de mayor alcance** |
 | `D-015` | ⛔ **deuda** — sin cambio |
 
+## 5-decies · `P5-CIERRE` · checkpoint — y la consulta de la dirección sobre una BRN dinámica
+
+### Estado que se registra
+
+> **`P5` — IMPLEMENTADO · CHECKPOINT EJECUTADO · CI REMOTO PENDIENTE · cierre formal: la dirección**
+> **`D-015` — única deuda confirmada**
+> **`Q-M2-C` — siguiente fase, bloqueada hasta el cierre formal de `P5`**
+
+Se corrige la redacción de `§5-nonies`, a pedido del colega: no *«las cinco decisiones están
+aplicadas»*, sino **«las cinco decisiones fueron implementadas; el checkpoint verifica que la
+implementación corresponde a lo ratificado y declara lo que introdujo»**. ⚠️ El checkpoint lo
+ejecuta **quien implementó**: no es la verificación independiente que el colega pidió, y se dice.
+
+### La matriz de correspondencia
+
+| decisión | implementación | evidencia | prueba | estado |
+|---|---|---|---|---|
+| **P5-01** · BRN → `MASTER_INDEX` | `296c47d` · `governance/QUIRA_MASTER_INDEX.md` · +1 fila | las rutas resuelven —`check_consistencia` no halla rutas obsoletas en el Index—; la fila **sólo rutea y fija fronteras**, no copia contenido de CNO ni RO | sin prueba específica · `check_consistencia` custodia las rutas | ✅ **CERRADA** |
+| **P5-02** · registro de autoridad | `296c47d` · `build_registry.py` · `build_authority_graph.py` · `check_health.py` · `registry/*` regenerados | 158 activos · **158 ids únicos** · **0 aristas rotas** · 1 fuera de catálogo · **0 activos sin rastrear en git** · ninguno ignorado · falsado contra el registro de 2026-08-12 | `test_registro_de_autoridad.py` (6) · `check_health [5/5]` | ✅ **CERRADA** · alcance abajo |
+| **P5-03** · circuito de gates | `296c47d` · 14 docstrings de `scripts/ci/` | `OBLIGATORIO` **12** · `BAJO_DEMANDA` **1** · `NO_GATE` **1** · el CI ejecuta **12** | `test_circuito_de_gates.py` (4) | ✅ **CERRADA** · alcance abajo |
+| **P5-04** · no crear `DOC-038` | — decisión de no crear | `doctrina.py`: **37 entradas**, ninguna `DOC-038` | `test_doctrina_con_custodio` | ✅ **CERRADA** |
+| **P5-05** · corolario de `DOC-035` | `296c47d` · `doctrina.py` · `build_registry.analizar` · `preguntas_publicas._cabecera` — **y este checkpoint** · `doctrina._custodia_citada_inexistente` | corolario en la regla · dos extractores corregidos y atacados · la custodia citada en prosa **ahora la verifica el custodio** | `test_hallar_un_termino_no_prueba_la_declaracion` · `test_toda_custodia_citada_en_el_texto_de_una_regla_existe` | ✅ **CERRADA en este checkpoint** |
+
+**Derivados regenerados:** `registry.yaml` · `authority_graph.json` · `institutional_state.json` ·
+`INSTITUTIONAL_STATE.md`.
+**Fuera de los commits, a propósito:** `data/d07/cadena_estado.json` ·
+`data/quira/autoconocimiento.json` · `docs/architecture/REARQ_ARQUEO_CAPACIDAD_DOCUMENTAL.md` —
+modificados antes de esta tarea— y `data/snapshots/130801/provenance/ensayos/*`, sin rastrear, que
+otro proceso sigue produciendo durante la sesión.
+**Pruebas nuevas:** 10 en `296c47d` y 1 en este checkpoint. *(Las «25» que se leyeron eran una
+corrida parcial que incluía pruebas vecinas.)*
+
+#### El hueco que el checkpoint encontró en `P5-05`, y se cerró
+
+La prueba del corolario existía, pero **sólo estaba nombrada en la prosa** de `DOC-035`. El custodio
+de la doctrina verificaba únicamente el campo `verificador`. Si esa prueba se renombraba, la doctrina
+seguiría **afirmando una custodia inexistente**: rótulo ≠ función, el mismo defecto que `P5` halló
+en el gate del registro. No se dejó como relación documentada: **el custodio existente ahora exige
+que toda prueba citada como custodia exista**. Falsado: una cita inventada se detecta; restaurada,
+desaparece.
+
+### Alcance exacto de lo cerrado — lo que NO se afirma
+
+| | se demostró | NO se demostró |
+|---|---|---|
+| **P5-02** | regeneración · unicidad · resolución de la cadena · 0 aristas rotas · hueco clasificado | **158 activos registrados ≠ 158 activos ontológicamente correctos** |
+| **P5-03** | correspondencia entre declaración y ejecución **actual** del CI | que el workflow sea el correcto |
+| **todo** | 941 pruebas y `check_health` en verde **en local** | ⛔ **el CI remoto no ha corrido**: `main` va **38 commits por delante** de `origin/main`. Indicios: sintaxis compilada contra 3.11, 0 activos sin rastrear, ninguno ignorado. **`NO DETERMINABLE` hasta que corra** |
+
+⚠️ **Y lo que `P5` introdujo, declarado para que no pase como gratuito:** con el paso 3 real,
+**agregar, retirar o renombrar un ADR, OBS, PCD, CNO o RO obliga a regenerar registro y grafo antes
+del push, o el CI falla**. Es el comportamiento correcto —el gate por fin dice la verdad—, pero
+hasta que se decida el régimen de regeneración **la carga recae en quien commitea**. No falsea nada:
+es fricción de proceso, y el régimen de la lista `B` es quien debe absorberla.
+
+### `A` · Correcciones a conclusiones anteriores
+
+| se afirmó | lo que era |
+|---|---|
+| *«`d07` nunca se conectó al registro»* | un derivado sin regenerar desde el 2026-08-12 · **falsación 17** |
+| *«árbol de autoridad verificado en cada CI»* (`C6`) | la cadena se verificaba **dentro de un derivado de siete semanas** |
+| *«padres por nombre: robustez sin impacto»* | rompían **4 aristas** · se difirieron sobre un grafo viejo |
+| *«129 activos · 111 aristas · 0 rotas»* | ⛔ **no sólo viejo: estructuralmente engañoso.** 129 activos con **124 ids distintos** — seis pipelines fundidos en uno. El gate certificaba una representación que **colapsaba objetos distintos** |
+| *«¿el registro está al día con el disco?»* | el paso verificaba **que la Constitución existiera** |
+| *«las cinco decisiones están aplicadas»* | implementadas · checkpoint ejecutado · CI remoto pendiente |
+
+**La conclusión que `P5` deja, formulada por el colega:**
+
+> **La representación derivada debe ser reconstruible desde el estado actual del universo que
+> pretende representar.**
+
+`anti-falsificación ≠ continuidad de evidencia` era insuficiente sin ella: un derivado puede
+protegerse contra lo viejo y aun así **colapsar lo que representa**. Y para un gate de CI, **ese
+universo es el repositorio commiteado, no el disco de quien generó el derivado** — por eso el
+checkpoint verificó que los 158 activos estén rastreados por git. **No se eleva a doctrina**: es la
+conclusión de `P5`, y la implementa `check_health._registro_al_dia`.
+
+### `B` · Decisiones fuera de `P5` — y por qué no son residuo
+
+**Criterio:** ninguna es condición para que las cinco decisiones ratificadas se sostengan.
+
+| | naturaleza |
+|---|---|
+| **régimen de regeneración y custodia de los derivados de gobernanza** — registro, grafo y testimonio de ejecución | **DECISIÓN DE DISEÑO PENDIENTE** · absorbe la fricción que `P5` introdujo |
+| `MASTER_INDEX` auditable por máquina | MEJORAR |
+| derivación verificada de `PROTOCOLO_CURACION_DOMINIO` y del resto de `docs/architecture` | pendiente · **nunca por estampado** |
+| `PCD-MN01` y los 30 ids fabricados | MEJORAR · ninguno es padre de nadie |
+| `smoke_cajones` con `exit 2` · residencia de `registrar_ejecucion` | MEJORAR · TRASLADAR |
+| `PR1–PR3` · el corolario llevado a los extractores de adquisición de los GAD | capacidad de producto |
+| herencia de confianza por `MISMA_FUENTE_QUE` | **es `Q-M2-C`** |
+| **BRN dinámica · dominios como subagentes · QUIRA AI coordinador** | **vNEXT** · ver consulta abajo |
+| unificación de dominios | **diferida por la dirección** — no se analiza |
+
+### ★ La consulta de la dirección · ¿BRN dinámica, dominios y QUIRA como agentes?
+
+> *«La BRN no debería ser una cuestión estática con todas sus cadenas […] creo que debe ser
+> dinámica, y eso implicaría que fuese un agente o subagente de QUIRA. Y asimismo pensaría cada
+> dominio como agente o subagente, y QUIRA el gran agente de IA para la gestión pública — pero sin
+> dejar de ser una infraestructura de conocimiento verificable para la gestión pública
+> territorial.»* — Javo, 2026-09-14
+
+El colega respondió con la distinción decisiva —**dinámica en su operación, estable en su
+autoridad**—. Antes de registrarla se contrastó con el canon, y **por sexta vez lo planteado ya
+estaba pensado**:
+
+| lo que plantea la dirección | lo que el canon ya tiene | lo que NO existe |
+|---|---|---|
+| **BRN dinámica** | `BRN_CICLO_VIDA_Y_MOLDE` Parte I (2026-07-18): estados de CNO y RO, versión inmutable una vez vigente, **vigencia operativa por tramos** —65 % en 2026, 70 % en 2027 sin reformar nada—, `derogada` como *memoria normativa viva*, y la **propagación de una reforma en siete pasos**, con el paso 2 marcado **`[automático]`** y el 3 **`[IA propone]`**. `REFORMA_SIMULADA_CNO-IV-001` ejecutó el ciclo documentalmente | **la operación.** Nadie detecta hoy una reforma, nadie dispara el paso 2: el ciclo existe y **corre a mano** |
+| **límite de su autoridad** | `CICLO_VIDA §3b`: *«revisión técnica y aprobación formal son actos distintos»* · sólo Javo promueve a `vigente` · `ADR-035 §5` · `ADR-042 §6-ter` | — |
+| **dominios como agentes** | `app/agents/d01…d09` + `_template` · `META_CATALOGO_AGENTES` —*«Organigrama Cognitivo de QUIRA IA»*— · el Budget Agent ya compartido por d01, d02, d07 y d09 | subagentes con vigilancia propia: varios agentes IA siguen en `⬜ Fase 4`. ⚠️ El propio catálogo advierte que debe actualizarse al cerrar cada capacidad; su estado no se da por vigente |
+| **criterio para que algo sea agente** | **`ADR-051 §5`**: *«la IA se justifica, no se presupone»* —tres agentes de d07 resultaron deterministas— · `§2`: QUIRA ejecuta sin Claude · `§9`: *«autonomía no es ausencia de decisión humana: una sola orden basta»* | — |
+| **QUIRA gran agente, sin dejar de ser infraestructura** | **`DEC-0012`** (vigente) dice literalmente *«infraestructura de conocimiento verificable para la gestión pública territorial»* · `ADR-033`: QUIRA IA como capa conversacional | **QUIRA IA** — *«aún por construir»* |
+| **unificación de dominios** | destino `UNIFICAR` y la regla *«los dominios también se ganan su residencia»* (`Q-M1`) | — diferida |
+
+> ★ **La BRN fue diseñada dinámica en julio. Lo estático es su operación.**
+
+Eso afina la secuencia del colega sin alterar su orden. Su paso 2 —*«describir el ciclo de vida
+dinámico de la BRN»*— **ya está hecho**; se convierte en **operacionalizar el ciclo que está
+descrito**. Y el «BRN Agent» deja de ser una capa por diseñar: es **ejecutar los pasos 1 a 3 de
+`CICLO_VIDA §5`** —detectar la reforma, señalar el impacto por el grafo, proponer la versión
+siguiente— **y detenerse en el 4**, donde decide una persona.
+
+| | secuencia |
+|---|---|
+| 1 | cerrar la auditoría y `Q-M2-C` |
+| 2 | **operacionalizar** el ciclo de vida que `BRN_CICLO_VIDA_Y_MOLDE` ya describe |
+| 3 | el agente normativo como ejecutor de `§5` pasos 1-3 · `§3b` como límite |
+| 4 | qué dominios pasan de módulo a subagente — con `ADR-051 §5` como criterio |
+| 5 | la coordinación de QUIRA AI |
+
+### `C` · La pregunta de `Q-M2-C`
+
+> **¿Cómo circula una misma evidencia entre la BRN, el Gold Master, los dominios y —cuando existan—
+> sus agentes, conservando su procedencia, su unidad, su estado epistemológico y su nivel de
+> confianza, sin adquirir por el tránsito un significado, una autoridad o una confianza que la
+> evidencia original no tenía?**
+
+*Punto de partida verificado, sin análisis:* `procedencia.py` gobierna el peso de **una** afirmación
+en **un** punto; la relación `MISMA_FUENTE_QUE` existe en `scripts/cypher/003`, `004` y `005` — y en
+`005` une una `Fuente` con un `Dominio`, no con otra fuente. Si esa relación conserva o transforma la
+confianza es lo que `Q-M2-C` tiene que responder.
+
 ## 6 · Y la finalidad, dicha por la dirección
 
 > *«No es una auditoría, sino **elevar este ecosistema**… para potenciar, mejorar y elevar el nivel
