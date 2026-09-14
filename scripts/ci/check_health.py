@@ -17,6 +17,8 @@ SIN conectar a Supabase/Neo4j/Excel. Protege lo que importa:
 Salida: exit 0 si todo OK, exit 1 si alguna verificación crítica falla.
 
 Uso local:  python scripts/ci/check_health.py
+
+CIRCUITO: OBLIGATORIO — protege: arranque legible, secretos, sintaxis, referencias y una cadena de autoridad al día con el disco (Carta de Gobernanza Art. 1) · integridad
 """
 # ---
 # authority:
@@ -301,18 +303,89 @@ def check_registry() -> list[str]:
         import json as _json
         g = _json.loads(graph.read_text(encoding="utf-8"))
         rotas = g.get("aristas_rotas", 0)
+        fuera = g.get("aristas_fuera_de_catalogo", 0)
         if rotas:
             print(f"   >> {rotas} arista(s) rota(s): padre declarado inexistente")
             errors.append(f"{rotas} cadena(s) de autoridad no reconstruible(s) hasta la Constitución")
         else:
             print(f"      OK — cadena reconstruible ({g.get('total_aristas', 0)} aristas, 0 rotas)")
+        if fuera:
+            # No es un fallo: el padre EXISTE, en el hueco de alcance que el
+            # registro declara. Pero el verde no lo cubre, y se dice.
+            print(f"      ⚠️  {fuera} arista(s) hacia canon fuera de catálogo — "
+                  "el verde NO las cubre")
 
-    # 3 · ¿el Registry está al día con el disco? (hash de un centinela)
+    # 3 · ¿el Registry está al día con el disco?
+    #
+    # ⛔ Este paso se llamaba «¿el Registry está al día con el disco? (hash de un
+    # centinela)» y sólo comprobaba que la Constitución EXISTIERA. El rótulo
+    # prometía frescura; el mecanismo verificaba existencia. Resultado medido
+    # (2026-09-14): registro de 2026-08-12, grafo de 2026-07-27, 29 activos fuera
+    # —toda la familia normativa de Transparencia entre ellos— y cinco aristas
+    # rotas invisibles, mientras este gate imprimía «100 %».
+    # Ahora se relee el disco con el MISMO escáner que escribe el registro.
     frozen = ROOT / "identity" / "CONSTITUCION_INSTITUCIONAL.md"
     if not frozen.exists():
         errors.append("Constitución Institucional ausente: la raíz de autoridad no existe")
         print("   >> identity/CONSTITUCION_INSTITUCIONAL.md NO EXISTE")
+    errors += _registro_al_dia(txt, graph)
     return errors
+
+
+def _registro_al_dia(registro_txt: str, graph: Path) -> list[str]:
+    """Compara lo que el registro AFIRMA con lo que el disco dice HOY.
+
+    Falla por lo que el gate certifica —qué activos existen y de quién cuelgan—.
+    Un hash desactualizado sin cambio de cadena se informa y no bloquea: la
+    cadena de autoridad no depende del contenido, y exigir regenerar el registro
+    por cada edición de prosa convertiría el gate en ruido."""
+    sys.path.insert(0, str(ROOT / "scripts" / "governance"))
+    try:
+        import build_registry  # stdlib-only: corre antes de instalar dependencias
+    except Exception as exc:  # noqa: BLE001
+        return [f"no se pudo releer el disco para verificar el registro: {exc}"]
+
+    activos, _ = build_registry.escanear()
+    disco = {(a["id"], a["path"], a["parent"] or "null", str(a["authority_declared"]).lower())
+             for a in activos}
+    hashes_disco = {a["path"]: a["hash"] for a in activos}
+
+    registrado, hashes_reg, cur = set(), {}, {}
+    for linea in registro_txt.split("\nexternos:")[0].splitlines():
+        s = linea.strip()
+        if s.startswith("- id:"):
+            cur = {"id": s.split(":", 1)[1].strip()}
+        elif ":" in s and cur:
+            k, _, v = s.partition(":")
+            cur[k.strip()] = v.strip()
+            if k.strip() == "parent":
+                registrado.add((cur["id"], cur.get("path", ""), cur["parent"],
+                                cur.get("authority_declared", "")))
+                hashes_reg[cur.get("path", "")] = cur.get("hash", "")
+
+    errores = []
+    nuevos, retirados = disco - registrado, registrado - disco
+    if nuevos or retirados:
+        print(f"   >> REGISTRO DESACTUALIZADO: {len(nuevos)} activo(s) en disco no registrados · "
+              f"{len(retirados)} registrado(s) que ya no son así")
+        for ident, ruta, *_ in sorted(nuevos)[:8]:
+            print(f"        + {ident}  ({ruta})")
+        errores.append("registry.yaml no refleja el disco — ejecutar "
+                       "scripts/governance/build_registry.py y build_authority_graph.py")
+    else:
+        cambiados = sum(1 for r, h in hashes_disco.items() if hashes_reg.get(r) not in ("", h))
+        print(f"      OK — registro al día con el disco ({len(disco)} activos)"
+              + (f" · {cambiados} con contenido editado desde la generación" if cambiados else ""))
+
+    if graph.exists():
+        import json as _json
+        nodos = {n["id"] for n in _json.loads(graph.read_text(encoding="utf-8")).get("nodes", [])}
+        ids_reg = {r[0] for r in registrado}
+        if nodos != ids_reg:
+            print(f"   >> GRAFO DESACTUALIZADO: {len(nodos)} nodos frente a {len(ids_reg)} activos registrados")
+            errores.append("authority_graph.json no refleja el registro — ejecutar "
+                           "scripts/governance/build_authority_graph.py")
+    return errores
 
 
 def main() -> int:

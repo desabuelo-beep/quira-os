@@ -23,6 +23,8 @@ Comprueba lo que la vista no delata a tiempo:
 
 Uso:  python scripts/ci/check_sistema_visual.py
 Dylus Lab © 2026
+
+CIRCUITO: OBLIGATORIO — protege: que ningún color certifique «bien» —un verde es un veredicto que la evidencia no sostiene (Principio Rector)—, además de contraste y una sola paleta · integridad de la afirmación visual
 """
 from __future__ import annotations
 

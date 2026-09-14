@@ -163,6 +163,21 @@ def _agentes() -> set[str]:
             if p.is_dir() and re.fullmatch(r"d\d\d", p.name)}
 
 
+def _cabecera(txt: str) -> str:
+    """Sólo el bloque `---` con que el documento se declara a sí mismo.
+
+    Antes se leían los primeros 800 bytes, y un `status:` escrito dentro de un
+    ejemplo contaba como estado del expediente. Es la falsación 15 de
+    `PANORAMA §5-septies`, que un extractor de QUIRA podía repetir: **hallar el
+    término prueba la presencia del término, no la declaración que parece
+    nombrar** (corolario de `DOC-035`). Sin cabecera no hay estado declarado —
+    y eso es `NO DETERMINABLE`, no el primer `status:` que aparezca."""
+    if not txt.startswith("---"):
+        return ""
+    fin = txt.find("\n---", 3)
+    return txt[3:fin] if fin > 0 else ""
+
+
 def _pcds() -> dict[str, dict]:
     """Los `PCD` en disco, con el `status` que cada uno declara de sí mismo.
 
@@ -178,7 +193,7 @@ def _pcds() -> dict[str, dict]:
         m = re.match(r"PCD-D(\d+)", p.stem)
         if not m:
             continue
-        cab = p.read_text(encoding="utf-8")[:800]
+        cab = _cabecera(p.read_text(encoding="utf-8"))
         st = re.search(r"^status:\s*(.+)$", cab, re.M)
         ty = re.search(r"^\s*type:\s*(\S+)", cab, re.M)
         out[f"d{int(m.group(1)):02d}"] = {

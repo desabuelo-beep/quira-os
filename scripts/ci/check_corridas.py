@@ -16,6 +16,8 @@ LAS DOS REGLAS QUE ESTE GATE PROTEGE
 
 Uso:  python scripts/ci/check_corridas.py
 Dylus Lab © 2026
+
+CIRCUITO: OBLIGATORIO — protege: que toda corrida sea repetible y que lo calibrado no se publique (ADR-042 §4 y §5-bis) · reproducibilidad
 """
 from __future__ import annotations
 

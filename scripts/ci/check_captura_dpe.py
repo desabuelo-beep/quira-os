@@ -20,6 +20,8 @@ Las respuestas se simulan: el gate no toca la red ni gasta nada.
 
 Uso:  python scripts/ci/check_captura_dpe.py
 Dylus Lab © 2026
+
+CIRCUITO: OBLIGATORIO — protege: que un fallo técnico de captura no se convierta en una afirmación sobre el municipio (ADR-042 §6) · procedencia
 """
 from __future__ import annotations
 

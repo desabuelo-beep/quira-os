@@ -40,6 +40,70 @@ RE_AUTHORITY = re.compile(r"^\s*(#|//)?\s*authority:", re.M)
 RE_ID = re.compile(r"^id:\s*(\S+)", re.M)
 RE_PARENT = re.compile(r"^\s*(#|//)?\s*parent:\s*(\S+)", re.M)
 
+# ★ IDENTIFICADOR ESTABLE ≠ NOMBRE DE ARCHIVO (DOC-015 · P5, 2026-09-14) ───────────
+# Sin `id:` declarado, este script fabricaba el identificador desde el nombre:
+# `ADR-035` quedaba registrado como `CANON_ADR-ADR-035_Biblioteca_Reglas_Normativ`.
+# 86 de 158 activos lo sufrían, y todo hijo que declaraba `parent: ADR-023` apuntaba
+# a un id que el registro no tenía — cuatro aristas rotas que nadie vio en siete
+# semanas porque el derivado no se regeneraba.
+#
+# El identificador canónico de un ADR, una OBS o un PCD es el que el propio
+# documento DECLARA en su título (`# ADR-023 — …`) y el que usan todas las citas.
+# Se lee de ahí, y sólo si el prefijo del archivo dice lo mismo: dos
+# representaciones que coinciden, no una inferida de la otra (P5-G.2).
+RE_PREFIJO_CANON = re.compile(r"^((?:ADR|OBS|PCD|DEC)-[A-Z]?\d+)(?=_|$)")
+RE_TITULO = re.compile(r"^#\s+(.+)$", re.M)
+
+# Canon vivo en disco que el CATALOGO no mira A PROPÓSITO (ver HUECO DE ALCANCE).
+# Un `parent` que vive aquí no es un «padre inexistente»: es un padre fuera de
+# catálogo. Confundirlos sería decir que falta lo que sólo no se inspeccionó.
+ALCANCE_SIN_CATALOGAR = ("docs/architecture",)
+
+FENCE = "`" * 3
+
+
+def _sin_bloques_de_codigo(txt: str) -> str:
+    """Borra el contenido de los bloques de código de un Markdown.
+
+    Un `id:` o un `parent:` escrito DENTRO de un ejemplo no es una declaración del
+    documento: es contenido citado. Leerlo como declaración es el error que la
+    falsación 15 de `PANORAMA §5-septies` cometió con un `estado: NO_VIGENTE`
+    ilustrativo — **hallar un término prueba la presencia del término, no la
+    declaración que parece nombrar** (corolario de `DOC-035`)."""
+    fuera, dentro = [], False
+    for linea in txt.splitlines():
+        if linea.lstrip().startswith(FENCE):
+            dentro = not dentro
+            fuera.append("")
+            continue
+        fuera.append("" if dentro else linea)
+    return "\n".join(fuera)
+
+
+def identificador(p: Path, declarado: str | None, kind: str) -> str:
+    """El id con que el activo entra al registro, en orden de autoridad:
+
+        1 · `id:` declarado en su cabecera
+        2 · el identificador que su TÍTULO declara, si el archivo dice lo mismo
+        3 · uno fabricado desde el nombre — y entonces nadie puede citarlo por id
+    """
+    if declarado:
+        return declarado
+    m = RE_PREFIJO_CANON.match(p.stem)
+    if m and p.suffix == ".md":
+        try:
+            txt = _sin_bloques_de_codigo(p.read_text(encoding="utf-8", errors="replace"))
+        except Exception:
+            txt = ""
+        t = RE_TITULO.search(txt)
+        if t and re.match(rf"{re.escape(m.group(1))}\b", t.group(1).strip()):
+            return m.group(1)
+    # Un paquete se llama por su carpeta: los seis `app/agents/d*/__init__.py`
+    # compartían el id `DOMAIN_PIPELINE-__init__` — seis activos fundidos en uno,
+    # y un id que nombra a seis no resuelve a ninguno.
+    nombre = p.parent.name if p.name == "__init__.py" else p.stem
+    return f"{kind.upper()}-{nombre[:32]}"
+
 # Qué se cataloga como ACTIVO INSTITUCIONAL (no cada .py: eso sería ruido)
 CATALOGO = [
     # (glob, kind, level, autoridad_esperada)
@@ -103,6 +167,8 @@ def analizar(p: Path) -> tuple[str | None, str | None, bool]:
         txt = p.read_text(encoding="utf-8", errors="replace")[:4000]
     except Exception:
         return None, None, False
+    if p.suffix == ".md":
+        txt = _sin_bloques_de_codigo(txt)
     tiene = bool(RE_AUTHORITY.search(txt))
     mid = RE_ID.search(txt)
     mpar = RE_PARENT.search(txt)
@@ -111,7 +177,10 @@ def analizar(p: Path) -> tuple[str | None, str | None, bool]:
             tiene)
 
 
-def main() -> int:
+def escanear() -> tuple[list[dict], list[dict]]:
+    """Lo que el disco dice HOY. Lo usa `main` para escribir el registro y
+    `check_health` para comprobar que el registro escrito sigue siendo cierto:
+    una sola lectura de la realidad, no dos que puedan divergir."""
     activos, huerfanos = [], []
     for patron, kind, level, esperada in CATALOGO:
         for p in sorted(REPO.glob(patron)):
@@ -119,9 +188,9 @@ def main() -> int:
                 continue
             rel = p.relative_to(REPO).as_posix()
             did, dparent, tiene = analizar(p)
-            aid = did or f"{kind.upper()}-{p.stem[:32]}"
             reg = {
-                "id": aid, "kind": kind, "level": level, "path": rel,
+                "id": identificador(p, did, kind), "kind": kind, "level": level,
+                "path": rel,
                 "hash": sha256(p),
                 "authority_declared": tiene,
                 "parent": dparent or esperada,
@@ -129,6 +198,11 @@ def main() -> int:
             activos.append(reg)
             if not tiene:
                 huerfanos.append(reg)
+    return activos, huerfanos
+
+
+def main() -> int:
+    activos, huerfanos = escanear()
 
     # externos
     ext = []

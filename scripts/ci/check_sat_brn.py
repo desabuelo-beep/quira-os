@@ -30,6 +30,8 @@ Uso:
   python scripts/ci/check_sat_brn.py             → reporta la deuda
   python scripts/ci/check_sat_brn.py --estricto  → falla si hay SAT huérfanas
 Dylus Lab © 2026
+
+CIRCUITO: OBLIGATORIO — protege: que toda SAT del motor tenga una cadena BRN que la funde (ADR-038 · OBS-022) · normativa
 """
 from __future__ import annotations
 

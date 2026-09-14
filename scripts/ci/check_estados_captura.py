@@ -10,6 +10,8 @@ un municipio. Se comprueba sola porque es fácil de enunciar y fácil de perder.
 
 Uso:  python scripts/ci/check_estados_captura.py
 Dylus Lab © 2026
+
+CIRCUITO: OBLIGATORIO — protege: «no existe» ≠ «no pude obtener» ≠ «el capturador falló» (ADR-042 §6) · procedencia
 """
 from __future__ import annotations
 

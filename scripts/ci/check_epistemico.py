@@ -41,6 +41,8 @@ interna y no se escanean — ahí explicar la regla exige nombrarla.
 
 Uso:  python scripts/ci/check_epistemico.py [carpeta] [--estricto]
       (por defecto: app/viz/render — donde vive el texto de los cajones)
+
+CIRCUITO: OBLIGATORIO — protege: que ninguna afirmación ocupe un nivel epistémico superior al medido (Carta Art. 4.5) · integridad de la afirmación
 """
 from __future__ import annotations
 

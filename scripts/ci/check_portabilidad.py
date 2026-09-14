@@ -26,6 +26,8 @@ debería existir en ninguna forma.
 
 Uso:  python scripts/ci/check_portabilidad.py [--detalle]
 Dylus Lab © 2026
+
+CIRCUITO: OBLIGATORIO — protege: que QUIRA corra fuera de un escritorio, condición para reproducirla en 222 GAD (OBS-032) · reproducibilidad
 """
 from __future__ import annotations
 

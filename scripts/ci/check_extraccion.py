@@ -18,6 +18,8 @@ lo que se guardó **se puede leer**.
 
 Uso:  python scripts/ci/check_extraccion.py
 Dylus Lab © 2026
+
+CIRCUITO: OBLIGATORIO — protege: que ningún documento entre ilegible al corpus y sostenga conclusiones falsas (OBS-027) · integridad de la evidencia
 """
 from __future__ import annotations
 

@@ -33,6 +33,19 @@ if hasattr(sys.stdout, "reconfigure"):
 REPO = Path(__file__).resolve().parents[2]
 REG = REPO / "registry" / "registry.yaml"
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from build_registry import ALCANCE_SIN_CATALOGAR  # noqa: E402
+
+
+def fuera_de_catalogo(ident: str) -> bool:
+    """¿El padre existe en disco, dentro del canon que el catálogo no mira?
+
+    Coincidencia EXACTA con el nombre del archivo, y sólo dentro del alcance
+    declarado: no acredita autoridad alguna, sólo distingue «no existe» de «no
+    se inspeccionó»."""
+    return any((REPO / carpeta / f"{ident}.md").is_file()
+               for carpeta in ALCANCE_SIN_CATALOGAR)
+
 
 def parse_registry() -> tuple[list[dict], list[dict], dict]:
     """Parser mínimo del registry generado (formato estable, sin dependencias)."""
@@ -98,7 +111,16 @@ def main() -> int:
     edges.append({"from": "DEC-0001", "to": "CONSTITUCION_VERSION_A",
                   "type": "SUPERSEDES", "resuelto": True})
 
-    rotas = [e for e in edges if not e["resuelto"]]
+    # Un padre que no está entre los nodos puede no existir… o existir FUERA del
+    # catálogo, en el hueco de alcance que `build_registry` declara a propósito.
+    # Son hechos distintos y el gate los trataba igual: «padre declarado
+    # inexistente» era falso para `PROTOCOLO_CURACION_DOMINIO`, que existe.
+    for e in edges:
+        if not e["resuelto"] and fuera_de_catalogo(e["to"]):
+            e["alcance"] = "fuera_de_catalogo"
+
+    rotas = [e for e in edges if not e["resuelto"] and "alcance" not in e]
+    fuera = [e for e in edges if e.get("alcance") == "fuera_de_catalogo"]
     huerfanos = [n for n in nodes if not n["declared"]]
     cumplimiento = round(100 * (len(nodes) - len(huerfanos)) / max(len(nodes), 1), 1)
 
@@ -108,7 +130,8 @@ def main() -> int:
         "generado": date.today().isoformat(),
         "raiz": "CONSTITUCION-001",
         "total_nodos": len(nodes), "total_aristas": len(edges),
-        "aristas_rotas": len(rotas), "huerfanos": len(huerfanos),
+        "aristas_rotas": len(rotas), "aristas_fuera_de_catalogo": len(fuera),
+        "huerfanos": len(huerfanos),
         "cumplimiento_derivacion_pct": cumplimiento,
         "nodes": nodes, "edges": edges,
     }
@@ -204,6 +227,11 @@ def main() -> int:
     print(f"OK — INSTITUTIONAL_STATE.md")
     print(f"   Cumplimiento del Principio de Derivación: {cumplimiento}%")
     print(f"   Huérfanos: {len(huerfanos)} · Aristas rotas: {len(rotas)}")
+    if fuera:
+        print(f"   ⚠️  {len(fuera)} arista(s) hacia canon FUERA DE CATÁLOGO — el padre existe,"
+              " pero el registro no lo inspecciona:")
+        for e in fuera:
+            print(f"       {e['from']} → {e['to']}")
     return 0
 
 

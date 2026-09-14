@@ -16,6 +16,8 @@ acceso en un `_FALLBACK_HASHES`. Este gate existe para que no haya una tercera.
 
 Uso:  python scripts/ci/check_credenciales.py
 Dylus Lab © 2026
+
+CIRCUITO: OBLIGATORIO — protege: que ninguna credencial entre a un archivo rastreado (Regla de Oro 6) · integridad del sistema
 """
 from __future__ import annotations
 

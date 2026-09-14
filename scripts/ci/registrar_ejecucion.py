@@ -23,6 +23,8 @@ USO
     python scripts/ci/registrar_ejecucion.py ruta.xml   registra un JUnit ya hecho
 
 Dylus Lab © 2026
+
+CIRCUITO: NO_GATE — productor: escribe el testimonio de corrida que lee `app/agents/ejecucion.py` y no verifica nada. Reside en `scripts/ci/` por historia, no por función (PANORAMA §5-octies, falsación 16)
 """
 from __future__ import annotations
 

@@ -3,7 +3,7 @@
 
 # ESTADO INSTITUCIONAL DE QUIRA
 
-**Generado:** 2026-07-27 · **Fuente:** `registry/registry.yaml`
+**Generado:** 2026-09-14 · **Fuente:** `registry/registry.yaml`
 
 > No es documentación: es **gobernanza viva**. Describe el estado de la institución,
 > no de los archivos. Se regenera; nunca se redacta.
@@ -15,44 +15,45 @@
 | L0 · Identidad | Constitución Institucional | ✅ vigente |
 | L0 · Identidad | Constitución Ontológica | ✅ presente |
 | L1 · Gobernanza | Carta de Gobernanza | ✅ vigente |
-| L1 · Gobernanza | Decisiones institucionales | 11 registradas |
-| L2 · Canon | CNO · RO · ADR · PCD | 12 · 8 · 28 · 5 |
-| L2 · Canon | Observaciones | 15 |
+| L1 · Gobernanza | Decisiones institucionales | 12 registradas |
+| L2 · Canon | CNO · RO · ADR · PCD | 16 · 13 · 46 · 7 |
+| L2 · Canon | Observaciones | 30 |
 | L3 · Implementación | Dominios con catálogo | d01, d02, d03, d07, d08, d09 |
 | Registry | Integridad | ✅ íntegro |
 
 ## Cumplimiento del Principio de Derivación (Carta Art. 1)
 
-**100.0%** — 111 de 111 activos declaran su autoridad.
+**100.0%** — 158 de 158 activos declaran su autoridad.
 
 ⚠️ **0 artefactos HUÉRFANOS** — sin bloque `authority:`, no pueden
 promoverse a `vigente` (Carta Art. 1). Desglose:
 
 | Tipo | Total | Huérfanos |
 |---|---|---|
-| canon_adr | 28 | 0 |
-| canon_cno | 12 | 0 |
-| canon_pcd | 5 | 0 |
-| canon_ro | 8 | 0 |
+| canon_adr | 46 | 0 |
+| canon_cno | 16 | 0 |
+| canon_pcd | 7 | 0 |
+| canon_ro | 13 | 0 |
 | connector | 1 | 0 |
-| decision | 11 | 0 |
-| domain_catalog | 6 | 0 |
+| decision | 12 | 0 |
+| domain_catalog | 7 | 0 |
 | domain_pipeline | 6 | 0 |
 | gate | 1 | 0 |
 | graph | 7 | 0 |
 | identity | 2 | 0 |
-| marco_teorico | 2 | 0 |
+| marco_teorico | 3 | 0 |
 | normative | 7 | 0 |
-| observation | 15 | 0 |
+| observation | 30 | 0 |
 
 ## Activos externos declarados (Carta Art. 3 — se declaran, no se mueven)
 
 | Ruta | Tipo | En disco |
 |---|---|---|
-| `../ProyecT/SIAP-ICPI_GOLD_MASTER_v5.5_TGI.xlsx` | gold_master | ✅ |
+| `../ProyecT/SIAP-ICPI_GOLD_MASTER_v5.5_TGI.xlsx` | gold_master | ❌ |
 | `../ProyecT/Holding_Municipal_Montecristi` | fuente_evidencia | ✅ |
 | `../quira-harvester` | repo_hermano | ✅ |
 | `../governance` | gobernanza_legacy | ✅ |
+| `../docs/architecture` | canon_sin_catalogar | ❌ |
 | `../documentos_proyecto` | insumo | ✅ |
 | `../metodologia_beta_Dctos` | insumo | ✅ |
 | `../_historico` | archivo | ✅ |

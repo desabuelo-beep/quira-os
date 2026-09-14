@@ -15,6 +15,8 @@ y debe permanecer como está.
 
 Uso:  python scripts/ci/check_consistencia.py
 Dylus Lab © 2026
+
+CIRCUITO: OBLIGATORIO — protege: que el canon vivo no publique terminología retirada, rutas inexistentes ni cifras del canon mal escritas · integridad
 """
 from __future__ import annotations
 

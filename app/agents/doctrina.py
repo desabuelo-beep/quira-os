@@ -270,10 +270,29 @@ _DOCTRINA = (
                "acredita CONFORMIDAD de lo que existe y nunca SUFICIENCIA de "
                "lo que debería existir; y un sello de canon (`vara_sha`) "
                "acredita la REGLA aplicada, nunca el UNIVERSO sobre el que se "
-               "aplicó",
+               "aplicó.\n\n"
+               "**Corolario de PRESENCIA** —la mitad que la regla heredada daba "
+               "por segura—. *«Hallar un término prueba presencia»* es cierto "
+               "sólo para el término: encontrar una representación prueba la "
+               "presencia de ESA representación, y no prueba por sí sola su "
+               "significado, función, autoridad, equivalencia, vigencia ni su "
+               "relación con el objeto investigado. Esas propiedades se "
+               "determinan con evidencia de contexto y en el régimen propio de "
+               "cada artefacto: cabecera y no ejemplo citado · valor y no "
+               "identificador · gobierno y no citación · función y no "
+               "residencia · continuidad y no identidad. No es un principio "
+               "nuevo: es la extensión al OBSERVADOR de `ADR-042 §6-ter` "
+               "(«la clasificación automática descubre; no interpreta»), "
+               "`§6-quater` («el rótulo de una cifra es parte de su "
+               "evidencia») y las capas 5-6 de `procedencia.py` —qué componente "
+               "interpretó, qué prueba respalda la interpretación—, que ya lo "
+               "gobernaban para el SUJETO OBSERVADO. Atacado por "
+               "`test_hallar_un_termino_no_prueba_la_declaracion`",
          fuente="Javo, 2026-09-09 —«dígame que sí existe y no se perdió toda "
                 "esta información»— tras un informe que declaró vacía la "
-                "capacidad documental de Transparencia",
+                "capacidad documental de Transparencia · corolario de presencia: "
+                "el colega y Javo, 2026-09-14, al ratificar `P5` —no crear "
+                "`DOC-038`—",
          verificador="test_DOC_035_el_alcance_de_la_busqueda_es_parte_del_resultado",
          por_que_ahi="la búsqueda que produjo el falso vacío excluyó rutas "
                      "(`worktrees`) y buscó por el NÚMERO del dominio en vez "
@@ -286,7 +305,18 @@ _DOCTRINA = (
                      "`no_procesable` ≠ ausente · `cortado_por_tope_de_tamano` "
                      "≠ inexistente · `no_observable` ≠ incumplimiento—. "
                      "Faltaba la cuarta, que nos aplica a nosotros: "
-                     "**`no_encontrado_en_la_búsqueda` ≠ inexistente**"),
+                     "**`no_encontrado_en_la_búsqueda` ≠ inexistente**. ⚠️ Y el "
+                     "corolario se ganó su sitio con datos (`PANORAMA "
+                     "§5-octies`): de dieciséis falsaciones del barrido `P0–P5`, "
+                     "siete fueron de AUSENCIA y esta regla ya las cubría; las "
+                     "demás fueron de SIGNIFICADO —un `estado:` leído de un "
+                     "ejemplo, un `d07` leído como valor, citación leída como "
+                     "autoridad, residencia leída como función—. Cuando la "
+                     "mitad de ausencia se aplicó con disciplina, los errores "
+                     "se desplazaron a la otra mitad, que no tenía regla. Y no "
+                     "era sólo el auditor: el extractor del registro y el de "
+                     "estado de los `PCD` leían `id:` y `status:` sin distinguir "
+                     "cabecera de ejemplo"),
     dict(id="DOC-034", custodia=GATE,
          regla="No se declara AUSENCIA ontológica sin haber agotado antes la "
                "evidencia primaria que razonablemente podría contenerla. Y un "

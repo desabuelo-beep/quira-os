@@ -21,6 +21,8 @@ puede volverse un dato, el error al menos se REGISTRE.
 
 Uso:  python scripts/ci/check_errores_silenciosos.py
 Dylus Lab © 2026
+
+CIRCUITO: OBLIGATORIO — protege: que un fallo tragado durante la captura no se lea después como ausencia publicada (ADR-042 §6) · procedencia
 """
 from __future__ import annotations
 

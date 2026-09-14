@@ -13,6 +13,8 @@ autenticada, que es exactamente lo que el login produce tras validar el hash.
 
 Uso:  python scripts/ci/smoke_cajones.py            (todos)
       python scripts/ci/smoke_cajones.py qinv_d08   (uno)
+
+CIRCUITO: BAJO_DEMANDA — protege: que la aplicación monte y cada cajón renderice su huella · no es obligatorio porque su fallo impide VER un cajón y no hace que QUIRA afirme algo falso. (Propiedad de diseño pendiente, que NO es el criterio: no declara `exit 2` cuando le falta un recurso)
 """
 from __future__ import annotations
 
