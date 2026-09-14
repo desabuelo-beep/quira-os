@@ -845,7 +845,14 @@ def _custodia_citada_inexistente() -> list[tuple[str, str]]:
     `DOC-035` (2026-09-14) nombra en su texto la prueba que lo ataca. Si esa
     prueba se renombra, la doctrina seguiría AFIRMANDO una custodia que ya no
     existe — rótulo ≠ función, el defecto que `P5` encontró en el propio gate
-    del registro. Se exige lo mismo que al campo: que la prueba exista."""
+    del registro. Se exige lo mismo que al campo: que la prueba exista.
+
+    ⚠️ Y SÓLO eso. Verifica existencia; no acredita nada más:
+
+        prueba citada ≠ existente ≠ ejecutada ≠ adecuada ≠ doctrina verdadera
+
+    Que la prueba exista no demuestra que corra, que ataque lo que dice atacar,
+    ni que la regla sea correcta."""
     import re
 
     definidas: set[str] = set()

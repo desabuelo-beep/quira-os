@@ -1535,9 +1535,19 @@ regenera un derivado de gobernanza, y cuándo**.
 
 ### Estado que se registra
 
-> **`P5` — IMPLEMENTADO · CHECKPOINT EJECUTADO · CI REMOTO PENDIENTE · cierre formal: la dirección**
+> **`P5` — IMPLEMENTADO Y VERIFICADO LOCALMENTE; CIERRE FORMAL PENDIENTE DE CI REMOTO.**
 > **`D-015` — única deuda confirmada**
 > **`Q-M2-C` — siguiente fase, bloqueada hasta el cierre formal de `P5`**
+
+| | estado |
+|---|---|
+| implementación local | **DEMOSTRADA** |
+| suite local | **DEMOSTRADA** |
+| reconstruibilidad desde lo commiteado | **FAVORABLE** — indicios, no prueba |
+| CI limpio sobre el estado remoto | **`NO DETERMINABLE`** |
+
+La secuencia de cierre no admite atajo: **push autorizado por la dirección → CI real → si verde, `P5`
+formalmente cerrable → `Q-M2-C`**. No se hace push sin esa autorización.
 
 Se corrige la redacción de `§5-nonies`, a pedido del colega: no *«las cinco decisiones están
 aplicadas»*, sino **«las cinco decisiones fueron implementadas; el checkpoint verifica que la
@@ -1569,8 +1579,20 @@ La prueba del corolario existía, pero **sólo estaba nombrada en la prosa** de 
 de la doctrina verificaba únicamente el campo `verificador`. Si esa prueba se renombraba, la doctrina
 seguiría **afirmando una custodia inexistente**: rótulo ≠ función, el mismo defecto que `P5` halló
 en el gate del registro. No se dejó como relación documentada: **el custodio existente ahora exige
-que toda prueba citada como custodia exista**. Falsado: una cita inventada se detecta; restaurada,
+que toda prueba citada como custodia exista**. Se ejecutó un **caso negativo** —una referencia a una
+prueba inexistente, introducida en memoria durante la verificación y retirada después, sin tocar
+ningún archivo— y el custodio detectó la inconsistencia; retirada la referencia, el hallazgo
 desaparece.
+
+> ⚠️ **Y lo que ese mecanismo NO acredita, dicho sin ambigüedad.** Verifica **existencia**, nada más:
+>
+> ```
+> prueba citada  ≠  prueba existente  ≠  prueba ejecutada  ≠  prueba adecuada  ≠  doctrina verdadera
+> ```
+>
+> Que la prueba citada exista impide que la doctrina afirme una custodia inexistente. **No demuestra
+> que la prueba corra, que ataque lo que dice atacar, ni que la regla sea correcta.** Cada uno de esos
+> escalones es otra verificación, y ninguna la hace este custodio.
 
 ### Alcance exacto de lo cerrado — lo que NO se afirma
 
@@ -1578,7 +1600,17 @@ desaparece.
 |---|---|---|
 | **P5-02** | regeneración · unicidad · resolución de la cadena · 0 aristas rotas · hueco clasificado | **158 activos registrados ≠ 158 activos ontológicamente correctos** |
 | **P5-03** | correspondencia entre declaración y ejecución **actual** del CI | que el workflow sea el correcto |
-| **todo** | 941 pruebas y `check_health` en verde **en local** | ⛔ **el CI remoto no ha corrido**: `main` va **38 commits por delante** de `origin/main`. Indicios: sintaxis compilada contra 3.11, 0 activos sin rastrear, ninguno ignorado. **`NO DETERMINABLE` hasta que corra** |
+| **todo** | 941 pruebas y `check_health` en verde **en local** | ⛔ **el CI remoto no ha corrido**: `main` va por delante de `origin/main` —38 commits al ejecutar el checkpoint; la cifra crece con cada commit y por eso no se usa como estado—. Indicios: sintaxis compilada contra 3.11, 0 activos sin rastrear, ninguno ignorado. **`NO DETERMINABLE` hasta que corra** |
+
+**Integridad estructural ≠ validez semántica.** Lo que 158/158 demuestra y lo que no:
+
+```
+DEMOSTRADO    158 activos → 158 ids únicos → rutas resueltas → 0 aristas rotas
+NO ANALIZADO  158 activos → 158 autoridades correctas → 158 semánticas correctas
+```
+
+La segunda cadena es otro análisis, y confundirla con la primera sería repetir, en el registro, el
+error que `P5` corrigió en el gate.
 
 ⚠️ **Y lo que `P5` introdujo, declarado para que no pase como gratuito:** con el paso 3 real,
 **agregar, retirar o renombrar un ADR, OBS, PCD, CNO o RO obliga a regenerar registro y grafo antes
@@ -1614,14 +1646,15 @@ conclusión de `P5`, y la implementa `check_health._registro_al_dia`.
 
 | | naturaleza |
 |---|---|
-| **régimen de regeneración y custodia de los derivados de gobernanza** — registro, grafo y testimonio de ejecución | **DECISIÓN DE DISEÑO PENDIENTE** · absorbe la fricción que `P5` introdujo |
+| **régimen de regeneración y custodia de los derivados de gobernanza** — registro, grafo y testimonio de ejecución · la pregunta exacta: **¿quién es el custodio del proceso de regeneración?** Hoy es *«una persona recuerda regenerar»*: funciona, y es frágil. `CANON → REGISTRADOR → DERIVADOS → GATE` debería ser una operación reproducible, no una costumbre | **DECISIÓN DE DISEÑO PENDIENTE, delimitada** · no es deuda en el sentido de `deuda.py`: no falsea una cifra pública · absorbe la fricción que `P5` introdujo |
 | `MASTER_INDEX` auditable por máquina | MEJORAR |
 | derivación verificada de `PROTOCOLO_CURACION_DOMINIO` y del resto de `docs/architecture` | pendiente · **nunca por estampado** |
 | `PCD-MN01` y los 30 ids fabricados | MEJORAR · ninguno es padre de nadie |
 | `smoke_cajones` con `exit 2` · residencia de `registrar_ejecucion` | MEJORAR · TRASLADAR |
 | `PR1–PR3` · el corolario llevado a los extractores de adquisición de los GAD | capacidad de producto |
 | herencia de confianza por `MISMA_FUENTE_QUE` | **es `Q-M2-C`** |
-| **BRN dinámica · dominios como subagentes · QUIRA AI coordinador** | **vNEXT** · ver consulta abajo |
+| **BRN dinámica · dominios como subagentes · QUIRA AI coordinador** | **vNEXT** · dirección arquitectónica, no ADR · ver consulta abajo |
+| **propagación de cambio aguas abajo** — *si cambia la fuente, ¿qué conocimiento quedó potencialmente afectado?* | **vNEXT** · la mitad **normativa** ya está diseñada: el MDN (`ADR-038 §9` · `BRN_PLANO_MAESTRO §5`) —*«todo texto sabe qué activos dependen de él»*—, sin determinar si opera. La extensión a **evidencia, derivados e inferencias** no está diseñada |
 | unificación de dominios | **diferida por la dirección** — no se analiza |
 
 ### ★ La consulta de la dirección · ¿BRN dinámica, dominios y QUIRA como agentes?
@@ -1663,10 +1696,13 @@ siguiente— **y detenerse en el 4**, donde decide una persona.
 
 ### `C` · La pregunta de `Q-M2-C`
 
-> **¿Cómo circula una misma evidencia entre la BRN, el Gold Master, los dominios y —cuando existan—
-> sus agentes, conservando su procedencia, su unidad, su estado epistemológico y su nivel de
-> confianza, sin adquirir por el tránsito un significado, una autoridad o una confianza que la
-> evidencia original no tenía?**
+> **¿Cómo circula una evidencia —y cómo circulan las reglas que permiten interpretarla— entre la
+> BRN, el Gold Master, los dominios y los futuros agentes, preservando procedencia, unidad, estado
+> epistemológico, autoridad y confianza, sin que el tránsito cree semántica o confianza que no
+> existía en el origen?**
+>
+> *(Formulación del colega, 2026-09-14. Amplía la anterior: no sólo circula la evidencia, también
+> las reglas que la vuelven interpretable.)*
 
 *Punto de partida verificado, sin análisis:* `procedencia.py` gobierna el peso de **una** afirmación
 en **un** punto; la relación `MISMA_FUENTE_QUE` existe en `scripts/cypher/003`, `004` y `005` — y en
