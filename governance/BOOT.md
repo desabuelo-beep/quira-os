@@ -32,7 +32,7 @@ PROMESA→PLAN→PRESUPUESTO→EJECUCIÓN→RESULTADO→TERRITORIO → BRECHAS. 
 🩹 **gates + suite EN CI** · 3 estados: ok · hallazgo · **2 = no determinable** · deudas → `deuda.py`
 📚 **doctrina → `doctrina.py`** · con verificador **cambia de custodio**; sin él, se queda aquí.
 🗂️ **DOS registros de autoridad** (P2/P3): `registry.yaml`=activos+cadena (gate lo verifica) · `MASTER_INDEX`=**routeo humano**, NO cubre BRN. ⛔ medir un régimen con la forma de otro **fabrica huecos falsos**.
-🏗️ **P5 (Javo)**: rearq = **construir vNEXT**, no auditar · hallazgo→**destino REARQ**, deuda sólo si falsea cifra (`DOC-027`) · 23 candidatos PROPUESTOS · 1 deuda (D-015) → **ratifica Javo** (`PANORAMA §5-octies`).
+🏗️ **P5 RATIFICADO+HECHO** (`PANORAMA §5-nonies`): rearq = **construir vNEXT** · ⛔ nada congelado · BRN al Index · registro **al día y verificado contra disco** (ids por título · 0 rotas) · `CIRCUITO:` declarado · corolario `DOC-035`: hallar ≠ declarar · ⚠️ **derivados sin regeneración gobernada** = decisión vNEXT.
 📑 ⛔ `.docx` gana al `.pdf`.
 ⚖️ **CANON**: ⛔ DOM **consume RO, NO lee la ley** · estado derivado → `canon.py` (consúltalo, NO lo escribas) · ⛔ **d01·d03·d09: RO NO cargada** (d07·d02 sí) · **VIII propuesta → d08 mide, NO dictamina** (D-6).
 📡 SITA **25 0,4448 · 26(1-5) 0,8382** vig · 0 actas · num.6 s/ingr.

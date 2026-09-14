@@ -1361,6 +1361,176 @@ lo convierte en especificación:**
 - **No verificó** que `smoke_cajones` pueda correr en CI sin datos externos — `NO DETERMINADO`.
 - **No determinó** la residencia canónica de los productores (`T1`).
 
+## 5-nonies · `P5` · RATIFICADO E IMPLEMENTADO
+
+### ⛔ La dirección corrige otra premisa · Javo · 2026-09-14
+
+> *«Estamos en auditoría **y** refactorización. Nada está congelado en este gran proceso.»*
+
+`§5-octies` escribió como tercera precisión *«anotar para implementar ≠ implementar ahora»*,
+apoyada en un congelamiento. **En este proceso ese congelamiento no existe**, y la precisión se
+retira. Lo que se ratifica, se construye.
+
+Y el lenguaje de salida se corrige como pidió el colega, porque «1 deuda y 23 candidatos» vuelve a
+leerse en binario: **1 deuda abierta confirmada y 23 capacidades o cambios potenciales de vNEXT,
+sujetos a decisión de diseño** — dentro de los cuales hay capacidades que ya existen y sólo se
+conservan. **No todos son cambios.**
+
+### Lo ratificado, y lo que ya está hecho
+
+| decisión | ratificación | implementado |
+|---|---|---|
+| **P5-01** · BRN en `MASTER_INDEX` | ✅ una fila de routeo, sin duplicar semántica | ✅ fila *«Qué NORMA gobierna»* → `BRN_PLANO_MAESTRO` · `docs/brn/` · ADR-035/038/039 · corpus · verificada por `registry.yaml` |
+| **P5-02** · familia VII en el registro | ✅ bajo el mismo régimen que las demás | ✅ **por el generador, no a mano** — y resultó no ser un problema de `d07` (ver abajo) |
+| **P5-03** · circuito de gates | ✅ reformulado: **criticidad de la invariante**, no «tener tercer estado» | ✅ 14 declaraciones `CIRCUITO:` + prueba que las obliga a coincidir con el workflow |
+| **P5-04** · no crear `DOC-038` | ✅ | ✅ |
+| **P5-05** · corolario de `DOC-035` | ✅ sujeto a verificar la superficie doctrinal | ✅ verificada y escrita — atacada sobre dos extractores reales |
+
+### ⛔ Falsación 17 — `d07` nunca estuvo desconectado
+
+`§5-octies` afirmó: *«no es un criterio de estado: **`d07` nunca se conectó al registro**»*. **Falso.**
+`registry.yaml` declara en su cabecera *«GENERADO · NO editar a mano»* y estaba generado el
+**2026-08-12**; las `CNO-VII` nacieron el 2026-08-18. **El generador no se había vuelto a correr.**
+Al regenerarlo:
+
+```
+registro   2026-08-12 → hoy      129 → 158 activos    (+29: 11 ADR · 5 OBS · 1 PCD · 9 CNO/RO · …)
+grafo      2026-07-27 → hoy      111 → 158 nodos
+```
+
+No faltaba sólo Transparencia: **faltaba todo lo creado en un mes**. Y el grafo, con el que el
+gate imprimía *«111 aristas, 0 rotas»*, **tenía siete semanas**. La capacidad `C6` de `§5-octies`
+—*«árbol de autoridad verificado en cada CI»*— se corrige: **el gate verificaba la cadena dentro de
+un derivado viejo, no la del repositorio.**
+
+### Y la causa estaba escrita en el propio gate
+
+```python
+# 3 · ¿el Registry está al día con el disco? (hash de un centinela)
+frozen = ROOT / "identity" / "CONSTITUCION_INSTITUCIONAL.md"
+if not frozen.exists(): ...
+```
+
+> **El rótulo prometía frescura; el mecanismo verificaba que la Constitución existiera.** Es la
+> familia SIGNIFICADO de `§5-octies`, dentro del gate de gobernanza: `declarado ≠ ejecutado`
+> (`ADR-042 §6-ter`), en su forma más literal.
+
+**Implementado:** el paso 3 relee el disco con **el mismo escáner** que escribe el registro y
+falla si el registro o el grafo no lo reflejan. **Falsado** contra el registro de 2026-08-12:
+exit 1, 82 activos nombrados, grafo desactualizado detectado. Con el registro al día, verde.
+
+### ⛔ Y lo que difirimos como «robustez» rompía la cadena
+
+Con los derivados al día aparecieron **5 aristas rotas**. Cuatro eran exactamente los *«padres
+resueltos por nombre»* que `§5-octies` y el colega difirieron por no haber *«demostrado impacto
+arquitectónico»*. **Se difirieron sobre un grafo de siete semanas.**
+
+La causa, y es `DOC-015` violado a escala: sin `id:` declarado, el generador **fabricaba el
+identificador desde el nombre de archivo**.
+
+| | antes | ahora |
+|---|---|---|
+| `ADR-035` en el registro | `CANON_ADR-ADR-035_Biblioteca_Reglas_Normativ` | **`ADR-035`** |
+| activos con id fabricado | **86 de 158** | **30** — 72 declaran `id:` y 56 lo declaran en su título. Los 30 restantes (catálogos, pipelines, cypher, gobernanza, `PCD-MN01`) no tienen prefijo canónico |
+| aristas rotas | **5** | **0** |
+| ids que nombran a dos activos | **6 pipelines fundidos en `DOMAIN_PIPELINE-__init__`** | **0 · 158 únicos de 158** |
+
+**La corrección no editó 86 archivos.** El generador lee ahora el identificador **donde el documento
+lo declara —su título—, y sólo si el archivo dice lo mismo**: dos representaciones que coinciden
+(`P5-G.2`), no una inferida de la otra. Una prueba ataca el caso opuesto: un prefijo de archivo
+sin título que lo confirme **no** acredita identificador.
+
+La quinta arista —`PCD-D06 → PROTOCOLO_CURACION_DOMINIO`— **no estaba rota**: el padre existe, en
+el hueco de alcance que el registro declara a propósito desde el 2026-07-29. El gate lo llamaba
+*«padre declarado inexistente»*. Ahora se clasifica **fuera de catálogo** y se informa sin
+bloquear: *«el verde NO las cubre»*. ⛔ **No se le estampó autoridad**: la Carta lo prohíbe, y su
+derivación sigue pendiente de verificarse.
+
+### `P5-05` · el corolario, y dónde vive realmente
+
+Antes de escribirlo se leyó la superficie completa: `DOC-035`, `DOC-036`, `ADR-042 §6-ter`
+(*«la clasificación automática descubre; no interpreta»*), `§6-quater` (*«un número correcto con
+una etiqueta incorrecta es un número falso»*), `§6-quinquies`, y `procedencia.py`.
+
+**Resultado:** la familia SIGNIFICADO **ya estaba gobernada para el sujeto observado**. Faltaba su
+extensión al **observador** —el mismo movimiento con que nació `DOC-035` para la ausencia—. Se
+escribió como corolario dentro de `DOC-035`, no como doctrina nueva.
+
+**Y no era sólo el auditor.** Dos extractores de QUIRA tenían el defecto, latente:
+
+| extractor | leía | con el documento de ataque |
+|---|---|---|
+| `build_registry.analizar` | `id:` y `parent:` en los primeros 4000 bytes | tomaba `id: FALSO-001` · `parent: NADIE` de un ejemplo |
+| `preguntas_publicas._pcds` | `status:` en los primeros 800 bytes | tomaba `status: NO_VIGENTE` de un ejemplo |
+
+Medido: **ningún activo real lo sufría hoy** — es latente, y se declara así. Corregidos para leer
+sólo la declaración del documento; `test_hallar_un_termino_no_prueba_la_declaracion` los ataca.
+
+### `P5-03` · el circuito, declarado
+
+| clase | archivos | por qué |
+|---|---|---|
+| **OBLIGATORIO** | los 12 `check_*` | cada uno protege una invariante de integridad, procedencia, normativa o reproducibilidad — declarada en su docstring |
+| **BAJO_DEMANDA** | `smoke_cajones` | su fallo impide **ver** un cajón; no hace que QUIRA afirme algo falso. *(`exit 2` pendiente como propiedad de diseño, no como criterio)* |
+| **NO_GATE** | `registrar_ejecucion` | productor — falsación 16 |
+
+La convención de nombre coincidía con la función **por costumbre**. Ahora la pertenencia se
+**declara** y `test_lo_obligatorio_es_exactamente_lo_que_el_ci_ejecuta` obliga a que declaración y
+workflow coincidan **en las dos direcciones**. Falsado: un `smoke_cajones` declarado obligatorio
+y un `check_nuevo.py` sin declarar son detectados.
+
+### ★ El producto arquitectónico principal — y por quinta vez, ya existía
+
+El colega fijó como producto de `P5` *«la separación explícita entre **representación encontrada**
+y **afirmación acreditada**»*, con la cadena `REPRESENTACIÓN → CONTEXTO → SIGNIFICADO → EVIDENCIA →
+INFERENCIA`.
+
+**Esa separación existe y está ejecutada desde el 2026-08-19: `app/agents/procedencia.py`.**
+
+| cadena propuesta | `procedencia.py` · las siete capas |
+|---|---|
+| representación | **4** · evidencia — qué artefacto quedó, con qué SHA |
+| contexto | **1** fuente · **2** captura · **3** estado de adquisición |
+| significado | **5** · verificador — *¿qué componente la interpretó?* · **6** · *¿qué prueba respalda esa interpretación?* |
+| — | **7** · sujeto — *¿sobre quién se afirma?* (`ADR-051 §12`: sin sujeto no hay afirmación) |
+| inferencia | **el peso**: `no_determinable` · `hallazgo_de_verificabilidad` · `hecho_verificable` (`ADR-051 §4`) |
+
+Y su principio es literalmente el que se pedía: *«cuando la cadena no puede sostener una afirmación,
+QUIRA **degrada** la afirmación; nunca rellena el vacío»*. **La capa que la propuesta no tenía, y
+`procedencia.py` sí, es el sujeto.**
+
+> **P1 halló el registro de reglas. P4 halló la taxonomía. P5 halla el contrato de interpretación.
+> Cinco veces lo que se iba a construir ya estaba construido.** La consecuencia para vNEXT no es
+> «construir el contrato»: es **extender el que existe** —al observador (hecho, `DOC-035`), a los
+> extractores de gobernanza (hecho, dos) y a los extractores de adquisición de los GAD (`PR1`,
+> pendiente)—.
+
+### ⚠️ `anti-falsificación ≠ continuidad de evidencia` — el patrón, medido
+
+La distinción del colega resultó ser **un patrón con tres casos**, no una observación sobre uno:
+
+| derivado de gobernanza | última generación | se protege contra lo viejo | se regenera solo |
+|---|---|---|---|
+| `registry.yaml` | 2026-08-12 | **ahora sí** — el gate compara con el disco | ⛔ no |
+| `authority_graph.json` | 2026-07-27 | **ahora sí** | ⛔ no |
+| `registro_de_ejecucion.json` | 2026-09-02 | ✅ sí — SHA por prueba, degrada a `None` | ⛔ no |
+
+**Los tres se protegen —o ya se protegen— contra usar evidencia vieja. Ninguno garantiza que la
+nueva se produzca.** Esa es la decisión de diseño de procedencia de ejecución para vNEXT: **quién
+regenera un derivado de gobernanza, y cuándo**.
+
+### Lo que queda, sin convertir en deuda
+
+| | destino |
+|---|---|
+| regeneración gobernada de los tres derivados | **decisión de diseño vNEXT** |
+| `smoke_cajones` con `exit 2` | MEJORAR · propiedad de diseño |
+| residencia canónica de `registrar_ejecucion` | TRASLADAR · destino no determinado |
+| derivación verificada de `PROTOCOLO_CURACION_DOMINIO` y del resto de `docs/architecture` | pendiente · **nunca por estampado** |
+| `PCD-MN01` y los 30 ids fabricados restantes | MEJORAR · ninguno es hoy padre de nadie |
+| `PR1–PR3` · el corolario llevado a la adquisición de los GAD | **la capacidad de producto de mayor alcance** |
+| `D-015` | ⛔ **deuda** — sin cambio |
+
 ## 6 · Y la finalidad, dicha por la dirección
 
 > *«No es una auditoría, sino **elevar este ecosistema**… para potenciar, mejorar y elevar el nivel
