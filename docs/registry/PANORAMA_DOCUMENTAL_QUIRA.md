@@ -615,6 +615,10 @@ CI ejecuta …… check_health explícito + los 12 check_*.py en bucle + pytest 
 fuera del glob …… registrar_ejecucion.py · smoke_cajones.py
 ```
 
+> ⛔ **Corregido en `§5-octies` (falsación 16):** `registrar_ejecucion.py` **no es un gate, es un
+> productor** — se contó como gate por residir en `scripts/ci/`. Universo real: **13 verificadores
+> · 12 en CI · 1 productor.**
+
 ★ **Y el bucle implementa los tres estados de QUIRA en la propia infraestructura:**
 
 | exit | tratamiento en CI |
@@ -1081,6 +1085,281 @@ Lo que sobrevive, y no es poco:
 
 > **`P4` no modificó el sistema para que la evidencia encajara. Modificó las conclusiones del
 > auditor para que encajaran con la evidencia.**
+
+## 5-octies · `P5` · DECISIÓN — y la corrección de marco que la precede
+
+### ★ La dirección corrige el marco antes de decidir · Javo · 2026-09-14
+
+> *«¿Es mi impresión o el colega confunde esta auditoría con el proceso real de refactorización?
+> El trabajo real es construir la nueva y mejor versión de QUIRA, con todo lo que se pueda sumar
+> para potenciar y elevar el ecosistema. **Todo lo que se revise y deba acogerse para la
+> construcción debería anotarse no como deuda, sino para implementar.**»*
+
+**Verificado contra el canon, la corrección es sustancialmente correcta:**
+
+| lo que dice el canon | dónde |
+|---|---|
+| esto es *«el plan del **refactor integral de fondo y forma de todo el ecosistema**»* | `CARTA_REARQUITECTURA §Qué es` |
+| su término es **`GOLD MASTER vNEXT`** — no un informe | `CARTA §8` |
+| el vocabulario de salida son **ocho destinos de construcción**, no categorías de déficit | `REARQ_Q-M1:348` |
+| *«la máquina propone, **la dirección ratifica**»* — cada pieza lleva `classification_candidate` y `classification_status` | `CARTA §3` |
+| ⛔ **el sesgo ya había sido detectado y escrito**: *«`GM-Ω` reconstruyó tanta genealogía que empezó a producir un **sesgo conservador de HECHO**, aunque el canon dijera lo contrario de DERECHO. Javo lo señaló y tiene razón»* | **`DOC-027`** · 2026-09-05 |
+
+> **Lo que Javo percibe no es una impresión: es la reincidencia del sesgo que `DOC-027` ya
+> registró.** Y esta serie de registros lo padeció también: `P0–P4` están redactados casi
+> enteramente en clave de **hueco, falsación, pendiente**. Las capacidades que se encontraron —y
+> fueron muchas— quedaron escritas como *«no es un hueco»*: **registradas por ausencia de defecto,
+> no como herencia para construir.**
+
+**Tres precisiones, que el mismo `DOC-027` exige** —porque su primera redacción *«se fue al extremo
+opuesto»* y hubo que corregirla:
+
+1. **El colega no confunde las fases.** Separar observar · clasificar · decidir · ejecutar es
+   `DOC-029`, y es correcto. **Lo que estrecha es el PRODUCTO de salida**: reduce `P5` a tres
+   decisiones de gobernanza y difiere el resto, y en esa lectura lo que QUIRA ya hace bien no tiene
+   dónde anotarse.
+2. **La deuda no desaparece: cambia de tamaño.** En QUIRA `deuda` es término técnico —`deuda.py`,
+   gravedad *«puede falsear una cifra pública»*—, y eso no es mentalidad de déficit, es protección
+   del producto. **`D-015` sigue siendo deuda.** Lo que no es deuda es casi todo lo demás.
+3. **Anotar para implementar ≠ implementar ahora.** El Gold Master sigue congelado hasta `011-C4`,
+   y `DOC-029` ordena diseñar la migración antes de ejecutarla. Y no todo hallazgo produce algo que
+   construir: **las dieciséis falsaciones fueron errores del auditor** — dejan método, no obra.
+
+**Por tanto `P5` tiene tres salidas, no una:**
+
+| salida | qué entra | criterio |
+|---|---|---|
+| **`P5-C` · CONSTRUCCIÓN** | capacidades a heredar, mejorar, trasladar o conectar en QUIRA vNEXT | destino `REARQ` candidato · la dirección ratifica |
+| **`P5-G` · GOBERNANZA** | decisiones que evitan repetir los errores de `P0–P4` | reduce ambigüedad · evita una clase demostrable de error · aumenta capacidad verificable |
+| **`P5-D` · DEUDA** | sólo lo que puede falsear una cifra pública | `deuda.py` |
+
+---
+
+### `P5-G.1` · Custodios — fronteras, no un custodio universal
+
+| custodio | gobierna | NO gobierna | lo verifica |
+|---|---|---|---|
+| **corpus Supabase** | el texto de la ley vigente | su interpretación | SHA por chunk |
+| **BRN** (`docs/brn`) | la **operacionalización** de la norma: CNO → RO | el cálculo | `I1–I8` · `check_sat_brn` |
+| **Gold Master** | el **número** | la norma · la evidencia | Regla de Oro 1 · congelado |
+| **`doctrina.py`** | las reglas **de método** con verificador | la norma jurídica | un test por regla |
+| **`deuda.py`** | lo que **puede falsear** una cifra pública | lo que sólo degrada | un ataque por deuda |
+| **ADR** | las **decisiones** de arquitectura y su porqué | su ejecución | citas + sustitución por sección |
+| **PCD** | el **cierre de curación** de un dominio | su suficiencia (`DOC-035`) | expediente |
+| **`registry.yaml`** | la **cadena de autoridad** de los activos registrados | lo no registrado | `check_health [5/5]` |
+| **`MASTER_INDEX`** | el **routeo humano**: dónde preguntar | la autoridad | ⛔ nadie |
+| **gates** | la **integridad ejecutable** en cada CI | lo que no inspeccionan | exit `0 · 1 · 2` |
+| **código** | la **implementación** | ningún cambio conceptual (Regla 9) | la suite |
+
+Leída en columna, la tabla dice algo que ninguna fase había formulado: **cada custodio tiene un
+verificador salvo uno — el `MASTER_INDEX`**, que es precisamente el que `DOC-036` manda consultar
+primero.
+
+### `P5-G.2` · Representaciones — cuándo dos formas son la misma función
+
+La pregunta que recoge las dieciséis falsaciones. **Criterio propuesto**, derivado de `DOC-013`
+(*función verificable*) y `DOC-033` (*lo nominal no autoriza*):
+
+> **Dos representaciones distintas representan la misma función sólo si se cumple al menos una
+> de estas dos condiciones:**
+> 1. **un mismo mecanismo la ejecuta o la verifica** — gate, test, compilador, lector único; o
+> 2. **el canon declara explícitamente la correspondencia** — como `ADR-035:14` para `d04` o `canon.py:299` para `CNO-IV`.
+>
+> **Y nunca por:** nombre · número · residencia en carpeta · formato · longitud · frecuencia de cita · posición en el archivo.
+
+Cada exclusión de la última línea es **una falsación de esta serie**: residencia (`registrar_ejecucion`
+contado como gate), formato (hash de 12), frecuencia de cita (`QUIRA_CAUSAL_MODEL`), posición (el
+`estado:` de un ejemplo).
+
+### `P5-G.3` · Las tres decisiones · la dirección ratifica
+
+#### 1 · BRN ↔ `MASTER_INDEX`
+
+**No es una decisión de arquitectura nueva: es aplicar una regla que el Index ya tiene.** Su `§3`:
+*«si nace un rector nuevo, regístralo aquí el mismo día — o se pierde»*. La BRN nació el
+2026-07-15 con rector claro (`BRN_PLANO_MAESTRO` + `ADR-035/038/039`) y **no se registró**.
+
+Y tiene consecuencia medible: `DOC-036 PASO 0` ordena consultar el Index antes de buscar. **Para la
+norma —la base que Javo llama inexpugnable— el protocolo forense envía hoy a un sitio sin
+respuesta.**
+
+| | propuesta |
+|---|---|
+| **qué** | una fila de routeo: *¿dónde vive la verdad normativa?* → `BRN_PLANO_MAESTRO` · `docs/brn` · `ADR-035/038/039` |
+| **relación entre registros** | **el Index RUTEA, el registro VERIFICA.** Ninguno sustituye al otro, y el Index debe **nombrar la existencia** de `registry.yaml`, que hoy no menciona |
+| **qué NO se hace** | convertir el Index en índice de autoridad. Cambiaría su función, y eso sí sería arquitectura |
+| **quién** | `governance/` → **Regla de Oro 5**: sólo con aprobación de Javo |
+
+#### 2 · Cobertura de `registry.yaml`
+
+**El hallazgo no era un problema de criterio.** Las 9 cadenas normativas fuera del registro son:
+
+```
+CNO-VII-001 · 002 · 003 · 004    RO-VII-001 · 002 · 003 · 004 · 005
+```
+
+**Toda la familia VII — Transparencia — y ninguna otra.** Las `CNO-VIII` en estado `propuesta` sí
+están registradas; las `VII` **vigentes** no. No es un criterio de estado: **`d07` nunca se conectó
+al registro.**
+
+> ★ Y es exactamente lo que la dirección describió al abrir esta rearquitectura: *«hemos construido
+> dominio por dominio, sin conectar totalmente el ecosistema»*. **El dominio que alimentará cada mes
+> a todos los demás es el único cuya cadena normativa no está en el registro verificado por
+> máquina.** `check_health [5/5]` informa *«100 % · 0 aristas rotas»* — **porque no la mira**.
+
+| | propuesta |
+|---|---|
+| **criterio** | requiere registro **toda pieza cuya autoridad deriva en cadena** y cuya rotura silenciosa pasaría el CI: `CNO` · `RO` · `ADR` · `PCD` · catálogos de dominio |
+| **gates** | ⛔ **no** por defecto: el bucle de CI ya los enumera por glob. Registrarlos sólo añade capacidad si el registro verifica **su autoridad citada** |
+| **acción inmediata derivada** | registrar la familia VII → **`P5-C`**, no deuda (la cadena ya está verificada por `I5` y Regla 3; lo que falta es el registro) |
+
+#### 3 · Gates fuera del circuito
+
+**Primero una corrección a `P2/P3` — falsación 16:** se contaron 14 gates. **`registrar_ejecucion.py`
+no es un gate: es un PRODUCTOR.** Su propio docstring lo dice —*«este script PRODUCE, el agente
+LEE»*—. Se contó como gate **por residir en `scripts/ci/`**: residencia leída como función.
+
+```
+verificadores ………… 13        en el circuito de CI …… 12 / 13
+productores …………… 1         (registrar_ejecucion)
+```
+
+| pieza | qué es | por qué no está en el circuito | propuesta |
+|---|---|---|---|
+| **`smoke_cajones`** | verificador real: monta `app.py` headless y exige una **huella** por cajón | su nombre no empieza por `check_` · y **no implementa `exit 2`** | **MEJORAR**: implementar el tercer estado y entonces entrar al circuito. Entrar sin él haría que su verde acreditara lo que no pudo montar |
+| **`registrar_ejecucion`** | productor del testimonio que lee `procedencia.py` (escalón 6) | nadie lo invoca · **testimonio sin actualizar desde el 2026-09-02** | decidir **cuándo corre**. ⚠️ **No falsea**: `fue_exitosa` sólo acepta testimonio cuyo SHA coincide con el test actual; si no, devuelve `None`. **Degrada en silencio** los verificadores escritos después |
+
+**Criterio propuesto para el circuito obligatorio:**
+
+> Pertenece al circuito de CI todo **verificador** cuya falla pueda hacer que QUIRA publique algo
+> falso o roto, **y** que pueda correr sin recursos fuera del repositorio **o** declare `exit 2`
+> cuando no pueda. **Un productor no es un gate**, aunque resida con ellos.
+
+### `P5-G.4` · Diferidos — ni deuda ni decisión
+
+| | por qué no entra ahora |
+|---|---|
+| `MASTER_INDEX` no auditable por máquina | real, pero **no causó ninguna** de las dieciséis falsaciones |
+| 4 `authority.parent` resueltos por nombre | ídem |
+
+Pasan a `P5-C` como **MEJORAR · prioridad baja**. No se pierden; no se promueven.
+
+### `P5-G.5` · La regla de la representación — análisis de cobertura
+
+Se leyeron completas `DOC-035` y `DOC-036`. Las dieciséis falsaciones se reparten en **dos
+familias**, y el reparto decide la respuesta:
+
+| familia | falsaciones | ¿cubierta? |
+|---|---|---|
+| **AUSENCIA** — *no lo encontré → no existe* | `6` rutas · `7` RO · `8` SHA · `9` gates · `10` YAML · `11` registro · `12` sustitución | ✅ **CUBIERTA.** `DOC-035` + `DOC-036` pasos `4` variantes terminológicas · `5` variantes de formato · `10` formatos no legibles · `12` falsos positivos. **No faltaba regla: faltó aplicarla** |
+| **SIGNIFICADO** — *lo encontré → significa lo que parece* | `13` identificador leído como valor · `14` citación leída como autoridad · `15` ejemplo leído como declaración · `16` residencia leída como función — y las tres que corrigió el colega: continuidad leída como identidad, ausencia de estado leída como «datos», cambio de expediente leído como reconciliación | ⛔ **NO CUBIERTA literalmente** |
+
+**Y el reparto en el tiempo es la evidencia más fuerte:**
+
+```
+P2/P3 ……  6 de AUSENCIA  ·  0 de SIGNIFICADO
+P4 ………  1 de AUSENCIA  ·  3 numeradas + 3 corregidas de SIGNIFICADO
+P5 ………  0 de AUSENCIA  ·  1 de SIGNIFICADO   (la 16)
+```
+
+> **Cuando `DOC-035/036` se aplicaron con disciplina, los errores de ausencia casi desaparecieron —
+> y los errores se desplazaron a la otra familia, para la que no hay regla.**
+
+**La grieta es precisa.** `DOC-035` hereda de `ADR-042 §6-quinquies`: *«hallar un término prueba
+presencia; no hallarlo NO prueba ausencia»*. La segunda mitad está gobernada con rigor. **La primera
+se dio por segura, y la falsación 15 la refuta**: hallar `estado: NO_VIGENTE` probó la presencia de
+esa cadena — **no que el documento estuviera no vigente.**
+
+**Recomendación · la dirección decide:**
+
+| opción | juicio |
+|---|---|
+| ya cubierta, no se formaliza | ⛔ **no**: siete errores demostrados en una sola fase |
+| **`DOC-038` nueva** | ⛔ **no**: sería inflación — no es un principio nuevo |
+| **corolario de `DOC-035`** que complete su mitad no gobernada: *«hallar un término prueba la presencia **del término**; no prueba la función, el régimen ni la declaración que parece nombrar»* — **más** extender `DOC-033` del plano de los indicadores al de los artefactos | ✅ **recomendada**: forma mínima, cierra la grieta exacta, y **pasa el criterio de admisión**: evita una clase demostrable de error |
+
+---
+
+### `P5-C` · CONSTRUCCIÓN — lo que QUIRA vNEXT hereda y eleva
+
+Cada fila entra como **`classification_status: PROPUESTO`** (`CARTA §3`). **La dirección ratifica.**
+
+#### CONSERVAR — capacidades demostradas que la vNEXT hereda tal cual
+
+| # | capacidad | evidencia |
+|---|---|---|
+| C1 | **los tres estados en la infraestructura**: `0` verificado · `1` hallazgos · `2` no determinable, *«que NO acredita nada»* | `quira-health.yml:141-165` |
+| C2 | **sustitución por sección, bidireccional y con acuse** — ningún documento sustituido entero | `ADR-024↔044` · `ADR-043↔045` · `ADR-045↔046` |
+| C3 | **estados epistémicos de la norma**: `no_determinable` · `no_observable` · `motivo_sin_sat` | `RO-VII-002/003/004` · `RO-VII-001:206` |
+| C4 | **el vínculo se declara, no se infiere del nombre** | `canon.py:299` |
+| C5 | **existe · tiene procedencia · se reproduce** como propiedades separadas | `D-015` |
+| C6 | **árbol de autoridad con raíz declarada** · 13/13 padres · verificado en cada CI | `check_health [5/5]` |
+| C7 | **cadena normativa íntegra**: `I5` 13/13 · 107 eslabones con SHA | `docs/brn` |
+| C8 | **estado epistémico deliberadamente incompleto** como capacidad | Regla de Oro 10 · `ADR-019` |
+| C9 | **decisión conversacional → regla verificada** · 37/37 con prueba | `doctrina.py` |
+| C10 | **candidato ≠ ratificado** | `CARTA §3` |
+| C11 | **categoría × estado de evidencia** como ejes separados | `CARTA §2` |
+| C12 | **testimonio de corrida anclado por SHA**, que degrada y no falsea | `ejecucion.fue_exitosa` |
+
+#### MEJORAR — capacidades presentes, incompletas o desconectadas
+
+| # | qué | por qué |
+|---|---|---|
+| M1 | **registrar la familia VII** en `registry.yaml` | el dominio que alimenta a todos está fuera del registro verificado |
+| M2 | **fila de routeo normativo** en `MASTER_INDEX` y mención de `registry.yaml` | aplica su propia regla `§3` · repara `DOC-036 PASO 0` para la norma |
+| M3 | **`smoke_cajones` con tercer estado**, y dentro del circuito | único verificador fuera de CI |
+| M4 | **decidir cuándo corre `registrar_ejecucion`** | escalón 6 de procedencia degradado 12 días |
+| M5 | **corolario de `DOC-035`** + extensión de `DOC-033` a artefactos | cierra la familia SIGNIFICADO |
+| M6 | **extender la taxonomía `CARTA §2` a artefactos documentales** — con `TRANSMUTADO` sólo si pasa el criterio de admisión | `d04` y `ADR-040` no caben en una sola categoría |
+| M7 | `MASTER_INDEX` auditable por máquina · 4 padres por `id:` | robustez · **prioridad baja** |
+
+#### TRASLADAR
+
+| # | qué | por qué |
+|---|---|---|
+| T1 | **`registrar_ejecucion.py`** fuera de `scripts/ci/` | es productor; su residencia provocó la falsación 16. **Destino: NO DETERMINADO** — no se conoce aún la residencia canónica de los productores |
+
+#### ★ Y la capacidad de mayor alcance, que no es sobre QUIRA sino para QUIRA
+
+**Todo lo que este barrido aprendió leyendo su propio corpus es exactamente lo que QUIRA necesita
+para leer el de 222 municipios.** Los documentos de un GAD tienen la misma heterogeneidad:
+PDF escaneado, `.docx`, tabla, anexo, portal, acta, sello. Los dieciséis errores del auditor son
+**la lista de errores que el lector de QUIRA no puede permitirse** cuando el observado es otro:
+
+| error del auditor sobre sí mismo | el mismo error sobre un GAD |
+|---|---|
+| leer el `estado:` de un ejemplo como declaración | leer la **ordenanza citada** en un acta como **ordenanza aprobada** |
+| leer un identificador como valor | leer un **número de oficio** como **monto** |
+| leer citación como autoridad | leer una **mención** del PDOT como **alineación** con el PDOT |
+| buscar la forma y no la función | declarar **inexistente** una rendición publicada en otro formato |
+
+`DOC-036` ya lo anticipaba: *«es exactamente el problema que QUIRA resuelve para terceros»*. **`P5`
+lo convierte en especificación:**
+
+| # | capacidad de producto | destino |
+|---|---|---|
+| **PR1** | **reconocer el régimen de representación antes de extraer** — distinguir declaración de cita, valor de identificador, cabecera de ejemplo | **MEJORAR** los extractores de adquisición documental |
+| **PR2** | **declarar, junto a cada conclusión, qué formas se inspeccionaron** — no sólo qué fuentes | **MEJORAR** · extiende `DOC-035` al producto |
+| **PR3** | **separar presencia del término de presencia de la función** en la evidencia pública | **MEJORAR** · aplica `P5-G.5` al observado |
+
+---
+
+### `P5-D` · DEUDA — lo que puede falsear una cifra pública
+
+| | |
+|---|---|
+| `D-015` | ⛔ **sigue abierta**, sin cambio — reproducción de `0,4448` y reconciliación `0,4630 ↔ 0,4646` |
+| **nuevas** | **ninguna.** La familia VII fuera del registro no falsea: su cadena está verificada por `I5` y Regla 3. El testimonio desactualizado degrada, no falsea |
+
+> **Una deuda frente a veintitrés candidatos de construcción** — 12 capacidades a heredar, 11 a
+> mejorar, trasladar o crear. Esa proporción es la respuesta medida a la pregunta de la dirección.
+
+### Lo que `P5` NO hizo
+
+- **No modificó nada.** `doctrina.py` · `registry.yaml` · BRN · `MASTER_INDEX` · gates · workflows: intactos.
+- **No ratificó nada.** Todo `P5-C` y `P5-G.3` entra como `PROPUESTO`; `CARTA §3` reserva la ratificación a la dirección.
+- **No verificó** que `smoke_cajones` pueda correr en CI sin datos externos — `NO DETERMINADO`.
+- **No determinó** la residencia canónica de los productores (`T1`).
 
 ## 6 · Y la finalidad, dicha por la dirección
 
