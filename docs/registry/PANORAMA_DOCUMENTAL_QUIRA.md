@@ -2268,15 +2268,26 @@ hash antes y después.
 Y `brn_compilador.py`: *«NO escribe el Gold Master vivo — genera artefactos; **aplicarlos al motor es
 aparte, sobre COPIA con evidencia**»*.
 
-> **Por diseño, un cambio normativo no llega solo al Gold Master.** La prueba de operación no es
-> *«¿se propagó al Excel?»*: es **¿se identifica el impacto y se detecta la divergencia?** Y hay otro
-> estado ejecutable además del Gold Master: **los motores Python de dominio**.
+> **No está demostrado un mecanismo automático y gobernado mediante el cual una modificación normativa
+> alcance el derivado ejecutable del Gold Master; el diseño vigente establece que la BRN no alimenta
+> directamente al motor en runtime.** La prueba de operación no es *«¿se propagó al Excel?»*: es **¿se
+> identifica el impacto y se detecta la divergencia?** Y hay otro estado ejecutable además del Gold
+> Master: **los motores Python de dominio**.
+>
+> *(Precisión del colega: la primera redacción decía «no llega por diseño», y el informe llegó a decir
+> «no llega nunca». Mezclaba dos cosas —que la BRN no alimente al motor **en runtime**, y que el motor
+> no pueda **recibir reglas compiladas**—. Lo segundo es falso: existe una compilación destinada al
+> Gold Master. Lo no demostrado es la cadena `BRN → compilación → derivado → activación` como
+> operación automática y gobernada.)*
 
-### Hay DOS compilaciones de la BRN, y no se confunden
+### Al menos dos artefactos derivados de la BRN, con procesos, destinos y estados distintos
 
-| | `brn_compilador.py` · `ADR-039` | `brn_cno.py` |
+*(Precisión del colega: «dos compilaciones» confunde **proceso** con **artefacto**. Lo demostrado son
+dos procesos distintos —dos scripts— que producen dos artefactos derivados.)*
+
+| | proceso `brn_compilador.py` · `ADR-039` | proceso `brn_cno.py` |
 |---|---|---|
-| **produce** | `data/brn_config.json` + `brn_manifest.json` | `gm_snapshot.json["brn_cno"]` |
+| **artefacto** | `data/brn_config.json` + `brn_manifest.json` | `gm_snapshot.json["brn_cno"]` |
 | **para** | el Gold Master, aplicado a mano sobre copia | los motores Python, vía `brn_lector` |
 | **build** | **2026-07-20** | **2026-09-02** |
 | **estado hoy** | ⛔ **`--verificar`: DIVERGE — falta recompilar** (exit 1). Contiene 5 RO; el canon de hoy compila **10**. **18 commits** tocaron `docs/brn` después del build, entre ellos `c014e2a` —*«las 9 piezas de d07 pasan a VIGENTE»*— | ✅ **al día**: canon `f9fa18c6f3b8bb9b` declarado = actual · integridad **16/16 CNO · 13/13 RO** · **sello de Javo del 2026-09-02 aplica** |
@@ -2318,8 +2329,19 @@ CE_271 · COOTAD_192 · 198_1 · 198_2 · 198_6 · Transitoria  ─ESLABON_DE→
 **ninguna función calcula impacto** —búsqueda de `impacto` · `afectad` · `dependient` · `propaga` ·
 `reforma` en nombres de función—.
 
-> **El MDN existe y está poblado, pero no constituye un mecanismo operativo de propagación de
-> cambios.** *(Formulación del colega.)*
+> **El MDN existe como estructura de conocimiento y está poblado, pero no está demostrado como
+> mecanismo operativo de propagación de cambios normativos.** *(Formulación del colega.)*
+
+Las cuatro distinciones que el registro conserva, a pedido del colega:
+
+| | afirmación | estado |
+|---|---|---|
+| 1 | **el MDN existe** | ✅ **DEMOSTRADO** |
+| 2 | **el MDN está poblado** | ✅ **DEMOSTRADO PARCIALMENTE** — con el caso `CNO-IV-001`, y sin la familia VII |
+| 3 | **el MDN se recorre para propagar reformas** | ⛔ **NO DEMOSTRADO** — no se identificó ningún recorrido |
+| 4 | **la BRN produce derivados ejecutables** | ✅ **DEMOSTRADO** — pero su **regeneración y activación ante un cambio normativo o temporal no están gobernadas de extremo a extremo** |
+
+**`MDN diseñado ≠ MDN poblado ≠ MDN operativo`.**
 
 ### ★ Pero la detección de divergencias SÍ existe — en otro sitio
 
@@ -2361,6 +2383,19 @@ puente hoy: umbral_vigente = 65 · consumible · catálogo al día · compilado 
 > **nunca** pregunta qué tramo toca hoy — resolver la vigencia a una fecha es tarea del runtime
 > (§4b)»*.
 
+⚠️ **Y esto NO es un sello defectuoso** *(precisión del colega)*. El sello valida lo que dice validar:
+**la correspondencia entre el compilado y el canon que se compiló**, y el hash lo cumple. Lo que falta es
+**otro control**: *«este artefacto sigue siendo operacionalmente vigente en la fecha actual»*. Es
+**cobertura incompleta del control de vigencia**, y exige separar tres controles que hoy van juntos:
+
+```
+integridad de contenido   ≠   vigencia temporal   ≠   activación operacional
+   (el hash · existe)          (no existe)             (no gobernada)
+```
+
+**El hash del canon demuestra integridad del contenido que fue compilado; no demuestra vigencia
+temporal del derivado compilado.**
+
 **2 · El bloque publicado de d02 es anterior a la corrección.** El código actual publica
 `umbral_cootad` como **diccionario** —valor, estado, tramos, procedencia—. El snapshot tiene el
 **escalar `65`**, y se escribe sin transformación (`snap["presupuesto_dom"] = block`). **La cura de
@@ -2373,7 +2408,10 @@ se regenera d02, **recibirá un diccionario donde espera un número** —incompa
 lectura**, efecto en pantalla **no ejecutado**—. Y la capa de presentación **reintroduce `65` y `70`
 como literales**, fuera del universo que inspecciona el detector.
 
-**4 · El detector falla en los dos caminos, por representación y por alcance.**
+**4 · El detector actual no cubre todas las formas de representación de una misma regla normativa,
+particularmente puentes derivados y equivalencias escalares.** Es una **deuda instrumental
+demostrada**, no un veredicto sobre el instrumento *(formulación del colega)* — y es el mismo patrón que
+`CodeGraph` en `P0` y `acoplamiento.py` en `C1`: **instrumento de detección ≠ universo real**.
 
 | el detector dice | lo que hay | por qué |
 |---|---|---|
@@ -2386,14 +2424,33 @@ como literales**, fuera del universo que inspecciona el detector.
 
 | estado ejecutable | camino del cambio | ¿automático? | ¿detección de divergencia? |
 |---|---|---|---|
-| **Gold Master** | compilado `ADR-039` → aplicar sobre copia con evidencia | ⛔ no, **por diseño** | ninguna localizada que compare celdas del Gold Master con tramos de RO · y el artefacto compilado **diverge hoy** |
+| **Gold Master** | compilado `ADR-039` → aplicar sobre copia con evidencia | ⛔ **no demostrado** · la BRN no alimenta al motor en runtime; depende de compilación, activación y su custodio | ninguna localizada que compare celdas del Gold Master con tramos de RO · y el artefacto compilado **diverge hoy** |
 | **d07** | carga el YAML de la regla | ✅ sí | `canon`: `con_copias`, reportadas |
 | **d02** | **A** puente verificado · **B** celda del Gold Master con literal | A ✅ · B ⛔ | el detector **no ve A ni la copia de B** · y A **congela el tramo** al compilar |
 | **d08** | puente, para `RO-VIII-003` —en `propuesta`, así que no consumible— | — | fuera del universo del detector |
 | **d01 · d03 · d09** | ningún uso del puente en su universo · sólo citan | — | — |
 | **MDN · Neo4j** | ninguno: **sin lector** y sin la familia VII | ⛔ | ⛔ |
 
-> ### **Cuando una regla cambia, el cambio llega al estado ejecutable sólo donde un motor lee la regla en ejecución —d07, y d02 por el puente—. En el Gold Master no llega por diseño y ninguna comparación localizada lo detectaría. Y aun donde llega, el cambio que ocurre por el tiempo —un tramo que entra en vigor— queda congelado en el catálogo hasta la próxima compilación, sin que el candado lo advierta.**
+⚠️ **Rutas heterogéneas no es lo mismo que rutas incorrectas** *(precisión del colega)*. d07 consume
+el YAML por `ROAdapter` y d02 por el puente: **existen rutas normativas de consumo heterogéneas que
+deben reconciliarse arquitectónicamente**. Si corresponde unificarlas, mantenerlas diferenciadas,
+jerarquizarlas o hacerlas consumir el mismo derivado, lo decide `REARQ` después. **No es un defecto
+todavía.**
+
+### El resultado de `C3`, congelado
+
+> **La BRN tiene arquitectura normativa, el MDN tiene existencia y población real, pero no se demostró
+> que el MDN sea actualmente el mecanismo que propaga una reforma normativa hacia los derivados
+> ejecutables. La actualización efectiva depende de rutas de compilación y consumo heterogéneas,
+> algunas de ellas con derivados congelados temporalmente y con al menos un respaldo literal que
+> reproduce precisamente la clase de deuda que la BRN debía eliminar.**
+>
+> Y: **no está demostrado un mecanismo automático y gobernado mediante el cual una modificación
+> normativa alcance el derivado ejecutable del Gold Master; el diseño vigente establece que la BRN no
+> alimenta directamente al motor en runtime.**
+
+*(Formulación del colega, 2026-09-15. `C3` queda **aprobado como diagnóstico**; la investigación no se
+reabre.)*
 
 ### Correcciones a lo publicado
 
@@ -2414,6 +2471,25 @@ como literales**, fuera del universo que inspecciona el detector.
 | **enseñar al detector** la vía `brn_lector`, la representación fraccionaria y la capa de presentación | el hecho 4 |
 | **recompilar `ADR-039`** y **cargar la familia VII al MDN** — o declararlos derivados sin custodio | es `P5-B` otra vez: **cuarto y quinto derivado sin regeneración gobernada** |
 | **comparar celdas normativas del Gold Master con los tramos de su RO** | la *detección de divergencias* que `ADR-038 §9` asigna a la BRN, del lado del motor |
+
+#### ⚠️ El custodio de la regeneración no es una tarea: es gobierno del conocimiento
+
+*(Precisión del colega.)* La pregunta *«¿quién regenera los derivados?»* ya apareció cinco veces
+—registro, grafo de autoridad, testimonio de ejecución, artefacto `ADR-039`, MDN— y **no se resuelve
+como pendiente técnico**. Es el equivalente normativo de un **circuito de release**:
+
+```
+CNO/RO cambia, o entra en vigor un tramo
+      ↓   ¿quién detecta que hay que recompilar?
+      ↓   ¿quién ejecuta la recompilación?
+      ↓   ¿quién valida el resultado?
+      ↓   ¿quién promueve el derivado?
+      ↓   ¿qué artefacto queda vigente, y desde cuándo?
+```
+
+**`tener lifecycle definido ≠ tener lifecycle activado operacionalmente`.** El ciclo ya está diseñado
+(`BRN_CICLO_VIDA_Y_MOLDE §5`, `§5b`) y **no se inventa otro**: lo que falta es **demostrar, y
+eventualmente implementar, sus custodios y activadores**.
 
 ### Lo que `C3` NO cubrió
 
