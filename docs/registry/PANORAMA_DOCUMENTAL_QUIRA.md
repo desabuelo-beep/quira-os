@@ -2065,6 +2065,143 @@ unión de las dos mitades que ya existen.
 | **escritura concurrente** | cinco productores reescriben el mismo archivo entero. Si dos corren fuera de orden, uno puede pisar el bloque de otro. **No observado**; se registra como pregunta |
 | **el valor en el catálogo** | `catalogo_d02` lleva `alineacion_pnd_pct: 83` escrito: otra copia del mismo número, que envejece igual |
 
+## 5-duodecies · `Q-M2-C2` · `MISMA_FUENTE_QUE` — lo que la relación significa operacionalmente
+
+> **Pregunta, fijada por el colega:** *¿cuando QUIRA reutiliza una misma fuente entre dominios,
+> conserva la identidad del artefacto, su procedencia y su estado epistemológico, o solamente
+> reutiliza el dato derivado?* — y la advertencia: `C2` **no es una prueba de existencia de
+> relaciones**, y no se declara que sea el mismo mecanismo que el canal de `C1`.
+
+**Universo:** `.cypher` · `.py` · `.md` · `.yaml` · `.json` del repositorio sin worktrees ni caché · el
+historial de git en todas las ramas · y **el grafo vivo de Neo4j**, consultado en modo lectura por el
+conector del propio proyecto, sin exponer credenciales.
+
+### `C2.1` · Existencia — dónde vive la relación
+
+| dónde | resultado |
+|---|---|
+| **cypher** | **3 relaciones**: `003` `Fuente Presupuesto → CD-06` · `004` `Fuente eSIGEF_d02 → CD-06` · `005` `Fuente PDOT_metas_d03 → Dominio d01` |
+| **grafo vivo** | **las mismas 3**, idénticas |
+| **código que la escribe** | **ningún cargador localizado** —ni en `.py`, ni en `.sh`/`.ps1`/`.bat`, ni en workflows, ni instrucciones en `docs/architecture`— que ejecute los `.cypher` contra Neo4j. Cómo llegaron al grafo vivo: **`NO DETERMINABLE`** |
+| **código que la LEE** | **ninguno**: ninguna consulta en `.py` recorre `MISMA_FUENTE_QUE` · las menciones en `d01/fuentes.py` y `d01/__init__.py` son docstrings |
+| **documentos** | `MASTER_INDEX` · `ADR-053` · `META_CATALOGO_AGENTES` · `EVIDENCIA_d03` · `EVIDENCIA_d09` · `_template/README` · `DOC-036` |
+
+### `C2.2` · Identidad — ¿apuntan al mismo artefacto?
+
+| relación | lo que declara el propio nodo | lo que hace el código | ¿mismo artefacto? |
+|---|---|---|---|
+| `Presupuesto` (d01) → `CD-06` | `origen = 'portal_transparencia_DPE'` | la extracción es **`raise NotImplementedError`** —*«Fase 4 — NO IMPLEMENTADO»*—; el motor de d01 lee el **Gold Master** (`H16b`) | ⛔ **no** — d01 no consume artefactos de `CD-06` |
+| `eSIGEF_d02` (d02) → `CD-06` | **`origen = 'Gold Master H07'`** | el enricher lee `sh("H07_S5")` | ⛔ **no** — d02 lee una hoja del Gold Master; d07 descarga el CSV de `CD-06` del portal |
+| `PDOT_metas_d03` → `Dominio d01` | `origen = 'H03/PDOT (consumido de d01)'` | — | **otro tipo de relación**: el destino es un **dominio**, no una fuente |
+
+**Prueba por contenido, y no refuta.** `OBS-011` —**CONFIRMED**— demostró que `CD-06` publica **sólo
+la cédula de egresos**; la de ingresos está ausente. Si d02 leyera ingresos, no podrían venir de
+`CD-06`. **d02 lee sólo egresos de inversión** —`Codificado_Total_Inversión` ·
+`Devengado_Total_Inversión` · `Ti`—: el contenido es **compatible** con un mismo origen. Se registra así,
+sin forzar el hallazgo.
+
+> **Lo que la relación expresa operacionalmente es un mismo SISTEMA DE ORIGEN —la cédula de eSIGEF—
+> alcanzado por CANALES distintos.** Y el canon ya separa las dos cosas: `REARQ_ARQUEO §365`
+> `SISTEMA_ORIGEN ≠ CANAL_DE_ADQUISICIÓN`, y `§237` registra para eSIGEF tres canales —LOTAIP `CD-06`,
+> transparencia pasiva, carga al Gold Master— con d02 *«OPERATIVO por vía indirecta»*.
+> **`MISMA_FUENTE_QUE` apunta a `CD-06`, que es un conjunto de datos de un canal, y así colapsa origen
+> y canal en una arista.**
+
+⚠️ Y el mismo nombre de relación une **dos tipos ontológicos** —`Fuente → CD` y `Fuente → Dominio`—:
+`DOC-033`, lo nominal no autoriza a inferir identidad de naturaleza.
+
+### `C2.3` · Procedencia — ¿qué viaja con el vínculo?
+
+| | grafo vivo |
+|---|---|
+| **propiedades de las 3 aristas** | **ninguna** — `keys(r) = []` en las tres |
+| nodo `Fuente` | `origen` (texto) · `descripcion` · `updated_at` |
+| nodo `CD-06` | `guia_sha256` — **el SHA de la guía metodológica, no del artefacto de datos** · `estado_*` · `nota_reuso` · `reuso_cross_dominio` |
+
+**Sin artefacto, SHA del dato, corte, captura, sujeto ni canal en la relación.** Que Neo4j tenga la
+arista no demuestra que la procedencia viaje con ella: **no viaja**.
+
+### `C2.4` · Estado epistemológico
+
+**Nada en la arista.** El peso que `procedencia.py` asigna a una afirmación
+—`no_determinable` · `hallazgo_de_verificabilidad` · `hecho_verificable`— **no existe en el grafo**.
+`CD-06` sólo tiene `estado_empirica = true`, un booleano del conjunto de datos, no el grado de la
+evidencia para quien la consume.
+
+### `C2.5` · Efecto observable — ¿evitó una segunda adquisición?
+
+**No.** La cédula entra a QUIRA por al menos dos canales independientes: d07 descarga `CD-06` del
+portal por la API de la DPE, y d02 lee `H07_S5`, cargada al Gold Master por otra vía (`§237`). d01 no
+extrae. **Ningún código recorre la relación**, así que no pudo evitar nada.
+
+> **`relación existente ≠ reutilización efectiva`** — y en este caso **la reutilización no es
+> operación: es intención.** El docstring de d01 lo dice sin ambigüedad: *«Budget/Presupuesto NO se
+> re-extrae: se reusa la evidencia de d07 CD-06»* … dentro de una función que **lanza
+> `NotImplementedError`**.
+
+### ★ Y lo que el grafo vivo afirma, sin que el repositorio lo produzca
+
+En el Neo4j vivo, `CD-06` tiene dos propiedades que **ningún archivo del repositorio escribe** —ni
+`.cypher`, ni `.py`, ni `.md`— **y que no aparecen en el historial de git de ninguna rama**:
+
+```
+reuso_cross_dominio = ['d01_Planificacion', 'd02_Presupuesto']
+nota_reuso          = "La cedula presupuestaria extraida aqui la consumen d01 y d02 sin re-extraer (colega 2026-07-22)"
+```
+
+| la memoria viva afirma | el código demuestra |
+|---|---|
+| d01 consume la cédula de `CD-06` sin re-extraer | la extracción de d01 **no está implementada**; lee el Gold Master |
+| d02 consume la cédula de `CD-06` sin re-extraer | d02 lee **`H07_S5` del Gold Master** — su propio nodo lo declara |
+
+Dos consecuencias, las dos ya nombradas por esta serie:
+
+1. **Viola la conclusión de `P5`**: *la representación derivada debe ser reconstruible desde el estado
+   actual del universo que pretende representar*. `d07/__init__.py` declara a Neo4j *«ÍNDICE
+   DERIVADO»*, y este índice contiene afirmaciones que **ningún artefacto del repositorio reconstruye**.
+   Origen: **`NO DETERMINABLE`** —el texto se atribuye al colega el 2026-07-22; no hay commit que lo
+   escriba—.
+2. **Es exactamente lo que `Q-M2-C` pregunta**: una **intención de diseño** —«se consumirá sin
+   re-extraer», Fase 4— **quedó guardada como hecho operativo** en la memoria que, según `ADR-033`,
+   consumirá QUIRA IA. Una respuesta conversacional apoyada en ese grafo diría que d01 y d02 reutilizan
+   la cédula. **El tránsito de la decisión a la memoria le dio el estatus de hecho.**
+
+### Lo que `C2` corrige en el canon — sin modificarlo
+
+| afirma | dónde | lo que `C2` demuestra |
+|---|---|---|
+| *«evidencia reutilizada (`MISMA_FUENTE_QUE`), nunca re-extraída»* | `MASTER_INDEX` · fila *Memoria operacional entre dominios* | declarada, **no operada** |
+| *«Hoy hay **reuso de fuente**, no consulta entre agentes»* | `ADR-053 §6-bis` · medición del 2026-08-26 | ni siquiera el reuso de fuente es operación: es **declaración de origen común** |
+| el *«contrato de evidencia interdominio»* que *«ya existe»*, con el principio *«la cédula se extrae una vez, no dos»* | `DOC-036 · por_que_ahi` | **existe la relación; el principio no se ejecuta** — la cédula se adquiere por dos canales |
+
+⛔ **Nada de esto se toca aquí.** `ADR-053` está sellado, y el `MASTER_INDEX` y `doctrina.py` son
+decisión de la dirección.
+
+### Los patrones de circulación, con `C2` medido
+
+| patrón | qué circula | estado |
+|---|---|---|
+| `consulta.py` | **afirmación gobernada** —grado, sujeto, motor— | contrato y defensa demostrados · **sin caller productivo** |
+| snapshot d01 → d02 | **dato derivado, por copia**, con procedencia de bloque en prosa | **circulación efectiva demostrada** · conservación de procedencia y estado por evaluar |
+| **`MISMA_FUENTE_QUE`** | **una declaración de origen común**, sin procedencia ni estado, **que ningún código lee** | **existe en cypher y en el grafo vivo · no opera** · y su nota viva afirma un reuso que el código no hace |
+| BRN → Gold Master | regla compilada | **`C3`** |
+| Gold Master → dominio → indicador | conocimiento derivado | **`C4`** |
+
+### Destinos `REARQ` candidatos — PROPUESTOS, decide la dirección
+
+| | |
+|---|---|
+| **retirar del grafo vivo, o marcar como intención**, `nota_reuso` y `reuso_cross_dominio` | afirman como hecho una operación que no ocurre · y **no son reconstruibles** desde el repositorio |
+| **separar origen de canal** en la relación —p. ej. `MISMO_SISTEMA_ORIGEN` hacia un nodo de sistema, no hacia un `CD`— | es aplicar `§365`, que ya es canon |
+| **dar a la arista la procedencia mínima** —canal, corte, SHA del artefacto— si ha de sostener reutilización | sin eso no puede sostenerla |
+| **decidir si Neo4j se regenera sólo desde el repositorio** | es la misma pregunta de `P5-B` —*¿quién custodia la regeneración de los derivados?*— ahora para el grafo |
+
+### Lo que `C2` NO cubrió
+
+- Si alguna **página** lee `reuso_cross_dominio` o `nota_reuso` del grafo y lo muestra: no se buscó en `quira_pages/` con consultas dinámicas.
+- La **tensión** entre `CD-06 · estado_empirica = true` y la ausencia de ingresos que `OBS-011` confirma: puede ser coherente —publicado, aunque incompleto— y no se evaluó.
+- **Las otras relaciones del grafo vivo**: sólo se examinó `MISMA_FUENTE_QUE`.
+
 ## 6 · Y la finalidad, dicha por la dirección
 
 > *«No es una auditoría, sino **elevar este ecosistema**… para potenciar, mejorar y elevar el nivel
