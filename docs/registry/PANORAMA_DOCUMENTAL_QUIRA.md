@@ -2100,12 +2100,16 @@ la cédula de egresos**; la de ingresos está ausente. Si d02 leyera ingresos, n
 `Devengado_Total_Inversión` · `Ti`—: el contenido es **compatible** con un mismo origen. Se registra así,
 sin forzar el hallazgo.
 
-> **Lo que la relación expresa operacionalmente es un mismo SISTEMA DE ORIGEN —la cédula de eSIGEF—
-> alcanzado por CANALES distintos.** Y el canon ya separa las dos cosas: `REARQ_ARQUEO §365`
-> `SISTEMA_ORIGEN ≠ CANAL_DE_ADQUISICIÓN`, y `§237` registra para eSIGEF tres canales —LOTAIP `CD-06`,
-> transparencia pasiva, carga al Gold Master— con d02 *«OPERATIVO por vía indirecta»*.
-> **`MISMA_FUENTE_QUE` apunta a `CD-06`, que es un conjunto de datos de un canal, y así colapsa origen
-> y canal en una arista.**
+> **La evidencia es compatible con un origen común en eSIGEF alcanzado mediante canales distintos.**
+> *(Precisión del colega: la primera redacción decía «la relación expresa un mismo sistema de origen».
+> **La relación no porta esa semántica**: la compatibilidad sale de triangular los nodos, el Gold
+> Master, el canon y los artefactos observados, no de la arista.)*
+>
+> El canon ya separa las dos cosas: `REARQ_ARQUEO §365` `SISTEMA_ORIGEN ≠ CANAL_DE_ADQUISICIÓN`, y
+> `§237` registra para eSIGEF tres canales —LOTAIP `CD-06`, transparencia pasiva, carga al Gold Master—
+> con d02 *«OPERATIVO por vía indirecta»*. **El nombre de la relación promete más semántica de la que
+> su estructura operacional acredita**, y al apuntar a `CD-06` —un conjunto de datos de un canal—
+> **no distingue origen de canal**.
 
 ⚠️ Y el mismo nombre de relación une **dos tipos ontológicos** —`Fuente → CD` y `Fuente → Dominio`—:
 `DOC-033`, lo nominal no autoriza a inferir identidad de naturaleza.
@@ -2161,10 +2165,21 @@ Dos consecuencias, las dos ya nombradas por esta serie:
    DERIVADO»*, y este índice contiene afirmaciones que **ningún artefacto del repositorio reconstruye**.
    Origen: **`NO DETERMINABLE`** —el texto se atribuye al colega el 2026-07-22; no hay commit que lo
    escriba—.
-2. **Es exactamente lo que `Q-M2-C` pregunta**: una **intención de diseño** —«se consumirá sin
-   re-extraer», Fase 4— **quedó guardada como hecho operativo** en la memoria que, según `ADR-033`,
-   consumirá QUIRA IA. Una respuesta conversacional apoyada en ese grafo diría que d01 y d02 reutilizan
-   la cédula. **El tránsito de la decisión a la memoria le dio el estatus de hecho.**
+2. **Es exactamente lo que `Q-M2-C` pregunta**: la memoria que, según `ADR-033`, consumirá QUIRA IA
+   contiene **como afirmación** un reuso que la ejecución productiva no muestra. Una respuesta
+   conversacional apoyada en ese grafo diría que d01 y d02 reutilizan la cédula. ⚠️ **No se afirma que
+   la nota «nació de una decisión y la memoria la convirtió en hecho»**: su origen no está demostrado.
+   Lo demostrado es la no correspondencia.
+
+> ### Formulación del hallazgo, fijada por el colega
+>
+> **El estado derivado vivo contiene al menos una afirmación de reuso cross-dominio cuyo origen y
+> mecanismo de generación no son reconstruibles desde el universo documental y de código
+> inspeccionado, y cuya afirmación no coincide con los caminos productivos actualmente demostrados.**
+>
+> No es *«Neo4j está mal»*. Es **pérdida de trazabilidad del estado derivado** — y la regla que se
+> sigue para QUIRA IA: **un índice derivado no adquiere autoridad porque contenga una propiedad que
+> parece canónica.**
 
 ### Lo que `C2` corrige en el canon — sin modificarlo
 
@@ -2195,6 +2210,21 @@ decisión de la dirección.
 | **separar origen de canal** en la relación —p. ej. `MISMO_SISTEMA_ORIGEN` hacia un nodo de sistema, no hacia un `CD`— | es aplicar `§365`, que ya es canon |
 | **dar a la arista la procedencia mínima** —canal, corte, SHA del artefacto— si ha de sostener reutilización | sin eso no puede sostenerla |
 | **decidir si Neo4j se regenera sólo desde el repositorio** | es la misma pregunta de `P5-B` —*¿quién custodia la regeneración de los derivados?*— ahora para el grafo |
+
+### El resultado de `C2`, congelado
+
+> **`MISMA_FUENTE_QUE` está materializada en el grafo y su existencia es demostrable, pero su operación
+> actual como mecanismo de reutilización de evidencia no está acreditada.** Las relaciones carecen de
+> propiedades propias de procedencia y estado epistemológico, no se identificó código productivo que las
+> atraviese y los casos examinados muestran adquisiciones por canales distintos. **Por tanto, la relación
+> acredita actualmente una declaración de relación u origen, no una reutilización efectiva de evidencia.**
+>
+> Y: **el grafo vivo contiene al menos una afirmación de reutilización cuya procedencia de generación no
+> es reconstruible desde el repositorio inspeccionado y cuya correspondencia con la ejecución productiva
+> no fue demostrada.**
+
+*(Formulación del colega, 2026-09-15. Ni «funciona» ni «no funciona». **Diagnóstico antes de cirugía**:
+ni la semántica de `MISMA_FUENTE_QUE` ni las propiedades del grafo vivo se tocan hasta cerrar el arqueo.)*
 
 ### Lo que `C2` NO cubrió
 
