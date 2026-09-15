@@ -2008,13 +2008,36 @@ except Exception:
 
 | lo que `consulta.py` exige en la frontera | lo que viaja de d01 a d02 |
 |---|---|
-| *«nunca un valor suelto»*: afirmación con sujeto, evidencia, motor y grado | **un número y cadenas de texto** — ni procedencia, ni grado, ni sujeto viajan · verificado en el snapshot |
+| *«nunca un valor suelto»*: afirmación con sujeto, evidencia, motor y grado | **un número y cadenas de texto por valor** · la procedencia viaja **sólo como prosa de bloque** —ver falsación 21— · el grado no viaja · el sujeto va **implícito en el archivo**, no en el valor |
 | el grado no puede elevarse al cruzar | el grado **no viaja**, así que **no hay con qué comparar**: nada impide que d02 le atribuya luego un peso que d01 no sostenía |
 | *«devuelve la misma afirmación, no una copia»* | **copia**: `0.832` pasa a `83`, y el eje se duplica dentro de los fondos. Si d01 cambia, la copia de d02 envejece hasta el próximo enriquecimiento |
 | el tercer estado se preserva | `(x or 0) * 100 … or None`: **un cero real y un dato ausente llegan como el mismo `None`** · estructural, **no observado** hoy (el valor es 0,832) |
 | un fallo no se lee como ausencia (`ADR-042 §6`) | `except Exception` → *«no pude leer d01»* llega como *«no hay eje PND»*. El gate de errores silenciosos **no lo mira**: sus zonas críticas no incluyen `scripts/` |
 
-> ### **QUIRA tiene hoy dos canales entre dominios: el defendido, sin uso productivo; y el usado, sin defensa.**
+> ### **QUIRA presenta al menos dos mecanismos diferenciados de circulación interdominio: `consulta.py`, cuyo contrato incorpora controles explícitos de procedencia y de no elevación del grado, y el canal productivo d01 → d02 mediante `gm_snapshot.json`, cuya circulación efectiva está demostrada pero cuya conservación de procedencia y estado epistemológico durante el tránsito aún debe evaluarse.**
+>
+> *(Formulación del colega, 2026-09-15. La primera redacción —«el usado, sin defensa»— decía más de lo
+> demostrado, y la falsación 21 lo confirmó.)*
+
+#### ⛔ Falsación 21 — «la procedencia no viaja» se verificó buscando tres nombres de clave
+
+La afirmación *«ni procedencia, ni grado, ni sujeto viajan · verificado en el snapshot»* se apoyó en
+buscar `procedencia_pnd`, `grado_pnd` y `sostenida`. **El bloque de d02 tiene una clave `_fuente` que
+no se miró.** Mirada:
+
+| | lo que dice el snapshot |
+|---|---|
+| d01 · `planificacion._fuente` | *«PDOT · POA · PAC · coherencia · **corte Q1-2026**»* · y `alineacion_pnd` trae su propia clave `fuente`, **que d02 no lee** |
+| d02 · `presupuesto_dom._fuente` | *«Presupuesto (cédula eSIGEF) · ISP · IEF · **alineaciones consumidas** · **corte Abril 2026**»* |
+| d02 · `elegibilidad` | `alineacion_pnd_pct: 83` — sin procedencia propia |
+
+**Lo que sí está demostrado, con precisión:** la procedencia viaja **como prosa, a nivel de bloque**:
+reconoce que las alineaciones son consumidas, **no nombra a d01 ni a H11b**, y el valor queda bajo el
+corte declarado del consumidor —*Abril 2026*— aunque su bloque de origen declara *Q1-2026*. **La
+procedencia de bloque no distingue el corte de cada valor.** Si eso importa para la alineación PND
+—que puede no depender del corte— es lo que `C4` tiene que evaluar, no esto.
+
+Es la falsación 11 otra vez: **buscar una cosa en la forma de otra**, ahora dentro de `Q-M2-C`.
 
 ⚠️ **Lo que esto NO afirma:** que la confianza **se haya inflado** por este canal. No se observó. Se
 afirma que **nada en este canal lo impediría ni lo detectaría**, que es exactamente lo que `Q-M2-C`
