@@ -2498,6 +2498,147 @@ eventualmente implementar, sus custodios y activadores**.
 - **El comportamiento en 2027**, que se **simuló llamando a la función**, no ejecutando el sistema con otra fecha.
 - **Qué hace hoy la pantalla** con el bloque publicado: la incompatibilidad se leyó, no se ejecutó.
 
+## 5-quaterdecies · `Q-M2-C4` · Gold Master → dominio → indicador → inferencia · primer corte: el ICPI
+
+> **Pregunta, fijada por el colega:** *¿aquello que el Gold Master afirma sobrevive correctamente
+> cuando entra al dominio, se transforma en indicador y se convierte en inferencia? ¿Termina en una
+> afirmación cuya semántica puede reconstruirse hasta la evidencia original?*
+
+### Por qué el ICPI, y qué NO sirve como prueba
+
+Se eligió un caso cuyo significado **ya está fijado por el canon**, para tener contra qué medir:
+`DOC-024` y `D-014` establecen que `C_i` mide **calidad jurídica del proceso, no entrega material**, y la
+`CARTA §2` clasifica *«Cumplimiento Institucional» como nombre del ICPI* en **📜 SUPERADO
+METODOLÓGICAMENTE**.
+
+⚠️ **El nombre por sí solo NO es la prueba.** La Carta dice *«no renombra nada — el nombre es el último
+paso»* y `DOC-015` difiere la migración hasta que `011` decida qué mide el constructo. Que las páginas
+sigan diciendo «Cumplimiento institucional» es **coherente con esa decisión**. Lo que se prueba es si
+**lo que el motor adjunta al número llega a quien lo interpreta**.
+
+**Universo:** `data/gm_snapshot.json["icpi"]` · `app/connectors/gold_master.py` ·
+`quira_pages/{m1_situacion,p6_pulso,p7_brecha,p_command_center}.py` · `components/sentinel.py` · el
+*system prompt* base de Sentinel, **construido en modo lectura** con `sentinel.prompts.build_system_prompt`
+sobre `data.loader.load_all()`.
+
+### Lo que el motor adjunta al número
+
+```
+icpi.global_pct      27.46          (27,4582 %, redondeado a dos decimales)
+icpi.clasificacion   "Corte parcial - lectura preliminar (no comparable con umbral anual)"
+icpi.historico       2023: 57.36 · 2024: 67.12 · 2025: 69.93
+                     _nota: "Series históricas pendientes de validación analítica en v6.0"
+icpi._nota           "ICPI mide velocidad de ejecución; TGI mide calidad institucional integral"
+```
+
+**El registro analítico trae su propia restricción epistemológica.** La pregunta es dónde se conserva.
+
+### La cadena, tramo por tramo
+
+| tramo | qué llega | ¿se conserva la restricción? |
+|---|---|---|
+| **Gold Master → snapshot** | valor · clasificación · serie con su nota | ✅ **sí** |
+| **snapshot → `p7_brecha`** · indicador | valor, rotulado *«Corte parcial»*, con la clasificación en el encabezado y *«sin narrativa de caída»* | ✅ **parcial** — la serie 2023–2025 se rotula *«Cierre anual»* **sin** *«pendientes de validación analítica»* |
+| **snapshot → `p6_pulso`** · indicador | valor con la clasificación en el encabezado | ✅ **sí** |
+| **conector → `m1_situacion`** · dominio d06, `QINV-006` | `icpi_pct = 27.46` · `icpi_clasif = "Corte parcial - lectura preliminar (no comparable con umbral anual)"` | ⚠️ **se muestra, y la conclusión la contradice** — ver hallazgo 2 |
+| **página → capa de razonamiento** · Sentinel, Claude Haiku | la pregunta redactada por la página | ⛔ **no** — ver hallazgo 1 |
+
+### ⛔ Hallazgo 1 · el valor entra a la inferencia sin su restricción, y sin registro contra el cual contrastarlo
+
+Los botones *«Analizar con IA»* (`p7_brecha`) y *«¿Qué hacemos esta semana?»* (`p6_pulso`) componen la
+pregunta que consume `components/sentinel.py:167`:
+
+> *«Al corte de abril 2026, el cumplimiento institucional de Montecristi es 27,5 %. Los vectores con
+> mayor rezago son… ¿Cuáles son las acciones prioritarias del trimestre?»*
+> *«Soy el alcalde de Montecristi. Al corte de abril el cumplimiento institucional es 27,5 %… ¿Cuáles
+> son las 3 acciones más urgentes esta semana?»*
+
+**Ninguna lleva la clasificación.** Y el *system prompt* base de Sentinel —25.200 caracteres,
+construido en modo lectura— **no contiene el ICPI en ninguna forma**: ni el nombre, ni `27,4`, `0,27` o
+`17,4`, ni «Índice Compuesto», ni «Progreso Institucional», ni la clasificación. `load_all()` no tiene
+clave de ICPI.
+
+> **El resultado analítico llega a la capa de razonamiento únicamente como una afirmación incrustada en
+> la pregunta del usuario, desprendida de su registro analítico y de su restricción.** El modelo no
+> tiene contra qué contrastarla. `ADR-033 §III` exige que la capa conversacional esté *«anclada a
+> evidencia + índices, sin alucinar»*; aquí el ancla del índice no llega.
+
+⚠️ **Límite declarado:** Sentinel añade bloques por pregunta —marco legal, vault normativo, RC-7.2,
+contexto d4, memoria de conversación— y tiene un `trust_engine`. **No se inspeccionaron**. Tampoco se
+ejecutó el modelo para ver qué responde.
+
+### ⛔ Hallazgo 2 · una inferencia de dominio que no depende del valor
+
+En `m1_situacion.py` la condición sólo distingue **sin dato** de **con dato**. Con cualquier valor
+numérico, el titular y la conclusión son **texto fijo**:
+
+```python
+headline   = "El cumplimiento institucional necesita atención sostenida."
+conclusion = ("El cumplimiento institucional está por debajo del nivel deseado para el corte. …")
+```
+
+Y la **misma tarjeta** exhibe como estado la clasificación del motor —*«no comparable con umbral
+anual»*—. **La conclusión afirma una comparación que la restricción mostrada al lado prohíbe, y la
+afirmaría igual con un ICPI de 90.** El semáforo, además, usa umbrales `50/75` escritos en el código,
+no la clasificación del motor.
+
+### ⚠️ Hallazgo 3 · una tensión semántica entre dos registros del canon — no creada por el tránsito
+
+| registro | qué dice que mide el ICPI |
+|---|---|
+| **nota del motor** en el snapshot | *«**velocidad de ejecución**; TGI mide calidad institucional integral»* · *«D1-D5, ponderación ejecución-first»* |
+| **ancla canónica de d06** (`PCD-D06`, Diccionario) y `QINV-006` | *«cumplimiento sostenible»* · hipótesis *«la capacidad institucional se mide por el cumplimiento sostenible de funciones»* |
+
+**No la produce la página**: la página hereda el ancla de d06, que es canon. Es una **tensión entre el
+registro del motor y el ancla del dominio**, del tipo `DOC-024` —*el propósito atribuido no es la
+semántica demostrada*—, y se resuelve donde se decide el destino del ICPI: **`011-C4`**. `C4` la registra
+y no la dictamina.
+
+### Lo que NO apareció, y lo que no se pudo determinar
+
+| | |
+|---|---|
+| **atribución de entrega material a `C_i`** | ✅ **no apareció** en `m1_situacion`, `p6_pulso` ni `p7_brecha`: ninguna menciona `C_i`, legalidad ni entrega |
+| **si los seis «vectores» componen el ICPI** | ❓ **`NO DETERMINABLE` en este corte.** `p7_brecha` los titula *«vectores del cumplimiento institucional»* y dice que la IA dirá *«cuál pesa más **en el resultado**»*; el snapshot los llama *«6 vectores causales desde H73»*; el motor declara el ICPI como *«D1-D5»*. Probar si hay composición exige leer las dependencias de la fórmula en el Gold Master |
+| **el corte** | observación: las páginas dicen *«abril 2026»*, el *system prompt* dice *«corte Q1-2026 (marzo 2026)»*, d01 declara `Q1-2026` y d02 `Abril 2026` |
+
+### Falsación evitada
+
+**26** · Con el primer universo —`quira_pages`, `app`, `utils`— la pregunta para la IA **no tenía
+lector**, y se habría concluido que el salto a la inferencia no ocurre. Ampliado a todo el repositorio,
+el lector está en **`components/sentinel.py`**.
+
+### El resultado del primer corte de `C4`
+
+> **En el caso del ICPI, la restricción epistemológica que el Gold Master adjunta al valor —corte
+> parcial, lectura preliminar, no comparable con umbral anual— se conserva hasta la presentación del
+> indicador, pero no en dos transiciones: la serie histórica pierde su nota de validación pendiente, y
+> el valor entra a la capa de razonamiento como parte de una pregunta redactada, sin su clasificación y
+> sin un registro analítico del ICPI en el contexto base del modelo. Además, una inferencia de la capa
+> de dominio es un texto constante que no depende del valor y contradice la clasificación que muestra.**
+
+Y lo que esto significa para la pregunta de `Q-M2-C`: **el tránsito no inflaba el número; perdía la
+condición bajo la cual el número vale.** Es la forma más silenciosa de crear confianza que no existía
+en el origen.
+
+### Destinos `REARQ` candidatos — PROPUESTOS, decide la dirección
+
+| | |
+|---|---|
+| **que el salto a la IA lleve la clasificación**, o que el contexto de Sentinel incluya el registro analítico del ICPI | cierra el hallazgo 1 |
+| **derivar la conclusión de `m1_situacion` del valor y de la clasificación**, y retirar los umbrales del código | cierra el hallazgo 2 |
+| **llevar la nota de validación pendiente** a la serie histórica | el primer tramo parcial |
+| **llevar la tensión del hallazgo 3 a `011-C4`** | no se resuelve fuera de ahí |
+| **declarar qué son los «vectores»** respecto del ICPI antes de atribuirles peso en el resultado | el `NO DETERMINABLE` |
+
+### Lo que este corte NO cubrió
+
+- Los bloques de contexto por pregunta de Sentinel y su `trust_engine`.
+- **Qué responde el modelo**: no se ejecutó.
+- Otros indicadores —TGI, SITA, índices de dominio— y otras inferencias.
+- La composición del ICPI en la fórmula del Gold Master.
+- Las páginas en ejecución: todo se leyó en código, salvo la carga de datos y la construcción del *system prompt*.
+
 ## 6 · Y la finalidad, dicha por la dirección
 
 > *«No es una auditoría, sino **elevar este ecosistema**… para potenciar, mejorar y elevar el nivel
