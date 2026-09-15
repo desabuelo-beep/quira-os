@@ -2674,9 +2674,13 @@ intacto** (hash verificado).
 titulares distintos ……… 1          conclusiones distintas ……… 1
 ```
 
-> ✅ **DEMOSTRADO POR EJECUCIÓN: la inferencia no depende del indicador que pretende interpretar.** Con
-> 90 % y excelencia, la tarjeta se pinta de verde y afirma que el valor está *por debajo del nivel
-> deseado*.
+> ✅ **DEMOSTRADO POR EJECUCIÓN: la inferencia textual de la tarjeta no depende funcionalmente del valor
+> del ICPI, aunque determinados elementos de presentación sí responden a él.** Con 90 % y excelencia, la
+> tarjeta se pinta de verde y afirma que el valor está *por debajo del nivel deseado*.
+>
+> *(Precisión del colega: no es «la página ignora el ICPI» —el color sí lo usa—. Lo demostrado es que
+> **la conclusión es independiente de la variable**, y el caso de 90 descarta que fuera un efecto
+> particular de 27,46.)*
 
 #### Verificación 2 · de dónde salen los umbrales 50/75
 
@@ -2707,10 +2711,22 @@ clasificar.
 > de la vigente en `H12`, y se aplican saltando la guarda de 12 meses.** Y el producto usa **cuatro**
 > umbrales distintos para el mismo índice.
 
-⚠️ **¿Es sólo codificación visual?** El comentario del código dice *«Color = semáforo VISUAL»*. **El
-canon dice que no**: `NOMENCLATURA_CANONICA` asigna al rojo el significado *«Crítico»*. **La página
-reintroduce por el color la clasificación que el motor suspendió.** *(Que un usuario lo lea así no se
-midió: se apoya en el significado que el canon declara para el color.)*
+⚠️ **¿Es sólo codificación visual?** Se separa en tres afirmaciones, como pidió el colega:
+
+| | afirmación | estado |
+|---|---|---|
+| **A** | el estado visual cambia según 50/75 | ✅ **DEMOSTRADO** por ejecución |
+| **B** | ese estado corresponde a una clasificación semántica *«crítico»* | ✅ **DEMOSTRADO en el código**: la variable vale literalmente `temp = "critico"`, y `NOMENCLATURA_CANONICA` asigna al rojo *«Crítico · ICPI < 50 %»*. ⚠️ **No se verificó** que el render use exactamente el token rojo canónico |
+| **C** | esa clasificación es metodológicamente válida para un corte de cuatro meses | ⛔ **NO** — es lo que la guarda del motor impide |
+
+> **El hallazgo, sin la palabra «color»:** *la página aplica una clasificación basada en umbrales
+> distintos de los del motor, y lo hace sin preservar la guarda temporal que el motor usa para suspender
+> la clasificación anual.*
+
+**Y lo que esta verificación deja al descubierto es mayor que la página:** hay **pluralidad de reglas
+semánticas para un mismo indicador** —fórmula, clasificación del motor, snapshot, cuatro páginas, AVEP
+documental, nomenclatura—. **El Gold Master no es el único lugar donde vive la semántica del ICPI**, que
+es exactamente lo que `GM-Ω` venía intentando establecer.
 
 Dos observaciones del motor, **sin calificar**, para cortes siguientes: `Mes_Activo` se rotula
 *«(auto)»* y contiene un `4` escrito · `Clasificación_Ti` (`H07_S5!B21`) aplica escala anual **sin
@@ -2733,9 +2749,16 @@ El prompt efectivo (`components/sentinel.py:631-651`) es la base más **nueve bl
 `vault_ctx` se calcula pero **no se concatena** al prompt. Y en todo el paquete `sentinel/`, «ICPI» sólo
 aparece en etiquetas de fuente, rutas de palabras clave y un docstring.
 
-> **En el contexto inspeccionado de Sentinel —base y nueve bloques— no se identificó ni el valor del
-> ICPI ni su estado epistemológico. La única vía por la que el ICPI llega al modelo es la pregunta que
-> redacta la página, y esa pregunta no lleva la clasificación.** No se ejecutó el modelo.
+> **En el universo de ensamblaje inspeccionado, el ICPI llega al modelo a través de la pregunta generada
+> por la página, mientras que los bloques adicionales revisados no transportan su valor ni su condición
+> epistemológica.** *(Formulación del colega. La primera decía «la única vía»: una búsqueda estática no
+> autoriza una ausencia sobre contexto dinámico no ejecutado — `DOC-035` aplicado a este mismo registro.
+> Cinco de los nueve bloques se examinaron por sus entradas, no construidos.)*
+
+| | estado |
+|---|---|
+| **transporte deficiente** de la condición epistemológica | ✅ **DEMOSTRADO** |
+| **inferencia incorrecta** del modelo | ⛔ **NO DEMOSTRADO** — el modelo no se ejecutó |
 
 Dos observaciones, **sin calificar**: `sentinel/explain.py` rotula `"D2": "Planificación (ICPI)"` —una
 **tercera** atribución de significado, junto a la del motor y la de d06— · y los gráficos citan como
@@ -2755,8 +2778,11 @@ Precedentes por fórmula del Gold Master, en lectura, **recorrido completo y sin
 | PSG | `B14` | `H16c` · `H04b` | ⛔ **no** — sólo comparte **fuentes** `H01`, `H07_S5` |
 | **IED** | `B17` | `H17_IED` · **`H12_MOTOR_ICPI_CANÓNICO`** · `H12d` | ⛔ **no — al revés: el IED se calcula A PARTIR del ICPI** |
 
-> ✅ **DEMOSTRADO: ninguno de los seis vectores compone el ICPI.** Cinco son índices independientes que
-> a lo sumo comparten una fuente, y **uno es un derivado del propio ICPI**. `p7_brecha` los titula
+> ✅ **DEMOSTRADO: ninguno de los seis vectores compone el ICPI.** **Cinco de los índices examinados no
+> aparecen como componentes de su fórmula; algunos comparten hojas de origen o insumos, pero no forman
+> parte algebraica del cálculo.** *(Precisión del colega: compartir insumos no es composición, pero
+> tampoco demuestra independencia estadística, causal ni ontológica, y eso no se probó.)* Y **uno es un
+> derivado del propio ICPI**: la dependencia real es `ICPI → IED`, no `IED → ICPI`. `p7_brecha` los titula
 > *«vectores del cumplimiento institucional»* y anuncia que la IA dirá *«cuál pesa más **en el
 > resultado**»*; el snapshot los llama *«vectores causales»*; y la pregunta enviada a la IA pide
 > *«acciones para fortalecerlos»*. **La relación de composición, y la causal, se crean en el tránsito:
@@ -2770,33 +2796,58 @@ definidos**. En el recorrido no apareció ninguna función dinámica.
 *(Pedida por el colega para responder: ¿qué parte de la identidad epistemológica de la afirmación
 sobrevive en cada salto?)*
 
-| propiedad | Gold Master | snapshot | indicador · `p6`/`p7` | dominio · `m1` | IA · Sentinel |
-|---|---|---|---|---|---|
-| **valor** | ✅ 0,274582 | ✅ 27,46 | ✅ | ✅ | ✅ 27,5, dentro de la pregunta |
-| **unidad** | ✅ razón | ✅ razón y % | ✅ % | ✅ % | ✅ % |
-| **corte** | ✅ `Mes_Activo = 4` | ✅ en la clasificación | ✅ *«abril 2026»* | ✅ | ⚠️ *«abril»* en la pregunta · el prompt base dice *«Q1-2026 (marzo)»* |
-| **estado epistemológico** | ✅ guarda de 12 meses | ✅ | ✅ | ⚠️ **se muestra y no gobierna** | ⛔ no viaja |
-| **condición de comparabilidad** | ✅ | ✅ | ✅ parcial · la serie histórica pierde su nota | ⛔ **ignorada** por conclusión y semáforo | ⛔ no viaja |
-| **regla de interpretación** | ✅ AVEP 90/70/40/20 | ✅ la clasificación resultante | ✅ | ⛔ **sustituida** por 50/75 | ⛔ ninguna |
-| **composición** | ✅ `Σ(P·R·V·E·T·C)/Σ(P·R)` | ⚠️ *«vectores causales»* | ⛔ *«vectores del cumplimiento»* | — | ⛔ premisa de la pregunta |
-| **tipo de afirmación** | analítica | analítica | analítica | interpretación **constante** | conversacional |
-| **semántica de `C_i`** | ✅ en la fórmula | — | **no representada** | **no representada** | **no representada** |
+La columna final es la que convierte el criterio rector en **prueba operativa** *(añadida a pedido del
+colega)*: no pregunta si la propiedad **llega**, sino si **gobierna** lo que se afirma en la capa final.
+
+| propiedad | Gold Master | snapshot | indicador · `p6`/`p7` | dominio · `m1` | IA · Sentinel | **¿gobierna la afirmación final?** |
+|---|---|---|---|---|---|---|
+| **valor** | ✅ 0,274582 | ✅ 27,46 | ✅ | ✅ | ✅ 27,5, dentro de la pregunta | ⚠️ **parcial** — gobierna el color de `m1`, **no su conclusión** (contrafactual) |
+| **unidad** | ✅ razón | ✅ razón y % | ✅ % | ✅ % | ✅ % | ✅ **sí** |
+| **corte** | ✅ `Mes_Activo = 4` | ✅ en la clasificación | ✅ *«abril 2026»* | ✅ | ⚠️ *«abril»* en la pregunta · el prompt base dice *«Q1-2026 (marzo)»* | ⛔ **no** — la clasificación de `m1` no lo usa · en la IA hay dos cortes |
+| **estado epistemológico** | ✅ guarda de 12 meses | ✅ | ✅ | ⚠️ se muestra | ⛔ no viaja | ⛔ **no** en `m1` · **`NO DETERMINABLE`** en la IA (modelo no ejecutado) |
+| **condición de comparabilidad** | ✅ | ✅ | ✅ parcial · la serie histórica pierde su nota | ⚠️ se muestra | ⛔ no viaja | ⛔ **no** — conclusión y semáforo la ignoran |
+| **regla de interpretación** | ✅ AVEP 90/70/40/20 | ✅ la clasificación resultante | ✅ | ⛔ sustituida por 50/75 | ⛔ ninguna | ⛔ **no** — gobierna otra regla |
+| **composición** | ✅ `Σ(P·R·V·E·T·C)/Σ(P·R)` | ⚠️ *«vectores causales»* | ⛔ *«vectores del cumplimiento»* | — | ⛔ premisa de la pregunta | ⛔ **no** — gobierna una composición inexistente |
+| **procedencia** | ✅ `H12!B33` | ✅ `fuente: G4.1_ICPI` | ❓ no se inspeccionó | ❓ | ❓ | ❓ **`NO DETERMINABLE`** en este corte |
+| **tipo de afirmación** | analítica | analítica | analítica | interpretación **constante** | conversacional | ⛔ **no** — la interpretación de `m1` no se deriva del resultado analítico (`ADR-033 §III`: la interpretación tiene estatus menor y se ancla a la evidencia). *No es un salto a `posible_incumplimiento` de `ADR-051 §4`: no hay calificación normativa* |
+| **semántica de `C_i`** | ✅ en la fórmula | — | no representada | no representada | no representada | — **no representada**, así que no se distorsiona |
 
 ### Estado de `C4-P0`
 
-> **CIERRE PARCIAL.** Las cuatro verificaciones están hechas y no se reabre el caso.
+> **CERRADO COMO DIAGNÓSTICO ANALÍTICO PARCIAL.**
 >
-> **El hallazgo de arquitectura, fijado con la formulación del colega:** *la falla observada no
-> consiste en modificar el valor del indicador, sino en desacoplar la inferencia de las condiciones
-> epistemológicas que acompañan al valor. La restricción permanece visible en algunas capas, pero no
-> gobierna las inferencias posteriores.*
+> | verificación | estado |
+> |---|---|
+> | V1 · contrafactual | ✅ DEMOSTRADO |
+> | V2 · umbrales | ✅ DEMOSTRADO |
+> | V3 · Sentinel | ✅ DEMOSTRADO dentro del universo inspeccionado |
+> | V4 · composición de los vectores | ✅ DEMOSTRADO |
 >
-> Y las verificaciones lo llevan más lejos: **el motor implementa esa condición como guarda ejecutable
-> —se niega a clasificar con menos de 12 meses—, y el tránsito la reemplaza por una escala distinta,
-> una conclusión fija y una relación de composición que la fórmula no contiene.**
+> **El hallazgo principal, formulación del colega:**
+>
+> ***El problema observado no es una alteración del valor del ICPI durante su tránsito. El problema es
+> que propiedades que condicionan lo que ese valor permite afirmar dejan de gobernar de manera uniforme
+> las capas posteriores. El Gold Master suspende la clasificación anual cuando `Mes_Activo < 12`; la
+> presentación introduce otros umbrales sin esa guarda; la inferencia textual de la tarjeta no depende
+> del valor del indicador; Sentinel recibe el valor sin su condición epistemológica; y la presentación
+> atribuye al ICPI una composición por seis vectores que no existe en su fórmula.***
 
-**No se modificó nada del producto, del motor ni del canon.** Siguiente: `C4-P1`, el próximo indicador,
-con el mismo criterio rector.
+**Canon aplicable** —corregido—: `ADR-033` · `ADR-051 §4` · Principio de No-Inferencia · `check_epistemico`
+como instrumento operacional. **No se crea doctrina nueva**: el canon ya tiene la necesaria.
+
+*Lo que el trabajo sostiene como método* *(colega)*: **no se corrige el canon para que encaje con el
+hallazgo; se corrige el hallazgo para que encaje con el canon que realmente existe.**
+
+**Estado administrativo:** commit `b51d8e2` y push **verificados por la salida de git** · **CI remoto
+`NO DETERMINADO`** — su resultado no es legible con las herramientas de esta sesión.
+
+**Las observaciones de V2 y V3 quedan fuera del hallazgo principal**, como reservas para los cortes
+siguientes: `Mes_Activo «(auto)»` escrito a mano · `Clasificación_Ti` sin guarda · Sentinel rotula el ICPI
+como *«Planificación»* · gráficos con fuente `v4.1`.
+
+**No se modificó nada del producto, del motor, del Gold Master, del canon ni de Neo4j.** Siguiente:
+**`C4-P1` · el Ti de d02**, para probar si la pérdida de condiciones interpretativas es un caso aislado o
+un patrón.
 
 ## 6 · Y la finalidad, dicha por la dirección
 
