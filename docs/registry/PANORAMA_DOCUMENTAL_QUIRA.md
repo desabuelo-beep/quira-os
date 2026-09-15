@@ -1744,13 +1744,32 @@ instalación limpia de dependencias. Por eso:
 > **`P5` — IMPLEMENTADO · CI REPRODUCIDO EN CLON LIMPIO: VERDE (`ffb581e`) · CIERRE FORMAL: PENDIENTE
 > DE LEER EL CI REMOTO** en GitHub Actions, por quien tenga acceso.
 
-### ⛔ Falsación 18 — `Q-M2-C` estuvo a punto de abrirse sobre una copia vieja
+### ⛔ Falsación 18 — divergencia entre artefacto de trabajo y estado canónico
+
+> **Un artefacto de trabajo desactualizado fue inicialmente tomado como posible base del análisis;
+> la comparación contra `HEAD` permitió detectar la divergencia antes de extraer conclusiones.**
+> *(Redacción del colega, 2026-09-14. La primera versión de este apartado decía «algo restauró una
+> versión anterior»: juzgaba un origen que no estaba demostrado.)*
 
 `docs/architecture/REARQ_ARQUEO_CAPACIDAD_DOCUMENTAL.md` **en disco tiene 995 líneas; en `HEAD`,
 1.484**. No son finales de línea: faltan en disco `§4-sexies` a `§4-nonies` —la matriz de Web GAD,
 el hallazgo de los productores del snapshot, **la síntesis `C` de `Q-M2`**, la capa normativa omitida
-y la auditoría del propio arqueo—. Algo restauró una versión anterior del archivo, fuera de este
-trabajo.
+y la auditoría del propio arqueo—.
+
+#### Arqueología de la divergencia — sin tocar el archivo
+
+| pregunta del colega | resultado | grado |
+|---|---|---|
+| **1 · ¿qué difiere?** | la copia en disco es **idéntica, byte a byte sin finales de línea, a la versión del commit `b9f2c32`** (2026-09-09 23:11). Le faltan los cinco commits posteriores: `08618a2` · `a3146d3` · `18346c2` · `8e4980d` · `731c226` | **DEMOSTRADO** · hash `74a13a176fe5a3c8` en ambos |
+| **2 · ¿cuándo?** | escrita en disco el **2026-09-12 a las 08:07:33 −05:00**, dos días después del último commit. Es el único archivo del repositorio escrito en esa ventana | **DEMOSTRADO** · fecha de modificación |
+| **3 · ¿quién?** | **no fue** una operación de git —el `reflog` sólo registra commits— **ni** una herramienta de esta sesión —su transcript no tiene ninguna ejecución entre 08:06 y 08:09, y su última escritura sobre el archivo es del 2026-09-10 21:59— | **`NO DETERMINABLE`** · universo NO inspeccionado: otras sesiones locales, editores, sincronización de la carpeta, otros procesos |
+| **4 · ¿tiene modificaciones locales legítimas?** | **no.** Las «15 inserciones» son líneas de `b9f2c32` que los commits siguientes reescribieron | **DEMOSTRADO** |
+| **5 · ¿algún commit la explica?** | no | **DEMOSTRADO** |
+| **6 · ¿tiene valor probatorio propio?** | ninguno único: su contenido es recuperable siempre con `git show b9f2c32:<ruta>`. Su valor es **como evidencia del incidente** —hash y fecha—, y ya queda registrado aquí | **DEMOSTRADO** |
+
+**Decisión que corresponde a la dirección**, ahora con evidencia: restaurar el archivo desde `HEAD`
+**no pierde nada**, porque todo lo que contiene la copia está en `b9f2c32`. Las opciones siguen
+siendo restaurar · conservar · reconciliar — y ninguna se ejecuta sin ratificación.
 
 La orientación de `Q-M2-C` **empezó leyendo esa copia**, y habría partido de un `Q-M2` sin su
 síntesis. Es exactamente el aviso con que el colega cerró `P5`: *antes de concluir, preguntar si se
@@ -1820,7 +1839,78 @@ cualquier ausencia se barre por propósito** (`DOC-036 PASO 0-bis`).
 **Método:** `DOC-035` · `DOC-036` · `DOC-037` y el corolario de presencia —*hallar una representación
 no prueba su función*—. **Fuera de alcance:** la unificación de dominios, diferida por la dirección.
 
-**Ejecución probatoria:** empieza cuando se lea el CI remoto.
+**Ejecución probatoria:** el colega precisó que leer y preparar no espera al CI; lo que espera es
+declarar `P5` cerrado.
+
+### `Q-M2-C · P0` — ¿circula hoy conocimiento entre dominios, o sólo existe la arquitectura que lo permitiría?
+
+**La escalera que evita confundir existencia con circulación** (colega, 2026-09-14):
+
+```
+contrato documental → módulo existente → caller identificado → ejecución con evidencia → resultado reutilizado
+      diseño              potencial          integración              operación              circulación efectiva
+```
+
+#### ⛔ Falsación 19 — el grafo de código dijo «nadie lo llama», y era falso
+
+`CodeGraph` devolvió **«No callers found»** para `Consulta`, `consumir` y `atender`. Antes de
+registrarlo se contrastó con un caso conocido: la prueba adversarial **los importa**, luego tiene que
+llamarlos. La búsqueda literal lo confirmó: **9 invocaciones** que el grafo no resolvió, porque se
+hacen como atributo de módulo —`D01.atender(...)`— y con nombres importados.
+
+> **La ausencia de callers en un grafo de código es un resultado del instrumento, no del sistema.**
+> Es `DOC-035` aplicado a una herramienta que el canon presenta como fiable: fiable no quiere decir
+> exhaustiva, y la única forma de saberlo era falsarla contra lo que se sabía verdadero.
+
+#### La escalera, recorrida para la consulta interdominio
+
+| escalón | estado | evidencia |
+|---|---|---|
+| **contrato documental** | ✅ **DEMOSTRADO** | `ADR-053 §6-bis`, sellado 2026-08-26 |
+| **módulo existente** | ✅ **DEMOSTRADO** | `app/agents/consulta.py` (2026-08-30) · el lado que responde, sólo en `d01` —`motor.atender`— |
+| **defensa de la frontera** | ✅ **DEMOSTRADO por lectura** | `consumir()` **lanza** si el consumo eleva el grado —*«cruzar la frontera no añade evidencia»*— o si cambia el sujeto; devuelve **la misma afirmación**, no una copia reinterpretada; lo que viaja es una afirmación sustentada, **nunca un valor suelto** |
+| **caller identificado** | ⚠️ **SÓLO EN PRUEBAS** | las 9 invocaciones están en `tests/test_consulta_interdominio_adversarial.py`. **Ninguna** en `app/` · `quira_pages/` · `scripts/` · `sentinel/` · `utils/` · `views/` · `components/`, tampoco por nombre —*«atender»* y *«consumir»* fuera de esos dos archivos sólo aparecen en prosa ajena— |
+| **ejecución con evidencia** | ⚠️ **PARCIAL** | las 3 pruebas corren donde está el Gold Master; **en un clon limpio —y en CI— se omiten**. La defensa de la frontera **no la verifica el CI remoto** |
+| **resultado reutilizado** | 🔴 **NO DEMOSTRADO** | ningún dominio consume una `Respuesta` fuera de las pruebas |
+
+**Universo:** todos los `.py` del repositorio sin worktrees ni caché, más YAML y JSON de las carpetas
+de aplicación. **Fuera:** invocaciones desde fuera del repositorio, y lo que la UI pudiera
+disparar por mecanismos no textuales.
+
+#### Lo que `P0` deja, y corrige
+
+> **La conclusión de `C3` sobrevive; su evidencia no.** `C3` decía *«reutilización efectiva no
+> demostrada»* porque *«no hay consultas dominio → dominio»*, citando la medición del 2026-08-26.
+> Hoy el estado es otro, y más preciso: **existe el contrato, existe el módulo, y la defensa de
+> frontera está implementada y atacada por pruebas — pero no tiene un solo caller productivo.**
+> Integración potencial, sin operación.
+
+> ★ **Y por séptima vez, lo que la pregunta pedía ya existía.** El núcleo de `Q-M2-C` —*«sin que el
+> tránsito cree confianza que no existía en el origen»*— está **escrito como excepción ejecutable**
+> en la frontera entre dominios: `GradoElevadoAlCruzar`. Lo que no existe es su uso.
+
+**Lo que `P0` NO cubre** —los siguientes cortes—:
+
+| plano | pregunta abierta |
+|---|---|
+| **memoria compartida** | ¿`MISMA_FUENTE_QUE` en Neo4j conserva la confianza al cruzar, o sólo declara identidad de fuente? — y en `005` une una `Fuente` con un `Dominio` |
+| **norma → motor** | ¿la compilación `RO → artefacto firmado → Gold Master` (`ADR-039`) conserva procedencia y estado de la regla? |
+| **motor → dominio → indicador** | ¿la analítica hereda la confianza de la evidencia (`ADR-033`), y dónde se verifica? |
+| **cambio** | propagación normativa **diseñada**, operación **no determinada** · propagación epistemológica **no diseñada** — pregunta abierta, no doctrina |
+
+#### Reconciliación de las cifras de la suite
+
+El colega observó que *«941»* no cuadraba con *«877 + 65 = 942»*. **No hay contradicción, y se mide:**
+
+| entorno | pasan | omitidas | fallan | total |
+|---|---:|---:|---:|---:|
+| máquina de Javo, con evidencia | 941 | 1 | 0 | **942** |
+| clon limpio · `174c380` | 877 | 64 | 1 | **942** |
+| clon limpio · `ffb581e` | 877 | 65 | 0 | **942** |
+
+**942 pruebas recolectadas en todos.** *«941»* era el número de las que pasan en el entorno completo,
+no el total — y citarlo sin decirlo fue impreciso. **La cifra que gobierna el cierre de `P5` será la
+del CI remoto sobre el commit exacto que se cierre**, no una recordada.
 
 ## 6 · Y la finalidad, dicha por la dirección
 

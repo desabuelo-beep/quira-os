@@ -32,7 +32,7 @@ PROMESA→PLAN→PRESUPUESTO→EJECUCIÓN→RESULTADO→TERRITORIO → BRECHAS. 
 🩹 **gates + suite EN CI** · 3 estados: ok · hallazgo · **2 = no determinable** · deudas → `deuda.py`
 📚 **doctrina → `doctrina.py`** · con verificador **cambia de custodio**; sin él, se queda aquí.
 🗂️ **DOS registros de autoridad** (P2/P3): `registry.yaml`=activos+cadena (gate lo verifica) · `MASTER_INDEX`=**routeo humano**, NO cubre BRN. ⛔ medir un régimen con la forma de otro **fabrica huecos falsos**.
-🏗️ **P5 — push hecho · CI reproducido en clon limpio VERDE · cierre: LEER el CI remoto** · **Q-M2-C ABIERTA sin prueba** (`PANORAMA §5-undecies`) · ⛔ `REARQ_ARQUEO` en disco = copia vieja: leer de `HEAD` · ⚠️ tocar ADR/OBS/PCD/CNO/RO ⇒ **regenerar registro+grafo** o CI falla · **BRN ya diseñada dinámica (CICLO_VIDA §5); falta OPERARLA** · Q-M2-C: probatoria tras leer CI.
+🏗️ **P5 — push hecho · CI reproducido en clon limpio VERDE · cierre: LEER el CI remoto** · **Q-M2-C ABIERTA sin prueba** (`PANORAMA §5-undecies`) · ⛔ `REARQ_ARQUEO` en disco = `b9f2c32` ≠ HEAD: leer de `HEAD` · ⚠️ tocar ADR/OBS/PCD/CNO/RO ⇒ **regenerar registro+grafo** o CI falla · **BRN ya diseñada dinámica (CICLO_VIDA §5); falta OPERARLA** · Q-M2-C: probatoria tras leer CI.
 📑 ⛔ `.docx` gana al `.pdf`.
 ⚖️ **CANON**: ⛔ DOM **consume RO, NO lee la ley** · estado derivado → `canon.py` (consúltalo, NO lo escribas) · ⛔ **d01·d03·d09: RO NO cargada** (d07·d02 sí) · **VIII propuesta → d08 mide, NO dictamina** (D-6).
 📡 SITA **25 0,4448 · 26(1-5) 0,8382** vig · 0 actas · num.6 s/ingr.
