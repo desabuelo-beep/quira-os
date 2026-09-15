@@ -1762,7 +1762,7 @@ y la auditoría del propio arqueo—.
 |---|---|---|
 | **1 · ¿qué difiere?** | la copia en disco es **idéntica, byte a byte sin finales de línea, a la versión del commit `b9f2c32`** (2026-09-09 23:11). Le faltan los cinco commits posteriores: `08618a2` · `a3146d3` · `18346c2` · `8e4980d` · `731c226` | **DEMOSTRADO** · hash `74a13a176fe5a3c8` en ambos |
 | **2 · ¿cuándo?** | escrita en disco el **2026-09-12 a las 08:07:33 −05:00**, dos días después del último commit. Es el único archivo del repositorio escrito en esa ventana | **DEMOSTRADO** · fecha de modificación |
-| **3 · ¿quién?** | **no fue** una operación de git —el `reflog` sólo registra commits— **ni** una herramienta de esta sesión —su transcript no tiene ninguna ejecución entre 08:06 y 08:09, y su última escritura sobre el archivo es del 2026-09-10 21:59— | **`NO DETERMINABLE`** · universo NO inspeccionado: otras sesiones locales, editores, sincronización de la carpeta, otros procesos |
+| **3 · ¿quién?** | **no fue** una operación de git —el `reflog` sólo registra commits— **ni** una herramienta de esta sesión —su transcript no tiene ninguna ejecución entre 08:06 y 08:09, y su última escritura sobre el archivo es del 2026-09-10 21:59— | **`NO DETERMINABLE`** · universo NO inspeccionado —**no son hipótesis de origen**, sólo lo que no se miró—: otros procesos y programas con acceso a la carpeta. La investigación del origen **se detiene aquí**: el valor probatorio del incidente ya está delimitado |
 | **4 · ¿tiene modificaciones locales legítimas?** | **no.** Las «15 inserciones» son líneas de `b9f2c32` que los commits siguientes reescribieron | **DEMOSTRADO** |
 | **5 · ¿algún commit la explica?** | no | **DEMOSTRADO** |
 | **6 · ¿tiene valor probatorio propio?** | ninguno único: su contenido es recuperable siempre con `git show b9f2c32:<ruta>`. Su valor es **como evidencia del incidente** —hash y fecha—, y ya queda registrado aquí | **DEMOSTRADO** |
@@ -1858,9 +1858,10 @@ registrarlo se contrastó con un caso conocido: la prueba adversarial **los impo
 llamarlos. La búsqueda literal lo confirmó: **9 invocaciones** que el grafo no resolvió, porque se
 hacen como atributo de módulo —`D01.atender(...)`— y con nombres importados.
 
-> **La ausencia de callers en un grafo de código es un resultado del instrumento, no del sistema.**
-> Es `DOC-035` aplicado a una herramienta que el canon presenta como fiable: fiable no quiere decir
-> exhaustiva, y la única forma de saberlo era falsarla contra lo que se sabía verdadero.
+> **`CodeGraph` no puede utilizarse como prueba exclusiva de ausencia de callers en este universo.**
+> *(Precisión del colega: no demuestra que la herramienta sea mala ni que la búsqueda estructural sea
+> inútil.)* La regla que emerge: **herramienta estructural → contraste con un caso conocido → sólo
+> entonces interpretar una ausencia.** Es `DOC-035`/`DOC-036` en práctica; no pide doctrina nueva.
 
 #### La escalera, recorrida para la consulta interdominio
 
@@ -1871,7 +1872,7 @@ hacen como atributo de módulo —`D01.atender(...)`— y con nombres importados
 | **defensa de la frontera** | ✅ **DEMOSTRADO por lectura** | `consumir()` **lanza** si el consumo eleva el grado —*«cruzar la frontera no añade evidencia»*— o si cambia el sujeto; devuelve **la misma afirmación**, no una copia reinterpretada; lo que viaja es una afirmación sustentada, **nunca un valor suelto** |
 | **caller identificado** | ⚠️ **SÓLO EN PRUEBAS** | las 9 invocaciones están en `tests/test_consulta_interdominio_adversarial.py`. **Ninguna** en `app/` · `quira_pages/` · `scripts/` · `sentinel/` · `utils/` · `views/` · `components/`, tampoco por nombre —*«atender»* y *«consumir»* fuera de esos dos archivos sólo aparecen en prosa ajena— |
 | **ejecución con evidencia** | ⚠️ **PARCIAL** | las 3 pruebas corren donde está el Gold Master; **en un clon limpio —y en CI— se omiten**. La defensa de la frontera **no la verifica el CI remoto** |
-| **resultado reutilizado** | 🔴 **NO DEMOSTRADO** | ningún dominio consume una `Respuesta` fuera de las pruebas |
+| **resultado reutilizado** | 🔴 **NO DEMOSTRADO para este canal** | ningún dominio consume una `Respuesta` fuera de las pruebas. ⚠️ **No se generaliza**: `§5-undecies` demuestra circulación efectiva por **otro** canal |
 
 **Universo:** todos los `.py` del repositorio sin worktrees ni caché, más YAML y JSON de las carpetas
 de aplicación. **Fuera:** invocaciones desde fuera del repositorio, y lo que la UI pudiera
@@ -1885,9 +1886,11 @@ disparar por mecanismos no textuales.
 > frontera está implementada y atacada por pruebas — pero no tiene un solo caller productivo.**
 > Integración potencial, sin operación.
 
-> ★ **Y por séptima vez, lo que la pregunta pedía ya existía.** El núcleo de `Q-M2-C` —*«sin que el
-> tránsito cree confianza que no existía en el origen»*— está **escrito como excepción ejecutable**
-> en la frontera entre dominios: `GradoElevadoAlCruzar`. Lo que no existe es su uso.
+> ★ **Y por séptima vez, lo que la pregunta pedía ya existía — en una frontera.** El núcleo de
+> `Q-M2-C` —*«sin que el tránsito cree confianza que no existía en el origen»*— **está implementado y
+> probado en la frontera de consulta interdominio de evidencia**: `GradoElevadoAlCruzar`. ⛔ Eso NO
+> quiere decir que QUIRA garantice globalmente la conservación de la confianza: es una frontera de
+> varias, y `§5-undecies` encuentra otra donde la defensa no está.
 
 **Lo que `P0` NO cubre** —los siguientes cortes—:
 
@@ -1911,6 +1914,133 @@ El colega observó que *«941»* no cuadraba con *«877 + 65 = 942»*. **No hay 
 **942 pruebas recolectadas en todos.** *«941»* era el número de las que pasan en el entorno completo,
 no el total — y citarlo sin decirlo fue impreciso. **La cifra que gobierna el cierre de `P5` será la
 del CI remoto sobre el commit exacto que se cierre**, no una recordada.
+
+**Convención desde aquí:** *«942 pruebas recolectadas; desglose de pass/skip/fail según entorno y
+disponibilidad de corpus»*. Una cifra de pasadas sólo se cita con su entorno.
+
+**Gobierno de los commits de `Q-M2-C`:** `c00e574` y los siguientes quedan **locales**. La autorización
+de push de `bfec79d` no se extiende por inferencia a commits posteriores: cada push requiere
+autorización específica o una autorización general explícita.
+
+## 5-undecies · `Q-M2-C1` · CIRCULACIÓN INTERDOMINIO — y el canal que sí circula
+
+### Orden de los cortes, fijado por el colega
+
+| corte | frontera | pregunta |
+|---|---|---|
+| **C1** | evidencia entre dominios | ¿caller productivo, ejecución y reutilización? |
+| **C2** | `MISMA_FUENTE_QUE` | ¿conserva identidad, procedencia y estado, o sólo declara que debería? |
+| **C3** | BRN → compilación → Gold Master | ¿qué atributos de la regla sobreviven a cada transición? · MDN en tres escalones: **¿existe el esquema? → ¿existen nodos y aristas? → ¿se recorre ante un cambio?** |
+| **C4** | Gold Master → dominio → indicador → inferencia | ¿conserva la inferencia la trazabilidad y las restricciones de lo que la originó? |
+
+### La lección transversal — por octava vez, ya estaba escrita
+
+El colega propuso, sin elevarla: *«la existencia de una representación, relación, módulo o registro
+demuestra capacidad o diseño; sólo la evidencia de ejecución y consumo permite afirmar circulación
+efectiva»*, y pidió comprobar antes si el corpus ya la formula. **La formula:**
+
+| | dónde |
+|---|---|
+| *«capacidad ≠ ejecución ≠ validación»* — y ampliada a **cinco dimensiones** con sujeto y evidencia | `ADR-051 §2d` · ejecutada en `app/agents/apropiacion.py` |
+| *«el estado de una etapa no acredita el trabajo de esa etapa»* | `ADR-051 §12-bis` |
+| `declarado ≠ existente ≠ ejecutado ≠ exitoso` | `ADR-051 §12-bis` |
+
+**Lo único que añade la formulación del colega es un escalón:** que **otro componente consuma** el
+resultado. No hace falta doctrina.
+
+### Por novena vez, el instrumento de `C1` ya existía
+
+`app/agents/acoplamiento.py` construye un *«grafo de acoplamiento observable»* y advierte lo que un
+análisis de imports habría omitido: *«los acoplamientos que más importan no son imports: d09 carga su
+enricher por ruta, d07 abre YAML del BRN, los motores leen `gm_snapshot.json`»*. Y su guardián
+`puede_afirmarse_ausencia()` **se niega** a sostener una ausencia mientras haya rutas sin resolver.
+
+Por eso la búsqueda de **imports entre dominios devolvió cero**, y **cero no significa nada**: no es
+el canal.
+
+### ⛔ Falsación 20 — «cero artefactos compartidos» era la zona ciega del instrumento
+
+Ejecutado `acoplamiento.py` sin modificarlo, atribuyendo cada módulo a su dominio con la residencia
+que declara el `MASTER_INDEX` —**atribución de este análisis, declarada**—:
+
+```
+operaciones de acoplamiento en módulos de dominio ……  54
+   ruta resuelta ……………………………………………………………  16
+   ruta NO resoluble ……………………………………………………  38   ← 70 %
+artefactos leídos por dos o más dominios …………………   0
+```
+
+**El instrumento se habría negado a afirmar esa ausencia, y tenía razón.** Resueltas las 38 a mano,
+el canal compartido era **`data/gm_snapshot.json`**: cinco enrichers de tres dominios —d02, d03, d09 ×3—
+lo leen **y lo reescriben entero**, y el motor de d09 lo lee. El análisis estático no lo veía por dos
+formas concretas: `os.path.join(os.path.dirname(__file__), …)` no es literal, y una raíz escrita como
+`.parent.parent` no coincide con el patrón `parents` con que se reconoce.
+
+**Compartir archivo no es circular conocimiento.** Cada enricher escribe **su propio bloque**
+—`presupuesto_dom` · `mandato_dom` · `rendicion`—. Circular es que uno **consuma el bloque de otro**.
+
+### ★ El canal que circula: d01 → d02
+
+`scripts/enrich_presupuesto.py:196-203`:
+
+```python
+# Alineación PND (H11b) + eje PND por meta — objeto compartido que NACE en d01 (se consume).
+_al = (_snap.get("planificacion", {}) or {}).get("alineacion_pnd", {}) or {}
+alineacion_pnd = round((_al.get("vinculacion_media") or 0) * 100) or None
+pnd_metas = {m.get("id"): m.get("eje", "") for m in (_al.get("metas") or [])}
+...
+except Exception:
+    alineacion_pnd, pnd_metas = None, {}
+```
+
+| escalón | estado | evidencia |
+|---|---|---|
+| **contrato documental** | ✅ **DEMOSTRADO** | `data/d02/catalogo_d02_v1.0.0.yaml`: *«H11b (consumido de d01, ADR-032)»* · *«se LEE, no se recalcula (Regla 1)»* |
+| **caller productivo** | ✅ **DEMOSTRADO** | `enrich_presupuesto.py` es el *«motor real»* de d02 según el `MASTER_INDEX` |
+| **ejecución con evidencia** | ✅ **DEMOSTRADO** | en el snapshot: d01 publica `vinculacion_media = 0.832` con 25 metas con eje · d02 guarda `elegibilidad.alineacion_pnd_pct = 83` |
+| **resultado reutilizado** | ✅ **DEMOSTRADO** | **4 fondos** de d02 llevan `pnd_eje` copiado de d01 —*«Eje 3 — Servicios Básicos y Hábitat»*— |
+
+> **La circulación interdominio efectiva está demostrada.** La formulación de `P0` —*«la circulación
+> interdominio efectiva permanece no demostrada»*— **vale sólo para el canal de `consulta.py`**, y se
+> restringe a él.
+
+### ★★ Y lo que viaja por ese canal, leído contra la frontera que QUIRA ya defendió
+
+| lo que `consulta.py` exige en la frontera | lo que viaja de d01 a d02 |
+|---|---|
+| *«nunca un valor suelto»*: afirmación con sujeto, evidencia, motor y grado | **un número y cadenas de texto** — ni procedencia, ni grado, ni sujeto viajan · verificado en el snapshot |
+| el grado no puede elevarse al cruzar | el grado **no viaja**, así que **no hay con qué comparar**: nada impide que d02 le atribuya luego un peso que d01 no sostenía |
+| *«devuelve la misma afirmación, no una copia»* | **copia**: `0.832` pasa a `83`, y el eje se duplica dentro de los fondos. Si d01 cambia, la copia de d02 envejece hasta el próximo enriquecimiento |
+| el tercer estado se preserva | `(x or 0) * 100 … or None`: **un cero real y un dato ausente llegan como el mismo `None`** · estructural, **no observado** hoy (el valor es 0,832) |
+| un fallo no se lee como ausencia (`ADR-042 §6`) | `except Exception` → *«no pude leer d01»* llega como *«no hay eje PND»*. El gate de errores silenciosos **no lo mira**: sus zonas críticas no incluyen `scripts/` |
+
+> ### **QUIRA tiene hoy dos canales entre dominios: el defendido, sin uso productivo; y el usado, sin defensa.**
+
+⚠️ **Lo que esto NO afirma:** que la confianza **se haya inflado** por este canal. No se observó. Se
+afirma que **nada en este canal lo impediría ni lo detectaría**, que es exactamente lo que `Q-M2-C`
+pregunta. Tampoco es una acusación al diseño, y las fechas lo explican —verificadas con `git log -S`—:
+
+| | commit | fecha |
+|---|---|---|
+| lectura de `planificacion` desde el enricher de d02 | `6bb5436` | **2026-07-14** |
+| nace `consulta.py` | `e6c60f0` · *«primera consulta **d02→d01** · se comparte evidencia, nunca verdad»* | **2026-08-30** |
+
+> **La frontera defendida se construyó para exactamente este par de dominios, y el camino productivo
+> siguió usando el canal anterior.** No es un canal olvidado: es la arquitectura previa que sobrevivió
+> en código a su propio reemplazo.
+
+**Destino `REARQ` candidato —PROPUESTO, decide la dirección—:** que la circulación d01 → d02 pase por
+la frontera defendida, o que el canal por snapshot transporte procedencia, grado y sujeto. Es la
+unión de las dos mitades que ya existen.
+
+### Lo que `C1` NO cubrió
+
+| | |
+|---|---|
+| **d06, el sintetizador** | identificado y **no recorrido**: vive en la capa de páginas (`quira_pages/p6_pulso`, `p7_brecha`, `m1_situacion`…) y `PCD-D06` lo declara *«el dominio que sintetiza evidencia producida por otros»*. Es la circulación interdominio por definición, y pertenece también a `C4` |
+| **otras lecturas de bloques ajenos** | el universo de lecturas fue `scripts/enrich_*.py` y el motor de d09, por expresión regular sobre claves literales. **Claves construidas dinámicamente no se ven** |
+| **escritura concurrente** | cinco productores reescriben el mismo archivo entero. Si dos corren fuera de orden, uno puede pisar el bloque de otro. **No observado**; se registra como pregunta |
+| **el valor en el catálogo** | `catalogo_d02` lleva `alineacion_pnd_pct: 83` escrito: otra copia del mismo número, que envejece igual |
 
 ## 6 · Y la finalidad, dicha por la dirección
 
