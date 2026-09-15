@@ -31,7 +31,7 @@ Uso:
   python scripts/ci/check_sat_brn.py --estricto  → falla si hay SAT huérfanas
 Dylus Lab © 2026
 
-CIRCUITO: OBLIGATORIO — protege: que toda SAT del motor tenga una cadena BRN que la funde (ADR-038 · OBS-022) · normativa
+CIRCUITO: OBLIGATORIO — corre en el circuito en MODO INFORMATIVO: reporta las SAT del motor sin cadena BRN (ADR-038 · OBS-022) y NO bloquea hasta `--estricto`. Hoy no protege: informa · normativa
 """
 from __future__ import annotations
 

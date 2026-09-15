@@ -604,6 +604,18 @@ Los `sha256` son **hashes truncados a 12 hex**: identificadores de chunk del cor
 > tercer estado de QUIRA, aplicado a la norma. `doctrina.py` y los gates no tienen esa
 > expresividad: una regla ahí está o no está.
 
+> ⛔ **Corregido en `§5-terdecies` (falsación 22).** La tabla de arriba **está mal medida**: la
+> expresión tomaba el primer `estado:` del YAML **con cualquier sangría**, y en `RO-VII-002/003/004`
+> ese primer `estado:` está **anidado**. Con parser YAML, las tres son **`vigente`** en primer nivel.
+> Cifras reales: **10 RO vigentes que compilan · 3 en `propuesta`** —lo confirma
+> `brn_compilador --verificar`—.
+>
+> **La capacidad sobrevive, y es más fina de lo que se escribió.** Los `no_determinable` y
+> `no_observable` no son el estado de la regla: son **casos borde que una regla vigente declara como
+> dato** —`caso_sin_dimensiones_determinables` · `caso_sin_solicitudes`— para que *«el criterio no
+> vuelva al código»*. No es «una regla que no puede evaluarse»: es **una regla vigente que declara
+> cuándo su propio resultado no es determinable**.
+
 ### `E` · Custodia EJECUTABLE — y el fallo que casi se publica al revés
 
 Se midió *«¿quién invoca cada gate?»* buscando rutas literales y el resultado fue **8 de 14 sin
@@ -2231,6 +2243,184 @@ ni la semántica de `MISMA_FUENTE_QUE` ni las propiedades del grafo vivo se toca
 - Si alguna **página** lee `reuso_cross_dominio` o `nota_reuso` del grafo y lo muestra: no se buscó en `quira_pages/` con consultas dinámicas.
 - La **tensión** entre `CD-06 · estado_empirica = true` y la ausencia de ingresos que `OBS-011` confirma: puede ser coherente —publicado, aunque incompleto— y no se evaluó.
 - **Las otras relaciones del grafo vivo**: sólo se examinó `MISMA_FUENTE_QUE`.
+
+## 5-terdecies · `Q-M2-C3` · CIRCULACIÓN NORMATIVA — cuando una regla cambia, ¿por qué camino llega?
+
+> **Pregunta, fijada por el colega:** no *«¿se usa el MDN?»*, sino **«cuando una regla normativa
+> cambia, ¿por qué camino llega —si llega— el cambio al estado ejecutable?»**. Y la advertencia:
+> **no repetir el error de `C1`** —encontrar el nombre de un mecanismo, buscar sólo ese mecanismo y
+> concluir sobre toda la circulación—.
+
+**Universo:** `docs/brn` · `ADR-038/039` · `BRN_CICLO_VIDA_Y_MOLDE` · `scripts/brn_*.py` ·
+`app/agents/{canon,brn_lector}.py` · los enrichers y renders del caso · `data/brn_{config,manifest}.json` ·
+`data/gm_snapshot.json` · la hoja `H24_SAT-IV` del Gold Master vigente, **leída en modo lectura** · y el
+Neo4j vivo, **consultado en modo lectura**. Nada se modificó: los artefactos se verificaron intactos por
+hash antes y después.
+
+### Lo primero: el canon redefine la pregunta
+
+`ADR-038 §9` fija un **límite duro**:
+
+> *«la BRN traza el motor, NO lo alimenta … el Gold Master **no consulta la BRN** … la BRN **registra
+> la relación** `umbral del H24 ← funda en → CNO-IV-001` y **detecta divergencias**; la traza va del
+> motor hacia la BRN (para explicar), nunca de la BRN hacia el motor (para dictar).»*
+
+Y `brn_compilador.py`: *«NO escribe el Gold Master vivo — genera artefactos; **aplicarlos al motor es
+aparte, sobre COPIA con evidencia**»*.
+
+> **Por diseño, un cambio normativo no llega solo al Gold Master.** La prueba de operación no es
+> *«¿se propagó al Excel?»*: es **¿se identifica el impacto y se detecta la divergencia?** Y hay otro
+> estado ejecutable además del Gold Master: **los motores Python de dominio**.
+
+### Hay DOS compilaciones de la BRN, y no se confunden
+
+| | `brn_compilador.py` · `ADR-039` | `brn_cno.py` |
+|---|---|---|
+| **produce** | `data/brn_config.json` + `brn_manifest.json` | `gm_snapshot.json["brn_cno"]` |
+| **para** | el Gold Master, aplicado a mano sobre copia | los motores Python, vía `brn_lector` |
+| **build** | **2026-07-20** | **2026-09-02** |
+| **estado hoy** | ⛔ **`--verificar`: DIVERGE — falta recompilar** (exit 1). Contiene 5 RO; el canon de hoy compila **10**. **18 commits** tocaron `docs/brn` después del build, entre ellos `c014e2a` —*«las 9 piezas de d07 pasan a VIGENTE»*— | ✅ **al día**: canon `f9fa18c6f3b8bb9b` declarado = actual · integridad **16/16 CNO · 13/13 RO** · **sello de Javo del 2026-09-02 aplica** |
+
+⚠️ Y el snapshot contiene además un **tercer bloque**, `snap["brn"]`: el **catálogo BRN v1** del
+2026-07-18 —17 reglas a nivel de artículo, `COOTAD-192-R01`…, todas en `propuesta`—. **No es el que
+lee el puente.** Confundirlo con él fue un error de lectura de este análisis, corregido antes de
+registrarlo.
+
+### `C3.1` · ¿El MDN es un esquema real?
+
+✅ **Sí.** Definición formal en `ADR-038 §9` —*Modelo de Dependencias Normativas*, *«implementación
+recomendada: Neo4j»*—. Tipos observados en el grafo vivo:
+
+```
+nodos     CNO · RO · SAT · SenalSAT · Dominio · Articulo · Norma
+aristas   ESLABON_DE · OPERA_EN · DERIVA_DE · FUNDAMENTA_EN · CONSUME · FUNDAMENTADA_EN · RECIBE_DELEGADOS_DE
+```
+
+**Persistencia:** los `.cypher`, sin cargador localizado (`C2.1`).
+
+### `C3.2` · ¿Tiene instancias reales?
+
+✅ **Sí, y no es una maqueta.** El vecindario vivo de `CNO-IV-001` coincide **eslabón por eslabón**
+con el ejemplo de `ADR-038 §9`:
+
+```
+CE_271 · COOTAD_192 · 198_1 · 198_2 · 198_6 · Transitoria  ─ESLABON_DE→  CNO-IV-001  ─OPERA_EN→ d02
+                                              RO-IV-001  ─DERIVA_DE→  CNO-IV-001  ←FUNDAMENTADA_EN─ SAT-IV
+```
+
+⚠️ **Pero incompleto:** **12 CNO y 8 RO vivos contra 16 y 13 en disco. Faltan exactamente
+`CNO-VII-001…004` y `RO-VII-001…005`** —toda la familia de Transparencia— y no sobra nada. Es el
+**cuarto derivado** de esta serie envejecido de la misma forma.
+
+### `C3.3` · ¿Se usa para recorrer impacto ante un cambio?
+
+⛔ **No.** Ningún código lee `DERIVA_DE`, `ESLABON_DE`, `OPERA_EN`, `CONSUME` ni `FUNDAMENTA_EN`, y
+**ninguna función calcula impacto** —búsqueda de `impacto` · `afectad` · `dependient` · `propaga` ·
+`reforma` en nombres de función—.
+
+> **El MDN existe y está poblado, pero no constituye un mecanismo operativo de propagación de
+> cambios.** *(Formulación del colega.)*
+
+### ★ Pero la detección de divergencias SÍ existe — en otro sitio
+
+La función que `ADR-038 §9` asigna a la BRN vive en **`app/agents/canon.py`**, no en el grafo:
+`_vinculo_con_el_motor()` detecta **por qué vía llega una regla al código** y **qué parámetros
+normativos quedaron copiados**; `copias_caducas()` avisa **por adelantado** —*«`65` hoy, **`70` desde
+2027**: el 1 de enero habrá error, y nada avisaría»*—. **Por décima vez, lo que la pregunta buscaba ya
+estaba construido.**
+
+### El caso · `CNO-IV-001` → `RO-IV-001` → d02
+
+La reforma simulada dice: *«el motor toma el umbral del tramo vigente a la fecha (**65 en 2026, 70
+desde 2027**)»*. **Medido, en d02 la misma regla llega por DOS caminos:**
+
+| | **camino A · puente BRN** | **camino B · celda del Gold Master** |
+|---|---|---|
+| **código** | `_umbral_de_la_regla()` → `brn_lector.regla("RO-IV-001")` | `u4 = _num(find(ws4, "Pct_Inversion_Minimo")) or 0.65` |
+| **de dónde** | `snap["brn_cno"]`, verificado: vigente + al día + sello | celda **`H24_SAT-IV = 0.65`** —*«H01!B38=65%»*— y **literal `0.65` de respaldo** |
+| **se publica en** | `isp.umbral_cootad` | la señal *«Alerta fiscal · estructura COOTAD»* |
+| **custodia** | ✅ **4 pruebas**, con ataques: regla propuesta, catálogo desactualizado, sin sello | ninguna |
+| **el docstring del camino A dice** | *«volver al literal como respaldo **reintroduciría la deuda**»* | …y el camino B **tiene** ese literal |
+
+### ⛔ Y cuatro hechos que el caso deja al descubierto
+
+**1 · El catálogo congela el tramo el día que se compila, y el candado no puede verlo.**
+`brn_cno.py:170-179` resuelve `umbral_vigente` con `date.today()` **al compilar**. El candado de
+`brn_lector` compara **sólo nombres y bytes del canon**. Demostrado sin tocar el sistema:
+
+```
+_umbral_vigente(RO-IV-001, 2026-12-31)  →  65
+_umbral_vigente(RO-IV-001, 2027-01-01)  →  70
+puente hoy: umbral_vigente = 65 · consumible · catálogo al día · compilado 2026-09-02
+```
+
+> **El 1 de enero de 2027 el canon no cambia de contenido: su hash sigue igual, el catálogo sigue «al
+> día», el sello sigue acreditando, y el puente entregará `65` como consumible mientras la regla dice
+> `70`** — hasta que alguien recompile. **Un candado por contenido no puede detectar un cambio que
+> ocurre por el paso del tiempo.** Y es lo que el otro compilador declara prohibido: *«el compilador
+> **nunca** pregunta qué tramo toca hoy — resolver la vigencia a una fecha es tarea del runtime
+> (§4b)»*.
+
+**2 · El bloque publicado de d02 es anterior a la corrección.** El código actual publica
+`umbral_cootad` como **diccionario** —valor, estado, tramos, procedencia—. El snapshot tiene el
+**escalar `65`**, y se escribe sin transformación (`snap["presupuesto_dom"] = block`). **La cura de
+`D-005` existe en el código y en sus pruebas, y su resultado nunca llegó a la publicación**: la última
+escritura del snapshot (2026-09-03) la hizo el enricher de d08/d09.
+
+**3 · El consumidor espera la forma vieja.** `presupuesto_render.py:203` hace
+`isp.get("umbral_cootad") or 65` y formatea `%`, con la etiqueta `«regla 70% (dic-2026)»` escrita. Si
+se regenera d02, **recibirá un diccionario donde espera un número** —incompatibilidad **demostrada por
+lectura**, efecto en pantalla **no ejecutado**—. Y la capa de presentación **reintroduce `65` y `70`
+como literales**, fuera del universo que inspecciona el detector.
+
+**4 · El detector falla en los dos caminos, por representación y por alcance.**
+
+| el detector dice | lo que hay | por qué |
+|---|---|---|
+| d02 · `vinculo = solo_la_cita` | d02 **consume la regla por el puente** | reconoce `docs/brn`, `brn_cno`, `brn_manifest`, pero **no `brn_lector`** · **falsación 24** |
+| d02 · `veredicto_parametros = limpio_comprobado` | `or 0.65` ejecutable | su patrón para `65` rechaza el número precedido de punto: **`0.65` no es `65` para él** |
+| la prueba del literal | busca `return 0.65`, sí | pero **sólo dentro de `_umbral_de_la_regla`**; el `or 0.65` está en `build_block` |
+| d08 · `solo_la_cita` | `scripts/enrich_participacion.py` pide `RO-VIII-003` al puente | ese enricher **no está en el universo** de d08 del detector |
+
+### La respuesta a la pregunta
+
+| estado ejecutable | camino del cambio | ¿automático? | ¿detección de divergencia? |
+|---|---|---|---|
+| **Gold Master** | compilado `ADR-039` → aplicar sobre copia con evidencia | ⛔ no, **por diseño** | ninguna localizada que compare celdas del Gold Master con tramos de RO · y el artefacto compilado **diverge hoy** |
+| **d07** | carga el YAML de la regla | ✅ sí | `canon`: `con_copias`, reportadas |
+| **d02** | **A** puente verificado · **B** celda del Gold Master con literal | A ✅ · B ⛔ | el detector **no ve A ni la copia de B** · y A **congela el tramo** al compilar |
+| **d08** | puente, para `RO-VIII-003` —en `propuesta`, así que no consumible— | — | fuera del universo del detector |
+| **d01 · d03 · d09** | ningún uso del puente en su universo · sólo citan | — | — |
+| **MDN · Neo4j** | ninguno: **sin lector** y sin la familia VII | ⛔ | ⛔ |
+
+> ### **Cuando una regla cambia, el cambio llega al estado ejecutable sólo donde un motor lee la regla en ejecución —d07, y d02 por el puente—. En el Gold Master no llega por diseño y ninguna comparación localizada lo detectaría. Y aun donde llega, el cambio que ocurre por el tiempo —un tramo que entra en vigor— queda congelado en el catálogo hasta la próxima compilación, sin que el candado lo advierta.**
+
+### Correcciones a lo publicado
+
+| # | se afirmó | lo que era |
+|---|---|---|
+| **22** | `P2/P3 §D`: *«7 RO compilan · 2 `no_determinable` · 1 `no_observable`»* | **10 vigentes · 3 propuesta**. Los `no_*` son casos borde **anidados** que la regla vigente declara. Corregido en `§5-quinquies D` |
+| **23** | `P5-03`: `check_sat_brn` *«OBLIGATORIO — protege»* | **exit 0 siempre sin `--estricto`**: corre en el circuito, **informa y no protege**. Corregida la declaración en su docstring |
+| **24** | *(no publicada)* «sólo d07 carga la regla» | **d02 la consume por el puente** — el detector no reconoce esa vía |
+| **25** | *(no publicada)* «el candado del lector usa fechas» | la coincidencia era **«up-date»** en `h.update(...)`: el candado compara sólo contenido |
+
+### Destinos `REARQ` candidatos — PROPUESTOS, decide la dirección
+
+| | |
+|---|---|
+| **resolver el tramo en ejecución**, no al compilar —o hacer que el candado caduque en la fecha del próximo tramo— | cierra el hecho 1 |
+| **llevar la señal de alerta de d02 al puente** y retirar `or 0.65` | cierra el camino B |
+| **regenerar d02** y **adaptar el render** al diccionario, a la vez | los hechos 2 y 3 sólo se cierran juntos |
+| **enseñar al detector** la vía `brn_lector`, la representación fraccionaria y la capa de presentación | el hecho 4 |
+| **recompilar `ADR-039`** y **cargar la familia VII al MDN** — o declararlos derivados sin custodio | es `P5-B` otra vez: **cuarto y quinto derivado sin regeneración gobernada** |
+| **comparar celdas normativas del Gold Master con los tramos de su RO** | la *detección de divergencias* que `ADR-038 §9` asigna a la BRN, del lado del motor |
+
+### Lo que `C3` NO cubrió
+
+- **Cómo se aplica hoy un artefacto compilado al Gold Master**: el procedimiento sobre copia con evidencia no se observó.
+- **Las otras señales SAT** del Gold Master y sus celdas: sólo se examinó `H24_SAT-IV`.
+- **El comportamiento en 2027**, que se **simuló llamando a la función**, no ejecutando el sistema con otra fecha.
+- **Qué hace hoy la pantalla** con el bloque publicado: la incompatibilidad se leyó, no se ejecutó.
 
 ## 6 · Y la finalidad, dicha por la dirección
 
