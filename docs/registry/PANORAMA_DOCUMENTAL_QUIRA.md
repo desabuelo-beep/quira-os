@@ -3321,6 +3321,202 @@ productor de `financiero.ti_2026_*` · `_deprecated` y `worktrees` · la ejecuci
 **Siguiente: `C4-P2`**, con las tres reservas abiertas y la regla de disciplina vigente —no se toca
 `H19`, `H24`, `SAT-IV` ni el render mientras `C4` siga corriendo—.
 
+## 5-sexdecies · `Q-M2-C4-P2` · d09 · cuando la condición limitante es EPISTÉMICA
+
+**Por qué este corte** *(hipótesis discriminante del colega)*: `C4-P0` y `C4-P1` hallaron pérdida de
+condiciones **temporales**. Si la misma pérdida aparece cuando la condición es **epistémica**
+—estado de evidencia, trazabilidad, carácter experto de la evaluación—, entonces no estamos ante
+anomalías particulares sino ante una **clase**. Objeto: `IGP_3_Fidelidad_MFN_Global` / fidelidad
+narrativa de d09. **No se tocó nada; el modelo no se ejecutó.**
+
+### La barrera de independencia — resultado: PARCIAL, y con el punto exacto localizado
+
+> **La cadena de evidencia y evaluación de d09 es independiente de la cadena de cálculo del `Ti` y
+> del ICPI; el tramo de señalización SAT comparte infraestructura con `SAT-IV`.**
+
+- **Independiente:** `H34b` sólo es consumida por `H39` (chequeo de lenguaje), `H85` (log) y `H89`
+  (trust score). **`IGP_3` fue RETIRADO el 2026-07-29** (`H20b!A8` · nota `B12`), así que la fidelidad
+  **no entra al IGP, ni al ICPI, ni al TGI**. Fuente distinta (video oficial + evidencia documental),
+  unidad distinta, evaluación distinta.
+- **Compartido:** el circuito CPCCS desemboca en `H75_SAT_ENGINE` → `H73_OUTPUT_API`, **la misma
+  cañería de `SAT-IV`**. Todo lo que ocurra ahí queda marcado como **tramo común**, no como resultado
+  de d09.
+
+### `C4-P2-A` · Colapso epistemológico de la ausencia de evidencia en `SAT-V`
+
+```
+H24b!B7  Compromisos_CPCCS  = 0                     ← no hay datos (los informes no publican la tabla)
+H24b!B9  Brecha_Compromisos = IF(B7=0; 0; 1-B8/B7)  → 0
+H24b!B17 SAT_V_Estado       = IF(B9>0,3…;B9>0,1…)   → «✅ Sin señal SAT-V»
+H75!D7 → E7 «INACTIVO» → G7 = 0,05 × 0 = 0 → B12 RIESGO_TOTAL = 0,2 «MEDIO» → H73!B29/B30
+```
+
+| estado real | `B7` | brecha `B9` | veredicto |
+|---|---|---|---|
+| **no existen datos para evaluar** | 0 | **0** | ✅ Sin señal · INACTIVO · peso 0 |
+| **datos completos, cumplimiento perfecto** | `B8=B7` | **0** | ✅ Sin señal · INACTIVO · peso 0 |
+
+> **El sistema no conserva la distinción entre «no evaluable por ausencia de evidencia» y «evaluado
+> sin brecha».** Es una propiedad semántica, no un error aritmético.
+
+**Y la misma hoja sí conserva el estado donde no gobierna:** `B19` dice *«Sin datos de compromisos
+CPCCS registrados. Ingresar datos de la última RDC en B7 y B8.»* — texto honesto que **no alimenta la
+señal**.
+
+**Los tres defectos, separados como exigió el colega:**
+
+| | qué afirma | estado |
+|---|---|---|
+| **A · cálculo** | la fórmula convierte `B7=0` en `brecha=0` | ✅ **DEMOSTRADO** |
+| **B · interpretación** | ese `0` se trata como ausencia de señal, inactividad y contribución nula al riesgo en `H75` | ✅ **DEMOSTRADO** |
+| **C · impacto en el producto actual** | que ese riesgo sea el publicado | ⛔ **NO DETERMINADO** |
+
+**Dónde termina exactamente la cadena demostrada:** en `H73_OUTPUT_API`. Más allá:
+`gm_snapshot.json` trae `sat = {}` (el bloque del pipeline, vacío) y el bloque que **sí** leen las
+páginas (`sat_gm`, en `p_ejecutivo:114` y `p6_pulso:37`) es un **derivado congelado del 2026-05-26**
+que **no coincide con el motor vigente**: dice `riesgo_total 0,35 · ALTO · 3 activas` frente al
+`0,2 · MEDIO · 2` que el motor calcula hoy, y **describe las SAT con otra semántica** —su `SAT-IV` es
+*«brecha territorial `IRS=79.7`»* (la `SAT-VIII` del motor) y su `SAT-V` es *«densidad de
+trazabilidad insuficiente»*, no la brecha CPCCS—. **Tramo común, familia de los derivados congelados
+de `C3`.**
+
+**El cero no llega a la página, y llega a no llegar por accidente:** `enrich_rdc._clean(0)` hace
+`str(s or "")`, y en Python `0` es *falsy* → devuelve `""` → el snapshot guarda
+`brecha_compromisos: ""` → el cajón imprime «—» (`m_rdc:201`, `or "—"`). **La honestidad del
+resultado publicado no es una decisión: es un efecto colateral del lenguaje.**
+
+**Contrafactual del cajón** *(el cajón es fiel transportador; la pérdida está aguas arriba)*:
+
+| lo que recibe | lo que publica |
+|---|---|
+| `""` (cadena real hoy) | *«la brecha de compromisos…: **—**»* |
+| `"0%"` | *«…: **0 %**»* |
+| `"sin evidencia — los informes no publican la tabla"` | *«…: **sin evidencia — los informes no publican la tabla**»* |
+
+### `C4-P2-B` · Conversión silenciosa de un fallo de lectura en ausencia de penalización (`H89`)
+
+```
+H89!B27 MFN_BRECHA_NARRATIVA   = IFERROR(1-AVERAGE(H34b!L11:L37); 0)     → 0
+H89!B28 PENALIZACIÓN_MFN       = IF(…>0,15; "⚠️ -10pts"; "✅ Sin penalización")
+H89!B29 TRUST_AJUSTADO         = 89,6  (sin ajuste)
+```
+
+La columna `L` (`IF_n`) está guardada **como texto** (`'1.00'`, `'0.88'`, `'0.31'`). `AVERAGE` ignora
+el texto; sin ningún número en el rango devuelve error; `IFERROR` lo convierte en **0**.
+
+**Verificación empírica:** si la columna fuera numérica, `B27` valdría `1 − 0,91 = 0,09`. El valor en
+caché es **0** → prueba que `AVERAGE` no leyó esos números.
+
+**Contrafactual mínimo** *(se varía sólo el estado de la columna)*:
+
+| escenario | `B27` | veredicto |
+|---|---|---|
+| hoy · `IF_n` como **texto** | 0,0000 | ✅ Sin penalización |
+| `IF_n` **numérico**, mismos valores | 0,0767 | ✅ Sin penalización |
+| `IF_n` **numérico** pésimo (0,10) | 0,9000 | ⚠️ **PENALIZACIÓN −10 pts** |
+| `IF_n` **numérico** nulo (0) | 1,0000 | ⚠️ **PENALIZACIÓN −10 pts** |
+| columna **ilegible/vacía** | 0,0000 | ✅ Sin penalización |
+| **texto** con valores pésimos (`'0.10'`) | 0,0000 | ✅ Sin penalización |
+
+> **Con la columna en texto, NINGÚN valor de `IF_n` puede activar la penalización.**
+> *Error de lectura → valor benigno → interpretación de conformidad.* Es **otra forma**, no la misma
+> que `P2-A` (*ausencia de evidencia → valor benigno → ausencia de riesgo*).
+
+**Y el contraste que lo vuelve incontestable:** el puente Python **sí** lee esa columna —
+`enrich_rdc.py:70` convierte el texto a float y lo documenta (*«L = IF_n (guardado como texto
+'1.00')»*)—. **Mismo dato, dos lectores: uno lo lee; el otro falla en silencio y su fallo se publica
+como conformidad.**
+
+### `C4-P2-C` · Naturaleza del índice — discrepancia metodología/implementación
+
+**Demostrado:**
+- los nueve `IF_n` son **literales**, guardados como texto;
+- `IF_n` **coincide exactamente** con `Valor_Narrativa` en los nueve;
+- `Valor_Evidencia` (`K`) **no interviene en ninguna fórmula** del libro;
+- la fórmula declarada en `H34b!A6` —`IF_n = Ponderación × (1 − |N − E| / max(N,E))`— **no reproduce
+  ninguno de los nueve valores** (con `N=1`, `E=28 000 000` daría ≈ 0; el valor es 1,00).
+
+**Formulación exacta** *(redacción del colega)*: **la implementación no permite reconstruir que los
+nueve `IF_n` hayan sido obtenidos mediante la fórmula declarada, y la igualdad exacta entre `IF_n` y
+`Valor_Narrativa` no permite atribuir a `Valor_Evidencia` un papel efectivo en su cálculo.**
+
+⛔ **NO se declara** que «la evaluación experta dejó de serlo»: pudo haber un juicio experto manual que
+produjera esos valores. Lo que falta es la **reconstrucción**, no necesariamente el experto.
+
+**Dónde se declara el carácter experto y dónde se vuelve medición** *(la única pregunta del eje)*:
+
+| capa | qué dice |
+|---|---|
+| SSoT `data/d09/catalogo_d09_v1.0.0.yaml` | *«ÍNDICE del motor — **evaluación experta trazable**…, no cómputo automático»* (líneas 14 y 33) |
+| `METODOLOGIA_TRAZABILIDAD_APORTES.md` §4 | *«la máquina propone, el experto valida»*, citando el `IF_n` como el modelo |
+| motor `H34b` | metodología escrita como **fórmula**; valores literales |
+| `enrich_rdc.py` / snapshot | **no menciona** el carácter experto · `fuente`: *«video oficial ↔ evidencia verificada»* |
+| cajón `m_rdc` §3 y síntesis | *«Cada una recibe un **índice de fidelidad**»* · *«cada barra… **medida** por su fidelidad a la evidencia»* · *«Es el control ciudadano hecho evidencia, **no opinión**»* |
+
+> **El salto ocurre entre el SSoT y el cajón:** lo que el rector define como evaluación experta
+> trazable se publica como **medición triangulada**. La palabra «experta» no aparece en ninguna capa
+> del producto *(universo: `enrich_rdc.py`, `gm_snapshot.json`, `m_rdc.py`)*.
+
+### `C4-P2` · Contrafactual epistémico en el consumidor
+
+| escenario *(`if_n` constante)* | lo que publica el cajón |
+|---|---|
+| evidencia real presente | «8 coinciden con la evidencia verificada» · 91 % |
+| **evidencia borrada en las nueve** | **idéntico** |
+| evidencia = *«sin evidencia localizada»* | **idéntico** |
+
+> **En el consumidor probado, la afirmación «coinciden con la evidencia verificada» no cambia cuando
+> se elimina el contenido de evidencia, mientras `if_n` permanece constante. Por tanto, la presencia
+> de evidencia no gobierna funcionalmente esa afirmación en dicho consumidor.** *(El lector sí ve la
+> celda de evidencia vacía en la tabla; el recuento y la frase agregada, no.)*
+
+### Falsaciones de esta fase
+
+- **35 ·** *«`B21` promedia la columna equivocada»* —`J` = `Valor_Narrativa` en vez de `L` = `IF_n`—
+  → **falsada**: `L` contiene exactamente los mismos valores (como texto); el promedio coincide.
+  El defecto real de esa columna está en `H89`, no en `B21`.
+- **36 ·** *«el 91 % compone un índice superior en `p16_gobernanza`»* → **falsada**: vive dentro de un
+  **comentario** que documenta `D-006`, **ya corregido**. Precedente del patrón —una cifra escrita a
+  mano que publicó el método retirado durante 22 días—, no hallazgo nuevo.
+- **37 ·** *«el singular “el informe oficial” contradice las cuatro entidades»* → **falsada**: es un
+  **solo discurso** del alcalde con nueve afirmaciones sobre cuatro entes, y `entidad` viaja en cada
+  claim. **Cuatro entidades ≠ cuatro informes discursivos.**
+- **38 ·** *«el riesgo publicado trata la ausencia como conformidad»* → **acotada**: la cadena
+  demostrada termina en `H73`; el producto lee `sat_gm`, un derivado congelado que **ni siquiera
+  coincide** con el motor. Convertir una ruta potencial en afirmación de producto sería repetir el
+  defecto que `C4` investiga.
+
+### Estado de `C4-P2`
+
+> **CERRADO COMO DIAGNÓSTICO** *(taxonomía del colega, 2026-09-16)* · **sin tocar arquitectura.**
+>
+> | punto | estado |
+> |---|---|
+> | `P2-A` · colapso epistemológico en `SAT-V` | ✅ **DEMOSTRADO** (cálculo + interpretación) · impacto en producto **NO DETERMINADO** |
+> | `P2-B` · fallo de lectura → ausencia de penalización (`H89`) | ✅ **DEMOSTRADO** |
+> | `P2-C` · naturaleza del `MFN` | ✅ **DEMOSTRADO como discrepancia metodología/implementación**, **no** como pérdida del carácter experto |
+> | universo (entidad · ejercicio · informe) | ⛔ **FALSADO** |
+> | composición del 91 % | ⛔ **FALSADO** (precedente `D-006`) |
+> | colisión semántica *«fidelidad»* (91 % ↔ 72,73 %) | ❓ **NO DEMOSTRADO COMO DEFECTO** — sin relación `ID → valor` ni consumidor que las mezcle |
+> | ruta IA productiva de d09 | ❓ **`NO DETERMINABLE`** — no localizada *(universo: `components/sentinel.py`, `sentinel/*`, `scripts/ia_*`; las coincidencias son clasificación documental y plantillas de informe, no inyección del índice)* |
+> | independencia de la cadena | ⚠️ **PARCIAL** — evidencia/evaluación independientes; señalización SAT compartida |
+
+### Las tres formas, todavía sin generalizar
+
+| corte | condición limitante | forma de la pérdida |
+|---|---|---|
+| `C4-P0` · ICPI | comparabilidad / temporalidad | la condición deja de gobernar las capas posteriores |
+| `C4-P1` · `Ti` | significado de la magnitud | el indicador llega intacto y es desconectado del veredicto o reinterpretado |
+| `C4-P2` · d09 | **estado epistémico de la evidencia** | ausencia de evidencia y fallo de lectura se convierten en **valores benignos** |
+
+> ⛔ **No se autoriza todavía la generalización *«QUIRA tiene un fallo transversal»*.** Lo que hay son
+> **tres formas potenciales de una misma clase**, y el tramo común de señalización queda
+> explícitamente controlado como variable no independiente.
+
+**Regla de disciplina vigente:** no se repara `SAT-V`, ni `H89`, ni `H19`, ni `H24`, ni el render
+mientras `C4` siga corriendo. **La siguiente jugada es comparar `P0`/`P1`/`P2` sin reparaciones
+intermedias que contaminen los resultados.**
+
 ## 6 · Y la finalidad, dicha por la dirección
 
 > *«No es una auditoría, sino **elevar este ecosistema**… para potenciar, mejorar y elevar el nivel
