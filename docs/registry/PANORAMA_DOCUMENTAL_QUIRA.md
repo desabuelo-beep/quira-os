@@ -2869,8 +2869,11 @@ sigue es lectura y contrafactual de laboratorio.
 `tgi.d3`) y los 9 `data/reportes_ciclo/CICLO_*`.
 **Código:** `ti_pct`, `ti_2026_*`, `ti_2025_pct`, `absorcion_ti_pct`, `d3_ti_pct`, `top_entidad`
 en `app/`, `scripts/`, `quira_pages/`, `components/` · enrutamiento en `quira_pages/env_gov.py`.
+**IA:** `scripts/ia_criterio_planificacion.py` y la cadena `sentinel/budget_record_loader.py` →
+`sentinel/calibration_layer.py` → `sentinel/d3d4_engine.py` → `components/sentinel.py`
+*(ampliado tras la falsación 34; el modelo **no** se ejecutó)*.
 **Excluidos y declarados:** `.claude/worktrees/*`, `quira_pages/_deprecated/*`, Neo4j, Supabase,
-Sentinel más allá de `components/sentinel.py`, publicación de `H33`.
+el resto de `sentinel/*`, publicación de `H33`.
 ⚠️ **No encontrado ≠ inexistente** (`DOC-035`/`036`): donde no hubo hallazgo se dice *no localizado
 en el universo inspeccionado*.
 
@@ -2886,12 +2889,27 @@ H07_S5!B10 Fecha_Corte    = «Abril 2026 (Ene-Abr)»
 H07_S5!B22 Mes_Activo (auto) = 4   ·   B23 FactorTemporal = CHOOSE(B22, curva…) = 0,212
 ```
 
-> **`Ti` = razón de ejecución (devengado ÷ codificado) del presupuesto de inversión,
-> ACUMULADA al corte.** Unidad: razón (0-1). Período: enero-abril 2026. Universo: grupos
+> **`Ti = 0,064342 = 6,4342 % de ejecución acumulada de la inversión al corte enero-abril 2026.**
+> Razón devengado ÷ codificado. Unidad: razón (0-1), publicada en %. Universo: grupos
 > presupuestarios de inversión. **Observado, no proyectado.**
 >
-> El **factor temporal es OTRA celda** (`B23`), y la magnitud normalizada es **otra más**
+> El **factor temporal es OTRA celda** (`B23` = 0,212), y la magnitud normalizada es **otra más**
 > (`H07b!B20 Ti_norm_2026 = MIN(1; B19/B23) = 0,3035`). Tres cosas distintas, no una.
+
+⚠️ **El número desnudo no conserva semántica** —es justamente lo que `C4` está demostrando—, así que
+en este registro el `Ti` **se escribe siempre con su unidad, su período y su universo**. *(Regla de
+redacción pedida por el colega.)*
+
+#### Corrección a una contaminación conceptual arrastrada de `C4-P0`
+
+> **`T_i` NO significa «tiempo».** La letra dentro de la fórmula del ICPI inducía a leer *«factor
+> temporal»* como *«tiempo transcurrido»*. La reconstrucción operativa lo desmiente: **`T_i` es una
+> razón de ejecución acumulada respecto del codificado**. La temporalidad vive en **otra variable**
+> (`FactorTemporal`) y la comparación entre ambas en **una tercera** (`Ti_norm`).
+>
+> ⛔ **No se renombra nada ahora.** Rige la regla que ya tenemos (`DOC-014`/`DOC-015`): **primero se
+> determina la semántica, después la nomenclatura**. Queda anotado para cuando esa semántica esté
+> cerrada.
 
 ⚠️ **Precisión sobre los componentes:** los rótulos `Codificado_Grupo7_Bienes` (29 654 120,37) y
 `Codificado_Grupo8_Obras` (617 691,37) **no describen su contenido**: el codificado de *obras
@@ -2908,10 +2926,19 @@ sus partes sí engaña. Registrado como precisión, no como defecto de cálculo.
 | **lineal `mes/12`** | nota `F20` de `H07b` · ficha forense `§7-ter.2` (2026-09-03) · compatible con `financiero.ti_2026_normalizada_pct` | 0,333 | 19,3 % |
 
 Coinciden a **fin de trimestre** (`Q1` 0,128≈0,13 · `Q2` 0,36≈0,35) y **divergen dentro del
-trimestre** y en `Q3` (0,766 frente a 0,60). **Sólo la curva gobierna algo**: el `Ti_norm` que entra
-al ICPI. ⚠️ Esto **no es un defecto del tránsito**: es una **tensión entre dos registros canónicos**
+trimestre** y en `Q3` (0,766 frente a 0,60).
+
+**Y hay una cuarta, descubierta al cerrar el contrato de transporte hacia la IA** *(§ IA)*:
+`data/rc72_calibration.json` fija **baselines por entidad y grupo de gasto** —`GAD`:
+`ti_q1_g7178` = **2,5 %**, `ti_q1_g5157` = 22 %, `ti_annual_expected` = 75 %; otras entidades 5,0/87
+y 3,0/80— que la capa de calibración de Sentinel usa para decidir si un `Ti` bajo es estacional.
+**2,5 % esperado en `Q1` frente al 12,8 % de la curva del motor para el mismo trimestre y el mismo
+grupo.**
+
+⚠️ Esto **no es un defecto del tránsito**: es una **tensión entre registros canónicos y operativos**
 —como el hallazgo 3 de `C4-P0`— más una **nota desactualizada** por la cirugía de junio.
-**Decisión de dirección, no de auditoría.**
+**Decisión de dirección, no de auditoría.** Lo que sí se registra: **la misma magnitud se compara
+contra cuatro expectativas temporales distintas**, y sólo una de ellas gobierna el ICPI.
 
 ### C · La colisión `SAT-IV` — reconstruida antes de nombrarla
 
@@ -2942,26 +2969,44 @@ vigencia **antes** de llamarlo contradicción. Aquí está.)*
 | **0,3600 (justo a ritmo en junio)** | ⚠️ | **⚠️** |
 | 0,7000 · 1,0000 | ⚠️ | ⚠️ |
 
-**Los tres hallazgos, separados como pidió el colega:**
+**Los tres hallazgos, separados y con el nombre que fijó el colega:**
 
-> **⛔ C.1 · DESACOPLAMIENTO (tipo C, el análogo de `m1` en `P0`).** El veredicto de **A no depende
-> del `Ti`**: compara un número contra el texto `'Valor'` —el encabezado de la tabla de parámetros,
-> cinco filas por encima del umbral real—, y en Excel cualquier número es menor que cualquier texto.
-> **A dice evaluar el `Ti` y afirma siempre lo mismo.** Demostrado: constante en las ocho entradas.
+> **⛔ `C.1` · DESACOPLAMIENTO INDICADOR → VEREDICTO. DEMOSTRADO.**
+> *La alerta `H19!B11` declara evaluar el `Ti`, pero su condición efectiva compara contra un
+> encabezado textual (`H01!B33`) y no contra el umbral numérico correspondiente (`H01!B38`). El
+> contrafactual, variando exclusivamente el `Ti`, mantiene constante el veredicto. Por tanto, el
+> veredicto no está funcionalmente gobernado por el `Ti`.*
 >
-> **⛔ C.2 · DIVERGENCIA DE REGLA (tipo A) con sustitución de la magnitud.** B sí depende del `Ti`,
-> pero lo usa **como si `1 − Ti` fuese la participación de la inversión en el presupuesto**. `Ti` es
-> una **razón de ejecución**, no una **participación estructural**. Consecuencia demostrada: el
-> veredicto **se mueve en sentido inverso a la ejecución** —un GAD que ejecute exactamente al ritmo
-> de la curva del propio motor dispara en **junio** (`FactorTemporal` = 0,36) la alerta *«inversión
-> por debajo del umbral mínimo COOTAD»*—.
+> Es la estructura de `P0` un escalón más adentro: allí la **conclusión textual** era fija; aquí lo
+> está **la propia condición lógica**.
 >
-> **⚠️ C.3 · CONTRADICCIÓN DE RESULTADO (tipo B) — acotada.** A y B consumen **la misma celda, el
-> mismo corte, la misma unidad, el mismo denominador y declaran la misma pregunta**, y hoy afirman
-> lo contrario. Eso satisface la prueba del colega **dentro del libro**. Pero **no llega al producto
-> como dos veredictos**: A no tiene consumidor localizado. **Lo publicado es sólo B.**
-> El primo `H97!C20` **no entra en la contradicción**: otro período (cierre 2025) y otra pregunta —es
-> el caso de control que muestra que *veredicto distinto ≠ contradicción*.
+> **⛔ `C.2` · SUSTITUCIÓN SEMÁNTICA DE MAGNITUD EN LA REGLA `SAT-IV`. DEMOSTRADO.**
+> *`H24!B10` consume el `Ti`, pero lo transforma mediante `1 − Ti` y utiliza el resultado como
+> participación estructural de la inversión. Dado que el `Ti` está definido como razón de ejecución
+> presupuestaria, `1 − Ti` representa el complemento de ejecución, no la participación estructural del
+> presupuesto. El contrafactual confirma que el veredicto se desplaza en sentido inverso a la
+> ejecución. La fórmula conserva una dependencia numérica con el `Ti`, pero no conserva su
+> significado semántico.*
+>
+> **Salvaguarda (colega):** esto **no demuestra** que la regla normativa del 65 % esté equivocada.
+> Demostrado: `Ti` ≠ participación estructural, y `1 − Ti` = complemento de la razón de ejecución.
+> **Fuera de `C.2` y no necesario para él:** cuál debería ser la fórmula normativa correcta. Eso es
+> **REARQ/diseño, no diagnóstico** — no se intenta aquí.
+>
+> **⚠️ `C.3` · CONTRADICCIÓN INTERNA ACOTADA / ARTEFACTO INERTE. DEMOSTRADO Y ACOTADO.**
+> A y B consumen **la misma celda, el mismo corte, la misma unidad, el mismo denominador y declaran
+> la misma pregunta**, y hoy afirman lo contrario. **Pero no se puede decir que «QUIRA publica dos
+> veredictos contradictorios»: sería falso.** A está desacoplada, tiene **0 dependientes** y ningún
+> lector localizado; **sólo B alimenta la ruta productiva**. La formulación correcta:
+> *existe una contradicción interna entre dos artefactos del universo inspeccionado, no entre dos
+> resultados publicados, y el artefacto A es inerte respecto de la ruta productiva inspeccionada.*
+> **No se eleva a defecto productivo.** Su valor es mostrar que el repositorio contiene **dos
+> mecanismos que aparentan resolver la misma pregunta de maneras distintas**, uno sin ejecución
+> productiva: **deuda de diseño que `REARQ` tendrá que clasificar**.
+>
+> **`H97!C20` · CASO DE CONTROL NEGATIVO. DEMOSTRADO.** Otro período (cierre 2025), otra referencia,
+> otra pregunta y otra escala → **veredicto distinto ≠ contradicción**. No se «descarta»: se usa
+> como control.
 
 **Falsación decisiva de C.2:** hoy B dice *«conforme»*, y el cociente estructural que el propio
 snapshot permite formar (codificado de inversión ÷ total municipal = 0,658) **también** caería del
@@ -2975,7 +3020,13 @@ verificar, y lo cumple); **no pretende** verificar gobierno.
 SAT-IV**, y el cajón d02 explica al lector que el seguimiento arranca el **1-dic-2026**. Tres fechas
 conviven; **ninguna condiciona la activación**.
 
-### D · El `ISP` de d02 empareja un valor de 2025 con la clasificación de un parcial de 2026
+### D · HALLAZGO LATERAL, SEPARADO · el `ISP` de d02 empareja un valor de 2025 con la clasificación de un parcial de 2026
+
+⚠️ **No pertenece a la colisión `SAT-IV` y no debe contaminarla** *(indicación del colega)*. Es **otro
+caso de conservación temporal** y queda como **candidato a tratamiento posterior**, porque falta
+reconstruir qué es el 58,4 % de la columna C: **histórico · referencia · benchmark · valor
+comparativo · dato arrastrado · o texto de contexto**. Que el motor sea internamente coherente no
+elimina el problema de presentación, **pero tampoco permite todavía llamarlo error**.
 
 ```
 H19!B6  ISP_Global_2025_Ref  = IF(ISNUMBER(B12); IF(B12>0;B12;0,584); 0,584)  → 0,0322  (¡2026 parcial!)
@@ -3028,6 +3079,20 @@ celda ni el período.**
 > `m_planificacion:641` escribe *«algo natural en el primer cuatrimestre»* **sin condición alguna**:
 > la frase no depende del corte ni del valor *(lectura estática; la función necesita Streamlit)*.
 
+**Cierre de la matriz de consumidores, en la estructura que fijó el colega** —el asterisco obliga a
+**verificar** la semántica, no a asumirla—:
+
+| consumidor | recibe `Ti` | usa `Ti` | usa su significado correcto | corte | regla | **¿gobierna la afirmación?** |
+|---|---|---|---|---|---|---|
+| `H19!B11` | ✓ | ✗ | ✗ | Ene-Abr | comparación defectuosa (contra encabezado) | **✗** |
+| `H24!B10` | ✓ | ✓ | ✗ | Ene-Abr | COOTAD vía `1 − Ti` | **✗** |
+| `H97!C20` | ✓ / referencia | ✓ | ✓* | cierre 2025 | regla propia (75 %) | **?** |
+| producto d02 | ✓ | ✓ | ? | abril | regla publicada (70/50) | **?** — gobierna el color, no el dictamen |
+| Planificación | ✓ | ✓ | ? | abril | rama `< 30` | **?** — gobierna la rama, no la frase |
+| Concejo / Cadena | ✓ (otro corte) | ✓ | ? | `config.CORTE` | `TOP = Ti / W_Q` | **?** — gobierna el `TOP`, no el titular |
+| IA · `RC-7.3` | ✓ (otra serie) | ✓ | ✓* | no viaja | baseline por entidad | **✓ dentro de la calibración** |
+| IA · `criterio_planificacion` | ✓ | ? | ? | *«al corte»*, sin fecha | — | **`ND`** |
+
 ### F · El Concejo proyecta con el corte de la configuración, no con el del dato
 
 `p_concejo.py:124` y `p_cadena_institucional.py:274` leen `financiero.ti_2026_raw_pct` **1,05 %**
@@ -3047,11 +3112,47 @@ literal**, no el adjetivo. Ambas páginas están **enrutadas** (`env_gov.py:320`
 - **La serie `presupuesto_dom.serie`** (2023 68,0 · 2024 79,6 · 2026 6,4) **no tiene consumidor
   localizado** → *no se publica una comparación entre cierres anuales y un parcial*. **Falsada mi
   observación preliminar.**
-- **Sentinel:** ningún término del `Ti` localizado en `components/sentinel.py` → **no demostrado** que
-  el `Ti` llegue a la IA conversacional.
 - **`ia_criterio_planificacion.py`** sí envía *«Ejecución de esa inversión al corte: 6.4%»* sin fecha
   ni factor, pero su salida (`planificacion.criterio_ia`) **no está en el snapshot vigente** y el
-  modelo **no se ejecutó** en esta sesión → **`NO DETERMINABLE`**.
+  modelo **no se ejecutó** en esta sesión → **`NO DETERMINABLE`** como afirmación emitida.
+
+### El contrato de transporte hacia la IA — cerrado SIN ejecutar el modelo
+
+*(El colega pidió exactamente esto: no hace falta una respuesta errónea del modelo para demostrar un
+defecto de transporte; basta con establecer qué propiedades acompañan al `Ti` cuando llega.)*
+
+**Mi primera lectura fue corta:** busqué términos del `Ti` en `components/sentinel.py` y no aparecieron.
+**Hay vía, y pasa por otro módulo** *(falsación 34)*:
+
+```
+gm_snapshot.series_longitudinal.gad_inversion_g7178
+  → sentinel/budget_record_loader.py  (RC-7.4)
+  → RC-7.2 longitudinal  →  RC-7.3 sentinel/calibration_layer.py
+  → describe_calibrated()  →  bloque inyectado en el prompt de Haiku
+```
+
+| propiedad | ¿acompaña al `Ti` hasta el prompt? |
+|---|---|
+| valor del `Ti` | ✅ sí — `«Ti actual: X %»` dentro de la narrativa |
+| expectativa contra la que se juzga | ✅ sí — `«vs Y % esperado»` (baseline de la entidad) |
+| clase y riesgo | ✅ sí — clase calibrada + `avep_riesgo` |
+| confianza y peso evidencial | ✅ sí — `raw → calibrada`, peso evidencial |
+| aviso de reclasificación | ✅ sí — *«Clase reclasificada … (calibración aplicada)»* |
+| **fecha de corte explícita** | ⛔ **no** |
+| **`seasonal_factor` numérico** | ⛔ **no** llega al texto *(su efecto sí gobernó antes)* |
+| **el `Ti` del motor (`H07_S5!B20`)** | ⛔ **no** — este `Ti` es **otro**: viene de `series_longitudinal`, no de `presupuesto_dom` |
+
+> **✅ Y aquí está el contraejemplo positivo de todo `C4`:** en `RC-7.3` la condición temporal **sí
+> gobierna**. `_apply_seasonal_normalization` reclasifica `PARALISIS_ESTRUCTURAL → EXPANSION_TARDIA`
+> y decae la confianza (×0,55) cuando el período es `Q1` y el grupo es de inversión; y
+> `_has_mixed_frequency` **detecta que una serie mezcle períodos anuales con sub-anuales**
+> —*apples-to-oranges*—. **Es la única guarda de comparabilidad hallada fuera del ICPI.**
+> **El sistema ya sabe hacerlo en un sitio.** Eso convierte el problema de `REARQ` en propagación de
+> una capacidad existente, no en invención de una nueva.
+
+**Estado del transporte:** `Ti → IA` **parcialmente demostrado** (con valor, expectativa y clase).
+`Ti + corte + FactorTemporal → IA` **NO demostrado**: el corte no viaja, el factor no viaja, y el
+`Ti` que llega **no es el de d02**. **El modelo no se ejecutó** — y no hace falta.
 - **Productor de `financiero.ti_2026_raw_pct` / `_normalizada_pct`:** no localizado en el universo
   Python (sólo lectores y copias del snapshot); introducido el 2026-05-17 (`7989774`). Mismo
   régimen que los derivados congelados de `C3`. El 4,21 es **compatible** con `1,05 / 0,25` (lineal),
@@ -3104,6 +3205,18 @@ literal**, no el adjetivo. Ambas páginas están **enrutadas** (`env_gov.py:320`
 contrafactual.** Es, además, el argumento para que las pruebas de `REARQ` incluyan
 *«variar la condición con el valor fijo»* como criterio.
 
+#### ⛔ Conclusión de arquitectura de `C4-P0 + C4-P1` — CONGELADA *(formulación del colega)*
+
+> **En `C4-P0` y `C4-P1` no se observa principalmente corrupción del valor numérico durante el
+> tránsito. Se observa pérdida o sustitución de las condiciones semánticas que determinan qué puede
+> afirmarse a partir de ese valor. En el ICPI, la condición de comparabilidad deja de gobernar
+> uniformemente las capas posteriores; en el `Ti`, el indicador puede llegar intacto pero ser
+> desconectado del veredicto o reinterpretado como una magnitud distinta.**
+
+**Y por eso `C4` no es una caza de bugs de página.** Lo que está apareciendo es más profundo:
+**QUIRA puede conservar el número y perder el significado operacional que limita su
+interpretación.** Ése es el problema que `REARQ` debe resolver.
+
 ### Falsaciones de esta fase *(instrumento, no producto)*
 
 - **27 ·** el universo por el término `ti` incluía `p16_gobernanza:148` y `p19_genero:301`, donde `ti`
@@ -3122,11 +3235,38 @@ contrafactual.** Es, además, el argumento para que las pruebas de `REARQ` inclu
   (*«col 2 = Ti»*) no se sostiene en el motor vigente.
 - **33 ·** *«`Clasificación_Ti` sin guarda es un defecto publicado»* → **sin consumidor localizado**.
   Queda como reserva.
+- **34 ·** *«el `Ti` no llega a la IA»* → **sí llega**, por `sentinel/budget_record_loader.py` →
+  `RC-7.2/7.3`, que mi primer universo (`components/sentinel.py`) no cubría. **El universo estrecho
+  volvió a producir una ausencia falsa** —mismo error que la falsación 26—. Corregido: el `Ti` llega
+  con valor, expectativa y clase; **sin corte ni factor**, y **no es el `Ti` de d02**.
 
 ### Estado de `C4-P1`
 
-> **EN INVESTIGACIÓN AVANZADA · LA COLISIÓN `SAT-IV` QUEDA DEMOSTRADA Y ACOTADA.**
+> **CERRADO COMO DIAGNÓSTICO ANALÍTICO PARCIAL** *(veredicto del colega, 2026-09-16)*.
 >
+> **No hay contradicción publicada entre dos alertas. Hay desacoplamiento, sustitución semántica de
+> magnitud y una contradicción interna acotada a un artefacto inerte.**
+>
+> | hallazgo | estado |
+> |---|---|
+> | `C.1` · desacoplamiento indicador → veredicto | ✅ **DEMOSTRADO** |
+> | `C.2` · sustitución semántica de magnitud | ✅ **DEMOSTRADO** |
+> | `C.3` · contradicción interna entre artefactos, **no publicada** | ✅ **DEMOSTRADO Y ACOTADO** |
+> | `H97` · caso de control — no contradicción | ✅ **DEMOSTRADO** |
+> | serie histórica como consumidor productivo | ⛔ **FALSADA** — retirada del hallazgo |
+> | `Ti` anual como requisito general | ❓ **`NO DETERMINABLE`** — reserva |
+> | IA | ⚠️ **transporte parcial DEMOSTRADO** · conservación completa del contexto temporal **`NO DETERMINADA`** |
+>
+> **Tres reservas abiertas, por decisión del colega:** (1) **IA** — contrato de transporte cerrado,
+> **sin ejecutar el modelo**; (2) **escala anual** — `NO_DETERMINABLE` hasta que haya evidencia
+> suficiente; (3) **`ISP`** — hallazgo lateral separado.
+>
+> ⛔ **Regla de disciplina para el resto de `C4`:** **no se corrige `H19`, `H24`, `SAT-IV` ni el
+> render durante `C4`.** *«La cirugía posterior se hace sobre una arquitectura entendida, no sobre el
+> síntoma que acabamos de descubrir.»*
+
+**Detalle de la demostración exigida antes del cierre:**
+
 > | punto exigido por el colega | estado |
 > |---|---|
 > | qué `Ti`, corte, unidad, denominador consume cada alerta | ✅ **DEMOSTRADO** — la misma celda `H07_S5!B20` |
@@ -3146,6 +3286,9 @@ SAT, páginas, canon ni Neo4j.
 
 ### Destinos `REARQ` candidatos — PROPUESTOS, decide la dirección
 
+⛔ **Ninguno se ejecuta durante `C4`** *(regla de disciplina del colega)*: se anotan para que la
+cirugía se haga después, **sobre una arquitectura entendida**.
+
 1. **`SAT-IV` A (`H19!B10`)** — apunta al encabezado `H01!B33` en vez del umbral `B38`: corregir la
    referencia **o retirar el gemelo inerte**. *(Sobre copia, con evidencia · Regla 1.)*
 2. **`SAT-IV` B (`H24!B10`)** — alimentarla con el **cociente estructural** (inversión ÷ presupuesto),
@@ -3157,18 +3300,26 @@ SAT, páginas, canon ni Neo4j.
    corte; retirar los literales *«corte Abril 2026»* y *«primer cuatrimestre»*.
 6. **Concejo / Cadena** — tomar el corte **del dato**; retirar los respaldos literales y el `Q1`
    silencioso de `quarter_desde_corte`.
-7. **Una sola regla temporal del `Ti`** — curva del motor · `W_Q` de la Doctrina · nota `mes/12`:
-   **decisión canónica**, con la nota `F20` y la ficha forense §7-ter.2 alineadas. → junto a `011-C4`.
+7. **Una sola regla temporal del `Ti`** — curva del motor · `W_Q` de la Doctrina · nota `mes/12` ·
+   baselines de `rc72_calibration.json` (2,5 % en `Q1` frente al 12,8 % de la curva): **decisión
+   canónica**, con la nota `F20` y la ficha forense §7-ter.2 alineadas. → junto a `011-C4`.
 8. **`tgi.d3._nota_d3`** — corregir o retirar; y resolver la colisión del nombre `PSG_EJECUCION`.
 9. **`m2_alertas`** — o la columna deja de llamarse *«Ejecución (%)»*, o deja de alimentarse del `ISP`.
 10. **Pruebas de gobierno** — contrafactual *(fijar el valor, variar la condición)* como criterio de
     aceptación, junto a las pruebas de identidad que ya existen.
+11. **Propagar la guarda que ya existe** — `_apply_seasonal_normalization` y `_has_mixed_frequency`
+    de `RC-7.3` son la única condición temporal que gobierna fuera del ICPI. **`REARQ` propaga una
+    capacidad existente; no inventa una nueva.**
 
 ### Lo que `C4-P1` NO cubrió
 
-Neo4j y el MDN · Supabase y el origen del historial longitudinal · Sentinel fuera de
-`components/sentinel.py` · la publicación de `H33` · el productor de `financiero.ti_2026_*` ·
-`_deprecated` y `worktrees` · la ejecución del modelo de `ia_criterio_planificacion`.
+Neo4j y el MDN · Supabase y el origen del historial de `m2_alertas` · el resto de `sentinel/*` fuera
+de `calibration_layer`, `d3d4_engine` y `budget_record_loader` · la publicación de `H33` · el
+productor de `financiero.ti_2026_*` · `_deprecated` y `worktrees` · la ejecución del modelo de
+`ia_criterio_planificacion` *(deliberadamente no ejecutado)*.
+
+**Siguiente: `C4-P2`**, con las tres reservas abiertas y la regla de disciplina vigente —no se toca
+`H19`, `H24`, `SAT-IV` ni el render mientras `C4` siga corriendo—.
 
 ## 6 · Y la finalidad, dicha por la dirección
 
