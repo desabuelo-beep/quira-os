@@ -3602,7 +3602,7 @@ taxonomía A/B/C/D.)*
 | 1 | **identidad del indicador** | celda del motor (`H12!B33`, `H07_S5!B20`, `H34b!B21`) | renombrar al lenguaje público (`ADR-027`), nunca cambiar de referente | snapshot · páginas · IA | ICPI y `Ti` conservan referente en el tránsito | `«Ti»` nombra seis magnitudes · `«fidelidad»` nombra dos · `sat_gm` reasigna el significado de los códigos `SAT` | B | `P1`, `P2`, `C3` | ⚠️ colisión DEMOSTRADA · contaminación entre ellas **NO DEMOSTRADA** |
 | 2 | **unidad** | razón (0-1) en el motor | razón → % declarado | todos | conservada en los tres cortes | — | — | `P0`,`P1`,`P2` | ✅ conservada |
 | 3 | **período / corte** | `H07_S5!B10` · `_meta.fecha_corte` · *«corte 2024»* | ninguna sin declararla | agente d02 · páginas · IA | `_hallazgos_plan` lo usa · el pie de d09 lo declara | el agente d02 lo descarta · el Concejo usa `config.CORTE` · la síntesis d02 lo escribe literal · no viaja a la IA | A | `P1`, `P2` | ✅ DEMOSTRADO |
-| 4 | **universo** | grupos 7+8 · 9 afirmaciones / 4 entes | ampliar o restringir **sólo declarándolo** | páginas | **(a)** los `claims` conservan `entidad` *(falsación 37)* · **(b)** la función discriminante del universo se mantiene en d09 | dos bases conviven bajo el mismo rótulo *«grupos 7+8»*: 22 595 464 (`financiero`, corte marzo) y 30 271 811,74 (motor, Ene-Abr), **sin campo que declare el cambio** | — | `P1` | ⚠️ **CAMBIO DE UNIVERSO NO DECLARADO · naturaleza `NO DETERMINABLE`** — no se puede decidir entre cambio legítimo por reforma, derivado obsoleto o inconsistencia: el productor de `financiero` no fue localizado y el registro de reformas del motor (`H22!B8 = 0`, literal) **no explica la diferencia y es él mismo un cero de estado indeterminado** |
+| 4 | **universo** | grupos 7+8 · 9 afirmaciones / 4 entes | ampliar o restringir **sólo declarándolo** | páginas | **(a)** los `claims` conservan `entidad` *(falsación 37)* · **(b)** la función discriminante del universo se mantiene en d09 | **discrepancia de base DEMOSTRADA:** dos bases numéricas distintas asociadas al mismo rótulo *«grupos 7+8»* — 22 595 464 (`financiero`, corte marzo) y 30 271 811,74 (motor, Ene-Abr) | — | `P1` | ⚠️ ver la nota al pie |
 | 5 | **magnitud (el valor)** | motor | ninguna: se lee, no se recalcula (Regla 1) | todos | `test_d02_adversarial` · identidad en el snapshot | ninguna hallada | — | los tres | ✅ **conservada — y ése es el punto** |
 | 6 | **semántica de la magnitud** | definición de la fórmula | derivar declarando la derivación | `SAT-IV` | `_absorcion` la llama *«absorción»* | `1 − Ti` usado como participación estructural | B | `P1` | ✅ DEMOSTRADO |
 | 7 | **regla aplicable** | `AVEP 90/70/40/20` · guarda `B34` | ninguna sin canon | páginas · `TOP` · `SAT` | **(a)** la regla está presente en los artefactos examinados · **(b)** gobierna efectivamente en el ICPI (`B34`) | umbrales propios 70/50, 30, 85, 75/55/35 **sin la guarda**; y en `H19!B11` la regla existe y **no gobierna** el veredicto | A | `P0`, `P1` | ⚠️ **acotado:** *en los consumidores examinados, determinadas condiciones normativas/operacionales permanecen presentes y, en algunos casos, gobiernan efectivamente el cálculo* — el estándar de `C4` no es *«¿existe la regla?»* sino *«¿sigue gobernando lo afirmable?»* |
@@ -3611,6 +3611,26 @@ taxonomía A/B/C/D.)*
 | 10 | **naturaleza de la evaluación** | SSoT d09: *«evaluación experta trazable»* | publicarla como tal | cajón `m_rdc` | declarada en SSoT y metodología | el producto la presenta como **medición**; la fórmula declarada no reproduce los valores | B | `P2` | ✅ DEMOSTRADO como discrepancia · **trazabilidad implementativa NO DEMOSTRADA** |
 | 11 | **nivel de confianza** | `RC-7.3` (`raw → calibrada`, peso evidencial) | propagarla | prompt de la IA · páginas | **conservación:** demostrada en el canal donde existe — viaja al prompt con su reclasificación | **pérdida:** **no demostrada** como pérdida de una propiedad previamente existente · **cobertura de transmisión:** incompleta / `NO DETERMINABLE` según el consumidor | — | `P1` | ⚠️ existe en **un solo canal** |
 | 12 | **condición que limita la inferencia** | guarda `B34` · `FactorTemporal` · `_has_mixed_frequency` · `ADR-033 §III` | ninguna | todos | **gobierna** en el ICPI y en `RC-7.3` | no gobierna en ninguna otra superficie inspeccionada | A | los tres | ✅ DEMOSTRADO |
+
+#### Nota al pie de la fila 4 — la diferencia lógica que hay que respetar
+
+*(Corrección del colega: no es lo mismo decir «hay un cambio de universo y su naturaleza es
+`NO DETERMINABLE`» que decir «hay una discrepancia de base cuyo significado no podemos determinar».
+Se usa la segunda.)*
+
+> **DEMOSTRADO:** existen dos bases numéricas diferentes asociadas al mismo rótulo de universo
+> (*«grupos 7+8»*), correspondientes a cortes temporales distintos, cuya diferencia **no pudo ser
+> explicada documentalmente en el universo inspeccionado**.
+>
+> **`NO DETERMINABLE`:** el mecanismo que produce la diferencia.
+>
+> ⛔ **NO DEMOSTRADO:** que haya habido un cambio de universo —ni, por tanto, que ese cambio no se
+> haya declarado—. **La declaración de un cambio de universo no está demostrada.**
+
+**Y sobre `H22`:** `Total_Reformas_2026 = 0` admite **dos lecturas plausibles** —que no hubo
+reformas, o que no se cargaron—, y sin productor trazable no se resuelve. **`0` ≠ ausencia demostrada
+de reformas.** Por eso `H22` queda como **dato auxiliar de la investigación**, no como explicación de
+los ~7,7 M. *(Es, además, la misma forma del mecanismo C: un cero cuyo estado no se distingue.)*
 
 ### Lo que la matriz deja ver — hipótesis, no doctrina
 
@@ -3661,11 +3681,62 @@ Y la consecuencia arquitectónica: **`C4` ya no pregunta «¿se perdió el dato?
 objeto que QUIRA debe conservar es la RELACIÓN entre dato, contexto, condición y capacidad de
 afirmar.**
 
-**Estado de la síntesis:** **DEPURADA · pendiente de ratificación de la mesa.**
-**`C4-P3`: NO SE ABRE** — la pregunta ya cambió, y fabricar un cuarto corte para «tener más
-evidencia» no respondería la que está sobre la mesa.
-**Siguiente paso, cuando la dirección lo autorice:** **mesa `REARQ`** — qué de las doce propiedades
-entra al canon, qué queda como hipótesis y qué puede convertirse ya en test.
+**Formulación corta de la tesis** *(la que resiste)*: **`C4` no demuestra que QUIRA pierda datos;
+demuestra, en los casos examinados, que conservar un dato no garantiza conservar la relación entre
+dato, contexto, condición y capacidad de afirmar.**
+
+### Estado formal de `C4`
+
+| elemento | estado |
+|---|---|
+| `C4-P0` | ✅ **CERRADO — diagnóstico** |
+| `C4-P1` | ✅ **CERRADO — diagnóstico** |
+| `C4-P2` | ✅ **CERRADO — diagnóstico** |
+| síntesis `P0`/`P1`/`P2` | **DEPURADA — pendiente de ratificación** |
+| taxonomía de 4 mecanismos | **síntesis analítica provisional** |
+| matriz de 12 propiedades | **síntesis analítica provisional** |
+| test contrafactual | **propuesta metodológica** |
+| reglas nuevas de `REARQ` | ⛔ **NO DECLARADAS** |
+| `C4-P3` | ⛔ **NO ABIERTO** |
+| reparaciones | ⛔ **NINGUNA** |
+
+**`C4` ya hizo su trabajo diagnóstico. `REARQ` debe decidir qué diagnóstico merece convertirse en
+arquitectura.**
+
+## 5-octodecies · Insumo para la mesa `REARQ` — `DEMOSTRADO` → `PROPUESTO` → `POR DECIDIR`
+
+> ⛔ **Esto NO entra diciendo «estas doce propiedades deben convertirse en reglas».** Cada propiedad
+> pasa por el mismo filtro de tres columnas, y la tercera es de la dirección, no del diagnóstico.
+> **Insumo para decisión, no decisión.**
+
+| # | propiedad | **DEMOSTRADO** *(evidencia `C4`)* | **PROPUESTO** *(qué haría falta)* | **POR DECIDIR** *(la mesa)* |
+|---|---|---|---|---|
+| 1 | identidad del indicador | un mismo nombre designa magnitudes distintas (`Ti`×6 · *«fidelidad»*×2 · códigos `SAT` reasignados en `sat_gm`) | que el nombre publicado resuelva a un referente único y verificable | ¿renombrar, o exigir referente explícito junto al nombre? *(rige `DOC-014`/`DOC-015`: semántica antes que nomenclatura)* |
+| 2 | unidad | conservada en los tres cortes | — | ¿se declara como invariante exigible? |
+| 3 | período / corte | viaja y **no gobierna** ninguna afirmación evaluativa fuera del ICPI | que el corte condicione la clasificación, no sólo el texto | ¿qué superficies quedan obligadas y cuáles pueden mostrarlo sin gobernarlo? |
+| 4 | universo | **discrepancia de base** bajo un mismo rótulo; mecanismo `NO DETERMINABLE` | localizar el productor de `financiero` antes de cualquier regla | ¿se investiga el productor (fuera de `C4`) o se retira el derivado? |
+| 5 | magnitud (valor) | llega sin alteración aritmética demostrada | — | ¿basta la Regla 1 vigente o requiere prueba automática? |
+| 6 | semántica de la magnitud | `1 − Ti` usado como participación estructural | que toda transformación del valor declare qué magnitud produce | ¿contrato por consumidor, o por indicador? |
+| 7 | regla aplicable | existe en los artefactos; gobierna sólo en el ICPI | que el estándar sea *«¿sigue gobernando lo afirmable?»* | ¿se exige a los umbrales de presentación o sólo a los del motor? |
+| 8 | estado de evidencia | ausencia y fallo de lectura colapsan en valores benignos (`SAT-V`, `H89`) | que *«sin datos»* y *«evaluado sin brecha»* sean estados distinguibles aguas abajo | **el más urgente de decidir:** toca la Carta (`CAPA 0`) y afecta a señales publicables |
+| 9 | procedencia | acredita libro y lector, no celda ni período; cobertura incompleta | extender la procedencia a celda y período | ¿mínimo exigible por tipo de afirmación? |
+| 10 | naturaleza de la evaluación | el SSoT dice *«evaluación experta»*; el producto publica *«medición»* | declarar la naturaleza al lector | ¿se declara en el producto, o basta en el SSoT? |
+| 11 | nivel de confianza | existe y gobierna **sólo** en `RC-7.3` | propagarla o declarar que no aplica | ¿es exigible fuera del canal de la IA? |
+| 12 | condición que limita la inferencia | gobierna en el ICPI y en `RC-7.3`; en ningún otro sitio inspeccionado | propagar la capacidad que ya existe | ¿qué superficies la requieren y con qué prueba? |
+
+### Pruebas que **ya podrían construirse** con la evidencia reunida — propuestas, no implementadas
+
+| test | qué detectaría | evidencia que lo respalda | qué **NO** detectaría |
+|---|---|---|---|
+| **T1 · gobierno de la condición** | fija el valor, varía la condición (corte, estado, evidencia) y comprueba si la afirmación responde | contrafactuales de `P0`, `P1` (A1-A4, B) y `P2` | propiedades que condicionan sin relación directa |
+| **T2 · ceros de origen indeterminado** | inventaría `IF(x=0;0;…)` e `IFERROR(…;0)` sobre magnitudes que alimentan señales | `SAT-V` · `H89` · `H22` | si el cero es correcto: sólo obliga a declarar el estado |
+| **T3 · columnas de texto en agregaciones** | columnas numéricas guardadas como texto y consumidas por `AVERAGE`/`SUM` | `H34b!L` → `H89!B27` | errores de tipo que no rompen la agregación |
+| **T4 · referencias a rótulos** | comparaciones y operaciones contra celdas de encabezado | `H19!B10 → H01!B33 'Valor'` · `H04b` usando una fecha como coeficiente | referencias erróneas hacia celdas numéricas válidas |
+| **T5 · identidad entre motor y derivados** | mismo código o clave con significado distinto | `sat_gm` vs `H75` · `PSG_EJECUCION` · `Ti` · *«fidelidad»* | contaminación efectiva entre las magnitudes homónimas |
+| **T6 · cobertura de transmisión** | qué propiedades acompañan a cada indicador publicado | fichas forenses de `P1` y `P2` | si el mínimo es suficiente — eso lo fija la mesa |
+
+**`C4-P3`: NO SE ABRE.** La pregunta ya cambió, y fabricar un cuarto corte para *«tener más
+evidencia»* no respondería la que está sobre la mesa.
 
 ### ⛔ Regla de cierre de `C4`
 
