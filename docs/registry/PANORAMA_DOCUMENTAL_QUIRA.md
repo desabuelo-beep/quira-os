@@ -3549,6 +3549,9 @@ mientras `C4` siga corriendo.
 
 ### Los cuatro mecanismos — taxonomía de `C4`
 
+> ⚠️ **Taxonomía PROVISIONAL derivada del universo `C4-P0`/`P1`/`P2`. No constituye todavía una
+> clasificación exhaustiva de fallas de QUIRA.** *(Aplicación directa de `DOC-019`.)*
+
 | | mecanismo | forma | dónde se demostró |
 |---|---|---|---|
 | **A** | **Desacoplamiento** | el dato llega al consumidor y la condición ya no gobierna el resultado | `P0` (`m1`) · `P1` (`H19!B11`) · `P2` (contrafactual de evidencia en d09) |
@@ -3562,51 +3565,107 @@ información que costó tres cortes obtener.
 ### ⛔ Lo que NO se declara — `DOC-019`
 
 `DOC-019` *(custodia `GATE` · `app/agents/doctrina.py:606`)* previene exactamente esto:
-*«encontré un caso con esta propiedad → todos la tienen»*. Por tanto:
+*«encontré un caso con esta propiedad → todos la tienen»*. La conclusión es **ésta y nada más**:
 
-> **Los cortes `C4-P0`, `C4-P1` y `C4-P2` proporcionan tres casos demostrados de pérdida o
-> sustitución de propiedades semánticas que deberían gobernar afirmaciones posteriores. Los casos
-> difieren en la propiedad afectada —condición temporal, significado de magnitud y estado
-> epistemológico— y no autorizan por sí solos a generalizar el patrón a todo QUIRA.**
+> **`P0`, `P1` y `P2` constituyen casos demostrados de mecanismos distintos de pérdida o
+> desacoplamiento semántico; no demuestran que dichos mecanismos estén presentes en todo QUIRA.**
 
 Y la variable de control queda explícita: **el tramo de señalización `SAT` es común a `P1` y `P2`**,
 así que nada observado ahí cuenta como evidencia independiente.
+
+### El estatus de cada pieza de esta síntesis — cinco niveles, no uno
+
+| pieza | estado |
+|---|---|
+| los casos `P0` / `P1` / `P2` | ✅ **DEMOSTRADOS** |
+| la taxonomía de cuatro mecanismos | **SÍNTESIS ANALÍTICA** |
+| la clasificación de propiedades en invariantes / condicionantes | **HIPÓTESIS PARA `REARQ`** |
+| el contrafactual como criterio | **PROPUESTA METODOLÓGICA** |
+| cualquier regla canónica derivada | ⛔ **NO DECLARADA** |
+
+**`C4` diagnostica; no crea la doctrina que después usará `REARQ`.**
 
 ### La matriz de conservación — las doce propiedades
 
 *(«transformación permitida» = la que no altera lo afirmable, si se declara. «Tipo» remite a la
 taxonomía A/B/C/D.)*
 
+> **⛔ La distinción que atraviesa toda la matriz:** cada celda de conservación/pérdida responde a
+> **dos preguntas distintas**, no a una.
+> **(a) conservación del dato** — ¿llegó la propiedad? · **(b) conservación de su función semántica**
+> — ¿sigue limitando las inferencias del mismo modo?
+> En `P1`, para el `Ti`: **(a) sí · (b) no, en `H24`.** Ése es el corazón de `C4`, y por eso
+> **preservación del dato ≠ preservación de la función semántica.**
+
 | # | propiedad | origen | transformación permitida | consumidor | evidencia de CONSERVACIÓN | evidencia de PÉRDIDA | tipo | alcance | estado |
 |---|---|---|---|---|---|---|---|---|---|
 | 1 | **identidad del indicador** | celda del motor (`H12!B33`, `H07_S5!B20`, `H34b!B21`) | renombrar al lenguaje público (`ADR-027`), nunca cambiar de referente | snapshot · páginas · IA | ICPI y `Ti` conservan referente en el tránsito | `«Ti»` nombra seis magnitudes · `«fidelidad»` nombra dos · `sat_gm` reasigna el significado de los códigos `SAT` | B | `P1`, `P2`, `C3` | ⚠️ colisión DEMOSTRADA · contaminación entre ellas **NO DEMOSTRADA** |
 | 2 | **unidad** | razón (0-1) en el motor | razón → % declarado | todos | conservada en los tres cortes | — | — | `P0`,`P1`,`P2` | ✅ conservada |
 | 3 | **período / corte** | `H07_S5!B10` · `_meta.fecha_corte` · *«corte 2024»* | ninguna sin declararla | agente d02 · páginas · IA | `_hallazgos_plan` lo usa · el pie de d09 lo declara | el agente d02 lo descarta · el Concejo usa `config.CORTE` · la síntesis d02 lo escribe literal · no viaja a la IA | A | `P1`, `P2` | ✅ DEMOSTRADO |
-| 4 | **universo** | grupos 7+8 · 9 afirmaciones / 4 entes | ampliar sólo declarándolo | páginas | `claims` conservan `entidad` *(falsación 37)* | dos bases distintas del `Ti` conviven (22,6 M y 30,27 M) | B | `P1` | ⚠️ parcial |
+| 4 | **universo** | grupos 7+8 · 9 afirmaciones / 4 entes | ampliar o restringir **sólo declarándolo** | páginas | **(a)** los `claims` conservan `entidad` *(falsación 37)* · **(b)** la función discriminante del universo se mantiene en d09 | dos bases conviven bajo el mismo rótulo *«grupos 7+8»*: 22 595 464 (`financiero`, corte marzo) y 30 271 811,74 (motor, Ene-Abr), **sin campo que declare el cambio** | — | `P1` | ⚠️ **CAMBIO DE UNIVERSO NO DECLARADO · naturaleza `NO DETERMINABLE`** — no se puede decidir entre cambio legítimo por reforma, derivado obsoleto o inconsistencia: el productor de `financiero` no fue localizado y el registro de reformas del motor (`H22!B8 = 0`, literal) **no explica la diferencia y es él mismo un cero de estado indeterminado** |
 | 5 | **magnitud (el valor)** | motor | ninguna: se lee, no se recalcula (Regla 1) | todos | `test_d02_adversarial` · identidad en el snapshot | ninguna hallada | — | los tres | ✅ **conservada — y ése es el punto** |
 | 6 | **semántica de la magnitud** | definición de la fórmula | derivar declarando la derivación | `SAT-IV` | `_absorcion` la llama *«absorción»* | `1 − Ti` usado como participación estructural | B | `P1` | ✅ DEMOSTRADO |
-| 7 | **regla aplicable** | `AVEP 90/70/40/20` · guarda `B34` | ninguna sin canon | páginas · `TOP` | la guarda del ICPI opera en el motor | umbrales propios 70/50, 30, 85, 75/55/35 sin la guarda | A | `P0`, `P1` | ✅ DEMOSTRADO |
+| 7 | **regla aplicable** | `AVEP 90/70/40/20` · guarda `B34` | ninguna sin canon | páginas · `TOP` · `SAT` | **(a)** la regla está presente en los artefactos examinados · **(b)** gobierna efectivamente en el ICPI (`B34`) | umbrales propios 70/50, 30, 85, 75/55/35 **sin la guarda**; y en `H19!B11` la regla existe y **no gobierna** el veredicto | A | `P0`, `P1` | ⚠️ **acotado:** *en los consumidores examinados, determinadas condiciones normativas/operacionales permanecen presentes y, en algunos casos, gobiernan efectivamente el cálculo* — el estándar de `C4` no es *«¿existe la regla?»* sino *«¿sigue gobernando lo afirmable?»* |
 | 8 | **estado de evidencia** | `B7=0` · `B19` *«sin datos»* · SSoT *«hoy sin evidencia»* | ninguna: la ausencia es un RESULTADO (Carta CAPA 0) | `SAT-V` → `H75` → `H73` | `B19` conserva el estado donde no gobierna | `IF(B7=0;0;…)` → *«sin señal»* → `INACTIVO` → peso 0 | C | `P2` | ✅ DEMOSTRADO · impacto en producto **NO DETERMINADO** |
-| 9 | **procedencia** | celda + libro + lector | añadir eslabones, nunca quitarlos | agente d02 · snapshot | `evidencia_sha` + `motor_sha` en d02 · `fuente` en d09 | acredita el libro y el lector, **no la celda ni el período** | A | `P1`, `P2` | ⚠️ parcial |
+| 9 | **procedencia** | celda + libro + lector | añadir eslabones, nunca quitarlos | agente d02 · snapshot · páginas | **conservación:** demostrada donde existe — `evidencia_sha` + `motor_sha` en d02 · `fuente` en d09 | **pérdida:** acredita el libro y el lector, **no la celda ni el período** · **cobertura de transmisión:** incompleta — los literales del Concejo circulan sin fuente | A | `P1`, `P2` | ⚠️ **parcial** — la ausencia en un consumidor **no se declara pérdida** de una propiedad previamente transmitida: eso sería convertir *«no la encontré»* en *«QUIRA la perdió»* (`DOC-019`) |
 | 10 | **naturaleza de la evaluación** | SSoT d09: *«evaluación experta trazable»* | publicarla como tal | cajón `m_rdc` | declarada en SSoT y metodología | el producto la presenta como **medición**; la fórmula declarada no reproduce los valores | B | `P2` | ✅ DEMOSTRADO como discrepancia · **trazabilidad implementativa NO DEMOSTRADA** |
-| 11 | **nivel de confianza** | `RC-7.3` (`raw → calibrada`, peso evidencial) | propagarla | prompt de la IA | **sí viaja** al prompt con su reclasificación | **no existe** en el motor ni en el snapshot: no hay pérdida donde no hay propiedad | — | `P1` | ⚠️ existe en **un solo canal** |
+| 11 | **nivel de confianza** | `RC-7.3` (`raw → calibrada`, peso evidencial) | propagarla | prompt de la IA · páginas | **conservación:** demostrada en el canal donde existe — viaja al prompt con su reclasificación | **pérdida:** **no demostrada** como pérdida de una propiedad previamente existente · **cobertura de transmisión:** incompleta / `NO DETERMINABLE` según el consumidor | — | `P1` | ⚠️ existe en **un solo canal** |
 | 12 | **condición que limita la inferencia** | guarda `B34` · `FactorTemporal` · `_has_mixed_frequency` · `ADR-033 §III` | ninguna | todos | **gobierna** en el ICPI y en `RC-7.3` | no gobierna en ninguna otra superficie inspeccionada | A | los tres | ✅ DEMOSTRADO |
 
 ### Lo que la matriz deja ver — hipótesis, no doctrina
 
-1. **La magnitud es lo único que se conserva siempre.** Las doce propiedades no son iguales: hay
-   **invariantes** (identidad, unidad, magnitud, universo, procedencia) que deben **viajar**, y hay
-   **condicionantes** (período, regla, estado de evidencia, condición limitante, naturaleza,
-   confianza) a las que **no les basta viajar: tienen que gobernar**.
-2. **Existe una prueba operativa para distinguirlas**, y es la que se usó en los tres cortes:
-   > **una propiedad condicionante está conservada si, fijado el valor, al variar la propiedad cambia
-   > la afirmación.** Si no cambia, está presente y no gobierna.
-3. **El sistema ya sabe hacerlo en dos sitios** —la guarda `B34` del ICPI y la calibración `RC-7.3`
-   con su `_has_mixed_frequency`—. La tarea de `REARQ` es **propagar una capacidad existente**, no
-   inventarla.
+**1 · Sobre el valor numérico** *(redacción acotada, corrigiendo una versión anterior de esta síntesis
+que decía «la magnitud es lo único que se conserva siempre»)*:
 
-⛔ **Esto se registra como hipótesis de trabajo con su prueba asociada, NO como doctrina nueva.**
-Convertirlo en canon exige el paso que el canon mismo ordena: decisión de la dirección.
+> **En los tres cortes examinados, la magnitud numérica observada alcanza los consumidores estudiados
+> sin una alteración aritmética demostrada. Esta conservación numérica no implica conservación de su
+> significado operacional.**
+
+**2 · Dos familias de propiedades** — **HIPÓTESIS PARA `REARQ`**: hay **invariantes** (identidad,
+unidad, magnitud, universo, procedencia) a las que les basta **viajar**, y **condicionantes**
+(período, regla, estado de evidencia, condición limitante, naturaleza, confianza) a las que **no les
+basta viajar: tienen que gobernar**. La frontera entre ambas familias **no está demostrada**: es la
+pregunta que `REARQ` debe resolver, no un resultado de `C4`.
+
+**3 · El criterio contrafactual** — **PROPUESTA METODOLÓGICA**, con su alcance explícito:
+
+> **Para las propiedades cuya función es condicionar una afirmación, el contrafactual permite
+> comprobar si dicha propiedad gobierna efectivamente el resultado: manteniendo constantes las demás
+> variables, se modifica exclusivamente la propiedad y se observa si la afirmación o su clasificación
+> responde a dicho cambio.**
+>
+> ⛔ **Este criterio no se propone como prueba universal para las doce propiedades.** Identidad,
+> unidad, procedencia o naturaleza pueden ser condiciones de validez o de interpretación **sin** que
+> exista una relación directa *cambio de propiedad → cambio inmediato de conclusión*. Por eso **no se
+> le llama «prueba de conservación»**.
+
+**4 · El sistema ya sabe hacerlo en dos sitios** —la guarda `B34` del ICPI y la calibración `RC-7.3`
+con su `_has_mixed_frequency`—, así que la tarea de `REARQ` se parece más a **propagar una capacidad
+existente** que a inventarla. *(Observación, no conclusión: dos sitios no prueban que el mecanismo
+sea reutilizable en todos los demás.)*
+
+⛔ **Nada de esto se registra como doctrina.** Convertirlo en canon exige el paso que el canon mismo
+ordena: decisión de la dirección.
+
+### La tesis de `C4` — cierre provisional
+
+> **`C4-P0`, `C4-P1` y `C4-P2` demuestran, en los universos específicamente examinados, que la
+> conservación de un dato numérico no garantiza la conservación de las propiedades semánticas y
+> epistemológicas que limitan su interpretación. Los tres cortes muestran mecanismos diferentes
+> —desacoplamiento, sustitución semántica, colapso epistemológico y absorción de error—, pero estos
+> casos no autorizan a generalizar su presencia al conjunto de QUIRA. La síntesis transversal
+> identifica como cuestión central de `REARQ` no solamente si una propiedad viaja con el dato, sino
+> si continúa gobernando las afirmaciones que el consumidor puede producir a partir de él.**
+
+Y la consecuencia arquitectónica: **`C4` ya no pregunta «¿se perdió el dato?». Está mostrando que el
+objeto que QUIRA debe conservar es la RELACIÓN entre dato, contexto, condición y capacidad de
+afirmar.**
+
+**Estado de la síntesis:** **DEPURADA · pendiente de ratificación de la mesa.**
+**`C4-P3`: NO SE ABRE** — la pregunta ya cambió, y fabricar un cuarto corte para «tener más
+evidencia» no respondería la que está sobre la mesa.
+**Siguiente paso, cuando la dirección lo autorice:** **mesa `REARQ`** — qué de las doce propiedades
+entra al canon, qué queda como hipótesis y qué puede convertirse ya en test.
 
 ### ⛔ Regla de cierre de `C4`
 
