@@ -3371,14 +3371,21 @@ señal**.
 | **B · interpretación** | ese `0` se trata como ausencia de señal, inactividad y contribución nula al riesgo en `H75` | ✅ **DEMOSTRADO** |
 | **C · impacto en el producto actual** | que ese riesgo sea el publicado | ⛔ **NO DETERMINADO** |
 
-**Dónde termina exactamente la cadena demostrada:** en `H73_OUTPUT_API`. Más allá:
-`gm_snapshot.json` trae `sat = {}` (el bloque del pipeline, vacío) y el bloque que **sí** leen las
-páginas (`sat_gm`, en `p_ejecutivo:114` y `p6_pulso:37`) es un **derivado congelado del 2026-05-26**
-que **no coincide con el motor vigente**: dice `riesgo_total 0,35 · ALTO · 3 activas` frente al
-`0,2 · MEDIO · 2` que el motor calcula hoy, y **describe las SAT con otra semántica** —su `SAT-IV` es
-*«brecha territorial `IRS=79.7`»* (la `SAT-VIII` del motor) y su `SAT-V` es *«densidad de
-trazabilidad insuficiente»*, no la brecha CPCCS—. **Tramo común, familia de los derivados congelados
-de `C3`.**
+**Dónde termina exactamente la cadena demostrada:** en `H73_OUTPUT_API`. Más allá, `gm_snapshot.json`
+trae `sat = {}` (el bloque del pipeline, vacío) y lo que leen las páginas es otro bloque, `sat_gm`
+—ver el apartado siguiente—. **Por tanto NO se afirma que el producto publique hoy la ausencia de
+evidencia como ausencia de riesgo: eso es `NO DETERMINADO`.**
+
+> **⚠️ Hallazgo de intersección con `C3`, FUERA de la demostración de `P2`.** El bloque `sat_gm`
+> que leen `p_ejecutivo:114` y `p6_pulso:37` es un **derivado congelado del 2026-05-26** que **no
+> coincide con el motor vigente**: dice `riesgo_total 0,35 · ALTO · 3 activas` frente al
+> `0,2 · MEDIO · 2` que el motor calcula hoy, y **describe las SAT con otra semántica** —su `SAT-IV`
+> es *«brecha territorial `IRS=79.7`»* (la `SAT-VIII` del motor) y su `SAT-V` es *«densidad de
+> trazabilidad insuficiente»*, no la brecha CPCCS—.
+>
+> **Pertenece a `C3` (derivados congelados · gobernanza de materialización), no a `C4-P2`.** No se
+> usa como evidencia adicional de `P2`: usarlo para inflar el hallazgo sería cometer el defecto que
+> `C4` investiga.
 
 **El cero no llega a la página, y llega a no llegar por accidente:** `enrich_rdc._clean(0)` hace
 `str(s or "")`, y en Python `0` es *falsy* → devuelve `""` → el snapshot guarda
@@ -3404,8 +3411,16 @@ H89!B29 TRUST_AJUSTADO         = 89,6  (sin ajuste)
 La columna `L` (`IF_n`) está guardada **como texto** (`'1.00'`, `'0.88'`, `'0.31'`). `AVERAGE` ignora
 el texto; sin ningún número en el rango devuelve error; `IFERROR` lo convierte en **0**.
 
-**Verificación empírica:** si la columna fuera numérica, `B27` valdría `1 − 0,91 = 0,09`. El valor en
-caché es **0** → prueba que `AVERAGE` no leyó esos números.
+**Formulación acotada** *(corrección del colega)*: **en el estado actual, donde los `IF_n` de `H34b`
+están almacenados como texto, la fórmula `AVERAGE(H34b!L11:L37)` no puede utilizar esos valores
+textuales como valores numéricos; al no disponer de valores numéricos utilizables, el error queda
+absorbido por `IFERROR(…;0)` y la penalización resulta 0.** ⚠️ **No se generaliza a «ningún valor
+textual»**: una mezcla de números y texto permitiría a `AVERAGE` operar sobre los numéricos.
+
+**Evidencia:** el valor observado en caché (`B27 = 0`) **es incompatible con una lectura numérica de
+los nueve valores actuales bajo la fórmula examinada** —que daría `1 − 0,91 = 0,09`— y el
+contrafactual reproduce el comportamiento esperado. **No se ejecutó Excel**: la réplica es de
+laboratorio y así queda declarada.
 
 **Contrafactual mínimo** *(se varía sólo el estado de la columna)*:
 
@@ -3418,9 +3433,10 @@ caché es **0** → prueba que `AVERAGE` no leyó esos números.
 | columna **ilegible/vacía** | 0,0000 | ✅ Sin penalización |
 | **texto** con valores pésimos (`'0.10'`) | 0,0000 | ✅ Sin penalización |
 
-> **Con la columna en texto, NINGÚN valor de `IF_n` puede activar la penalización.**
-> *Error de lectura → valor benigno → interpretación de conformidad.* Es **otra forma**, no la misma
-> que `P2-A` (*ausencia de evidencia → valor benigno → ausencia de riesgo*).
+> **En el estado actual de la columna —los nueve valores como texto— ningún cambio en esos valores
+> altera el veredicto.** *Error de lectura → valor benigno → interpretación de conformidad.* Es
+> **otra forma**, no la misma que `P2-A` (*ausencia de evidencia → valor benigno → ausencia de
+> riesgo*). Por eso **`SAT-V` es el `P2-A` principal y `H89` el `P2-B` complementario**.
 
 **Y el contraste que lo vuelve incontestable:** el puente Python **sí** lee esa columna —
 `enrich_rdc.py:70` convierte el texto a float y lo documenta (*«L = IF_n (guardado como texto
@@ -3456,6 +3472,10 @@ produjera esos valores. Lo que falta es la **reconstrucción**, no necesariament
 > **El salto ocurre entre el SSoT y el cajón:** lo que el rector define como evaluación experta
 > trazable se publica como **medición triangulada**. La palabra «experta» no aparece en ninguna capa
 > del producto *(universo: `enrich_rdc.py`, `gm_snapshot.json`, `m_rdc.py`)*.
+>
+> **Conclusión exacta, y basta con ella:** **la trazabilidad implementativa del procedimiento
+> declarado no está demostrada.** ⛔ **No** se afirma que *«el 91 % no sea una evaluación experta»*:
+> eso exigiría evidencia sobre cómo se produjeron originalmente esos valores.
 
 ### `C4-P2` · Contrafactual epistémico en el consumidor
 
@@ -3501,21 +3521,102 @@ produjera esos valores. Lo que falta es la **reconstrucción**, no necesariament
 > | ruta IA productiva de d09 | ❓ **`NO DETERMINABLE`** — no localizada *(universo: `components/sentinel.py`, `sentinel/*`, `scripts/ia_*`; las coincidencias son clasificación documental y plantillas de informe, no inyección del índice)* |
 > | independencia de la cadena | ⚠️ **PARCIAL** — evidencia/evaluación independientes; señalización SAT compartida |
 
-### Las tres formas, todavía sin generalizar
-
-| corte | condición limitante | forma de la pérdida |
-|---|---|---|
-| `C4-P0` · ICPI | comparabilidad / temporalidad | la condición deja de gobernar las capas posteriores |
-| `C4-P1` · `Ti` | significado de la magnitud | el indicador llega intacto y es desconectado del veredicto o reinterpretado |
-| `C4-P2` · d09 | **estado epistémico de la evidencia** | ausencia de evidencia y fallo de lectura se convierten en **valores benignos** |
-
-> ⛔ **No se autoriza todavía la generalización *«QUIRA tiene un fallo transversal»*.** Lo que hay son
-> **tres formas potenciales de una misma clase**, y el tramo común de señalización queda
-> explícitamente controlado como variable no independiente.
-
 **Regla de disciplina vigente:** no se repara `SAT-V`, ni `H89`, ni `H19`, ni `H24`, ni el render
-mientras `C4` siga corriendo. **La siguiente jugada es comparar `P0`/`P1`/`P2` sin reparaciones
-intermedias que contaminen los resultados.**
+mientras `C4` siga corriendo.
+
+## 5-septdecies · `Q-M2-C4` · SÍNTESIS TRANSVERSAL `P0` + `P1` + `P2`
+
+> **Esto no es otra auditoría.** Es la operación que responde **una sola pregunta**:
+> **¿qué propiedad, exactamente, debe conservar QUIRA entre una evidencia y una afirmación para que
+> podamos decir que hay conservación semántica?**
+
+### Los tres cortes, comparados
+
+| corte | indicador | condición que debería gobernar | qué se conserva | qué se pierde | estado |
+|---|---|---|---|---|---|
+| **`C4-P0`** | ICPI | comparabilidad / temporalidad | el valor (`0,274582`) | la condición que limita su interpretación | ✅ DEMOSTRADO |
+| **`C4-P1`** | `Ti` | significado de la magnitud + regla aplicable | el valor (`0,064342`) | la semántica al consumirse como `1 − Ti`; y existe una ruta desconectada en `H19` | ✅ DEMOSTRADO |
+| **`C4-P2`** | d09 · `MFN` | estado epistemológico de la evidencia | el valor / `IF_n` y las señales | la distinción entre evidencia ausente, evidencia evaluada y fallo de lectura | ✅ DEMOSTRADO |
+
+**La diferencia crucial, corte por corte:**
+- **`P0`:** el número **permanece correcto**, y la condición que limita su interpretación deja de
+  gobernar **uniformemente** las capas posteriores.
+- **`P1`:** el número **permanece**, y un consumidor lo **transforma semánticamente** (`Ti → 1 − Ti`):
+  conserva dependencia numérica, pierde significado.
+- **`P2`:** el estado epistemológico **existe en alguna capa** y una capa posterior lo **colapsa**
+  (`sin evidencia → 0 → sin señal → inactivo`), con una segunda modalidad en `H89`
+  (`dato no legible → error → IFERROR(0) → sin penalización`).
+
+### Los cuatro mecanismos — taxonomía de `C4`
+
+| | mecanismo | forma | dónde se demostró |
+|---|---|---|---|
+| **A** | **Desacoplamiento** | el dato llega al consumidor y la condición ya no gobierna el resultado | `P0` (`m1`) · `P1` (`H19!B11`) · `P2` (contrafactual de evidencia en d09) |
+| **B** | **Sustitución semántica** | el consumidor sigue usando el número, pero como otra magnitud | `P1` (`H24!B10`, `1 − Ti` como participación estructural) |
+| **C** | **Colapso epistemológico** | dos estados de conocimiento distintos resultan operacionalmente equivalentes | `P2-A` (`SAT-V`: sin datos ≡ sin brecha) |
+| **D** | **Error absorbido como conformidad** | una lectura inválida se convierte en valor benigno y se interpreta como cumplimiento | `P2-B` (`H89`: `IFERROR(…;0)`) |
+
+**Esta taxonomía es el producto.** Agrupar los cuatro bajo *«inconsistencias»* destruiría justo la
+información que costó tres cortes obtener.
+
+### ⛔ Lo que NO se declara — `DOC-019`
+
+`DOC-019` *(custodia `GATE` · `app/agents/doctrina.py:606`)* previene exactamente esto:
+*«encontré un caso con esta propiedad → todos la tienen»*. Por tanto:
+
+> **Los cortes `C4-P0`, `C4-P1` y `C4-P2` proporcionan tres casos demostrados de pérdida o
+> sustitución de propiedades semánticas que deberían gobernar afirmaciones posteriores. Los casos
+> difieren en la propiedad afectada —condición temporal, significado de magnitud y estado
+> epistemológico— y no autorizan por sí solos a generalizar el patrón a todo QUIRA.**
+
+Y la variable de control queda explícita: **el tramo de señalización `SAT` es común a `P1` y `P2`**,
+así que nada observado ahí cuenta como evidencia independiente.
+
+### La matriz de conservación — las doce propiedades
+
+*(«transformación permitida» = la que no altera lo afirmable, si se declara. «Tipo» remite a la
+taxonomía A/B/C/D.)*
+
+| # | propiedad | origen | transformación permitida | consumidor | evidencia de CONSERVACIÓN | evidencia de PÉRDIDA | tipo | alcance | estado |
+|---|---|---|---|---|---|---|---|---|---|
+| 1 | **identidad del indicador** | celda del motor (`H12!B33`, `H07_S5!B20`, `H34b!B21`) | renombrar al lenguaje público (`ADR-027`), nunca cambiar de referente | snapshot · páginas · IA | ICPI y `Ti` conservan referente en el tránsito | `«Ti»` nombra seis magnitudes · `«fidelidad»` nombra dos · `sat_gm` reasigna el significado de los códigos `SAT` | B | `P1`, `P2`, `C3` | ⚠️ colisión DEMOSTRADA · contaminación entre ellas **NO DEMOSTRADA** |
+| 2 | **unidad** | razón (0-1) en el motor | razón → % declarado | todos | conservada en los tres cortes | — | — | `P0`,`P1`,`P2` | ✅ conservada |
+| 3 | **período / corte** | `H07_S5!B10` · `_meta.fecha_corte` · *«corte 2024»* | ninguna sin declararla | agente d02 · páginas · IA | `_hallazgos_plan` lo usa · el pie de d09 lo declara | el agente d02 lo descarta · el Concejo usa `config.CORTE` · la síntesis d02 lo escribe literal · no viaja a la IA | A | `P1`, `P2` | ✅ DEMOSTRADO |
+| 4 | **universo** | grupos 7+8 · 9 afirmaciones / 4 entes | ampliar sólo declarándolo | páginas | `claims` conservan `entidad` *(falsación 37)* | dos bases distintas del `Ti` conviven (22,6 M y 30,27 M) | B | `P1` | ⚠️ parcial |
+| 5 | **magnitud (el valor)** | motor | ninguna: se lee, no se recalcula (Regla 1) | todos | `test_d02_adversarial` · identidad en el snapshot | ninguna hallada | — | los tres | ✅ **conservada — y ése es el punto** |
+| 6 | **semántica de la magnitud** | definición de la fórmula | derivar declarando la derivación | `SAT-IV` | `_absorcion` la llama *«absorción»* | `1 − Ti` usado como participación estructural | B | `P1` | ✅ DEMOSTRADO |
+| 7 | **regla aplicable** | `AVEP 90/70/40/20` · guarda `B34` | ninguna sin canon | páginas · `TOP` | la guarda del ICPI opera en el motor | umbrales propios 70/50, 30, 85, 75/55/35 sin la guarda | A | `P0`, `P1` | ✅ DEMOSTRADO |
+| 8 | **estado de evidencia** | `B7=0` · `B19` *«sin datos»* · SSoT *«hoy sin evidencia»* | ninguna: la ausencia es un RESULTADO (Carta CAPA 0) | `SAT-V` → `H75` → `H73` | `B19` conserva el estado donde no gobierna | `IF(B7=0;0;…)` → *«sin señal»* → `INACTIVO` → peso 0 | C | `P2` | ✅ DEMOSTRADO · impacto en producto **NO DETERMINADO** |
+| 9 | **procedencia** | celda + libro + lector | añadir eslabones, nunca quitarlos | agente d02 · snapshot | `evidencia_sha` + `motor_sha` en d02 · `fuente` en d09 | acredita el libro y el lector, **no la celda ni el período** | A | `P1`, `P2` | ⚠️ parcial |
+| 10 | **naturaleza de la evaluación** | SSoT d09: *«evaluación experta trazable»* | publicarla como tal | cajón `m_rdc` | declarada en SSoT y metodología | el producto la presenta como **medición**; la fórmula declarada no reproduce los valores | B | `P2` | ✅ DEMOSTRADO como discrepancia · **trazabilidad implementativa NO DEMOSTRADA** |
+| 11 | **nivel de confianza** | `RC-7.3` (`raw → calibrada`, peso evidencial) | propagarla | prompt de la IA | **sí viaja** al prompt con su reclasificación | **no existe** en el motor ni en el snapshot: no hay pérdida donde no hay propiedad | — | `P1` | ⚠️ existe en **un solo canal** |
+| 12 | **condición que limita la inferencia** | guarda `B34` · `FactorTemporal` · `_has_mixed_frequency` · `ADR-033 §III` | ninguna | todos | **gobierna** en el ICPI y en `RC-7.3` | no gobierna en ninguna otra superficie inspeccionada | A | los tres | ✅ DEMOSTRADO |
+
+### Lo que la matriz deja ver — hipótesis, no doctrina
+
+1. **La magnitud es lo único que se conserva siempre.** Las doce propiedades no son iguales: hay
+   **invariantes** (identidad, unidad, magnitud, universo, procedencia) que deben **viajar**, y hay
+   **condicionantes** (período, regla, estado de evidencia, condición limitante, naturaleza,
+   confianza) a las que **no les basta viajar: tienen que gobernar**.
+2. **Existe una prueba operativa para distinguirlas**, y es la que se usó en los tres cortes:
+   > **una propiedad condicionante está conservada si, fijado el valor, al variar la propiedad cambia
+   > la afirmación.** Si no cambia, está presente y no gobierna.
+3. **El sistema ya sabe hacerlo en dos sitios** —la guarda `B34` del ICPI y la calibración `RC-7.3`
+   con su `_has_mixed_frequency`—. La tarea de `REARQ` es **propagar una capacidad existente**, no
+   inventarla.
+
+⛔ **Esto se registra como hipótesis de trabajo con su prueba asociada, NO como doctrina nueva.**
+Convertirlo en canon exige el paso que el canon mismo ordena: decisión de la dirección.
+
+### ⛔ Regla de cierre de `C4`
+
+> **No se repara nada antes de terminar esta síntesis.** Ni `SAT-V`, ni `H89`, ni `H19`, ni `H24`,
+> ni los renders, ni los literales del Concejo.
+>
+> Lo que hay sobre la mesa vale más que corregir tres celdas: **tres experimentos con condiciones
+> limitantes de naturaleza distinta que permiten observar cómo QUIRA puede conservar un valor
+> mientras pierde la condición que le daba significado operativo.** Repararlos ahora destruiría la
+> evidencia antes de haberla leído del todo.
 
 ## 6 · Y la finalidad, dicha por la dirección
 
