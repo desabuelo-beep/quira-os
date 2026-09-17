@@ -4663,6 +4663,88 @@ No modifica Excel, código ni Diccionario. No renombra nada. No declara canon. *
 caso mixto de equidad y la ubicación de la transparencia observada son las tres preguntas que la mesa
 debe resolver para cerrar `D1.0`.**
 
+## 5-sexvicies · `D1.0` · dos correcciones al mapa — asesoría pedida por la dirección
+
+### 1 · Grupos de atención prioritaria: **SÍ es dominio.** Y el caso mixto se disuelve
+
+**La dirección pidió asesoría, no ratificación. Ésta es la recomendación, con su argumento.**
+
+Mi clasificación anterior —*«transversal con subestructura»*— **mezclaba dos realidades distintas**.
+Separadas, la respuesta es clara:
+
+| | qué observa | naturaleza |
+|---|---|---|
+| **el sistema de protección de derechos** | ¿existe el aparato institucional de protección? ¿opera? ¿tiene presupuesto asignado? ¿atiende y con qué ruta? | **DOMINIO** |
+| **el sesgo distributivo del resto** | ¿cómo se reparten recursos, servicios y cobertura entre grupos? | **DIMENSIÓN TRANSVERSAL** (desagregación obligatoria) |
+
+**Los tres argumentos que lo hacen dominio:**
+
+1. **Sujeto propio.** Los grupos de atención prioritaria son **sujetos de derechos reconocidos
+   constitucionalmente** — no son un atributo de otro sujeto ni una segmentación analítica.
+2. **Obligación propia con aparato propio.** El deber de protección integral tiene **institucionalidad
+   específica** (consejo cantonal de protección de derechos, juntas de protección, rutas de atención)
+   y **asignación presupuestaria específica**. Eso **es** una realidad administrativa observable.
+3. **La prueba de eliminación lo resuelve.** Si se elimina y se reparte como desagregación,
+   **se pierde la observación del sistema de protección**: nadie más ve si el consejo existe, sesiona,
+   tiene presupuesto y ruta. **La desagregación por grupo en otros dominios no puede observar eso.**
+   → **No es una etiqueta histórica: es una realidad que quedaría sin observador.**
+
+**Y la función transversal no se pierde:** sigue siendo desagregación obligatoria en las demás
+unidades. **Dominio y transversal no compiten: observan cosas distintas.**
+
+> ⚠️ **Advertencia de coste, verificada hoy:** **no existe ninguna `CNO`/`RO` en la BRN sobre grupos
+> de atención prioritaria ni protección integral** *(universo: `docs/brn`, `data/d12`, `docs/pcd`)*.
+> Convertirlo en dominio exige **construir su cadena normativa desde cero** —Constitución, COOTAD y
+> las leyes especiales de cada grupo—, **con verificación `SHA` contra el corpus antes de escribir un
+> solo artículo** (Regla de Oro 3). **Es el dominio con mayor trabajo normativo pendiente del mapa**,
+> y eso debe entrar en la planificación, no descubrirse después.
+>
+> *(El `PSG` —presupuesto con enfoque de género— es indicador de la **transversal**, no del dominio:
+> mide sesgo distributivo, no funcionamiento del sistema de protección.)*
+
+### 2 · Transparencia: no es una función, son **tres** — y eso cambia su lugar
+
+**La dirección precisó lo que QUIRA ya construyó.** Con eso, la capa queda así:
+
+| | función | qué produce |
+|---|---|---|
+| **T1** | **Calificar** la publicación mensual del GAD en el portal de la DPE | un **gate de admisión**: decide si el contenido puede alimentar, y con qué calidad |
+| **T2** | **Extraer el contenido** de lo publicado | insumo que alimenta a los demás dominios, **con su calificación adherida** |
+| **T3** | **Adquirir documentos oficiales primarios en la web del GAD** — PDOT, orgánico por procesos, POA, PAC, presupuestos— **en formato oficial**, no como los publica transparencia | evidencia primaria, distinta de la republicada |
+
+**Lo ya construido y verificado:** `METODOLOGIA_D07_CUMPLIMIENTO_LOTAIP` nace en el canon (Regla 9) con
+su cadena normativa **ingerida y con huella** —Guía Metodológica (Res. 019) · Instructivo de
+Parámetros Técnicos (Res. 015) · Instructivo de Monitoreo—, y `app/agents/d07/scoring.py` implementa
+sus reglas. **La maquinaria de calificación existe y está fundada en norma verificada.**
+
+**Corrección a mi propuesta anterior:** dije que la transparencia observada fuera **sección de `U3`**.
+Con `T1` a la vista, la ubicación correcta se parte en dos:
+
+> **La CALIFICACIÓN vive en la infraestructura** —porque **gobierna la admisión** del contenido: es
+> el control de calidad de la alimentación, no un reporte—.
+> **Su RESULTADO es un hecho publicable** —*«¿el GAD publica adecuadamente?»*— y **ahí sí** propongo
+> exponerlo en `U3`, por sujeto y familia de obligación compartidos. *(La mesa decide si en `U3` o
+> como dimensión de verificabilidad.)*
+
+**Y una capacidad que emerge de `T3`, que no estaba en el mapa:** el mismo documento puede llegar por
+**dos vías** —portal de transparencia y web oficial del GAD— y **pueden no coincidir**. Por eso el
+objeto adquirido debe registrar **vía de adquisición y versión**, y entonces:
+
+> ⭐ **La divergencia entre lo publicado en transparencia y el documento oficial es, en sí misma, una
+> observación de valor.** No es un problema técnico a resolver: es **evidencia sobre la calidad de la
+> publicación**, que sólo puede verse si la procedencia distingue la vía. **Es exactamente la lección
+> de `C4` aplicada a la adquisición.**
+
+### Efecto en el mapa
+
+| unidad | antes | ahora |
+|---|---|---|
+| **Grupos de atención prioritaria** | transversal con subestructura *(caso mixto)* | ✅ **DOMINIO** *(sistema de protección)* **+** dimensión transversal *(desagregación)* — **dos unidades, no una ambigua** |
+| **Transparencia** | infraestructura + hecho observado en `U3` | **infraestructura con calificación** (`T1`·`T2`·`T3`) · el **resultado** se publica en `U3` · **se registra la vía de adquisición** |
+
+**Las tres preguntas abiertas de `D1.0` bajan a dos:** el mandato (`U2`) como dominio propio, y si el
+cumplimiento de transparencia se expone en `U3` o como dimensión de verificabilidad.
+
 ## 6 · Y la finalidad, dicha por la dirección
 
 > *«No es una auditoría, sino **elevar este ecosistema**… para potenciar, mejorar y elevar el nivel
