@@ -4132,17 +4132,42 @@ canon** · y **quién tiene autoridad para promover un nuevo estado**.
 | **docstring de `app/connectors/gold_master.py`** | *«`v5.5` (ACTIVO)»* · *«`v6.0` (template)»* |
 | **la carpeta de datos** *(disco)* | un solo archivo: **`SIAP-ICPI_GOLD_MASTER_v5.7_TGI.xlsx`** |
 
-> **Cinco declarantes, cuatro respuestas distintas. Hoy no existe UN artefacto que declare cuál es el
-> estado canónico vigente: existen varios, y no coinciden.** Ésa es, en una línea, la razón por la
-> que `D0.1` va primero.
+⚠️ **Corrección a una versión anterior de este párrafo**, que decía *«hoy no existe un artefacto que
+declare cuál es el estado canónico vigente»*. **Eso contradecía la evidencia que acababa de
+aparecer:** sí existe una declaración explícita —`v6.0 ACTIVO`—. La formulación correcta:
 
-### Quién ejerce hoy la autoridad, de hecho
+> **En el universo inspeccionado existen múltiples declarantes de vigencia que no coinciden entre sí;
+> no se identificó un único acto de autoridad, inequívocamente vinculante y transversal, que
+> determine qué representación constituye el estado canónico vigente para todos los consumidores.**
 
-**La ejerce el nombre del archivo en una carpeta.** `config._resolver_gold_master_vigente()` toma el
-`vX.Y` más alto que encuentre, y su código es cuidadoso —excluye respaldos (`_`, `~$`) y congelados
-(`_FREEZE`) para que *«un respaldo jamás se vuelva canónico por accidente»*—. **Buena ingeniería
-sobre una convención de nombres**; pero sigue siendo una convención de nombres decidiendo qué es
-canónico.
+**Y ahí está el verdadero problema de `D0.1`:** no es que QUIRA carezca de declaraciones de
+autoridad; es que **no existe una relación inequívoca entre declaración de autoridad, estado
+operativo y consumo.**
+
+### Las cuatro capas que hay que mantener separadas
+
+| capa | pregunta | respuesta hoy |
+|---|---|---|
+| **1 · artefacto físico** | ¿qué archivo existe? | `SIAP-ICPI_GOLD_MASTER_v5.7_TGI.xlsx` |
+| **2 · declaración documental** | ¿qué se dice que está activo? | `gm_changelog.json`: **`v6.0 ACTIVO`** |
+| **3 · resolución operativa** | ¿qué consume realmente el sistema? | `config.py` resuelve **`v5.7_TGI`** |
+| **4 · autoridad canónica** | ¿qué **acto** hace que una de esas representaciones sea el estado autorizado? | ⛔ **`NO DETERMINADO`** en el corpus inspeccionado |
+
+**La cuarta capa es exactamente lo que `D0.1` debe resolver.**
+
+### Qué gobierna hoy la selección — y por qué no debe llamarse «autoridad»
+
+*(Bajo un grado la formulación anterior, que decía «la autoridad la ejerce el nombre del archivo».)*
+
+> **En la ejecución observada, la selección del estado operativo queda gobernada de facto por la
+> convención de versionado del nombre de archivo utilizada por `config.py`.**
+
+El código es cuidadoso —excluye respaldos (`_`, `~$`) y congelados (`_FREEZE`) para que *«un respaldo
+jamás se vuelva canónico por accidente»*—. Pero **un mecanismo de selección no es un acto de
+autoridad**, y `REARQ` tiene que separar precisamente esas dos cosas:
+
+> *«`v5.7` es el archivo con la versión más alta»* **≠** *«`v5.7` está autorizado como estado
+> canónico vigente»*. **Son proposiciones completamente distintas.**
 
 ### El acto de promoción: declarado, no operando
 
@@ -4159,6 +4184,54 @@ el ICPI de 17,45 % a 27,46 %— **sin una sola entrada nueva**.
 > `quira_pages/env_ops.py:280`, que lo muestra — de modo que lo que se exhibe puede ser `v6.0
 > ACTIVO` mientras el motor lee `v5.7`.)*
 
+### La pregunta que realmente abre `D0.1`
+
+> **¿Cuál es el acto que convierte una modificación del conocimiento canónico en un estado autorizado
+> para ser consumido por QUIRA?**
+
+Y obliga a separar **tres autoridades que hoy no están unificadas**:
+
+| | autoridad | pregunta | dónde vive hoy |
+|---|---|---|---|
+| **A** | **semántica** | ¿quién determina qué significa una realidad administrativa? | norma · evidencia · doctrina · Diccionario · ontología · ADR |
+| **B** | **de estado** | ¿quién determina qué versión constituye el estado vigente? | changelog · *release* · sello · versión · custodio |
+| **C** | **de consumo** | ¿qué estado puede utilizar realmente un consumidor? | `config.py` · `gm_snapshot.json` · derivados · agentes · páginas |
+
+**El hallazgo de `D0.1` es que esas tres no están suficientemente unificadas.**
+
+### Las cinco preguntas, respondidas documentalmente
+
+*(Trabajo pedido por el colega antes de elegir cadena. Universo: los artefactos citados en cada fila.)*
+
+| # | pregunta | respuesta con evidencia |
+|---|---|---|
+| **1** | **¿qué artefacto determina hoy el SIGNIFICADO?** | **Cuatro rectores por tipo de verdad, ruteados por el `MASTER_INDEX`:** `DICCIONARIO_CONCEPTUAL` (concepto de dominio · 13 ADN · 11 campos · sellado) · **BRN** `CNO→RO` (norma operacionalizada) · **Gold Master** (cálculo) · **Carta/Constitución** (epistemología). **No hay artefacto único — y eso es la arquitectura declarada, no un defecto.** El defecto aparece cuando dos rectores dicen cosas distintas del mismo objeto *(`C4-P1`: el `Ti`)* |
+| **2** | **¿qué artefacto determina hoy la VERSIÓN?** | **Dos respuestas desalineadas:** por doctrina, `gm_changelog.json`; en la práctica, la convención de nombres resuelta por `config.py` |
+| **3** | **¿qué mecanismo determina qué versión se CONSUME?** | **Tres, según el consumidor:** `config._resolver_gold_master_vigente()` (regeneración) · `data/gm_snapshot.json` (producto) · derivados congelados como `sat_gm` (algunas páginas) |
+| **4** | **¿qué ACTO convierte una modificación en estado autorizado?** | ⛔ **`NO DETERMINADO`.** Existe la doctrina (*«ningún cambio sin registro en `gm_changelog.json`»*) **sin operar desde 2026-05-25**; existe CI (`quira-health.yml` → `check_health.py` en cada *push*/PR) que **verifica el repositorio** —arranque, secretos, sintaxis, gates, suite— **pero no valida ni sella el Gold Master**, que no vive en el repo; y existe `provenance/ensayos`, que registra **ejecuciones de snapshot**, no promociones de estado. **No se localizó un acto único, explícito y verificable de autorización** |
+| **5** | **¿quién o qué puede INVALIDAR formalmente el estado anterior?** | **Para la doctrina, SÍ existe:** `status` en el *frontmatter* de los artefactos + `canon.py`, que **deriva** el estado en vez de declararlo. **Para el estado canónico del Gold Master: no se localizó mecanismo de invalidación.** El sufijo `_FREEZE` excluye un archivo de la resolución —exclusión operativa, no invalidación declarada— → ⛔ **`NO DETERMINABLE`** |
+
+> **Que `4` y `5` queden `NO DETERMINADAS` no es un fracaso de `D0.1`: es el hallazgo que justifica
+> `REARQ`.**
+
+**Y hay un precedente propio que la mesa debería mirar antes de inventar nada.** `canon.py` nació
+porque *«el estado de lo construido no era consultable, había que recordarlo»*, y su respuesta fue
+**derivar el estado de los artefactos en vez de declararlo**. La pregunta para `D0.1` se vuelve
+entonces muy concreta: **el estado vigente del Gold Master, ¿se declara, se deriva, o ambas con
+verificación cruzada?** Hoy ocurre lo peor de las dos: **se deduce de un nombre de archivo y se
+declara en un changelog que dejó de operar.**
+
+### El papel del Excel — la pregunta correcta
+
+⛔ Ni *«hay que arreglar el Excel porque es la fuente de verdad»*, ni *«hay que abandonarlo porque es
+viejo»*. La pregunta es:
+
+> **¿Qué papel canónico debe desempeñar la representación Excel dentro del nuevo estado gobernado de
+> QUIRA?**
+
+Con lo ya demostrado: **el *runtime* no depende del Excel**, pero **la regeneración sí**. El Excel
+sigue siendo pieza arquitectónica relevante; **que deba ser la autoridad última no está demostrado.**
+
 ### Tres cadenas de autoridad para deliberar
 
 | | cadena | qué exige | qué rompe / qué cuesta |
@@ -4170,11 +4243,29 @@ el ICPI de 17,45 % a 27,46 %— **sin una sola entrada nueva**.
 ⚠️ **Las tres son compatibles por etapas** (A ahora, B en el circuito de *release*, C como destino).
 **La mesa no tiene que elegir una y descartar las otras: tiene que elegir la primera.**
 
+> ⛔ **Y `D0.1` no cierra eligiendo A/B/C.** *«`D0.1` no debe decidir todavía la arquitectura
+> tecnológica definitiva del Gold Master. Debe decidir primero qué constituye autoridad y qué acto
+> produce un estado autorizado.»* Después `D1` dirá qué estructura necesita ese estado.
+
+### La secuencia, para que no se invierta
+
+```
+C4 diagnóstico → D0 (qué debe gobernar REARQ) → D0.1 (qué constituye autoridad)
+   → D1 (qué estructura mínima debe tener ese estado) → cirugía del Gold Master
+   → nuevo estado canónico → release gobernado → derivados → productos + agentes
+   → QUIRA 7 COMO CONSECUENCIA
+```
+
+**La numeración no resuelve por sí misma qué estado está autorizado para gobernar las afirmaciones.**
+Tenemos `v5.5 → v5.7 → v6.0 declarado ACTIVO → QUIRA 7 propuesto`, y ninguna de esas etiquetas
+responde la pregunta de autoridad. **Por eso QUIRA 7 no puede ser «v6 mejorado».**
+
 ### Lo que `D0.1` NO decide
 
 No elige la cadena. No reactiva el changelog. No toca `config`. No renombra el Excel. No define el
-contrato semántico —eso es `D1`—. **Deja sobre la mesa el hecho que obliga a decidir: hoy hay cuatro
-respuestas a «¿cuál es el estado vigente?» y ninguna autoridad única que las concilie.**
+contrato semántico —eso es `D1`—. **Deja sobre la mesa el hecho que obliga a decidir: cuatro
+respuestas a «¿cuál es el estado vigente?», tres autoridades sin unificar, y las preguntas 4 y 5
+`NO DETERMINADAS`.**
 
 ### Nota de estado
 
