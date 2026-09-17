@@ -3784,6 +3784,71 @@ total», que es justo lo que `C4` desaconseja.)*
 > mientras pierde la condición que le daba significado operativo.** Repararlos ahora destruiría la
 > evidencia antes de haberla leído del todo.
 
+## 5-novodecies · APERTURA DE `REARQ` · la pregunta que va a la dirección
+
+### Nota previa · qué está verificado y qué no *(reserva del colega, acogida)*
+
+| afirmación | cómo se sostiene |
+|---|---|
+| los commits existen en el remoto | ✅ **VERIFICADO** — `git ls-remote origin refs/heads/main` → `0ef8224`, el mismo `HEAD` local, sin divergencia |
+| `check_health` en verde | ⚠️ **EJECUCIÓN REPORTADA** por este agente, no verificación independiente |
+| **CI remoto** | ⛔ **NO VERIFICADO** — `gh` no está disponible en esta sesión y el repo es privado; no se leen credenciales |
+
+**«Publicado» significa aquí: la referencia remota apunta a ese commit. No significa que el CI haya
+corrido ni que haya pasado.** La distinción es la misma que `C4` viene demostrando: *que el dato
+llegue no prueba que la condición que lo hace admisible se haya cumplido*.
+
+### La pregunta
+
+> **¿Qué propiedades semánticas debe garantizar canónicamente QUIRA para que una afirmación
+> *downstream* sea admisible?**
+
+`REARQ` **no se abre para decidir qué se arregla.** Se abre para decidir qué debe garantizarse. La
+reparación viene después, y de la decisión — no al revés. **Reparar `SAT-V`, `H89`, `H19` o `H24`
+antes de fijar el mínimo semántico reproduciría el defecto que `C4` documenta:** corregir el síntoma
+sin la condición que lo gobierna.
+
+### Lo que `C4` pone sobre la mesa — y lo que NO pone
+
+**Pone:** tres casos demostrados (`P0`, `P1`, `P2`) · cuatro mecanismos *(síntesis provisional)* ·
+doce propiedades con su filtro `DEMOSTRADO → PROPUESTO → POR DECIDIR` · seis pruebas con su frontera
+declarada · **cero reparaciones**.
+**No pone:** ninguna regla, ningún ADR, ningún test productivo, ninguna generalización a todo QUIRA
+(`DOC-019`), y ningún juicio sobre qué debe costar la corrección.
+
+### Seis decisiones, en el orden en que se desbloquean
+
+*(El orden es una **propuesta de secuencia**, no una prioridad decidida. Cada fila dice qué queda
+bloqueado si no se decide — eso es lo que hace útil el orden.)*
+
+| # | decisión | qué desbloquea | qué queda bloqueado sin ella | ⛔ qué NO debe decidirse aquí |
+|---|---|---|---|---|
+| **D1** | **el mínimo semántico de una afirmación publicable**: qué propiedades deben **acompañar** y cuáles deben **gobernar** | casi todo lo demás: es el criterio con el que se juzgan las otras cinco | cualquier reparación con criterio; las seis pruebas no tienen umbral contra el cual fallar | la lista final de doce: puede que el mínimo sea menor |
+| **D2** | **el estado de evidencia** (`Carta CAPA 0`): ¿*«sin datos»* y *«evaluado sin brecha»* deben ser distinguibles aguas abajo? | `SAT-V`, `H89`, `H22` y toda señal que hoy colapsa ausencia en valor benigno | el circuito `SAT` completo: hoy no puede declarar por qué calla | **el más urgente**, porque afecta a señales publicables · pero no la fórmula concreta de `SAT-V` |
+| **D3** | **una sola regla temporal para el `Ti`**: curva del motor · `W_Q` de la Doctrina · nota `mes/12` · baselines de `rc72_calibration.json` | la comparabilidad de todo lo que se publica sobre ejecución | el cierre de `011-C4`; los renders no pueden derivar su texto de nada estable | cuál de las cuatro gana: es decisión de canon, no de auditoría |
+| **D4** | **identidad de los nombres**: `Ti` designa seis magnitudes; *«fidelidad»*, dos; los códigos `SAT` difieren entre motor y derivado | que un nombre publicado resuelva a un referente único | `T5`; y cualquier lectura automática que cruce artefactos | renombrar — rige `DOC-014`/`DOC-015`: **semántica antes que nomenclatura** |
+| **D5** | **qué pruebas se construyen y en qué modo**: informativo o bloqueante | el paso de diagnóstico a verificación continua | que los hallazgos de `C4` reaparezcan en seis meses | el modo por defecto — hay precedente: `check_sat_brn` **informa y no bloquea**, y ese estado debe ser **declarado**, no heredado |
+| **D6** | **los derivados congelados**: `sat_gm` (diverge del motor), `financiero` (productor no localizado) | el tramo común de señalización, compartido con `C3` | `D1` en su parte de procedencia y universo | si se regeneran o se retiran: exige antes localizar sus productores |
+
+### Cómo se acoge lo que se decida — el encuadre de la dirección
+
+> *«Todo lo que se revise y se deba acoger para la construcción debería anotarse **no como deuda**,
+> sino para implementar.»* — Javo
+>
+> Por eso este dossier **no abre un inventario de deuda**: abre una **lista de decisiones**. Lo que la
+> mesa acoja entra al trabajo de `vNEXT`; lo que no acoja queda registrado como decidido-que-no, con
+> su razón — que es información, no omisión.
+
+**Y la frontera se mantiene intacta en los cuatro pasos:**
+**`C4` diagnostica → `REARQ` propone → `ADR` declara → el test verifica.**
+**`PROPUESTO` ≠ `APROBADO` ≠ `CANÓNICO`.**
+
+### Lo que esta apertura NO hace
+
+No busca un defecto más. No abre `C4-P3`. No repara `H19`, `H24`, `SAT-V`, `H89` ni los renders. No
+convierte ninguna de las seis pruebas en gate. No declara canon. **Pone a la dirección frente a la
+pregunta, con la evidencia ordenada detrás de cada opción.**
+
 ## 6 · Y la finalidad, dicha por la dirección
 
 > *«No es una auditoría, sino **elevar este ecosistema**… para potenciar, mejorar y elevar el nivel
