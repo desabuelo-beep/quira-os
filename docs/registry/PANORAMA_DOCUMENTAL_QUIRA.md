@@ -3630,7 +3630,13 @@ Se usa la segunda.)*
 **Y sobre `H22`:** `Total_Reformas_2026 = 0` admite **dos lecturas plausibles** —que no hubo
 reformas, o que no se cargaron—, y sin productor trazable no se resuelve. **`0` ≠ ausencia demostrada
 de reformas.** Por eso `H22` queda como **dato auxiliar de la investigación**, no como explicación de
-los ~7,7 M. *(Es, además, la misma forma del mecanismo C: un cero cuyo estado no se distingue.)*
+los ~7,7 M.
+
+> ⚠️ **Y queda como analogía, no como extensión del hallazgo** *(cautela del colega)*:
+> **`H22` presenta una forma de representación compatible con el patrón investigado en `P2`
+> (mecanismo C), pero NO constituye un caso adicional demostrado de ese mecanismo dentro de `C4`.**
+> En `SAT-V` se reconstruyó la cadena completa —`B7=0 → B9=0 → B17 «Sin señal» → H75 INACTIVO`—;
+> en `H22` esa reconstrucción **no se hizo**. La pista se conserva; la taxonomía no se contamina.
 
 ### Lo que la matriz deja ver — hipótesis, no doctrina
 
@@ -3705,8 +3711,25 @@ arquitectura.**
 
 ## 5-octodecies · Insumo para la mesa `REARQ` — `DEMOSTRADO` → `PROPUESTO` → `POR DECIDIR`
 
+**La mesa no se reúne para decidir *«¿qué arreglamos?»*.** Se reúne para responder:
+
+> **¿Qué propiedades semánticas debe garantizar canónicamente QUIRA para que una afirmación
+> *downstream* sea admisible?**
+
+### Criterio rector del dossier
+
+> **Una propiedad semántica no se considera conservada únicamente porque su dato o representación
+> llegue al consumidor. Cuando dicha propiedad condiciona el alcance de una afirmación, debe
+> conservarse también su función de gobierno sobre aquello que el consumidor puede afirmar.**
+>
+> ⛔ **Esta formulación es insumo para decisión de `REARQ`; no constituye todavía regla canónica.**
+
+**La frontera que protege el proceso:**
+**`C4` diagnostica → `REARQ` propone → `ADR` declara → el test verifica.**
+
 > ⛔ **Esto NO entra diciendo «estas doce propiedades deben convertirse en reglas».** Cada propiedad
 > pasa por el mismo filtro de tres columnas, y la tercera es de la dirección, no del diagnóstico.
+> **`PROPUESTO` no significa aprobado: es la traducción arquitectónica posible del hallazgo.**
 > **Insumo para decisión, no decisión.**
 
 | # | propiedad | **DEMOSTRADO** *(evidencia `C4`)* | **PROPUESTO** *(qué haría falta)* | **POR DECIDIR** *(la mesa)* |
@@ -3726,17 +3749,30 @@ arquitectura.**
 
 ### Pruebas que **ya podrían construirse** con la evidencia reunida — propuestas, no implementadas
 
-| test | qué detectaría | evidencia que lo respalda | qué **NO** detectaría |
-|---|---|---|---|
-| **T1 · gobierno de la condición** | fija el valor, varía la condición (corte, estado, evidencia) y comprueba si la afirmación responde | contrafactuales de `P0`, `P1` (A1-A4, B) y `P2` | propiedades que condicionan sin relación directa |
-| **T2 · ceros de origen indeterminado** | inventaría `IF(x=0;0;…)` e `IFERROR(…;0)` sobre magnitudes que alimentan señales | `SAT-V` · `H89` · `H22` | si el cero es correcto: sólo obliga a declarar el estado |
-| **T3 · columnas de texto en agregaciones** | columnas numéricas guardadas como texto y consumidas por `AVERAGE`/`SUM` | `H34b!L` → `H89!B27` | errores de tipo que no rompen la agregación |
-| **T4 · referencias a rótulos** | comparaciones y operaciones contra celdas de encabezado | `H19!B10 → H01!B33 'Valor'` · `H04b` usando una fecha como coeficiente | referencias erróneas hacia celdas numéricas válidas |
-| **T5 · identidad entre motor y derivados** | mismo código o clave con significado distinto | `sat_gm` vs `H75` · `PSG_EJECUCION` · `Ti` · *«fidelidad»* | contaminación efectiva entre las magnitudes homónimas |
-| **T6 · cobertura de transmisión** | qué propiedades acompañan a cada indicador publicado | fichas forenses de `P1` y `P2` | si el mínimo es suficiente — eso lo fija la mesa |
+*(Estructura pedida por el colega: cada prueba declara **la pregunta que sí responde** y **lo que no
+permite concluir**. Sin esa segunda columna, una prueba acaba convertida en prueba de «integridad
+total», que es justo lo que `C4` desaconseja.)*
 
-**`C4-P3`: NO SE ABRE.** La pregunta ya cambió, y fabricar un cuarto corte para *«tener más
-evidencia»* no respondería la que está sobre la mesa.
+| prueba | **pregunta que sí responde** | **lo que NO permite concluir** | evidencia que la respalda |
+|---|---|---|---|
+| **T1 · gobierno de la condición** | ¿la condición modifica lo afirmable? | que la condición sea **metodológicamente correcta** | contrafactuales de `P0`, `P1` (A1-A4, B) y `P2` |
+| **T2 · ceros de origen indeterminado** | ¿el `0` conserva o distorsiona el estado epistemológico? | que **todo** cero sea ausencia de evidencia | `SAT-V` · `H89` · `H22` *(pista)* |
+| **T3 · columnas de texto en agregaciones** | ¿el consumidor numérico recibe valores numéricos? | por sí solo, que la **fórmula conceptual** sea correcta | `H34b!L` → `H89!B27` |
+| **T4 · referencias a rótulos** | ¿la regla apunta al valor o a un encabezado/metadato? | que **todo** encabezado referenciado sea defectuoso | `H19!B10 → H01!B33 'Valor'` · `H04b` con una fecha como coeficiente |
+| **T5 · identidad motor/derivado** | ¿el derivado conserva el estado que afirma representar? | que **toda** divergencia sea un error | `sat_gm` vs `H75` · `PSG_EJECUCION` · `Ti` · *«fidelidad»* |
+| **T6 · cobertura de transmisión** | ¿la propiedad atraviesa los saltos previstos? | que su **significado siga gobernando** al consumidor | fichas forenses de `P1` y `P2` |
+
+### Estado ratificable de `C4`
+
+> **`C4`: DIAGNÓSTICO COMPLETO · SÍNTESIS PENDIENTE DE RATIFICACIÓN.**
+>
+> - **`C4-P3`: NO SE ABRE.** La pregunta ya cambió, y fabricar un cuarto corte para *«tener más
+>   evidencia»* no respondería la que está sobre la mesa.
+> - **No se repara** `H19`, `H24`, `SAT-V`, `H89` ni los renders.
+> - **Ninguna de las seis pruebas se convierte en test productivo** por ahora.
+> - **Ninguna de las doce propiedades entra al canon** por el mero hecho de estar en la matriz.
+>
+> **`C4` queda listo para decisión arquitectónica, no para otra ronda de arqueología.**
 
 ### ⛔ Regla de cierre de `C4`
 
