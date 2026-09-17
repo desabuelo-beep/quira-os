@@ -3963,6 +3963,127 @@ divergen hoy.** Construir una `v6` antes de decidir autoridad y vocabulario **re
 que `C4` documentó**: un artefacto nuevo que hereda el significado sin heredar la condición que lo
 gobierna.
 
+## 5-unvicies · `REARQ` · el alcance real — **QUIRA 7**
+
+### Principio rector *(propuesto por el colega, ratificado por la dirección)*
+
+> **QUIRA 7 no será una actualización de los artefactos de QUIRA 5.x; será una nueva arquitectura
+> gobernada desde un estado canónico capaz de conservar no solamente los datos, sino también el
+> significado, contexto, autoridad, evidencia, vigencia y condiciones que determinan qué puede
+> afirmarse a partir de ellos.**
+
+**Objetivo de `REARQ`, elevado** *(sustituye a «reconstruir el circuito de propagación», que era
+demasiado pequeño)*:
+
+> **Elevar QUIRA desde su arquitectura actual hacia una nueva arquitectura de inteligencia pública
+> gobernada por un estado canónico semánticamente íntegro, capaz de evolucionar de Ecuador a
+> Latinoamérica, preservar la trazabilidad de sus afirmaciones y exponerlas a humanos y agentes sin
+> pérdida de significado, autoridad, evidencia o condiciones de interpretación.**
+>
+> **La cirugía comienza en el estado canónico —representado actualmente por el Excel canónico— y se
+> extiende a su modelo de datos, reglas, vocabulario, temporalidad, evidencia, procedencia,
+> derivados, consumidores, productos y agentes.**
+
+### Las reglas vigentes son INSUMOS de gobierno, no intocables
+
+La dirección lo planteó y el colega lo formalizó: **si `REARQ` es una reconstrucción mayor, las
+reglas vigentes deben ser auditadas, conservadas, reformuladas, sustituidas o derogadas
+explícitamente.** Con una disciplina que no se negocia:
+
+> **Una regla canónica tiene autoridad mientras esté vigente; `REARQ` tiene precisamente la función
+> de determinar si debe continuar vigente en la nueva arquitectura.**
+>
+> **Secuencia obligatoria:** regla actual → análisis → propuesta `REARQ` → **decisión** → nueva
+> `ADR`/canon → implementación → actualización de `BOOT`/`CLAUDE.md`.
+>
+> ⛔ Ni `CLAUDE.md` gobierna la arquitectura futura por ser antiguo, ni se modifica porque se nos
+> ocurra una buena idea.
+
+**Estado de la Regla de Oro 2** *(dos vocabularios)*: **VIGENTE · CANDIDATA A REFORMULACIÓN en `D0.2`.**
+No está violada: está en revisión, que es exactamente lo que `REARQ` existe para hacer.
+
+### `D0.2` · la formulación del vocabulario — mejor que «un solo idioma»
+
+> **QUIRA debe utilizar un vocabulario semántico común para representar los fenómenos de la
+> Administración Pública en todas sus capas, evitando que una misma realidad administrativa adquiera
+> denominaciones diferentes según sea consumida por el sistema, un agente, un analista o el usuario
+> final. Los identificadores técnicos podrán permanecer como mecanismos de implementación, pero no
+> constituirán un vocabulario semántico alternativo.**
+
+Así conviven *«ejecución presupuestaria acumulada al corte»* (concepto) y `Ti` (identificador). Lo que
+queda prohibido es lo que `C4-P1` documentó: **`Ti` adentro, «absorción» en el producto y
+«cumplimiento» en un agente — tres denominaciones para un fenómeno, que es donde nace la deriva.**
+
+### La identidad semántica transversal — consecuencia natural de las doce propiedades
+
+Concepto administrativo → **identificador estable** → denominación pública → definición → unidad →
+período/corte → universo → regla aplicable → estado de evidencia → procedencia → confianza →
+limitaciones → **transformaciones permitidas** → **consumidores autorizados**.
+
+⚠️ **Esto NO convierte las doce propiedades en canon.** Significa que `REARQ` tiene ahora evidencia
+para estudiar si esa estructura debe ser **el nuevo contrato semántico del ecosistema**.
+
+### Las ocho capas de la cirugía — y qué rector EXISTE ya para cada una
+
+*(Aporte de esta dirección: antes de diseñar, se declara qué hay. Regla de Oro 6/7 — **derivar, no
+redefinir**. La columna derecha es lo que `REARQ` tendría que construir o elevar.)*
+
+| capa | rector que YA existe | lo que falta |
+|---|---|---|
+| **1 · ontología administrativa** | `CONSTITUCION_ONTOLOGICA_QUIRA` (4 macroejes · 12 dominios) + Neo4j + `ADR-016/017/019/021` | extenderla a entidades administrativas finas (programa, compromiso, resultado) y a **otros países** |
+| **2 · identidad** | `registry.yaml` (158 activos con id y cadena) · `MNT_UUID` · catálogos `SSoT` por dominio | nombres históricos, alias, versión y estado **por objeto**, no sólo por artefacto |
+| **3 · semántica** | `DICCIONARIO_CONCEPTUAL_QUIRA` — **13 ADN · 11 campos · SELLADO** | contrastar esos 11 campos con las **12 propiedades de `C4`**: qué falta, qué sobra, qué se renombra |
+| **4 · procedencia** | `app/agents/procedencia.py` (capas 5-6) · `provenance/ensayos` · `evidencia_sha` + `motor_sha` | llegar a **celda y período**, no sólo a libro y lector *(`C4` fila 9)* |
+| **5 · temporalidad** | ⛔ **no hay rector**: hoy es nota al pie | **estructural**: `Q1-2026` no debe poder mezclarse en silencio con `Ene-Abr 2026` *(`C4-P1`)* |
+| **6 · evidencia** | la **Carta `CAPA 0`** ya tiene la escala (independiente · institucional · parcial · sin evidencia · contradicción) | que **gobierne**: hoy `sin datos` colapsa en `0` *(`C4-P2-A`)* |
+| **7 · reglas** | **BRN** (`CNO`/`RO`, 30 YAML) · `ADR-035/038/039` · `registry` | `ID → definición → vigencia → ámbito → parámetros → autoridad → versión → consumidores → estado`; y saldar las **SAT huérfanas** (`check_sat_brn`: 8 de 9 sin cadena) |
+| **8 · agentes** | `META_CATALOGO_AGENTES` · molde `ADR-053` · agentes d01/d02 con procedencia | que un agente reciba **el indicador con sus condiciones**, no un número suelto |
+
+> **Seis de las ocho capas ya tienen rector.** Las dos que no —**temporalidad** y **evidencia como
+> gobierno**— son exactamente las que `C4-P1` y `C4-P2` demostraron ausentes. **`REARQ` no parte de
+> cero: parte de un diagnóstico que ya sabe dónde está el hueco.**
+
+### La barrera tecnológica
+
+> ⛔ *«Últimas tendencias de tecnología agéntica»* **no es criterio de diseño por sí mismo.** La
+> pregunta no es *«¿cómo metemos agentes?»* sino **«¿qué arquitectura semántica necesita QUIRA para
+> que los agentes puedan consumir, razonar y transmitir evidencia sin crear autoridad o significado
+> que no existían en origen?»**. **La tecnología sigue a la arquitectura, no al revés.**
+
+Y hay una razón dura para esta barrera, que `C4` ya probó: **un agente sin contexto semántico es el
+consumidor perfecto para reproducir los cuatro mecanismos a escala.** Un agente que recibe
+`ICPI = 53.56` sin período, universo, evidencia ni condición **no puede sino desacoplar**.
+
+### La frontera transparente / protegido — cerrada
+
+| **QUIRA debe poder explicar** | **QUIRA puede reservar** |
+|---|---|
+| qué mide · qué evidencia usa · qué significa · qué limitaciones tiene · bajo qué condiciones puede afirmarlo | cómo implementa · cómo automatiza · cómo detecta · cómo optimiza · cómo protege · qué know-how técnico usa |
+
+> **Auditable en su significado, sin ser reproducible en su ingeniería interna.**
+
+### Sobre el número de versión — y un dato verificado
+
+**La versión es consecuencia, no punto de partida:** `REARQ` → decisiones → nuevo canon → modelo
+canónico → cirugía del Excel → propagación → validación → **y entonces** la versión.
+
+**Dato verificado en disco** *(lectura de la carpeta de datos, sin abrir contenido)*: el **único**
+Gold Master presente es **`SIAP-ICPI_GOLD_MASTER_v5.7_TGI.xlsx`**. No hay ningún archivo `v6`. En
+cambio, el nombre *«v6.0»* **ya está cargado con dos significados en la documentación**: la cirugía
+metodológica `D2A` *(«v6.0 metodológico» dentro del slot que conserva el nombre anterior)* y un
+*«TGI_GOLD_MASTER_v6.0 template»* que **no está en la carpeta**. Además, el docstring del conector
+sigue declarando *«v5.5 (ACTIVO)»* cuando el vigente es `v5.7`.
+
+> **Conclusión para la mesa:** saltar a **7** evita colisionar con un `6` que ya significa dos cosas
+> distintas en los papeles y ninguna en el disco. **Pero el número se pone al final**, cuando haya
+> arquitectura que lo justifique.
+
+### Lo que este documento NO decide
+
+No reformula la Regla de Oro 2 —la marca como candidata—. No declara el vocabulario común. No
+convierte las doce propiedades en contrato. No elige tecnología. No abre la cirugía del Excel. No
+numera nada. **Fija el alcance y deja la decisión donde corresponde: la mesa.**
+
 ## 6 · Y la finalidad, dicha por la dirección
 
 > *«No es una auditoría, sino **elevar este ecosistema**… para potenciar, mejorar y elevar el nivel
