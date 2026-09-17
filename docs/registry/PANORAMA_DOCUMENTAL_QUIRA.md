@@ -4476,6 +4476,93 @@ Diccionario responde *«¿qué es esta realidad administrativa?»*, y `D1` respo
 a una afirmación sobre ella para ser canónica y consumible?»*—. **Y nadie «arregla» el Excel hasta
 que las cuatro matrices estén cerradas.**
 
+## 5-quatervicies · QUIRA 7 · DECISIONES DE MESA — restricciones de diseño, no hipótesis
+
+> ⛔ **Estas decisiones ya fueron adoptadas por la dirección. NO se reabren** salvo que aparezca
+> evidencia de una incompatibilidad ontológica grave. Quedan escritas aquí para que **no haya que
+> volver a explicarlas**.
+
+| # | decisión | quién y cuándo |
+|---|---|---|
+| **1** | **`d01` + `d02` → UNA sola estructura** en QUIRA 7 | dirección |
+| **2** | **El componente de financiamiento externo sale** de esa estructura → **producto QUIRA Cooperación** | dirección |
+| **3** | **Participación + Rendición de Cuentas → UN dominio**, con **secciones internas diferenciadas** | dirección |
+| **4** | **SAT deja de ser dominio**: sus señales viven dentro de cada dominio y **forman parte de la BRN** | **ordenado por Javo** *(decisión previa, ya ejecutada en parte)* |
+| **5** | **Transparencia NO es un cajón equivalente: es la capa de alimentación** que surte mensualmente al resto | dirección |
+| **6** | **Fuentes oficiales de alimentación:** DPE/Transparencia · CPCCS · SERCOP · **web oficial del GAD** | dirección |
+| **7** | **QUIRA debe ser RECURSIVA** para encontrar la información municipal en sus fuentes oficiales | dirección |
+| **8** | **QUIRA 7 no se construye sobre el molde de las versiones anteriores** | dirección |
+
+*(Nota de nomenclatura, para que el registro no herede una ambigüedad: en el Diccionario histórico el
+ADN de Transparencia es el `07` y el `06` es Salud Institucional. **En QUIRA 7 la numeración heredada
+deja de ser relevante**; lo que se conserva es la decisión, no el número.)*
+
+### `D1.0` se reformula — los cajones son material arqueológico, no el resultado esperado
+
+⛔ **La pregunta ya NO es** *«¿mantener, fusionar o eliminar los trece cajones?»*. Es:
+
+> **¿Qué unidades de realidad administrativa necesita QUIRA 7 para observar, relacionar, verificar y
+> explicar la gestión pública municipal, con independencia de cómo estuvieran divididas las versiones
+> anteriores?**
+
+**Los trece cajones se auditan sólo como EVIDENCIA** para identificar realidades, capacidades,
+relaciones, fuentes, indicadores y dimensiones transversales. **No son el molde.**
+
+### Cinco categorías de salida — «transversal» y «fuente» dejan de confundirse
+
+**1 · DOMINIO** · **2 · FUSIÓN / ESTRUCTURA COMPUESTA** · **3 · SUBESTRUCTURA** ·
+**4 · DIMENSIÓN TRANSVERSAL** · **5 · INFRAESTRUCTURA DE ALIMENTACIÓN**.
+
+**El resultado de `D1.0` no debe leerse como *«QUIRA tiene N dominios»***, sino como: *QUIRA 7 observa
+estas realidades administrativas —cada una con su sujeto, objeto, propósito analítico, evidencia,
+temporalidad y relación con las demás—; y estas otras cosas **no son dominios**: son fuentes,
+dimensiones transversales, reglas, productos o infraestructuras.* **El conteo viene después.**
+
+### La arquitectura de alimentación que abre la decisión 5-7
+
+```
+FUENTES OFICIALES → DPE/Transparencia · CPCCS · SERCOP · web oficial del GAD
+        ↓
+MOTOR DE ADQUISICIÓN RECURSIVA
+        ↓
+ESTADO CANÓNICO  →  DOMINIOS  →  BRN  →  PRODUCTOS / AGENTES
+```
+
+**Transparencia deja de competir ontológicamente con los dominios que alimenta.**
+
+### Las condiciones técnicas de cada decisión — lo que esta dirección aporta
+
+*(La dirección pidió argumentos válidos, no apelaciones a lo existente. Ninguno de estos puntos
+objeta las decisiones: son las condiciones bajo las cuales se sostienen.)*
+
+| decisión | condición que debe cumplirse en el diseño | por qué |
+|---|---|---|
+| **`d01`+`d02` fusionados** | la estructura fusionada debe **declarar su régimen temporal por sección**: la planificación es plurianual y de hitos; la ejecución presupuestaria es mensual y con corte | son **dos cadencias distintas dentro de una misma realidad**. `C4-P1` demostró que hoy el sistema mezcla cadencias sin declararlo; una fusión sin esa declaración **industrializaría** ese defecto |
+| **financiamiento → QUIRA Cooperación** | separar **captación externa** (cooperación, fondos, elegibilidad → sale) de **sostenibilidad fiscal propia** (estructura del gasto, regla COOTAD → **se queda**) | la sostenibilidad fiscal **no es cooperación**: es capacidad de la institución para sostener lo que planifica. Si sale con el financiamiento, el dominio fusionado pierde la variable que explica por qué la trayectoria se cumple o no |
+| **participación + rendición en un dominio** | el **sujeto obligado** debe ser atributo declarado **por sección**: en participación el sujeto es la ciudadanía que incide; en rendición, la institución que responde ante el CPCCS | sin ese atributo, el dominio podría **afirmar cumplimiento institucional a partir de evidencia del lado ciudadano** — un salto de sujeto, que es la familia de defecto del mecanismo B de `C4` |
+| **SAT dentro de los dominios + BRN** | ninguna: **la decisión además salda una deuda medida** — `check_sat_brn` reporta **8 de 9 señales sin cadena BRN** | hoy umbral y peso de esas señales viven sólo en el Excel; llevarlas a la BRN convierte una deuda incidental en estructura |
+| **Transparencia como infraestructura** | asignar explícitamente **su segundo papel**: el cumplimiento de transparencia **también es un hecho observable** que QUIRA reporta | la decisión fija su función arquitectónica (alimentar). Falta decidir **dónde vive la observación** de si el GAD cumple — como indicador dentro del dominio de control social, o como dimensión transversal. Si no se asigna, **desaparece del mapa** |
+| **recursividad en fuentes oficiales** | cada documento adquirido debe llegar con **procedencia por documento** y **estado de evidencia** desde el primer salto | un adquiridor recursivo sin esas dos propiedades **reproduce los cuatro mecanismos de `C4` a escala industrial**: traería miles de valores sin la condición que los hace afirmables |
+
+### Clasificación del trabajo de `D1.0` hasta aquí
+
+| | |
+|---|---|
+| ✅ **DEMOSTRADO** | el Diccionario contiene 13 cajones · existe la plantilla madre de 11 campos · GeoTwin tiene precedente documental como dimensión transversal · `d01`/`d02` presentan solapamiento material (mismas celdas) · `d08`/`d09` comparten anclas e indicador operativo, y existió un cruce de lectura en código |
+| ⛔ **NO DEMOSTRADO** | que el solapamiento **por sí mismo** implique fusión *(la fusión es decisión de mesa, no consecuencia del hallazgo)* |
+| 🏛️ **DECISIÓN DE MESA** | `d01`+`d02` se fusionan · `d08`+`d09` se fusionan con secciones · SAT deja de ser dominio · Transparencia opera como alimentación transversal · el financiamiento externo va a QUIRA Cooperación |
+| ⏳ **PENDIENTE DE DISEÑO** | cuál será exactamente la nueva ontología y **cuántos** dominios tendrá QUIRA 7 |
+
+**Y el `⏳ PENDIENTE` que circula como dato operativo** *(Cajón 02 · `CHK-08`)* **se conserva en `D1`
+con su significado correcto:** no es un argumento contra los cajones — es evidencia de que **tener un
+campo de estado en el Diccionario no garantiza que ese estado gobierne la circulación del dato.** Es
+el aprendizaje de `C4` llevado a la cirugía.
+
+### El orden que queda fijado
+
+**1 ·** cerrar la **anatomía real de QUIRA 7** *(`D1.0`)* → **2 ·** diseñar el `CANONICAL_ASSERTION`
+*(`D1-A`)* → **3 ·** decidir cómo debe verse el Gold Master *(`D1-C` y la cirugía)*. **No al revés.**
+
 ## 6 · Y la finalidad, dicha por la dirección
 
 > *«No es una auditoría, sino **elevar este ecosistema**… para potenciar, mejorar y elevar el nivel
