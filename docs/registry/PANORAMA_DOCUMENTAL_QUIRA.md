@@ -4782,6 +4782,157 @@ objeto adquirido debe registrar **vía de adquisición y versión**, y entonces:
 **Las tres preguntas abiertas de `D1.0` bajan a dos:** el mandato (`U2`) como dominio propio, y si el
 cumplimiento de transparencia se expone en `U3` o como dimensión de verificabilidad.
 
+## 5-septvicies · **CATÁLOGO DE DOMINIOS DE QUIRA 7** — para revisión de la dirección
+
+> **Propósito de esta sección:** que no haya sorpresas. Cada unidad declara **qué observa, qué
+> contiene, qué NO contiene y adónde va lo que no contiene**, más **el estado real de su cadena
+> normativa**. Los nombres son **provisionales**: el objeto primero, el nombre después.
+
+### A · Los siete dominios
+
+#### `U1` · Conducción estratégica y de recursos *(fusión fijada)*
+
+| | |
+|---|---|
+| **observa** | cómo el GAD convierte una trayectoria planificada en capacidad efectiva de acción mediante asignación y ejecución de recursos |
+| **sujeto** | la institución que conduce *(entidad ejecutora declarada por observación)* |
+| **contiene · sección Trayectoria** | objetivos y metas del plan de desarrollo · hitos · programación operativa anual · alineación con instrumentos nacionales · **temporalidad plurianual/anual por hitos** |
+| **contiene · sección Recursos** | asignación presupuestaria · ejecución devengada · estructura del gasto · **sostenibilidad fiscal propia** · plan de contratación · **temporalidad mensual con corte explícito** |
+| **NO contiene** | captación de fondos externos y cooperación → **producto QUIRA Cooperación** · avance material en territorio → `U4` · publicación de los documentos → **infraestructura** · promesas de campaña → `U2` |
+| **fuentes** | PDOT · POA · PAC · cédulas presupuestarias · portal de contratación · **documentos oficiales del GAD adquiridos por `T3`** |
+| **cadena normativa** | familias **`I`** (d01) y **`IV`** (d02) existen · `BOOT` declara **`RO` de d01 NO cargada**; la de d02 **sí** |
+| **falta** | cargar la `RO` de la sección Trayectoria · **declarar el régimen temporal por sección** *(condición de la fusión)* |
+
+#### `U2` · Fidelidad del mandato
+
+| | |
+|---|---|
+| **observa** | correspondencia entre la palabra empeñada ante el electorado y el plan que el Estado formaliza |
+| **sujeto** | **la autoridad electa** — sujeto distinto del de `U1` |
+| **contiene** | plan de trabajo inscrito ante el órgano electoral · trazabilidad promesa ↔ objetivo del plan · integridad del compromiso a lo largo del período |
+| **NO contiene** | la ejecución financiera de lo prometido → `U1` · la rendición formal de lo cumplido → `U3` |
+| **fuentes** | plan de trabajo del órgano electoral · PDOT · corpus de promesas |
+| **cadena normativa** | familia **`III`** existe · `BOOT` declara **`RO` NO cargada** |
+| **falta** | cargar la `RO` · decidir si es dominio propio o sección superior de `U1` **(pregunta abierta 1)** |
+
+#### `U3` · Relación pública de la gestión *(fusión fijada)*
+
+| sección | sujeto | contiene |
+|---|---|---|
+| **A · Voz ciudadana** | la ciudadanía que incide | mecanismos de participación · asambleas · presupuesto participativo · cobertura territorial de la voz · parroquias sin canal |
+| **B · Respuesta institucional** | la institución que rinde | circuito de rendición ante el órgano de control social · compromisos asumidos · cumplimiento declarado |
+| **C · Evidencia del vínculo** | — | trazabilidad aporte ciudadano → decisión → resultado · fidelidad entre discurso oficial y evidencia |
+| **D · Apertura verificable** | la institución que debe informar | **resultado** de la calificación de transparencia · oportunidad · observancia contractual |
+
+| | |
+|---|---|
+| **NO contiene** | la **calificación** de la publicación mensual → **infraestructura** *(es gate de admisión, no reporte)* · casos individuales de protección → **fuera de QUIRA** · los datos de origen que la rendición consolida → sus dominios |
+| **fuentes** | actas y registros de participación · informes de rendición · portal del órgano de control social · **resultado de `T1`** |
+| **cadena normativa** | **`VIII`** (8 `CNO`) y **`IX`** existen · `BOOT` declara **`RO` de d09 NO cargada**; `VIII` **propuesta**, con la nota *«d08 mide, NO dictamina»* |
+| **falta** | cargar la `RO` de la sección B · **sujeto obligado como atributo por sección** *(condición de la fusión)* · decidir la ubicación de la sección D **(pregunta abierta 2)** |
+
+#### `U4` · Cobertura y acceso territorial
+
+| | |
+|---|---|
+| **observa** | déficit real de servicios básicos e infraestructura por parroquia, y la brecha urbano-rural |
+| **contiene** | cobertura de agua, saneamiento y residuos · vialidad y conectividad física · déficit por parroquia · pobreza por necesidades básicas |
+| **NO contiene** | el presupuesto que financia la obra → `U1` · la representación espacial → **GeoTwin** · la desagregación por grupo → **transversal de equidad** |
+| **fuentes** | estadística oficial · PDOT · PUGS · obra ejecutada |
+| **cadena normativa** | ⛔ **no existe** familia `CNO`/`RO` |
+| **falta** | **construir su cadena normativa completa** |
+
+#### `U5` · Dinamización económica territorial
+
+| | |
+|---|---|
+| **observa** | capacidad productiva y de empleo del territorio |
+| **contiene** | población económicamente activa · cadenas de valor · informalidad · relevo generacional · proyectos productivos |
+| **NO contiene** | la infraestructura que lo habilita → `U4` · el presupuesto que lo financia → `U1` |
+| **fuentes** | corpus económico del PDOT · estadística de empleo |
+| **cadena normativa** | ⛔ **no existe** |
+| **falta** | **construir su cadena normativa** · definir indicadores propios más allá del corpus |
+
+#### `U6` · Resiliencia ambiental
+
+| | |
+|---|---|
+| **observa** | integridad ecológica y exposición del territorio al riesgo biofísico |
+| **contiene** | inventario biofísico · susceptibilidad a riesgos naturales · conservación · metas ambientales |
+| **NO contiene** | redes urbanas como servicio → `U4` · fondos verdes → **producto Cooperación** · vulnerabilidad de grupos prioritarios → `U7` + transversal |
+| **fuentes** | PDOT biofísico · capas de riesgo · metas ambientales |
+| **cadena normativa** | ⛔ **no existe** |
+| **falta** | **construir su cadena normativa** |
+
+#### `U7` · Atención a grupos de atención prioritaria *(nuevo · corrección de la dirección)*
+
+| | |
+|---|---|
+| **observa** | **la función ejecutora del GAD** hacia los grupos de atención prioritaria: qué unidad la opera, con qué presupuesto, qué programas y qué cobertura |
+| **sujeto** | los grupos como sujetos de derechos · **la unidad ejecutora como atributo declarado** (dirección · empresa pública · entidad desconcentrada · patronato donde subsista) |
+| **contiene** | existencia y forma de la unidad ejecutora · presupuesto asignado y ejecutado · programas y proyectos · cobertura y resultados declarados · **si el GAD constituyó y financia las instancias que la ley le manda** · ordenanzas producidas |
+| **NO contiene** | ⛔ **casos individuales** de la Junta Cantonal de Protección y del Consejo Cantonal de Protección de Derechos — **competencia ajena y datos personales sensibles** · el sesgo distributivo general → **transversal de equidad** |
+| **fuentes** | POA · PAC · presupuesto · transparencia · rendición · ordenanzas |
+| **cadena normativa** | ⛔ **NO existe ninguna** *(verificado: `docs/brn`, `data/d12`, `docs/pcd`)* |
+| **falta** | **es el dominio con mayor trabajo normativo del mapa**: Constitución, COOTAD y leyes especiales de cada grupo, **con verificación `SHA` antes de escribir articulado** |
+
+### B · Las cuatro dimensiones transversales
+
+| transversal | qué hace | cómo opera | estado |
+|---|---|---|---|
+| **Perímetro institucional** | declara **qué entidad** produce cada observación | atributo obligatorio en toda afirmación · vista consolidada **derivada** | ya existe en el motor (`ENTE-01`…`ENTE-04`) · sin cadena normativa |
+| **Equidad y desagregación** | obliga a desagregar por grupo en las demás unidades | dimensión de análisis, no dominio | indicador de presupuesto con enfoque de género ya existe |
+| **Síntesis de cumplimiento institucional** | índice de cabecera **derivado** de vectores de otras unidades | nunca es fuente · siempre recalculable | existe como ICPI · **su guarda temporal es el único gobierno probado** *(`C4-P0`)* |
+| **GeoTwin** | espacializa indicadores reales de cada unidad | ya declarada transversal en el canon vigente | precedente documental |
+
+### C · Infraestructura, producto y vista
+
+| unidad | qué es | contiene | estado |
+|---|---|---|---|
+| **Adquisición recursiva** | **INFRAESTRUCTURA DE ALIMENTACIÓN** | `T1` calificar la publicación mensual *(gate de admisión)* · `T2` extraer contenido · `T3` adquirir documentos oficiales primarios en la web del GAD · **registro de vía y versión** | **la más madura**: familia `VII` existe y `BOOT` la declara cargada · metodología aprobada con su cadena normativa ingerida |
+| **QUIRA Cooperación** | **PRODUCTO especializado** | captación externa · elegibilidad · fondos y riesgo | sale de la ontología de observación |
+| **Riesgo institucional activo** | **VISTA derivada** | consolidado de señales que viven en los dominios y en la BRN | **decisión ya ejecutada**: SAT dejó de ser dominio · deuda medida: 8 de 9 señales sin cadena BRN |
+
+### D · Verificación de que NADA se perdió — los trece cajones y su destino
+
+| cajón histórico | destino en QUIRA 7 |
+|---|---|
+| 01 · Planificación Estratégica | `U1` · sección Trayectoria |
+| 02 · Presupuesto & Financiamiento | `U1` · sección Recursos · **financiamiento externo → producto Cooperación** |
+| 03 · Gobernanza del Mandato | `U2` |
+| 04 · Alertas Institucionales | **vista derivada** + señales en cada dominio + BRN |
+| 05 · Holding e Integración Municipal | **transversal · perímetro institucional** |
+| 06 · Salud Institucional | **transversal · síntesis de cumplimiento** |
+| 07 · Transparencia | **infraestructura** (`T1`·`T2`·`T3`) + **resultado** en `U3-D` |
+| 08 · Participación Ciudadana | `U3` · sección A |
+| 09 · Rendición de Cuentas | `U3` · secciones B y C |
+| 10 · Cobertura de Servicios e Infraestructura | `U4` |
+| 11 · Desarrollo Económico Territorial | `U5` |
+| 12 · Inclusión, Equidad y Género | `U7` *(función ejecutora)* **+** transversal de equidad |
+| 13 · Sostenibilidad y Resiliencia Ambiental | `U6` |
+| GeoTwin *(ya transversal)* | **transversal** |
+
+> ✅ **Ningún contenido histórico queda huérfano, y ninguna unidad nueva se creó sin realidad que
+> observar.**
+
+### E · Estado de la cadena normativa — lo que falta, sin adornos
+
+| | unidades |
+|---|---|
+| ✅ **cadena existente y declarada cargada** | infraestructura de transparencia (`VII`) · `U1` sección Recursos (`IV`) |
+| ⚠️ **cadena existente, `RO` NO cargada** *(según `BOOT`)* | `U1` Trayectoria (`I`) · `U2` (`III`) · `U3` sección B (`IX`) · `U3` sección A (`VIII`, propuesta) |
+| ⛔ **sin ninguna cadena normativa** | `U4` · `U5` · `U6` · **`U7`** · perímetro institucional |
+
+**Ésa es la carga real de trabajo normativo de QUIRA 7, y se conoce antes de empezar — no a mitad
+de camino.**
+
+### F · Preguntas abiertas que la dirección debe cerrar
+
+1. **`U2`**: ¿dominio propio o sección superior de `U1`?
+2. **`U3-D`**: ¿el resultado de transparencia se expone en `U3` o como dimensión de verificabilidad?
+3. **Nombres definitivos** de `U1`, `U3` y `U7` — pendientes a propósito hasta que el objeto esté
+   cerrado.
+
 ## 6 · Y la finalidad, dicha por la dirección
 
 > *«No es una auditoría, sino **elevar este ecosistema**… para potenciar, mejorar y elevar el nivel
