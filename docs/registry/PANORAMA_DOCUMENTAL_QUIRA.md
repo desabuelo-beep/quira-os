@@ -4324,6 +4324,158 @@ especulativa.**
 QUIRA 7 exista**, ni de que ninguna de estas propuestas esté aprobada. La distinción se mantiene
 limpia: **publicar el alcance ≠ decidir la arquitectura ≠ existir la versión.**
 
+## 5-tervicies · `REARQ` · `D1` — estructura mínima del estado canónico · **y `D1.0` primero**
+
+### La pregunta de `D1`
+
+> **¿Qué estructura mínima debe poseer el estado canónico de QUIRA para que cualquier valor pueda ser
+> interpretado, verificado, propagado y consumido sin perder su significado ni las condiciones que
+> limitan lo que puede afirmarse?**
+
+Deliberadamente distinta de *«¿qué columnas tiene que tener el Excel?»*: **el Excel será una
+representación de esa estructura, no la estructura.**
+
+### ⛔ `D1.0` va antes — la ontología de los cajones no se hereda
+
+**Consulta de la dirección:** *«¿es viable reunificar Planificación + Presupuesto + Salud
+Institucional? ¿y Participación + Rendición de Cuentas?»*. El colega la convierte en condición previa,
+y es correcto: **si primero diseñamos los campos de trece cajones y después descubrimos que cinco
+deben fusionarse, habremos operado sobre una anatomía que aún no sabemos si es la correcta.**
+
+> **`D1.0` · ¿Los cajones actuales representan unidades conceptuales distintas y necesarias, o
+> existen relaciones de dependencia, intersección o complementariedad que justifican reunificarlos,
+> subdividirlos o reconfigurarlos para QUIRA 7?**
+>
+> **Regla de dirección:** **QUIRA 7 no heredará los cajones de QUIRA 5.x por continuidad histórica.
+> Los conservará, fusionará, dividirá o transformará únicamente cuando la evidencia ontológica lo
+> justifique.**
+
+**Cuatro categorías de salida, no dos:** **MANTENER** · **FUSIONAR** · **RECONFIGURAR** ·
+**ABSORBER COMO DIMENSIÓN TRANSVERSAL**. Y la prueba decisiva para cada cajón:
+
+> **Si eliminamos el cajón y redistribuimos sus componentes, ¿perdemos una realidad administrativa o
+> solamente una etiqueta?**
+
+### Primera excavación de `D1.0` — lo que dice el Diccionario, leído hoy
+
+*(El colega advirtió con razón que no diéramos por axioma el «13 ADN · 11 campos». Se verificó.)*
+
+| hallazgo | estado |
+|---|---|
+| El Diccionario es real y rige **trece** cajones (`01`-`13`), no doce | ✅ **DEMOSTRADO** |
+| La **plantilla madre de 11 campos** existe como *«estándar definitivo (post Capa 0.5)»*, con el Cajón 10 como molde, y cada ADN la sigue | ✅ **DEMOSTRADO** |
+| Que esos 11 campos **gobiernen transversalmente** —el estándar de `C4`— | ⛔ **NO DEMOSTRADO** *(ver el hallazgo del campo 10, abajo)* |
+| Cada ADN declara **exclusiones con ruteo explícito** a otros cajones (*«montos devengados → d02»*, *«avance físico → d01»*) | ✅ **DEMOSTRADO** — la ontología ya tiene fronteras declaradas, y cualquier fusión debe medirse contra ellas |
+| **GeoTwin ya es «capa transversal · NO es un cajón»** | ✅ **DEMOSTRADO** — **precedente interno de la categoría «absorber como dimensión transversal»**: QUIRA ya tomó esa decisión una vez |
+
+> ⛔ **Hallazgo de `D1.0`, del tipo que `C4` enseñó a buscar:** el campo 10 del ADN exige declarar el
+> **estado del ancla** (`LIVE`/`PENDIENTE`/`MISSING`). El **Cajón 02** declara su ejecución devengada
+> como **`⏳ PENDIENTE (CHK-08, cédula eSIGEF 2026)`** sobre `H07_S5_FINANCIERO_eSIGEF` —y es
+> exactamente la hoja de la que el snapshot y las páginas publican hoy el `Ti` de 6,4 %—.
+> **El rector declara pendiente lo que el producto publica como dato.** *(`INFERENCIA RAZONABLE`
+> sobre la lectura de ambos artefactos; la cadena completa no se reconstruyó.)* **Es la prueba
+> concreta de que «tiene rector» ≠ «gobierna».**
+
+### Caso de prueba 1 · Planificación + Presupuesto + Salud Institucional
+
+| | Cajón 01 · Planificación | Cajón 02 · Presupuesto | Cajón 06 · Salud Institucional |
+|---|---|---|---|
+| **Capacidad Universal** | **Trayectoria** | **Movilización** | **Sostenibilidad interna** |
+| **pregunta estratégica** | ¿mantiene rumbo hacia las metas plurianuales? | ¿con qué eficiencia moviliza y ejecuta recursos? | ¿cumple sus funciones de forma sostenible? |
+| **indicador madre** | cumplimiento de la planificación | captación y eficiencia del gasto | **ICPI + sus 6 vectores (`ISP·IED·IGP·IOC·IET·PSG`)** |
+| **exclusiones declaradas** | montos devengados → **d02** | avance físico de metas → **d01** | *«el detalle operativo de cada vector vive en su dominio: presupuesto → d02 · transparencia → d07 · participación → d08 · equidad → d12»* |
+
+**Dos evidencias que la mesa debe pesar:**
+
+1. ⛔ **El Cajón 06 no es un dominio paralelo: por su propio ADN es el AGREGADO de vectores que viven
+   en otros cajones.** Su madre es el ICPI y sus exclusiones remiten el detalle de cada vector a su
+   dominio. **Candidato fuerte a la categoría D —dimensión transversal / índice de cabecera— más que
+   a fusión.** *(`INFERENCIA RAZONABLE` a partir del ADN; decide la mesa.)*
+2. ✅ **`d01` y `d02` consumen la misma materia**: `planificacion.presupuesto` y
+   `presupuesto_dom.ejecucion` traen **los mismos números de las mismas celdas** (codificado
+   `30 271 811,74` · devengado `1 947 738,29`, de `H07_S5!B18/B19`). **Eso no prueba que deban
+   fusionarse; prueba que la frontera declarada no coincide con la materia consumida.** `DEMOSTRADO`.
+
+### Caso de prueba 2 · Participación Ciudadana + Rendición de Cuentas
+
+| | Cajón 08 · Participación | Cajón 09 · Rendición de Cuentas |
+|---|---|---|
+| **Capacidad Universal** | **Inteligencia colectiva** — incorporar la voz ciudadana a la decisión | **Responsabilidad pública** — someter la gestión al control social |
+| **pregunta estratégica** | ¿incide la ciudadanía, y quién queda sin canal? | ¿cierra el ciclo con evidencia verificable, o es autorreportada? |
+| **operativos** | IGP · parroquias sin voz · aportes de PP · **resultado CPCCS** | circuito RDC · **resultado CPCCS** · aportes consolidados |
+| **anclas del motor** | `H10c_RDC_APORTES` · **`H31_REPORTE_CPCCS`** | `H10c_RDC_APORTES` · **`H31_REPORTE_CPCCS`** |
+| **exclusiones** | la rendición formal ante el CPCCS → **d09** | la participación que la alimenta → **d08** |
+
+- ✅ **Comparten dos anclas del motor y un operativo (`resultado CPCCS`)** — `DEMOSTRADO` por lectura
+  de ambos ADN.
+- ✅ **Hay constancia de cruce en el código**: `scripts/enrich_participacion.py:232` documenta que
+  *«AQUÍ SE LEÍA `snap["rendicion"]["serie"]` — EL BLOQUE DE d09»*, ya corregido. `DEMOSTRADO`.
+- ⚠️ **Ontológicamente son inversos**: uno es **entrada** de voz ciudadana; el otro, **salida** de
+  responsabilidad institucional. **Comparten evidencia y mecanismos; difieren en sujeto y dirección.**
+  → Candidato a **fusión bajo «control social»** *o* a **mantener con frontera reforzada**.
+  **`NO DEMOSTRADO` en ambos sentidos: es precisamente lo que la mesa debe resolver.**
+
+### Las doce preguntas que responderá cada cajón en `D1.0`
+
+realidad administrativa que representa · sujeto · objeto · decisiones públicas que permite observar ·
+indicadores propios · fuentes · evidencia · quién necesita sus datos · quién duplica su información ·
+si puede existir independientemente · **si es dominio o dimensión transversal** · qué ocurre si se
+fusiona.
+
+### El átomo de `D1` — concepto de trabajo, no nombre de producto
+
+Antes de las ocho capas hay que definir **qué objeto gobiernan todas ellas**. Provisionalmente
+`CANONICAL_ASSERTION`:
+
+```
+REALIDAD ADMINISTRATIVA
+   ├── identidad          ├── evidencia
+   ├── significado        ├── regla
+   ├── valor              ├── estado epistemológico
+   ├── unidad             ├── procedencia
+   ├── universo           ├── vigencia
+   ├── tiempo / corte     └── condiciones de afirmación
+   └── fuente
+```
+
+⛔ **No se proponen como canon.** `D1` debe determinar **cuáles son obligatorios** — y ésa es la
+cirugía real del Excel: *¿puede una celda del nuevo Gold Master representar una **afirmación
+completa**, o sólo una magnitud?*
+
+### La regla propuesta para `D1` — PROPUESTA `REARQ`, no doctrina
+
+> **Ninguna afirmación canónica debe poder existir únicamente como magnitud cuando su interpretación
+> dependa de una propiedad contextual que determine qué puede afirmarse a partir de ella.**
+
+No exige cargar cuarenta metadatos a cada número. Dice algo más preciso: **si una propiedad cambia la
+admisibilidad de la afirmación, esa propiedad forma parte del estado gobernado de la afirmación.**
+Nace directamente de `P0`, `P1` y `P2`.
+
+### La prueba de estrés agéntica
+
+> **Si un agente recibe solamente el valor, ¿puede producir una afirmación correcta sin inventar el
+> resto?** Si la respuesta es no, `D1` tiene trabajo.
+
+### Los cuatro artefactos que debe producir `D1` — documentos, no código
+
+| | artefacto | contenido |
+|---|---|---|
+| **D1-A** | **matriz de estructura canónica** | las propiedades mínimas de una afirmación |
+| **D1-B** | **matriz rector → propiedad** | quién la define · quién la representa · quién la valida · quién la consume |
+| **D1-C** | **matriz de brecha del Gold Master** | estructura actual del Excel **vs** estructura requerida — aquí aparece la cirugía |
+| **D1-D** | **contrato conceptual de consumo** | qué reciben `gm_snapshot`, los dominios, GeoTwin, Supabase/Neo4j, QUIRA IA y los agentes — y **qué no pueden perder** |
+
+Cada hallazgo se clasifica **`DEMOSTRADO` · `INFERENCIA RAZONABLE` · `NO DEMOSTRADO` ·
+`NO DETERMINABLE`**.
+
+### Lo que `D1`/`D1.0` NO hacen
+
+No modifican el Gold Master. No declaran los campos definitivos. No declaran el número final de
+dominios. No fusionan ni eliminan cajón alguno. No tocan el Diccionario —que **no se destruye**: el
+Diccionario responde *«¿qué es esta realidad administrativa?»*, y `D1` responde *«¿qué debe acompañar
+a una afirmación sobre ella para ser canónica y consumible?»*—. **Y nadie «arregla» el Excel hasta
+que las cuatro matrices estén cerradas.**
+
 ## 6 · Y la finalidad, dicha por la dirección
 
 > *«No es una auditoría, sino **elevar este ecosistema**… para potenciar, mejorar y elevar el nivel
