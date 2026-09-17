@@ -4042,6 +4042,25 @@ redefinir**. La columna derecha es lo que `REARQ` tendría que construir o eleva
 > **Seis de las ocho capas ya tienen rector.** Las dos que no —**temporalidad** y **evidencia como
 > gobierno**— son exactamente las que `C4-P1` y `C4-P2` demostraron ausentes. **`REARQ` no parte de
 > cero: parte de un diagnóstico que ya sabe dónde está el hueco.**
+>
+> ⚠️ **Precisión indispensable** *(colega)*: **«tiene rector» ≠ «está resuelta».** Significa que
+> existe un artefacto o mecanismo **candidato** a gobernar esa dimensión. **La pregunta de `REARQ` es
+> si ese rector gobierna realmente y de forma transversal** — que es, literalmente, el estándar que
+> `C4` acaba de establecer: *tener la propiedad no garantiza que siga gobernando lo afirmable*.
+
+**Por eso la formulación de `REARQ` cambia** —y mejora—:
+
+> **QUIRA ya posee artefactos rectores dispersos para buena parte de las ocho dimensiones; `REARQ`
+> debe determinar cuáles son realmente canónicos, cuáles tienen cobertura efectiva, cuáles están
+> desacoplados y cómo se integran en un único estado gobernado.**
+
+⛔ **El error a evitar, ya cometido antes:** confundir **existencia de infraestructura** con
+**existencia de arquitectura operativa**. Tres ejemplos que lo hacen concreto: el
+`DICCIONARIO_CONCEPTUAL` está sellado con sus 11 campos —la tarea no es *crear semántica*, sino
+contrastarlos con las 12 propiedades—; `C4-P1` **no demostró que falten fechas**, sino que la
+dimensión temporal **no gobierna de manera uniforme**; y la Carta `CAPA 0` ya da la base
+epistemológica —falta que deje de ser clasificación documental y **acompañe y limite** las
+afirmaciones *downstream*.
 
 ### La barrera tecnológica
 
@@ -4068,21 +4087,100 @@ consumidor perfecto para reproducir los cuatro mecanismos a escala.** Un agente 
 canónico → cirugía del Excel → propagación → validación → **y entonces** la versión.
 
 **Dato verificado en disco** *(lectura de la carpeta de datos, sin abrir contenido)*: el **único**
-Gold Master presente es **`SIAP-ICPI_GOLD_MASTER_v5.7_TGI.xlsx`**. No hay ningún archivo `v6`. En
-cambio, el nombre *«v6.0»* **ya está cargado con dos significados en la documentación**: la cirugía
-metodológica `D2A` *(«v6.0 metodológico» dentro del slot que conserva el nombre anterior)* y un
-*«TGI_GOLD_MASTER_v6.0 template»* que **no está en la carpeta**. Además, el docstring del conector
-sigue declarando *«v5.5 (ACTIVO)»* cuando el vigente es `v5.7`.
+Gold Master presente es **`SIAP-ICPI_GOLD_MASTER_v5.7_TGI.xlsx`**.
 
-> **Conclusión para la mesa:** saltar a **7** evita colisionar con un `6` que ya significa dos cosas
-> distintas en los papeles y ninguna en el disco. **Pero el número se pone al final**, cuando haya
-> arquitectura que lo justifique.
+⚠️ **Corrección a una versión anterior de este párrafo, que decía «no hay ningún archivo v6»**
+*(cautela del colega, y la evidencia la confirmó)*. La formulación correcta distingue cuatro cosas:
+
+> **archivo físico ≠ referencia documental ≠ estado operativo ≠ versión canónica.**
+>
+> **No existe un `v6` operativo/canónico vigente en el estado contrastado; sí existen artefactos y
+> referencias que ya cargaron «v6.0» de significado histórico y documental** —incluido el changelog
+> doctrinal, que lo declara **ACTIVO** *(ver `§5-duovicies`)*—.
+
+**Conclusión para la mesa:** saltar a **7** es una decisión de nomenclatura razonable porque `6` ya
+está cargado de significados divergentes. **Pero «7» no es todavía una versión canónica: el número
+queda subordinado al cierre de `REARQ`.**
 
 ### Lo que este documento NO decide
 
 No reformula la Regla de Oro 2 —la marca como candidata—. No declara el vocabulario común. No
 convierte las doce propiedades en contrato. No elige tecnología. No abre la cirugía del Excel. No
 numera nada. **Fija el alcance y deja la decisión donde corresponde: la mesa.**
+
+## 5-duovicies · `REARQ` · `D0.1` · AUTORIDAD — la pregunta, y el mapa de lo que hoy la ejerce
+
+> **¿Qué artefacto tiene autoridad para declarar el significado de una realidad administrativa, y qué
+> relación debe existir entre esa autoridad y sus representaciones operacionales, derivados,
+> productos y agentes?**
+
+**No se empieza tocando el Excel.** Se empieza aquí, porque de esta respuesta cuelgan: qué significa
+*«Excel canónico»* · si sigue siendo representación de trabajo · qué parte pasa a representación
+máquina · qué puede regenerarse · qué puede derivarse · **qué queda invalidado cuando cambia el
+canon** · y **quién tiene autoridad para promover un nuevo estado**.
+
+### ⛔ Lo que hoy declara «cuál es el estado vigente» — cinco declarantes, cuatro respuestas
+
+*(Lectura directa de los artefactos, 2026-09-17. Universo: `data/doctrinal/gm_changelog.json`,
+`config.py`, `app/connectors/gold_master.py`, `governance/BOOT.md`, carpeta de datos.)*
+
+| declarante | qué declara hoy |
+|---|---|
+| **changelog doctrinal** `data/doctrinal/gm_changelog.json` | **`v6.0` · estado `ACTIVO`** · archivo `TGI_GOLD_MASTER_v6.0_20260525.xlsx` · 34 hojas · *«nueva arquitectura `G1.x-G7.x` reemplaza `H01-H99` de v5.5»* · y `v5.5` como `CONGELADO` |
+| **`config.py`** *(resolución en ejecución)* | **`v5.7_TGI`** — el mayor `vX.Y_TGI` presente en la carpeta |
+| **`governance/BOOT.md`** | **`v5.7_TGI`** *(coincide con `config`)* |
+| **docstring de `app/connectors/gold_master.py`** | *«`v5.5` (ACTIVO)»* · *«`v6.0` (template)»* |
+| **la carpeta de datos** *(disco)* | un solo archivo: **`SIAP-ICPI_GOLD_MASTER_v5.7_TGI.xlsx`** |
+
+> **Cinco declarantes, cuatro respuestas distintas. Hoy no existe UN artefacto que declare cuál es el
+> estado canónico vigente: existen varios, y no coinciden.** Ésa es, en una línea, la razón por la
+> que `D0.1` va primero.
+
+### Quién ejerce hoy la autoridad, de hecho
+
+**La ejerce el nombre del archivo en una carpeta.** `config._resolver_gold_master_vigente()` toma el
+`vX.Y` más alto que encuentre, y su código es cuidadoso —excluye respaldos (`_`, `~$`) y congelados
+(`_FREEZE`) para que *«un respaldo jamás se vuelva canónico por accidente»*—. **Buena ingeniería
+sobre una convención de nombres**; pero sigue siendo una convención de nombres decidiendo qué es
+canónico.
+
+### El acto de promoción: declarado, no operando
+
+`app/services/gold_master_governance.py` fija la doctrina —*«cada versión del Gold Master es un hito
+epistemológico; ningún cambio ocurre sin registro en `gm_changelog.json`»*— y ofrece validar,
+respaldar con `SHA-256` y diagnosticar.
+
+**Contraste con el registro real:** el changelog tiene **dos entradas**, la última del **2026-05-25**.
+Desde entonces el vigente pasó por `v5.5 → v5.7` —incluida la cirugía `D2A` del 2026-06-15, que movió
+el ICPI de 17,45 % a 27,46 %— **sin una sola entrada nueva**.
+
+> **El circuito de promoción existe como capacidad y no está operando.** Es exactamente la forma que
+> `C3` nombró: **lifecycle definido ≠ lifecycle activado**. *(Consumidor localizado del changelog:
+> `quira_pages/env_ops.py:280`, que lo muestra — de modo que lo que se exhibe puede ser `v6.0
+> ACTIVO` mientras el motor lee `v5.7`.)*
+
+### Tres cadenas de autoridad para deliberar
+
+| | cadena | qué exige | qué rompe / qué cuesta |
+|---|---|---|---|
+| **A** | **el canon declara, el Excel representa**: un artefacto canónico declara el estado vigente (versión, `SHA`, fecha, alcance) y `config` **lo lee** en vez de deducirlo del nombre | reactivar el changelog como **acto obligatorio** de promoción | barato y cercano a lo que ya existe · no toca dónde vive el significado |
+| **B** | **la autoridad de consumo es el estado sellado**: cada *release* publica un estado inmutable (snapshot + procedencia + hashes) y **ningún consumidor lee otra cosa** | decidir **quién sella** y con qué prueba — el custodio que `C3` echó de menos | separa autoría de autoridad · obliga a un circuito de *release* real |
+| **C** | **representación máquina primaria**: el significado se expresa en forma legible por máquina y el **Excel queda como interfaz humana** de ese estado | el contrato semántico —la discusión de `D1`— **antes** de cualquier migración | ataca la raíz · es el más caro · **no debe intentarse antes de `D1`** |
+
+⚠️ **Las tres son compatibles por etapas** (A ahora, B en el circuito de *release*, C como destino).
+**La mesa no tiene que elegir una y descartar las otras: tiene que elegir la primera.**
+
+### Lo que `D0.1` NO decide
+
+No elige la cadena. No reactiva el changelog. No toca `config`. No renombra el Excel. No define el
+contrato semántico —eso es `D1`—. **Deja sobre la mesa el hecho que obliga a decidir: hoy hay cuatro
+respuestas a «¿cuál es el estado vigente?» y ninguna autoridad única que las concilie.**
+
+### Nota de estado
+
+**El commit `66499e8` es publicación documental del alcance de `REARQ`. NO es declaración de que
+QUIRA 7 exista**, ni de que ninguna de estas propuestas esté aprobada. La distinción se mantiene
+limpia: **publicar el alcance ≠ decidir la arquitectura ≠ existir la versión.**
 
 ## 6 · Y la finalidad, dicha por la dirección
 
