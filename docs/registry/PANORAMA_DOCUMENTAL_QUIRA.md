@@ -4677,17 +4677,54 @@ Separadas, la respuesta es clara:
 | **el sistema de protección de derechos** | ¿existe el aparato institucional de protección? ¿opera? ¿tiene presupuesto asignado? ¿atiende y con qué ruta? | **DOMINIO** |
 | **el sesgo distributivo del resto** | ¿cómo se reparten recursos, servicios y cobertura entre grupos? | **DIMENSIÓN TRANSVERSAL** (desagregación obligatoria) |
 
+⚠️ **CORRECCIÓN DE LA DIRECCIÓN (2026-09-17) — y el error era mío.** Una versión anterior de este
+párrafo puso como aparato del dominio *«consejo cantonal de protección de derechos, juntas de
+protección»*. **Eso confunde órganos distintos y desvía el objeto de QUIRA.** Quedan separados:
+
+| órgano | qué es | ¿objeto de QUIRA? |
+|---|---|---|
+| **Concejo Cantonal del GAD** | alcalde + concejales electos · **máxima autoridad de decisión del cantón**: gobierna, legisla y fiscaliza | **sí** — es el GAD |
+| **Consejo Cantonal de Protección de Derechos (CCPD)** | autoridad del GAD + delegados del Estado y sociedad civil (50/50) · **asesora y diseña política de derechos**, propone ordenanzas | **sólo indirectamente** *(ver abajo)* |
+| **Junta Cantonal de Protección (JCPD)** | 3 profesionales por concurso · **dicta medidas de protección de emergencia en casos individuales** | ⛔ **NO** |
+
+> **Lo que interesa a QUIRA es la relación entre el GAD y la dirección, empresa o entidad que
+> OPERATIVIZA los programas y proyectos dirigidos a los grupos de atención prioritaria.** En
+> Montecristi esa función la cumple el **Patronato Municipal**; en la mayoría de GAD del país la
+> cumple una **dirección interna**, una **empresa pública** o una **entidad desconcentrada** —el
+> COOTAD ordenó eliminar los patronatos y pocos subsisten—.
+
 **Los tres argumentos que lo hacen dominio:**
 
 1. **Sujeto propio.** Los grupos de atención prioritaria son **sujetos de derechos reconocidos
    constitucionalmente** — no son un atributo de otro sujeto ni una segmentación analítica.
-2. **Obligación propia con aparato propio.** El deber de protección integral tiene **institucionalidad
-   específica** (consejo cantonal de protección de derechos, juntas de protección, rutas de atención)
-   y **asignación presupuestaria específica**. Eso **es** una realidad administrativa observable.
+2. **Función propia dentro del GAD, con presupuesto propio.** Existe una **unidad ejecutora**
+   —dirección, empresa o entidad— que ejecuta programas y proyectos para esos grupos, con
+   **asignación presupuestaria, cobertura y resultados observables** en POA, PAC, presupuesto,
+   transparencia y rendición. Eso **es** una realidad administrativa del GAD.
 3. **La prueba de eliminación lo resuelve.** Si se elimina y se reparte como desagregación,
-   **se pierde la observación del sistema de protección**: nadie más ve si el consejo existe, sesiona,
-   tiene presupuesto y ruta. **La desagregación por grupo en otros dominios no puede observar eso.**
-   → **No es una etiqueta histórica: es una realidad que quedaría sin observador.**
+   **se pierde la observación de esa función ejecutora**: nadie ve si existe la unidad, qué
+   presupuesto recibe, qué programas ejecuta y a cuántas personas atiende. **La desagregación por
+   grupo en otros dominios no puede observar eso.** → **No es una etiqueta: es una realidad que
+   quedaría sin observador.**
+
+**La frontera, escrita para que no se cruce:**
+
+> ✅ **Dentro:** ¿existe la unidad ejecutora? · ¿qué presupuesto se le asigna y cuánto ejecuta? · ¿qué
+> programas y proyectos opera? · ¿qué cobertura y qué resultados declara? · ¿el GAD constituyó y
+> financia las instancias que la ley le manda constituir? · ¿produjo las ordenanzas correspondientes?
+> **Todo eso son hechos del GAD, y viven en documentos que QUIRA ya adquiere.**
+>
+> ⛔ **Fuera:** el trabajo de casos individuales de la `JCPD` y del `CCPD` —medidas de protección,
+> boletas, denuncias—. **Y no sólo por competencia: son datos personales sensibles de víctimas.**
+> QUIRA observa **la gestión pública territorial**, no expedientes de personas. **Esa frontera es
+> arquitectónica y ética, y no se negocia por conveniencia analítica.**
+
+**Consecuencia para LATAM —y es de las importantes—:** el dominio debe modelar **la FUNCIÓN**
+*(quién operativiza la atención a grupos prioritarios)*, **no la FIGURA** *(«Patronato»)*. La figura
+cambia por municipio y por país; la función existe siempre. Esto encaja con la transversal de
+**perímetro institucional**: **la entidad ejecutora es un atributo declarado de cada observación, no
+la identidad del dominio** — y QUIRA ya lo hace así en el motor, donde el Patronato es `ENTE-02`
+junto al GAD (`ENTE-01`), Bomberos (`ENTE-03`) y la EP de Aseo (`ENTE-04`).
 
 **Y la función transversal no se pierde:** sigue siendo desagregación obligatoria en las demás
 unidades. **Dominio y transversal no compiten: observan cosas distintas.**
