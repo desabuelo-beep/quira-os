@@ -4216,10 +4216,34 @@ Y obliga a separar **tres autoridades que hoy no están unificadas**:
 
 **Y hay un precedente propio que la mesa debería mirar antes de inventar nada.** `canon.py` nació
 porque *«el estado de lo construido no era consultable, había que recordarlo»*, y su respuesta fue
-**derivar el estado de los artefactos en vez de declararlo**. La pregunta para `D0.1` se vuelve
-entonces muy concreta: **el estado vigente del Gold Master, ¿se declara, se deriva, o ambas con
-verificación cruzada?** Hoy ocurre lo peor de las dos: **se deduce de un nombre de archivo y se
-declara en un changelog que dejó de operar.**
+**derivar el estado de los artefactos en vez de declararlo**. ⚠️ Eso **no implica** que el Gold Master
+deba copiar ese modelo; implica que la pregunta se puede formular con precisión:
+
+> **¿Debe el estado canónico del Gold Master ser declarado, derivado, o declarado y verificado
+> mediante derivación independiente?**
+
+⚠️ **Corrección a una versión anterior de este párrafo**, que decía *«hoy ocurre lo peor de las dos
+posibilidades»* — eso ya era una evaluación arquitectónica, y `D0.1` todavía no ha establecido cuál
+de los dos mecanismos debería existir. La formulación quirúrgica:
+
+> **Hoy coexisten dos mecanismos no unificados: la resolución operativa deriva la versión a partir de
+> la convención de nombres, mientras la doctrina registra una declaración de vigencia en el
+> changelog. La evidencia examinada no demuestra que ambos mecanismos formen parte de un mismo acto
+> de autoridad verificable.**
+
+**La tercera opción merece atención especial**, porque produciría una arquitectura que separa lo que
+`C4` demostró mezclado —dato, significado, condición y capacidad de afirmar—:
+
+```
+ACTO DE PROMOCIÓN            → declara intención y autoridad
+        ↓
+ESTADO CANÓNICO              → representación efectiva
+        ↓
+DERIVACIÓN / VERIFICACIÓN    → comprueba que el estado declarado coincide
+                               con el estado realmente consumible
+        ↓
+RELEASE                      → habilita consumo
+```
 
 ### El papel del Excel — la pregunta correcta
 
@@ -4231,6 +4255,10 @@ viejo»*. La pregunta es:
 
 Con lo ya demostrado: **el *runtime* no depende del Excel**, pero **la regeneración sí**. El Excel
 sigue siendo pieza arquitectónica relevante; **que deba ser la autoridad última no está demostrado.**
+
+> **Y la conclusión que `D0.1` sí puede sostener, que es más fundamental que elegir bando:**
+> **la representación Excel no puede determinar por sí sola su propia autoridad canónica. Su papel
+> dentro del estado gobernado debe ser definido por `REARQ`.**
 
 ### Tres cadenas de autoridad para deliberar
 
@@ -4266,6 +4294,29 @@ No elige la cadena. No reactiva el changelog. No toca `config`. No renombra el E
 contrato semántico —eso es `D1`—. **Deja sobre la mesa el hecho que obliga a decidir: cuatro
 respuestas a «¿cuál es el estado vigente?», tres autoridades sin unificar, y las preguntas 4 y 5
 `NO DETERMINADAS`.**
+
+### La distinción final — lo que `D0.1` demostró, y lo que NO
+
+⛔ **`D0.1` NO ha demostrado que el sistema actual sea incapaz de producir resultados.** Demostró algo
+más específico, y basta con eso:
+
+> **El mecanismo mediante el cual un cambio del conocimiento canónico adquiere autoridad como estado
+> consumible no está documentalmente determinado de manera transversal para el Gold Master.**
+
+**Y esa precisión es la que permite que `D1` sea una cirugía arquitectónica y no una reconstrucción
+especulativa.**
+
+### Estado de `D0.1` y lo que abre `D1`
+
+> **`D0.1`: DEPURADO · base documental suficiente · LISTO PARA DECISIÓN DE LA MESA.**
+>
+> Lo que `D1` abrirá, ya con autoridad definida: qué entidades existen · qué identidad tienen · qué
+> campos son semánticos · qué propiedades deben acompañar cada valor · qué evidencia respalda cada
+> afirmación · qué vigencia y corte tiene · qué regla la gobierna · **qué puede afirmar un agente** ·
+> qué puede regenerarse · qué debe invalidarse.
+>
+> **Ahí comienza la cirugía del Gold Master** —no antes—, y así se evita el error clásico: construir
+> primero «QUIRA 7» y después descubrir qué significa que algo sea canónico.
 
 ### Nota de estado
 
