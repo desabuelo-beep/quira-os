@@ -3849,6 +3849,120 @@ No busca un defecto más. No abre `C4-P3`. No repara `H19`, `H24`, `SAT-V`, `H89
 convierte ninguna de las seis pruebas en gate. No declara canon. **Pone a la dirección frente a la
 pregunta, con la evidencia ordenada detrás de cada opción.**
 
+## 5-vicies · `REARQ` · `D0` — autoridad, lenguaje y frontera público/propietario
+
+### La formulación de primera página *(colega)*
+
+> **`REARQ` no comienza reparando consumidores. Comienza estableciendo la autoridad, el lenguaje y el
+> mínimo semántico desde el cual un cambio canónico puede propagarse legítimamente por todo QUIRA. El
+> Excel canónico constituye la representación operacional de partida; no sustituye al canon. El
+> vocabulario administrativo constituye la interfaz semántica común; la implementación interna puede
+> conservar know-how técnico protegido sin alterar ni ocultar el significado, evidencia y límites de
+> las afirmaciones publicables.**
+
+### La corrección de concepto, acogida
+
+La dirección propuso *«REARQ debe empezar en el Excel canónico»*. **Correcto en el orden; impreciso en
+la autoridad.** Queda así:
+
+```
+NORMA / EVIDENCIA
+   ↓
+CANON VALIDADO
+   ↓
+GOLD MASTER  (estado canónico)
+   ↓
+EXCEL CANÓNICO  (representación operacional de trabajo)
+   ↓
+DERIVADOS / MOTORES / DOMINIOS
+   ↓
+PRODUCTOS / AGENTES
+```
+
+**Y el orden de trabajo es `CANÓNICO → PROPAGACIÓN → CONSUMIDORES → PRODUCTOS`**, nunca
+`PRODUCTO → detectar defecto → parchear`, que es el patrón que `C4` acaba de diagnosticar.
+
+**Objetivo de `REARQ`, reformulado** *(sustituye a «propagar cambios, actualizaciones y elevaciones»)*:
+
+> **Reconstruir el circuito mediante el cual un cambio validado en el estado canónico puede
+> propagarse de forma trazable, semánticamente conservada y verificable hacia todos los consumidores
+> autorizados, sin que ningún derivado intermedio cree, altere o eleve por sí mismo la autoridad de
+> una afirmación.**
+
+### `D0` · cuatro decisiones previas a `D1`
+
+| | decisión | propuesta para deliberación | ⛔ advertencia |
+|---|---|---|---|
+| **0.1** | **¿cuál es la autoridad?** | *el canon validado gobierna el Gold Master; el Excel es representación operacional del estado canónico; **los derivados no pueden convertirse en autoridad por persistencia, antigüedad o consumo*** | decir *«el Excel es la autoridad»* crearía una dependencia que contradice la arquitectura |
+| **0.2** | **¿cuál es el vocabulario?** | un **vocabulario administrativo común y transversal**, con nombres técnicos internos **sólo cuando sean necesarios** y siempre con su denominación pública | ⚠️ **esto modifica una Regla de Oro**: el `CLAUDE.md` vigente exige hoy DOS vocabularios *(«AFUERA: lenguaje de administración pública. ADENTRO: lenguaje interno. La jerga jamás cruza al producto»)*. Unificar es **decisión de canon**, no de auditoría |
+| **0.3** | **¿qué es público y qué es propietario?** | **público:** significado · evidencia · limitaciones · interpretación · **propietario:** implementación, arquitectura interna, mecanismos de detección, heurísticas, controles antifraude, seguridad | ⛔ la dirección habló de *«receta secreta»*: **QUIRA puede proteger CÓMO hace algo sin ocultar QUÉ afirma, sobre qué evidencia y bajo qué condiciones**. Ocultar la regla epistemológica dañaría la trazabilidad que QUIRA ofrece |
+| **0.4** | **¿qué ocurre cuando cambia el canon?** | definir propagación, invalidación, regeneración y verificación | aquí `REARQ` se conecta con `C3` (derivados y vigencia) y con `C4` (conservación semántica) |
+
+### Las seis decisiones, reordenadas bajo `D0`
+
+`D0` autoridad + lenguaje + frontera → `D1` mínimo semántico → `D2` estado de evidencia
+*(«hay» · «no hay» · «no se pudo observar» · «no determinable»)* → `D3` **tiempo y corte** → `D4`
+**identidad terminológica**, partiendo ya del vocabulario de `D0` *(qué nombres técnicos sobreviven
+adentro y cuáles desaparecen de la superficie)* → `D5` pruebas *(informativa · bloqueante ·
+obligatoria antes de publicar · experimental)* → `D6` derivados *(no «¿los borramos?» sino **qué
+autoridad tienen, qué estado temporal, cuándo caducan y bajo qué condición pueden alimentar
+consumidores**)*.
+
+### Dos reglas candidatas — sobre la mesa, **NO declaradas**
+
+> **R1 ·** *Ningún derivado puede adquirir mayor autoridad semántica que el estado canónico del que
+> deriva.*
+>
+> **R2 ·** *Un cambio canónico no se considera propagado porque exista una copia actualizada; se
+> considera propagado cuando los consumidores relevantes han sido regenerados, validados y
+> reconocidos como compatibles con el nuevo estado.*
+
+**`C3` mostró el problema de la derivación y la vigencia; `C4`, el de la conservación semántica en el
+tránsito. `REARQ` es donde ambos se encuentran.**
+
+### Pregunta de la dirección · ¿puede QUIRA dejar de depender del Excel en una carpeta local?
+
+*(Respuesta con el código en la mano. Universo inspeccionado: `config.py`, `utils/cache_quira.py`,
+`app/connectors/gold_master.py`, `app/agents/*/motor.py`, `app/pipelines/snapshot_pipeline.py`,
+`quira_pages/*`, `scripts/enrich_*.py`.)*
+
+**Hay que separar dos dependencias que hoy se confunden en una sola pregunta.**
+
+| | ¿depende del Excel local? | evidencia |
+|---|---|---|
+| **servir el producto** (páginas, cajones, agentes de lectura) | ⛔ **NO** | las páginas leen `cargar_gm_snapshot()` → `data/gm_snapshot.json`, **versionado en el repo** (372 KB). El conector del Excel sólo lo llaman `snapshot_pipeline` y `fondos_matcher` |
+| **regenerar los derivados** (enrichers, pipeline, `leer_metricas` de los agentes, gobernanza) | ✅ **SÍ** | `scripts/enrich_*.py` y `app/agents/*/motor.py` abren el archivo que resuelve `config.SIAP_PATH` |
+| **la ruta a esa carpeta** | ⛔ **ya NO está fijada** | `DATOS_DIR = Path(os.environ.get("QUIRA_DATOS", <carpeta por defecto>))` — `OBS-032` (2026-08-19) corrigió esa frontera **escrita a mano en 54 puntos de 49 archivos** |
+
+> **Respuesta corta:** **la dependencia de *su* carpeta ya es removible hoy** —basta `QUIRA_DATOS`
+> apuntando a otra ruta, otro equipo o un servidor—. **Lo que no se elimina con una variable de
+> entorno es la dependencia del Excel como representación canónica**: alguien, en algún sitio
+> gobernado, debe custodiarlo y regenerar desde él. **Dónde vive y quién puede regenerar es
+> exactamente `D0.1` + `D6`.**
+
+⚠️ **Y hay un matiz que la mesa debe conocer:** `IS_CLOUD = not DATOS_DIR.exists()`, y el comentario
+de `config.py` dice que en ese caso *«la app usa `demo_data.py`»* — **módulo no localizado en el
+universo inspeccionado**. El respaldo real es el snapshot versionado. Es decir: **sin el Excel el
+sistema sirve «lo último regenerado» sin declarar ese estado**, y su documentación nombra un
+mecanismo que no está. *(Observación, no hallazgo de `C4`: no se investigó su cadena completa.)*
+
+**Tres caminos para `D0.1`/`D6`** *(insumo, no recomendación cerrada)*:
+
+| | camino | qué resuelve | qué NO resuelve |
+|---|---|---|---|
+| **A** | Excel en **almacenamiento gobernado** (objeto privado o artefacto de *release*), con versión y `SHA`; el circuito regenera desde ahí | elimina la máquina personal del circuito · hace auditable cada regeneración | no cambia que el significado viva en fórmulas de una hoja |
+| **B** | el Excel sigue siendo de **autoría local**, y cada *release* publica un **estado canónico inmutable** (snapshot + procedencia + hashes) como único insumo de los consumidores | separa **autoría** de **autoridad de consumo** · es lo más cercano a lo que ya existe (`provenance/ensayos`) | exige decidir **quién sella** y con qué prueba — el custodio de regeneración que `C3` echó de menos |
+| **C** | expresar el canon en forma **legible por máquina** (fórmulas y contratos versionados) y dejar el Excel como **una** representación | ataca la raíz: el significado deja de vivir sólo en celdas | es el más caro y **no debe intentarse antes de `D1`** |
+
+### Sobre la versión 6 del Excel
+
+**Sí, pero después de `D0`.** Y con una advertencia que el propio repositorio documenta: el archivo
+vigente se llama `v5.5_TGI` **conteniendo ya la cirugía metodológica «v6.0»**, y *«el NOMBRE del slot
+se conserva a propósito (contrato con el código)»* —`CIRUGIA_GOLD_MASTER_D2A`—. **Nombre y estado ya
+divergen hoy.** Construir una `v6` antes de decidir autoridad y vocabulario **reproduciría el patrón
+que `C4` documentó**: un artefacto nuevo que hereda el significado sin heredar la condición que lo
+gobierna.
+
 ## 6 · Y la finalidad, dicha por la dirección
 
 > *«No es una auditoría, sino **elevar este ecosistema**… para potenciar, mejorar y elevar el nivel
