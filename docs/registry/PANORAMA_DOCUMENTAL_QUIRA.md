@@ -4563,6 +4563,106 @@ el aprendizaje de `C4` llevado a la cirugía.
 **1 ·** cerrar la **anatomía real de QUIRA 7** *(`D1.0`)* → **2 ·** diseñar el `CANONICAL_ASSERTION`
 *(`D1-A`)* → **3 ·** decidir cómo debe verse el Gold Master *(`D1-C` y la cirugía)*. **No al revés.**
 
+## 5-quinvicies · `D1.0` · **MAPA ONTOLÓGICO DE QUIRA 7** — primera propuesta
+
+> **Regla de esta fase:** las decisiones de Javo son **restricciones de diseño**; **la forma interna
+> de la nueva arquitectura sí puede corregirse** si la evidencia demuestra que una estructura
+> propuesta no representa adecuadamente la realidad administrativa. *(Eso es lo que la dirección
+> pidió: no obediencia a la arquitectura vieja, sino argumentos.)*
+>
+> **Los trece cajones se usaron como evidencia arqueológica. Ninguna unidad de abajo se hereda: cada
+> una se sostiene por su realidad, su sujeto y su prueba de eliminación.**
+
+### La prueba que ordena todo el mapa
+
+> **Si eliminamos esta unidad, ¿qué realidad administrativa deja de poder observar QUIRA?**
+> **Si sólo desaparece una etiqueta histórica, no es razón suficiente para conservarla.**
+
+### A · Unidades propuestas como DOMINIO
+
+| unidad | realidad administrativa | sujeto | objeto | ¿qué se pierde si desaparece? | LATAM |
+|---|---|---|---|---|---|
+| **U1 · Conducción estratégica y de recursos** *(fusión fijada)* | el municipio convierte una trayectoria planificada en **capacidad efectiva de acción** mediante la asignación y ejecución de recursos | la institución que conduce | el plan y los recursos que lo materializan | **todo**: es la realidad central de la gestión pública | **alta** — todo Estado subnacional planifica y presupuesta |
+| **U2 · Fidelidad del mandato** | correspondencia entre **la palabra empeñada ante el electorado** y el plan que el Estado formaliza | **la autoridad electa** *(sujeto distinto de U1)* | promesa de campaña ↔ objetivo del plan | el **vínculo democrático**: sin ella QUIRA observa gestión, no mandato | **alta** — donde haya elección programática |
+| **U3 · Relación pública de la gestión** *(fusión fijada, con secciones)* | el vínculo entre sociedad e institución: **la ciudadanía incide** y **la institución responde y se somete a control** | dos sujetos, uno por sección | la incidencia, la respuesta y la evidencia del vínculo | la posibilidad de observar **el circuito completo** de control social, hoy partido en dos cajones | **alta** — varía el órgano, no la realidad |
+| **U4 · Cobertura y acceso territorial** | déficit real de servicios básicos e infraestructura **por parroquia**, y su brecha urbano-rural | el territorio y su población | agua, saneamiento, residuos, vialidad, NBI | la **materialidad**: dónde el gasto se convirtió en servicio y dónde no | **alta** |
+| **U5 · Dinamización económica territorial** | capacidad productiva y de empleo del territorio | el tejido productivo | PEA, cadenas de valor, informalidad | la lectura de si el desarrollo **genera economía**, no sólo obra | **alta** |
+| **U6 · Resiliencia ambiental** | integridad ecológica y exposición del territorio al riesgo biofísico | el patrimonio natural y quien lo administra | conservación, riesgo, ODS ambientales | la dimensión que **condiciona la viabilidad futura** de todo lo demás | **alta** |
+
+### B · Unidades propuestas como DIMENSIÓN TRANSVERSAL
+
+| unidad | por qué NO es dominio | cómo opera | prueba de eliminación |
+|---|---|---|---|
+| **Perímetro institucional** *(antes «Holding»)* | no es una realidad observada distinta: es **el sujeto sobre el que se observan las demás**. El municipio no es una entidad sino un conjunto (GAD · EP · Patronato · Bomberos) | **cada observación declara su ente**; la lectura consolidada es una **pregunta de segundo orden** sobre las mismas observaciones | si se elimina y cada unidad declara su ente, **no se pierde realidad: se gana precisión**. Sólo se perdería la vista consolidada, que es derivable |
+| **Equidad e inclusión** | sus indicadores son **lentes sobre otras realidades** (presupuesto con enfoque de género = lente sobre recursos; brechas de grupos prioritarios = lente sobre cobertura) | **desagregación obligatoria** en las demás unidades | ⚠️ **caso mixto**: la protección de grupos prioritarios **sí es obligación propia** con normativa propia. → transversal **con una subestructura** donde viva esa obligación |
+| **Síntesis de cumplimiento institucional** *(antes «Salud Institucional»)* | por su propio ADN **es el agregado de vectores que viven en otras unidades** | **índice de cabecera derivado**, nunca fuente | si desaparece, **no se pierde ninguna observación**: se pierde una síntesis, que es recalculable |
+| **GeoTwin** | ya está declarado así en el canon vigente | espacializa indicadores reales de cada unidad | precedente propio: QUIRA ya decidió una vez que algo sea dimensión y no cajón |
+
+### C · Infraestructura, productos y vistas — **no son dominios**
+
+| unidad | naturaleza | argumento |
+|---|---|---|
+| **Adquisición recursiva de fuentes oficiales** *(DPE/Transparencia · CPCCS · SERCOP · web del GAD)* | **INFRAESTRUCTURA DE ALIMENTACIÓN** | alimenta mensualmente a todas las unidades. **No compite ontológicamente con lo que alimenta** |
+| **Transparencia como hecho observado** *(cumplimiento LOTAIP, oportunidad, observancia contractual)* | **SECCIÓN dentro de `U3`** *(propuesta)* | ⚠️ **la fuente y el hecho no son lo mismo.** Que la información pública alimente a QUIRA no borra la realidad *«¿el GAD publica adecuadamente?»*. Vive en `U3` porque **comparte sujeto y familia de obligación**: la institución que debe informar. *(Alternativa para la mesa: dimensión transversal de verificabilidad.)* |
+| **Riesgo institucional activo** *(antes SAT como cajón)* | **VISTA derivada** | **decisión de Javo ya ejecutada**: las señales viven en cada dominio y en la BRN. Si ninguna unidad la contiene, **no se pierde realidad — se pierde una vista**, que es derivable de las señales |
+| **Cooperación y financiamiento externo** | **PRODUCTO especializado** (QUIRA Cooperación) | sale de la ontología de observación por decisión de la dirección. **Se queda en `U1` la sostenibilidad fiscal propia**, que no es cooperación sino capacidad de sostener lo planificado |
+
+### D · Las dos fusiones, diseñadas — no debatidas
+
+**`U1` · Conducción estratégica y de recursos**
+
+| sección | contenido | temporalidad declarada |
+|---|---|---|
+| **Trayectoria** | objetivos, metas del plan, hitos, programación operativa | **plurianual + anual**, por hitos |
+| **Recursos** | asignación, ejecución devengada, estructura y sostenibilidad fiscal | **mensual, con corte explícito** |
+
+> ⛔ **La unidad ontológica no obliga a un tiempo único.** `U1` debe **expresar temporalidades
+> múltiples sin romper su unidad**: cada sección declara su régimen, y ninguna afirmación puede
+> cruzar de una a otra sin declarar el cambio. **Es la lección directa de `C4-P1`.**
+>
+> **El nombre queda abierto a propósito.** *«Planificación y Presupuesto»* seguiría pensando con el
+> vocabulario de los cajones. **El objeto primero; el nombre después.**
+
+**`U3` · Relación pública de la gestión**
+
+| sección | sujeto | objeto |
+|---|---|---|
+| **A · Voz ciudadana** | la ciudadanía que incide | mecanismos, asambleas, presupuesto participativo, cobertura territorial de la voz |
+| **B · Respuesta institucional** | la institución que rinde ante el CPCCS | circuito de rendición, compromisos, cumplimiento |
+| **C · Evidencia del vínculo** | — | trazabilidad aporte → decisión → resultado |
+| **D · Apertura verificable** *(propuesta)* | la institución que debe informar | cumplimiento LOTAIP, oportunidad, observancia contractual |
+
+> ⛔ **Fusionar NO es igualar.** *Participación ≠ rendición*: son componentes de una realidad
+> relacional mayor que **conservan sujeto, objeto, evidencia e indicadores propios**. El **sujeto
+> obligado** es atributo declarado **por sección** — sin él, el dominio podría afirmar cumplimiento
+> institucional con evidencia del lado ciudadano.
+>
+> **Ganancia para agentes:** un agente puede recorrer **la relación completa** —voz → respuesta →
+> evidencia— sin inventar el vínculo entre dos cajones independientes.
+
+### E · La adquisición recursiva — lo que debe recorrer el sistema
+
+⛔ **El objeto que viaja no puede ser una URL ni un archivo.** Si lo fuera, la recursividad sería un
+*crawler* más sofisticado, y **QUIRA escalaría la adquisición sin escalar la verificabilidad.**
+
+```
+fuente encontrada → documento → identidad → fecha → entidad → contenido
+                 → procedencia → estado de evidencia → realidad administrativa que toca
+```
+
+> **Cada salto recursivo debe aumentar el grafo de evidencia sin perder la cadena de procedencia.**
+
+### F · Lo que este mapa NO hace
+
+⛔ **No fija el número de dominios.** Si la mesa validara el mapa tal cual, resultarían seis unidades
+de dominio, cuatro transversales, una infraestructura, un producto y una vista — **pero ese conteo es
+una CONSECUENCIA provisional, no un objetivo.** Lo que importa es poder defender **por qué existe cada
+unidad y por qué no existen las demás.**
+
+No modifica Excel, código ni Diccionario. No renombra nada. No declara canon. **`U2` (mandato), el
+caso mixto de equidad y la ubicación de la transparencia observada son las tres preguntas que la mesa
+debe resolver para cerrar `D1.0`.**
+
 ## 6 · Y la finalidad, dicha por la dirección
 
 > *«No es una auditoría, sino **elevar este ecosistema**… para potenciar, mejorar y elevar el nivel
