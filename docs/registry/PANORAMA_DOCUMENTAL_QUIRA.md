@@ -4036,7 +4036,7 @@ redefinir**. La columna derecha es lo que `REARQ` tendría que construir o eleva
 | **4 · procedencia** | `app/agents/procedencia.py` (capas 5-6) · `provenance/ensayos` · `evidencia_sha` + `motor_sha` | llegar a **celda y período**, no sólo a libro y lector *(`C4` fila 9)* |
 | **5 · temporalidad** | ⛔ **no hay rector**: hoy es nota al pie | **estructural**: `Q1-2026` no debe poder mezclarse en silencio con `Ene-Abr 2026` *(`C4-P1`)* |
 | **6 · evidencia** | la **Carta `CAPA 0`** ya tiene la escala (independiente · institucional · parcial · sin evidencia · contradicción) | que **gobierne**: hoy `sin datos` colapsa en `0` *(`C4-P2-A`)* |
-| **7 · reglas** | **BRN** (`CNO`/`RO`, 30 YAML) · `ADR-035/038/039` · `registry` | `ID → definición → vigencia → ámbito → parámetros → autoridad → versión → consumidores → estado`; y saldar las **SAT huérfanas** (`check_sat_brn`: 8 de 9 sin cadena) |
+| **7 · reglas** | **BRN** (`CNO`/`RO`, 30 YAML) · `ADR-035/038/039` · `registry` | `ID → definición → vigencia → ámbito → parámetros → autoridad → versión → consumidores → estado`; y saldar las **SAT huérfanas** (`check_sat_brn` en vivo, 2026-09-17: **6 de 10 sin cadena**) |
 | **8 · agentes** | `META_CATALOGO_AGENTES` · molde `ADR-053` · agentes d01/d02 con procedencia | que un agente reciba **el indicador con sus condiciones**, no un número suelto |
 
 > **Seis de las ocho capas ya tienen rector.** Las dos que no —**temporalidad** y **evidencia como
@@ -4540,7 +4540,7 @@ objeta las decisiones: son las condiciones bajo las cuales se sostienen.)*
 | **`d01`+`d02` fusionados** | la estructura fusionada debe **declarar su régimen temporal por sección**: la planificación es plurianual y de hitos; la ejecución presupuestaria es mensual y con corte | son **dos cadencias distintas dentro de una misma realidad**. `C4-P1` demostró que hoy el sistema mezcla cadencias sin declararlo; una fusión sin esa declaración **industrializaría** ese defecto |
 | **financiamiento → QUIRA Cooperación** | separar **captación externa** (cooperación, fondos, elegibilidad → sale) de **sostenibilidad fiscal propia** (estructura del gasto, regla COOTAD → **se queda**) | la sostenibilidad fiscal **no es cooperación**: es capacidad de la institución para sostener lo que planifica. Si sale con el financiamiento, el dominio fusionado pierde la variable que explica por qué la trayectoria se cumple o no |
 | **participación + rendición en un dominio** | el **sujeto obligado** debe ser atributo declarado **por sección**: en participación el sujeto es la ciudadanía que incide; en rendición, la institución que responde ante el CPCCS | sin ese atributo, el dominio podría **afirmar cumplimiento institucional a partir de evidencia del lado ciudadano** — un salto de sujeto, que es la familia de defecto del mecanismo B de `C4` |
-| **SAT dentro de los dominios + BRN** | ninguna: **la decisión además salda una deuda medida** — `check_sat_brn` reporta **8 de 9 señales sin cadena BRN** | hoy umbral y peso de esas señales viven sólo en el Excel; llevarlas a la BRN convierte una deuda incidental en estructura |
+| **SAT dentro de los dominios + BRN** | ninguna: **la decisión además salda una deuda medida** — `check_sat_brn` en vivo reporta **6 de 10 señales sin cadena BRN** | hoy umbral y peso de esas señales viven sólo en el Excel; llevarlas a la BRN convierte una deuda incidental en estructura |
 | **Transparencia como infraestructura** | asignar explícitamente **su segundo papel**: el cumplimiento de transparencia **también es un hecho observable** que QUIRA reporta | la decisión fija su función arquitectónica (alimentar). Falta decidir **dónde vive la observación** de si el GAD cumple — como indicador dentro del dominio de control social, o como dimensión transversal. Si no se asigna, **desaparece del mapa** |
 | **recursividad en fuentes oficiales** | cada documento adquirido debe llegar con **procedencia por documento** y **estado de evidencia** desde el primer salto | un adquiridor recursivo sin esas dos propiedades **reproduce los cuatro mecanismos de `C4` a escala industrial**: traería miles de valores sin la condición que los hace afirmables |
 
@@ -4891,7 +4891,7 @@ cumplimiento de transparencia se expone en `U3` o como dimensión de verificabil
 |---|---|---|---|
 | **Adquisición recursiva** | **INFRAESTRUCTURA DE ALIMENTACIÓN** | `T1` calificar la publicación mensual *(gate de admisión)* · `T2` extraer contenido · `T3` adquirir documentos oficiales primarios en la web del GAD · **registro de vía y versión** | **la más madura**: familia `VII` existe y `BOOT` la declara cargada · metodología aprobada con su cadena normativa ingerida |
 | **QUIRA Cooperación** | **PRODUCTO especializado** | captación externa · elegibilidad · fondos y riesgo | sale de la ontología de observación |
-| **Riesgo institucional activo** | **VISTA derivada** | consolidado de señales que viven en los dominios y en la BRN | **decisión ya ejecutada**: SAT dejó de ser dominio · deuda medida: 8 de 9 señales sin cadena BRN |
+| **Riesgo institucional activo** | **VISTA derivada** | consolidado de señales que viven en los dominios y en la BRN | **decisión ya ejecutada**: SAT dejó de ser dominio · deuda medida en vivo: 6 de 10 señales sin cadena BRN |
 
 ### D · Verificación de que NADA se perdió — los trece cajones y su destino
 
@@ -5355,7 +5355,7 @@ transversal *(−1)* · `d06` a transversal *(−1)*.
 | **Cumplimiento Institucional** *(d06)* | **conservar** el `ICPI` y **su guarda temporal, que es el único gobierno probado** · **recortar** su condición de cajón · `m1_situacion` pasa a **síntesis derivada** |
 | **Equidad y Género** | **recibe el `PSG`** · desagregación obligatoria en los ocho |
 | **GeoTwin** | sin cambios: ya era transversal |
-| **Alertas Institucionales** *(d04)* | **conservar** `H75_SAT_ENGINE` y las señales · **mover** cada señal a su dominio y **a la BRN** *(deuda medida: 8 de 9 sin cadena)* · `m2_alertas` queda como **vista** |
+| **Alertas Institucionales** *(d04)* | **conservar** `H75_SAT_ENGINE` y las señales · **mover** cada señal a su dominio y **a la BRN** *(deuda medida en vivo: 6 de 10 sin cadena)* · `m2_alertas` queda como **vista** |
 | **QUIRA Cooperación** | **recibe** radar de fondos, elegibilidad e `H20c_IEF` |
 
 ### El resumen honesto del trabajo real
@@ -5366,9 +5366,114 @@ transversal *(−1)* · `d06` a transversal *(−1)*.
 | ⚠️ **con material, sin agente ni cadena** | Cobertura · Grupos de Atención Prioritaria · Ambiental |
 | ⛔ **con base mínima** | Desarrollo Económico Territorial |
 
-**Cuatro de los ocho dominios ya tienen su maquinaria completa o casi. Cuatro necesitan agente y
-cadena normativa. Y hay tres reconstrucciones concretas heredadas de `C4`: `SAT-IV`, `SAT-V` y `H89`.**
-**Ése es el trabajo — y es finito.**
+**Cuatro de los ocho dominios tienen mayor grado de desarrollo. Cuatro necesitan agente y cadena
+normativa. Y hay tres reparaciones funcionales derivadas de `C4`.** **Ése es el trabajo — y es finito.**
+
+#### Tres precisiones del colega a esta bajada *(acogidas)*
+
+1. **Las tres reparaciones no tienen el mismo alcance.** `SAT-IV` arrastra la reconstrucción **de una
+   regla** *(`1 − Ti` usado como participación estructural)*; `SAT-V` y `H89` son reconstrucciones
+   **de mecanismos** detectados por `C4` *(colapso «sin datos = sin brecha» y fallo de lectura
+   absorbido)*.
+2. **«Mayor grado de desarrollo» ≠ «maquinaria gobernada».** Tener artefactos no equivale a tener
+   gobierno canónico efectivo — es exactamente lo que `D0.1` y `C4` demostraron.
+3. **Cobertura, Económico, Grupos Prioritarios y Ambiental NO son dominios nuevos.** Están dentro del
+   alcance histórico de QUIRA y **se elevan desde su material existente**.
+
+⚠️ **Y una distinción de nivel:** *«tres enrichers → uno»* y *«dos agentes → uno»* son **decisiones de
+implementación, no ontológicas.** La ontología ya está fijada —`d01`+`d02` se fusionan—; la cirugía
+técnica deberá demostrar **cómo** se materializa esa fusión **sin perder las dos secciones ni sus
+regímenes temporales**.
+
+## 5-tritrigies · **LAS SAT** — dónde viven, qué normativa las produce y cómo se procede
+
+> **La dirección confesó la duda:** *¿las SAT van en cada dominio o en la BRN como estructura? Y si van
+> en cada dominio, ¿hay que parametrizar como SAT gran parte de la normativa elevada a Supabase?*
+> **La respuesta ya estaba diseñada en el canon. Sólo nunca se terminó de ejecutar.**
+
+### ⚠️ Primero, una corrección de esta dirección — falsación 39
+
+En cuatro secciones de este registro escribí **«8 de 9 señales sin cadena BRN»**. **El gate en vivo
+dice otra cosa:** `check_sat_brn` (2026-09-17) → **4 de 10 con cadena, 6 huérfanas (60 %)**.
+
+| SAT | dominio de origen | cadena |
+|---|---|---|
+| `SAT-0` | d01/d02 | ✅ `RO-I-001` y `RO-I-002` |
+| `SAT-IV` | d02 | ✅ `RO-IV-001` |
+| `SAT-V` | d09 | ✅ `RO-IX-001` |
+| `SAT-IX` | d08 | ✅ `RO-VIII-003` |
+| `SAT-I` · `SAT-II` · `SAT-III` · `SAT-VI` · `SAT-VII` · `SAT-VIII` | d03 · d02 · d02 · d08 · informacional · d10/d12 | ⛔ **ninguna RO** |
+
+**Tomé una cifra documentada** —el propio docstring del gate conserva la medición histórica del 89 %—
+**en lugar de correr el gate.** Es el mismo error que `C4` enseña a evitar: *presencia de una cifra en
+un documento ≠ estado actual*. Las cuatro ocurrencias quedaron corregidas con la medición en vivo.
+
+### La respuesta: la SAT no es «del dominio» NI «de la BRN» — tiene tres lugares, con tres papeles
+
+`ADR-038 §1b` ya lo decidió: *«una CNO todavía es Derecho; una SAT ya es control»*, y entre ambas va
+la **Regla Operativa**.
+
+```
+NORMA (corpus Supabase, con SHA)
+   ↓
+CNO  · la cadena normativa        → es DERECHO: no tiene umbral, ni SAT, ni motor
+   ↓
+RO   · variable · umbral · periodo · consecuencia     → es LÓGICA
+   ↓ produce:
+SAT  · sólo MIDE, consume la RO
+   ↓ opera en
+DOMINIO  · donde la señal se lee y se explica
+   ↓ se consolida en
+VISTA DE ALERTAS  · el panorama, no una fuente
+```
+
+> **La SAT NACE en la BRN** —declarada en el bloque `produce:` de su `RO`, con umbral, peso,
+> justificación y frontera interpretativa— · **VIVE en el dominio** donde esa `RO` opera · **y se
+> CONSOLIDA en la vista de Alertas.**
+>
+> **Su decisión de eliminar SAT como dominio y llevarla a cada cajón y a la BRN ya era la correcta.**
+> Lo que falta no es arquitectura: son **seis `RO` que nunca se escribieron.**
+
+**El molde ya existe y es bueno:** `RO-VIII-003` declara `SAT-IX` con métrica, **umbral 0,50 con su
+justificación**, peso de severidad, medición 2026 con numerador y denominador, y **frontera
+interpretativa** —*«no afirma desatención, afirma no-verificabilidad»*—. Las seis que faltan se
+escriben igual.
+
+### ¿Parametrizar como SAT gran parte de la normativa de Supabase? — **NO.** Y por qué
+
+**La mayor parte del corpus es Derecho** —definiciones, competencias, procedimientos—. **Una norma sólo
+produce una SAT si pasa tres preguntas:**
+
+| | pregunta | si la respuesta es no |
+|---|---|---|
+| **1** | ¿impone al GAD una **obligación medible**? | es contexto: alimenta la `CNO`, no una señal |
+| **2** | ¿tiene **umbral, plazo o condición verificable**? | es métrica: puede vivir en una `RO` sin producir SAT |
+| **3** | ¿su incumplimiento es **anticipable con evidencia que QUIRA pueda adquirir**? | no puede ser señal preventiva — sería una alarma sin prueba |
+
+**Sólo si pasa las tres:** `CNO` → `RO` con `produce:` → SAT.
+
+**Por qué no parametrizar en masa — tres razones:**
+
+- **Fatiga de alertas.** Cientos de señales equivalen a ninguna: nadie las lee, y la que importa se
+  pierde entre las demás.
+- **Saltaría el nivel de la `RO`.** Convertiría Derecho en control sin operacionalizarlo, que es
+  exactamente lo que `ADR-038` prohíbe: sin `RO` no hay umbral justificado ni frontera interpretativa.
+- **`C4` ya mostró el costo.** `SAT-IV` y `SAT-V` son señales cuya condición no gobernaba el veredicto.
+  **Más señales sin `RO` son más de lo mismo, a escala.**
+
+### Cómo se procede — finito y en orden
+
+| paso | qué | alcance |
+|---|---|---|
+| **1** | **las 6 SAT huérfanas**: pasar cada una por las tres preguntas · si sobrevive, **escribirle su `RO` con `produce:`** con el molde de `RO-VIII-003` · si no, **retirarla** | **seis decisiones, no cientos** |
+| **2** | **`SAT-IV` y `SAT-V`**: ya tienen `RO`, pero cargan los defectos de `C4` *(`1 − Ti`; «sin datos = 0»)* → **se corrigen dentro de su `RO`**, no en el Excel suelto | dos |
+| **3** | **las 15 `RO` existentes**: revisar cuáles tienen umbral y **podrían** producir una señal que hoy no existe — **sólo si pasan las tres preguntas** | revisión acotada |
+| ⛔ | **nunca al revés**: no se parte del corpus hacia las SAT | — |
+
+**Con eso, el gate `check_sat_brn` —que hoy informa y no bloquea— puede pasar a modo estricto cuando
+las huérfanas lleguen a cero**, tal como su propio diseño lo previó.
+
+## 6 · Y la finalidad, dicha por la dirección
 
 ## 6 · Y la finalidad, dicha por la dirección
 
