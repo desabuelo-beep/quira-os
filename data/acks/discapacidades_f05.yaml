@@ -49,7 +49,7 @@ EVIDENCIA:
 
 CONSECUENCIA:
   descripcion: >
-    Incumplimiento del 4% es infracción expresa (LOD Art. 563). Sanción: multa.
+    Incumplir el porcentaje de inclusión laboral es infracción gravísima (LODISC Art. 116 `c695612e6a41`). [Corregido 2026-09-18: antes citaba un «Art. 563» que no existe; la LODISC termina en el Art. 117.]
     El CONADIS puede iniciar proceso administrativo sancionatorio.
     Si el incumplimiento es sistemático, aplica responsabilidad administrativa
     del Director de Talento Humano (LOC-CGE_45).
@@ -203,7 +203,7 @@ CONSECUENCIA:
     La no emisión de la ordenanza de accesibilidad constituye omisión directa del mandato legal.
     El Concejo Municipal y el Alcalde tienen responsabilidad institucional por la omisión.
     La persona con discapacidad puede ejercer acción de protección (CE Art. 88).
-    El CONADIS puede sancionar administrativamente al GAD (LOD Art. 563).
+    Impedir la accesibilidad es infracción gravísima (LODISC Art. 116 `c695612e6a41`); el procedimiento está en los Arts. 102–111 (órgano competente por verificar). [Corregido 2026-09-18: antes citaba un «Art. 563» inexistente.]
   tipo: accion-constitucional
   organo_sancionador:
     - CONADIS

@@ -6226,7 +6226,7 @@ decisión que la dirección había tomado por conocimiento del terreno.
 | **Planificación** *(sección Trayectoria)* | **mensual** · LOTAIP 24 `0e2435346ae1` | PDOT **plurianual** · POA **anual** — COOTAD 233 `1522597f54b1`: antes del 10 de septiembre | ? | PDOT · POA *(vía `T3`)* | avance de metas (`H11b`, `H16b_IPE`) | `m_planificacion` · `plan_render` | ? no evaluado |
 | **Transparencia** | **mensual** · LOTAIP 19 y 24 | mensual | calificación por mes *(2025 y meses 1-5 de 2026, según `BOOT`)* | portal de la DPE | cumplimiento de publicación | `p07_transparencia` · agente d07 | ? no evaluado en este corte |
 | **Participación y Control Social** | anual | **anual** — ~~COOTAD 266~~ ⛔ *falsación 43*: la periodicidad la fijan **LOPC 95 · RES-CPCCS-RC-2026 Art. 5 y su cronograma para GAD** (`§5-duoquinquagies`) | fidelidad **«corte 2024»** · serie 2023-2025 | informes de rendición · actas | fidelidad narrativa · circuito CPCCS | `m_rdc` | ⚠️ el año se declara **al pie**, **no en la síntesis** donde se publica el 91 % *(`C4-P2`)* |
-| **Grupos de Atención Prioritaria** | **mensual** · LOTAIP 19 *(presupuesto por programa, con ingresos)* | **anual** — COOTAD 249 se verifica **en la aprobación del presupuesto** | ? | presupuesto publicado mes a mes | *(candidato: 10 % de ingresos no tributarios)* | — | — **aún no hay indicador** |
+| **Grupos de Atención Prioritaria** | **mensual** · LOTAIP 19 *(presupuesto por programa, con ingresos)* | **anual** — COOTAD 249 se verifica **en la aprobación del presupuesto** | ? | presupuesto publicado mes a mes | *(candidato: 10 % de ingresos no tributarios)* | — | ~~aún no hay indicador~~ ⛔ *falsación 44*: el indicador **existe** en el circuito `GAP_10PCT` (`IND_G10P_01`) — y su denominador no es el de la norma (`§5-terquinquagies`) |
 | **Ecosistema Municipal** *(transversal)* | **mensual** · LOTAIP 29 `570b34e6cc32` *(empresas públicas)* | anual con ejecución mensual | cortes por entidad al primer trimestre | ? | `Ti` por entidad | Concejo · holding | ? |
 | **Gobernanza del Mandato** | ? | **por período de gobierno** | ? | plan de trabajo · PDOT | congruencia promesa↔plan | `m_mandato` | ? |
 | **Cobertura · Económico · Ambiental** | ? — su fuente es estadística y diagnóstico del PDOT, **no normada por la LOTAIP en este corte** | multianual *(censos, diagnósticos)* | ? | ? | ? | ? | ? |
@@ -6255,12 +6255,19 @@ eventual indicador o señal   ←  sin saltar directamente de la norma al SAT
 > **La ley obliga a una cadencia mensual (LOTAIP 19), y el mes que el motor declara se escribe a mano.**
 > Es exactamente la forma de `C4`: la propiedad **existe** en el motor, pero **no la gobierna la fuente**
 > que la ley establece.
+>
+> **Precisión del colega, acogida** *(`§5-quaterquinquagies`)*: la formulación demostrada es más
+> estrecha — *la fuente normativa establece una periodicidad mensual de publicación, mientras que el
+> estado temporal del motor (`Mes_Activo`) aparece declarado a mano y **no se ha demostrado una
+> derivación gobernada** entre el corte de la evidencia y ese estado*. **La norma no decide la
+> implementación**: derivación automática, metadato de corte que viaja con el dato, resolutor temporal
+> central o una combinación se decide en cirugía.
 
 ### Lo que la capa temporal añade a la Matriz Maestra
 
 | artefacto | V | acción |
 |---|---|---|
-| `H07_S5!B22` `Mes_Activo` | ⛔ literal a mano rotulado «(auto)» | **RECONSTRUIR**: derivar el mes del corte de la fuente, no escribirlo |
+| `H07_S5!B22` `Mes_Activo` | ⛔ literal a mano rotulado «(auto)» | **RECONSTRUIR** la relación gobernada entre el corte de la evidencia y el estado temporal — *el mecanismo se decide en cirugía, no desde la norma* |
 | bloque `financiero` del snapshot | ⛔ corte distinto (2026-03) del vigente | **RECONSTRUIR** *(ya en la fila de derivados)* |
 | agente d02 · `absorcion_ti_pct` | ⛔ viaja sin corte | **ELEVAR**: el corte y su periodicidad viajan con el valor |
 | `m_rdc` · síntesis | ⛔ publica el 91 % sin su año | **RECORTAR** la ambigüedad: el año va junto a la cifra |
@@ -6348,6 +6355,9 @@ LOPC ni la resolución del CPCCS en el 09.** Es el mismo hueco que produjo mi er
 
 > **Consecuencia para QUIRA 7:** ninguna de las tres capas se hereda **literal**. Se hereda **la cadena**,
 > y cada eslabón pasa por el corpus (Regla 3) antes de entrar.
+>
+> ✅ **Corregidas** por orden de la dirección, junto con todas las que encontró el barrido completo:
+> `§5-terquinquagies`.
 
 ### 3 · La cadena de cada dominio de QUIRA 7
 
@@ -6434,10 +6444,177 @@ LPEVM · LOIEME · CEDAW.
 | **establecido** | cada dominio tiene su cadena **desde la Constitución**, derivada de las capas que QUIRA ya tiene; los artículos con huella se leyeron en el corpus |
 | **lo que falta** | cuatro dominios **sin CNO** (Cobertura · Económico · Grupos de Atención Prioritaria · Ambiental): su cadena existe en ACK y QLEP, **no en la BRN** · las 4 CNO de Transparencia, fuera del grafo · LOPC 92 · 95 · RES Art. 5 y el cronograma, sin encadenar en `CNO-IX-001` |
 | **no se tocó** | el canon (`docs/brn`), el grafo, los ACK, el QLEP (congelado) ni el manifiesto · **no entra ninguna norma nueva: todo lo citado ya está en el corpus** |
-| **a la mesa, cuando se abra la cirugía** | (a) si `CNO-IX-001` incorpora la periodicidad (LOPC 95 · RES Art. 5 · cronograma): **toca el canon sellado y requiere ratificación** · (b) qué numeración de dominios gobierna el manifiesto · (c) las CNO de los cuatro dominios sin cadena, una por una y con el filtro de tres preguntas |
+| **a la mesa, cuando se abra la cirugía** | (a) si `CNO-IX-001` incorpora la periodicidad (LOPC 95 · RES Art. 5 · cronograma): **toca el canon sellado y requiere ratificación** · ~~(b) qué numeración de dominios gobierna el manifiesto~~ **(b) resuelta por el colega: ninguna** — QUIRA 7 define las realidades y las numeraciones anteriores pasan a ser **proveniencia** (`§5-quaterquinquagies`) · (c) las CNO de los cuatro dominios sin cadena, una por una y con el filtro de tres preguntas |
 
 Las tres decisiones pendientes de la dirección (`RO-VIII-004` · retiro de SAT-I, VII y VIII · definición
 de SAT-III) **siguen igual**.
+
+## 5-terquinquagies · **CORRECCIÓN NORMATIVA DE LAS CAPAS HEREDADAS** — y el mecanismo para que no se repita *(orden de la dirección)*
+
+> **Javo:** *«Ud asume y no lee… Debe hacer algo para que ya no pase eso»* · *«corregir esas partes
+> donde se cita mal los artículos… en un ecosistema que se sustenta de la normativa jurídica vigente,
+> eso es falsear la verdad»* · *«en derecho nada redunda: si hay que incorporar artículos que no hemos
+> tomado en cuenta, hay que hacerlo»*.
+
+### La causa, sin rodeos
+
+El error es mío y tiene un mecanismo preciso: **cito desde lo que recuerdo en lugar de leer el rector y el
+corpus.** Un recordatorio no lo corrige: el aviso «¿consultaste el índice maestro?» se disparó decenas de
+veces en esta misma sesión y la falsación 43 ocurrió igual. **Lo que falta no es una advertencia más, es una
+verificación de lo que se escribe, en el momento en que se escribe.**
+
+### El mecanismo — cinco piezas, en el repositorio
+
+| pieza | qué hace | cuándo actúa |
+|---|---|---|
+| `scripts/normativa/verificar_citas.py` *(sólo lectura)* | **1** cada huella corresponde al artículo citado · **2** cada artículo citado existe en el corpus · **3** si la línea trata la materia de una CNO y cita un artículo que ninguna CNO encadena: *¿rector, eslabón faltante o concordancia?* | a demanda |
+| hook `PostToolUse` *(local, `.claude/settings.json`)* | revisa **lo recién escrito** en `.md`/`.yaml`: **bloquea** si hay huella falsa o artículo inexistente; **avisa** si falta el rector | después de cada edición |
+| `check_health` **[6/6]** | revisa PANORAMA, QLEP, ACK, QTMP y BRN — **57 archivos** | antes de cada commit *(obligatorio)* · en CI: «2 — no determinable» |
+| `CLAUDE.md` · PROHIBICIONES | *«citar un artículo sin leer su rector y el corpus»* | al arrancar cada sesión |
+| `tests/test_verificar_citas.py` | **11 pruebas** que reproducen los errores reales de hoy — incluida la falsación 43 | en la suite |
+
+**Probado:** ante *«la rendición de cuentas es anual según COOTAD 266»* el hook bloquea y devuelve la
+cadena de `CNO-IX-001` completa; ante un texto correcto no dice nada.
+
+⚠️ **Límite declarado:** el verificador prueba **huella, existencia y pertenencia a la cadena**; **no prueba
+que una paráfrasis diga lo que el artículo dice.** Eso sólo lo prueba la lectura contra el texto —el
+barrido de hoy—. Por eso la regla de escritura queda así: **cita literal con su huella; toda paráfrasis o
+interpretación, marcada como tal.**
+
+### El barrido — universo declarado
+
+**93 átomos ACK · las citas de norma primaria del QLEP · 109 eslabones de las 16 CNO · las 24 condiciones de
+LOTAIP 19 del grafo · los circuitos QTMP.** Todo contra el corpus vectorizado (94 normas · 13 147 fragmentos).
+
+| capa | resultado | corrección |
+|---|---|---|
+| **BRN** · 16 CNO | ✅ **109 de 109 sumillas coinciden con su artículo.** El canon está limpio — salvo el mapa de numerales de `CNO-VII-001` *(abajo)* | ninguna |
+| **QLEP** | **8 textos presentados como literales no son el texto de su artículo** — 5 no aparecen en ninguna parte del corpus (COOTAD 57 · 228 · 300 · 302 · LOC-CGE 12), 1 era de la LOTAIP derogada (LOTAIP 7), 2 eran paráfrasis ampliadas (COOTAD 249 · 304) · **2 descripciones de otra materia** (COOTAD 198 · COPLAFIP 44) · **3 numeraciones erradas**: el texto atribuido a CE 209 es del **CE 207** `fa7fe58c151b` · CE 264 núm. 8 → **núm. 2** · NCI 600-01 → **600** | **v1.1**: su propia regla la autoriza (*«v1.1 — solo si un error factual normativo es identificado»*). Texto literal con huella; **las preguntas bautismales no se tocaron** · 13 de 13 citas literales verificadas |
+| **ACK** · artículo equivocado | LOSNCP 21 → **22** (el PAC `1d6c1b3ae153`; el 21 es el portal) · LOSNCP 22 → **23** (estudios `3cd06a225dc5`; la certificación presupuestaria es el **24** `c18eee97ef76`) · LOSEP 4 → **3** (ámbito) · LOSEP 22 → **23** (derechos; el 22 son deberes) · LOSEP 42 → **43** (sanciones; el 42 son faltas) · LOTAIP 19 núm. 21 → **núm. 18** (convenios) | átomos renumerados, texto literal con huella, `ID_ANTERIOR` para la trazabilidad |
+| **ACK** · el texto dice otra cosa | LOSNCP 106 tipifica infracciones **de proveedores** (el átomo lo extendía a servidores y a la CGE) · COA 14 es el principio de **juridicidad** · CE 32: la interpretación *«el GAD puede proveer salud a los GAP»* iba como texto de la Constitución, y **COOTAD 138** `10684e6e6766` habilita **infraestructura y equipamientos**, no la prestación del servicio | texto literal · la interpretación queda **marcada como interpretación** |
+| **artículos inexistentes** | «LOD Art. **563**» (la LODISC termina en el 117 → la infracción es el **Art. 116** `c695612e6a41`) · «LOTAIP Art. **47**» (la LOTAIP vigente termina en el 44 → las sanciones son el **Art. 42** `ae8004ee019f`) | corregidos |
+| **QTMP** | circuito de agua: «LOSNCP Art. 21» para el PAC → **22** · *«obligación de publicación **trimestral**»* → **mensual** (LOTAIP 19) · un átomo de convenios usado como «información del servicio» → átomo general del art. 19 · circuito de transparencia: solicitudes «Art. 20» → **Arts. 32–38** | corregidos |
+| **NCI** | el corpus **no conserva los códigos** de las NCI: los códigos de los 7 átomos no son verificables | se añade la **huella del título** verificado y se declara el código como no verificado |
+| **propagación** | **101 referencias en 12 archivos** + 7 identificadores compuestos + 1 relación reencaminada (la publicación del PAC la ordena LOSNCP 22, no LOTAIP 19) | aplicada · 25 YAML válidos · verificador en 0 hallazgos |
+
+### Lo que no se tocó, y por qué
+
+| dónde | qué dice | por qué no | qué sigue |
+|---|---|---|---|
+| **`CNO-VII-001`** · `observa_capas` *(canon sellado)* | `numeral: "21"` · `ack: LOTAIP_19_21` para convenios | tocarlo **caduca el sello** de la dirección | **propuesta de diff, 2 líneas:** `"21"` → `"18"` · `LOTAIP_19_21` → `LOTAIP_19_18` — **para ratificar y resellar** |
+| Gold Master · `SAT_Catalogo` | 6 de 10 SAT citan artículos que no dicen lo que el catálogo afirma (`§5-septquatrigies`) | Regla 1: el Excel se corrige **sobre copia, con evidencia** | en la **versión 7** del Excel |
+| `docs/corpus_externo/*` · `docs/adr/*` | citas históricas (p. ej. `LOSNCP_21` en el modelo causal v1.0) | son registro de época, no afirmación vigente | ninguna |
+| `data/ack_registry.json` | `LOTAIP_47` | ya declara *«Art. 47 no encontrado en corpus»* | al regenerarse, apuntar al 42 |
+| `data/centrality_results.json` | ids antiguos | es **evidencia computada** del `ADR-019` | ninguna |
+
+### ⚠️ Falsación 44, mía — y un hallazgo que el barrido destapó
+
+En la capa temporal escribí que Grupos de Atención Prioritaria *«aún no tiene indicador»*. **Falso:** el
+circuito `GAP_10PCT` lo define (`IND_G10P_01`, con 20,84 % codificado y 14,19 % devengado). No lo leí.
+
+Y al leerlo aparece esto **(se registra; no se repara)**:
+
+| la norma · COOTAD 249 `c0c0fce0f126` | el indicador · `IND_G10P_01` |
+|---|---|
+| *«por lo menos, el diez por ciento (10%) de sus **ingresos no tributarios**»* | `(partida_GAP_codificada / **presupuesto_GAD_no_salarial_codificado**) × 100` |
+
+**El denominador no es el de la norma.** Es la forma de `C4` —**sustitución semántica**—: el 10 % existe en
+el indicador, pero no mide la obligación que dice medir. Un «verde» con ese denominador no acredita el
+cumplimiento del COOTAD 249.
+
+## 5-quaterquinquagies · **MATRIZ MAESTRA · CAPA DE REALIDADES** — cadena normativa y gobierno temporal *(consolidación de `E` pedida por el colega)*
+
+> **La regla al frente** *(colega)*: **una periodicidad normativa no se hereda como etiqueta del
+> indicador. Se conserva como propiedad de la cadena temporal que vincula fuente, objeto, corte,
+> evidencia, cálculo y consumidor. Cuando las periodicidades difieren, la cadena declara expresamente
+> su relación.** *El tiempo deja de ser metadato del dato y pasa a ser parte de su significado.*
+>
+> **Y la regla de arquitectura** *(colega)*: QUIRA 7 define las **realidades administrativas**. Las capas
+> anteriores —QLEP `Dom01–12`, el manifiesto, los scripts del grafo, los agentes `d01–d13`— **no compiten
+> por ser «la verdadera»: pasan a ser proveniencia** de la cadena de cada realidad. **No nace una cuarta
+> taxonomía.**
+
+Esta capa **no reemplaza** la matriz de artefactos (`§5-quinquatrigies`, E/V/C/G/acción): se le **superpone**.
+Aquella dice qué se conserva, eleva o retira; ésta dice **qué realidad observa cada dominio, bajo qué norma
+y en qué régimen temporal**.
+
+### Las siete propiedades temporales
+
+| propiedad | pregunta |
+|---|---|
+| **periodicidad de la fuente** | ¿cuándo obliga la norma a publicar, remitir o actualizar la evidencia? |
+| **periodicidad del objeto** | ¿cuál es el ciclo propio de lo que se mide? |
+| **corte observado** | ¿qué período representa el dato concreto? |
+| **estado de la evidencia** | ¿la evidencia de ese corte existe y fue localizada? |
+| **régimen de cálculo** | ¿el indicador es mensual, anual, acumulado, plurianual? |
+| **consumidor** | ¿quién recibe el valor, y con qué contexto temporal? |
+| **regla de alineación** *(aporte del colega)* | ¿qué ocurre cuando la periodicidad de la fuente y la del objeto difieren? |
+
+### A · Las ocho realidades: cadena normativa y proveniencia
+
+| QUIRA 7 | realidad que observa | cadena normativa *(Constitución → ley → reglamento o resolución)* | rector | proviene de | construcción |
+|---|---|---|---|---|---|
+| **Planificación Estratégica e Inversión Pública** | cumplimiento del PDOT por la vía de la **inversión**, y la eficiencia directiva por dirección y por técnicos | CE 241 · 280 · 264 núm. 1 · 271 → COPLAFIP 12 · 44 · 96 · 119 · COOTAD 215 · 233 · 234 · 245 · 192 · 198 · COOTAD-2026 198.1 · 198.2 · 198.6 → LOSNCP 22 · 23 · 24 | `CNO-I-001` · `CNO-IV-001` | QLEP Dom01 · 02 · 03 · 06 · agentes `d01` · `d02` | iniciada |
+| **Gobernanza del Mandato** | congruencia entre la promesa inscrita y la gestión | CE 61 · 105 → COD 97 → COOTAD 58 · 60 → COPLAFIP 41 · 42 → LOPC 89 · 90 *(+ LOPC 92, eslabón faltante)* | `CNO-III-001` | agente `d03` | iniciada |
+| **Transparencia** | cumplimiento de la publicación obligatoria y calidad de lo publicado — **y capa de alimentación mensual** | CE 18 · 91 · 238 → LOTAIP 7 · 8 · 9 · 10 · 13 · 19 · 24 · 29 · 32–38 · 42 → RLOTAIP 10–15 → instructivos de la DPE | `CNO-VII-001…004` | QLEP Dom07 · agente `d07` | iniciada · la más sana |
+| **Participación Ciudadana y Control Social** | incidencia de la ciudadanía en la inversión · rendición de cuentas | *Participación:* CE 95 · 61 · 100 → LOPC 56–77 · COOTAD 238 · 304–312 · COPLAFIP 13 · 28 · 29 · 46 — *Rendición:* CE 100 · 208 → LOPC 89–95 → RES-CPCCS-RC-2026 5 · 10 · 13 · 15 · 21 | `CNO-VIII-000…007` *(propuesta)* · `CNO-IX-001` | QLEP Dom08 · 09 · agentes `d08` · `d09` | iniciada |
+| **Cobertura de Servicios e Infraestructura** | acceso equitativo y continuo a los servicios de competencia municipal | CE 12 · 30 · 31 · 264 núm. 3 · 4 · 7 · 13 → COOTAD 55 · 137 · 138 | — *(sólo ACK y QLEP)* | QLEP Dom10 · circuito `AGUA_POTABLE` | **parcial**: motor, página y circuito; sin BRN ni agente |
+| **Desarrollo Económico Territorial** | condiciones que el GAD controla para la actividad económica | CE 276 núm. 2 · 264 núm. 2 → COOTAD 54 *(+ LOIEME · LOTUGS en el corpus)* | — | QLEP Dom11 *(módulo deshabilitado)* | **no iniciada** |
+| **Grupos de Atención Prioritaria** | la función ejecutora del GAD hacia los grupos prioritarios | CE 35 · 11 → COOTAD 249 → CONA 12 · LOPAM 14 · 84 · LODISC 47 · 56 · 58 · 116 · LMH 165–167 · LPEVM 38 | — *(sólo ACK y QLEP)* | QLEP Dom12 · circuito `GAP_10PCT` · `p19_genero` | **parcial**: circuito e indicador; sin BRN ni agente |
+| **Sostenibilidad y Resiliencia Ambiental** | gestión ambiental y de riesgos de competencia municipal | CE 14 · 389 · 390 · 264 núm. 4 → COOTAD 136 · 140 → COA-AMB 27 → RCOA-AMB | — | canon `d13` · `H20_ICODS` | **no iniciada** |
+
+> *(Dirección: «hay dominios en los que no se ha construido nada… no se los ha empezado». En esta matriz
+> **«no iniciada» no es un defecto: es un estado.** Esos dominios estaban en construcción cuando se abrió
+> `REARQ`.)*
+
+### B · Las ocho realidades: régimen temporal
+
+| QUIRA 7 | fuente | objeto | corte observado | evidencia | cálculo | regla de alineación | consumidores | **gobierno temporal** |
+|---|---|---|---|---|---|---|---|---|
+| **Planificación e Inversión** | **mensual** — LOTAIP 19 `810ae0fcffd1` · PAC en los 15 primeros días de enero — LOSNCP 22 `1d6c1b3ae153` · *remisión institucional trimestral (COOTAD 168): otro canal* | PDOT plurianual · POA anual (COOTAD 233 `1522597f54b1`: antes del 10 de septiembre) · presupuesto por ejercicio | `H07_S5` «Abril 2026 (Ene–Abr)» · `Mes_Activo = 4` a mano · bloque `financiero` 2026-03 | cédula en el motor para el corte declarado ✅ · correspondencia con la publicación mensual ❓ | `Ti` acumulado al corte · ICPI anual | acumulado mensual comparado con meta anual **sólo con guarda de proporcionalidad** | ICPI · agente `d02` · cajón · Concejo · IA | **PARCIAL** — demostrado en `H12!B34` y `RC-7.3`; ausente en agente, cajón y Concejo (`C4-P1`) |
+| **Mandato** | plan de trabajo inscrito **una vez**, con la candidatura (COD 97) · rendición anual sobre ese plan (LOPC 92 `122bd1a01eb5` · 95 `e9b95d33a298`) | período de gobierno | ❓ | plan de gobierno (en el corpus) · PDOT | congruencia promesa ↔ plan | ¿fracción del período transcurrido? **❓ no declarada** | `m_mandato` · agente `d03` | **NO EVALUADO** |
+| **Transparencia** | **mensual** — LOTAIP 19 · 24 `0e2435346ae1` · empresas públicas LOTAIP 29 `570b34e6cc32` | mensual: cada mes es una obligación exigible | calificación 2025 y meses 1–5 de 2026 | portal de la DPE ✅ · web del GAD (`T3`) ❓ | por período exigible (`RO-VII-001`) | el mes calificado debe alimentar a los otros dominios **con su mes** — ❓ | `p07` · agente `d07` · **los otros siete dominios** | **DECLARADO** en `RO-VII-001` · no evaluado en `C4` |
+| **Participación** *(sección)* | ❓ | ciclo anual del presupuesto participativo (LOPC 67 · 71 · COOTAD 238) | medición 2026-07-29: 162 de 191 demandas vinculantes sin correlato (84,8 %) | actas de presupuesto participativo, audiencias y cabildos — las escaneadas requieren OCR | incidencia sobre demandas vinculantes | ❓ | `m_participacion` | **NO EVALUADO** |
+| **Rendición** *(sección)* | **anual por ciclo** — LOPC 95 · RES-CPCCS-RC-2026 Art. 5 `2be5516ecdaf` · cronograma para GAD `7606911e9f04` | ejercicio fiscal (1 de enero a 31 de diciembre) | fidelidad 91 % — fuente *«Rendición de Cuentas **2024** (video oficial)»*: **el ejercicio no se declara** | informes RC-GAD 2023 · 2024 · 2025 en el corpus; el de 2025 declara *«período fiscal 2025»* ✅ | fidelidad por afirmación (9) | **ejercicio → cronograma → fase → evidencia** *(abajo)* | `m_rdc` · `p17_rdc` | ⛔ el año va al pie y no en la síntesis (`C4-P2`) · la cifra **no declara su ejercicio** |
+| **Cobertura** | ❓ | multianual (censo, NBI) | ❓ | `H42_IET` · `SCHEMA_NBI` · circuito `AGUA_POTABLE` | ❓ | ❓ | `p10_territorio` | **NO EVALUADO** |
+| **Económico** | — | — | — | — | — | — | — | **NO INICIADO** |
+| **Grupos de Atención Prioritaria** | **mensual** — LOTAIP 19 (presupuesto por programa) | **anual** — COOTAD 249 se verifica al aprobar el presupuesto | `IND_G10P_01`: 20,84 % codificado · 14,19 % devengado *(corte no declarado en el circuito)* | cédula SIGEF, según el propio indicador | anual · semestral (adultos mayores) · anual (inclusión laboral 4 %) | **LOTAIP mensual → acumulación → condición anual del COOTAD 249 → indicador anual con actualización mensual** *(colega)* | `p19_genero` | ⛔ **el denominador del indicador no es el de la norma** (`§5-terquinquagies`) |
+| **Ambiental** | — | diagnóstico del PDOT *(plurianual)* | — | `H20_ICODS` · `SCHEMA_RIESGOS` | — | — | — | **NO INICIADO** |
+
+### C · Transversales, por separado
+
+| transversal | temporalidad | estado |
+|---|---|---|
+| **Ecosistema Municipal** | cada entidad publica su ejecución **mensual** (LOTAIP 29) y **rinde cuentas por sí misma** (RES-CPCCS-RC-2026 Art. 13) · cortes por entidad al primer trimestre | **ELEVAR** a atributo obligatorio de toda observación · gobierno temporal ❓ |
+| **Equidad y desagregación** | hereda la del dato que desagrega · `PSG` (`H16c`) · LPEVM · LOIEME · CEDAW | ❓ |
+| **Síntesis institucional** (ICPI) | anual, con guarda temporal `H12!B34` | ✅ **el único gobierno temporal demostrado** (`C4-P0`) |
+| **GeoTwin** | la de cada capa territorial | ❓ no evaluada |
+| **Cooperación** | — | **producto**: fuera de `E` |
+| **Infraestructura de adquisición** | debe registrar el **canal** (publicación ciudadana o remisión institucional), la **vía**, la **versión** y la **huella** | **ELEVAR** |
+
+### D · Rendición de cuentas: la traza que el colega exige antes de afirmar un ciclo
+
+| paso | dato | estado |
+|---|---|---|
+| ejercicio | 2025, del 1 de enero al 31 de diciembre (RES-CPCCS-RC-2026 Art. 5) | norma ✅ |
+| cronograma | febrero–marzo planificación · abril informe · **mayo deliberación** · junio seguimiento, **de 2026** | norma ✅ *(tabla del reglamento)* |
+| fase y fecha reales en Montecristi | — | **❓ no verificada** |
+| evidencia disponible | RC-GAD-2025 en el corpus, que declara *«período fiscal 2025»* | ✅ verificada |
+| lo que publica QUIRA | fidelidad 91 %, fuente *«Rendición de Cuentas 2024 (video oficial)»* | ⛔ **no declara su ejercicio** |
+
+> **Lo demostrado no es «el ciclo exigible es 2025».** Lo demostrado es más estrecho y más útil: **la
+> evidencia del ejercicio 2025 existe en el corpus, y la cifra publicada no declara a qué ejercicio
+> pertenece.** *(Se retira la inferencia de `§5-duoquinquagies` como hecho: queda como traza abierta en
+> un paso.)*
+
+### Lo que sigue: la cirugía, con esta matriz como plano
+
+`E` queda **consolidado**; no se abre más excavación. La cirugía decide, propiedad por propiedad, **qué entra
+al nuevo Gold Master, qué sale, qué se deriva y qué debe viajar obligatoriamente con cada valor** —el corte,
+su periodicidad y su canal, en primer lugar—.
+
+**Pendientes de la dirección:** las tres decisiones de `§5-quattrigies` (sin cambios) · y **resellar
+`CNO-VII-001`** con la corrección del numeral de convenios (21 → 18).
 
 ## 6 · Y la finalidad, dicha por la dirección
 

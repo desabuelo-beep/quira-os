@@ -317,7 +317,7 @@ RELACIONES:
   - LOTAIP_9
   - LOTAIP_19
   - LOC-CGE
-  - LOSEP_42
+  - LOSEP_43
 
 META:
   estado: v1.2
@@ -495,7 +495,7 @@ RELACIONES:
   - LOTAIP_19_8
   - LOTAIP_19_10
   - LOTAIP_19_12
-  - LOTAIP_19_21
+  - LOTAIP_19_18
 
 META:
   estado: v1.2
@@ -886,20 +886,21 @@ META:
   revisado_por_experto: false
 
 ---
-ACK_ID: LOTAIP_19_21
+ACK_ID: LOTAIP_19_18
 CLASE: ACK_OBLIGACION
 TIPO: obligacion
-NOMBRE: Transparencia Activa Ítem 21 Convenios Nacionales e Internacionales
+NOMBRE: Transparencia Activa Numeral 18 Convenios Nacionales e Internacionales
+ID_ANTERIOR: LOTAIP_19_21   # 2026-09-18: en la LOTAIP vigente los convenios son el núm. 18 (conteo en el corpus y 24 condiciones curadas de d07); el núm. 21 trata de políticas públicas
 OBSERVA_CAPA:
   - contratacion
 # Observa cumplimiento de: COOTAD_55.n (cooperación internacional) + CE_264.14
-# La obligación de gestionar cooperación es del COOTAD/CE. LOTAIP_19_21 la hace verificable.
+# La obligación de gestionar cooperación es del COOTAD/CE. LOTAIP_19_18 la hace verificable.
 FUENTE:
   norma: Ley Orgánica de Transparencia y Acceso a la Información Pública
   sigla: LOTAIP
   jerarquia: 1
   articulo: "19"
-  inciso: "21"
+  inciso: "18"   # corregido 2026-09-18 (antes "21")
   fecha_vigencia: "2023-02-07"
 
 ACTOR_OBLIGADO:
@@ -954,7 +955,7 @@ IMPLEMENTACION_TERRITORIAL:
     - Convenios-MIES-MSP-MAATE-publicados
   indicador:
     - DOM12_CONVENIOS_GAP_VIGENTES
-    - DOM07_CUMPLIMIENTO_LOTAIP_19_21
+    - DOM07_CUMPLIMIENTO_LOTAIP_19_18
 
 DOMINIOS_QUIRA:
   - Dom12
@@ -1185,7 +1186,7 @@ RELACIONES:
   - LOTAIP_39
   - LOTAIP_19
   - CE_233
-  - LOSEP_42
+  - LOSEP_43
 
 META:
   estado: v1.2

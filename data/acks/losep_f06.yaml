@@ -10,7 +10,7 @@
 # Ámbito GAD Municipal: TOTAL — todos los servidores municipales bajo régimen público
 # Atoms:     3 (Art.4 · Art.22 · Art.42)
 # Propósito: Completar Dom05 — talento humano como capa institucional del GAD
-#            Resolver forward references (LOSEP_22, LOSEP_42 referenciados en 15+ átomos)
+#            Resolver forward references (LOSEP_23, LOSEP_43 referenciados en 15+ átomos)
 #            Densificar circuito H4_INSTITUCION_EJECUCION
 # ============================================================
 # Nota arquitectónica QNKC-002: El servidor público (Actor lateral) ejecuta procesos C4
@@ -19,12 +19,13 @@
 # enlace entre la obligación institucional y la consecuencia real.
 # ============================================================
 # Forward references resueltas:
-#   LOSEP_22 → referenciado en: ce_art226_264.yaml (2 veces)
-#   LOSEP_42 → referenciado en: ce_art226_264.yaml (3×), lotaip_f02.yaml (5×),
+#   LOSEP_23 → referenciado en: ce_art226_264.yaml (2 veces)
+#   LOSEP_43 → referenciado en: ce_art226_264.yaml (3×), lotaip_f02.yaml (5×),
 #              loc_cge_f04.yaml (1×), cona_f05.yaml (indirecto), h1.yaml (nota)
 # ============================================================
 
-ACK_ID: LOSEP_4
+ACK_ID: LOSEP_3
+ID_ANTERIOR: LOSEP_4   # 2026-09-18: el ámbito es el Art. 3; el 4 define a las y los servidores públicos
 CLASE: ACK_PRINCIPIO
 TIPO: distribucion
 NOMBRE: Ámbito LOSEP — GADs como Empleadores del Régimen de Servicio Público
@@ -33,7 +34,8 @@ FUENTE:
   norma: Ley Orgánica del Servicio Público
   sigla: LOSEP
   jerarquia: 1
-  articulo: "4"
+  articulo: "3"
+  huella_corpus: 26ce0a4b54e3
   inciso: ""
   fecha_vigencia: "2010-10-06"
 
@@ -47,7 +49,11 @@ ACTOR_BENEFICIARIO:
   - Ciudadanía (garantía de servicio profesional e imparcial)
 
 OBLIGACION: >
-  La LOSEP se aplica a todas las servidoras y servidores de las instituciones del Estado,
+  [TEXTO LITERAL · LOSEP Art. 3 · corpus 26ce0a4b54e3] Las disposiciones de la presente ley
+  son de aplicación obligatoria, en materia de recursos humanos y remuneraciones, en toda la
+  administración pública, que comprende: […] Las entidades que integran el régimen autónomo
+  descentralizado y regímenes especiales; […]
+  [Síntesis de la extracción original, NO literal:] La LOSEP se aplica a todas las servidoras y servidores de las instituciones del Estado,
   incluyendo los Gobiernos Autónomos Descentralizados. Los GADs están obligados a regir
   todas sus relaciones laborales con el personal de planta conforme a las disposiciones
   de la LOSEP: ingreso por concurso de méritos y oposición, evaluación periódica del
@@ -90,8 +96,8 @@ RELACIONES:
   - CE_225
   - CE_229
   - COOTAD_54
-  - LOSEP_22
-  - LOSEP_42
+  - LOSEP_23
+  - LOSEP_43
 
 VIGENCIA:
   estado: vigente
@@ -128,7 +134,8 @@ META:
 
 ---
 
-ACK_ID: LOSEP_22
+ACK_ID: LOSEP_23
+ID_ANTERIOR: LOSEP_22   # 2026-09-18: los derechos son el Art. 23; el 22 son los deberes
 CLASE: ACK_DERECHO
 TIPO: derecho
 NOMBRE: Derechos de las Servidoras y Servidores Públicos Municipales
@@ -137,7 +144,8 @@ FUENTE:
   norma: Ley Orgánica del Servicio Público
   sigla: LOSEP
   jerarquia: 1
-  articulo: "22"
+  articulo: "23"
+  huella_corpus: 4eead294951d
   inciso: ""
   fecha_vigencia: "2010-10-06"
 
@@ -150,15 +158,13 @@ ACTOR_BENEFICIARIO:
   - Servidoras y servidores municipales
 
 OBLIGACION: >
-  [PENDIENTE VERIFICACIÓN LITERAL — Art. 22 LOSEP] Las servidoras y servidores públicos
-  tienen derecho a: (a) desempeñar sus funciones en un entorno de trabajo adecuado;
-  (b) percibir una remuneración justa, proporcional a su función, eficiencia y
-  responsabilidades, y en ningún caso inferior a los mínimos establecidos; (c) contar
-  con vacaciones, descanso semanal y licencias con goce de remuneración conforme a la ley;
-  (d) recibir prestaciones sociales y del IESS; (e) no ser removido sino con apego
-  a la ley y con garantías del debido proceso; (f) recibir capacitación y formación
-  continua. El GAD como empleador está obligado a garantizar el ejercicio efectivo de
-  estos derechos.
+  [TEXTO LITERAL · LOSEP Art. 23 · corpus 4eead294951d] Son derechos irrenunciables de las
+  servidoras y servidores públicos: Gozar de estabilidad en su puesto; Percibir una
+  remuneración justa, que será proporcional a su función, eficiencia, profesionalización y
+  responsabilidad. Los derechos y las acciones que por este concepto correspondan a la
+  servidora o servidor, son irrenunciables; Gozar de prestaciones […]
+  [Corrección 2026-09-18: antes se citaba el Art. 22, que regula los DEBERES; la lista
+  anterior (a)–(f) era una paráfrasis no verificada y se retira.]
 
 EVIDENCIA:
   - ROL de pagos y registro de remuneraciones en SIGEF
@@ -194,8 +200,8 @@ RELACIONES:
   - CE_226
   - CE_227
   - CE_229
-  - LOSEP_4
-  - LOSEP_42
+  - LOSEP_3
+  - LOSEP_43
 
 VIGENCIA:
   estado: vigente
@@ -230,7 +236,8 @@ META:
 
 ---
 
-ACK_ID: LOSEP_42
+ACK_ID: LOSEP_43
+ID_ANTERIOR: LOSEP_42   # 2026-09-18: las sanciones son el Art. 43; el 42 tipifica las faltas
 CLASE: ACK_OBLIGACION
 TIPO: sancion
 NOMBRE: Régimen Disciplinario — Escala de Sanciones al Servidor Público
@@ -239,7 +246,9 @@ FUENTE:
   norma: Ley Orgánica del Servicio Público
   sigla: LOSEP
   jerarquia: 1
-  articulo: "42"
+  articulo: "43"
+  huella_corpus: 153ac8c56e96
+  concordancia: "LOSEP 42 · ee1ddaec4efc — faltas disciplinarias"
   inciso: ""
   fecha_vigencia: "2010-10-06"
 
@@ -252,14 +261,14 @@ ACTOR_BENEFICIARIO:
   - Ciudadanía (garantía servicio libre de abusos)
 
 OBLIGACION: >
-  [PENDIENTE VERIFICACIÓN LITERAL — Art. 42 LOSEP — puede ser Art. 41 en versiones previas]
-  El régimen disciplinario contempla las siguientes sanciones en orden de gravedad:
-  (a) amonestación verbal; (b) amonestación escrita; (c) sanción pecuniaria administrativa
-  (multa de hasta el 10% del sueldo mensual); (d) suspensión temporal sin goce de
-  remuneración; (e) destitución del cargo. La sanción de destitución requiere apertura
-  de sumario administrativo con plenas garantías del debido proceso (CE Art. 76). La CGE
-  determina la responsabilidad; la autoridad nominadora ejecuta la sanción. El servidor
-  sancionado puede impugnar ante el Tribunal de lo Contencioso Administrativo.
+  [TEXTO LITERAL · LOSEP Art. 43 · corpus 153ac8c56e96] Las sanciones disciplinarias por
+  orden de gravedad son las siguientes: Amonestación verbal; Amonestación escrita; Sanción
+  pecuniaria administrativa; Suspensión temporal sin goce de remuneración; y, Destitución.
+  […] La sanción pecuniaria administrativa o multa no excederá el monto del diez por ciento
+  de la remuneración, y se impondrá por reincidencia en faltas leves en el cumplimiento de
+  sus deberes. […]
+  [Corrección 2026-09-18: antes se citaba el Art. 42 (faltas). Las afirmaciones sobre la
+  CGE y el Tribunal Contencioso no constan en el Art. 43 y se retiran hasta verificarlas.]
 
 EVIDENCIA:
   - Sumario administrativo iniciado con notificación al servidor
@@ -297,7 +306,7 @@ RELACIONES:
   - LOTAIP_42
   - CE_229
   - CE_233
-  - LOSEP_4
+  - LOSEP_3
   - LOSNCP_106
 
 VIGENCIA:
@@ -341,22 +350,22 @@ META:
 # ÍNDICE F0.6 LOSEP — 3 átomos
 # ============================================================
 #
-# LOSEP_4   — Art. 4  — Ámbito (GADs incluidos) — Dom05/Dom01 — revisado: true
-# LOSEP_22  — Art. 22 — Derechos servidores     — Dom05       — revisado: false
-# LOSEP_42  — Art. 42 — Régimen disciplinario   — Dom05/Dom01 — revisado: false
+# LOSEP_3   — Art. 3  — Ámbito (GADs incluidos) — Dom05/Dom01 — verificado en corpus 2026-09-18 (antes LOSEP_4)
+# LOSEP_23  — Art. 23 — Derechos servidores     — Dom05       — verificado en corpus 2026-09-18 (antes LOSEP_22)
+# LOSEP_43  — Art. 43 — Sanciones disciplinarias — Dom05/Dom01 — verificado en corpus 2026-09-18 (antes LOSEP_42)
 #
 # Forward references resueltas:
-#   LOSEP_22 (de ce_art226_264.yaml líneas 69, 135) → resuelto
-#   LOSEP_42 (de 8+ átomos existentes en corpus)   → resuelto
+#   LOSEP_23 (de ce_art226_264.yaml líneas 69, 135) → resuelto
+#   LOSEP_43 (de 8+ átomos existentes en corpus)   → resuelto
 #   LOSEP    (genérico, de nci_f04.yaml)            → parcialmente resuelto
 #
 # Circuitos densificados:
-#   H4_INSTITUCION_EJECUCION: LOSEP_4 + LOSEP_42 son el sustrato institucional
-#   H5_CONTROL_EJECUCION: LOSEP_42 es el eslabón sancionatorio Dom05→Dom02
+#   H4_INSTITUCION_EJECUCION: LOSEP_3 + LOSEP_43 son el sustrato institucional
+#   H5_CONTROL_EJECUCION: LOSEP_43 es el eslabón sancionatorio Dom05→Dom02
 #
 # Nota arquitectónica QNKC-002:
-#   LOSEP_42 es el "eslabón de enforcement" que hace efectiva la cadena de control.
-#   Sin LOSEP_42 (amenaza de consecuencia real), las obligaciones de NCI, LOC-CGE y
+#   LOSEP_43 es el "eslabón de enforcement" que hace efectiva la cadena de control.
+#   Sin LOSEP_43 (amenaza de consecuencia real), las obligaciones de NCI, LOC-CGE y
 #   LOTAIP son normativas sin dientes. Este es el corazón del circuito H4.
 #
 # Corpus post-F0.6-LOSEP: 89+3 = 92 ACK + 14 REL-V + 23 REL-H = 129 artefactos

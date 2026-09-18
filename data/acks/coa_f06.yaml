@@ -24,7 +24,7 @@
 ACK_ID: COA_14
 CLASE: ACK_PRINCIPIO
 TIPO: principio
-NOMBRE: Principio de Legalidad Administrativa — COA como Desarrollo Operativo de CE_226
+NOMBRE: Principio de juridicidad — COA como desarrollo operativo de CE_226
 
 FUENTE:
   norma: Código Orgánico Administrativo
@@ -45,7 +45,11 @@ ACTOR_BENEFICIARIO:
   - Administrados (personas que interactúan con la administración)
 
 OBLIGACION: >
-  [PENDIENTE VERIFICACIÓN LITERAL — Art. 14 COA] En concordancia con el principio
+  [TEXTO LITERAL · COA Art. 14 · corpus 250d52bc48ac] Principio de juridicidad. La actuación
+  administrativa se somete a la Constitución, a los instrumentos internacionales, a la ley,
+  a los principios, a la jurisprudencia aplicable y al presente Código. La potestad
+  discrecional se utilizará conforme a Derecho.
+  [INTERPRETACIÓN de la extracción original — NO es texto del artículo:] En concordancia con el principio
   constitucional de legalidad (CE Art. 226), el COA Art. 14 desarrolla en sede
   procedimental el mandato de que la administración pública solo puede actuar dentro
   del ámbito de sus competencias atribuidas. Todo acto administrativo del GAD Municipal
@@ -65,7 +69,7 @@ CONSECUENCIA:
     Los actos administrativos dictados fuera de competencia o sin habilitación legal
     son nulos de pleno derecho. La nulidad puede declararse de oficio o a petición de
     parte ante los Tribunales de lo Contencioso Administrativo. El servidor que emite
-    el acto nulo incurre en responsabilidad administrativa (LOSEP_42) y puede activar
+    el acto nulo incurre en responsabilidad administrativa (LOSEP_43) y puede activar
     acción de repetición contra su patrimonio personal (CE Art. 11.9).
   tipo: nulidad
   organo_sancionador:
@@ -88,8 +92,8 @@ RELACIONES:
   - CE_226
   - CE_227
   - LOC-CGE_21
-  - LOSEP_4
-  - LOSEP_42
+  - LOSEP_3
+  - LOSEP_43
 
 VIGENCIA:
   estado: vigente
@@ -138,7 +142,7 @@ META:
 #   COA participación ciudadana — relevante para Dom08
 #   COA silencio administrativo — relevante para Dom01/Dom08 (derechos del administrado)
 #   COA recursos administrativos — relevante para Dom01
-#   COA procedimiento administrativo sancionador — enlaza con LOSEP_42
+#   COA procedimiento administrativo sancionador — enlaza con LOSEP_43
 #
 # Nota: El COA tiene ~450 artículos. Los más relevantes para QUIRA y que
 # generarían nuevas REL-H son los del capítulo de participación ciudadana

@@ -28,7 +28,8 @@ Detalle: `docs/adr/ADR-023` (3 niveles, inmutable).
 ## PROHIBICIONES
 NUNCA: hardcodear sin snapshot · agregar un dominio que no pase el **Protocolo de Expansión Ontológica**
 (6 condiciones · Constitución §Mutabilidad) · agregar items al sidebar Ejecutivo · exponer QTMP/ACK IDs en UI ·
-lenguaje acusatorio (incumplió/violó/ilegal) · inventar artículos de ley · construir un motor de
+lenguaje acusatorio (incumplió/violó/ilegal) · **citar un artículo sin leer su rector
+y el corpus** (`verificar_citas.py`) · construir un motor de
 cálculo paralelo al Gold Master.
 
 ## ARQUITECTURA (detalle en `docs/REFERENCE.md`)
@@ -44,4 +45,4 @@ Streamlit + Python + Claude Haiku + Neo4j + Supabase. 3 Cerebros: C1 Corpus · C
 NO crees nuevos docs de estado — BOOT.md es la única fuente viva.
 
 ---
-*CLAUDE.md v4.2 · mapa de archivos → LAZY LOAD en `governance/BOOT.md` · Dylus Lab © 2026*
+*CLAUDE.md v4.3 · LAZY LOAD en `governance/BOOT.md` · Dylus Lab © 2026*

@@ -66,7 +66,7 @@ RELACIONES:
   - CE_264
   - COOTAD_54
   - COA_14
-  - LOSEP_22
+  - LOSEP_23
 
 META:
   estado: v1.2
@@ -132,7 +132,7 @@ DOMINIOS_QUIRA:
 RELACIONES:
   - CE_226
   - COOTAD_3
-  - LOSEP_22
+  - LOSEP_23
   - LOC-CGE_21
   - LOTAIP_1
 
@@ -203,7 +203,7 @@ DOMINIOS_QUIRA:
 RELACIONES:
   - CE_226
   - CE_231
-  - LOSEP_42
+  - LOSEP_43
   - LOC-CGE
 
 META:
@@ -274,7 +274,7 @@ RELACIONES:
   - CE_230
   - CE_233
   - LOC-CGE
-  - LOSEP_42
+  - LOSEP_43
 
 META:
   estado: v1.2
@@ -349,7 +349,7 @@ RELACIONES:
   - CE_231
   - LOC-CGE
   - LOSNCP_106
-  - LOSEP_42
+  - LOSEP_43
 
 META:
   estado: v1.2

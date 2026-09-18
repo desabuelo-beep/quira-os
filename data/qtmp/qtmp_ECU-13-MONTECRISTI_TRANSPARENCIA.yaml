@@ -26,10 +26,10 @@
 #   CE_91    → Acción de acceso a información pública como garantía jurisdiccional
 #   CE_226   → Principio de legalidad — solo competencias atribuidas por ley
 #   COOTAD_302 → Obligación sustantiva de rendición de cuentas anual del Alcalde
-#   LOSNCP_21  → Obligación sustantiva: publicar PAC en SERCOP antes del 15-ene
+#   LOSNCP_22  → Obligación sustantiva: publicar PAC en SERCOP antes del 15-ene
 #   COOTAD_215 → Obligación sustantiva: información presupuestaria verificable
 #   LOTAIP_19  → Ventana de observación: 25 numerales de publicación activa (LOTAIP 2.0)
-#   LOTAIP_47  → Consecuencia: sanciones por incumplimiento (DPE activa)
+#   LOTAIP_42  → Consecuencia: sanciones por incumplimiento (DPE activa)
 #
 # Fuente orgánica local:
 #   Resolución Administrativa No. 040-2025-ALC-LJTL-GADMCM
@@ -138,7 +138,7 @@ SERVICIO_PUBLICO:
     - CE_91
     - CE_226
     - COOTAD_302
-    - LOSNCP_21
+    - LOSNCP_22
     - COOTAD_215
   modalidad: directa
   nota_modalidad: >
@@ -241,14 +241,14 @@ PROCESOS:
     tipo_proceso: publicacion
     descripcion: >
       Publicación del Plan Anual de Contratación (PAC) en el portal del
-      SERCOP antes del 15 de enero de cada año (LOSNCP Art. 21). Publicación
+      SERCOP antes del 15 de enero de cada año (LOSNCP Art. 22 · corregido 2026-09-18: antes decía Art. 21). Publicación
       de todos los procesos de contratación, pliegos, contratos adjudicados,
       y actas de entrega-recepción. El portal SERCOP es la fuente observable:
       cualquier ciudadano puede verificar si el GADMCM cumple con la
       obligación de transparencia en contratación. Contratos no publicados
       carecen de eficacia jurídica.
     actor_ref: Unidad de Gestión de Proyectos / Compras Públicas GADMCM
-    base_normativa: LOSNCP_21
+    base_normativa: LOSNCP_22
     estados_posibles: [PUBLICADO, ATRASADO, INCOMPLETO, INCOMPRENSIBLE, NO_PUBLICADO]
     estado_actual: verificar
     frecuencia_obligatoria: permanente
@@ -350,7 +350,7 @@ EVIDENCIAS:
     proceso_ref: PRO_TRANS_03_MCR
     obligatoria: true
     fuente_sistema: SERCOP (Portal de Compras Públicas)
-    vinculo_ack: LOSNCP_21
+    vinculo_ack: LOSNCP_22
     url: "https://www.compraspublicas.gob.ec"
     estado_documento: verificar
 
@@ -416,18 +416,19 @@ CONTROLES:
   - id: CTL_TRANS_01_MCR
     nombre: DPE — Defensoría del Pueblo (Transparencia y LOTAIP)
     tipo_control: regulatorio_constitucional
-    fuente: LOTAIP Art. 47 / Ley Orgánica del Defensor del Pueblo
+    fuente: LOTAIP Art. 42 / Ley Orgánica del Defensor del Pueblo   # corregido 2026-09-18: la LOTAIP vigente termina en el Art. 44; no existe Art. 47
     organo_control: Defensoría del Pueblo del Ecuador (DPE)
     descripcion: >
       La DPE es el órgano primario de control del cumplimiento de LOTAIP.
       Recibe denuncias ciudadanas por incumplimiento de publicación activa
-      (Art. 19) o por negativa/demora en atención de solicitudes (Art. 20).
+      (Art. 19) o por negativa/demora en atención de solicitudes (Arts. 32–38, transparencia pasiva · corregido: antes decía Art. 20).
       Puede: iniciar investigación de oficio, citar al RAIP, requerir
       información, emitir resolución vinculante, y remitir a la SENRES/
       LOSEP para responsabilidad administrativa del funcionario infractor.
-      LOTAIP Art. 47 establece las sanciones específicas (suspensión,
-      multa, destitución según gravedad).
-    vinculo_ack: LOTAIP_47
+      LOTAIP Art. 42 `ae8004ee019f`: el incumplimiento «dará lugar a las sanciones
+      administrativas establecidas en la Ley Orgánica del Servicio Público» (escala en
+      LOSEP Art. 43). [Corregido 2026-09-18: antes citaba un Art. 47 que no existe.]
+    vinculo_ack: LOTAIP_42
     estado_control: activo
 
   - id: CTL_TRANS_02_MCR
@@ -527,7 +528,7 @@ OBSERVABILIDAD:
     verificacion_anonima: true
 
   - id: OBS_TRANS_03_MCR
-    fuente_ack: LOSNCP_21
+    fuente_ack: LOSNCP_22
     tipo_publicacion: portal_contratacion
     descripcion: >
       SERCOP — contratación pública GADMCM verificable por cualquier
@@ -542,7 +543,7 @@ OBSERVABILIDAD:
     verificacion_anonima: true
 
   - id: OBS_TRANS_04_MCR
-    fuente_ack: LOTAIP_47
+    fuente_ack: LOTAIP_42
     tipo_publicacion: registro_quejas
     descripcion: >
       Sistema de quejas y denuncias de la DPE — cualquier ciudadano
@@ -823,9 +824,9 @@ RESULTADOS:
 # Posición de LOTAIP en la cadena (corrección arquitectónica ADR-012):
 #   LOTAIP_19 → C4 (ventana de observación de los procesos)
 #   LOTAIP_20 → C4 (proceso de atención SAIP)
-#   LOTAIP_47 → C6 (control/sanción DPE)
+#   LOTAIP_42 → C6 (control/sanción DPE)
 #   LOTAIP NO está en C2 (Competencial) — no crea la obligación sustantiva
-#   C2 = COOTAD_302 + LOSNCP_21 + COOTAD_215 (obligaciones sustantivas)
+#   C2 = COOTAD_302 + LOSNCP_22 + COOTAD_215 (obligaciones sustantivas)
 #
 # Nodos Neo4j a crear:
 #   1 × C3ServicioPublico (SP_TRANS_MCR)
@@ -841,9 +842,9 @@ RESULTADOS:
 #   CE_18      -[:MATERIALIZA_VIA]-> SP_TRANS_MCR
 #   CE_91      -[:HABILITA]->        SP_TRANS_MCR
 #   COOTAD_302 -[:HABILITA]->        SP_TRANS_MCR
-#   LOSNCP_21  -[:HABILITA]->        PRO_TRANS_03_MCR
+#   LOSNCP_22  -[:HABILITA]->        PRO_TRANS_03_MCR
 #   LOTAIP_19  -[:OBSERVA]->         OBS_TRANS_01_MCR
-#   LOTAIP_47  -[:CONTROLA]->        CTL_TRANS_01_MCR
+#   LOTAIP_42  -[:CONTROLA]->        CTL_TRANS_01_MCR
 #   COOTAD_215 -[:HABILITA]->        PRO_TRANS_02_MCR
 #   COOTAD_302 -[:ACTIVA]->          PRO_TRANS_05_MCR
 #   LOC-CGE_21 -[:CONTROLA]->        CTL_TRANS_02_MCR

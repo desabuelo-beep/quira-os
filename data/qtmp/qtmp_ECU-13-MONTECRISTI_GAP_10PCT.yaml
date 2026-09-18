@@ -490,7 +490,7 @@ OBSERVABILIDAD:
       Nómina institucional GADMCM (SIGEF) — verificación del 4% de
       inclusión laboral de personas con discapacidad. Observable cruzando
       nómina GADMCM con el registro de servidores con discapacidad calificada
-      por CONADIS. Obligación LOSEP_4 + LOD_47 combinadas.
+      por CONADIS. Obligación LOSEP_3 + LOD_47 combinadas.
     url_portal: "https://www.finanzas.gob.ec/sigef"
     frecuencia_real: anual
 
@@ -784,13 +784,13 @@ RESULTADOS:
 # Cadena predictiva ahora trazable:
 #
 #   Dom05 (talento humano) → débil estructura institucional
-#     ↓ LOSEP4_COMPLEMENTA_COOTAD198
+#     ↓ LOSEP3_COMPLEMENTA_COOTAD198
 #   Dom02 (presupuesto) → ejecución baja (D3=59.85%)
 #     ↓ COOTAD215 (ejecución) vs COOTAD249 (10% GAP)
 #   Dom12 (GAP) → partida no ejecutada → brecha de cobertura
 #     ↓ IND_G10P_01_MCR < 10% → ROJO → glosa CGE potencial
 #   Dom08 (participación) → proceso participativo no refleja GAP
-#     ↓ COOTAD304_COMPLEMENTA_LOSNCP21
+#     ↓ COOTAD304_COMPLEMENTA_LOSNCP22
 #   Dom03 (contratación) → PAC sin proyectos GAP
 #     ↓ resultado territorial
 #   C9: RES_G10P_01-05_MCR → Montecristi 2025

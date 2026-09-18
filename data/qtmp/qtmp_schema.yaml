@@ -190,7 +190,7 @@ EVIDENCIAS:
     fuente_sistema: "[SIGEF | SERCOP | LOTAIP | fisico | SIGOB | SNPD | INEC | registro-propio]"
 
     vinculo_ack: "[ACK_ID que exige esta evidencia]"
-    # Ejemplo: LOSNCP_22 exige el contrato / LOSNCP_21 exige estar en PAC
+    # Ejemplo: LOSNCP_23 exige estudios completos / LOSNCP_22 exige estar en el PAC
 
     url: null
     # URL de acceso público si está disponible. null si no.
@@ -235,7 +235,7 @@ OBSERVABILIDAD:
     # Ejemplo: OBS_AP_001_MCR
 
     fuente_ack: "[ACK_ID del mandato de publicación]"
-    # Ejemplo: LOTAIP_19_6 / LOTAIP_19_8 / LOTAIP_19_21
+    # Ejemplo: LOTAIP_19_6 / LOTAIP_19_8 / LOTAIP_19_18
 
     tipo_publicacion: "[mensual | anual | por-proceso | por-evento | permanente]"
 

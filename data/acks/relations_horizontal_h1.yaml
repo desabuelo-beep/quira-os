@@ -157,14 +157,20 @@
 # Pregunta: ¿La contratación pública afecta la participación y la transparencia?
 # ============================================================
 
-- REL_ID: COOTAD304_COMPLEMENTA_LOTAIP19_21
+- REL_ID: COOTAD304_COMPLEMENTA_LOSNCP22_PUBLICACION
+  REL_ID_ANTERIOR: COOTAD304_COMPLEMENTA_LOTAIP19_21
+  # Corrección 2026-09-18 (PANORAMA §5-terquinquagies): la versión anterior atribuía la
+  # publicación del PAC a LOTAIP 19 «núm. 21». Verificado en el corpus: el núm. 21 no trata
+  # del PAC y el de convenios es el 18; la publicación del PAC la ordena LOSNCP 22
+  # `1d6c1b3ae153` (página web de la entidad, dentro de los quince días de enero).
+  # En sustancia coincide con COOTAD304_COMPLEMENTA_LOSNCP22 (h3); se conserva por trazabilidad.
   ORIGEN: COOTAD_304
-  DESTINO: LOTAIP_19_21
+  DESTINO: LOSNCP_22
   TIPO: COMPLEMENTA
   FUERZA: CAUSAL
   EVIDENCIA:
     - COOTAD_304
-    - LOTAIP_19_21
+    - LOSNCP_22
     - LOTAIP_19_8
   CIRCUITO:
     id: H3_CONTRATACION_PARTICIPACION
@@ -179,8 +185,8 @@
     revisado_por_experto: true
   NOTA: >
     El presupuesto participativo (COOTAD_304 — Dom08) debe traducirse en el Plan Anual
-    de Contratación (PAC). LOTAIP_19_21 obliga a publicar el PAC como instrumento de
-    transparencia. Si las prioridades validadas en el proceso participativo Dom08 no
+    de Contratación (PAC). LOSNCP 22 obliga a publicar el PAC en la página web de la
+    entidad; LOTAIP 19 núm. 8 obliga a publicar los procesos de contratación. Si las prioridades validadas en el proceso participativo Dom08 no
     aparecen en el PAC publicado Dom03/Dom07, el mandato participativo no tuvo efecto
     real en la asignación contractual. Causal: la calidad del proceso Dom08 predice
     la alineación del PAC Dom03. La distancia entre las dos listas es una métrica
@@ -298,7 +304,7 @@
 #   LOD58_COMPLEMENTA_COOTAD137          — C2/Dom12 → C3/Dom04 — SISTEMICA
 #
 # H3: CONTRATACION_PARTICIPACION (Dom03↔Dom08)
-#   COOTAD304_COMPLEMENTA_LOTAIP19_21    — C2/Dom08 → C7/Dom03 — CAUSAL
+#   COOTAD304_COMPLEMENTA_LOSNCP22_PUBLICACION — C2/Dom08 → C7/Dom03 — CAUSAL (antes …LOTAIP19_21)
 #   COOTAD302_COMPLEMENTA_LOTAIP19_8     — C2/Dom08 → C7/Dom03 — SISTEMICA
 #
 # H4: INSTITUCION_EJECUCION (Dom05↔Dom02)

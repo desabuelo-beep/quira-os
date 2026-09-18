@@ -110,6 +110,7 @@ FUENTE:
   sigla: NCI-CGE
   jerarquia: 3
   articulo: "200-02"
+  huella_corpus: 15079b69adb7   # título «Administración estratégica» verificado 2026-09-18; el corpus NO conserva el código NCI: el código queda sin verificar
   inciso: ""
   fecha_vigencia: "2009-12-14"
 
@@ -194,6 +195,7 @@ FUENTE:
   sigla: NCI-CGE
   jerarquia: 3
   articulo: "200-04"
+  huella_corpus: 500f04c870aa   # título «Estructura orgánica» verificado 2026-09-18; el corpus NO conserva el código NCI: el código queda sin verificar
   inciso: ""
   fecha_vigencia: "2009-12-14"
 
@@ -268,6 +270,7 @@ FUENTE:
   sigla: NCI-CGE
   jerarquia: 3
   articulo: "300"
+  huella_corpus: 5f07e7039f82   # título «300 EVALUACIÓN DEL RIESGO» verificado 2026-09-18; el corpus NO conserva el código NCI: el código queda sin verificar
   inciso: "Evaluación del Riesgo (300-01 a 300-04)"
   fecha_vigencia: "2009-12-14"
 
@@ -348,6 +351,7 @@ FUENTE:
   sigla: NCI-CGE
   jerarquia: 3
   articulo: "400-01"
+  huella_corpus: 5a94da8f3f23   # título «Separación de funciones y rotación de labores» verificado 2026-09-18; el corpus NO conserva el código NCI: el código queda sin verificar
   inciso: "Separación de funciones y rotación de labores"
   fecha_vigencia: "2009-12-14"
 
@@ -432,6 +436,7 @@ FUENTE:
   sigla: NCI-CGE
   jerarquia: 3
   articulo: "600"
+  huella_corpus: 2f80927905e6   # título «600 SEGUIMIENTO» verificado 2026-09-18; el corpus NO conserva el código NCI: el código queda sin verificar
   inciso: "Seguimiento continuo o en operación"
   fecha_vigencia: "2009-12-14"
 
@@ -514,6 +519,7 @@ FUENTE:
   sigla: NCI-CGE
   jerarquia: 3
   articulo: "402-02"
+  huella_corpus: d40583bc2762   # título «Control previo al compromiso» verificado 2026-09-18; el corpus NO conserva el código NCI: el código queda sin verificar
   inciso: "Control previo al compromiso"
   fecha_vigencia: "2009-12-14"
 
@@ -593,6 +599,7 @@ FUENTE:
   sigla: NCI-CGE
   jerarquia: 3
   articulo: "402-03"
+  huella_corpus: 23b0f0c58ab6   # título «Control previo al devengado» verificado 2026-09-18; el corpus NO conserva el código NCI: el código queda sin verificar
   inciso: "Control previo al devengado"
   fecha_vigencia: "2009-12-14"
 

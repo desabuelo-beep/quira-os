@@ -3,8 +3,8 @@
 ### Los 12 Dominios del Gemelo Institucional de Montecristi
 
 **Estado**: CONGELADO  
-**Versión**: 1.0  
-**Fecha**: 2026-06-01  
+**Versión**: 1.1 — corrección normativa del 2026-09-18 (ver §Versionado)  
+**Fecha**: 2026-06-01 · v1.1: 2026-09-18  
 **Proyecto**: QUIRA Gov — Dylus Lab  
 **Clasificación**: Interno · QUIRA Operaciones  
 
@@ -81,7 +81,7 @@ Norma complementaria obligatoria: **COOTAD Art. 54 lit. a** (función del GAD-M:
 
 > **COOTAD Art. 215** — El presupuesto de los gobiernos autónomos descentralizados se ajustará a los planes regionales, provinciales, cantonales y parroquiales respectivamente, en el marco del Plan Nacional de Desarrollo, sin menoscabo de sus competencias y autonomía. El presupuesto de los gobiernos autónomos descentralizados deberá ser elaborado participativamente, de acuerdo con lo prescrito por la Constitución y la ley.
 
-Norma complementaria: **COOTAD Art. 198** (presupuesto de inversión; vinculación con POA y PAC).
+Norma complementaria: **COOTAD Art. 198** `d1356370a4bd` — *«Destino de las transferencias.- Las transferencias que efectúa el Gobierno Central a los gobiernos autónomos descentralizados podrán financiar hasta el treinta por ciento (30%) de gastos permanentes, y un mínimo del setenta por ciento (70%) de gastos no permanentes…»* La regla de asignación mínima prioritaria vigente es **COOTAD-2026 Art. 198.1** (`CNO-IV-001`). *(v1.1: la v1.0 lo describía como «presupuesto de inversión; vinculación con POA y PAC», que el artículo no dice.)*
 
 **N2 — Pregunta bautismal:**
 
@@ -102,9 +102,11 @@ Norma complementaria: **COOTAD Art. 198** (presupuesto de inversión; vinculaci�
 
 **N1 — Norma primaria:**
 
-> **COOTAD Art. 300** — Los gobiernos autónomos descentralizados contarán con un consejo de planificación, que estará presidido por el ejecutivo del GAD e integrado por representantes de la sociedad civil, según lo establezca la ley; ejercerá la facultad de control social y la contraloría ciudadana sobre el cumplimiento de los planes de desarrollo y de ordenamiento territorial.
+> **COOTAD Art. 300** `d0a387760026` — Regulación de los consejos de planificación.- Los consejos de planificación participativa de los gobiernos autónomos descentralizados participarán en el proceso de formulación, seguimiento y evaluación de sus planes y emitirán resolución favorable sobre las prioridades estratégicas de desarrollo como requisito indispensable para su aprobación ante el órgano legislativa correspondiente. Los consejos de planificación de los gobiernos autónomos descentralizados estarán presididos por sus máximos representantes. Su conformación y atribuciones serán definidas por la ley.
+>
+> *(v1.1: la v1.0 citaba aquí un texto que no aparece en el COOTAD ni en el COPLAFIP del corpus.)*
 
-Norma complementaria: **CE Art. 241** (GADs generan planes de desarrollo articulados con sistema nacional de planificación). Instrumento técnico: **CPFP Art. 44** (seguimiento y evaluación de planes — *pendiente atomización en F0.7*).
+Norma complementaria: **CE Art. 241** `c4565a2cab21` — *«La planificación garantizará el ordenamiento territorial y será obligatoria en todos los gobiernos autónomos descentralizados.»* Instrumento técnico: **COPLAFIP Art. 44** `d8f56a1d3206` — *disposiciones generales sobre los planes de ordenamiento territorial de los GAD* (así lo encadena `CNO-I-001`). *(v1.1: la v1.0 atribuía al Art. 44 «seguimiento y evaluación de planes», que no es su materia; el artículo de seguimiento y evaluación queda por identificar en el corpus.)*
 
 **N2 — Pregunta bautismal:**
 
@@ -125,9 +127,11 @@ Norma complementaria: **CE Art. 241** (GADs generan planes de desarrollo articul
 
 **N1 — Norma primaria:**
 
-> **LOC-CGE Art. 12** — El control interno comprenderá las acciones de carácter administrativo, operativo, financiero, contable y presupuestario que realizan las autoridades, funcionarios y servidores de las entidades por sus propias acciones, con el objeto de que los recursos institucionales sean administrados con eficiencia, efectividad, economía, equidad, legalidad y transparencia. El control interno es previo, continuo y posterior.
+> **LOC-CGE Art. 12** `52784afdf867` — Tiempos de control.- El ejercicio del control interno se aplicará en forma previa, continua y posterior: Control previo.- Los servidores de la institución, analizarán las actividades institucionales propuestas, antes de su autorización o ejecución, respecto a su legalidad, veracidad, conveniencia, oportunidad, pertinencia y conformidad con los planes y presupuestos institucionales; Control continuo.- […]; y, Control posterior.- […]
+>
+> *(v1.1: la v1.0 citaba un texto que no aparece en la LOC-CGE del corpus. El concepto de control interno está en el **Art. 9** `fbe807bde571`.)*
 
-Norma complementaria: **NCI 600-01** (seguimiento continuo — "Los directivos de la entidad, establecerán procedimientos de seguimiento continuo, evaluaciones periódicas o una combinación de ambas para asegurar la eficacia del sistema de control interno").
+Norma complementaria: **NCI 600 · Seguimiento** `2f80927905e6` — *«La máxima autoridad y los directivos de la entidad establecerán procedimientos de seguimiento continuo, evaluaciones periódicas o una combinación de ambas para asegurar la eficacia del sistema de control interno.»* *(v1.1: texto literal; el corpus conserva el código 600, no el 600-01.)*
 
 **N2 — Pregunta bautismal:**
 
@@ -150,9 +154,9 @@ Norma complementaria: **NCI 600-01** (seguimiento continuo — "Los directivos d
 
 > **CE Art. 315** — El Estado constituirá empresas públicas para la gestión de sectores estratégicos, la prestación de servicios públicos, el aprovechamiento sustentable de recursos naturales o de bienes públicos y el desarrollo de otras actividades económicas.
 
-Norma habilitante específica GAD: **COOTAD Art. 57 lit. h** — Al Concejo Municipal le corresponde: h) Constituir, suprimir, fusionar y escindir empresas municipales, aprobar sus estatutos, garantías, contratos, así como crear consejos de administración para las mismas, en el marco de los planes de desarrollo cantonal.
+Norma habilitante específica GAD: **COOTAD Art. 57** `4875f6818644` — atribución del concejo municipal: *«Aprobar la creación de empresas públicas o la participación en empresas de economía mixta, para la gestión de servicios de su competencia u obras públicas cantonales, según las disposiciones de la Constitución y la ley.»* *(v1.1: la v1.0 citaba un «lit. h» con un texto que no aparece en el COOTAD del corpus; el corpus no conserva los literales.)*
 
-Norma de gestión: **LOEP Art. 4** — Las empresas públicas son entidades que pertenecen al Estado en los términos que establece la Constitución de la República, personas jurídicas de derecho público, con patrimonio propio, dotadas de autonomía presupuestaria, financiera, económica, administrativa y de gestión, con altos parámetros de calidad y criterios empresariales, económicos, sociales y ambientales.
+Norma de gestión: **LOEP Art. 4** ⚠️ *no verificable — la LOEP no está en el corpus (0 fragmentos, 2026-09-18)* — Las empresas públicas son entidades que pertenecen al Estado en los términos que establece la Constitución de la República, personas jurídicas de derecho público, con patrimonio propio, dotadas de autonomía presupuestaria, financiera, económica, administrativa y de gestión, con altos parámetros de calidad y criterios empresariales, económicos, sociales y ambientales.
 
 **N2 — Pregunta bautismal:**
 
@@ -164,7 +168,7 @@ Norma de gestión: **LOEP Art. 4** — Las empresas públicas son entidades que 
 - C1/C2: CE_315 (parcialmente en F0.1 como principio), COOTAD_57 (*pendiente atomización*)
 - LOEP: pendiente — no en corpus F0.1-F0.6
 - Circuito QTMP: no cerrado — requiere atomización LOEP (F0.8)
-- REL-H activos: H4 (Dom05↔Dom02), H4+ (LOSEP4↔COOTAD198)
+- REL-H activos: H4 (Dom05↔Dom02), H4+ (LOSEP3↔COOTAD198)
 
 **Coherencia crítica**: Dom05 consume Dom02 (recursos) y produce resultados para Dom10 (agua), Dom12 (patronato), Dom04 (empresa aseo). Es el dominio ejecutor del holding.
 
@@ -176,7 +180,7 @@ Norma de gestión: **LOEP Art. 4** — Las empresas públicas son entidades que 
 
 > **CE Art. 226** — Las instituciones del Estado, sus organismos, dependencias, las servidoras o servidores públicos y las personas que actúen en virtud de una potestad estatal ejercerán solamente las competencias y facultades que les sean atribuidas en la Constitución y la ley. Tendrán el deber de coordinar acciones para el cumplimiento de sus fines y hacer efectivo el goce y ejercicio de los derechos reconocidos en la Constitución.
 
-Norma de medición: **COOTAD Art. 228** — Los presupuestos de inversión se formularán aplicando criterios de eficiencia, equidad territorial, densidad de población, pobreza, necesidades básicas insatisfechas y logros de su disminución.
+Norma de medición: **COOTAD Art. 228** `b2c56883a157` — Agrupamiento del gasto.- *«Los egresos del fondo general se agruparán en áreas, programas, subprogramas, proyectos y actividades. En cada programa, subprograma, proyecto y actividad deberán determinarse los gastos corrientes y los proyectos de inversión, atendiendo a la naturaleza económica predominante de los gastos, y deberán estar orientados a garantizar la equidad al interior del territorio de cada gobierno autónomo descentralizado.»* *(v1.1: la v1.0 citaba un texto que no aparece en el COOTAD del corpus.)*
 
 **N2 — Pregunta bautismal:**
 
@@ -185,7 +189,7 @@ Norma de medición: **COOTAD Art. 228** — Los presupuestos de inversión se fo
 *Por qué esta pregunta y no "¿cuál es el índice de cumplimiento?"*: El índice es la respuesta; la pregunta bautismal exige la distribución: no todas las brechas tienen el mismo peso legal ni el mismo impacto territorial. Una brecha en Dom10 (agua) tiene consecuencias jurídicas distintas a una brecha en Dom07 (transparencia). La "salud institucional" no es un número — es la geografía del cumplimiento.
 
 **Estado QLEP:**
-- C1/C2: CE_226 (F0.1), COOTAD_228 (F0.3), COA_14 (F0.6 — principio legalidad administrativa)
+- C1/C2: CE_226 (F0.1), COOTAD_228 (F0.3), COA_14 (F0.6 — principio de juridicidad)
 - Circuito QTMP: **EQUIDAD cerrado** — CE_241 → COOTAD_228 → IRS=79.7% → TGI Dom06
 - REL-H activos: H5 (Dom01↔Dom02 vía control)
 
@@ -199,7 +203,7 @@ Norma de medición: **COOTAD Art. 228** — Los presupuestos de inversión se fo
 
 > **CE Art. 18** — Todas las personas, en forma individual o colectiva, tienen derecho a: 1. Buscar, recibir, intercambiar, producir y difundir información veraz, verificada, oportuna, contextualizada, plural, sin censura previa acerca de los hechos, acontecimientos y procesos de interés general, y a gozar de la libertad de expresión y de opinión.
 
-Norma operativa: **LOTAIP Art. 7** — Por transparencia activa, las instituciones del Estado y las personas jurídicas de derecho privado con participación accionaria mayoritaria del Estado deberán publicar la siguiente información mínima actualizada... (21 numerales). *Corpus F0.2 completo: 14 ACK atoms.*
+Norma operativa: **LOTAIP Art. 19** `810ae0fcffd1` — Transparencia activa.- *«…difundirán a través de un portal informático web de información o a través de los medios que dispongan, y que sean de fácil acceso y comprensión, la siguiente información mínima actualizada mensualmente, que, para efectos de esta Ley, se la considera de naturaleza obligatoria: …»* *Corpus F0.2 completo: 14 ACK atoms.* *(v1.1: la v1.0 citaba el Art. 7 con texto de la LOTAIP anterior a la reforma de 2023; en la LOTAIP vigente el Art. 7 es el derecho de acceso `c00cfe8b0841` y la transparencia activa es el Art. 19. Se retira «21 numerales», no verificado.)*
 
 **N2 — Pregunta bautismal:**
 
@@ -226,7 +230,7 @@ Norma operativa: **LOTAIP Art. 7** — Por transparencia activa, las institucion
 
 > **CE Art. 95** — Las ciudadanas y ciudadanos, en forma individual y colectiva, participarán de manera protagónica en la toma de decisiones, planificación y gestión de los asuntos públicos, y en el control popular de las instituciones del Estado y la sociedad, y de sus representantes, en un proceso permanente de construcción del poder ciudadano.
 
-Norma operativa GAD: **COOTAD Art. 304** — El gobierno autónomo descentralizado municipal establecerá en su presupuesto anual una partida específica destinada a financiar el presupuesto participativo. Los gobiernos autónomos descentralizados harán el llamado público para la presentación de proyectos que puedan ser financiados con estos recursos. *Atom COOTAD_304 en corpus F0.3.*
+Norma operativa GAD: **COOTAD Art. 304** `a1ccfa62c16f` — Sistema de participación ciudadana.- *«Los gobiernos autónomos descentralizados conformarán un sistema de participación ciudadana, que se regulará por acto normativo del correspondiente nivel de gobierno, tendrá una estructura y denominación propias. El sistema de participación ciudadana se constituye para: […] Elaborar presupuestos participativos de los gobiernos; […]»* *Atom COOTAD_304 en corpus F0.3.* *(v1.1: la v1.0 citaba una «partida específica» que no aparece en el artículo.)*
 
 **N2 — Pregunta bautismal:**
 
@@ -237,7 +241,7 @@ Norma operativa GAD: **COOTAD Art. 304** — El gobierno autónomo descentraliza
 **Estado QLEP:**
 - C1/C2: CE_95 (*pendiente atomización F0.7*), COOTAD_304 (F0.3), COOTAD_302 (F0.3)
 - Circuito QTMP: **PARTICIPACION cerrado** — COOTAD_304 → PP-parroquia (C4) → TGI Dom08
-- REL-H activos: H6 (Dom07↔Dom08), H8 (Dom08↔Dom12), H3 (Dom03↔Dom08), H3+ (COOTAD304↔LOSNCP21)
+- REL-H activos: H6 (Dom07↔Dom08), H8 (Dom08↔Dom12), H3 (Dom03↔Dom08), H3+ (COOTAD304↔LOSNCP22)
 
 **Coherencia crítica**: Dom08 depende de Dom07 (información pública previa a participación) y alimenta Dom12 (grupos prioritarios participan para proteger sus derechos).
 
@@ -247,9 +251,11 @@ Norma operativa GAD: **COOTAD Art. 304** — El gobierno autónomo descentraliza
 
 **N1 — Norma primaria:**
 
-> **CE Art. 209** — El Consejo de Participación Ciudadana y Control Social promoverá e incentivará el ejercicio de los derechos relativos a la participación ciudadana, impulsará y establecerá mecanismos de control social en los asuntos de interés público, y designará a las autoridades que le corresponda de acuerdo con la Constitución y la ley.
+> **CE Art. 207** `fa7fe58c151b` — El Consejo de Participación Ciudadana y Control Social promoverá e incentivará el ejercicio de los derechos relativos a la participación ciudadana, impulsará y establecerá mecanismos de control social en los asuntos de interés público, y designará a las autoridades que le corresponda de acuerdo con la Constitución y la ley.
 
-Norma operativa: **COOTAD Art. 302** — Rendición de cuentas. La ciudadanía tiene el derecho de ejercer el control social de la gestión de los gobiernos autónomos descentralizados, con el propósito de evaluar el cumplimiento de los planes de desarrollo, de las metas e indicadores, la pertinencia de las políticas públicas, la gestión de sus recursos financieros... *Atom COOTAD_302 en corpus F0.3.*
+Norma operativa: **COOTAD Art. 302** `30fa6a7bba59` — Participación ciudadana.- *«La ciudadanía, en forma individual y colectiva, podrán participar de manera protagónica en la toma de decisiones, la planificación y gestión de los asuntos públicos y en el control social de las instituciones de los gobiernos autónomos descentralizados y de sus representantes, en un proceso permanente de construcción del poder ciudadano. […]»* *Atom COOTAD_302 en corpus F0.3.*
+
+*(v1.1: la v1.0 atribuía al CE Art. 209 el texto del **Art. 207**, y al COOTAD 302 un texto que no aparece en el corpus. **La cadena rectora vigente de la rendición de cuentas es `CNO-IX-001`**: CE 100 · 208 → LOPC 89 · 90 · 91 · 93 → RES-CPCCS-RC-2026 10 · 13 · 15 · 21, con la periodicidad en LOPC 95 y en el Art. 5 de la resolución.)*
 
 **N2 — Pregunta bautismal:**
 
@@ -258,7 +264,7 @@ Norma operativa: **COOTAD Art. 302** — Rendición de cuentas. La ciudadanía t
 *Por qué esta pregunta y no "¿completamos los 20 ítems CPCCS?"*: Los 20 ítems son la lista de compliance. La pregunta bautismal exige trazabilidad real: para cada compromiso de gestión, ¿existe la cadena norma → POA → presupuesto → contrato → ejecución → resultado → informe? Sin esa cadena, la rendición de cuentas es un reporte sin evidencia verificable.
 
 **Estado QLEP:**
-- C1/C2: CE_209 (*pendiente atomización*), COOTAD_302 (F0.3), COOTAD_300 (F0.3)
+- C1/C2: CE_207 (*pendiente atomización* · v1.0 decía CE_209), COOTAD_302 (F0.3), COOTAD_300 (F0.3)
 - Circuito QTMP: no cerrado específicamente para Dom09
 - REL-H activos: H3 (Dom03↔Dom08 vía LOTAIP19_8↔COOTAD302), H6 (Dom07↔Dom08)
 
@@ -298,7 +304,7 @@ Norma de derecho fundamental: **CE Art. 12** — El derecho humano al agua es fu
 
 Norma habilitante GAD: **COOTAD Art. 54 lit. g** — Las funciones del gobierno autónomo descentralizado municipal comprenden: g) Regular, controlar y promover el desarrollo de la actividad turística cantonal en coordinación con los demás gobiernos autónomos descentralizados, promoviendo especialmente la creación y funcionamiento de organizaciones asociativas y empresas comunitarias de turismo.
 
-Norma complementaria: **CE Art. 264 numeral 8** (planificación, regulación y control del uso del suelo como habilitante de actividad productiva).
+Norma complementaria: **CE Art. 264 numeral 2** `8a610fc989a2` — *«Ejercer el control sobre el uso y ocupación del suelo en el cantón.»* *(v1.1: la v1.0 decía numeral 8, que es el patrimonio arquitectónico, cultural y natural.)*
 
 **N2 — Pregunta bautismal:**
 
@@ -307,7 +313,7 @@ Norma complementaria: **CE Art. 264 numeral 8** (planificación, regulación y c
 *Por qué esta pregunta y no "¿cuántas empresas hay en el cantón?"*: El número de empresas depende de factores nacionales y globales fuera del control municipal. La pregunta bautismal delimita la agencia real del GAD: suelo habilitado, infraestructura disponible, trámites simplificados, encadenamientos promovidos. Esos factores sí son competencia municipal verificable.
 
 **Estado QLEP:**
-- C1/C2: CE_276 (*pendiente atomización*), COOTAD_54 (*pendiente*), CE_264_8 (*pendiente*)
+- C1/C2: CE_276 (*pendiente atomización*), COOTAD_54 (*pendiente*), CE_264_2 (*pendiente* · v1.0 decía CE_264_8)
 - Circuito QTMP: **no existe** — dominio EN CONSTRUCCIÓN · módulo deshabilitado
 - REL-H: sin circuitos horizontales cerrados para Dom11
 
@@ -321,7 +327,7 @@ Norma complementaria: **CE Art. 264 numeral 8** (planificación, regulación y c
 
 > **CE Art. 35** — Las personas adultas mayores, niñas, niños y adolescentes, mujeres embarazadas, personas con discapacidad, personas privadas de libertad y quienes adolezcan de enfermedades catastróficas o de alta complejidad, recibirán atención prioritaria y especializada en los ámbitos público y privado. La misma atención prioritaria recibirán las personas en situación de riesgo, las víctimas de violencia doméstica y sexual, maltrato infantil, desastres naturales o antropogénicos. El Estado prestará especial protección a las personas en condición de doble vulnerabilidad.
 
-Norma de financiamiento: **COOTAD Art. 249** — Los gobiernos municipales tendrán la obligación de asignar en sus presupuestos, de manera prioritaria y progresiva, recursos suficientes para la dotación de infraestructura necesaria para garantizar los derechos de la naturaleza y del buen vivir, y asignarán un porcentaje no inferior al diez por ciento de sus ingresos no tributarios para el financiamiento de la planificación y ejecución de programas sociales para la atención a grupos de atención prioritaria. *Atoms CE_35 (F0.1), COOTAD_249 (F0.3) — corpus completo incluyendo CONA, LOAPAM, LOD, LOMH (F0.5).*
+Norma de financiamiento: **COOTAD Art. 249** `c0c0fce0f126` — Presupuesto para los grupos de atención prioritaria.- *«No se aprobará el presupuesto del gobierno autónomo descentralizado si en el mismo no se asigna, por lo menos, el diez por ciento (10%) de sus ingresos no tributarios para el financiamiento de la planificación y ejecución de programas sociales para la atención a grupos de atención prioritaria.»* *(v1.1: la v1.0 citaba un texto ampliado que no aparece en el artículo.)* *Atoms CE_35 (F0.1), COOTAD_249 (F0.3) — corpus completo incluyendo CONA, LOAPAM, LOD, LOMH (F0.5).*
 
 **N2 — Pregunta bautismal:**
 
@@ -403,7 +409,7 @@ Fuera de MILESTONE_002: Dom11
 
 **Brechas que bloquean los sprints pendientes**:
 - Dom01: requiere CPFP + PDOT Montecristi (F0.7) para cadena causal PLANIFICACION — Sprint 9
-- Dom03: requiere CPFP Art. 44 (F0.7) + Dom01 completo — Sprint 10
+- Dom03: requiere el artículo de seguimiento y evaluación de planes del COPLAFIP (por identificar: el Art. 44 no es) + Dom01 completo — Sprint 10
 - Dom05: requiere atomización LOEP (F0.8) — Sprint 12
 - Dom07: **Layer 2 ✅** (p07_transparencia.py · Sprint 4) — pendiente: Neo4j load + auditoría `transparencia.dpe.gob.ec` para Montecristi (C5a/C5b · OBS-QNKC-02) + evaluación C5c comprensibilidad · N2 v1.0.1 actualizado
 - Dom09: depende Dom01+Dom03+Dom07 completos — Sprint 11
@@ -426,7 +432,7 @@ N1 ✅  →  N2 ✅  →  N3 (Neo4j chain)  →  N4 (dato territorial)  →  N5 
 |---|---|---|---|
 | 1 | Dom07 | Sin circuito — pero corpus LOTAIP completo | Diseñar pregunta QTMP: "¿publicó el numeral X este mes?" |
 | 2 | Dom09 | Sin circuito — COOTAD_302 existe | Conectar COOTAD_302 → CPCCS checklist → resultado |
-| 3 | Dom01 | CPFP pendiente — pero CE/COOTAD base existe | Atomizar CPFP Art. 44 (una sesión QLEP) |
+| 3 | Dom01 | CPFP pendiente — pero CE/COOTAD base existe | Atomizar COPLAFIP Art. 44 (planes de ordenamiento territorial) |
 | 4 | Dom03 | Depende de Dom01 | Después de Dom01 |
 | 5 | Dom02 | Circuito parcial — datos SIGEF disponibles | Cerrar cadena CONTROL_PREV con dato real |
 | 6 | Dom05 | LOEP pendiente | Atomizar LOEP Arts. 4, 22, 47 |
@@ -475,8 +481,9 @@ El orden es estricto. Un Layer 2 construido sin Registro C10 cerrado es una pant
 
 | Campo | Valor |
 |---|---|
-| Documento | QLEP_CANONICO_MONTECRISTI_v1.0 |
+| Documento | QLEP_CANONICO_MONTECRISTI_v1.0 (contenido en **v1.1**; el nombre del archivo se conserva para no romper referencias) |
 | Estado | CONGELADO — requiere nueva versión para modificar N1 o N2 |
+| **v1.1 · 2026-09-18** | **Corrección normativa ordenada por la dirección.** Toda cita de N1 se contrastó con el corpus: **8 textos presentados como literales no son el texto de su artículo** (COOTAD 57 · 228 · 249 · 300 · 302 · 304 · LOC-CGE 12 · LOTAIP 7 de la ley derogada) · **2 descripciones atribuían al artículo otra materia** (COOTAD 198 · COPLAFIP 44) · **3 numeraciones erradas** (CE 209 → 207 · CE 264 núm. 8 → 2 · NCI 600-01 → 600). Se reemplazaron por el texto literal con su huella. **Las N2 no se tocaron.** Evidencia: `PANORAMA §5-terquinquagies` |
 | Autoridad | QUIRA Operaciones / Dylus Lab |
 | Fecha congelación | 2026-06-01 |
 | Referencia cruzada | ADR-013 (mapeo QTMP↔Dominio) · QLEP v1.5 · QNKC-002 |

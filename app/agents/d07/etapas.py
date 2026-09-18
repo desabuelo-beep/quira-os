@@ -427,7 +427,10 @@ NO_SON_ETAPAS = {
                     # que la vara de campos no capturaba (105 segmentos)
                     "extraer_condiciones_exigibilidad.py",
                     "enriquecer_catalogo_d07.py", "register_ack.py",
-                    "manifest.py", "validate_f01.py"],
+                    "manifest.py", "validate_f01.py",
+                    # verifica toda cita normativa contra el corpus (gate 6/6 y
+                    # hook de edición): guarda la vara, no corre en la de d07
+                    "verificar_citas.py"],
     },
     "biblioteca": {
         "razon": "no es ejecutable: lo importan otros módulos",

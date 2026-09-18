@@ -498,7 +498,7 @@ EVIDENCIA:
 CONSECUENCIA:
   descripcion: >
     Negativa de información activa gestión defensoría Art. 26 Reglamento
-    LOTAIP → dictamen correctivo → informe vinculante → sanción LOSEP Art. 42.
+    LOTAIP → dictamen correctivo → informe vinculante → sanción LOSEP Art. 43 (faltas en el Art. 42).
   tipo: dictamen-dpe
   organo_sancionador:
     - DPE
@@ -682,10 +682,18 @@ ACTOR_OBLIGADO:
 ACTOR_BENEFICIARIO:
   - Toda la población, con énfasis en GAP
 OBLIGACION: >
-  La salud es un derecho que garantiza el Estado bajo principios de equidad,
-  universalidad y solidaridad. El GAD puede proveer servicios de salud para
-  GAP a través de unidad con ordenanza habilitante (competencia concurrente
-  CE 260 + COOTAD 138 — confirmado por Pronunciamiento PGE Patronato Manta 2018).
+  [TEXTO LITERAL · CE Art. 32 · corpus fb287038e7fb] La salud es un derecho que garantiza el
+  Estado, cuya realización se vincula al ejercicio de otros derechos, entre ellos el derecho
+  al agua, la alimentación, la educación, la cultura física, el trabajo, la seguridad social,
+  los ambientes sanos y otros que sustentan el buen vivir. […]
+  [INTERPRETACIÓN de la extracción original — NO es texto del artículo:] El GAD puede proveer
+  servicios de salud para GAP a través de unidad con ordenanza habilitante (CE 260 + COOTAD 138
+  + pronunciamiento PGE Patronato Manta 2018).
+  [Precisión 2026-09-18: COOTAD 138 `10684e6e6766` habilita a los GAD municipales a
+  «construir y mantener la infraestructura y los equipamientos físicos de salud y educación»
+  con autorización previa del ente rector; no regula la prestación del servicio. CE 260
+  `031339ad776e` permite el ejercicio concurrente de la gestión en la prestación de servicios.
+  El pronunciamiento de la PGE no está verificado en esta sesión.]
 EVIDENCIA:
   - Ordenanza de constitución de la unidad con servicios de salud (si aplica)
   - Registros de atención (Centro del Buen Vivir u equivalente)

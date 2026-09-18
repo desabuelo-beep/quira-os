@@ -8,17 +8,18 @@
 # RO:        Suplemento 395 — 04-ago-2008
 # Última reforma relevante: 2020
 # Ámbito GAD Municipal: TOTAL — todo el ciclo de contratación pública municipal
-# Atoms:     3 (Art.21 · Art.22 · Art.106)
+# Atoms:     3 (Art.22 · Art.23 · Art.106) — renumerados 2026-09-18 contra el corpus
 # Propósito: Completar Dom03 — cadena de contratación pública del GAD Municipal
 #            Resolver forward references existentes en corpus (LOSNCP genérico, LOSNCP_106)
 #            Densificar circuitos H3 y H7
 # ============================================================
 # Nota corpus: los átomos LOSNCP generan la base para circuitos:
-#   H3_CONTRATACION_PARTICIPACION: PAC (LOSNCP_21) ↔ presupuesto participativo (COOTAD_304)
-#   H7_INVERSION_TERRITORIAL: cert. presupuestaria (LOSNCP_22) ↔ ejecución (COOTAD_215)
+#   H3_CONTRATACION_PARTICIPACION: PAC (LOSNCP_22) ↔ presupuesto participativo (COOTAD_304)
+#   H7_INVERSION_TERRITORIAL: estudios (LOSNCP_23) + certificación presupuestaria (LOSNCP 24) ↔ ejecución (COOTAD_215)
 # ============================================================
 
-ACK_ID: LOSNCP_21
+ACK_ID: LOSNCP_22
+ID_ANTERIOR: LOSNCP_21   # 2026-09-18: el PAC es el Art. 22; el 21 es el portal COMPRASPÚBLICAS
 CLASE: ACK_OBLIGACION
 TIPO: obligacion
 NOMBRE: Plan Anual de Contratación — Obligación y Publicación
@@ -27,7 +28,8 @@ FUENTE:
   norma: Ley Orgánica del Sistema Nacional de Contratación Pública
   sigla: LOSNCP
   jerarquia: 1
-  articulo: "21"
+  articulo: "22"
+  huella_corpus: 1d6c1b3ae153
   inciso: ""
   fecha_vigencia: "2008-08-04"
 
@@ -42,18 +44,22 @@ ACTOR_BENEFICIARIO:
   - SERCOP
 
 OBLIGACION: >
-  Las entidades contratantes, incluyendo los GADs Municipales, tienen la obligación de
-  elaborar, aprobar y publicar el Plan Anual de Contratación (PAC) hasta el 15 de enero
-  de cada año. El PAC debe ser publicado en el portal institucional de la entidad y en
-  el Portal del Sistema Nacional de Contratación Pública (SERCOP). Toda reforma al PAC
-  requiere resolución motivada de la máxima autoridad institucional. Sin PAC aprobado
-  y publicado, la entidad no puede iniciar ningún proceso de contratación durante el
-  ejercicio fiscal.
+  [TEXTO LITERAL · LOSNCP Art. 22 · corpus 1d6c1b3ae153] Las Entidades Contratantes, para
+  cumplir con los objetivos del Plan Nacional de Desarrollo, sus objetivos y necesidades
+  institucionales, formularán el Plan Anual de Contratación con el presupuesto
+  correspondiente, de conformidad a la planificación plurianual de la Institución,
+  asociados al Plan Nacional de Desarrollo y a los presupuestos del Estado. El Plan será
+  publicado obligatoriamente en la página Web de la Entidad Contratante dentro de los
+  quince (15) días del mes de enero de cada año e interoperará con el portal
+  COMPRASPÚBLICAS. […]
+  [Corrección 2026-09-18: la versión anterior atribuía este contenido al Art. 21 y afirmaba
+  «resolución motivada» para toda reforma y la prohibición de contratar sin PAC, que no
+  constan en el Art. 22 — se retiran hasta verificarlas en el Reglamento (RLOSNCP).]
 
 EVIDENCIA:
   - PAC publicado en portal SERCOP (compraspublicas.gob.ec)
   - Resolución de aprobación del PAC firmada por Alcalde
-  - LOTAIP_19_21 — publicación PAC en portal institucional
+  - LOSNCP 22 — publicación del PAC en la página web de la entidad dentro de los quince días de enero
   - Acta de Concejo aprobando PAC si corresponde
 
 CONSECUENCIA:
@@ -80,10 +86,10 @@ DOMINIOS_QUIRA:
   - Dom07
 
 RELACIONES:
-  - LOTAIP_19_21
+  - LOTAIP_19_8
   - COOTAD_304
   - COOTAD_198
-  - LOSNCP_22
+  - LOSNCP_23
   - NCI_200_04
 
 VIGENCIA:
@@ -98,10 +104,10 @@ CADENA_TERRITORIAL:
     y planificación del gasto municipal ante ciudadanía y proveedores.
   proceso_referencia: >
     Elaboración PAC enero → aprobación máxima autoridad → publicación SERCOP
-    → publicación LOTAIP_19_21 → inicio procesos contractuales autorizados.
+    → publicación en la página web (LOSNCP 22) → inicio procesos contractuales autorizados.
   indicador_referencia: >
     TGI Dom03 — PAC publicado en plazo / alineación PAC vs. compromisos participativos.
-    TGI Dom07 — cumplimiento LOTAIP_19_21 (transparencia contratación).
+    TGI Dom07 — cumplimiento LOTAIP_19_8 (transparencia de la contratación).
 
 IMPLEMENTACION_LOCAL:
   actor_local: >
@@ -119,16 +125,19 @@ META:
 
 ---
 
-ACK_ID: LOSNCP_22
+ACK_ID: LOSNCP_23
+ID_ANTERIOR: LOSNCP_22   # 2026-09-18: los estudios son el Art. 23; el 22 es el PAC
 CLASE: ACK_OBLIGACION
 TIPO: procedimiento
-NOMBRE: Estudios Previos y Presupuesto Referencial — Requisitos Precontractuales
+NOMBRE: Estudios — requisitos previos al procedimiento precontractual
 
 FUENTE:
   norma: Ley Orgánica del Sistema Nacional de Contratación Pública
   sigla: LOSNCP
   jerarquia: 1
-  articulo: "22"
+  articulo: "23"
+  huella_corpus: 3cd06a225dc5
+  concordancia: "LOSNCP 24 · c18eee97ef76 — certificación de disponibilidad presupuestaria previa a la convocatoria"
   inciso: ""
   fecha_vigencia: "2008-08-04"
 
@@ -142,13 +151,18 @@ ACTOR_BENEFICIARIO:
   - Ciudadanía
 
 OBLIGACION: >
-  [PENDIENTE VERIFICACIÓN LITERAL — Art. 22 LOSNCP] Antes de publicar cualquier proceso
-  de contratación, la entidad contratante debe contar con los estudios técnicos previos,
-  diseños definitivos y un presupuesto referencial debidamente documentado. El proceso
-  contractual que se inicie sin estos requisitos previos es susceptible de glosa CGE
-  y genera responsabilidad personal del servidor que lo autorizó. Complementariamente,
-  el responsable del área financiera debe emitir la certificación presupuestaria
-  previa que acredite la disponibilidad de fondos para cubrir el objeto del contrato.
+  [TEXTO LITERAL · LOSNCP Art. 23 · corpus 3cd06a225dc5] Antes de iniciar un procedimiento
+  precontractual, de acuerdo a la naturaleza de la contratación, la entidad deberá contar
+  con los estudios y diseños completos, definitivos y actualizados, planos y cálculos,
+  especificaciones técnicas, debidamente aprobados por las instancias correspondientes,
+  vinculados al Plan Anual de Contratación de la entidad. […]
+  [CONCORDANCIA · LOSNCP Art. 24 · corpus c18eee97ef76] Las entidades previamente a la
+  convocatoria, deberán certificar la disponibilidad presupuestaria y la existencia
+  presente o futura de recursos suficientes para cubrir las obligaciones derivadas de la
+  contratación.
+  [Corrección 2026-09-18: antes se citaba el Art. 22 (que es el PAC) marcado «pendiente de
+  verificación literal»; la glosa y la responsabilidad personal no constan en estos
+  artículos — se retiran de la obligación.]
 
 EVIDENCIA:
   - Estudios de factibilidad y estudios técnicos previos
@@ -161,7 +175,7 @@ CONSECUENCIA:
   descripcion: >
     La contratación sin estudios previos y presupuesto referencial válido puede ser
     declarada nula por la CGE y generar glosa. El servidor que inicia el proceso sin
-    los requisitos previos incurre en responsabilidad administrativa (LOSEP_42) y civil
+    los requisitos previos incurre en responsabilidad administrativa (LOSEP_43) y civil
     (LOC-CGE). La PGE puede emitir pronunciamiento sobre la nulidad del contrato.
   tipo: nulidad
   organo_sancionador:
@@ -182,7 +196,7 @@ DOMINIOS_QUIRA:
   - Dom02
 
 RELACIONES:
-  - LOSNCP_21
+  - LOSNCP_22
   - COOTAD_215
   - NCI_200_04
   - LOC-CGE_21
@@ -226,13 +240,14 @@ META:
 ACK_ID: LOSNCP_106
 CLASE: ACK_OBLIGACION
 TIPO: sancion
-NOMBRE: Sanciones e Infracciones en Contratación Pública
+NOMBRE: Infracciones de proveedores en la contratación pública
 
 FUENTE:
   norma: Ley Orgánica del Sistema Nacional de Contratación Pública
   sigla: LOSNCP
   jerarquia: 1
   articulo: "106"
+  huella_corpus: 17169232de61
   inciso: ""
   fecha_vigencia: "2008-08-04"
 
@@ -245,13 +260,13 @@ ACTOR_BENEFICIARIO:
   - Ciudadanía
 
 OBLIGACION: >
-  [PENDIENTE VERIFICACIÓN LITERAL — Art. 106 LOSNCP] El SERCOP y la Contraloría General
-  del Estado están facultados para sancionar a proveedores y servidores públicos que
-  incurran en infracciones al régimen de contratación pública. Las sanciones incluyen
-  la suspensión del Registro Único de Proveedores (RUP), multas administrativas y
-  otras consecuencias que impiden al infractor contratar con el Estado. El incumplimiento
-  contractual y las irregularidades en el proceso activan la responsabilidad civil,
-  administrativa y penal del servidor involucrado conforme al CE Art. 233.
+  [TEXTO LITERAL · LOSNCP Art. 106 · corpus 17169232de61] A más de las previstas en la ley,
+  se tipifican como infracciones realizadas por un proveedor, a las siguientes conductas:
+  No actualizar la información en el Registro Único de Proveedores dentro del término de
+  diez días de producida la modificación; Participar en uno o más procedimientos de
+  contratación, sin estar habilitado en el Registro Único de Proveedores […]
+  [Corrección 2026-09-18: el artículo tipifica infracciones de PROVEEDORES; la versión
+  anterior lo extendía a servidores públicos y a la CGE, lo que el texto no dice.]
 
 EVIDENCIA:
   - Resolución SERCOP de suspensión del RUP
@@ -262,7 +277,7 @@ EVIDENCIA:
 CONSECUENCIA:
   descripcion: >
     Las infracciones en contratación pública activan: (a) responsabilidad administrativa
-    → LOSEP_42 para el servidor público; (b) responsabilidad civil → LOC-CGE_21 glosa
+    → LOSEP_43 para el servidor público; (b) responsabilidad civil → LOC-CGE_21 glosa
     para el patrimonio personal; (c) responsabilidad penal → Fiscalía/Judicatura para
     peculado o concusión. La suspensión del RUP impide al proveedor contratar con el
     Estado mientras dure la sanción.
@@ -288,9 +303,9 @@ DOMINIOS_QUIRA:
 RELACIONES:
   - CE_233
   - LOC-CGE_45
-  - LOSEP_42
-  - LOSNCP_21
+  - LOSEP_43
   - LOSNCP_22
+  - LOSNCP_23
 
 VIGENCIA:
   estado: vigente
@@ -330,17 +345,17 @@ META:
 # ÍNDICE F0.6 LOSNCP — 3 átomos
 # ============================================================
 #
-# LOSNCP_21  — Art. 21 — PAC obligation         — Dom03/Dom07 — revisado: true
-# LOSNCP_22  — Art. 22 — Requisitos precontract. — Dom03/Dom02 — revisado: false
-# LOSNCP_106 — Art. 106 — Sanciones contratación — Dom03/Dom01 — revisado: false
+# LOSNCP_22  — Art. 22  — Plan Anual de Contratación  — Dom03/Dom07 — verificado en corpus 2026-09-18 (antes LOSNCP_21)
+# LOSNCP_23  — Art. 23  — Estudios (precontractual)   — Dom03/Dom02 — verificado en corpus 2026-09-18 (antes LOSNCP_22)
+# LOSNCP_106 — Art. 106 — Infracciones de proveedores — Dom03/Dom01 — verificado en corpus 2026-09-18
 #
 # Forward references resueltas:
-#   LOSNCP     (genérico) → ahora existen LOSNCP_21, LOSNCP_22, LOSNCP_106
+#   LOSNCP     (genérico) → ahora existen LOSNCP_22, LOSNCP_23, LOSNCP_106
 #   LOSNCP_106 (de ce_art226_264.yaml línea 351) → resuelto
 #
 # Circuitos densificados:
-#   H3_CONTRATACION_PARTICIPACION: LOSNCP_21 es el eslabón Dom03 del circuito
-#   H7_INVERSION_TERRITORIAL: LOSNCP_22 es el eslabón Dom03 del circuito
+#   H3_CONTRATACION_PARTICIPACION: LOSNCP_22 es el eslabón Dom03 del circuito
+#   H7_INVERSION_TERRITORIAL: LOSNCP_23 es el eslabón Dom03 del circuito
 #
 # Corpus post-F0.6-LOSNCP: 86+3 = 89 ACK + 14 REL-V + 23 REL-H = 126 artefactos
 # ============================================================

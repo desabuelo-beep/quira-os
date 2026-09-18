@@ -253,11 +253,11 @@ EVIDENCIAS:
     descripcion: >
       PAC publicado en SERCOP — procesos de contratación planificados
       para infraestructura de agua potable (obras, consultoría, suministros).
-      Contratos adjudicados y en ejecución. Obligatorio LOSNCP Art. 21.
+      Contratos adjudicados y en ejecución. Obligatorio LOSNCP Art. 22 (PAC · corregido 2026-09-18: antes decía Art. 21, que es el portal COMPRASPÚBLICAS).
     proceso_ref: PRO_AGPT_05_MCR
     obligatoria: true
     fuente_sistema: SERCOP (Portal de Compras Públicas)
-    vinculo_ack: LOSNCP_21
+    vinculo_ack: LOSNCP_22
     url: "https://www.compraspublicas.gob.ec"
     estado_documento: verificar
 
@@ -270,7 +270,7 @@ EVIDENCIAS:
     proceso_ref: PRO_AGPT_04_MCR
     obligatoria: true
     fuente_sistema: Portal LOTAIP GADMCM
-    vinculo_ack: LOTAIP_19_21
+    vinculo_ack: LOTAIP_19   # corregido 2026-09-18: el átomo del núm. 18 es «convenios»; esta evidencia abarca varios numerales del art. 19
     url: "https://www.montecristi.gob.ec"
     estado_documento: verificar
 
@@ -341,7 +341,7 @@ CONTROLES:
 OBSERVABILIDAD:
 
   - id: OBS_AGPT_01_MCR
-    fuente_ack: LOSNCP_21
+    fuente_ack: LOSNCP_22
     tipo_publicacion: portal_contratacion
     descripcion: >
       PAC publicado en SERCOP — transparencia total de procesos de
@@ -363,13 +363,13 @@ OBSERVABILIDAD:
     frecuencia_real: tiempo_real
 
   - id: OBS_AGPT_03_MCR
-    fuente_ack: LOTAIP_19_21
+    fuente_ack: LOTAIP_19   # corregido 2026-09-18: antes LOTAIP_19_21 (convenios, núm. 18), que no es esta información
     tipo_publicacion: portal_transparencia
     descripcion: >
       Portal LOTAIP GADMCM — información sobre el servicio de agua potable:
       tarifas vigentes por categoría de usuario, número de abonados,
       cobertura cantonal, contratos activos, presupuesto asignado.
-      Obligación de publicación trimestral. Observable: verificar si el
+      Obligación de publicación MENSUAL (LOTAIP 19 `810ae0fcffd1`; corregido 2026-09-18: antes decía «trimestral»). Observable: verificar si el
       PAC de agua publicado coincide con el proceso participativo (H3).
     url_portal: "https://www.montecristi.gob.ec/lotaip"
     frecuencia_real: trimestral
@@ -486,7 +486,7 @@ INDICADORES:
     umbral_rojo: "< 50"
     nota_umbral: >
       Indicador del circuito H3 densificado (REL-H3): la relación causal
-      COOTAD304_COMPLEMENTA_LOSNCP21. Mide si el proceso participativo
+      COOTAD304_COMPLEMENTA_LOSNCP22. Mide si el proceso participativo
       realmente se materializa en contratos de agua. Brecha alta = captura
       institucional del proceso Dom08.
     estado_dato: pendiente_validacion
@@ -610,7 +610,7 @@ RESULTADOS:
 #   CE_12      -[:MATERIALIZA_VIA]-> SP_AGPT_MCR
 #   CE_264     -[:HABILITA]->        SP_AGPT_MCR
 #   COOTAD_55  -[:HABILITA]->        SP_AGPT_MCR
-#   LOSNCP_21  -[:OBSERVA]->         OBS_AGPT_01_MCR
+#   LOSNCP_22  -[:OBSERVA]->         OBS_AGPT_01_MCR
 #   COOTAD_215 -[:CONTROLA]->        EVD_AGPT_04_MCR
 #   COOTAD_302 -[:ACTIVA]->          OBS_AGPT_04_MCR
 #   LOC-CGE_21 -[:CONTROLA]->        CTL_AGPT_03_MCR

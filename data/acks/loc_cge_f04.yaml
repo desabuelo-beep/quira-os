@@ -9,7 +9,7 @@
 # Extractor: QLEP-v1.3 · Fecha: 2026-05-30
 # Nota: Esta ley crea el SISTEMA DE CONTROL; las NCI (Acuerdo 039-CG-2009)
 #        crean las NORMAS OPERATIVAS. Ambas son obligatorias para el GADM.
-# Nota: No confundir LOC-CGE Art. 45 (causales resp. admin) con LOSEP Art. 42
+# Nota: No confundir LOC-CGE Art. 45 (causales resp. admin) con LOSEP Arts. 42-43 (faltas y sanciones disciplinarias)
 #        (sanciones). La CGE determina la responsabilidad; LOSEP ejecuta la sanción.
 # Circuitos causales activados:
 #   LOC-CGE_45 → LOTAIP_19_12 (accountability) → TGI Dom01
