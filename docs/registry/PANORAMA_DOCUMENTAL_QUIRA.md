@@ -5537,7 +5537,7 @@ no se inventó un fundamento para el 20 %.
 | ✅ registro regenerado: **159 activos, 0 aristas rotas** | la cadena es reconstruible |
 | ⚠️ **el sello humano del catálogo BRN CADUCÓ solo** | el catálogo llevaba **la validación de Javo del 2026-09-02** atada al hash del canon `f9fa18c6…`. Con la RO nueva el canon pasó a `b34a0467…` y el sistema escribió: *«el sello valida el canon f9fa… y el actual es b34a…: describe otra compilación»* |
 | ⚠️ **dos cables trampa se dispararon** | `test_canon_derivado` y `test_d08_respeta_el_estado` vigilan que no bajen los CNO sin RO; bajaron de 7 a 6, y la prueba dice: *«si BAJÓ, hay que verificar que la RO nueva es canon real y no una regla fabricada»* |
-| ⚠️ el compilado de la BRN quedó desfasado | `brn_compilador --verificar` → *«DIVERGE — falta recompilar»* |
+| ~~⚠️ el compilado de la BRN quedó desfasado~~ | ⛔ **FALSADO (falsación 40):** `brn_compilador --verificar` dice *«DIVERGE — falta recompilar»* **también en el estado base, sin la RO nueva**. El compilado ya estaba desfasado — es el derivado congelado que `C3` encontró. **La RO no lo causó** |
 
 > ⭐ **Precedente positivo para `D0.1`:** el catálogo de la BRN **ya tiene un acto de autoridad que
 > funciona** — un sello humano atado al hash del canon, que **caduca solo** cuando el canon cambia.
@@ -5619,6 +5619,176 @@ sin la RO. **No lo causó este trabajo** y queda anotado para revisarlo aparte.
 
 ⚠️ *Corrección de forma:* el commit `4a68073` dejó **el encabezado de la sección 6 duplicado**. Error
 de edición de esta dirección; corregido aquí.
+
+## 5-quinquatrigies · **MATRIZ MAESTRA DE ELEVACIÓN DE QUIRA 7** — versión operativa
+
+> **Lo que esta matriz impide:** que *«existe»* se lea como *«está bien»*. Cada artefacto se juzga en
+> cinco estados independientes y recibe **una sola** acción de elevación.
+>
+> **Después de esta matriz empieza el código. No antes.**
+
+### Principio SAT, congelado como regla de `REARQ`
+
+```
+NORMA → CNO → RO ──produce──► SAT ──opera_en──► DOMINIO → VISTA DE ALERTAS
+                   └──────────────opera_en──────────────►┘
+BRN: registra CNO↔RO · RO↔SAT · SAT↔DOMINIO · y verifica la coherencia de la cadena
+```
+
+⛔ **Nunca** `normativa completa → parametrización SAT → Supabase`. **La señal sólo existe cuando la
+norma puede traducirse legítimamente en una condición observable y preventiva.**
+
+### Leyenda
+
+| columna | pregunta | valores |
+|---|---|---|
+| **E** · existente | ¿existe el artefacto? | ✅ verificado · ❓ declarado, no verificado en este corte |
+| **V** · válido | ¿su contenido/método es defendible? | ✅ demostrado · ⛔ **defecto demostrado** (con su fuente) · ❓ **no evaluado** |
+| **C** · canónico | ¿tiene autoridad en el estado canónico? | ✅ vigente o registrado · ⚠️ propuesta · ⛔ sin autoridad declarada · ❓ indeterminado *(motor: `D0.1`)* |
+| **G** · gobernado | ¿su producción y consumo están controlados? | ✅ prueba o sello que lo protege · ⚠️ parcial · ⛔ nada lo protege |
+| **acción** | una sola | **CONSERVAR · ELEVAR · POTENCIAR · UNIFICAR · MOVER · RECORTAR · RECONSTRUIR** |
+
+⚠️ **La mayoría de las celdas `V` dicen «no evaluado», y eso es correcto:** `C4` examinó tres cortes,
+no el ecosistema entero. **Rellenar `V` con ✅ por defecto sería repetir el error que esta matriz existe
+para impedir.**
+
+*(Fuentes de las celdas: vigencia leída de cada `YAML` de la BRN y de `brn_compilador --verificar` ·
+autoridad leída de `registry/registry.yaml` · pruebas contadas en `tests/` · defectos de `C4-P0/P1/P2`
+y de `§5-quattrigies`.)*
+
+### 1 · Planificación Estratégica e Inversión Pública
+
+| sección | capa | artefacto | E | V | C | G | acción |
+|---|---|---|---|---|---|---|---|
+| — | canon | ADN `d01` + `d02` | ✅ | ✅ | ✅ sellado | ⚠️ | **ELEVAR** a contrato semántico de una estructura |
+| Planificación | BRN | `CNO-I-001` · `RO-I-001` · `RO-I-002` → `SAT-0` | ✅ | ❓ | ✅ vigentes | ⚠️ compilado desfasado *(preexistente)* | **CONSERVAR** |
+| Planificación | motor | `H04` · `H05` · `H11b` · `H16b_IPE` | ✅ | ❓ | ❓ | ⛔ | **CONSERVAR** |
+| Planificación | enricher | `enrich_planificacion` · `enrich_poa_multianio` | ✅ | ❓ | ⛔ | ⚠️ | **UNIFICAR** |
+| Planificación | agente | `d01` | ✅ | ❓ | ✅ | ✅ 2 pruebas | **ELEVAR** |
+| Planificación | página | `m_planificacion` · `plan_render` | ✅ | ⛔ frase constante · rama `<30` sin guarda *(`C4-P1`)* | ⛔ | ⚠️ | **RECORTAR** literales |
+| Inversión | BRN | `CNO-IV-001` · `RO-IV-001` → `SAT-IV` | ✅ | ⛔ `1 − Ti` como participación *(`C4-P1` C.2)* | ✅ vigentes | ✅ | **RECONSTRUIR** dentro de su RO |
+| Inversión | motor | `H07_S5` (`Ti`) · `H07b` (`Ti_norm`) · `H07c` · `H90` · `H_HOLDING_CEDULAS` | ✅ | ❓ | ❓ | ⛔ | **CONSERVAR** · `H07b` como lectura gobernante |
+| Inversión | motor | `H19!B11` gemelo de SAT-IV | ✅ | ⛔ compara contra un encabezado *(`C4-P1` C.1)* | ❓ | ⛔ | **RECORTAR** |
+| Inversión | motor | `H07_S5!B21` clasificación del `Ti` | ✅ | ⛔ escala anual sin guarda | ❓ | ⛔ | **RECONSTRUIR** |
+| Inversión | motor | `H22` reformas · `H23` SAT-III | ✅ | ⛔ `H22!B8 = 0` literal · `H23` con **dos definiciones** | ❓ | ⛔ | **RECONSTRUIR** *(bloqueada: norma)* |
+| Inversión | ⭐ eficiencia directiva | `H17_IED` · `H30_IED_POR_DIRECCIÓN` · `H02b_ORGÁNICO` · `SCHEMA_ORGANICO` · `H_ORGANICO_040_2025` | ✅ | ❓ | ❓ | ⛔ | **POTENCIAR** — **misión original intacta**: por dirección y por técnicos |
+| Inversión | enricher | `enrich_presupuesto` | ✅ | ⛔ el ISP empareja valor 2025 con clasificación 2026 | ⛔ | ⚠️ | **RECONSTRUIR** esa lectura · luego **UNIFICAR** |
+| Inversión | agente | `d02` | ✅ | ⛔ `absorcion_ti_pct` viaja sin corte | ✅ | ✅ 3 pruebas | **ELEVAR** |
+| Inversión | página | `m_presupuesto` · `p10_inversion` · `presupuesto_render` | ✅ | ⛔ dictamen constante · 70/50 sin guarda | ⛔ | ⚠️ | **RECORTAR** y **UNIFICAR** |
+| — | a producto | radar de fondos · `H20c_IEF` · `H69_ELEGIBILIDAD_FONDOS` | ✅ | ❓ | ⛔ | ⛔ | **MOVER** → QUIRA Cooperación |
+
+### 2 · Gobernanza del Mandato
+
+| capa | artefacto | E | V | C | G | acción |
+|---|---|---|---|---|---|---|
+| canon | ADN `d03` | ✅ | ✅ | ✅ | ⚠️ | **ELEVAR** · sujeto «autoridad electa» |
+| BRN | `CNO-III-001` · `RO-III-001` | ✅ | ⚠️ su señal se llama `SAT-III-001` y **colisiona** con la `SAT-III` del motor | ✅ vigentes | ✅ | **RECONSTRUIR** el nombre de la señal |
+| motor | `H03_S1_ELECTORAL_CNE` · `H63` · `H16_IFE` | ✅ | ❓ | ❓ | ⛔ | **CONSERVAR** |
+| enricher | `enrich_mandato` | ✅ | ❓ | ⛔ | ⚠️ | **CONSERVAR** |
+| agente | `d03` | ✅ | ❓ | ✅ | ✅ 1 prueba | **ELEVAR** |
+| página | `m_mandato` · `mandato_render` | ✅ | ❓ | ⛔ | ⚠️ | **CONSERVAR** |
+| página | `p8_metas` | ✅ | ⛔ cifra escrita a mano *(línea 272)* | ⛔ | ⛔ | **RECORTAR** el literal |
+
+### 3 · Transparencia *(dominio propio · la infraestructura de adquisición se comparte, el juicio se queda aquí)*
+
+| capa | artefacto | E | V | C | G | acción |
+|---|---|---|---|---|---|---|
+| canon | ADN `d07` · `CATALOGO_CANONICO_CD_D07` · `METODOLOGIA_D07` *(ratificada 2026-08-07)* | ✅ | ✅ | ✅ | ⚠️ | **CONSERVAR** |
+| BRN | `CNO-VII-001…004` · `RO-VII-001…005` | ✅ | ❓ | ✅ vigentes | ✅ | **CONSERVAR** |
+| motor | `H09_S7` · `H70` · `H18_ITAM` · `H41_IOC` | ✅ | ⛔ cifras históricas desmentidas por su propia metodología *(`1−IOC` como transparencia · valor pegado · promedios simulados)* | ❓ | ⛔ | **RECORTAR** esas cifras |
+| agente | `d07` (`scoring.py` · `etapas.py`) | ✅ | ❓ | ✅ | ⚠️ 2 pruebas, **una falla en el estado base** | **CONSERVAR** · revisar la prueba |
+| adquisición | conector `dpe.py` | ✅ | ❓ | ⛔ | ⚠️ | **CONSERVAR** |
+| adquisición | `T3` · documentos oficiales en la web del GAD | ❓ práctica declarada por la dirección · implementación no verificada | ❓ | ⛔ | ⛔ | **ELEVAR** con vía, versión y hash |
+| página | `p07_transparencia` | ✅ | ❓ | ⛔ | ⚠️ | **ELEVAR** a sus dos funciones: cumplimiento y calidad |
+
+### 4 · Participación Ciudadana y Control Social
+
+| sección | capa | artefacto | E | V | C | G | acción |
+|---|---|---|---|---|---|---|---|
+| Participación | BRN | `CNO-VIII-000…007` · `RO-VIII-001…003` | ✅ | ❓ | ⚠️ **propuesta** · no compiladas | ⚠️ | **ELEVAR** por ratificación |
+| Participación | BRN | `RO-VIII-004` → `SAT-VI` | ✅ lista *(embebida en `§5-quattrigies`)* | ✅ | ⚠️ pendiente de ratificación | — | **ELEVAR** al ratificarse |
+| Participación | motor | `H10` · `H10b` · `H10c` · `H20b_IGP` | ✅ | ❓ | ❓ | ⛔ | **CONSERVAR** |
+| Participación | motor | `H24c_SAT-VI` | ✅ | ⛔ «sin datos» → «✅ sin señal» *(mecanismo C)* | ❓ | ⛔ | **RECONSTRUIR** con el estado `sin_datos` |
+| Participación | enricher | `enrich_participacion` | ✅ | ❓ | ⛔ | ⚠️ | **UNIFICAR** |
+| Participación | agente | `d08` | ✅ | ❓ | ✅ | ✅ 1 prueba | **ELEVAR** · sujeto por sección |
+| Participación | página | `m_participacion` · `p16_gobernanza` · `participacion_render` | ✅ | ❓ | ⛔ | ⚠️ | **UNIFICAR** |
+| Rendición | BRN | `CNO-IX-001` · `RO-IX-001` → `SAT-V` | ✅ | ⛔ colapso «sin datos = sin brecha» *(`C4-P2-A`)* · id heredado `SAT-IX-001` | ✅ vigentes | ✅ | **RECONSTRUIR** dentro de su RO |
+| Rendición | motor | `H31` · `H24b_SAT-V` | ✅ | ⛔ *(`C4-P2-A`)* | ❓ | ⛔ | **RECONSTRUIR** |
+| Rendición | motor | `H34b_MFN` | ✅ | ⛔ la fórmula declarada no reproduce los valores *(`C4-P2-C`)* | ❓ | ⛔ | **ELEVAR** declarando su naturaleza experta |
+| Rendición | motor | `H89_TRUST_SCORE` | ✅ | ⛔ `IF_n` como texto → penalización inerte *(`C4-P2-B`)* | ❓ | ⛔ | **RECONSTRUIR** |
+| Rendición | enricher | `enrich_rdc` · `enrich_rdc_docx` · `enrich_aportes` | ✅ | ❓ | ⛔ | ⚠️ | **UNIFICAR** |
+| Rendición | agente | `d09` | ✅ | ❓ | ✅ | ✅ 1 prueba | **ELEVAR** |
+| Rendición | página | `m_rdc` · `p17_rdc` | ✅ | ⛔ «coinciden con la evidencia verificada» no depende de la evidencia *(`C4-P2`)* | ⛔ | ⚠️ | **RECORTAR** esa afirmación · **ELEVAR** la naturaleza del índice |
+
+### 5 · Cobertura de Servicios e Infraestructura *(alcance histórico · se eleva desde su material)*
+
+| capa | artefacto | E | V | C | G | acción |
+|---|---|---|---|---|---|---|
+| canon | ADN `d10` *(plantilla madre del Diccionario)* | ✅ | ✅ | ✅ | ⚠️ | **CONSERVAR** |
+| BRN | — | ⛔ | — | — | — | **RECONSTRUIR** su cadena normativa |
+| motor | `H42_IET` · `H43` · `SCHEMA_NBI` · `SCHEMA_TERRITORIOS` · `CAPA_TERRITORIAL` · `POA_GEOREFERENCIADO` | ✅ | ❓ | ❓ | ⛔ | **CONSERVAR** |
+| agente | — | ⛔ | — | — | — | **RECONSTRUIR** con el molde `ADR-053` |
+| página | `p10_territorio` | ✅ | ❓ | ⛔ | ⛔ sin pruebas | **ELEVAR** |
+| señal | `SAT-VIII` | ✅ | ⛔ peso 0 · base referencial | ⛔ | ⛔ | **RECORTAR** como señal · el `IET` queda como indicador *(pendiente de ratificación)* |
+
+### 6 · Desarrollo Económico Territorial *(alcance histórico · el de menor base)*
+
+| capa | artefacto | E | V | C | G | acción |
+|---|---|---|---|---|---|---|
+| canon | ADN `d11` *(«en construcción»)* | ✅ | ⚠️ | ✅ | ⛔ | **ELEVAR** |
+| datos | corpus económico del PDOT | ❓ declarado en el ADN, no verificado en este corte | ❓ | ❓ | ⛔ | **CONSERVAR** |
+| BRN · agente · página · pruebas | — | ⛔ | — | — | — | **RECONSTRUIR** |
+
+### 7 · Grupos de Atención Prioritaria *(función ejecutora del GAD)*
+
+| capa | artefacto | E | V | C | G | acción |
+|---|---|---|---|---|---|---|
+| canon | ADN `d12` | ✅ | ⚠️ define el cajón por el `PSG`, no por la función | ✅ | ⚠️ | **RECONSTRUIR** su objeto |
+| motor | `H04b_DIAGNÓSTICO_SOCIAL` | ✅ | ❓ | ❓ | ⛔ | **CONSERVAR** |
+| motor | `H16c_PSG` | ✅ | ❓ | ❓ | ⛔ | **MOVER** → transversal de Equidad y Género *(el `PSG` **no desaparece**: cambia de función)* |
+| perímetro | entidad ejecutora (`ENTE-02` en Montecristi) | ✅ | ✅ | ❓ | ⛔ | **CONSERVAR** como **atributo**, no como identidad |
+| BRN | — | ⛔ *(verificado)* | — | — | — | **RECONSTRUIR** — la mayor carga normativa del mapa |
+| agente · pruebas | — | ⛔ | — | — | — | **RECONSTRUIR** |
+| página | `p19_genero` | ✅ | ❓ | ⛔ | ⛔ | **RECONSTRUIR** sobre la función ejecutora |
+
+### 8 · Sostenibilidad y Resiliencia Ambiental
+
+| capa | artefacto | E | V | C | G | acción |
+|---|---|---|---|---|---|---|
+| canon | ADN `d13` | ✅ | ✅ | ✅ | ⚠️ | **CONSERVAR** |
+| motor | `H20_ICODS` · `KB_DIAGNOSTICO_PDOT` · `SCHEMA_RIESGOS` | ✅ | ❓ | ❓ | ⛔ | **CONSERVAR** |
+| BRN · agente · página · pruebas | — | ⛔ | — | — | — | **RECONSTRUIR** |
+
+### Transversales, señales y derivados
+
+| capa | artefacto | E | V | C | G | acción |
+|---|---|---|---|---|---|---|
+| síntesis | `H12!B33` ICPI · `H12!B34` guarda temporal | ✅ | ✅ **la guarda es el único gobierno temporal probado** *(`C4-P0`)* | ❓ `D0.1` | ⚠️ | **CONSERVAR** |
+| síntesis | `m1_situacion` | ✅ | ⛔ conclusión constante · umbrales 50/75 sin guarda *(`C4-P0`)* | ⛔ | ⚠️ | **RECORTAR** · pasa a síntesis derivada |
+| perímetro | `H12d_ICPI_POR_ENTIDAD` · `H71_EP_ADSCRITAS` · `H72` · `H19b` | ✅ | ❓ | ❓ | ⛔ | **ELEVAR** a atributo obligatorio de toda observación |
+| señales | `H75_SAT_ENGINE` | ✅ | ⛔ trata «sin datos» con `✅` como inactiva *(`C4-P2`)* | ❓ | ⛔ | **RECONSTRUIR** el estado `sin_datos` |
+| señales | `SAT_Catalogo` | ✅ | ⛔ bases legales citadas **no encadenadas** · la de `SAT-IV` errada | ❓ | ⛔ | **RECONSTRUIR** desde las RO |
+| señales | **nombres de las SAT** | ✅ | ⛔ **dos espacios de nombres**: códigos del motor (`SAT-0…IX`) e ids de la BRN (`SAT-<familia>-00N`), con colisiones documentadas (`SAT-III-001` ≠ `SAT-III` · `SAT-IX-001` ≠ `SAT-IX`) | ❓ | ⛔ | **RECONSTRUIR** un solo espacio de nombres |
+| vista | `m2_alertas` | ✅ | ⛔ la columna «Ejecución (%)» se alimenta del ISP *(`C4-P1`)* | ⛔ | ⚠️ | **RECORTAR** · queda como vista |
+| derivados | `sat_gm` · `financiero` del snapshot | ✅ | ⛔ divergen del motor · productor no localizado *(`C3`)* | ⛔ | ⛔ | **RECONSTRUIR** con acto de promoción |
+| derivados | `brn_config` · `brn_manifest` | ✅ | ⛔ **divergen en el estado base** | ⚠️ | ⚠️ | **RECONSTRUIR**: recompilar con acto gobernado |
+| derivados | catálogo BRN (`brn_cno` en el snapshot) | ✅ | ✅ | ✅ **sellado por Javo (2026-09-02)** | ✅ **el sello caduca solo** | **CONSERVAR** — ⭐ **precedente para `D0.1`** |
+| razonamiento | Sentinel `RC-7.3` | ✅ | ✅ **única guarda de comparabilidad fuera del ICPI** | ❓ | ⚠️ | **POTENCIAR** · propagar el patrón |
+
+### Lo que la matriz dice, en cinco líneas
+
+1. **Lo más sano:** Transparencia (canon, BRN vigente, metodología ratificada) y el catálogo BRN, que ya tiene un acto de autoridad que funciona.
+2. **Lo más urgente:** las señales — dos espacios de nombres, bases legales no encadenadas, y el estado `sin_datos` colapsando en `H75`.
+3. **Lo más frágil:** las **páginas**, que concentran casi todos los defectos demostrados y **ninguna tiene autoridad registrada**.
+4. **Lo que no hay que tocar:** la eficiencia directiva (`IED` + orgánico) — se **potencia** con su misión intacta.
+5. **El trabajo nuevo real:** cadena normativa y agente para Cobertura, Económico, Grupos Prioritarios y Ambiental.
+
+**Precisiones del colega, acogidas:** el sello de la BRN es **precedente** para `D0.1`, **no prueba**
+que ese mecanismo gobierne el Gold Master · `SAT-V` y `H89` son reparaciones de hallazgos distintos, no
+equivalentes a `SAT-IV` · el `PSG` **no desaparece**: su función distributiva pasa a la transversal.
+
+**Siguen pendientes de la dirección** las tres decisiones de `§5-quattrigies`: ratificar `RO-VIII-004`,
+ratificar el retiro de `SAT-VII`/`SAT-VIII` como señales, y elegir la definición de `SAT-III`.
 
 ## 6 · Y la finalidad, dicha por la dirección
 
