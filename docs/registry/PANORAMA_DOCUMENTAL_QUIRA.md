@@ -4933,6 +4933,99 @@ de camino.**
 3. **Nombres definitivos** de `U1`, `U3` y `U7` — pendientes a propósito hasta que el objeto esté
    cerrado.
 
+## 5-octovicies · `D1.0` · **PRUEBA DE EXHAUSTIVIDAD** — los siete dominios NO cubren la gestión pública intermedia
+
+> **La dirección preguntó si los siete dominios integran toda la gestión pública intermedia y dijo no
+> estar de acuerdo. Respuesta de esta dirección técnica, con inventario: NO LA CUBREN.**
+> Los siete eran una **hipótesis de partición**, no una demostración de cobertura. Aquí está la
+> demostración de lo que falta.
+
+### Correcciones de la dirección, acogidas sin discusión
+
+| # | corrección | efecto |
+|---|---|---|
+| **1** | **Cooperación no va en el mapa ontológico** | sale por completo: es **producto QUIRA Cooperación** |
+| **2** | **Fidelidad del mandato es independiente** | queda **dominio propio**: la promesa original **también es norma** · cierra la pregunta abierta 1 |
+| **3** | **«Relación pública de la gestión» no es viable como nombre** | el objeto no es comunicacional: es **CONTROL SOCIAL de la gestión pública**, y eso es profundo, no general |
+| **4** | **Transparencia es dominio propio, fuera de la infraestructura** | su labor es aparte: **primero califica el cumplimiento**, **después la calidad de la información** que nutrirá a los demás dominios |
+
+### El método que cierra la deriva
+
+⛔ **No se bautizan más dominios hasta terminar el inventario.** El orden es:
+**realidades → filtros → agrupación → dominios.** Y el filtro que las separa de una vez:
+
+| ① realidades de la gestión | ② perspectivas de observación | ③ infraestructuras | ④ productos | ⑤ señales |
+|---|---|---|---|---|
+| presupuesto · contratación · prestación · planificación · participación · transparencia… | territorial · equidad · cumplimiento | adquisición recursiva · extracción · GeoTwin | QUIRA Cooperación | SAT |
+
+**Estas cinco cosas no pueden competir por ser dominio.**
+
+> **Regla:** **no se acepta un dominio porque sea útil para organizar información. Se acepta sólo si
+> representa una realidad administrativa que QUIRA necesita conocer.**
+
+### Inventario de realidades de la gestión pública intermedia — y **lo que ya hay** en el motor
+
+*(Universo de «lo que ya hay»: las **123 hojas** del Gold Master vigente, leídas hoy.)*
+
+| # | realidad administrativa | ¿hogar en el mapa de 7? | material existente en el motor |
+|---|---|---|---|
+| 1 | **Mandato electoral** — promesa que también es norma | ✅ `U2` | `H03_S1_ELECTORAL_CNE` · `H63_S0_CNE_TRAZABILIDAD` · `H16_IFE` |
+| 2 | **Producción normativa local y fiscalización del Concejo** — ordenanzas, resoluciones, sesiones, control político | ⛔ **SIN HOGAR** | ⛔ **sin hoja** |
+| 3 | **Planificación del desarrollo** | ✅ `U1-A` | `H04_S2_PLANIFICACIÓN_PDOT` · `H05_S3_OPERATIVO_POA` · `H11b_MONITOR_POLITICAS` |
+| 4 | **Financiamiento público propio** — ingresos, recaudación, transferencias, **autonomía financiera**, deuda | ⛔ **SIN HOGAR** *(`U1-B` cubre el gasto, no el ingreso)* | ⚠️ parcial: `H20c_IEF` · `H90_PRESUPUESTO_CONSOLIDADO` |
+| 5 | **Asignación y ejecución del gasto** | ✅ `U1-B` | `H07_S5_FINANCIERO_eSIGEF` · `H07b` · `H07c` · `H_HOLDING_CEDULAS` |
+| 6 | **Contratación pública** — procedimientos, proveedores, concentración, modalidades | ⚠️ **repartida** entre `U1` (PAC) y transparencia | ✅ **dos hojas propias**: `H05b_PAC_CONTRATACIÓN` · `H06_S4_CONTRATACIÓN_SERCOP` |
+| 7 | **Capacidad institucional** — estructura orgánica, unidades responsables, procesos, talento humano | ⛔ **SIN HOGAR** | ✅ **material fuerte**: `H02b_ORGÁNICO_CLASIFICADOR` · `SCHEMA_ORGANICO` · `H_ORGANICO_040_2025` · `H30_IED_POR_DIRECCIÓN` |
+| 8 | **Prestación y operación de servicios** — continuidad, calidad, tarifas, mantenimiento | ⛔ **SIN HOGAR** *(`U4` observa **cobertura**, que es el resultado, no la operación)* | ⚠️ indirecto: `H19b_IE_EP_EA` · `H71_EP_ADSCRITAS` |
+| 9 | **Cobertura y acceso territorial** | ✅ `U4` | `SCHEMA_NBI` · `CAPA_TERRITORIAL` · `H42_IET` · `H43_MOTOR_TERRITORIAL` |
+| 10 | **Regulación y control local** — uso de suelo, PUGS, catastro, permisos, licencias | ⛔ **SIN HOGAR** | ⛔ **sin hoja** |
+| 11 | **Gestión de bienes y patrimonio** — inmuebles, maquinaria, patrimonio cultural | ⛔ **SIN HOGAR** | ⛔ **sin hoja** |
+| 12 | **Seguridad ciudadana y gestión de riesgos** — emergencias, respuesta | ⚠️ `U6` cubre el **riesgo natural**, no la seguridad ni la respuesta | ⚠️ `SCHEMA_RIESGOS` · bomberos existe como **ente**, no como realidad |
+| 13 | **Desarrollo económico territorial** | ✅ `U5` | corpus económico del PDOT |
+| 14 | **Ambiente y resiliencia** | ✅ `U6` | `KB_DIAGNOSTICO_PDOT` · `H20_ICODS` |
+| 15 | **Atención a grupos prioritarios** | ✅ `U7` | `H16c_PSG` · `H04b_DIAGNÓSTICO_SOCIAL` |
+| 16 | **Participación y control social** | ✅ `U3` *(renombrado)* | `H10` · `H10b` · `H10c` · `H31_REPORTE_CPCCS` · `H34b_MFN` |
+| 17 | **Transparencia** — cumplimiento **y** calidad de la información | ✅ **dominio propio** *(decisión)* | ✅ `H09_S7_TRANSPARENCIA_LOTAIP` · `H70_BITACORA_LOTAIP` · `H18_ITAM` · `H41_IOC` |
+| 18 | **Autoreporte a sistemas nacionales** — SIGAD y similares | ⚠️ **sin hogar claro** | ✅ `H08_S6_AUTOREPORTE_SIGAD` |
+| 19 | **Coordinación intergubernamental** — mancomunidades, convenios, competencias concurrentes | ⛔ **SIN HOGAR** | ⛔ **sin hoja** |
+
+### ⛔ Las ocho brechas — esto es lo que faltaba
+
+| brecha | ¿por qué importa para la gestión intermedia? | ¿hay material? |
+|---|---|---|
+| **B1 · producción normativa y fiscalización del Concejo** | el órgano que **aprueba ordenanzas y presupuesto y fiscaliza** no tiene observador. Sin él, QUIRA ve la administración pero no el **gobierno** | ⛔ nada |
+| **B2 · financiamiento propio e ingresos** | sin ingresos no se explica la **autonomía financiera**: un GAD que no recauda depende de transferencias, y eso **condiciona todo lo demás** | ⚠️ parcial |
+| **B3 · contratación pública** | tiene norma propia, sujeto propio, evidencia propia (SERCOP) y riesgos propios. Hoy queda partida en dos | ✅ dos hojas |
+| **B4 · capacidad institucional** | **la realidad que convierte decisiones en acción**: estructura, unidades, procesos, personal. Es la que explica por qué un plan no se ejecuta | ✅ fuerte |
+| **B5 · prestación y operación de servicios** | `U4` observa **el resultado** (cobertura); nadie observa **la gestión que lo produce**: continuidad, calidad, tarifas, mantenimiento | ⚠️ indirecto |
+| **B6 · regulación y control local** | uso de suelo, catastro y permisos son **competencia municipal central** y hoy no existen en QUIRA | ⛔ nada |
+| **B7 · bienes y patrimonio** | el municipio administra patrimonio público: sin observarlo, falta una parte del deber de administración | ⛔ nada |
+| **B8 · seguridad y respuesta ante emergencias · coordinación intergubernamental** | dos realidades distintas, ambas sin hogar | ⚠️/⛔ |
+
+> ⭐ **Cuatro de las ocho brechas YA TIENEN MATERIAL EN EL MOTOR** —contratación, capacidad
+> institucional, autoreporte y, parcialmente, financiamiento y prestación—. **Es decir: QUIRA ya
+> recogía evidencia de realidades que el mapa de siete dominios dejaba sin hogar.** Ésa es la prueba
+> más dura de que la partición estaba incompleta — y el motivo por el que había que mirar lo que ya
+> hay antes de cerrar la ontología.
+
+### Los tres filtros que se aplicarán a cada realidad
+
+**F1 · Realidad** — ¿existe una realidad administrativa diferenciable?
+**F2 · Independencia** — ¿eliminarla hace desaparecer una capacidad explicativa distinta?
+**F3 · Cobertura** — ¿queda cubierto cada aspecto esencial de la gestión pública?
+
+**Recién después: realidades → agrupaciones ontológicas → dominios de QUIRA 7.**
+
+### Estado
+
+> **`D1.0` NO se cierra.** Los siete dominios quedan como **hipótesis de partición incompleta,
+> con ocho brechas demostradas**. **No se pasa a `D1-A` ni a la cirugía.**
+>
+> **Y una distinción que la dirección debe conservar:** que hoy no exista cadena normativa para una
+> realidad **no la excluye de la ontología**. `D1` produce dos cosas separadas: **(A)** qué debe
+> observar QUIRA 7 · **(B)** qué parte ya está normativamente gobernada y qué parte hay que
+> construir. **La ausencia de BRN nunca determina la ontología.**
+
 ## 6 · Y la finalidad, dicha por la dirección
 
 > *«No es una auditoría, sino **elevar este ecosistema**… para potenciar, mejorar y elevar el nivel
