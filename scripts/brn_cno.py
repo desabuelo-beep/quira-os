@@ -138,6 +138,10 @@ def _leer_sello(canon_sha: str) -> dict:
     # que es la diferencia entre acreditar y parecer acreditado.
     if s.get("renovacion_de"):
         fuera["renovacion_de"] = s["renovacion_de"]
+    # Un sello NUEVO sobre un canon NUEVO dice a qué sello sustituye y qué cambió.
+    # No se lo llama renovación: renovar es la misma validación sobre el mismo canon.
+    if s.get("sustituye_a"):
+        fuera["sustituye_a"] = s["sustituye_a"]
     return fuera
 
 

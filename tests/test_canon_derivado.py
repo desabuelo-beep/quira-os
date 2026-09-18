@@ -80,7 +80,9 @@ def test_ataque_un_cno_sin_RO_no_puede_desaparecer_del_inventario():
     allí la regla existe y el motor no la carga; aquí la cadena se modeló y
     nunca llegó a ser regla. Invisibilizarlo es la peor de las dos."""
     e = C.estado_canonico("d08")
-    assert len(e["cno_huerfanos"]) >= 7, (
+    # 2026-09-18: de 7 a 6 por RO-VIII-004, ratificada por Javo para entrar al canon
+    # (PANORAMA §5-sexquinquagies). Si baja otra vez, pedir la misma constancia.
+    assert len(e["cno_huerfanos"]) >= 6, (
         "volvieron a perderse los CNO que ninguna RO deriva")
     assert e["sha_totales"] >= 29, (
         f"d08 reporta {e['sha_totales']} eslabones: se está contando sólo lo "

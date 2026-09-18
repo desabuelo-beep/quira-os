@@ -1,10 +1,10 @@
 {
   "_fuente": "GENERADO por scripts/governance/build_authority_graph.py — no editar",
   "_autoridad": "Carta de Gobernanza Art. 1 (Derivación) y Art. 3 (representaciones)",
-  "generado": "2026-09-14",
+  "generado": "2026-09-18",
   "raiz": "CONSTITUCION-001",
-  "total_nodos": 158,
-  "total_aristas": 158,
+  "total_nodos": 159,
+  "total_aristas": 159,
   "aristas_rotas": 0,
   "aristas_fuera_de_catalogo": 1,
   "huerfanos": 0,
@@ -379,6 +379,13 @@
       "kind": "canon_ro",
       "level": 2,
       "path": "docs/brn/RO-VIII-003.yaml",
+      "declared": true
+    },
+    {
+      "id": "RO-VIII-004",
+      "kind": "canon_ro",
+      "level": 2,
+      "path": "docs/brn/RO-VIII-004.yaml",
       "declared": true
     },
     {
@@ -1427,6 +1434,12 @@
     {
       "from": "RO-VIII-003",
       "to": "CNO-VIII-000",
+      "type": "IMPLEMENTS",
+      "resuelto": true
+    },
+    {
+      "from": "RO-VIII-004",
+      "to": "CNO-VIII-005",
       "type": "IMPLEMENTS",
       "resuelto": true
     },

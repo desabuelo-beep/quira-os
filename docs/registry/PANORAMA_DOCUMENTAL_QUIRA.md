@@ -6492,7 +6492,7 @@ LOTAIP 19 del grafo · los circuitos QTMP.** Todo contra el corpus vectorizado (
 
 | capa | resultado | corrección |
 |---|---|---|
-| **BRN** · 16 CNO | ✅ **las 109 referencias coinciden documentalmente con los artículos citados** — salvo el mapa de numerales de `CNO-VII-001` *(abajo)*. *(Precisión del colega, `§5-quinquinquagies`: es **correspondencia documental**; no demuestra que cada CNO esté bien delimitada, que sus RO deriven legítimamente, ni que la condición operativa sea jurídicamente adecuada.)* | ninguna |
+| **BRN** · 16 CNO | ✅ **las 109 referencias coinciden documentalmente con los artículos citados** — salvo el mapa de numerales de `CNO-VII-001` *(abajo)*. *(Precisión del colega, `§5-quinquinquagies`: es **correspondencia documental**; no demuestra que cada CNO esté bien delimitada, que sus RO deriven legítimamente, ni que la condición operativa sea jurídicamente adecuada. **Esta comprobación no constituye por sí sola validación de la cadena normativa ni de la interpretación jurídica.**)* | ninguna |
 | **QLEP** | **8 textos presentados como literales no son el texto de su artículo** — 5 no aparecen en ninguna parte del corpus (COOTAD 57 · 228 · 300 · 302 · LOC-CGE 12), 1 era de la LOTAIP derogada (LOTAIP 7), 2 eran paráfrasis ampliadas (COOTAD 249 · 304) · **2 descripciones de otra materia** (COOTAD 198 · COPLAFIP 44) · **3 numeraciones erradas**: el texto atribuido a CE 209 es del **CE 207** `fa7fe58c151b` · CE 264 núm. 8 → **núm. 2** · NCI 600-01 → **600** | **v1.1**: su propia regla la autoriza (*«v1.1 — solo si un error factual normativo es identificado»*). Texto literal con huella; **las preguntas bautismales no se tocaron** · 13 de 13 citas literales verificadas |
 | **ACK** · artículo equivocado | LOSNCP 21 → **22** (el PAC `1d6c1b3ae153`; el 21 es el portal) · LOSNCP 22 → **23** (estudios `3cd06a225dc5`; la certificación presupuestaria es el **24** `c18eee97ef76`) · LOSEP 4 → **3** (ámbito) · LOSEP 22 → **23** (derechos; el 22 son deberes) · LOSEP 42 → **43** (sanciones; el 42 son faltas) · LOTAIP 19 núm. 21 → **núm. 18** (convenios) | átomos renumerados, texto literal con huella, `ID_ANTERIOR` para la trazabilidad |
 | **ACK** · el texto dice otra cosa | LOSNCP 106 tipifica infracciones **de proveedores** (el átomo lo extendía a servidores y a la CGE) · COA 14 es el principio de **juridicidad** · CE 32: la interpretación *«el GAD puede proveer salud a los GAP»* iba como texto de la Constitución, y **COOTAD 138** `10684e6e6766` habilita **infraestructura y equipamientos**, no la prestación del servicio | texto literal · la interpretación queda **marcada como interpretación** |
@@ -6655,8 +6655,17 @@ cita retirada. Cinco comillas del registro que citaban afirmaciones erróneas pa
 de SAT en `§5-septquatrigies` y dos de `§5-terquinquagies`).
 
 **Línea base — un acto, no una rutina.** Las **41** citas fuera de cadena escritas **antes** de esta regla
-quedan en `scripts/normativa/citas_linea_base.json` como **historia registrada, no como citas aprobadas**.
-Lo nuevo debe declararse. Regenerar la línea base se ve en el diff y se justifica en el commit.
+quedan en `scripts/normativa/citas_linea_base.json`. **La línea base es un inventario histórico de
+hallazgos preexistentes; no es un mecanismo de aprobación.** Lo nuevo debe declararse. *(Vulnerabilidad
+señalada por el colega: si se la edita libremente, «nuevo hallazgo → a la línea base → gate verde» burla el
+mecanismo. Por eso toda modificación **se ve en el diff y se asocia en el commit al cambio que la
+justifica**.)*
+
+**La convención de escritura** (comillas angulares = ley · “ ” = afirmación de otro · tachado = retirado)
+**es una regla de escritura del corpus de trabajo de QUIRA, no una característica del lenguaje jurídico**;
+y la atribución «huella → primer texto entre comillas angulares a ≤60 caracteres» es **una heurística**: una
+cita puede ir antes de la huella, una tabla puede separarla de su fuente, una línea puede mezclar material
+descriptivo, histórico y literal. Lo que no alcanza, se cuenta como no verificado.
 
 ### La demostración: los casos A–E
 
@@ -6666,17 +6675,25 @@ Lo nuevo debe declararse. Regenerar la línea base se ve en el diff y se justifi
 | **B** · rector equivocado *(ejemplo: la falsación 43, no encadenado)* | `test_B_articulo_real_usado_como_rector_equivocado_bloquea` · `test_B_huella_de_otro_articulo_es_hallazgo` | COOTAD 266 `33326955d115` usado como regla de la rendición → **bloquea** y devuelve la cadena de `CNO-IX-001` |
 | **C** · artículo inexistente | `test_C_articulo_inexistente_con_alias_de_sigla` *(el caso “LOD Art. 563”)* | en el universo del gate: 0 |
 | **D** · correcto pero fuera de la cadena | `test_D_eslabon_faltante_sin_declarar_bloquea` · `test_D_eslabon_faltante_declarado_pasa` · `test_D_concordancia_declarada_pasa` | LOPC 95 `e9b95d33a298` sin declarar → **bloquea**; declarado como eslabón faltante → **pasa** |
-| **E** · paráfrasis | `test_E_cita_literal_falsa_bloquea` · `test_E_cita_literal_verdadera_se_cuenta_verificada` · `test_E_parafrasis_falsa_no_se_finge_verificada` · `test_E_comillas_de_afirmacion_no_son_texto_de_ley` | literal alterado de COOTAD 249 `c0c0fce0f126` → **bloquea**; la paráfrasis se cuenta **no verificada**, nunca verificada |
+| **E1** · literal falsamente atribuido | `test_E_cita_literal_falsa_bloquea` · `test_E_cita_literal_verdadera_se_cuenta_verificada` | literal alterado de COOTAD 249 `c0c0fce0f126` → **bloquea** |
+| **E2** · paráfrasis semánticamente incorrecta | `test_E_parafrasis_falsa_no_se_finge_verificada` · `test_E_comillas_de_afirmacion_no_son_texto_de_ley` | **no determinable** por máquina: se cuenta **NO VERIFICADA** — ni bloqueada por falsedad ni aprobada |
 | el mecanismo | `test_el_hook_bloquea_el_caso_B` · `test_la_clave_de_cadena_no_depende_del_corpus` · `test_cita_retirada_o_ajena_no_es_cita_propia` | — |
 
 **21 pruebas, 21 pasan.**
+
+**El resultado, en una línea por caso** *(precisión del colega: no mezclar E1 con E2 — **el sistema no se
+atribuye una capacidad que no posee**)*:
+
+| A | B | C | D | E1 | E2 |
+|---|---|---|---|---|---|
+| pasa | bloquea | bloquea | bloquea sin declaración · pasa como excepción explícita | bloquea | **no determinable · no verificada** |
 
 ### Estado, sin mezclar
 
 | qué | estado |
 |---|---|
 | gate de salud | **PASS** — paso 6: 57 archivos · 0 hallazgos · **22** citas literales verificadas contra su artículo · ⚠️ **101** citas con huella **sin texto literal: contenido no verificado** · 0 fuera de cadena sin declarar · 41 en la línea base |
-| regla de cadena sin corpus | **determinable**: con sólo los YAML de la BRN encuentra las mismas citas; corre en CI si el runner tiene PyYAML |
+| sin corpus (CI) | **la comprobación de encadenamiento estructural puede ejecutarse sin el corpus** —con los YAML de la BRN encuentra las mismas citas; requiere PyYAML en el runner—; **la verificación documental de huella, existencia y literalidad requiere acceso al corpus** *(precisión del colega)* |
 | suite completa | **960 PASS / 2 FAIL / 1 SKIP** (963 pruebas) |
 | los 2 FAIL | del orquestador de Transparencia al recapturar evidencia; **reproducibles sin estos cambios** |
 | captura de pytest | la suite sólo corre con `-s`; el cierre de la captura falla **también sin estos cambios** — preexistente, sin diagnosticar |
@@ -6695,8 +6712,14 @@ Lo nuevo debe declararse. Regenerar la línea base se ve en el diff y se justifi
   bajo control.
 - **Las correcciones de QLEP y ACK son proveniencia corregida, no autoridad nueva.** Corpus = fuente de
   verificación · capas históricas = proveniencia · BRN sellada = autoridad donde corresponde.
-- **Límite de la regla 4:** la materia se reconoce por las palabras del título de cada CNO; una línea que
-  trate una materia sin nombrarla no se evalúa. Es **pertenencia a la cadena, no pertinencia jurídica**.
+- **Limitación conocida de la regla 4 — sin cobertura universal:** detecta citas fuera de cadena **cuando la
+  línea puede vincularse al ámbito de la cadena mediante el criterio léxico implementado** (las palabras
+  propias del título de cada CNO). Una línea que trate una materia sin nombrarla **no se evalúa**. Es
+  pertenencia a la cadena, no pertinencia jurídica. *No se amplía ahora: sería otra obra.*
+- **Pertenece al problema D**, no a los otros tres: **A** autoridad (`D0.1`: quién autoriza el estado) ·
+  **B** propagación (qué consumidores regeneran o validan) · **C** identidad (registro de señales) · **D**
+  **integridad documental de citas** (¿la referencia escrita corresponde a la fuente y a la cadena
+  declarada?). El verificador resuelve D y **no resuelve A, B ni C**.
 
 ### Lo que sigue abierto — sin cambios
 
@@ -6707,6 +6730,70 @@ Lo nuevo debe declararse. Regenerar la línea base se ve en el diff y se justifi
   ejercicio**. No se afirma que corresponda a 2025.
 - **Decisiones de la dirección, intactas:** ratificar `RO-VIII-004` · el retiro de SAT-I, VII y VIII como
   paquete · qué definición de SAT-III se conserva · resellar `CNO-VII-001` (numeral de convenios 21 → 18).
+  *(La primera y la última de esta lista se resolvieron el mismo día: `§5-sexquinquagies`.)*
+
+## 5-sexquinquagies · **RATIFICACIÓN DE LA DIRECCIÓN** — `RO-VIII-004` entra al canon y el catálogo BRN se resella *(y el dictamen del colega)*
+
+> **Javo:** *«Ratifico RO-VIII-004 y reselle CNO-VII-001. Si es viable hagámoslo.»*
+>
+> **Colega:** *«**D · Integridad documental normativa: ACEPTADO COMO INFRAESTRUCTURA · LIMITACIONES
+> DECLARADAS**»* — con cuatro precisiones documentales, aplicadas en `§5-quinquinquagies`: **E1 ≠ E2** ·
+> **línea base = inventario histórico, no aprobación** · **encadenamiento sin corpus ≠ verificación
+> documental completa** · **disparador léxico sin cobertura universal**. **Aquí se detiene la expansión del
+> verificador.**
+
+### Qué era viable — y qué no
+
+| acto | ¿viable? | por qué |
+|---|---|---|
+| **incorporar `RO-VIII-004` al canon** | ✅ **sí** — hecho | es lo que la ratificación destraba: la RO estaba escrita, aplicada y **retirada** hasta este acto (`§5-quattrigies`) |
+| **promoverla a `vigente`** | ⛔ **no, por sí sola** | dos reglas del canon lo impiden sin otros actos de la dirección: **(1)** el compilador sólo toma una RO vigente **cuya CNO también lo sea** (ADR-035 §5), y `CNO-VIII-005` está en **propuesta**; **(2)** **D-006**: el bloque VIII queda en propuesta **hasta curar d08**, y una prueba lo vigila |
+| **fe de erratas en `CNO-VII-001`** | ✅ **sí** — hecho | `observa_capas`: el numeral de convenios es el **18**, no el 21. **Ningún eslabón de la cadena cambia** |
+| **resellar el catálogo** | ✅ **sí** — hecho | el sello anterior caducó solo al cambiar el canon; se registró **un sello nuevo, no una renovación** |
+
+### El acto, paso por paso
+
+| paso | resultado |
+|---|---|
+| `docs/brn/RO-VIII-004.yaml` | el texto que la dirección ratificó, **tal cual**, en `propuesta`. Dos precisiones de forma: la cabecera deja constancia de la ratificación y de lo que **no** hace; y `justificacion_umbral` pasa de «pendiente» a **decisión operativa ratificada** — *la cadena funda la obligación de justificar los desvíos, pero no fija el 20 %: es criterio de gestión, no de ley* |
+| `docs/brn/CNO-VII-001.yaml` | numeral `"21"` → `"18"` · `LOTAIP_19_21` → `LOTAIP_19_18`, con la fe de erratas escrita en la pieza |
+| registro y grafo de autoridad | **159 activos · 0 huérfanos · 0 aristas rotas** |
+| verificado **antes** de sellar | el sello anterior (`f9fa18c6f3b8bb9b`, 30 YAML) correspondía **exactamente** al canon de `HEAD`: el sello nuevo cubre **estos dos cambios y ningún otro** |
+| **sello nuevo** · `docs/registry/sello_catalogo_brn.json` | Javo · **2026-09-18** · canon `6f1702ab655c1987` · 31 YAML · con `sustituye_a`: qué sello sustituye, qué cambió y la autorización citada textualmente |
+| catálogo compilado (`brn_cno`) | **16 CNO íntegras** (8 vigentes · 8 propuesta) · **14 RO** (10 vigentes · 4 propuesta) · sello leído como **validado** |
+| señales (`check_sat_brn`) | **5 de 10 con cadena BRN** — entra `SAT-VI` |
+| cables trampa | `CNO-VIII` sin RO: **7 → 6**, con la ratificación citada en la prueba · la prueba del bloque VIII **ahora vigila también a `RO-VIII-004`**: sigue en propuesta y no es consumible |
+| prueba del sello | exige la fecha del sello real y que diga **qué renueva o a qué sustituye** |
+| pruebas del lector (`test_brn_lector`) | **dos fallaron** al entrar la RO, con el catálogo **al día y sellado**: tenían escrito a mano *«13 RO»*. Ahora **derivan** del canon cuántas piezas hay — lo que vigilan es que el lector **cuente**, no una cifra que se queda atrás (D-009) |
+| suite completa | **960 PASS / 2 FAIL / 1 SKIP** (963) — los 2 FAIL, los mismos preexistentes del orquestador de Transparencia |
+
+**Una línea de código:** `brn_cno._leer_sello` ahora transmite `sustituye_a` al catálogo, igual que ya
+transmitía `renovacion_de`. Renovar es la misma validación sobre el mismo canon; esto es otra cosa, y el
+catálogo tiene que poder decirlo.
+
+### Lo que NO se hizo, y por qué
+
+- **No se recompiló el puente BRN → motor.** `brn_compilador --verificar` sigue en **DIVERGE**, **igual que
+  antes de este acto** (falsación 40). Recompilar es un acto de **propagación** (problema B) que nadie
+  pidió; y `RO-VIII-004` no entraría de todas formas, porque está en propuesta.
+- **No se tocó el Gold Master.** El estado `sin_datos` sigue sin reflejarse en `H24c`/`H75`: es obra de la
+  versión 7 del Excel, sobre copia y con evidencia.
+- **No se promovió nada.** Para que `RO-VIII-004` sea consumible, la dirección tendría que **validar
+  `CNO-VIII-005`** y **curar d08** —o revisar D-006—. Son sus decisiones.
+
+### Pendiente de la dirección
+
+1. El retiro de **SAT-I, SAT-VII y SAT-VIII** como señales, como paquete.
+2. Qué definición de **SAT-III** se conserva.
+3. *(Nueva, derivada de este acto)* Si **`CNO-VIII-005`** se valida, para que `RO-VIII-004` pueda llegar a
+   vigente cuando d08 se cure.
+
+### Y el camino, sin desvío
+
+`D1` → **Matriz Maestra de Elevación** (`§5-quinquatrigies` + `§5-quaterquinquagies`) → **cirugía dominio
+por dominio** → nuevo estado canónico → **propagación gobernada**. *(Son **ocho** dominios, no siete: la
+lista final de `§5-untrigies`.)* El verificador ya protege ese camino de la clase de error que fue COOTAD
+266.
 
 ## 6 · Y la finalidad, dicha por la dirección
 

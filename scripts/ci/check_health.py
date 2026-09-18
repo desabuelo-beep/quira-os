@@ -5,7 +5,9 @@ scripts/ci/check_health.py — Guardián de salud QUIRA (CI/CD)
 Dylus Lab © 2026
 
 Corre en GitHub Actions en cada push/PR. Rápido (~segundos), SIN credenciales,
-SIN conectar a Supabase/Neo4j/Excel. Protege lo que importa:
+SIN conectar a Neo4j ni al Excel. Supabase: sólo el paso 6, en LECTURA, y sólo donde
+hay credenciales locales; en CI no las hay y ese tramo es «no determinable».
+Protege lo que importa:
 
   1. PRESUPUESTO DE CONTEXTO — CLAUDE.md y BOOT.md no deben volver a inflarse
      (la causa del problema de "chats que mueren"). Límites duros.
@@ -413,8 +415,9 @@ def check_citas() -> list[str]:
     else:
         print("      huella · existencia · literal: 2 — no determinable (sin corpus)")
     if g["cadena"]:
-        print(f"      cadena rectora: {len(g['fuera_nuevas'])} fuera de cadena sin declarar · "
-              f"{g['fuera_en_base']} en la línea base (historia registrada)")
+        print(f"      cadena rectora (disparador léxico · sin cobertura universal): "
+              f"{len(g['fuera_nuevas'])} fuera de cadena sin declarar · {g['fuera_en_base']} en la "
+              "línea base (inventario histórico, no aprobación)")
     else:
         print("      cadena rectora: 2 — no determinable (sin la BRN legible)")
     if errores:

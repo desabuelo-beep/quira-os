@@ -30,6 +30,12 @@ if str(RAIZ) not in sys.path:
 
 from app.agents import brn_lector as L                    # noqa: E402
 
+# Cuántas piezas tiene el canon se DERIVA del disco, no se escribe aquí: con la cifra a mano
+# (13 RO) la prueba falló el 2026-09-18 al entrar RO-VIII-004, ratificada por Javo, aunque el
+# catálogo estaba al día y sellado. Lo que estas pruebas vigilan es que el lector CUENTE.
+N_CNO = len(list((RAIZ / "docs" / "brn").glob("CNO-*.yaml")))
+N_RO = len(list((RAIZ / "docs" / "brn").glob("RO-*.yaml")))
+
 
 def _snapshot_con(tmp_path, mutar):
     """Copia el snapshot, le aplica una mutación y apunta el lector ahí.
@@ -46,7 +52,7 @@ def test_el_catalogo_esta_al_dia_y_sellado():
     c = L.leer()
     assert c.estado == L.AL_DIA and c.canon_coincide
     assert c.sello.estado == L.VALIDADO and c.sello.validado_por == "Javo"
-    assert c.integridad_cno == (16, 16) and len(c.reglas) == 13
+    assert c.integridad_cno == (N_CNO, N_CNO) and len(c.reglas) == N_RO
 
 
 # ── 1 · CANON ALTERADO DESPUÉS DEL SELLO ──────────────────────────────────────
@@ -125,7 +131,7 @@ def test_ataque_6_integridad_cno_alterada_no_engaña(tmp_path, monkeypatch):
     p = _snapshot_con(tmp_path, romper)
     monkeypatch.setattr(L, "_SNAP", p)
     c = L.leer()
-    assert c.integridad_cno == (15, 16), (
+    assert c.integridad_cno == (N_CNO - 1, N_CNO), (
         f"el lector creyó al campo en vez de contar: {c.integridad_cno}")
 
 
@@ -135,7 +141,7 @@ def test_ataque_7_integridad_ro_alterada_no_engaña(tmp_path, monkeypatch):
     p = _snapshot_con(tmp_path, romper)
     monkeypatch.setattr(L, "_SNAP", p)
     c = L.leer()
-    assert c.integridad_ro == (13, 13), "el lector usó `total_ro` en vez de contar"
+    assert c.integridad_ro == (N_RO, N_RO), "el lector usó `total_ro` en vez de contar"
 
 
 # ── 8 · CATÁLOGO INEXISTENTE O CORRUPTO ───────────────────────────────────────

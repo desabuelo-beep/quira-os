@@ -3,8 +3,8 @@
 # GENERADO por scripts/governance/build_registry.py · NO editar a mano.
 # Autoridad: Carta de Gobernanza Art. 1 (Derivación) y Art. 3 (describe, no gobierna).
 # ═══════════════════════════════════════════════════════════════════
-generado: 2026-09-14
-total_activos: 158
+generado: 2026-09-18
+total_activos: 159
 huerfanos: 0   # sin bloque authority: → no pueden promoverse a vigente (Art. 1)
 
 componentes:
@@ -19,7 +19,7 @@ componentes:
     kind: normative
     level: 1
     path: governance/BOOT.md
-    hash: 8dc71e5b3799efd7
+    hash: 47f382508e1fa403
     authority_declared: true
     parent: GOVERNANCE-001
   - id: GOVERNANCE-001
@@ -208,7 +208,7 @@ componentes:
     kind: canon_cno
     level: 2
     path: docs/brn/CNO-VII-001.yaml
-    hash: e8899d40cb895778
+    hash: 9066cbc3f1de639f
     authority_declared: true
     parent: GOVERNANCE-001
   - id: CNO-VII-002
@@ -379,6 +379,13 @@ componentes:
     hash: 7d42ec6501b25438
     authority_declared: true
     parent: CNO-VIII-000
+  - id: RO-VIII-004
+    kind: canon_ro
+    level: 2
+    path: docs/brn/RO-VIII-004.yaml
+    hash: f889d1ef3017881d
+    authority_declared: true
+    parent: CNO-VIII-005
   - id: ADR-013
     kind: canon_adr
     level: 2
@@ -1062,7 +1069,7 @@ componentes:
     kind: gate
     level: 3
     path: scripts/ci/check_health.py
-    hash: cab6d201d5edf9ad
+    hash: 4730b517611f6d71
     authority_declared: true
     parent: GOVERNANCE-001
   - id: GRAPH-001_crdc_circuit

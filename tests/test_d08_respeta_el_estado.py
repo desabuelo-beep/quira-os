@@ -101,8 +101,15 @@ def test_ataque_los_siete_CNO_sin_RO_siguen_visibles():
     visibles — que es exactamente lo que un dominio sin curar debe mostrar."""
     from app.agents import canon as K
 
+    # 2026-09-18 · BAJÓ DE 7 A 6, y ésta es la verificación que la prueba exige:
+    # RO-VIII-004 (CNO-VIII-005 → SAT-VI) NO es una regla fabricada para el gate.
+    # Se escribió desde el filtro de las SAT huérfanas (PANORAMA §5-quattrigies),
+    # se aplicó, caducó el sello y SE RETIRÓ hasta que la dirección la ratificara;
+    # Javo la ratificó el 2026-09-18 («Ratifico RO-VIII-004») y el catálogo se
+    # reselló. Entra en `propuesta`: no la consume nadie (siguiente prueba).
     ids = set(K.cno_huerfanos("d08"))
-    assert len([x for x in ids if x.startswith("CNO-VIII-00")]) == 7, (
+    assert "CNO-VIII-005" not in ids, "CNO-VIII-005 perdió la RO que la dirección ratificó"
+    assert len([x for x in ids if x.startswith("CNO-VIII-00")]) == 6, (
         f"cambió el número de CNO-VIII sin RO: {sorted(ids)}. Si BAJÓ, hay que "
         f"verificar que la RO nueva es canon real y no una regla fabricada")
 
@@ -111,7 +118,9 @@ def test_ataque_todo_el_bloque_VIII_esta_en_propuesta():
     """LA RAZÓN por la que los siete no son deuda, fijada como prueba. Si alguna
     pieza de VIII pasara a `vigente` sin que d08 se cure, este test falla — y
     ese fallo pregunta lo correcto: ¿quién la promovió, y con qué evidencia?"""
-    for rid in ("RO-VIII-001", "RO-VIII-002", "RO-VIII-003"):
+    # RO-VIII-004 se suma (2026-09-18): ratificada por la dirección para ENTRAR al
+    # canon, no para promoverse — su CNO sigue en propuesta y d08 no está curado.
+    for rid in ("RO-VIII-001", "RO-VIII-002", "RO-VIII-003", "RO-VIII-004"):
         r = L.regla(rid)
         assert r is not None, f"{rid} desapareció del catálogo"
         assert r.estado_pieza == "propuesta", (

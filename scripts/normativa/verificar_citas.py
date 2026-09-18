@@ -20,8 +20,11 @@ LA REGLA (PANORAMA §5-quinquinquagies)
     4. CADENA      la línea trata la materia de una CNO y cita un artículo que ninguna
                    CNO encadena. Se resuelve DECLARANDO qué es: «concordancia»,
                    «eslabón faltante», «no encadenado», «fuera de la cadena». El gate
-                   acepta además lo registrado en la línea base (historia anterior a este
-                   mecanismo); todo lo nuevo debe declararse.
+                   acepta además la línea base: un INVENTARIO HISTÓRICO de hallazgos
+                   preexistentes, NO un mecanismo de aprobación; todo lo nuevo se declara.
+                   LIMITACIÓN CONOCIDA: la materia se reconoce por un disparador léxico (las
+                   palabras propias del título de cada CNO). Sin cobertura universal: una
+                   línea que trate la materia sin nombrarla no se evalúa.
   Convención de escritura que la regla hace verificable:
     «»      sólo para texto de la ley (se contrasta con el artículo);
     “ ”     lo que otro afirma — un catálogo, una versión anterior, una persona;
@@ -32,8 +35,9 @@ LA REGLA (PANORAMA §5-quinquinquagies)
                    cuenta como «contenido no verificado» y queda a validación humana.
 
 Sólo lectura: la sesión con el corpus se abre read-only; la URI se resuelve con
-brn_cno._uri y nunca se imprime. Sin corpus (CI) lo que exige el corpus (1, 2, 3) es
-«no determinable»; la cadena (4) se determina igual con los YAML de la BRN.
+brn_cno._uri y nunca se imprime. El encadenamiento estructural (4) puede ejecutarse
+sin el corpus, con los YAML de la BRN; la verificación documental de huella,
+existencia y literalidad (1, 2, 3) requiere acceso al corpus: sin él es «no determinable».
 
 Uso:
   python scripts/normativa/verificar_citas.py ARCHIVO [...]   # informe por archivo
@@ -392,8 +396,10 @@ def registrar_linea_base() -> int:
         return 2
     LINEA_BASE.write_text(json.dumps({
         "registrada": date.today().isoformat(),
-        "motivo": "citas fuera de la cadena rectora escritas ANTES del mecanismo (falsación 43). "
-                  "Son historia registrada, no citas aprobadas: lo nuevo debe declararse.",
+        "motivo": "inventario histórico de hallazgos preexistentes (citas fuera de la cadena "
+                  "rectora escritas ANTES del mecanismo, falsación 43). NO es un mecanismo de "
+                  "aprobación: lo nuevo debe declararse, y toda modificación de este archivo se "
+                  "asocia en el commit al cambio que la justifica.",
         "claves": sorted(set(g["claves"]))}, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
     print(f"  línea base: {len(set(g['claves']))} citas históricas fuera de cadena registradas")
     return 0

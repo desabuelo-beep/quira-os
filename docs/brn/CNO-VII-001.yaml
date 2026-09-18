@@ -178,9 +178,15 @@ observa_capas:
     capa: accountability
     ack: LOTAIP_19_12
     alimenta_dominio: d09
-  - numeral: "21"
+  # FE DE ERRATAS 2026-09-18 — ratificada por Javo al resellar el catálogo («reselle
+  # CNO-VII-001»). Decía numeral "21" y ack LOTAIP_19_21. En la LOTAIP vigente los
+  # convenios son el numeral 18 del art. 19: lo confirman el conteo sobre el texto del
+  # corpus y las 24 condiciones curadas de d07. El numeral 21 trata de políticas públicas.
+  # No cambia la cadena ni ningún eslabón: sólo el mapa de la naturaleza observacional.
+  # Evidencia: PANORAMA §5-terquinquagies.
+  - numeral: "18"
     capa: contratacion
-    ack: LOTAIP_19_21
+    ack: LOTAIP_19_18
     alimenta_dominio: d01
 
 # ── Validación humana (ADR-035 §5) ────────────────────────────────────────────────

@@ -202,15 +202,15 @@ def test_el_catalogo_lleva_sello_humano_con_nombre_y_fecha():
     s = brn["validacion_humana_del_catalogo"]
     assert s["estado"] == "validado"
     assert s["validado_por"] == "Javo"
-    # 2026-09-02: RENOVACIÓN del sello del 01-sep sobre un canon IDÉNTICO. No
-    # cambió el canon —el último commit en `docs/brn/` es anterior al sello—:
-    # cambió la forma de medirlo, porque la huella dependía del sistema de
-    # archivos y no viajaba. El sello lo dice en `renovacion_de`, y esa
-    # constancia es lo que impide leer esto como una validación nueva.
-    assert s["fecha_validacion"] == "2026-09-02", (
+    # 2026-09-02: RENOVACIÓN del sello del 01-sep sobre un canon IDÉNTICO (cambió
+    # la forma de medir la huella, no el canon) — constancia en `renovacion_de`.
+    # 2026-09-18: sello NUEVO sobre un canon NUEVO — RO-VIII-004 entra al canon y
+    # CNO-VII-001 corrige el numeral de convenios; Javo: «Ratifico RO-VIII-004 y
+    # reselle CNO-VII-001». No se lo llama renovación: dice a qué sustituye.
+    assert s["fecha_validacion"] == "2026-09-18", (
         "la fecha debe ser la del sello real, no la de una compilación anterior")
-    assert s.get("renovacion_de"), (
-        "una renovación de sello sin constancia de qué renueva es un sello "
+    assert s.get("renovacion_de") or s.get("sustituye_a"), (
+        "un sello sin constancia de qué renueva o a qué sustituye es un sello "
         "nuevo disfrazado: debe decir cuál caducó y por qué")
     assert "NO convierte" in s.get("alcance", ""), (
         "el sello dejó de declarar su límite")

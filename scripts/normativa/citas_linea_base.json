@@ -1,6 +1,6 @@
 {
  "registrada": "2026-09-18",
- "motivo": "citas fuera de la cadena rectora escritas ANTES del mecanismo (falsación 43). Son historia registrada, no citas aprobadas: lo nuevo debe declararse.",
+ "motivo": "inventario histórico de hallazgos preexistentes (citas fuera de la cadena rectora escritas ANTES del mecanismo, falsación 43). NO es un mecanismo de aprobación: lo nuevo debe declararse, y toda modificación de este archivo se asocia en el commit al cambio que la justifica.",
  "claves": [
   "data/acks/ce_art10_35.yaml::26788cd9b556·LOSEP 43",
   "data/acks/ce_art10_35.yaml::57c325b7ff7b·COOTAD 249",

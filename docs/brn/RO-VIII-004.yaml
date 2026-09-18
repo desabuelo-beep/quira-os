@@ -1,0 +1,67 @@
+# ═══════════════════════════════════════════════════════════════════════════════
+# RO-VIII-004 · Regla Operativa · DESVÍO DE EJECUCIÓN DEL PRESUPUESTO PARTICIPATIVO
+# Produce SAT-VI. Escrita con el molde de RO-VIII-003 (PANORAMA §5-quattrigies) y con la
+# lección de C4-P2 aplicada desde el nacimiento: «sin datos» es un estado propio, nunca
+# «conforme».
+#
+# ★ RATIFICADA POR LA DIRECCIÓN — Javo, 2026-09-18: «Ratifico RO-VIII-004».
+#   Qué hace la ratificación: incorpora la regla al canon —la cadena
+#   CNO-VIII-005 → RO-VIII-004 → SAT-VI queda registrada y verificable— y acepta su
+#   contenido, incluido el umbral 0,20 como decisión operativa (ver justificacion_umbral).
+#   Qué NO hace: promoverla a `vigente`. Eso exige dos actos que siguen pendientes de la
+#   dirección: validar CNO-VIII-005 (el compilador sólo toma una RO vigente cuya CNO
+#   también lo sea · ADR-035 §5) y curar d08 (D-006: el bloque VIII permanece en
+#   propuesta hasta entonces). Hasta ambos, la RO no la consume nadie.
+#
+# LÍMITE (Regla 1/4): lee el motor, no lo recalcula. El estado `sin_datos` todavía NO está
+# reflejado en el Gold Master (H24c/H75 lo tratan como «sin señal»): se corrige en la
+# versión 7 del Excel, sobre copia y con evidencia.
+# ═══════════════════════════════════════════════════════════════════════════════
+id: RO-VIII-004
+authority:
+  parent: CNO-VIII-005
+  constitution_articles: [1, 9]
+  type: NORMATIVA
+version: "1.0"
+dimension: ejecucion_presupuesto_participativo
+deriva_de: CNO-VIII-005 v1.0
+metrica: { nombre: Desvio_Ejecucion_PP, unidad: proporcion }
+parametros: { umbral_activacion: 0.20, frecuencia: anual }
+metodo:
+  tipo: lectura_del_motor
+  motor: "Gold Master · H24c_SAT-VI_DESVÍO_PP (lee H10b_S8b_PARTICIPATIVO) — el motor calcula, esta RO no recalcula (Regla 1)"
+  variables:
+    monto_aprobado:  "SUM(H10b!D13:D17) · lo priorizado y aprobado en el PP"
+    monto_ejecutado: "H24c!B9 · hoy es un LITERAL 0, sin fuente — pendiente de cablear a la ejecución del GAD"
+  estados:
+    - { id: activa,     condicion: "hay datos y |ejecutado − aprobado| / aprobado > umbral" }
+    - { id: sin_senal,  condicion: "hay datos y el desvío no supera el umbral" }
+    - { id: sin_datos,  condicion: "no hay monto aprobado registrado",
+        regla: "NO es sin_senal: no se computa como INACTIVA ni aporta 0 al riesgo — se reporta como NO EVALUABLE" }
+consecuencia: "Observación de ejecución: lo aprobado en el PP con desvío superior al umbral requiere justificación documentada (COOTAD 238). Lenguaje de administración pública, nunca acusatorio. Sin datos → no evaluable, nunca conforme."
+produce:
+  - id: SAT-VI
+    nombre: "Desvio Presupuesto Participativo"
+    dimension_tgi: D4
+    deriva_de: CNO-VIII-005               # COOTAD 238 · LOPC 67 · LOPC 71 · verificados con SHA
+    metrica: "|pp_ejecutado − pp_aprobado| / pp_aprobado"
+    umbral_activacion: 0.20
+    justificacion_umbral: >-
+      Decisión operativa ratificada por la dirección (Javo, 2026-09-18), heredada de
+      SAT_Catalogo. La cadena normativa funda la OBLIGACIÓN de justificar los desvíos, pero
+      no fija el 20 %: el umbral es criterio de gestión, no de ley, y se declara así para
+      que nadie lo lea como mandato legal.
+    peso_severidad: 0.05
+    tipo: ALERTA
+    medicion_2026:
+      estado: sin_datos
+      evidencia: "H24c!B8 Hay_Datos_PP = NO · H10b sin montos registrados"
+      lectura_admisible: "no evaluable — NO «sin desvío»"
+    frontera_interpretativa: >-
+      Con datos, acredita desvío entre lo aprobado y lo ejecutado; NO acredita la causa
+      (puede haber reformas justificadas). Sin datos, NO acredita ni desvío ni
+      cumplimiento: acredita que la evidencia no está disponible (Carta CAPA 0).
+    refleja_en_gold_master: "SAT_Catalogo (fila SAT-VI) + H24c_SAT-VI + H75_SAT_ENGINE fila 8 — el estado sin_datos aún NO está reflejado"
+opera_en: d08
+estado: propuesta
+validacion: { validada_por: null, fecha_validacion: null }   # promoción a vigente: pendiente (ver cabecera)
