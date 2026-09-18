@@ -5652,6 +5652,11 @@ norma puede traducirse legítimamente en una condición observable y preventiva.
 no el ecosistema entero. **Rellenar `V` con ✅ por defecto sería repetir el error que esta matriz existe
 para impedir.**
 
+**Refinamiento del colega — «válido» no es booleano:** ✅ = **V · válido demostrado** · ❓ = **V? · no
+evaluado** · ⛔ = **V− · invalidado, defecto demostrado**. Y en la columna `G`, **✓\*** significa
+*«gobernado demostrado para ese mecanismo concreto»*, **no** para todo el artefacto que lo contiene
+—el caso del sello del catálogo BRN—. **«No encontré un defecto» nunca se lee como «está validado».**
+
 *(Fuentes de las celdas: vigencia leída de cada `YAML` de la BRN y de `brn_compilador --verificar` ·
 autoridad leída de `registry/registry.yaml` · pruebas contadas en `tests/` · defectos de `C4-P0/P1/P2`
 y de `§5-quattrigies`.)*
@@ -5772,7 +5777,7 @@ y de `§5-quattrigies`.)*
 | vista | `m2_alertas` | ✅ | ⛔ la columna «Ejecución (%)» se alimenta del ISP *(`C4-P1`)* | ⛔ | ⚠️ | **RECORTAR** · queda como vista |
 | derivados | `sat_gm` · `financiero` del snapshot | ✅ | ⛔ divergen del motor · productor no localizado *(`C3`)* | ⛔ | ⛔ | **RECONSTRUIR** con acto de promoción |
 | derivados | `brn_config` · `brn_manifest` | ✅ | ⛔ **divergen en el estado base** | ⚠️ | ⚠️ | **RECONSTRUIR**: recompilar con acto gobernado |
-| derivados | catálogo BRN (`brn_cno` en el snapshot) | ✅ | ✅ | ✅ **sellado por Javo (2026-09-02)** | ✅ **el sello caduca solo** | **CONSERVAR** — ⭐ **precedente para `D0.1`** |
+| derivados | catálogo BRN (`brn_cno` en el snapshot) | ✅ | ✅ | ✅ **sellado por Javo (2026-09-02)** | ✓\* **el sello caduca solo** *(demostrado para ese mecanismo, no para toda la BRN)* | **CONSERVAR** — ⭐ **precedente para `D0.1`** |
 | razonamiento | Sentinel `RC-7.3` | ✅ | ✅ **única guarda de comparabilidad fuera del ICPI** | ❓ | ⚠️ | **POTENCIAR** · propagar el patrón |
 
 ### Lo que la matriz dice, en cinco líneas
@@ -5789,6 +5794,85 @@ equivalentes a `SAT-IV` · el `PSG` **no desaparece**: su función distributiva 
 
 **Siguen pendientes de la dirección** las tres decisiones de `§5-quattrigies`: ratificar `RO-VIII-004`,
 ratificar el retiro de `SAT-VII`/`SAT-VIII` como señales, y elegir la definición de `SAT-III`.
+
+## 5-sexquatrigies · **REGISTRO DE IDENTIDAD DE SEÑALES** — propuesta, construida desde la evidencia
+
+> **Corrección del colega, acogida:** *«sí al objetivo; no todavía a renombrar»*. Los dos espacios de
+> nombres son un **defecto de identidad canónica**, y un defecto de identidad **no se arregla
+> cambiando cadenas de texto**. Primero la identidad, después el nombre, después la propagación:
+>
+> `identidad canónica de la señal → nombre público → ID técnico único → equivalencias históricas`
+>
+> **Sin este registro, renombrar es maquillaje.**
+
+### Dos problemas que ya no se mezclan
+
+| | problema | pregunta | quién lo trabaja |
+|---|---|---|---|
+| **A** | **autoridad** | ¿quién tiene derecho a decir que este estado es el vigente? | `D0.1` |
+| **B** | **propagación** | sabiendo cuál es el vigente, ¿qué consumidores fueron regenerados y validados contra él? | la cirugía de derivados |
+
+### Cómo se levantó
+
+Cada señal se buscó **en todos los lugares donde se la nombra hoy**: el catálogo del motor
+(`SAT_Catalogo`) · el motor de riesgo (`H75_SAT_ENGINE`) · los campos `produce:`, `consume:` y
+`equivalencia_heredada` de las 13 `RO` · el gate `check_sat_brn` · el bloque `sat_gm` del snapshot ·
+y las vistas que las presentan.
+
+### El registro
+
+| señal *(código del motor)* | nombre público actual | **otros nombres por los que se la llama** | RO productora | CNO | dominio QUIRA 7 | estado RO | referencia en el motor | comportamiento **sin datos**, hoy |
+|---|---|---|---|---|---|---|---|---|
+| **SAT-0** | Coherencia POA-PAC | `SAT-I-001` · `SAT-I-002` *(BRN)* | **dos**: `RO-I-001` y `RO-I-002` | `CNO-I-001` | Planificación e Inversión | vigente | `H21b!B19` → `H75` fila 2 | ❓ no evaluado |
+| **SAT-I** | «Fragmentación Selectiva» | — | ⛔ ninguna | ⛔ COPLAFIP 54 sin eslabón | Planificación e Inversión | — | `H21!B15` → `H75` fila 3 | ⛔ el diagnóstico afirma *«alta calificación»* con `ICM` = 1 % |
+| **SAT-II** | Reforma Significativa Tardía | — | ⛔ ninguna | ⛔ COPLAFIP 115 sin eslabón | Planificación e Inversión | — | `H22!B12` → `H75` fila 4 | ⛔ `H22!B8 = 0` literal → *«✅ sin señal»* |
+| **SAT-III** | Parálisis Presupuestaria | *«Sub-ejecución D3»* *(`sat_gm`)* · ⚠️ **colisiona con `SAT-III-001`** | ⛔ ninguna | ⛔ COPLAFIP 113 sin eslabón | Planificación e Inversión | — | `H23!B13` → `H75` fila 5 | ⛔ sin datos por meta → *«✅ sin señal»* · **dos definiciones** |
+| **SAT-IV** | Alerta Fiscal COOTAD | `SAT-IV-001` *(BRN, equivalente)* · *«Brecha territorial IRS=79.7»* *(`sat_gm`)* | `RO-IV-001` | `CNO-IV-001` | Planificación e Inversión | vigente | `H24!B13` → `H75` fila 6 | ⛔ defecto de regla: `1 − Ti` *(`C4-P1`)* |
+| **SAT-V** | Brecha Compromiso CPCCS | `SAT-IX-001` *(BRN, heredado)* · *«Densidad de trazabilidad insuficiente»* *(`sat_gm`)* | `RO-IX-001` | `CNO-IX-001` | Participación y Control Social | vigente | `H24b!B17` → `H75` fila 7 | ⛔ «sin datos» → brecha 0 → *«✅ sin señal»* *(`C4-P2-A`)* |
+| **SAT-VI** | Desvío Presupuesto Participativo | — | ⚠️ `RO-VIII-004` **pendiente de ratificación** | `CNO-VIII-005` | Participación y Control Social | — | `H24c!B14` → `H75` fila 8 | ⛔ *«✅ sin señal — sin datos»* → inactiva, peso 0 |
+| **SAT-VII** | Vi Sináptico Pulso | — | ⛔ ninguna | ⛔ referencial | Planificación e Inversión *(como indicador)* | retiro propuesto | `H25_MMP!W38` → `H75` fila 9 | ⛔ **cuenta como ACTIVA con peso 0** |
+| **SAT-VIII** | Equidad Territorial | — | ⛔ ninguna | ⛔ referencial | Cobertura *(como indicador)* | retiro propuesto | `H42_IET` → `H75` fila 10 | ❓ no evaluado |
+| **SAT-IX** | Brecha de Atención Ciudadana | ⚠️ **colisiona con `SAT-IX-001`** *(que es `SAT-V`)* | `RO-VIII-003` | `CNO-VIII-005` | Participación y Control Social | propuesta | `SAT_Catalogo` fila 15 · ⛔ **sin fila en `H75`** | ⛔ **no entra al riesgo** |
+| **`SAT-III-001`** *(sólo BRN)* | — | ⚠️ **colisiona con `SAT-III`** | ⛔ **nadie la produce** | `CNO-III-001` | Gobernanza del Mandato | — | ⛔ **no existe en el motor** | — **señal fantasma** |
+
+### Seis hallazgos de identidad — verificados
+
+| # | hallazgo | evidencia |
+|---|---|---|
+| **I1** | **`SAT-0` tiene dos RO productoras y dos ids heredados** | `RO-I-001` y `RO-I-002` declaran `produce: SAT-0` · `consume:` `SAT-I-001` y `SAT-I-002` |
+| **I2** | **`SAT-I-001` es `SAT-0`, no `SAT-I`** | `equivalencia_heredada` en `RO-I-001` |
+| **I3** | ⛔ **`SAT-III-001` es una señal fantasma**: la RO del mandato la consume, **nadie la produce, no existe en el motor**, y su id colisiona con la `SAT-III` del motor | `RO-III-001` `consume: [SAT-III-001]` sin `produce:` ni equivalencia |
+| **I4** | ⛔ **`SAT-IX` existe en el catálogo y en la BRN, pero no en el motor de riesgo** | `H75` cubre filas 2-10 (`SAT-0…VIII`) · `RIESGO_TOTAL = SUM(G2:G10)` · **no hay fila `SAT-IX`** |
+| **I5** | ⛔ **el conteo publicado de alertas activas incluye una señal informacional** | `SAT_ACTIVAS_COUNT = COUNTIF(E2:E10,"ACTIVO") = 2` → `SAT-0` **y `SAT-VII`, que pesa 0** |
+| **I6** | **tres sistemas de nombres, no dos** | códigos del motor · ids de la BRN (`consume:` y heredados) · **y la semántica del derivado `sat_gm`**, que describe tres señales con significados distintos |
+
+### Lo que la evidencia sugiere — sin decidirlo
+
+La BRN **ya eligió de hecho**: cada vez que una RO documenta una equivalencia, marca los ids
+`SAT-<familia>-00N` como **`equivalencia_heredada`** y usa **el código del motor** en `produce:`. Es
+decir, **el canon ya trata los códigos del motor como identidad y los ids BRN como historia.** La única
+excepción es `SAT-III-001`, que no tiene equivalencia porque **no corresponde a ninguna señal real**.
+
+> **Esto es insumo, no decisión.** El esquema definitivo —`signal_id`, nombre público, qué se hace con
+> la señal fantasma del mandato— **es de la mesa.**
+
+### Lo que NO se hizo, a propósito
+
+- **Ningún id se renombró.** Ningún texto se cambió.
+- **El registro no se escribió en `docs/brn/`:** cualquier archivo nuevo ahí **cambia el hash del canon y
+  caduca el sello de la dirección** — lo mismo que ocurrió con `RO-VIII-004`. Materializarlo como archivo
+  canónico **requiere que la dirección lo ratifique y vuelva a sellar**.
+- **Las tres decisiones pendientes siguen sin tocarse.**
+
+### El orden que queda
+
+```
+Registro de identidad (esta propuesta)
+   → la mesa fija el esquema: signal_id · nombre público · qué hacer con SAT-III-001
+   → se materializa como archivo canónico + nuevo sello de la dirección
+   → se propaga: produce/consume de las RO · H75 (incluida SAT-IX) · SAT_Catalogo · check_sat_brn · vistas
+   → y SÓLO ENTONCES se toca un nombre
+```
 
 ## 6 · Y la finalidad, dicha por la dirección
 
