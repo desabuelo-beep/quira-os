@@ -5145,6 +5145,9 @@ Excel. **Sigue vigente la regla: primero la anatomía, después el bisturí.**
 
 ## 5-trigies · **ALCANCE DE QUIRA 7, CERRADO** — y los dominios con nombres de administración pública
 
+> ⚠️ **Su lista de dominios fue sustituida** (`§5-untrigies` y, hoy, **la tabla única de `§5-octoquinquagies`**).
+> **Siguen vigentes** el objeto, el criterio de admisión y las exclusiones de esta sección.
+
 > ⛔ **Esta sección cierra la deriva de alcance. Lo que está fuera, está fuera, y no se reabre.**
 
 ### El objeto de QUIRA 7 — dicho por la dirección
@@ -5225,6 +5228,10 @@ es lo que impide que la discusión vuelva a abrirse.
 `Contratación Pública` es dominio propio o sección de `Inversión Pública Municipal`.
 
 ## 5-untrigies · **LISTA FINAL** — el alcance es lo ya construido · **13 dominios → 8**
+
+> ⚠️ **Actualizada por `§5-octoquinquagies`:** el Holding (`d05`) vuelve como **dominio 9** — reducirlo a
+> transversal fue un error de esta dirección técnica. **La arquitectura la gobierna la tabla única de
+> `§5-octoquinquagies`**, no esta lista.
 
 > ⛔ **REGLA DE ALCANCE, de la dirección:** **el alcance de QUIRA 7 es lo que ya teníamos construido
 > en la versión anterior. NADA MÁS.** No se incorporan realidades nuevas: se **reorganiza, fusiona,
@@ -6605,7 +6612,7 @@ y en qué régimen temporal**.
 
 | transversal | temporalidad | estado |
 |---|---|---|
-| **Ecosistema Municipal** | cada entidad publica su ejecución **mensual** (LOTAIP 29) y **rinde cuentas por sí misma** (RES-CPCCS-RC-2026 Art. 13) · cortes por entidad al primer trimestre | **ELEVAR** a atributo obligatorio de toda observación · gobierno temporal ❓ |
+| **Ecosistema Municipal** | cada entidad publica su ejecución **mensual** (LOTAIP 29) y **rinde cuentas por sí misma** (RES-CPCCS-RC-2026 Art. 13) · cortes por entidad al primer trimestre | ~~elevar a atributo obligatorio~~ → **dominio 9** (`§5-octoquinquagies`) · el perímetro sigue como propiedad transversal · gobierno temporal ❓ |
 | **Equidad y desagregación** | hereda la del dato que desagrega · `PSG` (`H16c`) · LPEVM · LOIEME · CEDAW | ❓ |
 | **Síntesis institucional** (ICPI) | anual, con guarda temporal `H12!B34` | ✅ **el único gobierno temporal demostrado** (`C4-P0`) |
 | **GeoTwin** | la de cada capa territorial | ❓ no evaluada |
@@ -6812,6 +6819,9 @@ lista final de `§5-untrigies`.)* El verificador ya protege ese camino de la cla
 266.
 
 ## 5-septquinquagies · `D1` · **FICHAS GOBERNADAS DE QUIRA 7** — y el Holding, que se había quedado fuera
+
+> ⚠️ **Actualizada por `§5-octoquinquagies`:** el Holding es **dominio 9** (decisión de Javo) y la
+> arquitectura la gobierna la tabla única de esa sección. Las fichas siguen siendo el detalle por dominio.
 
 > **Colega:** *«No debemos usar el catálogo de siete dominios como base de la cirugía… una representación
 > documental volvió a modificar la ontología que ya habíamos fijado.»*
@@ -7028,12 +7038,12 @@ está establecido se dice**: ❓.
 | **estado** | **no iniciado** en agente, página y cadena · motor: `H20_ICODS` · `KB_DIAGNOSTICO_PDOT` · `SCHEMA_RIESGOS` |
 | **acción REARQ** | **CONSERVAR** ICODS e inventario · **ELEVAR** con agente · **RECONSTRUIR** su cadena |
 
-#### ⑨ Holding e Integración Municipal *(`d05` · categoría a decidir: recomendada dominio 9 con doble función)*
+#### ⑨ Holding e Integración Municipal *(`d05` · **DOMINIO 9, restituido** — decisión de Javo, `§5-octoquinquagies`)*
 
 | propiedad | contenido |
 |---|---|
 | **realidad** | la articulación y el desempeño del conjunto de entidades que ejecutan la gestión cantonal: el GAD y sus entidades adscritas, desconcentradas y empresas públicas *(ADN d05 #1 Articulación · #4)* |
-| **sujeto** | **cada entidad**, con su propia personería y obligaciones — en Montecristi, según `p2_holding`: Patronato, Cuerpo de Bomberos, EMAI-EP, EP Hábitat, junto al GAD · ⚠️ **en los 222 GAD el conjunto varía: falta un registro de entidades por GAD** |
+| **sujeto** | **cada entidad**, con su propia personería y obligaciones — en Montecristi, según `p2_holding`: Patronato, Cuerpo de Bomberos, EMAI-EP, EP Hábitat, junto al GAD · ~~falta un registro de entidades por GAD~~ ⛔ *falsación 45*: **el registro existe en el motor** — `TBL_ENTIDADES_ADSCRITAS` (entidad · estado operativo · base legal), que leen `H71` y `H72`; ⚠️ `H71!B8` da `#REF!`. En los 222 GAD el conjunto varía: **se eleva ese registro, no se inventa otro** |
 | **objeto** | desempeño comparado de las entidades · su contribución al cumplimiento del PDOT · su integración · **y el perímetro**: qué entidad produce o ejecuta cada observación de los otros dominios |
 | **pregunta QUIRA** | ADN d05 #6: “¿El conjunto de entidades del cantón opera de forma articulada y con desempeño consistente, o hay piezas que arrastran al sistema?” |
 | **evidencia** | POA, PAC, presupuesto e informe de rendición de cada entidad · contratación por entidad · cédulas por entidad |
@@ -7067,13 +7077,113 @@ está establecido se dice**: ❓.
 3. **El nombre del dominio 1.**
 
 **Lo que es trabajo técnico** *(leer fuentes, no decidir)*: declarar el **corte** donde falta, la
-**periodicidad** de la fuente en Cobertura, Económico y Ambiental, el **sujeto** de Económico y el registro de
-entidades del Holding.
+**periodicidad** de la fuente en Cobertura, Económico y Ambiental, el **sujeto** de Económico, y **reparar y
+elevar el registro de entidades que ya existe** en el motor (`TBL_ENTIDADES_ADSCRITAS` · `H71!B8` con `#REF!`).
 
 **Lo que es obra de la cirugía, no de `D1`:** las cadenas normativas de los dominios sin CNO y la del Holding
 (la LOEP fuera del corpus es un hallazgo, no una tarea de hoy).
 
 **Hasta que la dirección decida 1–3, ninguna ficha se toca en la cirugía** — la regla de trabajo del punto 3.
+
+## 5-octoquinquagies · **EL HOLDING RESTITUIDO COMO DOMINIO 9** — y la tabla única que gobierna la arquitectura
+
+> **Javo:** *«Opción A para el Holding, redacte las cuatro preguntas… el holding lo formulamos así. Era un
+> dominio consolidado… revisa una realidad administrativa distinta: toma las EP y las desconcentradas.»*
+> **Colega:** *«Holding es dominio. Identidad/perímetro de la entidad es también propiedad transversal. No
+> se excluyen… No debemos convertir el Holding en un dominio que vuelve a calcular los otros ocho.»* Y:
+> *«La fuente que gobierna la arquitectura debe ser una única tabla inequívoca, no la suma de varias
+> formulaciones dispersas.»*
+
+### 1 · Asesoría pedida por la dirección: las dos posiciones describen realidad, y se conservan las dos
+
+| lo que cada posición ve | es cierto porque | dónde vive |
+|---|---|---|
+| **el ecosistema de entidades es una realidad administrativa propia** | tiene sujeto (cada entidad, con personería y mandato), objeto, pregunta, evidencia, ingesta, página e indicador — y **un registro en el motor** | **dominio 9** |
+| **toda observación pertenece a una entidad** | el cumplimiento de Bomberos no se mezcla con el del GAD ni con el del Patronato | **perímetro transversal** de los nueve dominios |
+
+No compiten: **es la opción A**, y es el mismo patrón que la dirección eligió para Transparencia (dominio
+propio **y** capa que alimenta a los demás). **Decisión: Holding e Integración Municipal = dominio 9, con
+el perímetro institucional como propiedad transversal.**
+
+**Lo que hay que custodiar** para que el dominio 9 no se vuelva un dominio que recalcula a los otros ocho —
+cuatro salvaguardas, todas desde lo construido:
+
+| # | salvaguarda | por qué |
+|---|---|---|
+| 1 | **objeto exclusivo del Holding**: la **composición** del ecosistema (qué entidades, qué figura, qué base legal, si opera — `TBL_ENTIDADES_ADSCRITAS` · `H71` · `H72`) · su **contribución al PDOT** (metas asignadas por entidad — `H12d`) · el **desempeño comparado y la articulación** del conjunto (ADN d05 #6–7) | es lo que ningún otro dominio observa |
+| 2 | **leer, no recalcular**: la ejecución, la publicación, la rendición o la cobertura de cada entidad viven en su dominio; el Holding **las lee por entidad** | es la Regla 1 aplicada entre dominios: un hecho, un lugar |
+| 3 | **la figura es atributo, no identidad**: empresa pública, adscrita, desconcentrada o equivalente — se observa la **función** | el mismo principio de Grupos Prioritarios; es lo que lo hace portable a los 222 GAD y a Latinoamérica |
+| 4 | **un solo registro de entidades por GAD** sirve al dominio y al perímetro: el que **ya existe** en el motor, que se repara (`H71!B8` da `#REF!`) y se eleva | sin él, ni el dominio ni el perímetro son verificables fuera de Montecristi |
+
+**Dos cosas que conviene saber antes de la cirugía:**
+
+- **Solapamiento legítimo con Grupos Prioritarios:** cuando la función la ejerce el Patronato, Grupos
+  Prioritarios observa **la función** (programas, cobertura) y el Holding observa **al Patronato como
+  entidad** (figura, mandato, articulación). Son preguntas distintas sobre el mismo sujeto — como el
+  ejemplo del colega con Bomberos.
+- **Su cadena normativa no puede verificarse hoy:** la LOEP no está en el corpus. Incorporarla es un acto de
+  ingesta —tiene costo y requiere autorización—; **no se hace ahora**, queda como decisión de la dirección.
+
+### 2 · La tabla única — **ésta gobierna la arquitectura de dominios de QUIRA 7**
+
+> Toda otra formulación (`§5-trigies`, `§5-untrigies`, las fichas de `§5-septquinquagies`) **deriva de
+> ésta**. Un cambio de nombre, de alcance o de categoría **se hace aquí, por decisión de la dirección**, y
+> en ningún otro lugar.
+
+| # | dominio *(nombre registrado)* | realidad que observa | sujeto | proviene de |
+|---|---|---|---|---|
+| **1** | **Planificación Estratégica e Inversión Pública** ⏸ | el cumplimiento del PDOT por la vía de la inversión, y la eficiencia directiva | el GAD y cada dirección responsable | `d01` + `d02` |
+| **2** | **Gobernanza del Mandato** ⏸ | la correspondencia entre la oferta inscrita y la planificación | la autoridad electa | `d03` |
+| **3** | **Transparencia** | el cumplimiento y la calidad de la publicación obligatoria · y la alimentación mensual de los demás | el GAD y cada entidad obligada | `d07` |
+| **4** | **Participación Ciudadana y Control Social** | la incidencia ciudadana en la inversión · la rendición de cuentas · el vínculo aporte → decisión → resultado | el GAD, sus instancias y sus autoridades | `d08` + `d09` |
+| **5** | **Cobertura de Servicios e Infraestructura** | el acceso a los servicios de competencia municipal como resultado del plan | el GAD y la entidad que presta cada servicio | `d10` |
+| **6** | **Desarrollo Económico Territorial** | las condiciones que el GAD controla para la actividad económica y el empleo | ❓ por declarar | `d11` |
+| **7** | **Grupos de Atención Prioritaria** | la función ejecutora del GAD hacia los grupos prioritarios | la unidad que ejerce la función (la figura es atributo) | `d12` reenfocado |
+| **8** | **Sostenibilidad y Resiliencia Ambiental** | la gestión ambiental y de riesgos de competencia municipal | el GAD y la entidad a cargo | `d13` |
+| **9** | **Holding e Integración Municipal** | el ecosistema de entidades del GAD: su composición, su contribución al PDOT y su articulación | cada entidad adscrita, desconcentrada o empresa pública | `d05` **restituido** |
+
+**Transversales** *(no son dominios)*: perímetro institucional (qué entidad produce cada observación) ·
+Equidad y Género · Cumplimiento Institucional (ICPI, síntesis) · GeoTwin. **Vista:** Alertas. **Producto:**
+QUIRA Cooperación. **Infraestructura:** adquisición `T1`·`T2`·`T3`.
+
+### 3 · Nombres — ⏸ decisión de la dirección
+
+La tabla del colega usa otros nombres. La **Regla de Oro 7** decide: *un nombre sólo cambia si añade
+capacidad o elimina ambigüedad; si sólo renombra, no entra.*
+
+| # | registrado | colega | recomendación | por qué |
+|---|---|---|---|---|
+| 1 | Planificación Estratégica e Inversión Pública | Planificación e Inversión | **el registrado** | «Inversión Pública» marca la frontera del objeto (inversión, no gasto corriente); es el único nombre que ya estaba pendiente |
+| 2 | Gobernanza del Mandato | Fidelidad del Mandato | **Fidelidad del Mandato** | **es la palabra de la dirección** (§5-octovicies: *«Fidelidad del mandato es independiente»*) y la capacidad de su ADN (*Fidelidad Democrática*); «gobernanza» es genérico — **elimina ambigüedad** |
+| 4 | Participación Ciudadana y Control Social | …y Rendición de Cuentas | **el registrado** | **decisión de la dirección** (§5-octovicies): *el objeto es el CONTROL SOCIAL de la gestión pública*; la rendición es su sección B |
+| 5 | Cobertura de Servicios e Infraestructura | Cobertura y Acceso Territorial | **el registrado** | sólo renombra (Regla 7) |
+| 6 | Desarrollo Económico Territorial | Dinamización Económica Territorial | **el registrado** | sólo renombra; «Dinamización» es la **capacidad** del ADN, no el nombre del dominio |
+| 7 | Grupos de Atención Prioritaria | Atención a Grupos Prioritarios | **el registrado** | es el término de la ley (COOTAD 249: *grupos de atención prioritaria*) |
+| 9 | Holding e Integración Municipal | Holding / Ecosistema Municipal | **el registrado (ADN)** | «Ecosistema Municipal» fue un renombre de esta dirección técnica que **escondió** el dominio: volver al nombre del ADN elimina esa ambigüedad |
+
+### 4 · Las cuatro preguntas QUIRA 7 — **redactadas desde los ADN, para ratificación de la dirección**
+
+| # | pregunta propuesta | de dónde sale |
+|---|---|---|
+| **1** · Planificación e Inversión | *¿Avanza el GAD hacia las metas del PDOT al ritmo que su plazo exige, y la inversión pública programada para cumplirlas se ejecuta a tiempo y con eficiencia en cada dirección responsable?* — **sección Planificación:** ¿avanzan las metas al ritmo del plazo? · **sección Inversión:** ¿se ejecuta la inversión que las financia, dirección por dirección? | ADN d01 #6 (rumbo hacia las metas) · ADN d02 #6 **sin** la cooperación, que salió a producto · QLEP Dom01 (recursos y tiempo restante del mandato) · la eficiencia directiva por dirección |
+| **3** · Transparencia, segunda función | *¿Publica el GAD —y cada una de sus entidades— la información que la ley le obliga, a tiempo y con la calidad que permite verificarla; y qué parte de lo publicado cada mes puede admitirse como evidencia de los demás dominios?* | ADN d07 #6 · decisión de la dirección: *primero califica el cumplimiento, después la calidad de la información que nutre a los demás* · el gate de admisión de `§5-duotrigies` |
+| **4** · Participación, sección C | *¿Lo que la ciudadanía aportó en las instancias de participación se convirtió en decisión —POA, PAC, presupuesto— y en resultado, y esa trazabilidad queda documentada?* — distinguiendo lo que la ley hace **exigible** (presupuesto participativo) de lo **deliberativo** (audiencias, cabildos) | la sección C de `§5-duotrigies` · la distinción de `RO-VIII-003` |
+| **7** · Grupos Prioritarios, reenfoque | *¿La función que el GAD destina a los grupos de atención prioritaria —ejérzala el Patronato, una dirección u otra entidad— recibe el presupuesto que la ley exige, lo ejecuta en programas y llega a la población y a los territorios que debe atender?* | el reenfoque de `§5-trigies` · ADN d12 #6 **sin** la equidad, que pasó a transversal · «el presupuesto que la ley exige» y no «el 10 % del presupuesto»: la lección del denominador |
+
+**Para el dominio 4 queda, además, la pregunta del dominio completo:** *¿Incide la ciudadanía en las
+decisiones de inversión del GAD y se somete su gestión a control social con evidencia verificable?* — con
+las secciones A y B tomadas de los ADN d08 #6 y d09 #6. **Y la del Holding es la de su ADN** (d05 #6); si
+la dirección quiere, puede afinarse con la del QLEP: *si cada entidad ejecuta el mandato que justifica su
+existencia*.
+
+### 5 · Lo que queda para cerrar las fichas antes de la cirugía
+
+| | pendiente | quién |
+|---|---|---|
+| 1 | ratificar los **nombres** (tabla del punto 3) | dirección |
+| 2 | ratificar las **cuatro preguntas** | dirección |
+| 3 | cortes · periodicidades · sujeto de Económico · reparar y elevar el registro de entidades | técnico, sin decisión |
+| 4 | incorporar la **LOEP** al corpus | dirección, cuando lo autorice (ingesta con costo) |
 
 ## 6 · Y la finalidad, dicha por la dirección
 
