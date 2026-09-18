@@ -5839,8 +5839,8 @@ y las vistas que las presentan.
 | **SAT-IV** | Alerta Fiscal COOTAD | `SAT-IV-001` · *«Brecha territorial IRS=79.7»* *(`sat_gm`)* | `RO-IV-001` | `CNO-IV-001` | Planificación e Inversión | RO vigente | catálogo sellado `f9fa18c6` |
 | **SAT-V** | Brecha Compromiso CPCCS | `SAT-IX-001` · *«Densidad de trazabilidad insuficiente»* *(`sat_gm`)* | `RO-IX-001` | `CNO-IX-001` | Participación y Control Social | RO vigente | catálogo sellado `f9fa18c6` |
 | **SAT-VI** | Desvío Presupuesto Participativo | — | ⚠️ `RO-VIII-004` *(escrita, pendiente de ratificación)* | `CNO-VIII-005` | Participación y Control Social | sin RO vigente | ⛔ ninguno |
-| **SAT-VII** | Vi Sináptico Pulso | — | ⛔ ninguno | ⛔ base «referencial» | Planificación e Inversión | retiro como señal propuesto | ⛔ ninguno |
-| **SAT-VIII** | Equidad Territorial | — | ⛔ ninguno | ⛔ base «referencial» | Cobertura | retiro como señal propuesto | ⛔ ninguno |
+| **SAT-VII** | Vi Sináptico Pulso | — | ⛔ ninguno | ⛔ cita COPLAFIP 54, que **excluye a los GAD** *(corpus)* | Planificación e Inversión | retiro como señal propuesto | ⛔ ninguno |
+| **SAT-VIII** | Equidad Territorial | — | ⛔ ninguno | ⛔ cita COOTAD 249, que trata del **presupuesto de grupos de atención prioritaria**, no de equidad territorial *(corpus)* | Cobertura | retiro como señal propuesto | ⛔ ninguno |
 | **SAT-IX** | Brecha de Atención Ciudadana | — | `RO-VIII-003` | `CNO-VIII-005` | Participación y Control Social | RO **propuesta** | catálogo sellado `f9fa18c6` *(como propuesta)* |
 | **`SAT-III-001`** | — *(señal del mandato)* | — | ⛔ ninguno *(diseñada, no implementada)* | `CNO-III-001` *(vía `RO-III-001`)* | Gobernanza del Mandato | ✅ **identidad resuelta** · ⛔ **no implementada en el motor** | ? |
 
@@ -5999,6 +5999,74 @@ la decisión 2, que pasa a ser *«retirar como señales `SAT-I`, `SAT-VII` y `SA
 ⚠️ **Falsación evitada (41):** una sigla del corpus la había interpretado de memoria de forma equivocada.
 Se confirmó contra `norma_nombre` **antes** de escribirla — `LOIEME` es la Ley Orgánica para Impulsar la
 Economía de las Mujeres Emprendedoras. **Ninguna sigla se desarrolló sin verificarla.**
+
+## 5-octoquatrigies · **COOTAD 249 · CONSTITUCIÓN 35** — el ancla normativa de Grupos de Atención Prioritaria *(aporte de la dirección)*
+
+> **Aporte de Javo:** *«el 249 del COOTAD habla sobre el presupuesto de los grupos de atención
+> prioritaria; el 35 de la Constitución, de quiénes son esos grupos»*. **Verificado en el corpus, con el
+> mismo método de sólo lectura. Ambos confirmados.**
+
+| artículo · huella | qué establece |
+|---|---|
+| **Constitución 35** · `fba71e80b2f5` | **quiénes son**: personas adultas mayores · niñas, niños y adolescentes · mujeres embarazadas · personas con discapacidad · personas privadas de libertad · quienes adolezcan de enfermedades catastróficas o de alta complejidad · y, con la misma atención prioritaria, personas en situación de riesgo, víctimas de violencia doméstica y sexual, maltrato infantil y desastres · con especial protección ante la **doble vulnerabilidad** |
+| **COOTAD 249** · `c0c0fce0f126` | *«**No se aprobará el presupuesto** del gobierno autónomo descentralizado si en el mismo no se asigna, **por lo menos, el diez por ciento (10 %) de sus ingresos no tributarios** para el financiamiento de la planificación y ejecución de programas sociales para la atención a grupos de atención prioritaria»* — y remite expresamente a la Constitución, Art. 35 |
+
+### Consecuencia 1 · el dominio de Grupos de Atención Prioritaria ya tiene ancla
+
+Antes: *«sin ninguna cadena normativa — la mayor carga del mapa»*. Ahora:
+
+```
+Constitución 35  →  quiénes son (sujeto de derechos)
+       ↓  (concordancia expresa)
+COOTAD 249       →  obligación presupuestaria del GAD, con UMBRAL ESCRITO EN LA LEY
+       ↓
+leyes especiales ya en el corpus: Discapacidades · Adultos Mayores · Niñez y Adolescencia ·
+Movilidad Humana · CDN · CEDAW
+```
+
+**Todavía no hay `CNO`** —encadenarla cambia el canon y **exige ratificación y nuevo sello**—, pero el
+dominio **dejó de partir de cero**: la cadena está visible y cada eslabón ya existe con huella.
+
+### Consecuencia 2 · COOTAD 249 es la medida natural de la función ejecutora
+
+El dominio se redefinió como **la función ejecutora del GAD hacia los grupos prioritarios** —qué unidad
+opera, **con qué presupuesto**, qué programas—. **COOTAD 249 mide exactamente eso**, y pasa el filtro de
+las tres preguntas mejor que cualquier otra señal revisada:
+
+| | pregunta | COOTAD 249 |
+|---|---|---|
+| **1** | ¿obligación medible? | ✅ asignar a programas sociales para grupos prioritarios |
+| **2** | ¿umbral verificable? | ✅ **10 % de los ingresos no tributarios — escrito en la ley, no inventado** |
+| **3** | ¿evidencia adquirible? | ⚠️ el **presupuesto aprobado del GAD**: la asignación a esos programas **y** el agregado de ingresos no tributarios. **Disponibilidad en el motor: no verificada** |
+
+> **Es el candidato natural a indicador madre del dominio** —y, si la dirección lo quiere, a su señal—.
+> Es el único caso del mapa en que **el umbral no necesita justificación propia**: lo fija la ley, y la
+> consecuencia también (*«no se aprobará el presupuesto»*).
+>
+> ⚠️ **Precisión de alcance:** medirlo requiere el **agregado de ingresos no tributarios** como
+> **denominador**. Eso **no reabre** «ingresos y recaudación» como dominio —que quedó fuera—: es un solo
+> dato del presupuesto aprobado, usado para verificar una obligación que sí está dentro del alcance.
+
+### Consecuencia 3 · la base de `SAT-VIII` en el catálogo también era errónea
+
+`SAT_Catalogo` cita COOTAD 249 como fundamento de *«Equidad Territorial»* (inversión urbana frente a
+rural). **COOTAD 249 no trata de equidad territorial: trata del presupuesto de los grupos de atención
+prioritaria.** Con esto, el recuento verificado del catálogo queda así:
+
+| estado de la cita | señales |
+|---|---|
+| ✅ **encadenada correctamente** en una CNO | `SAT-0` · `SAT-VI` · `SAT-IX` |
+| ⛔ **el artículo citado no dice lo atribuido** *(verificado en el corpus)* | `SAT-I` y `SAT-VII` *(COPLAFIP 54 excluye a los GAD)* · `SAT-II` *(115: certificación)* · `SAT-III` *(113: definicional)* · `SAT-IV` *(COOTAD 192: monto a transferir)* · `SAT-VIII` *(COOTAD 249: grupos prioritarios)* |
+| ? **no verificada en este corte** | `SAT-V` *(cita COOTAD 302)* |
+
+> **Seis de las diez señales citan un artículo que no dice lo que el catálogo le atribuye.** No es un
+> descuido aislado: es la prueba de que **la base legal escrita en el Excel nunca pasó por la BRN**. Y es,
+> exactamente, el motivo por el que `ADR-038` exige que la señal nazca de una RO fundada en una CNO con
+> huella.
+
+**Nada del canon se tocó.** Las decisiones pendientes siguen siendo tres. **Encadenar COOTAD 249 y la
+Constitución 35 en una CNO**, y decidir si 249 se convierte en indicador madre o en señal del dominio,
+**son pasos para cuando la dirección los abra** — la evidencia ya está lista.
 
 ## 6 · Y la finalidad, dicha por la dirección
 
