@@ -5026,6 +5026,107 @@ de camino.**
 > observar QUIRA 7 · **(B)** qué parte ya está normativamente gobernada y qué parte hay que
 > construir. **La ausencia de BRN nunca determina la ontología.**
 
+## 5-novovicies · **MATRIZ DE ELEVACIÓN** — qué se conserva, qué se retira y qué se incorpora, nivel por nivel
+
+> **Método fijado por la dirección:** *«trabajar con lo que ya hay y elevar a QUIRA desde ahí; desde
+> ahí unificamos, movemos dominios y hacemos todo lo necesario para el fin último de QUIRA 7. Es la
+> base que hemos trabajado por meses.»*
+>
+> **Inventario real del ecosistema, contado hoy:** 123 hojas del motor · 49 `ADR` · 30 `YAML` de BRN
+> (6 familias) · 158 artefactos con autoridad declarada · 7 conectores · 9 *enrichers* · 6 agentes de
+> dominio · 73 módulos de Sentinel · 55 páginas vivas (+4 en `_deprecated`) · 9 renders · 14 gates ·
+> 57 pruebas.
+>
+> ⛔ **Todo lo de abajo es PROPUESTA. Nada se ejecuta hasta que la mesa decida.**
+
+### 1 · Canon y doctrina — *49 `ADR` · Constitución · Carta · Diccionario (13 ADN) · `doctrina.py` · `MASTER_INDEX` · `BOOT`*
+
+| | |
+|---|---|
+| **se eleva** | la **Carta `CAPA 0`** pasa de clasificación documental a **gobierno operativo**: el estado de evidencia debe acompañar y limitar cada afirmación *(`C4-P2`)* · el **Diccionario** pasa de definir dominios a **contrato semántico**, contrastando sus **11 campos** con las **12 propiedades** de `C4` · `canon.py` extiende su principio —**derivar el estado, no declararlo**— al estado del Gold Master |
+| **se retira** | la **Regla de Oro 2** en su forma actual *(dos vocabularios)* → **vocabulario administrativo común**, con identificadores técnicos que no constituyen lenguaje alternativo · las citas y cifras escritas a mano que sobreviven en notas |
+| **se incorpora** | el contrato de **afirmación canónica** · las reglas de propagación **`R1`** *(ningún derivado por encima de su canon)* y **`R2`** *(propagado ≠ copiado)* · la **frontera público/propietario** |
+
+### 2 · Norma operacionalizada — *BRN · 30 `YAML` · familias `I·III·IV·VII·VIII·IX`*
+
+| | |
+|---|---|
+| **se eleva** | las 6 familias existentes · el contrato `ID → definición → vigencia → ámbito → parámetros → autoridad → versión → consumidores → estado` |
+| **se retira** | nada: **la BRN es de lo más sano del ecosistema** |
+| **se incorpora** | las cadenas **inexistentes**: cobertura · economía · ambiente · **grupos prioritarios** · capacidad institucional · contratación · ingresos · regulación local · perímetro · y las `RO` declaradas **no cargadas** *(`I`, `III`, `IX`)* · **las 9 señales SAT con su umbral y peso** *(hoy 8 sin cadena: viven sólo en el Excel)* |
+
+### 3 · Motor canónico — *Gold Master · 123 hojas*
+
+| | |
+|---|---|
+| **se eleva** | las hojas que son **cálculo canónico real** · el `ICPI` con su **guarda temporal**, que es el único gobierno probado · `H07b` y su normalización · el `MFN` como evaluación experta **declarada como tal** |
+| **se retira** | valores **simulados o pegados a mano** que el propio canon ya documentó *(scores simulados, cifras sin fórmula)* · rótulos que no describen su contenido *(`Grupo7_Bienes` / `Grupo8_Obras`)* · el gemelo inerte de `SAT-IV` |
+| **se incorpora** | **la celda deja de ser magnitud y pasa a representar afirmación**: valor **+** unidad **+** período **+** corte **+** universo **+** evidencia **+** regla **+** estado **+** procedencia · **estados de evidencia distinguibles** *(«sin datos» ≠ «evaluado sin brecha»)* · tipos de dato correctos *(`IF_n` numérico)* · referencias a parámetros, no a encabezados |
+
+### 4 · Adquisición — *7 conectores: DPE · CPCCS · SERCOP · Gold Master · Neo4j ×2*
+
+| | |
+|---|---|
+| **se eleva** | los conectores oficiales existentes · la **metodología de calificación de transparencia**, que ya nace en el canon con su cadena normativa ingerida |
+| **se retira** | la idea de que la fuente y el hecho observado son lo mismo |
+| **se incorpora** | **`T3` · adquisición primaria en la web oficial del GAD** (PDOT, orgánico, POA, PAC, presupuestos **en formato oficial**) · **recursividad** · y el objeto que viaja: `documento + identidad + fecha + entidad + vía + versión + hash + procedencia + estado de evidencia` · **la divergencia entre vías como observación**, no como error a corregir |
+
+### 5 · Derivados y estado — *snapshot · provenance · registry (158) · grafo de autoridad*
+
+| | |
+|---|---|
+| **se eleva** | el snapshot como **estado consumible**, con su procedencia · `registry.yaml` y el grafo de autoridad · `provenance/ensayos` |
+| **se retira** | los **derivados congelados divergentes**: `sat_gm` *(riesgo y semántica distintos del motor)* · el bloque `financiero` *(otro corte, otra base, productor no localizado)* — o se **regeneran con acto de promoción** |
+| **se incorpora** | **el acto de promoción operante** *(changelog que vuelve a operar)* · **verificación por derivación independiente** · **un solo declarante del estado vigente** *(hoy hay cuatro respuestas)* |
+
+### 6 · Dominios y agentes — *6 agentes de dominio · 9 enrichers · molde `ADR-053`*
+
+| | |
+|---|---|
+| **se eleva** | el **molde `ADR-053`** —procedencia, sujeto, `evidencia_sha` + `motor_sha`— **a todos los dominios**: hoy sólo 6 de 13 tienen agente |
+| **se retira** | la partición en «cajones» como criterio · los dominios que eran **síntesis o perímetro**, que pasan a transversales |
+| **se incorpora** | los dominios que salen del inventario, **incluidas las ocho brechas** · **el corte y las condiciones en el contrato del agente** *(hoy `absorcion_ti_pct` viaja sin su corte)* · el **sujeto obligado** por sección en los dominios fusionados |
+
+### 7 · Razonamiento e IA — *73 módulos de Sentinel · `RC-7.2/7.3` · `d3d4` · criterio por dominio*
+
+| | |
+|---|---|
+| **se eleva** | ⭐ **`RC-7.3`**: su normalización estacional y su detector de series mezcladas son **la única guarda de comparabilidad fuera del ICPI**. **Es el patrón a propagar, no a reinventar** |
+| **se retira** | los *prompts* que reciben **valores desnudos** sin período, universo, evidencia ni condición |
+| **se incorpora** | el **contrato de consumo agéntico**: ningún agente recibe una magnitud sin las propiedades que determinan qué puede afirmar con ella · la prueba: *si el agente sólo recibe el valor, ¿puede afirmar correctamente sin inventar el resto?* |
+
+### 8 · Producto y presentación — *55 páginas vivas · 9 renders · ambientes*
+
+| | |
+|---|---|
+| **se eleva** | los renders que **derivan del dato** y el hallazgo que conserva su corte *(el caso de control de `C4-P1`)* |
+| **se retira** | **los literales escritos a mano** *(cifras, cortes y frases que no dependen del dato)* · los dictámenes constantes que no cambian con ningún valor · las 4 páginas en `_deprecated` · el respaldo silencioso de trimestre |
+| **se incorpora** | **texto, color y clasificación derivados del valor Y de su condición** · el vocabulario común de administración pública en toda superficie |
+
+### 9 · Verificación — *14 gates · 57 pruebas · `check_health`*
+
+| | |
+|---|---|
+| **se eleva** | los 14 gates y las 57 pruebas · el gate que **acaba de demostrar su valor** al detener un `BOOT` de 7032 bytes |
+| **se retira** | la ambigüedad sobre **qué gate protege y cuál sólo informa** — cada uno declara su modo |
+| **se incorpora** | las **seis pruebas de `C4`** *(gobierno de la condición · ceros de origen indeterminado · columnas de texto en agregaciones · referencias a rótulos · identidad motor↔derivado · cobertura de transmisión)*, cada una **con lo que NO detecta** |
+
+### 10 · Grafo y persistencia — *Neo4j (`QTMP`, `CRDC`) · corpus Supabase*
+
+| | |
+|---|---|
+| **se eleva** | `MISMA_FUENTE_QUE` y el `MDN` · el corpus normativo con huella |
+| **se retira** | las afirmaciones de reuso **no reconstruibles** del grafo vivo *(`Q-M2-C2`)* |
+| **se incorpora** | **el grafo de evidencia por documento** que produce la adquisición recursiva: cada salto añade nodos **sin perder la cadena de procedencia** |
+
+### Lo que esta matriz hace y lo que no
+
+**Hace:** poner sobre la mesa, **nivel por nivel**, qué de lo construido en meses **se conserva y sube
+de nivel**, qué **se retira** y qué **se incorpora** — con el inventario real detrás de cada línea.
+
+**No hace:** ejecutar nada · decidir el número de dominios · reparar los defectos de `C4` · tocar el
+Excel. **Sigue vigente la regla: primero la anatomía, después el bisturí.**
+
 ## 6 · Y la finalidad, dicha por la dirección
 
 > *«No es una auditoría, sino **elevar este ecosistema**… para potenciar, mejorar y elevar el nivel
