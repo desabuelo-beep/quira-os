@@ -5208,6 +5208,53 @@ es lo que impide que la discusión vuelva a abrirse.
 **Lo que sigue pendiente y es de la mesa:** los nombres definitivos de los dos que cambiaron, y si
 `Contratación Pública` es dominio propio o sección de `Inversión Pública Municipal`.
 
+## 5-untrigies · **LISTA FINAL** — el alcance es lo ya construido · **13 dominios → 8**
+
+> ⛔ **REGLA DE ALCANCE, de la dirección:** **el alcance de QUIRA 7 es lo que ya teníamos construido
+> en la versión anterior. NADA MÁS.** No se incorporan realidades nuevas: se **reorganiza, fusiona,
+> reclasifica y eleva** lo existente.
+
+### Dos rectificaciones de esta dirección técnica
+
+| | rectificación |
+|---|---|
+| **1** | **`Contratación Pública` NO es dominio nuevo. RETIRADA.** El `PAC` vuelve a la sección de inversión y la publicación en `SERCOP` a la observancia contractual de **Transparencia** — **donde ya estaban**. Proponerla como dominio era **incorporar**, y el alcance no incorpora |
+| **2** | **El `orgánico por procesos` NO es «evidencia de apoyo»: tenía misión propia y se conserva.** Su misión es la **eficiencia directiva** —aterrizar la eficiencia **por dirección y por técnicos**—, instrumentada en `H17_IED`, `H30_IED_POR_DIRECCIÓN`, `H02b_ORGÁNICO_CLASIFICADOR`, `SCHEMA_ORGANICO` y `H_ORGANICO_040_2025`. ⛔ **Eso NO se desmejora: se eleva con el dominio de inversión** |
+
+### Los ocho dominios — todos provienen de los trece existentes
+
+| # | dominio | de dónde viene | contenido |
+|---|---|---|---|
+| **1** | **Planificación Estratégica e Inversión Pública** *(nombre a ratificar)* | **fusión `d01`+`d02`** *(decisión de Javo)* | **Sección Planificación:** PDOT · POA · metas, objetivos, indicadores · hitos **· Sección Inversión:** presupuesto de inversión codificado y devengado · `PAC` · sostenibilidad · **eficiencia directiva por dirección y por técnicos (`IED`)** · **sin gasto corriente · sin financiamiento externo** |
+| **2** | **Gobernanza del Mandato** | `d03` | plan de trabajo inscrito ↔ PDOT · congruencia promesa↔plan |
+| **3** | **Transparencia** | `d07` | cumplimiento de la publicación obligatoria · **calidad** de la información que nutre a los demás · observancia contractual |
+| **4** | **Participación Ciudadana y Control Social** | **fusión `d08`+`d09`** *(decisión de Javo)* | **Sección A** participación e incidencia · **Sección B** rendición de cuentas · evidencia del vínculo |
+| **5** | **Cobertura de Servicios e Infraestructura** | `d10` | cobertura y acceso por parroquia · déficit · brecha urbano-rural |
+| **6** | **Desarrollo Económico Territorial** | `d11` | tejido productivo · empleo · cadenas de valor |
+| **7** | **Grupos de Atención Prioritaria** | `d12` *(reenfocado)* | la **función ejecutora** del GAD: unidad, presupuesto, programas, cobertura |
+| **8** | **Sostenibilidad y Resiliencia Ambiental** | `d13` | integridad ecológica · riesgo biofísico · metas ambientales |
+
+### Los cinco que dejan de ser dominio — y adónde van
+
+| dejó de ser dominio | pasa a ser |
+|---|---|
+| `d04` **Alertas Institucionales** | **vista derivada** · señales dentro de los dominios **+ BRN** *(orden de Javo, ya ejecutada)* |
+| `d05` **Holding e Integración Municipal** | **transversal** · Ecosistema Municipal (perímetro: qué entidad produce cada observación) |
+| `d06` **Salud Institucional** | **transversal derivada** · Cumplimiento Institucional (`ICPI`) |
+| parte de `d12` · **Equidad y Género** | **transversal** · desagregación obligatoria en los ocho dominios |
+| **GeoTwin** | **transversal** *(ya lo era)* |
+
+**Y fuera del mapa ontológico:** **QUIRA Cooperación** *(producto)* · la **adquisición** `T1`·`T2`·`T3`
+*(infraestructura del dominio de Transparencia y los conectores existentes)*.
+
+### La cuenta, para que no haya dudas
+
+**13 − 5 = 8.** Fusión `d01`+`d02` *(−1)* · fusión `d08`+`d09` *(−1)* · `d04` a vista *(−1)* · `d05` a
+transversal *(−1)* · `d06` a transversal *(−1)*.
+
+> ✅ **Ninguna realidad nueva. Ningún dominio inventado. Todo sale de lo construido en meses.**
+> **Lo único pendiente de la mesa: el nombre definitivo del dominio 1.**
+
 ## 6 · Y la finalidad, dicha por la dirección
 
 > *«No es una auditoría, sino **elevar este ecosistema**… para potenciar, mejorar y elevar el nivel
