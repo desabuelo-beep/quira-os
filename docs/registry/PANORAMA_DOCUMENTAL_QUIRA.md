@@ -5833,9 +5833,9 @@ y las vistas que las presentan.
 | identidad actual *(código del motor)* | nombre público | alias heredados | productor RO | CNO | dominio QUIRA 7 | estado | estado canónico |
 |---|---|---|---|---|---|---|---|
 | **SAT-0** | Coherencia POA-PAC | `SAT-I-001` · `SAT-I-002` | **dos**: `RO-I-001` y `RO-I-002` | `CNO-I-001` | Planificación e Inversión | RO vigente | catálogo sellado `f9fa18c6` *(Javo · 2026-09-02)* |
-| **SAT-I** | «Fragmentación Selectiva» *(nombre a reformular)* | — | ⛔ ninguno | ⛔ COPLAFIP 54 sin eslabón | Planificación e Inversión | sin RO | ⛔ ninguno |
-| **SAT-II** | Reforma Significativa Tardía | — | ⛔ ninguno | ⛔ COPLAFIP 115 sin eslabón | Planificación e Inversión | sin RO | ⛔ ninguno |
-| **SAT-III** | Parálisis Presupuestaria | *«Sub-ejecución D3»* *(`sat_gm`)* | ⛔ ninguno | ⛔ COPLAFIP 113 sin eslabón | Planificación e Inversión | sin RO · **dos definiciones** | ⛔ ninguno |
+| **SAT-I** | «Fragmentación Selectiva» *(nombre a reformular)* | — | ⛔ ninguno | ⛔ **COPLAFIP 54 EXCLUYE a los GAD** *(corpus)* · sin norma aplicable hallada | Planificación e Inversión | sin RO · **retiro propuesto** | ⛔ ninguno |
+| **SAT-II** | Reforma Significativa Tardía | — | ⛔ ninguno | ⚠️ COPLAFIP 115 trata otro asunto · **candidata: COOTAD 255** *(corpus, `12077e724540`)* | Planificación e Inversión | sin RO · desbloqueada | ⛔ ninguno |
+| **SAT-III** | Parálisis Presupuestaria | *«Sub-ejecución D3»* *(`sat_gm`)* | ⛔ ninguno | ⚠️ COPLAFIP 113 es definicional · **candidata: COPLAFIP 119** *(corpus, `8a5e811f8f8b`)*, aplicabilidad a GAD por contrastar con el COOTAD | Planificación e Inversión | sin RO · **dos definiciones** | ⛔ ninguno |
 | **SAT-IV** | Alerta Fiscal COOTAD | `SAT-IV-001` · *«Brecha territorial IRS=79.7»* *(`sat_gm`)* | `RO-IV-001` | `CNO-IV-001` | Planificación e Inversión | RO vigente | catálogo sellado `f9fa18c6` |
 | **SAT-V** | Brecha Compromiso CPCCS | `SAT-IX-001` · *«Densidad de trazabilidad insuficiente»* *(`sat_gm`)* | `RO-IX-001` | `CNO-IX-001` | Participación y Control Social | RO vigente | catálogo sellado `f9fa18c6` |
 | **SAT-VI** | Desvío Presupuesto Participativo | — | ⚠️ `RO-VIII-004` *(escrita, pendiente de ratificación)* | `CNO-VIII-005` | Participación y Control Social | sin RO vigente | ⛔ ninguno |
@@ -5942,6 +5942,63 @@ Registro de identidad (esta propuesta)
    → se propaga: produce/consume de las RO · H75 (incluida SAT-IX) · SAT_Catalogo · check_sat_brn · vistas
    → y SÓLO ENTONCES se toca un nombre
 ```
+
+## 5-septquatrigies · **COPLAFIP 54 · 113 · 115 VERIFICADOS EN EL CORPUS** — ninguno dice lo que el catálogo afirma
+
+> **Trabajo autorizado por la dirección:** *«el siguiente paso técnico sin tocar canon —verificar COPLAFIP
+> 54, 113 y 115 en el corpus— es el correcto»*.
+>
+> **Método:** sesión **de sólo lectura** sobre `public.normativa_corpus` (Supabase), con la misma
+> resolución de credenciales que usa `scripts/brn_cno.py` — **ni la URI ni ningún secreto se
+> imprimieron**. Se leyó el **texto completo** de cada artículo, no sólo su comienzo. **No se tocó el
+> canon, ni la BRN, ni el Gold Master.**
+
+### Los tres artículos existen — y ninguno sostiene la señal que lo cita
+
+| artículo · huella | lo que `SAT_Catalogo` afirma que dice | lo que el texto dice | veredicto |
+|---|---|---|---|
+| **COPLAFIP 54** · `377f7da7ac2e` | *«las entidades deben reportar avances de todas las metas del plan operativo en el SIGAD»* *(base de `SAT-I` y `SAT-VII`)* | *«Planes institucionales.- Las instituciones sujetas al ámbito de este código, **excluyendo los Gobiernos Autónomos Descentralizados**, reportarán a la Secretaría Nacional de Planificación…»* | ⛔ **EXCLUYE EXPRESAMENTE A LOS GAD** |
+| **COPLAFIP 113** · `70c235f494c6` | *«obliga a la evaluación periódica… las entidades deben alcanzar metas de ejecución por período»* *(base de `SAT-III`)* | define **qué es** la fase de ejecución presupuestaria | ⛔ **definicional**: no contiene la obligación con umbral atribuida |
+| **COPLAFIP 115** · `09bc593d0270` | *«las reformas presupuestarias deben justificarse y registrarse en eSIGEF»* *(base de `SAT-II`)* | regula la **certificación presupuestaria** | ⛔ **trata otro asunto** |
+
+> **La cita en el Excel no era norma verificada — y ahora está demostrado con el texto.** Es la misma
+> lección de siempre, en su forma más pura: *que un artículo aparezca citado no prueba que diga lo que se
+> le atribuye.*
+
+### Lo que sí existe en el corpus — candidatos, leídos completos
+
+| señal | norma candidata · huella | qué establece | qué NO establece |
+|---|---|---|---|
+| **`SAT-II`** | **COOTAD 255** · `12077e724540` — *«Reforma presupuestaria»* | **propia del régimen de los GAD**: una vez aprobado, el presupuesto sólo se reforma por **traspasos, suplementos y reducciones de créditos**, conforme a las secciones siguientes | el umbral *«> 5 % después del 30 de junio»*: **es lógica de la RO** y necesita justificación propia |
+| **`SAT-III`** | **COPLAFIP 119** · `8a5e811f8f8b` — *«Seguimiento y evaluación de la ejecución presupuestaria»* | **obligación**: la evaluación física y financiera es **responsabilidad del titular**, **periódica**, y sus informes **se difunden a la ciudadanía** | ⚠️ **aplicabilidad a los GAD por confirmar**: el Art. 4 somete al código a las entidades del Art. 225 de la Constitución, **pero respeta su autonomía presupuestaria**, y el régimen presupuestario de los GAD vive en el COOTAD. **Contrastar antes de fundar la CNO** |
+| **`SAT-I`** | ⛔ **ninguna aplicable hallada** *(universo: COPLAFIP y COOTAD, patrones de reporte de metas y sistemas de información)* | COOTAD 195 menciona el cumplimiento de metas **como criterio del modelo de transferencias** — **no es una obligación de reporte** | — |
+
+### Cómo cambia el estado de las tres bloqueadas
+
+| señal | antes | ahora |
+|---|---|---|
+| **`SAT-II`** | bloqueada por norma | ✅ **desbloqueada**: tiene base candidata específica del GAD. Falta su CNO, su RO con umbral justificado, y la evidencia de reformas desde la cédula |
+| **`SAT-III`** | bloqueada por norma | ⚠️ **desbloqueable**: base candidata con obligación real, **pendiente de contrastar con el COOTAD** — y sigue pendiente **qué definición rige** *(decisión de la dirección)* |
+| **`SAT-I`** | bloqueada por norma | ⛔ **sin base normativa aplicable**: la que citaba excluye a los GAD y no apareció otra → **propuesta de retiro como señal** |
+
+**Las decisiones pendientes siguen siendo tres.** El retiro de `SAT-I` **no abre una cuarta**: se suma a
+la decisión 2, que pasa a ser *«retirar como señales `SAT-I`, `SAT-VII` y `SAT-VIII`»*.
+
+### Dos hallazgos colaterales, verificados
+
+- **El corpus confirma que la base de `SAT-IV` en el catálogo es errónea:** COOTAD 192 es *«Monto total a
+  transferir»* (21 %), exactamente como el código del proyecto ya lo había advertido. La RO de `SAT-IV` se
+  funda correctamente en el COOTAD reformado (Art. 198.1 y su Disposición Transitoria).
+- ⭐ **Las leyes especiales de los Grupos de Atención Prioritaria YA ESTÁN EN EL CORPUS**, con nombre
+  confirmado en `norma_nombre`: **Ley Orgánica de Discapacidades** · **Ley Orgánica de las Personas
+  Adultas Mayores** · **Código de la Niñez y Adolescencia** · **Convención sobre los Derechos del Niño**
+  · **CEDAW** · **Ley Orgánica de Movilidad Humana** · **Convención Americana sobre Derechos Humanos**.
+  **Eso rebaja el costo del dominio de Grupos de Atención Prioritaria:** su trabajo normativo es
+  **encadenar** (CNO → RO), **no ingerir**.
+
+⚠️ **Falsación evitada (41):** una sigla del corpus la había interpretado de memoria de forma equivocada.
+Se confirmó contra `norma_nombre` **antes** de escribirla — `LOIEME` es la Ley Orgánica para Impulsar la
+Economía de las Mujeres Emprendedoras. **Ninguna sigla se desarrolló sin verificarla.**
 
 ## 6 · Y la finalidad, dicha por la dirección
 
