@@ -5473,7 +5473,152 @@ produce una SAT si pasa tres preguntas:**
 **Con eso, el gate `check_sat_brn` —que hoy informa y no bloquea— puede pasar a modo estricto cuando
 las huérfanas lleguen a cero**, tal como su propio diseño lo previó.
 
-## 6 · Y la finalidad, dicha por la dirección
+## 5-quattrigies · **LAS SEIS SAT HUÉRFANAS** — resultado del filtro, una por una
+
+*(Trabajo autorizado por la dirección: «avancemos con las 6 SAT huérfanas». Cada una se leyó en el
+motor —`SAT_Catalogo` y su hoja propia— y se contrastó contra los eslabones con huella de las 16
+`CNO`. Filtro: **1** obligación medible · **2** umbral verificable · **3** evidencia adquirible · y
+**norma con `SHA`** para poder escribir la `RO`.)*
+
+### El hallazgo que ordena todo: casi ninguna base legal citada está encadenada
+
+El `SAT_Catalogo` del motor cita una base legal para cada señal, **pero una cita en el Excel no es
+una norma verificada**: la de `SAT-IV` («COOTAD Art. 192») ya estaba documentada como errónea en el
+propio código. Contrastadas contra los eslabones con `SHA` de las 16 `CNO`:
+
+| artículo citado | SAT | ¿eslabón con huella? |
+|---|---|---|
+| COPLAFIP 54 | `SAT-I` · `SAT-VII` | ⛔ **ninguno** |
+| COPLAFIP 115 · Acuerdo MEF 067 | `SAT-II` | ⛔ **ninguno** |
+| COPLAFIP 113 | `SAT-III` | ⛔ **ninguno** |
+| COOTAD 249 | `SAT-VIII` | ⛔ **ninguno** |
+| **COOTAD 238** | **`SAT-VI`** | ✅ **`CNO-VIII-005`** *(con LOPC 67 y LOPC 71)* |
+
+### Las seis decisiones
+
+| SAT | filtro | decisión propuesta |
+|---|---|---|
+| **`SAT-VI`** · Desvío Presupuesto Participativo | ✅ 1 · ✅ 2 · ⚠️ 3 *(hoy sin datos)* · ✅ norma | **SOBREVIVE · `RO` escrita y verificada** → `RO-VIII-004` *(ver abajo)* · **pendiente de ratificación** |
+| **`SAT-III`** · Parálisis Presupuestaria | ✅ · ✅ · ✅ · ⛔ norma | **SOBREVIVE · BLOQUEADA** hasta verificar COPLAFIP 113 **y decidir cuál de sus dos definiciones rige** *(ver hallazgos)* |
+| **`SAT-II`** · Reforma Significativa Tardía | ✅ · ✅ · ⚠️ *(adquirible desde la cédula: asignado inicial vs codificado)* · ⛔ norma | **SOBREVIVE · BLOQUEADA** hasta verificar COPLAFIP 115 y adquirir las reformas de la cédula |
+| **`SAT-I`** · «Fragmentación Selectiva» | ✅ · ✅ · ✅ *(autoreporte SIGAD)* · ⛔ norma | **SOBREVIVE CON REFORMULACIÓN · BLOQUEADA**: el nombre **presume intención** —lenguaje acusatorio que el canon prohíbe—. Su frontera debe decir, como `SAT-IX`: *«no afirma manipulación; afirma cobertura insuficiente del reporte»* |
+| **`SAT-VII`** · Vi Sináptico Pulso | ⛔ base *«referencial»* · **peso 0** · *«INFORMACIONAL»* | **SE RETIRA COMO SAT** → el `Vi` queda como **indicador** de Planificación *(ya es componente del ICPI)* |
+| **`SAT-VIII`** · Equidad Territorial | ⛔ base *«referencial»* · **peso 0** · *«INFORMACIONAL»* | **SE RETIRA COMO SAT** → el `IET` queda como **indicador** de Cobertura y de la transversal de Equidad |
+
+> **Una señal con peso 0 y base «referencial» no es una alerta: es un indicador con disfraz de
+> alerta.** Retirarlas no pierde información — el `Vi` y el `IET` siguen existiendo donde pertenecen.
+
+### Hallazgos colaterales, verificados en el motor
+
+- **`SAT-III` tiene DOS definiciones que no coinciden.** El catálogo dice *«Ti < 60 % antes del Q4 o
+  < 80 % al cierre»*; la hoja `H23` implementa *«5 o más metas con ejecución < 10 %»*. Antes de su
+  `RO` hay que decidir cuál rige.
+- **El mecanismo C de `C4` aparece dos veces más.** `SAT-III` lee `H07_S5!C7:C31`, que **no tiene
+  datos por meta** → cuenta 0 metas → *«✅ Sin señal»*. `SAT-VI` publica *«✅ Sin señal SAT-VI — Sin
+  datos PP»*, y `H75`, que busca el `✅`, la trata como **inactiva con peso 0**. **«No evaluable»
+  vuelve a colapsar en «conforme».**
+- **El diagnóstico de `SAT-I` afirma algo falso.** Su rama por defecto escribe *«Alta calificación
+  sobre universo completo de metas»* para cualquier caso que no dispare la alerta — **incluido el
+  actual, con `ICM` = 0,01 (1 %)**. Es el mecanismo A: un texto que no depende del valor.
+
+### `SAT-VI` · la `RO` está lista — y aplicarla es un acto de autoridad
+
+Se escribió `RO-VIII-004` con el molde de `RO-VIII-003`, derivada de `CNO-VIII-005`, y **con la lección
+de `C4-P2` aplicada desde el nacimiento**: declara **`sin_datos` como estado propio** —*«NO es
+sin_señal: no se computa como inactiva ni aporta 0 al riesgo; se reporta como NO EVALUABLE»*—. El
+umbral (0,20) y el peso (0,05) se declaran **heredados del motor y con su justificación PENDIENTE**:
+no se inventó un fundamento para el 20 %.
+
+**Se aplicó, se verificó y SE RETIRÓ, por lo que ocurrió al aplicarla:**
+
+| efecto | qué significa |
+|---|---|
+| ✅ `check_sat_brn` pasó a **5 de 10 con cadena** | la RO funciona |
+| ✅ registro regenerado: **159 activos, 0 aristas rotas** | la cadena es reconstruible |
+| ⚠️ **el sello humano del catálogo BRN CADUCÓ solo** | el catálogo llevaba **la validación de Javo del 2026-09-02** atada al hash del canon `f9fa18c6…`. Con la RO nueva el canon pasó a `b34a0467…` y el sistema escribió: *«el sello valida el canon f9fa… y el actual es b34a…: describe otra compilación»* |
+| ⚠️ **dos cables trampa se dispararon** | `test_canon_derivado` y `test_d08_respeta_el_estado` vigilan que no bajen los CNO sin RO; bajaron de 7 a 6, y la prueba dice: *«si BAJÓ, hay que verificar que la RO nueva es canon real y no una regla fabricada»* |
+| ⚠️ el compilado de la BRN quedó desfasado | `brn_compilador --verificar` → *«DIVERGE — falta recompilar»* |
+
+> ⭐ **Precedente positivo para `D0.1`:** el catálogo de la BRN **ya tiene un acto de autoridad que
+> funciona** — un sello humano atado al hash del canon, que **caduca solo** cuando el canon cambia.
+> Es exactamente lo que `D0.1` no encontró para el Gold Master. **El patrón existe en casa.**
+
+**Por eso la RO no queda aplicada:** caducar el sello de la dirección y bajar un cable trampa **son
+actos que corresponden a la dirección**, no a esta dirección técnica. El repositorio quedó en su
+estado anterior —158 activos, salud en verde, 646 pruebas pasando—.
+
+**Cuando la dirección ratifique, se aplica en un solo paso:** RO → registro y grafo → catálogo BRN
+→ compilado → **nuevo sello de Javo** → los dos cables trampa pasan de 7 a 6 **con la ratificación
+citada como justificación**.
+
+<details><summary><b>Texto completo de <code>RO-VIII-004</code> propuesta — listo para aplicar</b></summary>
+
+```yaml
+id: RO-VIII-004
+authority:
+  parent: CNO-VIII-005
+  constitution_articles: [1, 9]
+  type: NORMATIVA
+version: "1.0"
+dimension: ejecucion_presupuesto_participativo
+deriva_de: CNO-VIII-005 v1.0
+metrica: { nombre: Desvio_Ejecucion_PP, unidad: proporcion }
+parametros: { umbral_activacion: 0.20, frecuencia: anual }
+metodo:
+  tipo: lectura_del_motor
+  motor: "Gold Master · H24c_SAT-VI_DESVÍO_PP (lee H10b_S8b_PARTICIPATIVO) — el motor calcula, esta RO no recalcula (Regla 1)"
+  variables:
+    monto_aprobado:  "SUM(H10b!D13:D17) · lo priorizado y aprobado en el PP"
+    monto_ejecutado: "H24c!B9 · hoy es un LITERAL 0, sin fuente — pendiente de cablear a la ejecución del GAD"
+  estados:
+    - { id: activa,     condicion: "hay datos y |ejecutado − aprobado| / aprobado > umbral" }
+    - { id: sin_senal,  condicion: "hay datos y el desvío no supera el umbral" }
+    - { id: sin_datos,  condicion: "no hay monto aprobado registrado",
+        regla: "NO es sin_senal: no se computa como INACTIVA ni aporta 0 al riesgo — se reporta como NO EVALUABLE" }
+consecuencia: "Observación de ejecución: lo aprobado en el PP con desvío superior al umbral requiere justificación documentada (COOTAD 238). Lenguaje de administración pública, nunca acusatorio. Sin datos → no evaluable, nunca conforme."
+produce:
+  - id: SAT-VI
+    nombre: "Desvio Presupuesto Participativo"
+    dimension_tgi: D4
+    deriva_de: CNO-VIII-005               # COOTAD 238 · LOPC 67 · LOPC 71 · verificados con SHA
+    metrica: "|pp_ejecutado − pp_aprobado| / pp_aprobado"
+    umbral_activacion: 0.20
+    justificacion_umbral: >-
+      PENDIENTE DE RATIFICACIÓN. Heredado de SAT_Catalogo, que sólo dice «desvíos
+      requieren justificación». No se inventa un fundamento para el 20 %.
+    peso_severidad: 0.05
+    tipo: ALERTA
+    medicion_2026:
+      estado: sin_datos
+      evidencia: "H24c!B8 Hay_Datos_PP = NO · H10b sin montos registrados"
+      lectura_admisible: "no evaluable — NO «sin desvío»"
+    frontera_interpretativa: >-
+      Con datos, acredita desvío entre lo aprobado y lo ejecutado; NO acredita la causa
+      (puede haber reformas justificadas). Sin datos, NO acredita ni desvío ni
+      cumplimiento: acredita que la evidencia no está disponible (Carta CAPA 0).
+    refleja_en_gold_master: "SAT_Catalogo (fila SAT-VI) + H24c_SAT-VI + H75_SAT_ENGINE fila 8 — el estado sin_datos aún NO está reflejado"
+opera_en: d08
+estado: propuesta
+validacion: { validada_por: null, fecha_validacion: null }
+```
+
+</details>
+
+### Lo que queda pendiente de la dirección
+
+1. **Ratificar `RO-VIII-004`** *(y con ella, re-sellar el catálogo BRN)*.
+2. **Ratificar el retiro de `SAT-VII` y `SAT-VIII` como señales** *(pasan a indicadores)*.
+3. **Decidir cuál definición de `SAT-III` rige** antes de escribir su RO.
+
+**Y el siguiente paso técnico, que no necesita decisión:** verificar COPLAFIP 54, 113 y 115 en el
+corpus y encadenarlos en una CNO — eso desbloquea `SAT-I`, `SAT-II` y `SAT-III`.
+
+⚠️ *Nota de estado:* `tests/test_d07_autonomia.py::test_los_hallazgos_de_la_corrida_llevan_su_cadena`
+**falla en el estado base, antes de cualquier cambio de hoy** — verificado corriendo la suite con y
+sin la RO. **No lo causó este trabajo** y queda anotado para revisarlo aparte.
+
+⚠️ *Corrección de forma:* el commit `4a68073` dejó **el encabezado de la sección 6 duplicado**. Error
+de edición de esta dirección; corregido aquí.
 
 ## 6 · Y la finalidad, dicha por la dirección
 
