@@ -6196,6 +6196,79 @@ confundía dos canales:**
 **Nada del canon se tocó; nada amplía el alcance.** El trabajo sólo **ancló en la norma ya vigente** una
 decisión que la dirección había tomado por conocimiento del terreno.
 
+## 5-unquinquagies · **MATRIZ MAESTRA · CAPA TEMPORAL** — la cadencia como propiedad gobernada de cada realidad
+
+> **Distinción que se conserva** *(colega)*: **COOTAD 168 describe un circuito institucional trimestral;
+> LOTAIP 19 y 24 establecen el régimen mensual de publicación ciudadana que QUIRA usa como fuente.**
+> **No se confunde periodicidad de remisión institucional con periodicidad de disponibilidad pública.**
+>
+> **La cadena que cada realidad debe hacer explícita:**
+> `periodicidad normativa de la fuente → corte observado → evidencia disponible → indicador → consumidor`
+
+### Aporte de esta dirección: no es UNA propiedad temporal, son TRES
+
+| propiedad | pregunta | ejemplo |
+|---|---|---|
+| **periodicidad de publicación** | ¿cada cuánto la ley obliga a que la evidencia esté disponible? | LOTAIP 19: **mensual** |
+| **periodicidad propia del objeto** | ¿cada cuánto cambia o se evalúa la realidad observada? | PDOT **plurianual** · POA **anual** · rendición **anual** |
+| **corte observado** | ¿qué período declara hoy el motor? | `H07_S5`: «Abril 2026 (Ene-Abr)» |
+
+> **Confundirlas produce justo los defectos de `C4`.** El PDOT **se publica** mes a mes (LOTAIP 24) pero
+> **cambia** cada varios años; la obligación del 10 % de COOTAD 249 **se verifica** al aprobar el
+> presupuesto anual, aunque su evidencia **se publique** cada mes. **Una afirmación debe declarar a cuál de
+> las tres se refiere.**
+
+### La capa temporal, realidad por realidad
+
+| realidad | publicación *(norma · huella)* | periodicidad del objeto | corte observado hoy | evidencia | indicador | consumidores | **¿la condición temporal gobierna?** |
+|---|---|---|---|---|---|---|---|
+| **Inversión** *(sección Recursos)* | **mensual** · LOTAIP 19 `810ae0fcffd1` | presupuesto **anual**, ejecución **acumulada** al corte | `H07_S5!B10` «Abril 2026 (Ene-Abr)» · `B22 Mes_Activo = 4` **escrito a mano** · el bloque `financiero` con **otro corte** (2026-03) | cédula en el motor | `Ti` · `Ti_norm` (`H07b`) | ICPI · agente d02 · cajón · Concejo · IA | ⚠️ **parcial**: gobierna en el ICPI (`B34`) y en `RC-7.3`; **no** en el agente, el cajón ni el Concejo *(`C4-P1`)* |
+| **Planificación** *(sección Trayectoria)* | **mensual** · LOTAIP 24 `0e2435346ae1` | PDOT **plurianual** · POA **anual** — COOTAD 233 `1522597f54b1`: antes del 10 de septiembre | ? | PDOT · POA *(vía `T3`)* | avance de metas (`H11b`, `H16b_IPE`) | `m_planificacion` · `plan_render` | ? no evaluado |
+| **Transparencia** | **mensual** · LOTAIP 19 y 24 | mensual | calificación por mes *(2025 y meses 1-5 de 2026, según `BOOT`)* | portal de la DPE | cumplimiento de publicación | `p07_transparencia` · agente d07 | ? no evaluado en este corte |
+| **Participación y Control Social** | anual | **anual** — COOTAD 266 `33326955d115`: rendición *«al final del ejercicio fiscal»* | fidelidad **«corte 2024»** · serie 2023-2025 | informes de rendición · actas | fidelidad narrativa · circuito CPCCS | `m_rdc` | ⚠️ el año se declara **al pie**, **no en la síntesis** donde se publica el 91 % *(`C4-P2`)* |
+| **Grupos de Atención Prioritaria** | **mensual** · LOTAIP 19 *(presupuesto por programa, con ingresos)* | **anual** — COOTAD 249 se verifica **en la aprobación del presupuesto** | ? | presupuesto publicado mes a mes | *(candidato: 10 % de ingresos no tributarios)* | — | — **aún no hay indicador** |
+| **Ecosistema Municipal** *(transversal)* | **mensual** · LOTAIP 29 `570b34e6cc32` *(empresas públicas)* | anual con ejecución mensual | cortes por entidad al primer trimestre | ? | `Ti` por entidad | Concejo · holding | ? |
+| **Gobernanza del Mandato** | ? | **por período de gobierno** | ? | plan de trabajo · PDOT | congruencia promesa↔plan | `m_mandato` | ? |
+| **Cobertura · Económico · Ambiental** | ? — su fuente es estadística y diagnóstico del PDOT, **no normada por la LOTAIP en este corte** | multianual *(censos, diagnósticos)* | ? | ? | ? | ? | ? |
+
+### La cadena de Grupos de Atención Prioritaria, sin saltos *(colega)*
+
+```
+LOTAIP 19  →  publicación MENSUAL del presupuesto por programa, con ingresos
+     ↓
+evidencia presupuestaria
+     ↓
+COOTAD 249  →  verificación ANUAL: 10 % de ingresos no tributarios, al aprobar el presupuesto
+     ↓
+eventual indicador o señal   ←  sin saltar directamente de la norma al SAT
+```
+
+> **Precisión temporal:** la evidencia mensual permite **seguir** durante el año cómo se ejecuta lo
+> asignado; pero **la prueba legal es anual**, sobre el presupuesto aprobado. Un indicador futuro deberá
+> declarar **régimen anual con actualización mensual** — no mezclarlos.
+
+### ⛔ El hallazgo que la capa temporal vuelve grave
+
+`C4-P0` había dejado como reserva que `Mes_Activo` es un **literal escrito a mano** con el rótulo
+**«(auto)»**. Con la ley a la vista, deja de ser una reserva menor:
+
+> **La ley obliga a una cadencia mensual (LOTAIP 19), y el mes que el motor declara se escribe a mano.**
+> Es exactamente la forma de `C4`: la propiedad **existe** en el motor, pero **no la gobierna la fuente**
+> que la ley establece.
+
+### Lo que la capa temporal añade a la Matriz Maestra
+
+| artefacto | V | acción |
+|---|---|---|
+| `H07_S5!B22` `Mes_Activo` | ⛔ literal a mano rotulado «(auto)» | **RECONSTRUIR**: derivar el mes del corte de la fuente, no escribirlo |
+| bloque `financiero` del snapshot | ⛔ corte distinto (2026-03) del vigente | **RECONSTRUIR** *(ya en la fila de derivados)* |
+| agente d02 · `absorcion_ti_pct` | ⛔ viaja sin corte | **ELEVAR**: el corte y su periodicidad viajan con el valor |
+| `m_rdc` · síntesis | ⛔ publica el 91 % sin su año | **RECORTAR** la ambigüedad: el año va junto a la cifra |
+| procedencia de toda evidencia | ? | **ELEVAR**: registrar **el canal** —publicación ciudadana o remisión institucional— **y** las tres propiedades temporales |
+
+**Nada del canon se tocó; ninguna cadencia se «corrigió» en el motor.** Esto es **diagnóstico de la
+capa temporal**, listo para la cirugía cuando la dirección la abra.
+
 ## 6 · Y la finalidad, dicha por la dirección
 
 > *«No es una auditoría, sino **elevar este ecosistema**… para potenciar, mejorar y elevar el nivel
