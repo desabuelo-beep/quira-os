@@ -6225,7 +6225,7 @@ decisión que la dirección había tomado por conocimiento del terreno.
 | **Inversión** *(sección Recursos)* | **mensual** · LOTAIP 19 `810ae0fcffd1` | presupuesto **anual**, ejecución **acumulada** al corte | `H07_S5!B10` «Abril 2026 (Ene-Abr)» · `B22 Mes_Activo = 4` **escrito a mano** · el bloque `financiero` con **otro corte** (2026-03) | cédula en el motor | `Ti` · `Ti_norm` (`H07b`) | ICPI · agente d02 · cajón · Concejo · IA | ⚠️ **parcial**: gobierna en el ICPI (`B34`) y en `RC-7.3`; **no** en el agente, el cajón ni el Concejo *(`C4-P1`)* |
 | **Planificación** *(sección Trayectoria)* | **mensual** · LOTAIP 24 `0e2435346ae1` | PDOT **plurianual** · POA **anual** — COOTAD 233 `1522597f54b1`: antes del 10 de septiembre | ? | PDOT · POA *(vía `T3`)* | avance de metas (`H11b`, `H16b_IPE`) | `m_planificacion` · `plan_render` | ? no evaluado |
 | **Transparencia** | **mensual** · LOTAIP 19 y 24 | mensual | calificación por mes *(2025 y meses 1-5 de 2026, según `BOOT`)* | portal de la DPE | cumplimiento de publicación | `p07_transparencia` · agente d07 | ? no evaluado en este corte |
-| **Participación y Control Social** | anual | **anual** — COOTAD 266 `33326955d115`: rendición *«al final del ejercicio fiscal»* | fidelidad **«corte 2024»** · serie 2023-2025 | informes de rendición · actas | fidelidad narrativa · circuito CPCCS | `m_rdc` | ⚠️ el año se declara **al pie**, **no en la síntesis** donde se publica el 91 % *(`C4-P2`)* |
+| **Participación y Control Social** | anual | **anual** — ~~COOTAD 266~~ ⛔ *falsación 43*: la periodicidad la fijan **LOPC 95 · RES-CPCCS-RC-2026 Art. 5 y su cronograma para GAD** (`§5-duoquinquagies`) | fidelidad **«corte 2024»** · serie 2023-2025 | informes de rendición · actas | fidelidad narrativa · circuito CPCCS | `m_rdc` | ⚠️ el año se declara **al pie**, **no en la síntesis** donde se publica el 91 % *(`C4-P2`)* |
 | **Grupos de Atención Prioritaria** | **mensual** · LOTAIP 19 *(presupuesto por programa, con ingresos)* | **anual** — COOTAD 249 se verifica **en la aprobación del presupuesto** | ? | presupuesto publicado mes a mes | *(candidato: 10 % de ingresos no tributarios)* | — | — **aún no hay indicador** |
 | **Ecosistema Municipal** *(transversal)* | **mensual** · LOTAIP 29 `570b34e6cc32` *(empresas públicas)* | anual con ejecución mensual | cortes por entidad al primer trimestre | ? | `Ti` por entidad | Concejo · holding | ? |
 | **Gobernanza del Mandato** | ? | **por período de gobierno** | ? | plan de trabajo · PDOT | congruencia promesa↔plan | `m_mandato` | ? |
@@ -6268,6 +6268,176 @@ eventual indicador o señal   ←  sin saltar directamente de la norma al SAT
 
 **Nada del canon se tocó; ninguna cadencia se «corrigió» en el motor.** Esto es **diagnóstico de la
 capa temporal**, listo para la cirugía cuando la dirección la abra.
+
+## 5-duoquinquagies · **LA CADENA NORMATIVA DE CADA DOMINIO** — desde la Constitución, derivada de lo que QUIRA ya tiene *(corrección de la dirección)*
+
+> **Javo:** *«el capítulo de rendición de cuentas está en la LOPC y la resolución administrativa del
+> CPCCS. Tenemos la norma vectorizada… no es solo el COOTAD y el COPLAFIP. Es desde la Constitución y la
+> cadena de artículos de las leyes que tocan lo que estamos trabajando; es muy ambiguo dejar la RDC solo
+> con el COOTAD.»*
+> **Tiene razón. El error es de método, no de lectura.**
+
+### ⚠️ Falsación 43, mía
+
+En la capa temporal (`§5-unquinquagies`) fundé la periodicidad de la rendición de cuentas en
+**COOTAD 266**. El artículo existe (`33326955d115`) y dice lo que cité, pero **no es la norma que gobierna
+la rendición de cuentas**: es una concordancia del capítulo presupuestario (el ejecutivo informa a la
+asamblea territorial sobre la ejecución del presupuesto). **La cadena rectora ya estaba en el canon
+vigente y sellado —`CNO-IX-001`, aprobada por la dirección el 2026-07-20— y no la leí.**
+
+El mismo método —**ir a un artículo suelto en lugar de al rector**— se repitió en la misma tabla:
+Planificación quedó anclada sólo en COOTAD 233 y Grupos de Atención Prioritaria sólo en COOTAD 249.
+**Esta sección lo corrige para los ocho dominios.**
+
+> **Regla que queda:** la norma de un dominio **se deriva de su cadena rectora** (la CNO si existe; si no,
+> las capas que QUIRA ya tiene), **nunca de un artículo elegido ad hoc.** Un artículo suelto es una
+> **concordancia**, no la cadena.
+
+### 1 · La rendición de cuentas, con su propia cadena *(periodicidad verificada hoy en el corpus)*
+
+| nivel | artículo · huella | qué establece | fuente |
+|---|---|---|---|
+| Constitución | CE 100 `8282b964440e` | instancias de participación en todos los niveles de gobierno | `CNO-IX-001` |
+| Constitución | CE 208 `8c269ae98217` | deberes y atribuciones del CPCCS | `CNO-IX-001` |
+| ley orgánica | LOPC 89 · 90 · 91 · 93 | definición · sujetos obligados · objetivos · nivel programático y operativo | `CNO-IX-001` |
+| ley orgánica | **LOPC 92** `122bd1a01eb5` | **nivel político**: la autoridad electa rinde cuentas sobre su **plan de trabajo**, sus planes, el POA y el **presupuesto general y participativo** | hoy · **no encadenado** |
+| ley orgánica | **LOPC 95** `e9b95d33a298` | **periodicidad**: *«una vez al año y al final de la gestión»* | hoy · **no encadenado** |
+| resolución CPCCS | RES-CPCCS-RC-2026 Art. 10 · 13 · 15 · 21 | contenido mínimo · reglas para GAD · deliberación pública · consecuencia | `CNO-IX-001` |
+| resolución CPCCS | **Art. 5** `2be5516ecdaf` | se rinde cuentas del **período fiscal concluido: 1 de enero a 31 de diciembre** | hoy · no encadenado |
+| resolución CPCCS | **cronograma para GAD** `7606911e9f04` | feb–mar planificación desde la Asamblea Local · abril evaluación e informe · **mayo deliberación pública** · junio incorporación de la opinión ciudadana y seguimiento — *del año siguiente al período fiscal* | hoy · tabla sin número de artículo; **se atribuye al Art. 13 por su contenido** |
+| concordancia | COOTAD 266 `33326955d115` | informe anual de ejecución presupuestaria a la asamblea territorial | **no es la regla de la rendición** |
+
+**Dos consecuencias que no estaban a la vista:**
+
+1. **El Art. 13** (`c2456d489297`) obliga también a **las personas jurídicas creadas por acto normativo
+   del GAD** → el Patronato y las empresas públicas **rinden cuentas por sí mismas**. Toca a Grupos de
+   Atención Prioritaria (Patronato) y a la transversal Ecosistema Municipal.
+2. **LOPC 92** es el puente legal entre la rendición y **Gobernanza del Mandato**: la autoridad electa
+   rinde cuentas **sobre su plan de trabajo**.
+
+**La fila de la capa temporal, corregida:**
+
+| realidad | publicación | periodicidad del objeto | corte observado | ¿la condición temporal gobierna? |
+|---|---|---|---|---|
+| **Participación y Control Social** · sección Rendición | **anual, por ciclo** — LOPC 95 · RES-CPCCS Art. 5 · cronograma para GAD (febrero a junio del año siguiente) | ejercicio fiscal | fidelidad «corte 2024» · serie 2023–2025 | ⚠️ el año va al pie y no en la síntesis (`C4-P2`) · **? por verificar:** según el cronograma, el ciclo exigible más reciente es el del ejercicio 2025 (deliberación en mayo de 2026); la síntesis debe declarar **de qué ciclo habla** |
+
+### 2 · Lo que QUIRA ya tiene — cuatro capas, de épocas distintas
+
+| capa | qué es | qué cubre | verificación |
+|---|---|---|---|
+| **BRN** · 16 CNO (`docs/brn/`) | cadena jurídica con huella por eslabón | Planificación (`I-001`) · Inversión (`IV-001`) · Mandato (`III-001`) · Transparencia (`VII-001…004`) · Participación (`VIII-000…007`, propuesta) · Rendición (`IX-001`) | ✅ huella por eslabón · **12 de 16 están en el grafo**: faltan las 4 de Transparencia (el dominio entra al grafo por 24 condiciones definidas por los numerales de LOTAIP 19) |
+| **Átomos ACK** · 93 (`data/acks/`, fases F0.1–F0.6) | obligación atomizada: obligado, obligación, evidencia, consecuencia | derechos y competencias de la CE · COOTAD · LOTAIP · LOC-CGE · NCI · LOSEP · LOSNCP · CONA · adultos mayores · discapacidades · movilidad humana · COA | ⚠️ **ningún átomo lleva huella**; discrepancias abajo |
+| **QLEP canónico v1.0** (`governance/qlep/`, congelado, junio 2026) | norma primaria y pregunta bautismal por dominio | los 12 dominios de la numeración antigua | ⚠️ **citas parafraseadas, no literales**; discrepancias abajo |
+| **Corpus vectorizado** (Supabase) | texto oficial | 94 normas · 13 147 fragmentos | es **la fuente contra la que se verifica todo** |
+
+Y un **índice** que no es capa: el manifiesto del corpus (`scripts/normativa/manifest.py`, 46 normas →
+dominios). ⚠️ **No declara qué numeración de dominios usa** —coexisten al menos tres: la del QLEP
+(`Dom01–12`), la de los scripts y conectores del grafo (`Dom03` = Contratación, `Dom04` = PDOT) y la de
+los agentes (`d01–d13`)—. **En las tres el 09 es Rendición de Cuentas, y el manifiesto no etiqueta ni la
+LOPC ni la resolución del CPCCS en el 09.** Es el mismo hueco que produjo mi error, en otra capa.
+
+**Discrepancias verificadas contra el corpus** *(se registran; ninguna se repara aquí)*:
+
+| capa | dice | el corpus dice |
+|---|---|---|
+| ACK `LOSNCP_21` | «Plan Anual de Contratación» | LOSNCP 21 `2406c95d781c` es el **Portal COMPRASPÚBLICAS**; el PAC es LOSNCP 22 `1d6c1b3ae153` (así lo encadena `CNO-I-001`) |
+| ACK · siglas | LOAPAM · LOD · LOMH | en el corpus: **LOPAM · LODISC · LMH** |
+| QLEP Dom11 | CE 264 **núm. 8** = uso del suelo | el núm. 8 es **patrimonio**; el control del uso del suelo es el **núm. 2** (contados en `8a610fc989a2`) |
+| QLEP Dom02 | COOTAD 198 = «presupuesto de inversión; vinculación con POA y PAC» | COOTAD 198 `d1356370a4bd` = **destino de las transferencias** (hasta 30 % a gasto permanente, mínimo 70 % a no permanente) |
+| QLEP Dom08 | COOTAD 304 = «partida específica para el presupuesto participativo» | COOTAD 304 `a1ccfa62c16f` = **sistema de participación ciudadana**; la palabra «partida» no aparece |
+
+> **Consecuencia para QUIRA 7:** ninguna de las tres capas se hereda **literal**. Se hereda **la cadena**,
+> y cada eslabón pasa por el corpus (Regla 3) antes de entrar.
+
+### 3 · La cadena de cada dominio de QUIRA 7
+
+Orden de lectura: **Constitución → ley orgánica (competencia u obligación) → reglamento, resolución o
+norma técnica (procedimiento, plazo, contenido) → publicación → control y consecuencia.** Entre
+paréntesis, de dónde viene: **CNO** · **ACK** · **QLEP** · **hoy** (verificado en esta sesión, sin
+encadenar). Todo artículo con huella fue leído en el corpus.
+
+**① Planificación Estratégica e Inversión Pública** *(d01 + d02 + eficiencia directiva)*
+- **Constitución:** CE 241 · 280 *(CNO-I-001)* · CE 264 núm. 1 `8a610fc989a2` *(ACK)* · CE 271 *(CNO-IV-001)*
+- **Ley:** COPLAFIP 12 · 44 · COOTAD 215 · 233 `1522597f54b1` · 234 · 245 · LOSNCP 22 *(CNO-I-001)* ·
+  COOTAD 192 · COOTAD-2026 198.1 · 198.2 · 198.6 · Disp. Trans. 1.ª *(CNO-IV-001)* · COPLAFIP 96
+  `427f23a66e7c` · 119 `8a5e811f8f8b` *(`§5-novoquatrigies`)* · COOTAD 54 `53a6cf3041c4` · 57
+  `4875f6818644` · 228 `b2c56883a157` *(ACK)* · COOTAD 60 *(CNO-III-001)*
+- **Eficiencia directiva:** NCI «Administración estratégica» (200-02) `15079b69adb7` *(ACK; en el corpus
+  sin número)* · NCI 200-04 estructura orgánica *(ACK; **? no localizada** en el corpus)* ·
+  RES-ORG-GADMCM-2025, estructura orgánica por procesos *(en el corpus)*
+- **Publicación:** LOTAIP 19 `810ae0fcffd1`, mensual *(CNO-VII-001)* · COOTAD 168 `919882337173`, canal institucional
+- **Control:** COOTAD-2026 198.6 → Contraloría *(CNO-IV-001)* · LOC-CGE 12 `52784afdf867` *(ACK)*
+
+**② Gobernanza del Mandato**
+- **Constitución:** CE 61 · 105 *(CNO-III-001)*
+- **Ley:** COD 97 · COOTAD 58 · 60 · COPLAFIP 41 · 42 · LOPC 89 · 90 *(CNO-III-001)* · **LOPC 92**
+  `122bd1a01eb5` *(hoy — candidato a eslabón: se rinde cuentas sobre el plan de trabajo)*
+- **Instrumento:** PLAN-GOB-MCR *(en el corpus)*
+
+**③ Transparencia**
+- **Constitución:** CE 18 · 91 · 238 *(CNO-VII-001…004)*
+- **Ley:** LOTAIP 7 · 8 · 9 · 10 · 13 · 19 · 24 · 32–38 · COOTAD 57 · 60 *(CNO-VII)* · LOTAIP 29
+  `570b34e6cc32`, empresas públicas *(`§5-quinquagies`)* · LOTAIP 11 `04b50eeb8135`, informe anual a la DPE ·
+  LOTAIP 39 `9ff6a6949175`, responsabilidad del titular *(ACK)*
+- **Reglamento y norma técnica:** RLOTAIP 10–15 · GUIA-LOTAIP-MEC · INST-LOTAIP-MON · INST-LOTAIP-PAR ·
+  ACUERDO-PDOT-2023 *(CNO-VII)*
+- **Control:** LOTAIP 42 *(CNO-VII)*
+
+**④ Participación Ciudadana y Control Social**
+- *Sección Participación* *(CNO-VIII, **propuesta**)*: CE 95 · 61 · 100 → sistema (COOTAD 304 · 312 ·
+  LOPC 64 · 65) · asamblea (LOPC 56–58 · 61 · COOTAD 306 · 307) · consejo de planificación (COPLAFIP 13 ·
+  28 · 29 · 46) · audiencia (LOPC 73–75 · COOTAD 60) · presupuesto participativo (LOPC 67 · 71 · COOTAD
+  238) · cabildo (CE 100 · LOPC 76) · silla vacía (CE 101 · LOPC 77 · COOTAD 311)
+- *Sección Rendición de cuentas y control social*: la cadena del punto 1 *(CNO-IX-001 vigente + LOPC 92 ·
+  95 · RES Art. 5 · cronograma, hoy)*
+- **Concordancias, no rectoras:** COOTAD 266 · COOTAD 300 `d0a387760026` · COOTAD 302 `30fa6a7bba59`
+
+**⑤ Cobertura de Servicios e Infraestructura** *(sin CNO)*
+- **Constitución:** CE 12 `e44156c3b7ed` (agua) · CE 30 `3c59f419738c` (hábitat) · CE 31 `3bde62de4695`
+  (ciudad) · CE 264 núm. 3 (vialidad) · 4 (agua, alcantarillado, desechos, saneamiento) · 7
+  (equipamientos de salud y educación, espacio público) · 13 (incendios) `8a610fc989a2` *(ACK · QLEP)*
+- **Ley:** COOTAD 55 `7cba2417d70a` · 137 `7706e03a01f7` *(ACK)* · LOTUGS *(en el corpus, sin encadenar)*
+- **Publicación y control:** **?** — el QLEP usa `LOTAIP_19_6`; no se verificó en esta sesión
+
+**⑥ Desarrollo Económico Territorial** *(sin CNO)*
+- **Constitución:** CE 276 `affc0b120408` *(QLEP)* · CE 264 núm. 2, control del uso del suelo *(el QLEP lo cita como núm. 8)*
+- **Ley:** COOTAD 54 *(funciones; el QLEP usa su literal g, turismo)* · LOIEME · LOTUGS *(en el corpus, sin encadenar)*
+
+**⑦ Grupos de Atención Prioritaria** *(sin CNO)*
+- **Constitución:** CE 35 `fba71e80b2f5` · CE 11 `4d55c178a648`, acción afirmativa *(ACK)*
+- **Ley orgánica general:** COOTAD 249 `c0c0fce0f126`, 10 % de los ingresos no tributarios *(ACK)*
+- **Leyes especiales — obligaciones del GAD:** CONA 12 `309043e3453a` (prioridad absoluta) · LOPAM 14
+  `59389f58607f` (exoneraciones) · 84 `136da121f808` (atribuciones de los GAD) · LODISC 47 `8ae3a51c82fc`
+  (inclusión laboral 4 %) · 56 `662d1c6c9af8` (vivienda) · 58 `86ca98942a5a` (accesibilidad) · LMH 165
+  `3a7f08ee906d` · 166 `eb07339e6543` · 167 `212336e992a6` *(ACK)* · **LPEVM 38** `631dbfded167`,
+  atribuciones de los GAD *(hoy — sin átomo)*
+- **Instrumentos internacionales en el corpus:** CDN · CEDAW · CADH · PIDESC
+- **Publicación:** LOTAIP 19, presupuesto por programa, mensual · **Rendición:** RES-CPCCS Art. 13 — el Patronato rinde cuentas por sí mismo
+- **Frontera** *(decisión de la dirección)*: CONA 207 `85b98b498b13` integra la Junta Cantonal de
+  Protección de Derechos → **fuera del objeto**; se conserva como límite, no como eslabón
+
+**⑧ Sostenibilidad y Resiliencia Ambiental** *(sin CNO)*
+- **Constitución:** CE 14 `b7148c0ba23f` *(ACK)* · CE 389 `cc1f9192773c` · 390 `77dee2a1ad42`, gestión de
+  riesgos *(hoy)* · CE 264 núm. 4, desechos y saneamiento ambiental
+- **Ley:** COOTAD 136 `2f45a601705d`, gestión ambiental · 140 `0dc5f48de6bb`, gestión de riesgos *(hoy)* ·
+  COA-AMB 27 `46d69b2c611e`, facultades ambientales de los GAD municipales *(hoy)* · RCOA-AMB *(en el corpus)*
+
+**Transversales** *(lo mínimo, sin ampliar)*: **Ecosistema Municipal** — CE 315 `4484be1b204e` · COOTAD 57 ·
+LOTAIP 29 · RES-CPCCS Art. 13; ⚠️ **la LOEP no está en el corpus** (0 fragmentos) · **Cumplimiento
+Institucional** — CE 226 `a98d7fb2484f` · 227 `3618fc4dea8a` · LOC-CGE · NCI · **Equidad y Género** —
+LPEVM · LOIEME · CEDAW.
+
+### 4 · Lo que queda establecido, y lo que no se toca
+
+| | |
+|---|---|
+| **establecido** | cada dominio tiene su cadena **desde la Constitución**, derivada de las capas que QUIRA ya tiene; los artículos con huella se leyeron en el corpus |
+| **lo que falta** | cuatro dominios **sin CNO** (Cobertura · Económico · Grupos de Atención Prioritaria · Ambiental): su cadena existe en ACK y QLEP, **no en la BRN** · las 4 CNO de Transparencia, fuera del grafo · LOPC 92 · 95 · RES Art. 5 y el cronograma, sin encadenar en `CNO-IX-001` |
+| **no se tocó** | el canon (`docs/brn`), el grafo, los ACK, el QLEP (congelado) ni el manifiesto · **no entra ninguna norma nueva: todo lo citado ya está en el corpus** |
+| **a la mesa, cuando se abra la cirugía** | (a) si `CNO-IX-001` incorpora la periodicidad (LOPC 95 · RES Art. 5 · cronograma): **toca el canon sellado y requiere ratificación** · (b) qué numeración de dominios gobierna el manifiesto · (c) las CNO de los cuatro dominios sin cadena, una por una y con el filtro de tres preguntas |
+
+Las tres decisiones pendientes de la dirección (`RO-VIII-004` · retiro de SAT-I, VII y VIII · definición
+de SAT-III) **siguen igual**.
 
 ## 6 · Y la finalidad, dicha por la dirección
 
