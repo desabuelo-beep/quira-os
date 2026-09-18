@@ -5127,6 +5127,87 @@ de nivel**, qué **se retira** y qué **se incorpora** — con el inventario rea
 **No hace:** ejecutar nada · decidir el número de dominios · reparar los defectos de `C4` · tocar el
 Excel. **Sigue vigente la regla: primero la anatomía, después el bisturí.**
 
+## 5-trigies · **ALCANCE DE QUIRA 7, CERRADO** — y los dominios con nombres de administración pública
+
+> ⛔ **Esta sección cierra la deriva de alcance. Lo que está fuera, está fuera, y no se reabre.**
+
+### El objeto de QUIRA 7 — dicho por la dirección
+
+> **La mira es el cumplimiento del PDOT —sus metas, objetivos e indicadores— y la INVERSIÓN del GAD
+> que lo materializa. No el gasto corriente. No la gestión ejecutiva del Concejo.**
+
+### Criterio de admisión — el filtro que cierra la puerta
+
+Una realidad entra al ecosistema **sólo si cumple las dos condiciones**:
+
+| | condición |
+|---|---|
+| **1 · pertinencia** | sirve al **cumplimiento del PDOT** o a la **inversión** que lo materializa |
+| **2 · evidencia accesible** | existe **fuente oficial que QUIRA pueda adquirir**: DPE/Transparencia · CPCCS · SERCOP · web oficial del GAD |
+
+**Si falla cualquiera de las dos, la realidad se declara FUERA DEL UNIVERSO OBSERVABLE.** Eso no es
+una omisión: **es un resultado**, y es doctrina QUIRA declararlo *(la ausencia de evidencia es un
+resultado de auditoría, nunca autorización para inferir)*.
+
+### ⛔ Lo que queda FUERA, y por qué
+
+| realidad | por qué queda fuera |
+|---|---|
+| **Gasto corriente** | el objeto es la **inversión** |
+| **Ordenanzas, resoluciones y sesiones del Concejo · fiscalización y control político** | **no hay acceso a la fuente.** Del Concejo sólo interesa **su planificación** —PDOT, POA—, que ya vive en Planificación Estratégica |
+| **Ingresos, recaudación y autonomía financiera** | fuera del objeto *(inversión, no estructura de ingresos)* |
+| **Catastro · uso y ocupación del suelo · permisos y licencias · tránsito** | fuera del objeto y **sin fuente adquirible** |
+| **Talento humano · bienes y patrimonio** | fuera del objeto |
+| **Mancomunidades y coordinación intergubernamental** | fuera del objeto en esta versión |
+| **Operación y tarifas de los servicios** | QUIRA observa **cobertura y acceso** como resultado del cumplimiento del plan, no la operación |
+
+> **De las ocho «brechas» del inventario anterior, sólo una sobrevive al filtro: `Contratación
+> Pública`** —porque es el mecanismo por el cual **la inversión se convierte en obra, bien o
+> servicio**, tiene fuente accesible (SERCOP) y **ya está instrumentada en el motor**. El resto sale.
+>
+> **Y el `orgánico por procesos` entra como EVIDENCIA, no como dominio:** sirve para saber **qué
+> dirección responde por cada meta**, y se adquiere por `T3` junto al PDOT, POA, PAC y presupuestos.
+
+### Los dominios, con sus nombres — tomados del Nomenclátor donde sirven
+
+*(Se acabaron las etiquetas `U1`…`U7`. Se usa el **Nomenclátor Canónico** existente donde el nombre
+sigue siendo válido, y se cambia donde dejó de serlo.)*
+
+| # | nombre | procedencia del nombre | contenido |
+|---|---|---|---|
+| **1** | **Planificación Estratégica** | ✅ del Nomenclátor | PDOT · POA · metas, objetivos e indicadores · hitos · **el núcleo del objeto de QUIRA 7** |
+| **2** | **Inversión Pública Municipal** | 🔄 **cambia** *(era «Presupuesto & Financiamiento»)* | presupuesto **de inversión** codificado y devengado · sostenibilidad de la inversión · **sin gasto corriente** · **sin financiamiento externo** |
+| **3** | **Contratación Pública** | ➕ **nuevo**, con material existente | PAC · procedimientos y adjudicaciones en SERCOP · cobertura del plan de contratación · **cómo la inversión se vuelve obra** |
+| **4** | **Gobernanza del Mandato** | ✅ del Nomenclátor | plan de trabajo inscrito ↔ PDOT · congruencia promesa↔plan |
+| **5** | **Transparencia** | ✅ del Nomenclátor | **cumplimiento** de la publicación obligatoria **y calidad** de la información que nutre a los demás |
+| **6** | **Participación Ciudadana y Control Social** | 🔄 **fusión** *(d08 + d09)* | **sección A · Participación Ciudadana** · **sección B · Rendición de Cuentas** · evidencia del vínculo |
+| **7** | **Cobertura de Servicios e Infraestructura** | ✅ del Nomenclátor | cobertura y acceso por parroquia · déficit · brecha urbano-rural **como resultado del plan** |
+| **8** | **Desarrollo Económico Territorial** | ✅ del Nomenclátor | tejido productivo · empleo · cadenas de valor |
+| **9** | **Sostenibilidad y Resiliencia Ambiental** | ✅ del Nomenclátor | integridad ecológica · riesgo biofísico · metas ambientales |
+| **10** | **Grupos de Atención Prioritaria** | 🔄 **cambia** *(era «Inclusión, Equidad y Género»)* | **la función ejecutora del GAD**: unidad que opera, presupuesto, programas, cobertura · **la figura institucional es atributo, no identidad** |
+
+### Lo que NO es dominio — con su nombre también
+
+| nombre | naturaleza | procedencia |
+|---|---|---|
+| **Ecosistema Municipal** | **transversal** · perímetro: qué entidad produce cada observación | 🔄 era «Holding e Integración Municipal» |
+| **Equidad y Género** | **transversal** · desagregación obligatoria en los demás dominios | 🔄 era parte de «Inclusión, Equidad y Género» |
+| **Cumplimiento Institucional** | **transversal derivada** · síntesis (ICPI) | 🔄 era «Salud Institucional» |
+| **GeoTwin** | **transversal** · espacialización | ✅ ya lo era |
+| **Alertas Institucionales** | **vista derivada** · señales en los dominios **+ BRN** | 🔄 era d04 · **decisión de Javo ya ejecutada** |
+| **QUIRA Cooperación** | **producto** | ➕ sale del mapa ontológico |
+| **Adquisición recursiva** | **infraestructura** (`T1`·`T2`·`T3`) | ➕ nueva |
+
+### Por qué esta lista sí cierra
+
+**Diez dominios**, de los cuales **siete conservan su nombre del Nomenclátor**, **dos cambian de
+nombre porque cambió su objeto** y **uno es nuevo con material ya existente en el motor**. Ningún
+nombre inventado, ninguna etiqueta provisional, y **cada exclusión está escrita con su razón** — que
+es lo que impide que la discusión vuelva a abrirse.
+
+**Lo que sigue pendiente y es de la mesa:** los nombres definitivos de los dos que cambiaron, y si
+`Contratación Pública` es dominio propio o sección de `Inversión Pública Municipal`.
+
 ## 6 · Y la finalidad, dicha por la dirección
 
 > *«No es una auditoría, sino **elevar este ecosistema**… para potenciar, mejorar y elevar el nivel
