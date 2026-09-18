@@ -6112,12 +6112,12 @@ CNO; se exige que la separación sea **explícita y trazable**.
 > ciclo completo para todo el sector público— y con el respaldo del régimen propio (COOTAD 168). **A
 > diferencia del Art. 54, nada en estos textos excluye a los GAD.**
 
-⭐ **Y COOTAD 168 da algo más valioso de lo que se buscaba:** es **la base legal de la evidencia que
-QUIRA adquiere**. Obliga al GAD a **publicar** permanentemente la información presupuestaria en su web y a
-**remitir trimestralmente sus cédulas**. La «evidencia adquirible» de las señales presupuestarias **no es
-una conveniencia técnica: es un deber legal del sujeto observado.** *(Precisión: esto sostiene el
-contrato de evidencia y la función de Transparencia; **no crea un dominio ni una funcionalidad
-nueva**.)*
+⭐ **Y COOTAD 168 da algo más de lo que se buscaba:** obliga al GAD a **publicar** permanentemente la
+información presupuestaria en su web y a **remitir trimestralmente sus cédulas** al ente rector.
+~~Es la base legal de la evidencia que QUIRA adquiere.~~ ⚠️ **Corregido por la dirección
+(falsación 42, ver `§5-quinquagies`):** la cadencia de la evidencia que QUIRA adquiere es **MENSUAL** y
+viene de la **LOTAIP**; la remisión trimestral de COOTAD 168 es **otro canal** —hacia el ente rector, no
+hacia la ciudadanía—. *(Precisión: nada de esto crea un dominio ni una funcionalidad nueva.)*
 
 ### Estado final de las señales tras la verificación
 
@@ -6153,6 +6153,48 @@ normas halladas **no crean funcionalidades nuevas**. **No toca el canon. No crea
 `REARQ` → ✅ **registrados** · **C** tres decisiones pendientes → **intactas** · **D** COPLAFIP 119 frente
 al COOTAD → ✅ **resuelto** · **E** → **incorporar estos resultados a la Matriz Maestra de Elevación**
 sobre los ocho dominios fijados.
+
+## 5-quinquagies · **LA CADENCIA ES MENSUAL, Y LA FIJA LA LOTAIP** *(corrección de la dirección)*
+
+> **Javo:** *«la LOTAIP obliga a que la publicación de la información del GAD sea mensualizada»*.
+> **Verificado — en el canon vigente y en el corpus.**
+
+### ⚠️ Falsación 42, mía
+
+Escribí que COOTAD 168 era *«la base legal de la evidencia que QUIRA adquiere»*. **Era incompleto y
+confundía dos canales:**
+
+| canal | norma | cadencia | destinatario | ¿es la fuente de QUIRA? |
+|---|---|---|---|---|
+| **transparencia activa** | **LOTAIP 19** y **LOTAIP 24** | **mensual** | **la ciudadanía**, por portal web | ✅ **sí** — es lo que QUIRA adquiere |
+| remisión institucional | COOTAD 168 | trimestral | el ente rector de finanzas y el de planificación | ⛔ no — es un canal entre instituciones |
+
+### Lo que dicen los artículos — y ya estaban en el canon
+
+| artículo · huella | qué establece | ¿encadenado? |
+|---|---|---|
+| **LOTAIP 19** · `810ae0fcffd1` | los sujetos obligados difunden por portal web *«la siguiente información mínima **actualizada mensualmente**… de naturaleza obligatoria»*, que incluye la *«información total sobre el **presupuesto** anual… el asignado a cada área, programa o función, especificando **ingresos, gastos, financiamiento y resultados operativos**… así como la **liquidación** del presupuesto»* | ✅ `CNO-VII-001` · vigente · en el catálogo sellado |
+| **LOTAIP 24** · `0e2435346ae1` | **obligación específica de los GAD**: *«mensualmente, informarán…»* — resoluciones, procesos legislativos e **instrumentos de planificación, incluido el PDOT** | ✅ `CNO-VII-002` · obligación central · vigente |
+| **LOTAIP 29** · `570b34e6cc32` | las **empresas públicas** publican la *«información **mensual** sobre la ejecución presupuestaria»* | ⛔ no encadenado |
+
+### Qué cambia
+
+1. **La decisión de la dirección —Transparencia como capa de alimentación MENSUAL— tiene su raíz legal
+   exacta**, y **ya estaba en el canon vigente**: LOTAIP 19 y 24. No es sólo una decisión de
+   arquitectura: **es la cadencia a la que la ley obliga a la fuente.**
+2. **El régimen temporal de la sección Recursos** *(«mensual con corte»)* **queda fundado en la ley**
+   (LOTAIP 19), no en una conveniencia técnica.
+3. **La evidencia de COOTAD 249 es de publicación mensual obligatoria**: LOTAIP 19 obliga a publicar el
+   presupuesto **por programa**, con **ingresos** y gastos — es decir, **el numerador y el denominador**
+   de la obligación del 10 %. *(Si ya está en el motor sigue **sin verificar**.)*
+4. **LOTAIP 29 da base legal a la evidencia mensual por entidad** en la transversal de Ecosistema
+   Municipal: la EP de Aseo (`ENTE-04`) está obligada a publicar su ejecución mensual.
+5. **La procedencia debe registrar el canal:** una cédula remitida al ente rector y una publicada en el
+   portal pueden no ser la misma versión. **Es la misma lección de `T3` —la vía importa— aplicada a las
+   cadencias.**
+
+**Nada del canon se tocó; nada amplía el alcance.** El trabajo sólo **ancló en la norma ya vigente** una
+decisión que la dirección había tomado por conocimiento del terreno.
 
 ## 6 · Y la finalidad, dicha por la dirección
 
