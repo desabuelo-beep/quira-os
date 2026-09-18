@@ -5957,9 +5957,9 @@ Registro de identidad (esta propuesta)
 
 | artículo · huella | lo que `SAT_Catalogo` afirma que dice | lo que el texto dice | veredicto |
 |---|---|---|---|
-| **COPLAFIP 54** · `377f7da7ac2e` | *«las entidades deben reportar avances de todas las metas del plan operativo en el SIGAD»* *(base de `SAT-I` y `SAT-VII`)* | *«Planes institucionales.- Las instituciones sujetas al ámbito de este código, **excluyendo los Gobiernos Autónomos Descentralizados**, reportarán a la Secretaría Nacional de Planificación…»* | ⛔ **EXCLUYE EXPRESAMENTE A LOS GAD** |
-| **COPLAFIP 113** · `70c235f494c6` | *«obliga a la evaluación periódica… las entidades deben alcanzar metas de ejecución por período»* *(base de `SAT-III`)* | define **qué es** la fase de ejecución presupuestaria | ⛔ **definicional**: no contiene la obligación con umbral atribuida |
-| **COPLAFIP 115** · `09bc593d0270` | *«las reformas presupuestarias deben justificarse y registrarse en eSIGEF»* *(base de `SAT-II`)* | regula la **certificación presupuestaria** | ⛔ **trata otro asunto** |
+| **COPLAFIP 54** · `377f7da7ac2e` | *“las entidades deben reportar avances de todas las metas del plan operativo en el SIGAD”* *(base de `SAT-I` y `SAT-VII`)* | *«Planes institucionales.- Las instituciones sujetas al ámbito de este código, **excluyendo los Gobiernos Autónomos Descentralizados**, reportarán a la Secretaría Nacional de Planificación…»* | ⛔ **EXCLUYE EXPRESAMENTE A LOS GAD** |
+| **COPLAFIP 113** · `70c235f494c6` | *“obliga a la evaluación periódica… las entidades deben alcanzar metas de ejecución por período”* *(base de `SAT-III`)* | define **qué es** la fase de ejecución presupuestaria | ⛔ **definicional**: no contiene la obligación con umbral atribuida |
+| **COPLAFIP 115** · `09bc593d0270` | *“las reformas presupuestarias deben justificarse y registrarse en eSIGEF”* *(base de `SAT-II`)* | regula la **certificación presupuestaria** | ⛔ **trata otro asunto** |
 
 > **La cita en el Excel no era norma verificada — y ahora está demostrado con el texto.** Es la misma
 > lección de siempre, en su forma más pura: *que un artículo aparezca citado no prueba que diga lo que se
@@ -6463,7 +6463,11 @@ corpus.** Un recordatorio no lo corrige: el aviso «¿consultaste el índice mae
 veces en esta misma sesión y la falsación 43 ocurrió igual. **Lo que falta no es una advertencia más, es una
 verificación de lo que se escribe, en el momento en que se escribe.**
 
-### El mecanismo — cinco piezas, en el repositorio
+### El mecanismo — cuatro piezas versionadas y un control local auxiliar
+
+> *(Precisión del colega, `§5-quinquinquagies`: el hook vive en `.claude/settings.json`, **no versionado**;
+> es un cinturón adicional de esta máquina, **no el rector**. El mecanismo reproducible es el verificador,
+> sus pruebas y el gate. En esta versión el caso B no bloqueaba en ninguno de los dos — corregido allí.)*
 
 | pieza | qué hace | cuándo actúa |
 |---|---|---|
@@ -6488,11 +6492,11 @@ LOTAIP 19 del grafo · los circuitos QTMP.** Todo contra el corpus vectorizado (
 
 | capa | resultado | corrección |
 |---|---|---|
-| **BRN** · 16 CNO | ✅ **109 de 109 sumillas coinciden con su artículo.** El canon está limpio — salvo el mapa de numerales de `CNO-VII-001` *(abajo)* | ninguna |
+| **BRN** · 16 CNO | ✅ **las 109 referencias coinciden documentalmente con los artículos citados** — salvo el mapa de numerales de `CNO-VII-001` *(abajo)*. *(Precisión del colega, `§5-quinquinquagies`: es **correspondencia documental**; no demuestra que cada CNO esté bien delimitada, que sus RO deriven legítimamente, ni que la condición operativa sea jurídicamente adecuada.)* | ninguna |
 | **QLEP** | **8 textos presentados como literales no son el texto de su artículo** — 5 no aparecen en ninguna parte del corpus (COOTAD 57 · 228 · 300 · 302 · LOC-CGE 12), 1 era de la LOTAIP derogada (LOTAIP 7), 2 eran paráfrasis ampliadas (COOTAD 249 · 304) · **2 descripciones de otra materia** (COOTAD 198 · COPLAFIP 44) · **3 numeraciones erradas**: el texto atribuido a CE 209 es del **CE 207** `fa7fe58c151b` · CE 264 núm. 8 → **núm. 2** · NCI 600-01 → **600** | **v1.1**: su propia regla la autoriza (*«v1.1 — solo si un error factual normativo es identificado»*). Texto literal con huella; **las preguntas bautismales no se tocaron** · 13 de 13 citas literales verificadas |
 | **ACK** · artículo equivocado | LOSNCP 21 → **22** (el PAC `1d6c1b3ae153`; el 21 es el portal) · LOSNCP 22 → **23** (estudios `3cd06a225dc5`; la certificación presupuestaria es el **24** `c18eee97ef76`) · LOSEP 4 → **3** (ámbito) · LOSEP 22 → **23** (derechos; el 22 son deberes) · LOSEP 42 → **43** (sanciones; el 42 son faltas) · LOTAIP 19 núm. 21 → **núm. 18** (convenios) | átomos renumerados, texto literal con huella, `ID_ANTERIOR` para la trazabilidad |
 | **ACK** · el texto dice otra cosa | LOSNCP 106 tipifica infracciones **de proveedores** (el átomo lo extendía a servidores y a la CGE) · COA 14 es el principio de **juridicidad** · CE 32: la interpretación *«el GAD puede proveer salud a los GAP»* iba como texto de la Constitución, y **COOTAD 138** `10684e6e6766` habilita **infraestructura y equipamientos**, no la prestación del servicio | texto literal · la interpretación queda **marcada como interpretación** |
-| **artículos inexistentes** | «LOD Art. **563**» (la LODISC termina en el 117 → la infracción es el **Art. 116** `c695612e6a41`) · «LOTAIP Art. **47**» (la LOTAIP vigente termina en el 44 → las sanciones son el **Art. 42** `ae8004ee019f`) | corregidos |
+| **artículos inexistentes** | “LOD Art. **563**” (la LODISC termina en el 117 → la infracción es el **Art. 116** `c695612e6a41`) · “LOTAIP Art. **47**” (la LOTAIP vigente termina en el 44 → las sanciones son el **Art. 42** `ae8004ee019f`) | corregidos |
 | **QTMP** | circuito de agua: «LOSNCP Art. 21» para el PAC → **22** · *«obligación de publicación **trimestral**»* → **mensual** (LOTAIP 19) · un átomo de convenios usado como «información del servicio» → átomo general del art. 19 · circuito de transparencia: solicitudes «Art. 20» → **Arts. 32–38** | corregidos |
 | **NCI** | el corpus **no conserva los códigos** de las NCI: los códigos de los 7 átomos no son verificables | se añade la **huella del título** verificado y se declara el código como no verificado |
 | **propagación** | **101 referencias en 12 archivos** + 7 identificadores compuestos + 1 relación reencaminada (la publicación del PAC la ordena LOSNCP 22, no LOTAIP 19) | aplicada · 25 YAML válidos · verificador en 0 hallazgos |
@@ -6615,6 +6619,94 @@ su periodicidad y su canal, en primer lugar—.
 
 **Pendientes de la dirección:** las tres decisiones de `§5-quattrigies` (sin cambios) · y **resellar
 `CNO-VII-001`** con la corrección del numeral de convenios (21 → 18).
+
+## 5-quinquinquagies · **EL MECANISMO DE INTEGRIDAD NORMATIVA, DEMOSTRADO** — y lo que todavía no cierra *(revisión del colega)*
+
+> **Dictamen del colega, acogido:** mecanismo de integridad normativa **aceptado como infraestructura de
+> `REARQ`, no como cierre de la gobernanza normativa.** Convierte la regla *no asumir; verificar la norma*
+> de una instrucción metodológica en una **propiedad parcialmente ejecutable** del repositorio.
+
+### Antes de registrar el dictamen: el caso central no estaba cubierto
+
+Al preparar la demostración que pidió el colega apareció un hueco en lo entregado en `e14d803`:
+
+| caso | lo que se exigía | lo que hacía la versión anterior |
+|---|---|---|
+| **B** · artículo real usado como rector equivocado | bloquear | ⛔ **no bloqueaba en ningún lado**: el gate corría con la comprobación de cadena apagada y el hook sólo avisaba |
+| **D** · artículo correcto fuera de la cadena | advertir o bloquear, según la regla | ⚠️ sólo un aviso en el hook local; nada en el gate |
+| **E** · paráfrasis | no fingir que la resuelve | ⚠️ pasaba en silencio: nada separaba lo verificado de lo no verificado |
+
+**El caso que originó el mecanismo —la falsación 43— no lo detenía el mecanismo versionado.** Se corrigió
+antes de registrar el dictamen.
+
+### La regla, explícita — vive en el docstring de `verificar_citas.py`
+
+| tipo | qué | efecto |
+|---|---|---|
+| **1 · huella** | la huella citada es de otro artículo, o no existe | bloquea |
+| **2 · existencia** | el artículo citado no existe en el corpus | bloquea |
+| **3 · literal** | un texto entre comillas angulares junto a su huella no está en el artículo | bloquea |
+| **4 · cadena** | la línea trata la materia de una CNO y cita un artículo que ninguna CNO encadena | bloquea **salvo declaración** de quien escribe |
+| **5 · paráfrasis** | cita con huella sin texto literal | **no se verifica, y se dice**: se cuenta como *contenido no verificado* y queda a validación humana |
+
+**La convención de escritura que la hace verificable:** comillas angulares **sólo** para texto de la ley ·
+comillas “ ” para lo que otro afirma —un catálogo, una versión anterior, una persona— · tachado para una
+cita retirada. Cinco comillas del registro que citaban afirmaciones erróneas pasaron a “ ” (las del catálogo
+de SAT en `§5-septquatrigies` y dos de `§5-terquinquagies`).
+
+**Línea base — un acto, no una rutina.** Las **41** citas fuera de cadena escritas **antes** de esta regla
+quedan en `scripts/normativa/citas_linea_base.json` como **historia registrada, no como citas aprobadas**.
+Lo nuevo debe declararse. Regenerar la línea base se ve en el diff y se justifica en el commit.
+
+### La demostración: los casos A–E
+
+| caso | prueba versionada (`tests/test_verificar_citas.py`) | hook real, contra el corpus |
+|---|---|---|
+| **A** · cita válida | `test_A_cita_valida_de_la_cadena_pasa` + 7 de lectura: continuaciones, numerales, viñetas partidas, sigla arrastrada, versión de ley, notación 264.4, flecha de renumeración | LOPC 89 `086fc826f996` → **pasa** |
+| **B** · rector equivocado *(ejemplo: la falsación 43, no encadenado)* | `test_B_articulo_real_usado_como_rector_equivocado_bloquea` · `test_B_huella_de_otro_articulo_es_hallazgo` | COOTAD 266 `33326955d115` usado como regla de la rendición → **bloquea** y devuelve la cadena de `CNO-IX-001` |
+| **C** · artículo inexistente | `test_C_articulo_inexistente_con_alias_de_sigla` *(el caso “LOD Art. 563”)* | en el universo del gate: 0 |
+| **D** · correcto pero fuera de la cadena | `test_D_eslabon_faltante_sin_declarar_bloquea` · `test_D_eslabon_faltante_declarado_pasa` · `test_D_concordancia_declarada_pasa` | LOPC 95 `e9b95d33a298` sin declarar → **bloquea**; declarado como eslabón faltante → **pasa** |
+| **E** · paráfrasis | `test_E_cita_literal_falsa_bloquea` · `test_E_cita_literal_verdadera_se_cuenta_verificada` · `test_E_parafrasis_falsa_no_se_finge_verificada` · `test_E_comillas_de_afirmacion_no_son_texto_de_ley` | literal alterado de COOTAD 249 `c0c0fce0f126` → **bloquea**; la paráfrasis se cuenta **no verificada**, nunca verificada |
+| el mecanismo | `test_el_hook_bloquea_el_caso_B` · `test_la_clave_de_cadena_no_depende_del_corpus` · `test_cita_retirada_o_ajena_no_es_cita_propia` | — |
+
+**21 pruebas, 21 pasan.**
+
+### Estado, sin mezclar
+
+| qué | estado |
+|---|---|
+| gate de salud | **PASS** — paso 6: 57 archivos · 0 hallazgos · **22** citas literales verificadas contra su artículo · ⚠️ **101** citas con huella **sin texto literal: contenido no verificado** · 0 fuera de cadena sin declarar · 41 en la línea base |
+| regla de cadena sin corpus | **determinable**: con sólo los YAML de la BRN encuentra las mismas citas; corre en CI si el runner tiene PyYAML |
+| suite completa | **960 PASS / 2 FAIL / 1 SKIP** (963 pruebas) |
+| los 2 FAIL | del orquestador de Transparencia al recapturar evidencia; **reproducibles sin estos cambios** |
+| captura de pytest | la suite sólo corre con `-s`; el cierre de la captura falla **también sin estos cambios** — preexistente, sin diagnosticar |
+| CI remoto | **NO VERIFICADO** |
+| hook de escritura | **auxiliar local** (`.claude/settings.json`, no versionado). Su **código** sí está versionado y probado |
+
+### Lo que el mecanismo es — y lo que no
+
+- **Integridad documental, no autoridad normativa.** Dice si una cita corresponde a su fuente; **no legisla**
+  ni declara verdadera una interpretación. La autoridad sigue siendo: norma y corpus → cadena canónica →
+  acto de autoridad.
+- **Precedente para `D0.1`, no su modelo.** Muestra que una propiedad canónica puede tener fuente,
+  verificación, condición de aceptación, bloqueo y traza del cambio. **No resuelve** qué acto autoriza el
+  Gold Master.
+- **No autoriza tocar el canon.** Es infraestructura para que, cuando la dirección decida, el cambio se haga
+  bajo control.
+- **Las correcciones de QLEP y ACK son proveniencia corregida, no autoridad nueva.** Corpus = fuente de
+  verificación · capas históricas = proveniencia · BRN sellada = autoridad donde corresponde.
+- **Límite de la regla 4:** la materia se reconoce por las palabras del título de cada CNO; una línea que
+  trate una materia sin nombrarla no se evalúa. Es **pertenencia a la cadena, no pertinencia jurídica**.
+
+### Lo que sigue abierto — sin cambios
+
+- **El hallazgo analítico de Grupos de Atención Prioritaria** (`§5-terquinquagies`): el indicador del 10 %
+  divide por el presupuesto no salarial; la norma, por los ingresos no tributarios. **Abierto como defecto
+  analítico, sin reparar.**
+- **La rendición:** la evidencia del ejercicio 2025 está en el corpus; **el 91 % publicado no declara su
+  ejercicio**. No se afirma que corresponda a 2025.
+- **Decisiones de la dirección, intactas:** ratificar `RO-VIII-004` · el retiro de SAT-I, VII y VIII como
+  paquete · qué definición de SAT-III se conserva · resellar `CNO-VII-001` (numeral de convenios 21 → 18).
 
 ## 6 · Y la finalidad, dicha por la dirección
 

@@ -395,34 +395,32 @@ def check_citas() -> list[str]:
     artículos de memoria —textos que la ley no dice, números que no existen—. Sin
     corpus (CI) el estado es «no determinable» y no bloquea; en local, una huella mal
     atribuida o un artículo inexistente bloquea el cierre."""
-    print("\n[6/6] Citas normativas verificadas contra el corpus")
+    print("\n[6/6] Citas normativas: integridad documental (no autoridad normativa)")
     sys.path.insert(0, str(ROOT / "scripts" / "normativa"))
     try:
         import verificar_citas as vc
+        g = vc.auditar_gate()
     except Exception as exc:  # noqa: BLE001
         print(f"   2 — no determinable: {exc.__class__.__name__}")
         return []
-    idx = vc.cargar_indice()
-    if idx is None:
-        print("   2 — no determinable: sin acceso al corpus (normal en CI)")
-        return []
-    cnos = vc.cargar_cnos()
-    rutas = [ROOT / "docs" / "registry" / "PANORAMA_DOCUMENTAL_QUIRA.md",
-             *sorted((ROOT / "governance" / "qlep").glob("*.md")),
-             *sorted((ROOT / "data" / "acks").glob("*.yaml")),
-             *sorted((ROOT / "data" / "qtmp").glob("*.yaml")),
-             *sorted((ROOT / "docs" / "brn").glob("*.yaml"))]
-    errores = []
-    for ruta in rutas:
-        hallazgos, _ = vc.verificar_texto(ruta.read_text(encoding="utf-8"), idx, cnos,
-                                          existencia=True, rector=False)
-        errores += [f"{ruta.relative_to(ROOT).as_posix()} {h}" for h in hallazgos]
-    if errores:
-        print(f"   >> {len(errores)} cita(s) sin respaldo en el corpus")
-        for e in errores[:10]:
-            print(f"        {e}")
+    errores = list(g["hallazgos"]) + list(g["fuera_nuevas"])
+    print(f"      universo: {g['archivos']} archivos")
+    if g["corpus"]:
+        print(f"      huella · existencia · literal: {len(g['hallazgos'])} hallazgo(s) · "
+              f"{g['literales']} cita(s) literal(es) verificada(s) contra el artículo")
+        print(f"      ⚠️  {g['no_verificadas']} cita(s) con huella SIN texto literal: se verifica "
+              "que el artículo es el citado, NO su contenido (validación humana)")
     else:
-        print(f"      OK — {len(rutas)} archivos: cada huella es de su artículo y todo artículo citado existe")
+        print("      huella · existencia · literal: 2 — no determinable (sin corpus)")
+    if g["cadena"]:
+        print(f"      cadena rectora: {len(g['fuera_nuevas'])} fuera de cadena sin declarar · "
+              f"{g['fuera_en_base']} en la línea base (historia registrada)")
+    else:
+        print("      cadena rectora: 2 — no determinable (sin la BRN legible)")
+    if errores:
+        print(f"   >> {len(errores)} cita(s) bloquean el cierre")
+        for e in errores[:10]:
+            print(f"        {e[:220]}")
     return errores
 
 
