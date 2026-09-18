@@ -5255,6 +5255,121 @@ transversal *(−1)* · `d06` a transversal *(−1)*.
 > ✅ **Ninguna realidad nueva. Ningún dominio inventado. Todo sale de lo construido en meses.**
 > **Lo único pendiente de la mesa: el nombre definitivo del dominio 1.**
 
+## 5-duotrigies · **CIRUGÍA DE ELEVACIÓN, DOMINIO POR DOMINIO** — contra los artefactos que existen
+
+> **Regla operativa:** *QUIRA 7 no amplía arbitrariamente su objeto. **Transforma y eleva el
+> ecosistema QUIRA existente** para cumplir mejor su propósito original.*
+> **conservar → elevar → potenciar → unificar → mover → recortar → eliminar → reconstruir**, siempre
+> **sobre algo que ya existe**.
+
+### 1 · Planificación Estratégica e Inversión Pública *(d01 + d02)*
+
+| | |
+|---|---|
+| **lo que hay** | `enrich_planificacion.py` · `enrich_presupuesto.py` · `enrich_poa_multianio.py` · agentes `d01` y `d02` · `m_planificacion.py` · `m_presupuesto.py` · `p10_inversion.py` · `plan_render.py` · `presupuesto_render.py` · motor: `H04` `H05` `H05b_PAC` `H07_S5` `H07b` `H07c` `H11b` `H16b_IPE` `H17_IED` `H30_IED_POR_DIRECCIÓN` `H19_ICS_ISP` `H90` `H_HOLDING_CEDULAS` · BRN `I` y `IV` · SAT-0/II/III/IV |
+| **conservar** | los dos agentes con su procedencia (`evidencia_sha` + `motor_sha`) · el enricher como motor real (Regla 1) · el `Ti` normalizado de `H07b` |
+| **elevar** | **un dominio con dos secciones** · **régimen temporal declarado por sección** · el **corte viaja** con `absorcion_ti_pct` |
+| **potenciar** | ⭐ **eficiencia directiva**: `H17_IED` + `H30_IED_POR_DIRECCIÓN` + `H02b_ORGÁNICO_CLASIFICADOR` + `SCHEMA_ORGANICO` + `H_ORGANICO_040_2025` → **por dirección y por técnicos. Su misión original se mantiene** |
+| **unificar** | los tres *enrichers* → uno con secciones · `m_planificacion` + `m_presupuesto` → una superficie · `plan_render` + `presupuesto_render` |
+| **mover** | **radar de fondos · elegibilidad · `H20c_IEF` · `H69_ELEGIBILIDAD_FONDOS` → QUIRA Cooperación** |
+| **recortar / eliminar** | literales de corte y frases constantes *(«natural en el primer cuatrimestre» · «corte Abril 2026» · dictamen invariable)* · umbrales 70/50 y rama `<30` sin guarda · **el gemelo inerte `H19!B11`** |
+| **reconstruir** | `Clasificación_Ti` con guarda o sobre el normalizado · **`SAT-IV` alimentada por el cociente estructural, no por `1 − Ti`** · cargar la `RO` de la familia `I` |
+
+### 2 · Gobernanza del Mandato *(d03)*
+
+| | |
+|---|---|
+| **lo que hay** | `enrich_mandato.py` · agente `d03` · `m_mandato.py` · `p8_metas.py` · `mandato_render.py` · `H03_S1_ELECTORAL_CNE` · `H63_S0_CNE_TRAZABILIDAD` · `H16_IFE` · BRN `III` |
+| **conservar** | la trazabilidad plan de trabajo → PDOT y su render propio |
+| **elevar** | **sujeto «autoridad electa» declarado** · cargar la `RO` de `III` |
+| **potenciar** | la congruencia promesa↔plan **con su universo declarado** (las 66 promesas) |
+| **recortar** | la cifra de fidelidad **escrita a mano** en `p8_metas:272` |
+| **reconstruir** | — |
+
+### 3 · Transparencia *(d07)* — **el más maduro del ecosistema**
+
+| | |
+|---|---|
+| **lo que hay** | agente `d07` (`scoring.py`, `etapas.py`) · `p07_transparencia.py` · `H09_S7` `H70_BITACORA` `H18_ITAM` `H41_IOC` · `QTMP` en Neo4j · `CATALOGO_CANONICO_CD_D07` · `METODOLOGIA_D07` · **BRN `VII` cargada** · conector `dpe.py` |
+| **conservar** | **todo el núcleo**: metodología aprobada con su cadena normativa ingerida, catálogo de CD y *scoring* |
+| **elevar** | a **dominio propio con dos funciones**: cumplimiento **y** calidad de la información · su calificación opera como **gate de admisión** de lo que alimenta a los demás |
+| **potenciar** | **`T3`**: adquisición primaria en la web del GAD (PDOT · orgánico · POA · PAC · presupuestos) · registro de **vía, versión y hash** · **la divergencia entre vías como observación** |
+| **recortar** | cualquier resto de las cifras ya desmentidas por su propia metodología *(`1−IOC` como transparencia, valores pegados, promedios simulados)* |
+| **reconstruir** | — |
+
+### 4 · Participación Ciudadana y Control Social *(d08 + d09)*
+
+| | |
+|---|---|
+| **lo que hay** | `enrich_participacion.py` · `enrich_rdc.py` · `enrich_rdc_docx.py` · `enrich_aportes.py` · agentes `d08` y `d09` · `m_participacion.py` · `m_rdc.py` · `p16_gobernanza.py` · `p17_rdc.py` · `participacion_render.py` · `H10` `H10b` `H10c` `H20b_IGP` `H31` `H34b_MFN` `H24b_SAT-V` · BRN `VIII` y `IX` |
+| **conservar** | el `MFN` como **evaluación experta** · los aportes ciudadanos · el circuito CPCCS |
+| **elevar** | **un dominio con secciones A/B/C** · **sujeto obligado declarado por sección** · cargar la `RO` de `IX` · **declarar la naturaleza experta del `MFN` al lector** |
+| **potenciar** | la sección **C · evidencia del vínculo**: aporte → decisión → resultado |
+| **unificar** | los cuatro *enrichers* → uno con secciones · `m_participacion` + `m_rdc` |
+| **recortar** | notas de método retirado que sigan publicándose |
+| **reconstruir** | ⛔ **`SAT-V`**: hoy *«sin datos»* y *«evaluado sin brecha»* colapsan en el mismo `0` · ⛔ **`H89`**: `IF_n` guardado como texto hace inerte la penalización. **Las dos deudas de `C4-P2`** |
+
+### 5 · Cobertura de Servicios e Infraestructura *(d10)*
+
+| | |
+|---|---|
+| **lo que hay** | `p10_territorio.py` · `H42_IET` · `H43_MOTOR_TERRITORIAL` · `SCHEMA_NBI` · `SCHEMA_TERRITORIOS` · `CAPA_TERRITORIAL_MONTECRISTI` · `POA_GEOREFERENCIADO` · ⛔ **sin agente · sin cadena BRN** |
+| **conservar** | el `IET` y las capas territoriales |
+| **elevar** | **crear su agente con el molde `ADR-053`** |
+| **potenciar** | GeoTwin como su expresión natural |
+| **reconstruir** | **su cadena normativa completa** |
+
+### 6 · Desarrollo Económico Territorial *(d11)* — **el menos construido, y hay que decirlo**
+
+| | |
+|---|---|
+| **lo que hay** | corpus económico del PDOT en Supabase · ⛔ **sin agente · sin página propia · sin cadena BRN** · el Nomenclátor ya lo marcaba *«En Construcción»* |
+| **conservar** | el corpus |
+| **elevar** | definir sus indicadores propios y su agente |
+| **reconstruir** | **casi todo** — es el dominio con menos base real |
+
+### 7 · Grupos de Atención Prioritaria *(d12, reenfocado)*
+
+| | |
+|---|---|
+| **lo que hay** | `p19_genero.py` · `H16c_PSG` · `H04b_DIAGNÓSTICO_SOCIAL` · ⛔ **sin agente · sin cadena BRN** |
+| **conservar** | el diagnóstico social |
+| **elevar** | **reenfocar a la función ejecutora**: unidad que opera · presupuesto · programas · cobertura · **la figura institucional como atributo** |
+| **mover** | **el `PSG` pasa a la transversal de Equidad y Género** — mide sesgo distributivo, no funcionamiento de la función |
+| **reconstruir** | **su cadena normativa entera** *(la mayor carga del mapa)* **y su indicador madre**, que hoy no existe: el `PSG` era de la transversal |
+
+### 8 · Sostenibilidad y Resiliencia Ambiental *(d13)*
+
+| | |
+|---|---|
+| **lo que hay** | `H20_ICODS` · `KB_DIAGNOSTICO_PDOT` · `SCHEMA_RIESGOS` · ⛔ **sin agente · sin página · sin cadena BRN** |
+| **conservar** | `ICODS` y el inventario biofísico |
+| **elevar** | agente propio |
+| **reconstruir** | **su cadena normativa** |
+
+### Transversales, vista y producto — qué pasa con cada uno
+
+| | acción |
+|---|---|
+| **Ecosistema Municipal** *(d05)* | **conservar** `H12d_ICPI_POR_ENTIDAD` · `H71_EP_ADSCRITAS` · `H72_EP_BASE_LEGAL` · `H19b` → **elevar a atributo obligatorio** de toda observación |
+| **Cumplimiento Institucional** *(d06)* | **conservar** el `ICPI` y **su guarda temporal, que es el único gobierno probado** · **recortar** su condición de cajón · `m1_situacion` pasa a **síntesis derivada** |
+| **Equidad y Género** | **recibe el `PSG`** · desagregación obligatoria en los ocho |
+| **GeoTwin** | sin cambios: ya era transversal |
+| **Alertas Institucionales** *(d04)* | **conservar** `H75_SAT_ENGINE` y las señales · **mover** cada señal a su dominio y **a la BRN** *(deuda medida: 8 de 9 sin cadena)* · `m2_alertas` queda como **vista** |
+| **QUIRA Cooperación** | **recibe** radar de fondos, elegibilidad e `H20c_IEF` |
+
+### El resumen honesto del trabajo real
+
+| | dominios |
+|---|---|
+| ✅ **con agente, enricher, página y cadena** | Transparencia · *(parcialmente)* Planificación e Inversión · Mandato · Participación y Control Social |
+| ⚠️ **con material, sin agente ni cadena** | Cobertura · Grupos de Atención Prioritaria · Ambiental |
+| ⛔ **con base mínima** | Desarrollo Económico Territorial |
+
+**Cuatro de los ocho dominios ya tienen su maquinaria completa o casi. Cuatro necesitan agente y
+cadena normativa. Y hay tres reconstrucciones concretas heredadas de `C4`: `SAT-IV`, `SAT-V` y `H89`.**
+**Ése es el trabajo — y es finito.**
+
 ## 6 · Y la finalidad, dicha por la dirección
 
 > *«No es una auditoría, sino **elevar este ecosistema**… para potenciar, mejorar y elevar el nivel
