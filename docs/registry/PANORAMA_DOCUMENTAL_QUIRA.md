@@ -6043,6 +6043,12 @@ las tres preguntas mejor que cualquier otra señal revisada:
 > Es el único caso del mapa en que **el umbral no necesita justificación propia**: lo fija la ley, y la
 > consecuencia también (*«no se aprobará el presupuesto»*).
 >
+> ⛔ **Precisión del colega: COOTAD 249 es un ancla normativa VERIFICADA del dominio; NO es
+> automáticamente un nuevo SAT ni un indicador madre canonizado.** Encontrar una norma y convertirla
+> de inmediato en lógica de motor sería repetir el error que se está auditando. El camino es:
+> `CNO → análisis de la obligación → RO → evidencia disponible → indicador o señal, si corresponde →
+> decisión de la mesa → canon`. **No antes.**
+>
 > ⚠️ **Precisión de alcance:** medirlo requiere el **agregado de ingresos no tributarios** como
 > **denominador**. Eso **no reabre** «ingresos y recaudación» como dominio —que quedó fuera—: es un solo
 > dato del presupuesto aprobado, usado para verificar una obligación que sí está dentro del alcance.
@@ -6067,6 +6073,86 @@ prioritaria.** Con esto, el recuento verificado del catálogo queda así:
 **Nada del canon se tocó.** Las decisiones pendientes siguen siendo tres. **Encadenar COOTAD 249 y la
 Constitución 35 en una CNO**, y decidir si 249 se convierte en indicador madre o en señal del dominio,
 **son pasos para cuando la dirección los abra** — la evidencia ya está lista.
+
+## 5-novoquatrigies · **CIERRE DE LA VERIFICACIÓN NORMATIVA** — criterio de reconstrucción y el paso D resuelto
+
+### El problema que la verificación reveló — más profundo que «seis citas equivocadas»
+
+El catálogo SAT **mezcló tres cosas que QUIRA 7 debe separar**:
+
+`norma que realmente obliga  →  regla operativa que interpreta esa obligación  →  señal que vigila su incumplimiento`
+
+Y conecta con `D0.1`: **tener una referencia —incluso con huella— no significa que esa referencia
+gobierne semánticamente la afirmación.** `COOTAD 238` había mostrado una cara del problema *(la cadena
+puede estar formalmente trazada)*; ahora aparece la complementaria: **una referencia puede existir en el
+catálogo, ser formalmente localizable, y ser jurídicamente ajena a lo que la señal afirma.**
+
+### Criterio de reconstrucción de `REARQ` *(colega — criterio de trabajo, NO doctrina)*
+
+> **Una referencia normativa no acredita una señal. La señal sólo puede considerarse normativamente
+> sustentada cuando puede reconstruirse la cadena `CNO → RO → condición verificable → evidencia → señal`
+> sin alterar el significado de la norma durante el tránsito.**
+
+Es la regla de `C4` aplicada a la norma: *no basta con que la propiedad exista en el destino; hay que
+comprobar que sigue gobernando lo que el destino puede afirmar.*
+
+**Y su contrapartida, para no exigir lo imposible:** *la norma puede fundamentar la obligación sin
+contener el umbral que la RO usa para generar una señal preventiva.* **Es legítimo si la RO declara y
+justifica explícitamente de dónde sale el parámetro.** No se exige que cada porcentaje aparezca en la
+CNO; se exige que la separación sea **explícita y trazable**.
+
+### Paso D · COPLAFIP 119 frente al régimen del COOTAD — **resuelto por lectura**
+
+| artículo · huella | lo que establece |
+|---|---|
+| **COPLAFIP 96** · `427f23a66e7c` | el ciclo presupuestario —con sus etapas, **incluida «Evaluación y seguimiento presupuestario»**— *«es de cumplimiento obligatorio para **todas las entidades y organismos del sector público**»*. Lo que es **sólo referencial para los GAD** son **los lineamientos** del ente rector, **no la obligación** |
+| **COOTAD 168** · `919882337173` | en el régimen propio del GAD, *«toda la información sobre el proceso de programación, formulación, aprobación, ejecución y **evaluación** del presupuesto será pública y se difundirá permanentemente… por la página web institucional»* · y **los ejecutivos de los GAD remitirán trimestralmente sus cédulas presupuestarias y balances financieros** al ente rector de las finanzas públicas y al de la planificación nacional |
+
+> ✅ **Conclusión: COPLAFIP 119 SÍ aplica a los GAD**, por la vía del Art. 96 —que hace obligatorio el
+> ciclo completo para todo el sector público— y con el respaldo del régimen propio (COOTAD 168). **A
+> diferencia del Art. 54, nada en estos textos excluye a los GAD.**
+
+⭐ **Y COOTAD 168 da algo más valioso de lo que se buscaba:** es **la base legal de la evidencia que
+QUIRA adquiere**. Obliga al GAD a **publicar** permanentemente la información presupuestaria en su web y a
+**remitir trimestralmente sus cédulas**. La «evidencia adquirible» de las señales presupuestarias **no es
+una conveniencia técnica: es un deber legal del sujeto observado.** *(Precisión: esto sostiene el
+contrato de evidencia y la función de Transparencia; **no crea un dominio ni una funcionalidad
+nueva**.)*
+
+### Estado final de las señales tras la verificación
+
+| señal | base normativa | estado |
+|---|---|---|
+| **`SAT-II`** | **COOTAD 255** *(reforma presupuestaria del GAD)* | **CNO posible: sí · RO posible: sí**, justificando su parámetro · ⛔ **el umbral de «> 5 % después de junio» NO está demostrado como exigencia legal** — *«COOTAD 255 existe» no es «SAT-II está validada»* |
+| **`SAT-III`** | **COPLAFIP 96 + 119**, con **COOTAD 168** | **obligación de evaluar: sustentada para los GAD** · el umbral es lógica de RO y **debe declararse y justificarse** · sigue pendiente **qué definición rige** *(decisión 3)* |
+| **`SAT-I` · `SAT-VII` · `SAT-VIII`** | ⛔ sin obligación aplicable hallada | **la pregunta para la mesa NO es *«¿qué artículo le ponemos para salvarlas?»***, sino ***«¿tienen realmente una obligación normativa aplicable que justifique su existencia como señales?»*** — **para no fabricar una base legal retrospectivamente** *(decisión 2)* |
+
+### El registro de señales necesita siete capas, no una
+
+| capa | pregunta |
+|---|---|
+| **identidad** | ¿qué señal es ésta? |
+| **normativa** | ¿qué obligación la origina? |
+| **operativa** | ¿qué regla transforma esa obligación en condición verificable? |
+| **evidencia** | ¿qué dato permite comprobarla? |
+| **motor** | ¿dónde se calcula? |
+| **producto** | ¿dónde se consume? |
+| **estado** | ¿vigente, propuesta, retirada o no implementada? |
+
+*(Así `SAT-III-001` deja de confundirse con la `SAT-III` del motor: una es legado de la familia del
+mandato, diseñada y no implementada; la otra es la señal presupuestaria de parálisis. **Eso es problema C,
+identidad — no un problema normativo.**)*
+
+### ⛔ Lo que esta verificación NO hace — escrito para que no se vuelva a abrir
+
+**No amplía QUIRA.** Los grupos prioritarios **no crean un noveno dominio** · COOTAD 249 **no crea un
+dominio financiero** · SERCOP **no crea contratación como dominio** · las SAT **no crean dominios** · las
+normas halladas **no crean funcionalidades nuevas**. **No toca el canon. No crea una cuarta decisión.**
+
+**El orden que queda:** **A** verificación normativa → ✅ **cerrada** · **B** resultados como evidencia de
+`REARQ` → ✅ **registrados** · **C** tres decisiones pendientes → **intactas** · **D** COPLAFIP 119 frente
+al COOTAD → ✅ **resuelto** · **E** → **incorporar estos resultados a la Matriz Maestra de Elevación**
+sobre los ocho dominios fijados.
 
 ## 6 · Y la finalidad, dicha por la dirección
 
