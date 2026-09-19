@@ -5,7 +5,8 @@ Dashboard 100 % trazable · datos reales SERCOP API 2023-2026.
 Ningún número en esta página es inventado — todo viene de
 sercop_contratos (Supabase) alimentado por Sprint 0.
 
-Entidades: GAD · PATRONATO · BOMBEROS · EMAI · EP Hábitat
+Entidades: GAD · PATRONATO · BOMBEROS · EMAI (EMAIMEP) · HABITAT (MONTEHOGAR-EP)
+Nombres oficiales: orgánico del GAD 2025 y SERCOP (PANORAMA §5-novoquinquagies).
 Fuente:    https://datosabiertos.compraspublicas.gob.ec
 Dylus Lab © 2026
 """
@@ -22,8 +23,8 @@ _ENTIDADES: dict[str, dict] = {
     "GAD":      {"emoji": "🏛️", "nombre": "GAD Municipal",      "tipo": "Gobierno Autónomo · COOTAD",       "color": "#00D4FF", "rgb": "0,212,255"},
     "PATRONATO":{"emoji": "🤝", "nombre": "Patronato Municipal", "tipo": "Desarrollo Social · LOSEP",        "color": "#7C5CFC", "rgb": "124,92,252"},
     "BOMBEROS": {"emoji": "🚒", "nombre": "Cuerpo de Bomberos",  "tipo": "Emergencias y Prevención · COESCOP","color": "#00E096","rgb": "0,224,150"},
-    "EMAI":     {"emoji": "♻️", "nombre": "EMAI-EP",             "tipo": "Aseo Integral Montecristi · LOEP", "color": "#FFB800", "rgb": "255,184,0"},
-    "HABITAT":  {"emoji": "🏗️", "nombre": "EP Hábitat",          "tipo": "Vivienda y Hábitat · LOEP",        "color": "#FF4D6D", "rgb": "255,77,109"},
+    "EMAI":     {"emoji": "♻️", "nombre": "EMAIMEP",             "tipo": "Empresa Municipal de Aseo Integral Montecristi-EP", "color": "#FFB800", "rgb": "255,184,0"},
+    "HABITAT":  {"emoji": "🏗️", "nombre": "MONTEHOGAR-EP",       "tipo": "Empresa Pública Municipal de Hábitat y Vivienda", "color": "#FF4D6D", "rgb": "255,77,109"},
 }
 _YEARS = [2023, 2024, 2025, 2026]
 
@@ -445,7 +446,7 @@ def _conc_entity_card(cod: str, conc: dict, by_entity: dict) -> str:
             f'    <span class="badge badge-red" style="font-size:9px">⚫ Sin procesos</span>'
             f'  </div>'
             f'  <div style="font-size:10px;color:var(--muted)">'
-            f'    EP Hábitat no registra proveedores en SERCOP 2023-2026. '
+            f'    MONTEHOGAR-EP no registra proveedores en SERCOP 2023-2026. '
             f'    Imposible calcular concentración.</div>'
             f'</div>'
         )
@@ -764,7 +765,7 @@ def render() -> None:
         + _kpi("Procesos totales",   str(total_proc),           "2023-2026 · SERCOP",           "var(--cyan)")
         + _kpi("Adjudicado total",   _fmt(total_adj),           "4 entidades activas",           "var(--green)")
         + _kpi("Ticket promedio",    _fmt(ticket_global),       "por proceso",                   "var(--amber)")
-        + _kpi("Entidades activas",  f"{entidades_activas}/5",  "1 sin registro (EP Hábitat)",   "var(--purple)")
+        + _kpi("Entidades activas",  f"{entidades_activas}/5",  "1 sin registro (MONTEHOGAR-EP)", "var(--purple)")
         + _kpi("GAD concentra",      f"{gad_share:.0f}%",       "del gasto total del Holding",   "#00D4FF")
         + '</div>'
     )
@@ -835,8 +836,8 @@ def render() -> None:
             "#FFB800"
         )
         + _insight(
-            "💰", f"EMAI: ticket promedio más alto del Holding ({_fmt(emai_tick)})",
-            f"Con solo {emai_proc} procesos y {_fmt(emai_adj)} adjudicados, EMAI opera "
+            "💰", f"EMAIMEP: ticket promedio más alto del Holding ({_fmt(emai_tick)})",
+            f"Con solo {emai_proc} procesos y {_fmt(emai_adj)} adjudicados, EMAIMEP opera "
             f"con contratos de alta cuantía (SIE, Repuestos, Bienes únicos). "
             f"Perfil de empresa técnica especializada — diferente al Patronato de alta frecuencia.",
             "#FFB800"
@@ -844,8 +845,8 @@ def render() -> None:
         + '</div>'
         + '<div style="margin-top:10px">'
         + _insight(
-            "🏗️", "EP Hábitat: 0 procesos registrados en SERCOP 2023-2026",
-            "La Empresa Pública de Hábitat no tiene ningún proceso de contratación registrado "
+            "🏗️", "MONTEHOGAR-EP: 0 procesos registrados en SERCOP 2023-2026",
+            "La Empresa Pública Municipal de Hábitat y Vivienda (MONTEHOGAR-EP) no tiene ningún proceso de contratación registrado "
             "en la API de datos abiertos. Puede indicar entidad operativamente inactiva, "
             "procesos ejecutados bajo otro nombre/RUC, o absorción por el GAD Central. "
             "Es en sí misma una alerta institucional.",

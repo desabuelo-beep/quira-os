@@ -6428,7 +6428,7 @@ encadenar). Todo artículo con huella fue leído en el corpus.
 **⑤ Cobertura de Servicios e Infraestructura** *(sin CNO)*
 - **Constitución:** CE 12 `e44156c3b7ed` (agua) · CE 30 `3c59f419738c` (hábitat) · CE 31 `3bde62de4695`
   (ciudad) · CE 264 núm. 3 (vialidad) · 4 (agua, alcantarillado, desechos, saneamiento) · 7
-  (equipamientos de salud y educación, espacio público) · 13 (incendios) `8a610fc989a2` *(ACK · QLEP)*
+  (equipamientos de salud y educación, espacio público) · ~~13 (incendios)~~ *(retirado: no está en el ADN de d10 — falsación 46)* `8a610fc989a2` *(ACK · QLEP)*
 - **Ley:** COOTAD 55 `7cba2417d70a` · 137 `7706e03a01f7` *(ACK)* · LOTUGS *(en el corpus, sin encadenar)*
 - **Publicación y control:** **?** — el QLEP usa `LOTAIP_19_6`; no se verificó en esta sesión
 
@@ -6585,7 +6585,7 @@ y en qué régimen temporal**.
 | **Gobernanza del Mandato** | congruencia entre la promesa inscrita y la gestión | CE 61 · 105 → COD 97 → COOTAD 58 · 60 → COPLAFIP 41 · 42 → LOPC 89 · 90 *(+ LOPC 92, eslabón faltante)* | `CNO-III-001` | agente `d03` | iniciada |
 | **Transparencia** | cumplimiento de la publicación obligatoria y calidad de lo publicado — **y capa de alimentación mensual** | CE 18 · 91 · 238 → LOTAIP 7 · 8 · 9 · 10 · 13 · 19 · 24 · 29 · 32–38 · 42 → RLOTAIP 10–15 → instructivos de la DPE | `CNO-VII-001…004` | QLEP Dom07 · agente `d07` | iniciada · la más sana |
 | **Participación Ciudadana y Control Social** | incidencia de la ciudadanía en la inversión · rendición de cuentas | *Participación:* CE 95 · 61 · 100 → LOPC 56–77 · COOTAD 238 · 304–312 · COPLAFIP 13 · 28 · 29 · 46 — *Rendición:* CE 100 · 208 → LOPC 89–95 → RES-CPCCS-RC-2026 5 · 10 · 13 · 15 · 21 | `CNO-VIII-000…007` *(propuesta)* · `CNO-IX-001` | QLEP Dom08 · 09 · agentes `d08` · `d09` | iniciada |
-| **Cobertura de Servicios e Infraestructura** | acceso equitativo y continuo a los servicios de competencia municipal | CE 12 · 30 · 31 · 264 núm. 3 · 4 · 7 · 13 → COOTAD 55 · 137 · 138 | — *(sólo ACK y QLEP)* | QLEP Dom10 · circuito `AGUA_POTABLE` | **parcial**: motor, página y circuito; sin BRN ni agente |
+| **Cobertura de Servicios e Infraestructura** | acceso equitativo y continuo a los servicios de competencia municipal | CE 12 · 30 · 31 · 264 núm. 3 · 4 · 7 → COOTAD 55 · 137 · 138 *(~~núm. 13~~: falsación 46)* | — *(sólo ACK y QLEP)* | QLEP Dom10 · circuito `AGUA_POTABLE` | **parcial**: motor, página y circuito; sin BRN ni agente |
 | **Desarrollo Económico Territorial** | condiciones que el GAD controla para la actividad económica | CE 276 núm. 2 · 264 núm. 2 → COOTAD 54 *(+ LOIEME · LOTUGS en el corpus)* | — | QLEP Dom11 *(módulo deshabilitado)* | **no iniciada** |
 | **Grupos de Atención Prioritaria** | la función ejecutora del GAD hacia los grupos prioritarios | CE 35 · 11 → COOTAD 249 → CONA 12 · LOPAM 14 · 84 · LODISC 47 · 56 · 58 · 116 · LMH 165–167 · LPEVM 38 | — *(sólo ACK y QLEP)* | QLEP Dom12 · circuito `GAP_10PCT` · `p19_genero` | **parcial**: circuito e indicador; sin BRN ni agente |
 | **Sostenibilidad y Resiliencia Ambiental** | gestión ambiental y de riesgos de competencia municipal | CE 14 · 389 · 390 · 264 núm. 4 → COOTAD 136 · 140 → COA-AMB 27 → RCOA-AMB | — | canon `d13` · `H20_ICODS` | **no iniciada** |
@@ -6851,7 +6851,7 @@ si esta unidad desaparece?*—:
 | lo que el Holding YA tiene | fuente |
 |---|---|
 | **ADN completo** — capacidad **Articulación**; pregunta: “¿El conjunto de entidades del cantón opera de forma articulada y con desempeño consistente, o hay piezas que arrastran al sistema?” | `DICCIONARIO_CONCEPTUAL` · cajón 05 |
-| **página propia** `p2_holding` — contratación SERCOP 2023–2026 por entidad: GAD · Patronato · Cuerpo de Bomberos · EMAI-EP (aseo) · EP Hábitat | `quira_pages/p2_holding.py` |
+| **página propia** `p2_holding` — contratación SERCOP 2023–2026 por entidad: GAD · Patronato · Cuerpo de Bomberos · EMAIMEP (aseo) · MONTEHOGAR-EP (vivienda) *(~~EMAI-EP~~ · ~~EP Hábitat~~: nombres falsos — falsación 47, `§5-novoquinquagies`)* | `quira_pages/p2_holding.py` |
 | **ingesta propia** — `scripts/holding/` (incluida la LOTAIP de las entidades) · `capturar_sercop_holding` · PAC del Holding | código |
 | **motor** — `H12d_ICPI_POR_ENTIDAD` (las metas del PDOT agrupadas por entidad responsable) · `H_HOLDING_CEDULAS_2026` · `H71` · `H72` · `H19b` | volcados del Gold Master |
 | **observación confirmada** — `OBS-006`: cobertura CPCCS y ejecución presupuestaria del Holding | `docs/observations/` |
@@ -6861,17 +6861,20 @@ Con «atributo» sobrevivía sólo **qué entidad produce cada dato**; **su preg
 quedaban sin hogar.** Y en los 222 GAD el conjunto de entidades cambia de un cantón a otro: es parte
 estructural de la institucionalidad del GAD, no un detalle de Montecristi.
 
-**Recomendación de esta dirección técnica — decisión de Javo:**
+~~Recomendación de esta dirección técnica — decisión de Javo:~~ *(resuelta: ver la decisión al pie de esta tabla)*
 
 | opción | qué es | a favor | en contra |
 |---|---|---|---|
 | **A · dominio 9 con doble función** *(recomendada)* | **Holding e Integración Municipal** como dominio propio **y** como perímetro obligatorio de los otros ocho | es **exactamente el patrón que la dirección ya eligió para Transparencia** (dominio propio + capa de alimentación) · tiene sujeto, pregunta, evidencia, ingesta, página e indicador propios · entra por la regla de alcance: **es lo ya construido** | la cuenta pasa de 8 a 9 |
 | **B · transversal de primer orden** | conserva su ADN, su pregunta, su página y su ficha, sin ser dominio | mantiene la cuenta en 8 | una transversal con objeto, pregunta y evidencia propios **es un dominio con otro nombre** — la ambigüedad que la regla 7 prohíbe |
 
-**Por qué no hay doble conteo en ninguna de las dos:** el ADN del Holding ya lo resolvió en sus
-exclusiones —la ejecución presupuestaria de cada entidad es de Inversión; su transparencia, de Transparencia—.
-**El hecho vive en su dominio; el Holding lo lee por entidad** y responde lo que ningún otro pregunta: la
-articulación del conjunto y si cada entidad cumple el mandato que justifica su existencia.
+> **DECISIÓN ARQUITECTÓNICA** *(Javo · 2026-09-18, precisada el 2026-09-19)*: **Holding e Integración
+> Municipal constituye el dominio 9 de QUIRA 7**, y la identificación de la institución que produce cada
+> observación opera como propiedad transversal. **Las opciones A y B quedaron resueltas y no se reabren.**
+> Cómo opera lo fija `§5-novoquinquagies`: **el dominio 9 es el selector del sujeto observado** — las EP,
+> adscritas y desconcentradas no salen de su universo ni se mezclan con el del GAD; al seleccionar una, se
+> encienden sólo los dominios que le corresponden. ~~las entidades se observan sólo en el Holding~~
+> *(retirado: contradecía el ADN d05 #8)*.
 
 ### 3 · Regla de trabajo de la cirugía *(colega · regla de trabajo, no doctrina)*
 
@@ -6893,7 +6896,7 @@ está establecido se dice**: ❓.
 | propiedad | contenido |
 |---|---|
 | **realidad** | el cumplimiento del PDOT por la vía de la **inversión** que lo materializa, y la eficiencia directiva con que se ejecuta *(ADN d01 #1 Trayectoria · d02 #1 Movilización · `§5-trigies`)* |
-| **sujeto** | el GAD como planificador y ejecutor de la inversión · **cada dirección** responsable de sus metas (orgánico por procesos) · cada entidad del Holding respecto de su propia inversión |
+| **sujeto** | el GAD como planificador y ejecutor de la inversión · **cada dirección** responsable de sus metas (orgánico por procesos) · **con una entidad seleccionada, esa entidad**: su POA, su PAC y su presupuesto *(sujeto aplicable: `§5-novoquinquagies`)* |
 | **objeto** | **Planificación:** PDOT · POA · metas, objetivos, indicadores, hitos — **Inversión:** presupuesto de inversión codificado y devengado · PAC · sostenibilidad · eficiencia **por dirección y por técnicos** |
 | **pregunta QUIRA** | ⚠️ **por escribir.** Hoy hay dos (ADN d01 #6 y d02 #6), y la de d02 incluye la cooperación, que salió a producto. QUIRA 7 necesita **una pregunta con dos secciones** |
 | **evidencia** | PDOT · POA · PAC · cédulas presupuestarias (codificado y devengado) · orgánico por procesos |
@@ -6901,7 +6904,7 @@ está establecido se dice**: ❓.
 | **periodicidad** | publicación **mensual** (LOTAIP 19) · PAC en los primeros quince días de enero (LOSNCP 22) · POA antes del 10 de septiembre (COOTAD 233) · PDOT plurianual |
 | **corte** | ⛔ **divergente**: `H07_S5` «Abril 2026 (Ene–Abr)» · `Mes_Activo` escrito a mano · bloque `financiero` 2026-03 |
 | **indicadores** | avance físico de metas (`H11b`) · `Ti` y `Ti_norm` (`H07_S5`, `H07b`) · ISP · IED (`H17`, `H30`) |
-| **relaciones** | Mandato (promesa → plan) · Participación (presupuesto participativo → POA y PAC; la rendición versa sobre ellos) · Transparencia (alimentación mensual) · Cobertura (inversión por parroquia) · Grupos Prioritarios (asignación del 10 %) · Holding (inversión por entidad) |
+| **relaciones** | Mandato (promesa → plan) · Participación (presupuesto participativo → POA y PAC; la rendición versa sobre ellos) · Transparencia (alimentación mensual) · Cobertura (inversión por parroquia) · Grupos Prioritarios (asignación del 10 %) · Holding (selector del sujeto · las metas del PDOT llevan su ejecutor, `H12d`) |
 | **exclusiones** | gasto corriente · ingresos y recaudación · financiamiento externo (→ QUIRA Cooperación) · ordenanzas y sesiones del Concejo · contratación como dominio propio *(`§5-trigies` · `§5-untrigies`)* |
 | **normativa** | `CNO-I-001` y `CNO-IV-001` **vigentes**: CE 241 · 280 · 271 → COPLAFIP 12 · 44 · COOTAD 215 · 233 · 234 · 245 · 192 · COOTAD-2026 198.1 → LOSNCP 22 — *no encadenados: COPLAFIP 96 · 119, LOSNCP 23 · 24, CE 264* |
 | **estado** | agentes `d01` y `d02` · tres enrichers · páginas · BRN I y IV vigentes · la RO de la familia I no la carga el agente |
@@ -6931,7 +6934,7 @@ está establecido se dice**: ❓.
 | propiedad | contenido |
 |---|---|
 | **realidad** | el cumplimiento de la publicación obligatoria y la calidad de lo publicado · **y la capa que alimenta mensualmente a los demás** *(decisión de Javo · ADN d07 #1 Verificabilidad)* |
-| **sujeto** | los sujetos obligados: el GAD y **cada empresa pública** (LOTAIP 29) |
+| **sujeto** | **cada sujeto obligado, uno a la vez**: el GAD · con una entidad seleccionada, esa entidad — las empresas públicas, con las obligaciones propias de LOTAIP 29 `570b34e6cc32` *(no encadenado · sujeto aplicable: `§5-novoquinquagies`)* |
 | **objeto** | los 24 numerales del art. 19 · las obligaciones propias de los GAD del art. 24 · transparencia pasiva · difusión · calidad (accesibilidad, oportunidad, consistencia) · observancia contractual |
 | **pregunta QUIRA** | ⚠️ ADN d07 #6 (“¿La información pública del cantón es accesible, oportuna y consistente de forma verificable…?”) **+ falta la de su segunda función**: qué evidencia del mes queda **admitida** para los demás dominios |
 | **evidencia** | calificación del portal de la DPE · publicaciones del GAD por numeral |
@@ -6939,7 +6942,7 @@ está establecido se dice**: ❓.
 | **periodicidad** | **mensual** (LOTAIP 19 · 24) · difusión tres veces al año (RLOTAIP 10) |
 | **corte** | calificación 2025 y meses 1 a 5 de 2026 |
 | **indicadores** | SITA · CTA · ETA · RP · CI · IOC |
-| **relaciones** | alimenta a los otros siete y al Holding · habilita la participación |
+| **relaciones** | alimenta a los demás dominios **del mismo sujeto** · habilita la participación |
 | **exclusiones** | la participación que habilita · la rendición formal · la contratación como dato presupuestario *(ADN #8)* · **reducirse a infraestructura de adquisición** |
 | **normativa** | `CNO-VII-001…004` **vigentes**: CE 18 · 91 · 238 → LOTAIP 7–10 · 13 · 19 · 24 · 32–38 · 42 → RLOTAIP 10–15 → instructivos de la DPE — *no encadenado: LOTAIP 29* |
 | **estado** | **el más maduro**: agente `d07`, metodología ratificada, catálogo de condiciones, BRN VII cargada · una prueba del agente falla en el estado base · ⚠️ el ADN dice «LOTAIP 21 artículos»: es la ley derogada; la vigente tiene **24 numerales** en el art. 19 |
@@ -6950,7 +6953,7 @@ está establecido se dice**: ❓.
 | propiedad | contenido |
 |---|---|
 | **realidad** | **A** · la incidencia ciudadana en las decisiones de inversión · **B** · la rendición de cuentas y el control social · **C** · la evidencia del vínculo aporte → decisión → resultado *(ADN d08 #1 · d09 #1)* |
-| **sujeto** | **A:** el GAD y sus instancias (asamblea, consejo de planificación) · **B:** las autoridades electas y de libre remoción, y **el GAD con sus personas jurídicas creadas por acto normativo** (cada entidad del Holding rinde cuentas por sí misma) |
+| **sujeto** | **A:** el GAD y sus instancias (asamblea, consejo de planificación) · **B:** las autoridades electas y de libre remoción del GAD · **con una entidad seleccionada, esa entidad**: RES-CPCCS-RC-2026 Art. 13 `c2456d489297` obliga a los GAD «y las personas jurídicas creadas por acto normativo de los mismos», y LOPC 90 `547b900b8a8f`, a los «representantes legales de las empresas públicas» |
 | **objeto** | mecanismos (presupuesto participativo, audiencias, cabildos, silla vacía) · aportes y su incorporación a POA y PAC · informe, deliberación y resultado ante el CPCCS |
 | **pregunta QUIRA** | ⚠️ hay dos (ADN d08 #6 y d09 #6); **falta la de la sección C** |
 | **evidencia** | actas de presupuesto participativo, audiencias y cabildos (las escaneadas requieren OCR) · informes de rendición por entidad (en el corpus) · formulario del CPCCS |
@@ -6958,7 +6961,7 @@ está establecido se dice**: ❓.
 | **periodicidad** | presupuesto participativo: ciclo anual del presupuesto · rendición: **anual por ciclo, de febrero a junio del año siguiente** (LOPC 95 · RES-CPCCS-RC-2026 Art. 5 y su cronograma — cada uno, eslabón faltante de la rendición de cuentas) |
 | **corte** | ⚠️ incidencia medida el 2026-07-29 · la fidelidad de 91 % **no declara su ejercicio** |
 | **indicadores** | IGP · incidencia (`RO-VIII-003`) · `SAT-VI` (`RO-VIII-004`, **propuesta**) · `SAT-IX` · fidelidad narrativa (`MFN`, evaluación experta) · resultado CPCCS |
-| **relaciones** | Planificación e Inversión · Mandato (se rinde cuentas sobre el plan de trabajo) · Transparencia · Holding (rendición por entidad) |
+| **relaciones** | Planificación e Inversión · Mandato (se rinde cuentas sobre el plan de trabajo) · Transparencia · Holding (selector: la rendición de cada entidad se observa aquí, con la entidad como sujeto) |
 | **exclusiones** | la protección de derechos de casos individuales (CCPD y JCPD) · el control político del Concejo |
 | **normativa** | **A:** `CNO-VIII-000…007` (**propuesta**) · **B:** `CNO-IX-001` **vigente**: CE 100 · 208 → LOPC 89 · 90 · 91 · 93 → RES-CPCCS-RC-2026 10 · 13 · 15 · 21 *(LOPC 92 · 95 · RES Art. 5 — cada uno, eslabón faltante de la rendición de cuentas)* |
 | **estado** | agentes `d08` y `d09` · cuatro enrichers · dos páginas · bloque VIII en propuesta (D-006) · `SAT-V` y `H89` con defectos de `C4` |
@@ -6969,7 +6972,7 @@ está establecido se dice**: ❓.
 | propiedad | contenido |
 |---|---|
 | **realidad** | el acceso de la población a los servicios de competencia municipal **como resultado del plan** *(ADN d10 #1 Acceso Colectivo · #4)* |
-| **sujeto** | ⚠️ el GAD **y la entidad que presta cada servicio** (EMAI-EP en desechos, Bomberos en incendios): depende del Holding |
+| **sujeto** | el GAD · con una entidad seleccionada, **sólo donde el ADN lo sostiene**: la recolección de desechos está en su alcance (ADN d10 #7) y la presta EMAIMEP → ⏸ · **Bomberos no entra** (falsación 46) *(sujeto aplicable: `§5-novoquinquagies`)* |
 | **objeto** | cobertura por parroquia · déficit · brecha urbano-rural · NBI *(ADN #7)* |
 | **pregunta QUIRA** | ADN d10 #6: “¿Cuál es la magnitud real del déficit de servicios básicos por parroquia y en qué medida las intervenciones mitigan la brecha urbano-rural?” |
 | **evidencia** | matriz de cobertura sectorial parroquial · capas del PUGS |
@@ -6979,7 +6982,7 @@ está establecido se dice**: ❓.
 | **indicadores** | cobertura de agua, saneamiento y desechos · NBI · IET · inversión por parroquia |
 | **relaciones** | Planificación e Inversión · Grupos Prioritarios · Ambiental (saneamiento, desechos) · Holding · GeoTwin |
 | **exclusiones** | operación y tarifas · presupuestos globales de obra · el mapa (→ GeoTwin) · un dominio por servicio |
-| **normativa** | ⚠️ **sin CNO** (no encadenado): CE 12 · 30 · 31 · 264 núm. 3, 4, 7, 13 → COOTAD 55 · 137 · 138 |
+| **normativa** | ⚠️ **sin CNO** (no encadenado): CE 12 · 30 · 31 · 264 núm. 3, 4, 7 → COOTAD 55 · 137 · 138 *(~~núm. 13, incendios~~: no está en el ADN de d10 — falsación 46)* |
 | **estado** | `p10_territorio` (agua en vivo) · IET · capas territoriales · circuito `AGUA_POTABLE` · sin agente · saneamiento y desechos sin pantalla |
 | **acción REARQ** | **CONSERVAR** IET y capas · **ELEVAR** con agente (molde `ADR-053`) · **RECONSTRUIR** su cadena · **POTENCIAR** GeoTwin |
 
@@ -7014,7 +7017,7 @@ está establecido se dice**: ❓.
 | **periodicidad** | evidencia **mensual** → condición **anual** → indicador anual con actualización mensual *(regla de alineación)* |
 | **corte** | ❓ el circuito `GAP_10PCT` da 20,84 % codificado y 14,19 % devengado **sin declarar su corte** |
 | **indicadores** | ⛔ `IND_G10P_01`: **su denominador no es el de la norma** · cobertura de adultos mayores (semestral) · inclusión laboral 4 % · el `PSG` pasa a Equidad |
-| **relaciones** | Planificación e Inversión (el 10 %) · Cobertura · Participación · **Holding (el Patronato es una entidad)** · Equidad |
+| **relaciones** | Planificación e Inversión (el 10 %) · Cobertura · Participación · **Holding → Patronato → Grupos Prioritarios**: el mismo sujeto, otra realidad · Equidad |
 | **exclusiones** | **CCPD y JCPD como objeto** · casos individuales de protección · el `PSG` |
 | **normativa** | ⚠️ **sin CNO** (no encadenado): CE 35 · 11 → COOTAD 249 → CONA 12 · LOPAM 14 · 84 · LODISC 47 · 56 · 58 · 116 · LMH 165–167 · LPEVM 38 — frontera: CONA 207 |
 | **estado** | `p19_genero` · `H04b` · `H16c_PSG` · circuito `GAP_10PCT` · sin agente ni cadena · hallazgo analítico abierto |
@@ -7025,7 +7028,7 @@ está establecido se dice**: ❓.
 | propiedad | contenido |
 |---|---|
 | **realidad** | la gestión ambiental y de riesgos de competencia municipal *(ADN d13 #1 Resiliencia)* |
-| **sujeto** | el GAD · EMAI-EP en desechos (Holding) |
+| **sujeto** | el GAD · con una entidad seleccionada: ⏸ — el ADN d13 #7 no nombra los desechos ni la vivienda *(sujeto aplicable: `§5-novoquinquagies`)* |
 | **objeto** | inventario biofísico · riesgo (deslizamiento, inundación, sismo) · conservación · metas ambientales *(ADN #7)* |
 | **pregunta QUIRA** | ADN d13 #6 |
 | **evidencia** | inventario biofísico del PDOT (362 indicadores) · capa de riesgo · metas ambientales |
@@ -7043,26 +7046,26 @@ está establecido se dice**: ❓.
 | propiedad | contenido |
 |---|---|
 | **realidad** | la articulación y el desempeño del conjunto de entidades que ejecutan la gestión cantonal: el GAD y sus entidades adscritas, desconcentradas y empresas públicas *(ADN d05 #1 Articulación · #4)* |
-| **sujeto** | **cada entidad**, con su propia personería y obligaciones — en Montecristi, según `p2_holding`: Patronato, Cuerpo de Bomberos, EMAI-EP, EP Hábitat, junto al GAD · ~~falta un registro de entidades por GAD~~ ⛔ *falsación 45*: **el registro existe en el motor** — `TBL_ENTIDADES_ADSCRITAS` (entidad · estado operativo · base legal), que leen `H71` y `H72`; ⚠️ `H71!B8` da `#REF!`. En los 222 GAD el conjunto varía: **se eleva ese registro, no se inventa otro** |
-| **objeto** | desempeño comparado de las entidades · su contribución al cumplimiento del PDOT · su integración · **y el perímetro**: qué entidad produce o ejecuta cada observación de los otros dominios |
+| **sujeto** | **cada entidad**, con su propia personería y obligaciones — en Montecristi, según el orgánico del GAD (RES-ORG-GADMCM-2025 Art. 10 `24899c8bbc5c`, no encadenado): Empresa Municipal de Aseo Integral Montecristi EP (**EMAIMEP**) · Empresa Pública Municipal de Hábitat y Vivienda **MONTEHOGAR-EP** · Cuerpo de Bomberos · Patronato Municipal de Amparo Social — y el GAD como cabeza *(~~EMAI-EP~~ · ~~EP Hábitat~~: falsación 47)* · ~~falta un registro de entidades por GAD~~ ⛔ *falsación 45*: **el registro existe en el motor** — `TBL_ENTIDADES_ADSCRITAS` (entidad · estado operativo · base legal), que leen `H71` y `H72`; ⚠️ `H71!B8` da `#REF!`. En los 222 GAD el conjunto varía: **se eleva ese registro, no se inventa otro** |
+| **objeto** | **el ecosistema como tal**: identidad de cada entidad (nombre oficial y sigla) · naturaleza o figura · base de constitución *(cuando es verificable)* · relación con el GAD · composición · estado · **dominios aplicables** — y la articulación del conjunto, su contribución al PDOT y el desempeño comparado **que el motor ya calcula** (`H12d`) · ~~cada entidad como institución completa~~ *(retirado: su planificación, contratación, transparencia y rendición se observan en los dominios 1, 3 y 4 con la entidad como sujeto)* |
 | **pregunta QUIRA** | ADN d05 #6: “¿El conjunto de entidades del cantón opera de forma articulada y con desempeño consistente, o hay piezas que arrastran al sistema?” |
 | **evidencia** | POA, PAC, presupuesto e informe de rendición de cada entidad · contratación por entidad · cédulas por entidad |
 | **fuente** | SERCOP (`capturar_sercop_holding`) · LOTAIP de cada entidad (`scripts/holding/`) · web de cada entidad · CPCCS |
-| **periodicidad** | ejecución **mensual** publicada por las empresas públicas (LOTAIP 29) · rendición **anual** propia de cada entidad (RES-CPCCS-RC-2026 Art. 13) |
+| **periodicidad** | del registro: **por acto** (creación, reforma o extinción de una entidad) · lo de cada entidad lleva la de su dominio: ejecución **mensual** de las empresas públicas en ① y ③ (LOTAIP 29, no encadenado) · rendición **anual** en ④ (RES-CPCCS-RC-2026 Art. 13) |
 | **corte** | ⚠️ cortes por entidad al primer trimestre · serie SERCOP 2023–2026 |
-| **indicadores** | ICPI por entidad (`H12d`) · `Ti` por entidad · contratación por entidad |
-| **relaciones** | con los ocho: Bomberos y EMAI-EP en Cobertura · el Patronato en Grupos Prioritarios · EMAI-EP en Ambiental · la inversión de cada una en Planificación e Inversión · su publicación en Transparencia · su rendición en Participación |
-| **exclusiones** | la ejecución de cada entidad **como hecho** (→ Inversión) · su transparencia individual (→ Transparencia) · el cumplimiento de la matriz aislada (→ Cumplimiento Institucional) · la operación interna de cada empresa |
-| **normativa** | ⚠️ **sin CNO** (no encadenado): CE 315 · COOTAD 57 · LOTAIP 29 · RES-CPCCS-RC-2026 Art. 13 · ⛔ **la LOEP no está en el corpus**: la cadena de las empresas públicas no puede verificarse hoy · el acto de creación de cada entidad lo dicta el Concejo, fuente que `§5-trigies` declaró no adquirible |
+| **indicadores** | los que el motor ya calcula por entidad —`H12d`, las metas del PDOT por entidad responsable— **se leen, no se recalculan** · **ningún `Ti`, ICPI ni indicador de transparencia propio del Holding**: el `Ti` y la contratación de cada entidad son de ① con la entidad como sujeto |
+| **relaciones** | **es el eje del sujeto**: al seleccionar una entidad gobierna qué dominios se encienden (matriz de aplicabilidad, `§5-novoquinquagies`) · el **GAD como cabeza** del ecosistema y sujeto principal de los dominios 1 a 8 · **Holding → Patronato → Grupos Prioritarios** · **Planificación**: las metas del PDOT llevan su ejecutor (`H12d`) |
+| **exclusiones** | el GAD como objeto (es la cabeza: sus realidades viven en los dominios 1 a 8) · **todo cálculo propio** de ejecución, contratación, transparencia o rendición de una entidad — su ADN ya lo excluía (d05 #8: “la ejecución presupuestaria de cada entidad (→ d02) · la transparencia individual (→ d07)”) · la **función** hacia los grupos prioritarios que ejerce el Patronato (→ dominio 7) · la operación interna de cada empresa (gerencia, directorio, tarifas) |
+| **normativa** | ⚠️ **sin CNO** (no encadenado): CE 315 · COOTAD 57 · LOTAIP 29 · RES-CPCCS-RC-2026 Art. 13 · COOTAD 140 `0dc5f48de6bb` — «los cuerpos de bomberos del país serán considerados como entidades adscritas a los gobiernos autónomos descentralizados municipales, quienes funcionarán con autonomía administrativa y financiera, presupuestaria y operativa» · COESCOP 274 `28610b4860ab` — «Los Cuerpos de Bomberos son entidades de derecho público adscritas a los Gobiernos Autónomos Descentralizados municipales» · ⛔ **la LOEP no está en el corpus**: la cadena de las empresas públicas no puede verificarse hoy · el acto de creación de cada entidad lo dicta el Concejo, fuente que `§5-trigies` declaró no adquirible |
 | **estado** | página, ingesta, indicador en vivo y observación confirmada · sin agente · sin cadena BRN · **reducido por error a atributo** en `§5-untrigies` y `§5-duotrigies` |
-| **acción REARQ** | **CONSERVAR** `p2_holding`, `H12d` y la ingesta · **ELEVAR** a dominio (o transversal de primer orden) con perímetro obligatorio · **RECONSTRUIR** el registro de entidades por GAD y su cadena normativa |
+| **acción REARQ** | **CONSERVAR** `p2_holding`, `H12d` y la ingesta por entidad · **ELEVAR** a dominio 9 **como selector del sujeto observado** · ~~ELEVAR su ADN~~ *(retirado: su ADN ya enviaba la ejecución y la transparencia de cada entidad a sus dominios; el selector lo cumple sin mezclar sujetos)* · **ELEVAR y GENERALIZAR** el registro de entidades existente, con los nombres oficiales (`H71!B8`: defecto registrado, se repara en la cirugía) · **POTENCIAR** `p2_holding`: hoy compara entidades lado a lado; el selector es obra de la cirugía · **RECONSTRUIR** su cadena normativa |
 
 ### 5 · ¿Está establecido todo lo necesario antes de la cirugía? — **No. Esto falta**
 
 | | ① | ② | ③ | ④ | ⑤ | ⑥ | ⑦ | ⑧ | ⑨ |
 |---|---|---|---|---|---|---|---|---|---|
 | realidad · objeto · exclusiones · acción | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| sujeto | ✅ | ✅ | ✅ | ✅ | ⚠️ | ❓ | ✅ | ✅ | ⚠️ |
+| sujeto **aplicable** *(matriz de `§5-novoquinquagies`)* | ✅ | ✅ | ✅ | ✅ | ⏸ | ❓ | ⏸ | ⏸ | ✅ |
 | **pregunta QUIRA 7** | ⚠️ | ✅ | ⚠️ | ⚠️ | ✅ | ✅ | ⚠️ | ✅ | ✅ |
 | evidencia · fuente | ✅ | ✅ | ✅ | ✅ | ✅ | ⚠️ | ✅ | ⚠️ | ✅ |
 | periodicidad | ✅ | ✅ | ✅ | ✅ | ❓ | ❓ | ✅ | ❓ | ✅ |
@@ -7071,14 +7074,14 @@ está establecido se dice**: ❓.
 | **cadena normativa** | ✅ | ✅ | ✅ | ⚠️ | ⚠️ | ⚠️ | ⚠️ | ⚠️ | ⚠️ |
 
 **Lo que corresponde a la dirección** *(canon)*:
-1. **La categoría del Holding** — dominio 9 con doble función (recomendada) o transversal de primer orden.
+1. ~~**La categoría del Holding**~~ *(resuelta: dominio 9, selector del sujeto observado — `§5-octoquinquagies` y `§5-novoquinquagies`)*.
 2. **Cuatro preguntas QUIRA 7**: la del dominio fusionado ①, la segunda función de ③, la sección C de ④ y
    la del reenfoque de ⑦. Esta dirección técnica puede redactarlas desde los ADN para su ratificación.
 3. **El nombre del dominio 1.**
 
 **Lo que es trabajo técnico** *(leer fuentes, no decidir)*: declarar el **corte** donde falta, la
-**periodicidad** de la fuente en Cobertura, Económico y Ambiental, el **sujeto** de Económico, y **reparar y
-elevar el registro de entidades que ya existe** en el motor (`TBL_ENTIDADES_ADSCRITAS` · `H71!B8` con `#REF!`).
+**periodicidad** de la fuente en Cobertura, Económico y Ambiental, el **sujeto** de Económico, y **elevar y
+generalizar el registro de entidades que ya existe** en el motor (`TBL_ENTIDADES_ADSCRITAS`) — `H71!B8` con `#REF!`: defecto registrado, se repara en la cirugía.
 
 **Lo que es obra de la cirugía, no de `D1`:** las cadenas normativas de los dominios sin CNO y la del Holding
 (la LOEP fuera del corpus es un hallazgo, no una tarea de hoy).
@@ -7103,7 +7106,8 @@ elevar el registro de entidades que ya existe** en el motor (`TBL_ENTIDADES_ADSC
 
 No compiten: **es la opción A**, y es el mismo patrón que la dirección eligió para Transparencia (dominio
 propio **y** capa que alimenta a los demás). **Decisión: Holding e Integración Municipal = dominio 9, con
-el perímetro institucional como propiedad transversal.**
+el perímetro institucional como propiedad transversal.** *Precisada en `§5-novoquinquagies`: el perímetro
+se opera como **selector del sujeto observado**.*
 
 **Lo que hay que custodiar** para que el dominio 9 no se vuelva un dominio que recalcula a los otros ocho —
 cuatro salvaguardas, todas desde lo construido:
@@ -7111,15 +7115,15 @@ cuatro salvaguardas, todas desde lo construido:
 | # | salvaguarda | por qué |
 |---|---|---|
 | 1 | **objeto exclusivo del Holding**: la **composición** del ecosistema (qué entidades, qué figura, qué base legal, si opera — `TBL_ENTIDADES_ADSCRITAS` · `H71` · `H72`) · su **contribución al PDOT** (metas asignadas por entidad — `H12d`) · el **desempeño comparado y la articulación** del conjunto (ADN d05 #6–7) | es lo que ningún otro dominio observa |
-| 2 | **leer, no recalcular**: la ejecución, la publicación, la rendición o la cobertura de cada entidad viven en su dominio; el Holding **las lee por entidad** | es la Regla 1 aplicada entre dominios: un hecho, un lugar |
+| 2 | **mismo dominio, otro sujeto**: la planificación, la ejecución, la contratación, la transparencia y la rendición de cada entidad se observan **en los dominios 1, 3 y 4, con la entidad seleccionada como sujeto** — el Holding no las recalcula ni crea un segundo motor; sólo puede **resumir** lo que esos dominios producen | la clave de no mezcla es el sujeto *(`§5-novoquinquagies`)* · ~~una institución, un lugar~~ *(retirado: contradecía el ADN d05 #8)* |
 | 3 | **la figura es atributo, no identidad**: empresa pública, adscrita, desconcentrada o equivalente — se observa la **función** | el mismo principio de Grupos Prioritarios; es lo que lo hace portable a los 222 GAD y a Latinoamérica |
-| 4 | **un solo registro de entidades por GAD** sirve al dominio y al perímetro: el que **ya existe** en el motor, que se repara (`H71!B8` da `#REF!`) y se eleva | sin él, ni el dominio ni el perímetro son verificables fuera de Montecristi |
+| 4 | **un solo registro de entidades por GAD** sirve al dominio y al perímetro: el que **ya existe** en el motor, que **se eleva y generaliza** — `H71!B8` da `#REF!`: **defecto registrado, no se repara ahora** (se repara en la cirugía del dominio 9, con su procedencia) | sin él, ni el dominio ni el perímetro son verificables fuera de Montecristi |
 
 **Dos cosas que conviene saber antes de la cirugía:**
 
 - **Solapamiento legítimo con Grupos Prioritarios:** cuando la función la ejerce el Patronato, Grupos
   Prioritarios observa **la función** (programas, cobertura) y el Holding observa **al Patronato como
-  entidad** (figura, mandato, articulación). Son preguntas distintas sobre el mismo sujeto — como el
+  entidad** (figura, mandato, articulación): **Holding → Patronato → Grupos Prioritarios**. Son preguntas distintas sobre el mismo sujeto — como el
   ejemplo del colega con Bomberos.
 - **Su cadena normativa no puede verificarse hoy:** la LOEP no está en el corpus. Incorporarla es un acto de
   ingesta —tiene costo y requiere autorización—; **no se hace ahora**, queda como decisión de la dirección.
@@ -7130,19 +7134,19 @@ cuatro salvaguardas, todas desde lo construido:
 > ésta**. Un cambio de nombre, de alcance o de categoría **se hace aquí, por decisión de la dirección**, y
 > en ningún otro lugar.
 
-| # | dominio *(nombre registrado)* | realidad que observa | sujeto | proviene de |
+| # | dominio *(nombre registrado)* | realidad que observa | sujeto aplicable *(matriz: `§5-novoquinquagies`)* | proviene de |
 |---|---|---|---|---|
-| **1** | **Planificación Estratégica e Inversión Pública** ⏸ | el cumplimiento del PDOT por la vía de la inversión, y la eficiencia directiva | el GAD y cada dirección responsable | `d01` + `d02` |
+| **1** | **Planificación Estratégica e Inversión Pública** ⏸ | el cumplimiento del PDOT por la vía de la inversión, y la eficiencia directiva | el GAD y cada dirección · **cada entidad seleccionada** | `d01` + `d02` |
 | **2** | **Gobernanza del Mandato** ⏸ | la correspondencia entre la oferta inscrita y la planificación | la autoridad electa | `d03` |
-| **3** | **Transparencia** | el cumplimiento y la calidad de la publicación obligatoria · y la alimentación mensual de los demás | el GAD y cada entidad obligada | `d07` |
-| **4** | **Participación Ciudadana y Control Social** | la incidencia ciudadana en la inversión · la rendición de cuentas · el vínculo aporte → decisión → resultado | el GAD, sus instancias y sus autoridades | `d08` + `d09` |
-| **5** | **Cobertura de Servicios e Infraestructura** | el acceso a los servicios de competencia municipal como resultado del plan | el GAD y la entidad que presta cada servicio | `d10` |
+| **3** | **Transparencia** | el cumplimiento y la calidad de la publicación obligatoria · y la alimentación mensual de los demás | el GAD · **cada entidad seleccionada**, sujeto obligado propio | `d07` |
+| **4** | **Participación Ciudadana y Control Social** | la incidencia ciudadana en la inversión · la rendición de cuentas · el vínculo aporte → decisión → resultado | el GAD, sus instancias y sus autoridades · **cada entidad seleccionada**, en la rendición | `d08` + `d09` |
+| **5** | **Cobertura de Servicios e Infraestructura** | el acceso a los servicios de competencia municipal como resultado del plan | el GAD · entidad: ⏸ sólo donde el ADN lo sostiene | `d10` |
 | **6** | **Desarrollo Económico Territorial** | las condiciones que el GAD controla para la actividad económica y el empleo | ❓ por declarar | `d11` |
-| **7** | **Grupos de Atención Prioritaria** | la función ejecutora del GAD hacia los grupos prioritarios | la unidad que ejerce la función (la figura es atributo) | `d12` reenfocado |
-| **8** | **Sostenibilidad y Resiliencia Ambiental** | la gestión ambiental y de riesgos de competencia municipal | el GAD y la entidad a cargo | `d13` |
-| **9** | **Holding e Integración Municipal** | el ecosistema de entidades del GAD: su composición, su contribución al PDOT y su articulación | cada entidad adscrita, desconcentrada o empresa pública | `d05` **restituido** |
+| **7** | **Grupos de Atención Prioritaria** | la función ejecutora del GAD hacia los grupos prioritarios | la unidad que ejerce la función (la figura es atributo) · **Holding → Patronato** | `d12` reenfocado |
+| **8** | **Sostenibilidad y Resiliencia Ambiental** | la gestión ambiental y de riesgos de competencia municipal | el GAD · entidad: ⏸ | `d13` |
+| **9** | **Holding e Integración Municipal** | el ecosistema de entidades del GAD —composición, identidad y naturaleza de cada entidad, relación con el GAD, contribución al PDOT, articulación— **y el selector del sujeto observado**, que gobierna qué dominios se encienden | cada entidad adscrita, desconcentrada o empresa pública · el GAD es la cabeza, no el objeto | `d05` **restituido** |
 
-**Transversales** *(no son dominios)*: perímetro institucional (qué entidad produce cada observación) ·
+**Transversales** *(no son dominios)*: perímetro institucional (qué institución produce cada observación — **se opera desde el selector del dominio 9**: el dato de una entidad nunca entra al universo del GAD sin su sujeto) ·
 Equidad y Género · Cumplimiento Institucional (ICPI, síntesis) · GeoTwin. **Vista:** Alertas. **Producto:**
 QUIRA Cooperación. **Infraestructura:** adquisición `T1`·`T2`·`T3`.
 
@@ -7166,7 +7170,7 @@ capacidad o elimina ambigüedad; si sólo renombra, no entra.*
 | # | pregunta propuesta | de dónde sale |
 |---|---|---|
 | **1** · Planificación e Inversión | *¿Avanza el GAD hacia las metas del PDOT al ritmo que su plazo exige, y la inversión pública programada para cumplirlas se ejecuta a tiempo y con eficiencia en cada dirección responsable?* — **sección Planificación:** ¿avanzan las metas al ritmo del plazo? · **sección Inversión:** ¿se ejecuta la inversión que las financia, dirección por dirección? | ADN d01 #6 (rumbo hacia las metas) · ADN d02 #6 **sin** la cooperación, que salió a producto · QLEP Dom01 (recursos y tiempo restante del mandato) · la eficiencia directiva por dirección |
-| **3** · Transparencia, segunda función | *¿Publica el GAD —y cada una de sus entidades— la información que la ley le obliga, a tiempo y con la calidad que permite verificarla; y qué parte de lo publicado cada mes puede admitirse como evidencia de los demás dominios?* | ADN d07 #6 · decisión de la dirección: *primero califica el cumplimiento, después la calidad de la información que nutre a los demás* · el gate de admisión de `§5-duotrigies` |
+| **3** · Transparencia, segunda función | *¿Publica el sujeto obligado —el GAD o la entidad seleccionada— la información que la ley le obliga, a tiempo y con la calidad que permite verificarla; y qué parte de lo publicado cada mes puede admitirse como evidencia de los demás dominios?* | ADN d07 #6 · decisión de la dirección: *primero califica el cumplimiento, después la calidad de la información que nutre a los demás* · el gate de admisión de `§5-duotrigies` |
 | **4** · Participación, sección C | *¿Lo que la ciudadanía aportó en las instancias de participación se convirtió en decisión —POA, PAC, presupuesto— y en resultado, y esa trazabilidad queda documentada?* — distinguiendo lo que la ley hace **exigible** (presupuesto participativo) de lo **deliberativo** (audiencias, cabildos) | la sección C de `§5-duotrigies` · la distinción de `RO-VIII-003` |
 | **7** · Grupos Prioritarios, reenfoque | *¿La función que el GAD destina a los grupos de atención prioritaria —ejérzala el Patronato, una dirección u otra entidad— recibe el presupuesto que la ley exige, lo ejecuta en programas y llega a la población y a los territorios que debe atender?* | el reenfoque de `§5-trigies` · ADN d12 #6 **sin** la equidad, que pasó a transversal · «el presupuesto que la ley exige» y no «el 10 % del presupuesto»: la lección del denominador |
 
@@ -7182,8 +7186,221 @@ existencia*.
 |---|---|---|
 | 1 | ratificar los **nombres** (tabla del punto 3) | dirección |
 | 2 | ratificar las **cuatro preguntas** | dirección |
-| 3 | cortes · periodicidades · sujeto de Económico · reparar y elevar el registro de entidades | técnico, sin decisión |
+| 3 | cortes · periodicidades · sujeto de Económico · **elevar y generalizar** el registro de entidades existente *(el `#REF!` se repara en la cirugía)* | técnico, sin decisión |
 | 4 | incorporar la **LOEP** al corpus | dirección, cuando lo autorice (ingesta con costo) |
+| 5 | reglas R1 y R2 · regla del PDOT · Concejo y Junta de Protección de Derechos *(`§5-novoquinquagies` §9)* | dirección |
+
+## 5-novoquinquagies · **EL HOLDING COMO SELECTOR DEL SUJETO OBSERVADO** — matriz de aplicabilidad y nombres oficiales
+
+> **Javo:** *“Para el caso de holding, sus entidades —las EP y las desconcentradas— no salen de ese dominio [ni]
+> se mezclan con el universo del GAD. El cajón de holding debe ser sólo un seleccionador donde se escoja, y los
+> dominios del GAD se apaguen y se activen en la misma pantalla sólo los dominios que le correspondan a la
+> entidad EP o desconcentrada, pero ésta ya en el nivel de sujeto observado. Con ello logramos la
+> observabilidad de toda la institucionalidad del GAD, sus ecosistemas. Corrija el nombre de la EP: lo que
+> dicen es falso.”* *(ortografía normalizada; [ni] es la lectura de esta dirección técnica, la misma del colega)*
+>
+> **Colega:** *“Holding = sujeto/perímetro/selector. Dominio = realidad administrativa observada.
+> Observación = sujeto + dominio + evidencia + estado temporal + indicadores.”*
+
+### 1 · La decisión: dos ejes, no nueve cajones aislados
+
+| eje | pregunta | qué es |
+|---|---|---|
+| **1 · sujeto** | ¿a quién observo? | el **dominio 9**: selector del sujeto y perímetro del ecosistema — el GAD (cabeza) y cada empresa pública, adscrita o desconcentrada |
+| **2 · realidad** | ¿qué observo de ese sujeto? | los dominios 1 a 8, **sólo los aplicables** al sujeto seleccionado |
+
+- **Ontológicamente sigue siendo el dominio 9** —su ADN y su realidad no cambian—; **en la pantalla es el
+  selector**: al escoger una entidad, los dominios del GAD se apagan y se encienden sólo los de esa entidad.
+- **El GAD no se mete dentro del Holding:** es la cabeza del ecosistema y el sujeto principal de los dominios
+  1 a 8. Aparece en el selector para entrar al sujeto matriz, no para mezclarse con las entidades.
+- **Patronato:** Holding → Patronato → Grupos Prioritarios. El sujeto sigue siendo el Patronato; cambia la
+  realidad que se observa.
+- **El contenido propio del Holding es mínimo:** identidad (nombre oficial y sigla), naturaleza o figura, base
+  de constitución cuando es verificable, relación con el GAD, composición del ecosistema, estado y dominios
+  aplicables. **Ningún `Ti`, ICPI ni indicador de transparencia propio:** puede resumir lo que los dominios
+  producen y leer lo que el motor ya calcula por entidad (`H12d`), nunca recalcularlo.
+
+**No es un cambio de ADN: es su cumplimiento.** El ADN del Holding ya excluía “la ejecución presupuestaria de
+cada entidad (→ d02) · la transparencia individual (→ d07)” (d05 #8). Faltaba la clave de no mezcla: **el
+sujeto**. ⛔ **Registro honesto:** entre `§5-octoquinquagies` y esta sección, esta dirección técnica aplicó
+sin ratificación un parche que concentraba en el dominio 9 toda la observación de cada entidad (*una
+institución, un lugar*). **Se retira en esta misma revisión:** contradecía el ADN y habría abierto un segundo
+motor dentro del Holding.
+
+### 2 · Dos reglas de arquitectura *(colega · ⏸ ratificación de la dirección)* y un candado
+
+| # | regla | qué evita |
+|---|---|---|
+| **R1** | “Ninguna observación institucional puede incorporarse a una agregación sin conservar explícitamente el sujeto al que pertenece.” | que el dato de EMAIMEP entre al universo del GAD — **es el contenido de la decisión de la dirección** |
+| **R2** | “La aplicabilidad de un dominio se determina por el sujeto y por la realidad que ese sujeto está autorizado/capacitado para ejecutar u observar; no por la mera existencia del dominio.” | Bomberos → incendios → Cobertura (falsación 46) · que toda entidad deba pasar por todos los dominios |
+
+**Candado de flujos** *(colega → Matriz Maestra de Elevación del dominio 9)*: una transferencia del GAD a una
+entidad pertenece al universo financiero del GAD; la ejecución propia de la entidad, a la entidad. **Antes de
+cualquier consolidación se conservan el sujeto, la naturaleza del flujo y su origen y destino.** No es un
+caso hipotético: las fuentes muestran flujos de cuatro naturalezas.
+
+| flujo | evidencia |
+|---|---|
+| **traspaso** de programas, presupuestos y personal del GAD a sus entidades | orgánico del GAD, disposición séptima `249966d3ef53`: el Patronato, las empresas públicas y las adscritas «serán responsables de la gestión y ejecución de los mismos» |
+| **asignación legal directa** | COESCOP 274 `28610b4860ab` *(no encadenado)*: «Los recursos que les sean asignados por Ley se transferirán directamente a las cuentas de los Cuerpos de Bomberos» |
+| **contrato** del GAD con su propia empresa | SERCOP 2025: el GAD adjudicó un proceso a MONTEHOGAR-EP **como proveedora** (`data/scouting/sercop_estado_contractual.json`) |
+| **asignación obligatoria para una función** | COOTAD 249 `c0c0fce0f126` *(no encadenado)*: la asignación del 10 % es **del GAD**; cuando la ejecuta el Patronato, la ejecución es **del Patronato** → el circuito `GAP_10PCT` debe declarar de qué sujeto es y si incluye la transferencia *(⏸ cirugía de ⑦)* |
+
+### 3 · El universo del selector en Montecristi — **los nombres oficiales** *(falsaciones 47 y 48)*
+
+**Universo de búsqueda declarado** *(DOC-035/036)*: corpus (`normativa_corpus`: PDOT, orgánico del GAD, PAC,
+POA y rendiciones) · SERCOP (`data/scouting/`) · volcados del Gold Master (`H_ORGANICO_040_2025`,
+`TBL_ENTIDADES_ADSCRITAS`) · código (`p2_holding`, `scripts/`).
+
+| sujeto | nombre oficial | sigla propia | figura | fuentes del nombre | nombre falso que circulaba |
+|---|---|---|---|---|---|
+| **GAD** *(cabeza)* | Gobierno Autónomo Descentralizado Municipal del Cantón Montecristi | GADMCM | gobierno autónomo descentralizado | SERCOP · orgánico | — |
+| **aseo** | Empresa Municipal de Aseo Integral Montecristi-EP | **EMAIMEP** — 59 fragmentos de sus propios PAC, POA y rendiciones | empresa pública municipal | SERCOP · orgánico art. 10 `24899c8bbc5c` · PDOT `28143b2db729` | ~~EMAI-EP~~ *(en ninguna fuente: nació en el código)* · ~~EP Aseo Integral Montecristi~~ (`TBL_ENTIDADES_ADSCRITAS`) |
+| **vivienda** | Empresa Pública Municipal de Hábitat y Vivienda del Cantón Montecristi MONTEHOGAR-EP | **MONTEHOGAR-EP** | empresa pública municipal | SERCOP · orgánico art. 10 `24899c8bbc5c` · PDOT · rendición del GAD 2023 `e45cc0c67978` (reforma de su ordenanza de creación, sancionada) · el volcado `H_ORGANICO_040_2025` del motor ya la nombra así | ~~EP Hábitat~~ (`p2_holding`) · ~~EP Hábitat Montecristi~~ (`TBL_ENTIDADES_ADSCRITAS`) |
+| **bomberos** | Cuerpo de Bomberos de Montecristi | — | entidad adscrita (punto 5) | SERCOP · orgánico | — |
+| **patronato** | Patronato Municipal de Amparo Social de Montecristi | PMASM *(en su PAC 2026)* | ⏸ punto 5 | SERCOP · PAC del Patronato 2026 · orgánico | ~~Patronato Municipal de Montecristi~~ (`TBL_ENTIDADES_ADSCRITAS`) |
+
+- **Falsación 47** *(esta dirección técnica)*: copió a las fichas ~~EMAI-EP~~ y ~~EP Hábitat~~ desde
+  `p2_holding` sin leer las fuentes. Corregido en `§5-septquinquagies` y en los nombres visibles de `p2_holding`.
+- **Falsación 48** *(esta dirección técnica)*: en su investigación concluyó —sin llegar a registrarlo— que la
+  “EP Hábitat” no tenía evidencia: **buscó con el nombre falso y dio por probada una ausencia sin declarar el
+  universo.** La empresa existe: el orgánico de 2025 la nombra, el PDOT le asigna una meta y la rendición del
+  GAD de 2023 registra la reforma de su ordenanza de creación.
+
+**Tres hallazgos que hereda la cirugía — se registran, no se reparan:**
+
+1. **La clave interna `EMAI-EP`** identifica a la empresa en una veintena de módulos (`sentinel/`, páginas,
+   ingestas) y en lo ya ingerido. **No se renombra ahora:** cambiarla rompe la procedencia de lo cargado. Se
+   corrige el **nombre visible**; las pantallas que aún lo muestran (`p_alertas`, `p5_operacion`,
+   `p_historico`, `p_ejecutivo`, `p_reportes`, `p_ingesta`) tomarán el nombre del **registro de entidades
+   elevado** — un solo lugar, no seis parches.
+2. **MONTEHOGAR-EP no está en la captura SERCOP por comprador** (`capturar_sercop_holding.py`), la que se
+   construyó porque la búsqueda por palabra clave “captura <1/3”. Su “0 procesos” en `p2_holding` viene de otra
+   captura (`sercop_sprint0.py`). **⏸ Es una ausencia no verificada con el método vigente**, no un hallazgo
+   sobre la empresa.
+3. **Concejo y Junta Cantonal de Protección de Derechos:** el volcado del motor los cuenta entre las adscritas,
+   fuera de las cinco unidades que observa (`H_ORGANICO_040_2025`); el orgánico nombra al Concejo junto al
+   Patronato (art. 10 `24899c8bbc5c`); la ficha ⑦ los excluye como objeto. **⏸ ¿Entran al selector?** (punto 9).
+   Y la Empresa Pública de Aguas de Manta aparece en el PAI y el POA 2026 del GAD, pero **no figura como
+   entidad del GAD** ni en el orgánico ni en el registro del motor: no entra al selector sin registro.
+
+### 4 · La matriz de aplicabilidad Dominio × Sujeto — **derivada, no intuida**
+
+> Cada celda dice **por qué**. ✅ aplica · — no aplica · ⏸ no derivable hoy: lo decide la cirugía del dominio ·
+> ❓ sujeto no declarado. **Aplicabilidad no es evidencia:** una celda ✅ sin documentos adquiridos es una
+> brecha de adquisición, no un “no aplica”.
+
+| dominio | GAD | EMAIMEP | MONTEHOGAR-EP | Bomberos | Patronato |
+|---|---|---|---|---|---|
+| **① Planificación e Inversión** | ✅ ficha ① | ✅ [a] [b] | ✅ [b] · meta propia en el PDOT [c] · sin POA ni PAC adquiridos | ✅ [a] [d] | ✅ [a] · unidad responsable en el PAI [c] |
+| **② Mandato** | ✅ autoridad electa | — [e] | — [e] | — [e] | — [e] |
+| **③ Transparencia** | ✅ `CNO-VII` | ✅ [b] [f] | ✅ [b] · sin evidencia adquirida | ✅ [f] | ✅ [f] |
+| **④ Participación** · A incidencia | ✅ | ⏸ [g] | ⏸ [g] | ⏸ [g] | ⏸ [g] |
+| **④ Participación** · B rendición | ✅ `CNO-IX-001` | ✅ [h] | ✅ [h] · sin evidencia adquirida | ✅ [h] | ✅ [h] |
+| **⑤ Cobertura** | ✅ | ⏸ [i] | — [j] | — falsación 46 | — [k] |
+| **⑥ Económico** | ❓ ficha ⑥ | ⏸ [l] | ⏸ [l] | ⏸ [l] | ⏸ [l] |
+| **⑦ Grupos Prioritarios** | ✅ [n] | ⏸ [m] | ⏸ [m] | ⏸ [m] | ✅ [n] |
+| **⑧ Ambiental** | ✅ | ⏸ [o] | — [p] | ⏸ [q] | — [r] |
+| **⑨ Holding** *(contenido propio)* | ✅ cabeza | ✅ | ✅ | ✅ | ✅ |
+
+- **[a]** POA y PAC propios en el corpus — EMAIMEP: PAC 2023–2026, POA 2024–2026 · Bomberos: PAC 2023–2026,
+  POA 2024–2026 · Patronato: PAC 2023–2026, POA 2023–2024, presupuesto 2024 — y su ejecución mensual ya se
+  ingiere por entidad (`scripts/holding/ingest_lotaip.py`).
+- **[b]** LOTAIP 29 `570b34e6cc32` *(no encadenado)*: «Todas las empresas públicas deberán publicar … la información mensual sobre la ejecución presupuestaria de la empresa».
+- **[c]** el PDOT pone a la empresa de vivienda como responsable de la meta de viviendas de interés social
+  (`0feec22a9d2e`) · el PAI, al Patronato como unidad responsable (`a8a20c463ab1`) · el motor agrupa las metas
+  por entidad (`H12d`) → punto 6.
+- **[d]** COESCOP 274 `28610b4860ab` *(no encadenado)*: «personalidad jurídica, autonomía administrativa, financiera, presupuestaria y operativa».
+- **[e]** el plan de trabajo se rinde «en el caso de las autoridades de elección popular» (RES-CPCCS-RC-2026 Art. 10 `835f120780a9`): las entidades no tienen autoridad electa ni oferta inscrita.
+- **[f]** su LOTAIP mensual se publica y ya se ingiere (`scripts/holding/`) · ⚠️ el artículo de la LOTAIP que
+  define a los sujetos obligados **no se leyó para esta matriz**: la cadena se cierra en la cirugía de ③.
+- **[g]** el presupuesto participativo es del GAD; ninguna fuente leída muestra instancias de participación
+  propias de las entidades → decide la cirugía de ④.
+- **[h]** RES-CPCCS-RC-2026 Art. 13 `c2456d489297`: los GAD «y las personas jurídicas creadas por acto normativo de los mismos» · LOPC 90 `547b900b8a8f`: los «representantes legales de las empresas públicas» · las rendiciones 2023 y 2024 de EMAIMEP, Bomberos y el Patronato están en el corpus.
+- **[i]** la “recolección de desechos” está en el alcance de ⑤ (ADN d10 #7) y la presta EMAIMEP
+  (`28143b2db729`); pero el indicador —cobertura de recolección, INEC— mide a la **población**, no al prestador
+  → ¿se enciende ⑤ con EMAIMEP como sujeto? Decide la cirugía de ⑤.
+- **[j]** la vivienda no está en el alcance de ⑤ (ADN d10 #7) ni tiene dominio propio: la meta de
+  MONTEHOGAR-EP se observa en ①. **No se crea un dominio** (regla de alcance).
+- **[k]** la cobertura por grupo y territorio del Patronato es objeto de ⑦ (ficha ⑦).
+- **[l]** el dominio no está iniciado y su sujeto no está declarado ni para el GAD.
+- **[m]** la función hacia los grupos prioritarios no está en su evidencia; pero el indicador de inclusión laboral de ⑦ obliga a «La o el empleador público o privado que cuente con un número mínimo de veinticinco (25) trabajadores» y nombra a los Cuerpos de Bomberos (LODISC 47 `8ae3a51c82fc`, no encadenado); y el orgánico encarga también a las empresas públicas y adscritas la formulación de los programas o proyectos de carácter social (`ad50eeaf1709`) → ¿se enciende ⑦ para cada entidad, y en qué? Decide la cirugía de ⑦.
+- **[n]** COOTAD 249 `c0c0fce0f126` *(no encadenado)*: la asignación del 10 % es del GAD · el Patronato ejerce
+  la función (decisión de la dirección; el PDOT lo describe en la atención de los grupos, `efebd57612d1`) →
+  **Holding → Patronato → ⑦**, con el candado de flujos.
+- **[o]** el ADN d13 #7 no nombra los desechos; el PDOT liga su disposición final a la “contaminación
+  ambiental” (`44dce14d3e3c`) → decide la cirugía de ⑧.
+- **[p]** ni la vivienda ni el hábitat urbano están en el alcance de ⑧ (ADN d13 #7).
+- **[q]** ⑧ incluye la “gestión de riesgo biofísico” (ADN d13 #7); COESCOP 274 `28610b4860ab` *(no encadenado)* le asigna el «apoyo en otros eventos adversos de origen natural o antrópico»; el orgánico coordina a Bomberos con la Dirección de Gestión Ambiental y Riesgos (RES-ORG-GADMCM-2025 Art. 10 `24899c8bbc5c`) → decide la cirugía de ⑧.
+- **[r]** la vulnerabilidad climática de los grupos prioritarios va a ⑦ (ADN d13 #8).
+
+**Lectura:** ①, ③ y ④-B se encienden para todos los sujetos; ② sólo para el GAD; ⑤ a ⑧ tienen celdas ⏸ que
+**no se rellenan con intuiciones** — cada una tiene su pregunta y su dueño. Es lo que pidió el colega: *antes de
+la cirugía se sabe qué sujetos entran a cada dominio y qué dominios se apagan cuando cambia el sujeto.*
+
+**Las preguntas rectoras** (`§5-octoquinquagies` §4) se formulan para el sujeto seleccionado: donde dicen “el
+GAD”, con una entidad seleccionada se leen con esa entidad — salvo la del dominio 2, que sólo tiene al GAD.
+
+### 5 · La naturaleza de cada entidad — lo verificable y lo que no
+
+| entidad | base de constitución en las fuentes | verificabilidad |
+|---|---|---|
+| Bomberos | COESCOP 274 `28610b4860ab` *(no encadenado)*: «Los Cuerpos de Bomberos son entidades de derecho público adscritas a los Gobiernos Autónomos Descentralizados municipales» · COOTAD 140 `0dc5f48de6bb` | ✅ en el corpus |
+| EMAIMEP | el PDOT registra su creación en 2017 (`28143b2db729`) · ni su ordenanza de creación ni la LOEP están en el corpus | ⚠️ parcial |
+| MONTEHOGAR-EP | el PDOT da 2014 (`28143b2db729`) y un fragmento con 2018 cuya atribución no es inequívoca (`0741e5bfb44a`) · la rendición del GAD de 2023 registra la reforma de su ordenanza de creación (`e45cc0c67978`) · la ordenanza no está en el corpus | ⚠️ parcial · fechas no concordantes en la fuente |
+| Patronato | el PDOT: “en el año 2011, se constituyó con personería jurídica propia” (`42ef4551fef6`) · el COOTAD, en su disposición octava (sustituida en 2014), ordena que los patronatos de los GAD se extingan y que la dependencia de servicio social del GAD asuma sus funciones (`8e3577412605` · `03cf81411b8c`) · el orgánico del GAD de 2025 lo mantiene como entidad (art. 10 `24899c8bbc5c`) | ⏸ **sin evidencia suficiente** para establecer su figura vigente: el acto que hoy lo constituye no está en el corpus |
+
+Lo del Patronato **no es una observación de incumplimiento**: es la verificabilidad de su base. Y es el
+fundamento documental de la excepción que la dirección ya hizo: *el Patronato, por el tema del GAD*.
+
+### 6 · El PDOT y sus metas — **pregunta para la dirección**
+
+El PDOT es **uno y es del GAD**; algunas de sus metas tienen por responsable a una entidad [c] y el motor ya
+las agrupa por entidad (`H12d`). Con la R1 no hay mezcla mientras cada meta conserve su ejecutor. Queda una
+decisión de presentación:
+
+| opción | con el GAD seleccionado, ① muestra | consecuencia |
+|---|---|---|
+| **A** *(recomendada)* | **el PDOT completo**, cada meta con su ejecutor visible | la cabeza responde por todo su plan · si el cumplimiento del PDOT del motor se calcula sobre todas las metas —`H12d` las desagrega por entidad—, **mostrar sólo las del GAD obligaría a recalcularlo**, y la Regla de Oro 1 lo prohíbe |
+| **B** | sólo las metas cuyo ejecutor es el GAD | separación más estricta · exige una cifra que el motor no produce |
+
+Con una entidad seleccionada, en ambas opciones ① muestra **sólo las metas de esa entidad**. La fórmula del
+motor no cambia en ningún caso.
+
+### 7 · El registro de entidades del motor — se registra, **no se repara** *(el Excel no se toca)*
+
+`TBL_ENTIDADES_ADSCRITAS` (`H01_PARÁMETROS` A232:F240):
+
+| fila | dice | lo que dicen las fuentes |
+|---|---|---|
+| EP-01 | EP Aseo Integral Montecristi · LOEP Art. 44 | nombre oficial: Empresa Municipal de Aseo Integral Montecristi-EP (EMAIMEP) · la LOEP no está en el corpus: su art. 44 **no es verificable hoy** |
+| EP-02 | EP Hábitat Montecristi · LOEP Art. 44 | nombre oficial: MONTEHOGAR-EP — el volcado `H_ORGANICO_040_2025` del mismo motor ya la nombra así · el art. 44, no verificable |
+| AD-01 | Patronato Municipal de Montecristi · ~~COOTAD Art. 234~~ | nombre oficial: Patronato Municipal de Amparo Social de Montecristi · ⛔ COOTAD 234 `236c87c6b3f9` es el **contenido del plan operativo anual**, no la base del Patronato *(cita retirada; su base: punto 5)* |
+| CB-01 | Cuerpo de Bomberos de Montecristi · COESCOP Art. 274 | ✅ COESCOP 274 `28610b4860ab` es su naturaleza *(no encadenado)* |
+| NEW-01…04 | vacantes | el registro ya prevé crecer: coherente con **elevar y generalizar** |
+
+`H71!B8` sigue con `#REF!` (registrado en `§5-septquinquagies`). La deducción de −0,2 por entidad no se evalúa
+aquí. **Todo entra a la cirugía del dominio 9, con su procedencia.**
+
+### 8 · Correcciones aplicadas en esta revisión
+
+- fichas ①, ③, ④, ⑤, ⑦, ⑧ y ⑨, la tabla de lo establecido, la tabla única y la salvaguarda 2 de
+  `§5-octoquinquagies`: al modelo del selector. El parche *una institución, un lugar* queda retirado.
+- nombres: ~~EMAI-EP~~ → EMAIMEP y ~~EP Hábitat~~ → MONTEHOGAR-EP en `§5-septquinquagies` y en los **nombres
+  visibles** de `p2_holding` (las claves internas no cambian).
+- la pregunta de Transparencia (`§5-octoquinquagies` §4) vuelve a nombrar al sujeto obligado, no sólo al GAD.
+
+### 9 · Lo que decide la dirección
+
+| # | decisión | recomendación de esta dirección técnica |
+|---|---|---|
+| 1 | ratificar **R1 y R2** como reglas de arquitectura | ratificar: R1 es el contenido de su propia decisión |
+| 2 | la **regla del PDOT** (punto 6) | **A** |
+| 3 | ¿entran al selector el **Concejo y la Junta Cantonal de Protección de Derechos**? | por ahora no: el motor ya los deja fuera de sus cinco unidades y ⑦ los excluye como objeto |
+| 4 | siguen pendientes de `§5-octoquinquagies`: los **nombres**, las **cuatro preguntas** y la **LOEP** | — |
+
+**Los ⏸ de la matriz no son decisiones de la dirección:** se resuelven en la cirugía de cada dominio, con la
+regla de trabajo — la ficha se congela primero.
 
 ## 6 · Y la finalidad, dicha por la dirección
 
