@@ -712,7 +712,7 @@ componentes:
     kind: canon_adr
     level: 2
     path: docs/adr/ADR-059_Norte_del_Ecosistema_QUIRA.md
-    hash: 95249438aeb93836
+    hash: 228f460e953482f6
     authority_declared: true
     parent: ADR-043
   - id: PCD-D01
