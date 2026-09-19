@@ -606,6 +606,23 @@ MANIFEST: list[dict] = [
         "circuit_refs":     [],
     },
     {
+        # Orden de Javo (2026-09-19): base de las empresas públicas del Holding (dominio 9).
+        # Versión del archivo: RO Supl. 48 de 16-oct-2009 · última modificación 12-sep-2014.
+        "archivo":          "Ley-Orgánica-de-Empresas-Públicas.docx",
+        "sigla":            "LOEP",
+        "nombre":           "Ley Orgánica de Empresas Públicas",
+        "jerarquia":        1,
+        "milestone":        "F0.6",
+        "tipo":             "ley_organica",
+        "dominios":         ["Dom05","Dom07"],
+        "vigente":          True,
+        "document_class":   "NORMA",
+        "authority_level":  95,
+        "source_entity":    "ASAMBLEA_NAC",
+        "canton_id":        None,
+        "circuit_refs":     [],
+    },
+    {
         "archivo":          "Codigo Organico Administrativo.docx",
         "sigla":            "COA",
         "nombre":           "Código Orgánico Administrativo",
