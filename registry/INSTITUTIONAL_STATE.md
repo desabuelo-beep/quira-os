@@ -3,7 +3,7 @@
 
 # ESTADO INSTITUCIONAL DE QUIRA
 
-**Generado:** 2026-09-18 · **Fuente:** `registry/registry.yaml`
+**Generado:** 2026-09-19 · **Fuente:** `registry/registry.yaml`
 
 > No es documentación: es **gobernanza viva**. Describe el estado de la institución,
 > no de los archivos. Se regenera; nunca se redacta.
@@ -16,21 +16,21 @@
 | L0 · Identidad | Constitución Ontológica | ✅ presente |
 | L1 · Gobernanza | Carta de Gobernanza | ✅ vigente |
 | L1 · Gobernanza | Decisiones institucionales | 12 registradas |
-| L2 · Canon | CNO · RO · ADR · PCD | 16 · 14 · 46 · 7 |
+| L2 · Canon | CNO · RO · ADR · PCD | 16 · 14 · 47 · 7 |
 | L2 · Canon | Observaciones | 30 |
 | L3 · Implementación | Dominios con catálogo | d01, d02, d03, d07, d08, d09 |
 | Registry | Integridad | ✅ íntegro |
 
 ## Cumplimiento del Principio de Derivación (Carta Art. 1)
 
-**100.0%** — 159 de 159 activos declaran su autoridad.
+**100.0%** — 160 de 160 activos declaran su autoridad.
 
 ⚠️ **0 artefactos HUÉRFANOS** — sin bloque `authority:`, no pueden
 promoverse a `vigente` (Carta Art. 1). Desglose:
 
 | Tipo | Total | Huérfanos |
 |---|---|---|
-| canon_adr | 46 | 0 |
+| canon_adr | 47 | 0 |
 | canon_cno | 16 | 0 |
 | canon_pcd | 7 | 0 |
 | canon_ro | 14 | 0 |

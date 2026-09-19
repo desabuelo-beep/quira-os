@@ -1,10 +1,10 @@
 {
   "_fuente": "GENERADO por scripts/governance/build_authority_graph.py — no editar",
   "_autoridad": "Carta de Gobernanza Art. 1 (Derivación) y Art. 3 (representaciones)",
-  "generado": "2026-09-18",
+  "generado": "2026-09-19",
   "raiz": "CONSTITUCION-001",
-  "total_nodos": 159,
-  "total_aristas": 159,
+  "total_nodos": 160,
+  "total_aristas": 160,
   "aristas_rotas": 0,
   "aristas_fuera_de_catalogo": 1,
   "huerfanos": 0,
@@ -708,6 +708,13 @@
       "kind": "canon_adr",
       "level": 2,
       "path": "docs/adr/ADR-058_D5_Objeto_del_Baremo_AVEP.md",
+      "declared": true
+    },
+    {
+      "id": "ADR-059",
+      "kind": "canon_adr",
+      "level": 2,
+      "path": "docs/adr/ADR-059_Norte_del_Ecosistema_QUIRA.md",
       "declared": true
     },
     {
@@ -1716,6 +1723,12 @@
     {
       "from": "ADR-058",
       "to": "GOVERNANCE-001",
+      "type": "DERIVES_FROM",
+      "resuelto": true
+    },
+    {
+      "from": "ADR-059",
+      "to": "ADR-043",
       "type": "DERIVES_FROM",
       "resuelto": true
     },
